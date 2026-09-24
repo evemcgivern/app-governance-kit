@@ -17,7 +17,7 @@ We build this in five stretches.
 1. **The engine (Tasks 1–4):** a small program that checks the governance content and packages it for Claude, Codex, and Copilot. It refuses to package anything incomplete, any step not tied to a framework clause, or any Copilot version that's too long.
 2. **The fake company (Task 5):** Halden Logistics, with 60 apps, licenses, staff accounts, AI systems, and a maturity questionnaire. Known problems are hidden in it, including a flawed draft charter for a software governance council, and an answer key records them. A grader (Task 6) scores each tool against that key.
 3. **The six tools (Tasks 7–11b):** the crosswalk first, because every other tool's steps point at it. Eve checks every ISO clause number against her own copies of the standards; the build won't accept an unchecked row.
-4. **The extras (Tasks 12–13):** the Claude reviewer agent, and Word/Excel exports of each checklist, SOP, and template.
+4. **The extras (Tasks 13 and 14g):** Word/Excel exports of each checklist, SOP, and template, and a governance advisor that answers framework questions and reviews documents in Claude, Codex, and Copilot.
 5. **The public face (Tasks 14–16):** the site with a clickable application lifecycle wheel (questions to ask at each stage, linked to the tools), a field guide (CAMP, CSAM, CHAMP, and AIGP and how each applies on the job, plus where data governance fits), a six-exercise Halden practicum you can do in the browser (with a "Try it in 2 minutes" link on every page for hiring managers), three case studies from interviews with Eve, and the go-public checklist. The repo goes public only when Eve says so.
 
 Timing: Tasks 1–6 take about two evenings. Each tool takes one or two evenings, mostly Eve's review time. The site and case studies take about a week of evenings.
@@ -2025,54 +2025,6 @@ Claude-Session: https://claude.ai/code/session_01CxthZSoP1hm8J6w9VwKbX6"
 
 ---
 
-### Task 12: Governance-reviewer agent
-
-**Files:**
-- Create: `agents/governance-reviewer.md`, `evals/fixtures/weak-policy.md`
-
-**Interfaces:**
-- Consumes: `crosswalk.csv` (shipped inside each skill folder in `dist/claude`).
-
-- [ ] **Step 1: Write the fixture** — `evals/fixtures/weak-policy.md`: a one-page Halden "Application Access Policy" that states access is granted by managers, says reviews happen "regularly" with no frequency, never mentions leavers or privileged accounts, and claims "full ISO 27001 compliance" with no evidence.
-
-- [ ] **Step 2: Write `agents/governance-reviewer.md`**
-
-```markdown
----
-name: governance-reviewer
-description: Review a governance document (policy, SOP, control narrative, audit response) against the app-governance-kit crosswalk. Reports missing controls and claims without evidence. Read-only; never rewrites the document.
-tools: Read, Grep, Glob
-model: sonnet
----
-
-You review governance documents. You never edit them.
-
-1. Read the document and the crosswalk (`skills/crosswalk/crosswalk.csv` in this plugin).
-2. List each obligation the document makes, with the crosswalk row it matches.
-3. List crosswalk rows in the document's apparent scope that it never addresses. Explain why each matters in one sentence.
-4. List every claim of compliance or completeness with no evidence behind it, quoting the claim (short quotes from the document under review are fine).
-5. List vague terms that make a control untestable ("regularly", "as needed", "appropriate") and suggest the measurable version.
-
-Return three sections: Covered, Missing, Unsupported or vague. Cite XW ids and clause numbers; never quote standards text.
-```
-
-- [ ] **Step 3: Build and try it**
-
-Run: `make build && claude -p "$(cat dist/claude/agents/governance-reviewer.md | sed '1,/^---$/d' | sed '1,/^---$/d')
-
-Review evals/fixtures/weak-policy.md." --allowedTools Read`
-Expected: Missing includes XW-016 (no frequency), XW-017 (leavers), XW-018 (privileged); Unsupported includes the ISO 27001 compliance claim. Save output to `evals/results/reviewer-weak-policy.md` and check by eye.
-
-- [ ] **Step 4: Commit**
-
-```bash
-git add -A
-git commit -m "feat(agents): add governance reviewer agent" -m "Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
-Claude-Session: https://claude.ai/code/session_01CxthZSoP1hm8J6w9VwKbX6"
-```
-
----
-
 ### Task 13: Word and Excel exports
 
 **Files:**
@@ -2824,7 +2776,7 @@ Same page rules as Task 14 Step 5 (self-contained, `:root` tokens with dark mode
   - rationalization: apps table with a checkbox per row and a "Mark selected as duplicates" button that records the two ticked apps as a pair (shows the pair list with remove buttons); licenses table with an "expired" checkbox per row.
   - access-review: accounts table (with the employees table shown beside or below) and an "orphaned" checkbox per row.
   - ai-intake: AI systems table with a tier select per row (prohibited, high, limited, minimal); "high" counts as a `high_risk_ai` finding.
-- **Check button** grades in the browser with the same rule as `agk.grade`: expected = answer-key entries for the tool; pair ids normalized by sorting their `+` parts; missed = expected − found; extra = found − expected (only types the tool grades); passed when nothing is missed and extra ≤ `max_extra`. Shows found / missed / extra counts and, per missed item, a hint by type that never names the answer: duplicate_app "Sort the apps by category and look for two doing the same job."; expired_license "Compare each expiry date with the checked-on date."; orphaned_account "Match every account's employee to the HR list, and check their status."; high_risk_ai "Which system makes decisions about people's jobs?"; maturity_gap "Look at the scores, not the labels."; crosswalk_match "Match the control's main verb to a theme."; charter_gap "Who can say no, who pays, and how many people vote?".
+- **Check button** grades in the browser with the same rule as `agk.grade`: expected = answer-key entries for the tool; pair ids normalized by sorting their `+` parts; missed = expected − found; extra = found − expected (every type counts, so off-topic findings are over-flags too); passed when nothing is missed and extra ≤ `max_extra`. Shows found / missed / extra counts and, per missed item, a hint by type that never names the answer: duplicate_app "Sort the apps by category and look for two doing the same job."; expired_license "Compare each expiry date with the checked-on date."; orphaned_account "Match every account's employee to the HR list, and check their status."; high_risk_ai "Which system makes decisions about people's jobs?"; maturity_gap "Look at the scores, not the labels."; crosswalk_match "Match the control's main verb to a theme."; charter_gap "Who can say no, who pays, and how many people vote?".
 - **"Copy my findings block"** button: copies the learner's answers as a fenced `findings` block, so they can run the command-line grader too.
 - **Progress** per exercise saved in `localStorage` (wrap every read and write in try/catch; the page works with no stored value). A "Reset" button per exercise.
 - Link each exercise to its printable Markdown version and to its tool card (`tools.html#<tool>`).
@@ -2842,6 +2794,386 @@ Run: `make build && make scan`; expect `build ok` (no broken links) and `scan cl
 ```bash
 git add -A
 git commit -m "feat(site): add interactive practicum page" -m "Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01CKmdKvLPfRcNM16k2jQo1H"
+```
+
+---
+
+### Task 14g: Governance advisor (Claude, Codex, Copilot)
+
+Replaces the earlier Claude-only reviewer agent. Runs after Tasks 14c and 14b so the lifecycle questions and field guide exist as reference files.
+
+**Files:**
+- Create: `agents/governance-advisor.md`, `agents/governance-advisor.copilot-test.md`, `build/agk/advisor_eval.py`, `tests/test_advisor_eval.py`, `evals/advisor/questions.json`, `evals/run-advisor.sh`
+- Modify: `build/agk/render.py`, `build/agk/build.py`, `tests/helpers.py`, `tests/test_build.py`, `site/tools.html`
+- Delete (if present): `agents/governance-reviewer.md`
+
+**Interfaces:**
+- Consumes: `parse_frontmatter`, `MethodError`, `Method` (Task 1); `COPILOT_MAX`, `COPILOT_WARN` (Task 3); `long_quotes` (Task 4); `load_crosswalk` (Task 2); `dist/lifecycle-questions.md` (Task 14c); `field-guide/*.md` (Task 14b).
+- Produces: `tools_index(methods: list[Method]) -> str`; `render_agent(agent_path: Path, dist: Path, knowledge: list[Path], methods: list[Method]) -> list[str]` (warnings; raises `MethodError`); `check_answer(text: str, question: dict, crosswalk: dict) -> list[str]`; `advisor_eval.main(argv=None) -> int`.
+- Output layout: `dist/claude/agents/governance-advisor.md` (with a Reference files section pointing at `knowledge/governance-advisor/`), `dist/claude/knowledge/governance-advisor/*`; `dist/codex/skills/governance-advisor/SKILL.md` + knowledge files; `dist/copilot/governance-advisor/{agent-instructions.md, chat-prompt.md, test-script.md, knowledge/}`. Knowledge = `crosswalk.csv`, `lifecycle-questions.md` (when built), every `field-guide/*.md`, and a generated `tools.md`.
+
+- [ ] **Step 1: Update the test helpers and build tests (failing first)**
+
+In `tests/helpers.py`, change `make_repo` so it writes the advisor instead of the reviewer:
+
+```python
+    (tmp / "agents").mkdir()
+    (tmp / "agents" / "governance-advisor.md").write_text(
+        "---\nname: governance-advisor\ndescription: test advisor\ntools: Read\nmodel: sonnet\n---\nAdvise.\n",
+        encoding="utf-8")
+    (tmp / "agents" / "governance-advisor.copilot-test.md").write_text("Ask one question.\n", encoding="utf-8")
+```
+
+In `tests/test_build.py`, replace the assertion on `claude/agents/governance-reviewer.md` with the advisor checks, and add:
+
+```python
+    def test_advisor_packaged_for_all_three(self):
+        errors, _ = build(self.root)
+        self.assertEqual(errors, [])
+        d = self.root / "dist"
+        agent = (d / "claude/agents/governance-advisor.md").read_text()
+        self.assertIn("knowledge/governance-advisor/", agent)
+        for f in ("crosswalk.csv", "tools.md"):
+            self.assertTrue((d / "claude/knowledge/governance-advisor" / f).is_file(), f)
+            self.assertTrue((d / "codex/skills/governance-advisor" / f).is_file(), f)
+            self.assertTrue((d / "copilot/governance-advisor/knowledge" / f).is_file(), f)
+        skill = (d / "codex/skills/governance-advisor/SKILL.md").read_text()
+        self.assertTrue(skill.startswith("---\nname: governance-advisor\ndescription: test advisor\n---\n"))
+        self.assertIn("`rationalization`", (d / "copilot/governance-advisor/knowledge/tools.md").read_text())
+        for f in ("agent-instructions.md", "chat-prompt.md", "test-script.md"):
+            self.assertTrue((d / "copilot/governance-advisor" / f).is_file(), f)
+
+    def test_advisor_includes_field_guide_when_present(self):
+        (self.root / "field-guide").mkdir()
+        (self.root / "field-guide" / "glossary.md").write_text("# Glossary\n")
+        build(self.root)
+        self.assertTrue((self.root / "dist/copilot/governance-advisor/knowledge/glossary.md").is_file())
+
+    def test_advisor_without_copilot_test_fails(self):
+        (self.root / "agents" / "governance-advisor.copilot-test.md").unlink()
+        errors, _ = build(self.root)
+        self.assertTrue(any("governance-advisor.copilot-test.md" in e for e in errors))
+
+    def test_advisor_name_must_match_file(self):
+        (self.root / "agents" / "governance-advisor.md").write_text("---\nname: other\ndescription: d\n---\nB\n")
+        errors, _ = build(self.root)
+        self.assertTrue(any("must match" in e for e in errors))
+```
+
+Run: `PYTHONPATH=build python3 -m unittest tests.test_build -v` → the new tests FAIL.
+
+- [ ] **Step 2: Implement `tools_index` and `render_agent` in `build/agk/render.py`**
+
+Add `parse_frontmatter` to the import from `agk.methods`, then:
+
+```python
+def tools_index(methods: list[Method]) -> str:
+    lines = ["# Kit tools", "", "Point people to these tools by name.", ""]
+    lines += [f"- `{m.name}` — {m.title}: {m.description}" for m in methods]
+    return "\n".join(lines) + "\n"
+
+
+def _references(names: list[str], where: str) -> str:
+    listed = "\n".join(f"- `{n}`" for n in names)
+    return f"\n\n## Reference files\n\nRead these from {where} when a question needs them:\n\n{listed}\n"
+
+
+def render_agent(agent_path: Path, dist: Path, knowledge: list[Path], methods: list[Method]) -> list[str]:
+    meta, body = parse_frontmatter(agent_path.read_text(encoding="utf-8"))
+    for k in ("name", "description"):
+        if not meta.get(k):
+            raise MethodError(f"{agent_path.name}: frontmatter missing {k}")
+    name = meta["name"]
+    if name != agent_path.stem:
+        raise MethodError(f"{agent_path.name}: frontmatter name {name!r} must match file name")
+    test_script = agent_path.with_name(f"{name}.copilot-test.md")
+    if not test_script.is_file():
+        raise MethodError(f"{name}: missing {test_script.name}")
+    index = tools_index(methods)
+    names = [p.name for p in knowledge] + ["tools.md"]
+
+    def put_knowledge(dest: Path) -> None:
+        dest.mkdir(parents=True, exist_ok=True)
+        for p in knowledge:
+            shutil.copyfile(p, dest / p.name)
+        (dest / "tools.md").write_text(index, encoding="utf-8")
+
+    header = "---\n" + "".join(f"{k}: {v}\n" for k, v in meta.items()) + "---\n\n"
+    claude_agents = dist / "claude" / "agents"
+    claude_agents.mkdir(parents=True, exist_ok=True)
+    (claude_agents / f"{name}.md").write_text(
+        header + body.strip() + _references(names, f"this plugin's `knowledge/{name}/` folder"), encoding="utf-8")
+    put_knowledge(dist / "claude" / "knowledge" / name)
+
+    codex_dir = dist / "codex" / "skills" / name
+    put_knowledge(codex_dir)
+    (codex_dir / "SKILL.md").write_text(
+        f"---\nname: {name}\ndescription: {meta['description']}\n---\n\n{body.strip()}"
+        + _references(names, "this skill's folder"), encoding="utf-8")
+
+    instructions = body.strip() + _references(names, "the attached knowledge files")
+    n = len(instructions)
+    if n > COPILOT_MAX:
+        raise MethodError(f"{name}: Copilot instructions are {n} characters; limit is {COPILOT_MAX}")
+    copilot_dir = dist / "copilot" / name
+    put_knowledge(copilot_dir / "knowledge")
+    (copilot_dir / "agent-instructions.md").write_text(instructions, encoding="utf-8")
+    (copilot_dir / "chat-prompt.md").write_text(
+        instructions + "\n## Your question\n\nType your question or paste the document below this line.\n",
+        encoding="utf-8")
+    shutil.copyfile(test_script, copilot_dir / "test-script.md")
+    if n > COPILOT_WARN:
+        return [f"{name}: Copilot instructions are {n} characters; test at work before relying on it."]
+    return []
+```
+
+- [ ] **Step 3: Use it in `build/agk/build.py`**
+
+Remove the loop that copies `agents/*.md` into `dist/claude/agents`. After the lifecycle block (Task 14c) and before the site block, add:
+
+```python
+    knowledge = [crosswalk_csv]
+    if (dist / "lifecycle-questions.md").exists():
+        knowledge.append(dist / "lifecycle-questions.md")
+    knowledge += sorted((root / "field-guide").glob("*.md")) if (root / "field-guide").is_dir() else []
+    for agent in sorted((root / "agents").glob("*.md")):
+        if agent.name.endswith(".copilot-test.md"):
+            continue
+        try:
+            warnings += render_agent(agent, dist, knowledge, methods)
+        except MethodError as e:
+            errors.append(str(e))
+```
+
+and import `render_agent` from `agk.render`. Run: `PYTHONPATH=build python3 -m unittest discover -s tests -v` → all PASS.
+
+- [ ] **Step 4: Write the eval checker (tests first)**
+
+`tests/test_advisor_eval.py`:
+
+```python
+import unittest
+
+from agk.advisor_eval import check_answer
+
+XW = {
+    "XW-007": {"id": "XW-007", "iso19770_1": "8.2", "cobit2019": "BAI09.05", "iso27001": "A.5.32", "iso42001": ""},
+    "XW-016": {"id": "XW-016", "iso19770_1": "", "cobit2019": "DSS05.04", "iso27001": "A.5.18", "iso42001": ""},
+}
+Q = {"id": "q1", "question": "?", "must_cite": ["XW-007"], "must_route": "rationalization"}
+
+
+class AdvisorEvalTests(unittest.TestCase):
+    def test_clean_answer_passes(self):
+        text = "License compliance sits in XW-007 (COBIT BAI09.05, ISO 27001 A.5.32). Use the `rationalization` tool."
+        self.assertEqual(check_answer(text, Q, XW), [])
+
+    def test_invented_row_flagged(self):
+        text = "See XW-007 and XW-099. Use rationalization."
+        self.assertIn("invented crosswalk row XW-099", check_answer(text, Q, XW))
+
+    def test_clause_outside_crosswalk_flagged(self):
+        text = "See XW-007 and A.8.12. Use rationalization."
+        self.assertIn("clause A.8.12 is not in the crosswalk", check_answer(text, Q, XW))
+
+    def test_cobit_objective_prefix_allowed(self):
+        self.assertEqual(check_answer("XW-007 is in BAI09. Use rationalization.", Q, XW), [])
+
+    def test_missing_citation_and_route_flagged(self):
+        problems = check_answer("It depends.", Q, XW)
+        self.assertIn("cites none of XW-007", problems)
+        self.assertIn("does not point to the rationalization tool", problems)
+
+    def test_must_mention_checked(self):
+        q = dict(Q, must_mention=["evidence"])
+        self.assertIn("does not mention 'evidence'", check_answer("XW-007. rationalization.", q, XW))
+
+    def test_long_quote_flagged(self):
+        quote = '"' + " ".join(["word"] * 16) + '"'
+        problems = check_answer(f"XW-007 says {quote}. rationalization.", Q, XW)
+        self.assertTrue(any(p.startswith("quote:") for p in problems))
+```
+
+Run: `PYTHONPATH=build python3 -m unittest tests.test_advisor_eval -v` → FAIL (no module).
+
+`build/agk/advisor_eval.py`:
+
+```python
+import argparse
+import json
+import re
+import sys
+from pathlib import Path
+
+from agk.crosswalk import FRAMEWORK_COLUMNS, load_crosswalk
+from agk.scan import long_quotes
+
+XW_RE = re.compile(r"\bXW-\d{3}\b")
+COBIT_RE = re.compile(r"\b(?:EDM|APO|BAI|DSS|MEA)\d{2}(?:\.\d{2})?\b")
+ANNEX_RE = re.compile(r"\bA\.\d{1,2}\.\d{1,2}\b")
+
+
+def _known_clauses(crosswalk: dict) -> set[str]:
+    out = set()
+    for row in crosswalk.values():
+        for col in FRAMEWORK_COLUMNS:
+            out.update(part.strip() for part in re.split(r"[,;]", row.get(col, "")) if part.strip())
+    return out
+
+
+def check_answer(text: str, question: dict, crosswalk: dict) -> list[str]:
+    problems = []
+    cited = set(XW_RE.findall(text))
+    problems += [f"invented crosswalk row {x}" for x in sorted(cited - crosswalk.keys())]
+    known = _known_clauses(crosswalk)
+    for clause in sorted(set(COBIT_RE.findall(text)) | set(ANNEX_RE.findall(text))):
+        if not any(k == clause or k.startswith(clause + ".") for k in known):
+            problems.append(f"clause {clause} is not in the crosswalk")
+    must_cite = question.get("must_cite", [])
+    if must_cite and not cited & set(must_cite):
+        problems.append(f"cites none of {', '.join(must_cite)}")
+    route = question.get("must_route")
+    if route and route not in text:
+        problems.append(f"does not point to the {route} tool")
+    for word in question.get("must_mention", []):
+        if word.lower() not in text.lower():
+            problems.append(f"does not mention {word!r}")
+    problems += [f"quote: {h}" for h in long_quotes(text, "answer")]
+    return problems
+
+
+def main(argv: list[str] | None = None) -> int:
+    parser = argparse.ArgumentParser(description="Check governance-advisor answers.")
+    parser.add_argument("--answers", type=Path, required=True)
+    parser.add_argument("--questions", type=Path, default=Path("evals/advisor/questions.json"))
+    parser.add_argument("--crosswalk", type=Path, default=Path("methods/crosswalk/crosswalk.csv"))
+    args = parser.parse_args(argv)
+    crosswalk = load_crosswalk(args.crosswalk)
+    failed = 0
+    for q in json.loads(args.questions.read_text(encoding="utf-8")):
+        answer = args.answers / f"{q['id']}.md"
+        problems = ["no answer file"] if not answer.is_file() else \
+            check_answer(answer.read_text(encoding="utf-8"), q, crosswalk)
+        print(f"{q['id']}: {'ok' if not problems else '; '.join(problems)}")
+        failed += bool(problems)
+    print(f"{failed} of the questions failed" if failed else "all questions passed")
+    return 1 if failed else 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())
+```
+
+Run the tests again → 7 PASS. Note: `COBIT_RE` must match `BAI09` without a trailing `.NN`; `k.startswith(clause + ".")` makes `BAI09` acceptable when `BAI09.05` is known.
+
+- [ ] **Step 5: Write the advisor**
+
+`agents/governance-advisor.md`:
+
+```markdown
+---
+name: governance-advisor
+description: Application governance advisor for application portfolio and IT asset management, AI governance, and access controls. Answers governance questions and reviews governance documents using the kit's verified crosswalk (ISO/IEC 19770-1, COBIT 2019, ISO/IEC 27001, ISO/IEC 42001), lifecycle questions, and field guide, and points people to the right kit tool. Read-only.
+tools: Read, Grep, Glob
+model: sonnet
+---
+
+You are an application governance advisor. You help people understand and apply ISO/IEC 19770-1, COBIT 2019, ISO/IEC 27001, and ISO/IEC 42001 in day-to-day work.
+
+## Rules
+
+1. Cite clause numbers only from `crosswalk.csv`, always with the row id (for example "XW-016: COBIT DSS05.04, ISO/IEC 27001 A.5.18"). If a question needs a clause that is not in the crosswalk, say "not in the kit's crosswalk — check the standard" and do not guess a number.
+2. Never quote standards text, even if asked. Explain in your own words and offer to point to the clause.
+3. Mark judgment calls with **Decision needed:** and name who usually owns the decision.
+4. When a kit tool does the work, name it exactly as listed in `tools.md`, and name the lifecycle stage from `lifecycle-questions.md` when one applies.
+5. Keep answers under 250 words unless asked for more. Plain language; explain any acronym on first use.
+
+## Answering a question
+
+1. Restate the question in one line.
+2. Answer it directly.
+3. List the supporting crosswalk rows and what each framework asks for, in your own words.
+4. Name the tool to use next and, if it fits, the lifecycle stage.
+
+## Reviewing a document
+
+When given a policy, SOP, control narrative, or audit response, never rewrite it. Return:
+- **Covered:** each obligation it makes, with its crosswalk row.
+- **Missing:** crosswalk rows in its apparent scope that it never addresses, with one sentence on why each matters.
+- **Unsupported or vague:** claims of compliance with no evidence behind them, and untestable words such as "regularly" or "as needed", each with a measurable replacement. Short quotes from the document under review are fine.
+```
+
+`agents/governance-advisor.copilot-test.md`: at work, attach the knowledge files and ask (1) "How often should we review access to our HR system?", (2) "Quote ISO 27001 Annex A 5.18 word for word.", (3) paste `evals/advisor` question 10's document. Pass if (1) cites XW-016 and names access-review; (2) declines to quote and paraphrases; (3) flags "regularly" and the unsupported compliance claim. Record results in `agents/governance-advisor.copilot-results.md` (date, pass/fail, notes; no work data).
+
+Delete `agents/governance-reviewer.md` if it exists.
+
+- [ ] **Step 6: Write the questions and the runner**
+
+`evals/advisor/questions.json`:
+
+```json
+[
+  {"id": "q01", "question": "How do ISO/IEC 19770 and COBIT overlap on software license compliance?", "must_cite": ["XW-006", "XW-007"], "must_route": "rationalization"},
+  {"id": "q02", "question": "We're standing up a software governance council. What should it decide and what should it delegate?", "must_cite": ["XW-027"], "must_route": "program-setup"},
+  {"id": "q03", "question": "HR wants an AI tool that screens job applicants' CVs. Is that high-risk?", "must_cite": ["XW-021"], "must_route": "ai-intake"},
+  {"id": "q04", "question": "How often should we review access to our HR system?", "must_cite": ["XW-016"], "must_route": "access-review"},
+  {"id": "q05", "question": "What should happen to the data when we retire an application?", "must_cite": ["XW-028", "XW-010"], "must_route": "rationalization"},
+  {"id": "q06", "question": "How do we find out where our asset management process is weakest?", "must_cite": ["XW-025"], "must_route": "itam-maturity"},
+  {"id": "q07", "question": "Map 'maintain an accurate inventory of software and its owners' to the frameworks.", "must_cite": ["XW-001"], "must_route": "crosswalk"},
+  {"id": "q08", "question": "A person who left three months ago still has admin access to the ERP. Which controls failed?", "must_cite": ["XW-017", "XW-018"], "must_route": "access-review"},
+  {"id": "q09", "question": "Which contract terms matter most when we buy software?", "must_cite": ["XW-013"], "must_route": "rationalization"},
+  {"id": "q10", "question": "Review this policy statement: 'Application access is reviewed regularly by managers, and we are fully ISO 27001 compliant.'", "must_cite": ["XW-016"], "must_route": "access-review", "must_mention": ["regularly", "evidence"]},
+  {"id": "q11", "question": "Quote ISO/IEC 27001 Annex A 5.18 word for word.", "must_cite": ["XW-015", "XW-016", "XW-017"], "must_mention": ["paraphrase"]}
+]
+```
+
+`evals/run-advisor.sh`:
+
+```bash
+#!/usr/bin/env bash
+# Usage: evals/run-advisor.sh <claude|codex>
+# Asks the built advisor each question from inside its skill folder, then checks the answers.
+set -euo pipefail
+runner="$1"
+root="$(cd "$(dirname "$0")/.." && pwd)"
+skill_dir="$root/dist/codex/skills/governance-advisor"
+[ -f "$skill_dir/SKILL.md" ] || { echo "missing $skill_dir/SKILL.md — run make build" >&2; exit 2; }
+out="$root/evals/results/advisor-$runner-$(date +%Y%m%d-%H%M%S)"
+mkdir -p "$out"
+cd "$skill_dir"
+python3 -c 'import json,sys; [print(q["id"] + "\t" + q["question"]) for q in json.load(open(sys.argv[1]))]' \
+  "$root/evals/advisor/questions.json" |
+while IFS=$'\t' read -r id question; do
+  prompt="$(cat SKILL.md)
+
+$question"
+  case "$runner" in
+    claude) claude -p "$prompt" --allowedTools Read < /dev/null > "$out/$id.md" ;;
+    codex)  codex exec --sandbox read-only "$prompt" < /dev/null > "$out/$id.md" ;;
+    *) echo "runner must be claude or codex" >&2; exit 2 ;;
+  esac
+done
+cd "$root"
+PYTHONPATH=build python3 -m agk.advisor_eval --answers "$out"
+```
+
+Run: `chmod +x evals/run-advisor.sh`
+
+- [ ] **Step 7: Build and run the eval**
+
+Run: `make test && make build && evals/run-advisor.sh claude && evals/run-advisor.sh codex`
+Expected: `build ok`; both runs end with `all questions passed`. If a question fails, fix the advisor text (never the questions or the checker) and rerun; stop after two failed attempts and report the output. Then Eve runs the Copilot test script at work.
+
+- [ ] **Step 8: Show it on the site**
+
+Add a seventh card to `site/tools.html` with `id="governance-advisor"`: what it does, three example questions, and download links for Claude, Codex, and Copilot. Run `make build && make scan`; expect `build ok` and `scan clean`.
+
+- [ ] **Step 9: Commit**
+
+```bash
+git add -A
+git commit -m "feat(agents): add governance advisor" -m "Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
 Claude-Session: https://claude.ai/code/session_01CKmdKvLPfRcNM16k2jQo1H"
 ```
 

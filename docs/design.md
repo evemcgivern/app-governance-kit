@@ -46,7 +46,7 @@ app-governance-kit/
   methods/<tool>/       method.md, checklist.md, sop.md, template.(md|csv), platform-guide.md, example/
   demo-estate/          Halden Logistics data + answer key of planted problems
   build/                build.py (Python standard library only)
-  dist/claude/          plugin: one skill per tool + governance-reviewer agent
+  dist/claude/          plugin: one skill per tool + governance-advisor agent
   dist/codex/           one skill per tool + AGENTS.md
   dist/copilot/<tool>/  agent-instructions.md, knowledge/, chat-prompt.md, test-script.md
   site/                 self-contained HTML pages
@@ -79,7 +79,7 @@ app-governance-kit/
 - The field guide explains where application governance ends and data governance begins.
 - Crosswalk row XW-028 covers data classification and handling.
 
-**Governance-reviewer agent (Claude only):** reviews any governance document against the crosswalk and reports missing controls and claims without evidence. Read-only.
+**Governance advisor (Claude, Codex, and Copilot):** a framework expert with two jobs. It answers governance questions ("How do ISO/IEC 19770 and COBIT overlap on license compliance?", "What should our council decide versus delegate?") and reviews governance documents for missing controls and claims without evidence. Its reference files are the verified crosswalk, the lifecycle questions, the field guide, and an index of the kit's tools, so it can point people to the right tool and lifecycle stage. It cites clause numbers only from the crosswalk and says "not in the kit's crosswalk — check the standard" rather than guessing. It never quotes standards text. An eval of eleven questions fails on any invented crosswalk row or clause, a wrong or missing tool, or a long quote. Read-only.
 
 ## 5. The five pieces per tool (all six tools)
 
