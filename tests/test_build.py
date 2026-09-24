@@ -68,3 +68,16 @@ class BuildTests(unittest.TestCase):
         self.assertEqual(main(["--root", str(self.root)]), 0)
         make_method(self.root, "broken", **{"sop.md": None})
         self.assertEqual(main(["--root", str(self.root)]), 1)
+
+    def test_themes_shipped_with_every_tool(self):
+        errors, _ = build(self.root)
+        self.assertEqual(errors, [])
+        d = self.root / "dist"
+        self.assertTrue((d / "claude/skills/rationalization/themes.md").is_file())
+        self.assertTrue((d / "copilot/rationalization/knowledge/themes.md").is_file())
+        self.assertIn("`themes.md`", (d / "claude/skills/rationalization/SKILL.md").read_text())
+
+    def test_missing_theme_description_stops_build(self):
+        (self.root / "methods/crosswalk/themes.md").write_text("# empty\n")
+        errors, _ = build(self.root)
+        self.assertTrue(any(e.startswith("themes:") for e in errors))

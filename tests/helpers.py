@@ -29,6 +29,9 @@ def make_method(root: Path, name: str, body: str = "Do the thing.", **files) -> 
 def make_repo(tmp: Path) -> Path:
     make_method(tmp, "crosswalk")
     (tmp / "methods" / "crosswalk" / "crosswalk.csv").write_text(XW_HEADER + XW_ROW, encoding="utf-8")
+    (tmp / "methods" / "crosswalk" / "themes.md").write_text(
+        "## XW-001 Inventory\n\n- **What it means:** m\n- **Key work:** k\n"
+        "- **Evidence it produces:** e\n- **Usually owned by:** o\n", encoding="utf-8")
     (tmp / "agents").mkdir()
     (tmp / "agents" / "governance-reviewer.md").write_text(
         "---\nname: governance-reviewer\ndescription: test\n---\nReview.\n", encoding="utf-8")

@@ -36,3 +36,4 @@ Read these from this skill's folder when a step needs them:
 - `platform-guide.md`
 - `template.md`
 - `crosswalk.csv`
+- `themes.md`

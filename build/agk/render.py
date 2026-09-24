@@ -10,7 +10,7 @@ REFERENCE_FILES = ("checklist.md", "sop.md", "platform-guide.md")
 
 
 def _reference_names(m: Method) -> list[str]:
-    return [*REFERENCE_FILES, m.template.name, "crosswalk.csv"]
+    return [*REFERENCE_FILES, m.template.name, "crosswalk.csv", "themes.md"]
 
 
 def _copy_references(m: Method, dest: Path, crosswalk_csv: Path) -> None:
@@ -19,6 +19,7 @@ def _copy_references(m: Method, dest: Path, crosswalk_csv: Path) -> None:
         shutil.copyfile(m.dir / f, dest / f)
     shutil.copyfile(m.template, dest / m.template.name)
     shutil.copyfile(crosswalk_csv, dest / "crosswalk.csv")
+    shutil.copyfile(crosswalk_csv.parent / "themes.md", dest / "themes.md")
 
 
 def skill_md(m: Method) -> str:
