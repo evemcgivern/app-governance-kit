@@ -18,7 +18,7 @@ We build this in five stretches.
 2. **The fake company (Task 5):** Halden Logistics, with 60 apps, licenses, staff accounts, AI systems, and a maturity questionnaire. Known problems are hidden in it, including a flawed draft charter for a software governance council, and an answer key records them. A grader (Task 6) scores each tool against that key.
 3. **The six tools (Tasks 7–11b):** the crosswalk first, because every other tool's steps point at it. Eve checks every ISO clause number against her own copies of the standards; the build won't accept an unchecked row.
 4. **The extras (Tasks 12–13):** the Claude reviewer agent, and Word/Excel exports of each checklist, SOP, and template.
-5. **The public face (Tasks 14–16):** the site with a clickable application lifecycle wheel (questions to ask at each stage, linked to the tools), a field guide (CAMP, CSAM, CHAMP, and AIGP and how each applies on the job, plus where data governance fits), three case studies from interviews with Eve, and the go-public checklist. The repo goes public only when Eve says so.
+5. **The public face (Tasks 14–16):** the site with a clickable application lifecycle wheel (questions to ask at each stage, linked to the tools), a field guide (CAMP, CSAM, CHAMP, and AIGP and how each applies on the job, plus where data governance fits), a six-exercise Halden practicum with self-checking, three case studies from interviews with Eve, and the go-public checklist. The repo goes public only when Eve says so.
 
 Timing: Tasks 1–6 take about two evenings. Each tool takes one or two evenings, mostly Eve's review time. The site and case studies take about a week of evenings.
 
@@ -2560,6 +2560,110 @@ Claude-Session: https://claude.ai/code/session_01CxthZSoP1hm8J6w9VwKbX6"
 
 ---
 
+### Task 14e: Halden practicum
+
+**Files:**
+- Create: `practicum/README.md`, `practicum/01-program-setup.md`, `practicum/02-itam-maturity.md`, `practicum/03-crosswalk.md`, `practicum/04-rationalization.md`, `practicum/05-access-review.md`, `practicum/06-ai-intake.md`, `tests/test_practicum.py`
+- Modify: `build/agk/scan.py` (add `"practicum"` to `SCAN_DIRS` and `QUOTE_DIRS`), `site/field-guide.html` (practicum section and link)
+
+**Interfaces:**
+- Consumes: `demo-estate/answer-key.json` tool names (Task 5); `agk.grade` CLI (Task 6); the six `methods/<tool>/checklist.md` files (Tasks 7–11b).
+
+- [ ] **Step 1: Write the failing test**
+
+`tests/test_practicum.py`:
+
+```python
+import json
+import unittest
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parent.parent
+PRACTICUM = ROOT / "practicum"
+
+
+class PracticumTests(unittest.TestCase):
+    def test_every_graded_tool_has_one_exercise(self):
+        key = json.loads((ROOT / "demo-estate" / "answer-key.json").read_text())
+        tools = sorted({k["tool"] for k in key})
+        for tool in tools:
+            matches = list(PRACTICUM.glob(f"[0-9][0-9]-{tool}.md"))
+            self.assertEqual(len(matches), 1, f"expected one exercise for {tool}")
+
+    def test_each_exercise_has_required_sections_and_grader_command(self):
+        for ex in sorted(PRACTICUM.glob("[0-9][0-9]-*.md")):
+            tool = ex.stem.split("-", 1)[1]
+            text = ex.read_text()
+            for heading in ("## Scenario", "## Files", "## Work through", "## Hand in",
+                            "## Check yourself", "## Reflect", "## Certification link"):
+                self.assertIn(heading, text, f"{ex.name} missing {heading}")
+            self.assertIn(f"python3 -m agk.grade --tool {tool} --output", text, ex.name)
+            self.assertNotIn("answer-key.json", text.split("## Check yourself")[0],
+                             f"{ex.name} points at the answer key before the self-check section")
+
+    def test_readme_lists_exercises_in_order(self):
+        readme = (PRACTICUM / "README.md").read_text()
+        names = [ex.name for ex in sorted(PRACTICUM.glob("[0-9][0-9]-*.md"))]
+        positions = [readme.index(n) for n in names]
+        self.assertEqual(positions, sorted(positions))
+```
+
+Also add to `tests/test_scan.py`:
+
+```python
+    def test_practicum_is_scanned(self):
+        (self.tmp / "practicum").mkdir()
+        (self.tmp / "practicum" / "01-x.md").write_text("Worked at AcmeCorp\n")
+        self.assertTrue(any("practicum" in h for h in scan(self.tmp, ["AcmeCorp"])))
+```
+
+- [ ] **Step 2: Run to verify failure**
+
+Run: `PYTHONPATH=build python3 -m unittest tests.test_practicum tests.test_scan -v`
+Expected: FAIL (no `practicum/` folder; `practicum` not in `SCAN_DIRS`).
+
+- [ ] **Step 3: Extend the scan**
+
+Add `"practicum"` to `SCAN_DIRS` and `QUOTE_DIRS` in `build/agk/scan.py`.
+
+- [ ] **Step 4: Write the exercises**
+
+Each `practicum/NN-<tool>.md` has these sections, in order:
+- **## Scenario** — two or three sentences placing the learner at Halden Logistics (e.g. program setup: "Halden's CIO asks you to stand up a software governance council. A colleague has drafted a charter.").
+- **## Files** — the demo files to use (program setup: `demo-estate/council-draft.md`; ITAM maturity: `maturity-answers.csv`; crosswalk: `controls.md` plus `methods/crosswalk/crosswalk.csv`; rationalization: `apps.csv`, `licenses.csv`; access review: `accounts.csv`, `employees.csv`, `apps.csv`; AI intake: `ai-systems.csv`).
+- **## Work through** — "Use `methods/<tool>/checklist.md` by hand, without AI" plus two or three hints that point at where to look, never at the answers.
+- **## Hand in** — the deliverable (e.g. rationalization: a TIME table, a duplicates list, a license list, a savings range), ending with a fenced `findings` block in the tool's format, with the finding types for that tool named.
+- **## Check yourself** — `PYTHONPATH=build python3 -m agk.grade --tool <tool> --output my-answer.md`, what "passed", "missed", and "extra" mean, and a note that the answer key is public so looking first defeats the point.
+- **## Reflect** — three questions that go past the answer key (e.g. "Which duplicate would you keep, and what would the app owners say?").
+- **## Certification link** — which CAMP, Certified Software Asset Manager (CSAM), or AIGP topics the exercise practices, paraphrased from the field guide.
+
+`practicum/README.md`: who it's for, how long each exercise takes (30–60 minutes), the six exercises in order (CAMP level: 01, 02; CSAM level: 03, 04, 05; AIGP level: 06), how self-checking works, and the self-study note about the public answer key.
+
+Write all exercise text in our own words; no course or standards text.
+
+- [ ] **Step 5: Run tests**
+
+Run: `PYTHONPATH=build python3 -m unittest discover -s tests -v`
+Expected: all PASS.
+
+- [ ] **Step 6: Try one exercise end to end**
+
+Hand-write a `findings` block for exercise 04 from the checklist alone (no AI), save it outside the repo, and run the grader command from the exercise against it. Expected: the grader runs and reports passed/missed/extra. Note in the report whether the hints were enough to find all planted problems.
+
+- [ ] **Step 7: Site and scan**
+
+Add a "Practicum" section to `site/field-guide.html` linking to `practicum/README.md` in the GitHub repo. Run `make build && make scan`; expect `build ok` and `scan clean`. Hand the seven Markdown files to Eve as a redline session; apply her edits verbatim.
+
+- [ ] **Step 8: Commit**
+
+```bash
+git add -A
+git commit -m "docs(practicum): add halden practicum exercises" -m "Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01CKmdKvLPfRcNM16k2jQo1H"
+```
+
+---
+
 ### Task 15: Case studies
 
 **Files:**
@@ -2583,7 +2687,7 @@ Claude-Session: https://claude.ai/code/session_01CxthZSoP1hm8J6w9VwKbX6"
 
 - [ ] **Step 1: Create the private remote** (ask Eve first): `gh repo create eve-mcgivern/app-governance-kit --private --source . --push`
 - [ ] **Step 2: Full-history secret scan** with the `full-starter` gitleaks config: `gitleaks detect --config ../full-starter/.gitleaks.toml --log-opts="--all"`. Expected: no leaks. Stop on any hit.
-- [ ] **Step 3: Final checks.** `make test && make build && make scan` all clean; compliance-reviewer agent on `methods/`, `case-studies/`, `site/` for quoted standards text and employer details; README a stranger can follow (what it is, install for Claude/Codex/Copilot, run the evals, license); MIT `LICENSE`; README note that ISO, IEC, COBIT, ServiceNow, and Flexera names are used for reference only and imply no endorsement.
+- [ ] **Step 3: Final checks.** `make test && make build && make scan` all clean; compliance-reviewer agent on `methods/`, `case-studies/`, `field-guide/`, `practicum/`, `site/` for quoted standards text and employer details; README a stranger can follow (what it is, install for Claude/Codex/Copilot, run the evals, license); MIT `LICENSE`; README note that ISO, IEC, COBIT, ServiceNow, and Flexera names are used for reference only and imply no endorsement.
 - [ ] **Step 4: SEO and AI-search basics** (seo-gao-specialist agent): title and description, canonical, Open Graph and Twitter cards with absolute image URLs, JSON-LD (Person + SoftwareSourceCode), `sitemap.xml`, `llms.txt`. No version numbers or dates in metadata.
 - [ ] **Step 5: Eve says "make it public."** Then: `gh repo edit eve-mcgivern/app-governance-kit --visibility public --accept-visibility-change-consequences`, enable GitHub Pages from `/site` on `main`.
 - [ ] **Step 6: Search Console.** `eve-mcgivern.github.io` is not yet verified: prepare a URL-prefix property for `https://eve-mcgivern.github.io/app-governance-kit/` with an HTML-file verification (Eve clicks). Tell Eve the exact sitemap URL to submit, and remind her until she confirms.
