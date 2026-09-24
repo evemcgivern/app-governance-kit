@@ -18,7 +18,7 @@ We build this in five stretches.
 2. **The fake company (Task 5):** Halden Logistics, with 60 apps, licenses, staff accounts, AI systems, and a maturity questionnaire. Known problems are hidden in it, including a flawed draft charter for a software governance council, and an answer key records them. A grader (Task 6) scores each tool against that key.
 3. **The six tools (Tasks 7–11b):** the crosswalk first, because every other tool's steps point at it. Eve checks every ISO clause number against her own copies of the standards; the build won't accept an unchecked row.
 4. **The extras (Tasks 12–13):** the Claude reviewer agent, and Word/Excel exports of each checklist, SOP, and template.
-5. **The public face (Tasks 14–16):** the site, a field guide (CAMP, CSAM, CHAMP, and AIGP and how each applies on the job, plus where data governance fits), three case studies from interviews with Eve, and the go-public checklist. The repo goes public only when Eve says so.
+5. **The public face (Tasks 14–16):** the site with a clickable application lifecycle wheel (questions to ask at each stage, linked to the tools), a field guide (CAMP, CSAM, CHAMP, and AIGP and how each applies on the job, plus where data governance fits), three case studies from interviews with Eve, and the go-public checklist. The repo goes public only when Eve says so.
 
 Timing: Tasks 1–6 take about two evenings. Each tool takes one or two evenings, mostly Eve's review time. The site and case studies take about a week of evenings.
 
@@ -2136,7 +2136,7 @@ Claude-Session: https://claude.ai/code/session_01CxthZSoP1hm8J6w9VwKbX6"
 
 **Interfaces:**
 - Consumes: `load_crosswalk` (Task 2).
-- Produces: `inject_crosswalk(html: str, rows: dict) -> str` replacing the content between `<!--XW-DATA-->` and `<!--/XW-DATA-->` with `<script type="application/json" id="xw-data">…</script>`; `broken_links(site_dir: Path) -> list[str]`.
+- Produces: `inject_data(html: str, name: str, data: list) -> str` replacing the content between `<!--{name}-DATA-->` and `<!--/{name}-DATA-->` with `<script type="application/json" id="{name lowercased}-data">…</script>` (crosswalk uses name `XW`; Task 14c uses `LC`); `broken_links(site_dir: Path) -> list[str]`.
 
 - [ ] **Step 1: Write the failing tests**
 
@@ -2149,30 +2149,36 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from agk.site import broken_links, inject_crosswalk
+from agk.site import broken_links, inject_data
 
-ROWS = {"XW-001": {"id": "XW-001", "theme": "Inventory", "summary": "Keep one </script> safe"}}
+ROWS = [{"id": "XW-001", "theme": "Inventory", "summary": "Keep one </script> safe"}]
 
 
 class SiteTests(unittest.TestCase):
     def test_injects_json_between_markers(self):
         html = "<body><!--XW-DATA--><!--/XW-DATA--></body>"
-        out = inject_crosswalk(html, ROWS)
+        out = inject_data(html, "XW", ROWS)
         data = re.search(r'id="xw-data">(.*?)</script>', out, re.S).group(1)
         self.assertEqual(json.loads(data.replace("<\\/", "</"))[0]["id"], "XW-001")
 
     def test_injection_is_repeatable(self):
         html = "<!--XW-DATA--><!--/XW-DATA-->"
-        once = inject_crosswalk(html, ROWS)
-        self.assertEqual(inject_crosswalk(once, ROWS), once)
+        once = inject_data(html, "XW", ROWS)
+        self.assertEqual(inject_data(once, "XW", ROWS), once)
+
+    def test_names_do_not_collide(self):
+        html = "<!--XW-DATA--><!--/XW-DATA--><!--LC-DATA--><!--/LC-DATA-->"
+        out = inject_data(inject_data(html, "XW", ROWS), "LC", [{"stage": "plan"}])
+        self.assertIn('id="xw-data"', out)
+        self.assertIn('id="lc-data"', out)
 
     def test_escapes_script_close(self):
-        out = inject_crosswalk("<!--XW-DATA--><!--/XW-DATA-->", ROWS)
+        out = inject_data("<!--XW-DATA--><!--/XW-DATA-->", "XW", ROWS)
         self.assertEqual(out.count("</script>"), 1)
 
     def test_missing_markers_raise(self):
         with self.assertRaises(ValueError):
-            inject_crosswalk("<body></body>", ROWS)
+            inject_data("<body></body>", "XW", ROWS)
 
     def test_broken_relative_link_reported(self):
         d = Path(tempfile.mkdtemp())
@@ -2192,16 +2198,17 @@ import json
 import re
 from pathlib import Path
 
-BLOCK_RE = re.compile(r"<!--XW-DATA-->.*?<!--/XW-DATA-->", re.S)
 LINK_RE = re.compile(r'(?:href|src)="([^"]+)"')
 
 
-def inject_crosswalk(html: str, rows: dict) -> str:
-    if not BLOCK_RE.search(html):
-        raise ValueError("page has no <!--XW-DATA--> markers")
-    data = json.dumps(list(rows.values()), ensure_ascii=False).replace("</", "<\\/")
-    block = f'<!--XW-DATA--><script type="application/json" id="xw-data">{data}</script><!--/XW-DATA-->'
-    return BLOCK_RE.sub(lambda _: block, html)
+def inject_data(html: str, name: str, data: list) -> str:
+    pattern = re.compile(rf"<!--{name}-DATA-->.*?<!--/{name}-DATA-->", re.S)
+    if not pattern.search(html):
+        raise ValueError(f"page has no <!--{name}-DATA--> markers")
+    payload = json.dumps(data, ensure_ascii=False).replace("</", "<\\/")
+    block = (f'<!--{name}-DATA--><script type="application/json" id="{name.lower()}-data">'
+             f'{payload}</script><!--/{name}-DATA-->')
+    return pattern.sub(lambda _: block, html)
 
 
 def broken_links(site_dir: Path) -> list[str]:
@@ -2217,12 +2224,13 @@ def broken_links(site_dir: Path) -> list[str]:
 
 - [ ] **Step 4: Wire it into the build**
 
-In `build/agk/build.py`, add `from agk.site import broken_links, inject_crosswalk` and, before `return errors, warnings` at the end of `build`:
+In `build/agk/build.py`, add `from agk.site import broken_links, inject_data` and, before `return errors, warnings` at the end of `build`:
 
 ```python
     explorer = root / "site" / "crosswalk.html"
     if explorer.exists():
-        explorer.write_text(inject_crosswalk(explorer.read_text(encoding="utf-8"), known), encoding="utf-8")
+        explorer.write_text(inject_data(explorer.read_text(encoding="utf-8"), "XW", list(known.values())),
+                            encoding="utf-8")
     if (root / "site").is_dir():
         errors += [f"site: broken link {b}" for b in broken_links(root / "site")]
 ```
@@ -2234,9 +2242,9 @@ Expected: all PASS
 
 All pages: self-contained HTML plus `style.css`; colors as `:root` tokens with dark-mode overrides; no external scripts or fonts; works at 360px width; shared header nav to all five pages.
 
-- `index.html`: name, one-line positioning ("Application governance: portfolio, AI, and access controls, traceable to ISO/IEC 19770, COBIT 2019, ISO/IEC 27001, and ISO/IEC 42001"), three area cards, link to crosswalk explorer. Positioning copy drafted by voice-eve, approved by Eve.
+- `index.html` (the lifecycle wheel is added in Task 14c): name, one-line positioning ("Application governance: portfolio, AI, and access controls, traceable to ISO/IEC 19770, COBIT 2019, ISO/IEC 27001, and ISO/IEC 42001"), three area cards, link to crosswalk explorer. Positioning copy drafted by voice-eve, approved by Eve.
 - `crosswalk.html`: contains `<!--XW-DATA--><!--/XW-DATA-->`; vanilla JS reads `#xw-data`, renders a filterable list of themes; clicking one shows the four framework clauses and summary. Text filter; keyboard accessible; no quoted standards text (the data has none).
-- `tools.html`: six cards: what it does, the Halden example (link to `../methods/<tool>/example/`), links to Claude, Codex, Copilot, checklist, SOP, template, platform guide in the GitHub repo.
+- `tools.html`: six cards, each with `id="<tool name>"` so other pages can link to `tools.html#<tool>`: what it does, the Halden example (link to `../methods/<tool>/example/`), links to Claude, Codex, Copilot, checklist, SOP, template, platform guide in the GitHub repo.
 - `case-studies.html`: three sections, filled in Task 15.
 - `about.html`: CV summary, certifications, contact link; content from Eve.
 
@@ -2250,6 +2258,246 @@ Expected: `build ok`, `scan clean`, no serious accessibility findings.
 ```bash
 git add -A
 git commit -m "feat(site): add portfolio site and crosswalk explorer" -m "Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01CxthZSoP1hm8J6w9VwKbX6"
+```
+
+---
+
+### Task 14c: Application lifecycle wheel and question bank
+
+**Files:**
+- Create: `lifecycle/questions.csv`, `build/agk/lifecycle.py`, `tests/test_lifecycle.py`
+- Modify: `build/agk/build.py`, `site/index.html`, `build/export-office.sh`
+
+**Interfaces:**
+- Consumes: `load_crosswalk` (Task 2); loaded `Method` names (Task 1); `inject_data`, `broken_links` (Task 14).
+- Produces: `STAGES` (ordered `(slug, label)` pairs); `LifecycleError(Exception)`; `load_questions(path: Path, tools: Collection[str], known_xw: Collection[str]) -> list[dict[str, str]]`; `render_checklist(rows: list[dict]) -> str`. Build writes `dist/lifecycle-questions.md` and injects the rows into `site/index.html` under name `LC`.
+
+- [ ] **Step 1: Write the failing tests**
+
+`tests/test_lifecycle.py`:
+
+```python
+import tempfile
+import unittest
+from pathlib import Path
+
+from agk.lifecycle import STAGES, LifecycleError, load_questions, render_checklist
+from agk.tags import check_tags
+
+HEADER = "stage,question,tool,xw\n"
+TOOLS = {"rationalization", "access-review"}
+XW = {"XW-001", "XW-016"}
+
+
+def full_bank() -> str:
+    return HEADER + "".join(f'{slug},"Question for {slug}?",rationalization,XW-001\n' for slug, _ in STAGES)
+
+
+class LifecycleTests(unittest.TestCase):
+    def write(self, text):
+        p = Path(tempfile.mkdtemp()) / "questions.csv"
+        p.write_text(text, encoding="utf-8")
+        return p
+
+    def test_six_stages_in_order(self):
+        self.assertEqual([s for s, _ in STAGES], ["plan", "acquire", "deploy", "operate", "optimize", "retire"])
+
+    def test_loads_a_complete_bank(self):
+        rows = load_questions(self.write(full_bank()), TOOLS, XW)
+        self.assertEqual(len(rows), 6)
+
+    def test_rejects_unknown_stage(self):
+        with self.assertRaisesRegex(LifecycleError, "line 8: unknown stage 'launch'"):
+            load_questions(self.write(full_bank() + 'launch,"Q?",rationalization,XW-001\n'), TOOLS, XW)
+
+    def test_rejects_unknown_tool(self):
+        with self.assertRaisesRegex(LifecycleError, "unknown tool 'nope'"):
+            load_questions(self.write(full_bank() + 'plan,"Q?",nope,XW-001\n'), TOOLS, XW)
+
+    def test_rejects_unknown_crosswalk_row(self):
+        with self.assertRaisesRegex(LifecycleError, "unknown crosswalk row XW-999"):
+            load_questions(self.write(full_bank() + 'plan,"Q?",rationalization,XW-999\n'), TOOLS, XW)
+
+    def test_rejects_empty_question(self):
+        with self.assertRaisesRegex(LifecycleError, "empty question"):
+            load_questions(self.write(full_bank() + 'plan,"",rationalization,XW-001\n'), TOOLS, XW)
+
+    def test_rejects_stage_with_no_questions(self):
+        text = HEADER + 'plan,"Q?",rationalization,XW-001\n'
+        with self.assertRaisesRegex(LifecycleError, "no questions for stage"):
+            load_questions(self.write(text), TOOLS, XW)
+
+    def test_rejects_wrong_columns(self):
+        with self.assertRaisesRegex(LifecycleError, "columns"):
+            load_questions(self.write("stage,question\nplan,Q\n"), TOOLS, XW)
+
+    def test_checklist_groups_by_stage_in_order_and_passes_tag_check(self):
+        rows = load_questions(self.write(full_bank()), TOOLS, XW)
+        text = render_checklist(rows)
+        labels = [label for _, label in STAGES]
+        positions = [text.index(f"## {label}") for label in labels]
+        self.assertEqual(positions, sorted(positions))
+        self.assertIn("- [ ] Question for plan? [[XW-001]] (tool: `rationalization`)", text)
+        self.assertEqual(check_tags(text, XW, "lifecycle"), [])
+```
+
+- [ ] **Step 2: Run to verify failure**
+
+Run: `PYTHONPATH=build python3 -m unittest tests.test_lifecycle -v`
+Expected: FAIL with `No module named 'agk.lifecycle'`
+
+- [ ] **Step 3: Implement `build/agk/lifecycle.py`**
+
+```python
+import csv
+from collections.abc import Collection
+from pathlib import Path
+
+STAGES = (("plan", "Plan and request"), ("acquire", "Acquire"), ("deploy", "Deploy"),
+          ("operate", "Operate"), ("optimize", "Review and optimize"), ("retire", "Retire"))
+COLUMNS = ("stage", "question", "tool", "xw")
+
+
+class LifecycleError(Exception):
+    pass
+
+
+def load_questions(path: Path, tools: Collection[str], known_xw: Collection[str]) -> list[dict[str, str]]:
+    stage_ids = {s for s, _ in STAGES}
+    with open(path, newline="", encoding="utf-8-sig") as f:
+        reader = csv.DictReader(f)
+        if tuple(reader.fieldnames or ()) != COLUMNS:
+            raise LifecycleError(f"columns must be {','.join(COLUMNS)}; got {reader.fieldnames}")
+        rows = []
+        for n, row in enumerate(reader, start=2):
+            row = {k: (v or "").strip() for k, v in row.items()}
+            if row["stage"] not in stage_ids:
+                raise LifecycleError(f"line {n}: unknown stage {row['stage']!r}")
+            if not row["question"]:
+                raise LifecycleError(f"line {n}: empty question")
+            if row["tool"] not in tools:
+                raise LifecycleError(f"line {n}: unknown tool {row['tool']!r}")
+            if row["xw"] not in known_xw:
+                raise LifecycleError(f"line {n}: unknown crosswalk row {row['xw']}")
+            rows.append(row)
+    empty = [s for s, _ in STAGES if not any(r["stage"] == s for r in rows)]
+    if empty:
+        raise LifecycleError(f"no questions for stage(s): {', '.join(empty)}")
+    return rows
+
+
+def render_checklist(rows: list[dict[str, str]]) -> str:
+    out = ["# Application lifecycle questions", "",
+           "Questions to ask at each stage. Each names the crosswalk row it satisfies and the kit tool that handles it.", ""]
+    for slug, label in STAGES:
+        out += [f"## {label}", ""]
+        out += [f"- [ ] {r['question']} [[{r['xw']}]] (tool: `{r['tool']}`)" for r in rows if r["stage"] == slug]
+        out.append("")
+    return "\n".join(out)
+```
+
+- [ ] **Step 4: Run tests to verify they pass**
+
+Run: `PYTHONPATH=build python3 -m unittest tests.test_lifecycle -v`
+Expected: 9 PASS
+
+- [ ] **Step 5: Wire into the build**
+
+In `build/agk/build.py`, add `from agk.lifecycle import LifecycleError, load_questions, render_checklist`, and before the site block added in Task 14:
+
+```python
+    questions_csv = root / "lifecycle" / "questions.csv"
+    if questions_csv.exists():
+        try:
+            questions = load_questions(questions_csv, {m.name for m in methods}, known)
+        except LifecycleError as e:
+            errors.append(f"lifecycle: {e}")
+        else:
+            (dist / "lifecycle-questions.md").write_text(render_checklist(questions), encoding="utf-8")
+            home = root / "site" / "index.html"
+            if home.exists():
+                home.write_text(inject_data(home.read_text(encoding="utf-8"), "LC", questions), encoding="utf-8")
+```
+
+Add to `tests/test_build.py`:
+
+```python
+    def test_lifecycle_bank_builds_checklist(self):
+        from agk.lifecycle import STAGES
+        (self.root / "lifecycle").mkdir()
+        rows = "".join(f'{s},"Ask about {s}?",rationalization,XW-001\n' for s, _ in STAGES)
+        (self.root / "lifecycle" / "questions.csv").write_text("stage,question,tool,xw\n" + rows)
+        errors, _ = build(self.root)
+        self.assertEqual(errors, [])
+        self.assertIn("## Retire", (self.root / "dist" / "lifecycle-questions.md").read_text())
+
+    def test_lifecycle_bank_errors_stop_build(self):
+        (self.root / "lifecycle").mkdir()
+        (self.root / "lifecycle" / "questions.csv").write_text('stage,question,tool,xw\nplan,"Q?",nope,XW-001\n')
+        errors, _ = build(self.root)
+        self.assertTrue(any(e.startswith("lifecycle:") for e in errors))
+```
+
+Run: `PYTHONPATH=build python3 -m unittest discover -s tests -v` → all PASS.
+
+- [ ] **Step 6: Write `lifecycle/questions.csv`**
+
+```csv
+stage,question,tool,xw
+plan,"What problem does this solve, and do we already own an app that does it?",rationalization,XW-011
+plan,"Who will own it, and who is the executive sponsor?",program-setup,XW-002
+plan,"Does the request meet the council's threshold, and did it come through the intake path?",program-setup,XW-027
+plan,"Does it use AI? If so, what risk tier is it?",ai-intake,XW-021
+plan,"What data will it hold, and how sensitive is that data?",access-review,XW-028
+acquire,"What license model applies, and how many entitlements do we need?",rationalization,XW-006
+acquire,"Does the contract give audit, renewal, and exit terms we can live with?",rationalization,XW-013
+acquire,"Have the supplier and any AI model provider been assessed?",ai-intake,XW-023
+acquire,"Is the purchase recorded against an owner and a cost center?",itam-maturity,XW-012
+deploy,"Is the app in the inventory with owner, category, and data sensitivity?",itam-maturity,XW-001
+deploy,"Are access roles defined, and who approves new access?",access-review,XW-015
+deploy,"Are privileged accounts limited and named?",access-review,XW-018
+deploy,"For AI systems: is the inventory record complete and the risk in the register?",ai-intake,XW-022
+operate,"Do installs and users stay within entitlements?",rationalization,XW-007
+operate,"Is access reviewed on schedule, and are leavers removed?",access-review,XW-016
+operate,"Are asset records accurate and reconciled?",itam-maturity,XW-026
+operate,"Has the AI system's use changed since intake?",ai-intake,XW-021
+optimize,"Is it still worth its cost: tolerate, invest, migrate, or eliminate?",rationalization,XW-011
+optimize,"Is anything expiring or due for renewal in the next 90 days?",rationalization,XW-008
+optimize,"Where is our asset management process weakest this year?",itam-maturity,XW-025
+optimize,"Does the council's decision log show bottlenecks or rubber-stamping?",program-setup,XW-025
+retire,"What data does it hold, and will we archive, migrate, or delete it?",rationalization,XW-028
+retire,"Are all accounts removed and licenses cancelled or reclaimed?",access-review,XW-017
+retire,"Is the contract ended on time, without auto-renewal?",rationalization,XW-013
+retire,"Is the inventory record closed, with evidence kept?",itam-maturity,XW-020
+```
+
+Run: `make build`
+Expected: `build ok`; `dist/lifecycle-questions.md` has six stage headings and 25 items. Eve reviews the questions in a redline session; apply her edits verbatim.
+
+- [ ] **Step 7: Build the wheel on the home page** (ui-engineer agent; load the `html` skill first)
+
+In `site/index.html`, add `<!--LC-DATA--><!--/LC-DATA-->` and an inline SVG wheel: six equal ring segments in stage order, clockwise from the top, each labelled with the stage name, with an arrow showing the cycle from Retire back to Plan. Each segment is a `<button>`-equivalent (`role="button"`, `tabindex="0"`, Enter/Space activate, visible focus ring, `aria-pressed` on the selected one). Selecting a stage fills a panel beside the wheel (below it at phone width) with that stage's questions from `#lc-data`; each question shows its crosswalk row (linking to `crosswalk.html`) and a link to `tools.html#<tool>`. Plan is selected on load. Colors from the `:root` tokens; works in both themes; no external scripts. Also add a "Lifecycle questions" download link to `dist/lifecycle-questions.md` in the GitHub repo.
+
+- [ ] **Step 8: Office export**
+
+Append to `build/export-office.sh`, before the final `echo`:
+
+```bash
+mkdir -p "$root/dist/office"
+python3 "$cmdb/md_to_word_converter.py" "$root/dist/lifecycle-questions.md" "$root/dist/office/lifecycle-questions.docx" --template technical
+```
+
+- [ ] **Step 9: Check it**
+
+Run: `make build && make scan && build/export-office.sh && make scan`
+Expected: `build ok`, `scan clean`, `office export done`, `scan clean`. Open the home page in the browser at phone width and in dark mode, click every segment with the mouse and with the keyboard, and follow one tool link and one crosswalk link. Dispatch the accessibility-auditor agent on `site/index.html`; fix every serious or critical finding.
+
+- [ ] **Step 10: Commit**
+
+```bash
+git add -A
+git commit -m "feat(site): add lifecycle wheel and questions" -m "Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
 Claude-Session: https://claude.ai/code/session_01CxthZSoP1hm8J6w9VwKbX6"
 ```
 

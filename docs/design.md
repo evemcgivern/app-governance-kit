@@ -116,7 +116,7 @@ Each tool must find all of its planted problems.
 
 GitHub Pages at `eve-mcgivern.github.io/app-governance-kit`. Self-contained HTML, no build step.
 
-1. **Home** — who Eve is, the three areas, what's different about her approach.
+1. **Home** — who Eve is, the three areas, what's different about her approach, and the lifecycle wheel (section 8a).
 2. **Crosswalk explorer** — click a control, see matching clauses across the four frameworks. Flagship page.
 3. **Tools** — one card per tool: Halden example result and downloads for all five pieces.
 4. **Case studies** — three anonymized write-ups (problem, approach, outcome as a range). Built from interviews with Eve; drafted by the voice-eve agent.
@@ -124,6 +124,14 @@ GitHub Pages at `eve-mcgivern.github.io/app-governance-kit`. Self-contained HTML
 6. **Field guide** — certifications and their practical application, standards overview, glossary (section 8b).
 
 **Before going public:** full-history secret scan with the full-starter gitleaks config, MIT license, README a stranger can follow, CI running the tests, SEO and AI-search basics, Search Console setup — per the workspace going-public checklist. Making the repo public requires Eve's go-ahead.
+
+## 8a. Application lifecycle wheel
+
+The home page's centerpiece is a clickable wheel of the application lifecycle in six stages: Plan and request, Acquire, Deploy, Operate, Review and optimize, Retire. Clicking a stage shows the questions to ask at that stage. Each question names the crosswalk row it satisfies and links to the tool that handles it.
+
+- The questions live in one file, `lifecycle/questions.csv` (stage, question, tool, crosswalk row). The build checks that every stage has questions, every tool exists, and every crosswalk row exists.
+- The build also turns the questions into a checklist, `dist/lifecycle-questions.md` (plus a Word version), grouped by stage. It works on its own at work: attach it to any Copilot agent, or print it for a review meeting.
+- Questions cover the data lens too (for example, "What data does it hold, and will we archive, migrate, or delete it?" at Retire).
 
 ## 8b. Field guide
 
