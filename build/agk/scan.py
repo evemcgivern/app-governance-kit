@@ -66,24 +66,40 @@ def long_quotes(text: str, label: str) -> list[str]:
                 i += 1
 
         # Check for quoted runs: join all non-blockquote lines and find quotes
-        non_blockquote_lines = [line for line in para_lines if not line.lstrip().startswith(">")]
-        if non_blockquote_lines:
-            joined_para = " ".join(non_blockquote_lines)
-            # Find positions of quotes in the joined text
+        non_blockquote_indices = []
+        non_blockquote_texts = []
+        for i, line in enumerate(para_lines):
+            if not line.lstrip().startswith(">"):
+                non_blockquote_indices.append(i)
+                non_blockquote_texts.append(line)
+
+        if non_blockquote_texts:
+            # Build position map: (start_char_pos, para_line_index, actual_line_number)
+            position_map = []
+            current_pos = 0
+            for para_idx, line_text in zip(non_blockquote_indices, non_blockquote_texts):
+                position_map.append((current_pos, para_idx, start_line + para_idx))
+                current_pos += len(line_text) + 1  # +1 for space between lines
+
+            joined_para = " ".join(non_blockquote_texts)
+
+            # Find quotes and map back to their starting line
             for match in QUOTE_RE.finditer(joined_para):
                 q = match.group(1)
                 if len(q.split()) >= MAX_QUOTE_WORDS:
-                    # Find which line the quote starts on by tracking character position
                     char_pos = match.start()
-                    current_pos = 0
-                    quote_line = start_line
-                    for i, line in enumerate(non_blockquote_lines):
-                        line_with_space = line + " "
-                        line_len = len(line_with_space)
-                        if current_pos + line_len > char_pos:
-                            quote_line = start_line + para_lines.index(line)
-                            break
-                        current_pos += line_len
+                    quote_line = start_line  # default
+                    # Find which line this match starts on
+                    for i in range(len(position_map)):
+                        if i < len(position_map) - 1:
+                            # Check if char_pos is between this and next position
+                            if position_map[i][0] <= char_pos < position_map[i+1][0]:
+                                quote_line = position_map[i][2]
+                                break
+                        else:
+                            # Last entry
+                            if char_pos >= position_map[i][0]:
+                                quote_line = position_map[i][2]
                     hits.append(f"{label}:{quote_line}: quoted run of {MAX_QUOTE_WORDS}+ words")
 
     return hits
