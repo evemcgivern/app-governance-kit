@@ -13,10 +13,11 @@ $(cat "$root/evals/prompts/$tool.txt")"
 work="$(mktemp -d)"
 trap "rm -rf '$work'" EXIT
 find "$root/demo-estate" -maxdepth 1 -type f ! -name answer-key.json ! -name generate.py -exec cp {} "$work" \;
+find "$(dirname "$skill")" -maxdepth 1 -type f ! -name SKILL.md -exec cp {} "$work" \;
 cd "$work"
 case "$runner" in
-  claude) claude -p "$prompt" --allowedTools Read > "$out" ;;
-  codex)  codex exec --sandbox read-only "$prompt" > "$out" ;;
+  claude) claude -p --allowedTools Read -- "$prompt" > "$out" ;;
+  codex)  codex exec --sandbox read-only --skip-git-repo-check --ignore-user-config -- "$prompt" > "$out" ;;
   *) echo "runner must be claude or codex" >&2; exit 2 ;;
 esac
 cd "$root"
