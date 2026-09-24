@@ -72,6 +72,8 @@ app-governance-kit/
 - Flag any figure the tool could not verify from the input.
 - Cite clause numbers; paraphrase clause meaning; never quote ISO or COBIT text.
 
+**How the crosswalk is verified (decided 2026-09-24).** Each clause reference is checked against the standard's publicly published table of contents (ISO's Online Browsing Platform and the official preview pages; ISACA's published COBIT 2019 objective list), with the source link recorded per row in `methods/crosswalk/sources.md`. A research agent does the check; Eve reads the evidence and confirms each clause title fits its theme. The `verified` date means "checked against the published table of contents on this date". A cell with no public evidence stays blank rather than guessed. The site and README say so plainly and note that the crosswalk does not replace the standards. If Eve later buys the standards, rows can be re-checked and the method note updated.
+
 **Data governance lens.** Application governance manages the software; data governance manages the information inside it. The tools cover the places where the two meet:
 - Rationalization records what data each app holds and, for every retire or migrate call, the archive/migrate/delete decision and retention period (a decision for the data owner).
 - Access review orders its work by the data sensitivity of each app, most sensitive first.

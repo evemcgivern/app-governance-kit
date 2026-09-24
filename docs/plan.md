@@ -16,7 +16,7 @@ We build this in five stretches.
 
 1. **The engine (Tasks 1–4):** a small program that checks the governance content and packages it for Claude, Codex, and Copilot. It refuses to package anything incomplete, any step not tied to a framework clause, or any Copilot version that's too long.
 2. **The fake company (Task 5):** Halden Logistics, with 60 apps, licenses, staff accounts, AI systems, and a maturity questionnaire. Known problems are hidden in it, including a flawed draft charter for a software governance council, and an answer key records them. A grader (Task 6) scores each tool against that key.
-3. **The six tools (Tasks 7–11b):** the crosswalk first, because every other tool's steps point at it. Eve checks every ISO clause number against her own copies of the standards; the build won't accept an unchecked row.
+3. **The six tools (Tasks 7–11b):** the crosswalk first, because every other tool's steps point at it. A research agent checks every clause number against the standards' public tables of contents and records a source per row; Eve reads the evidence and confirms. The build won't accept an unchecked row.
 4. **The extras (Tasks 13 and 14g):** Word/Excel exports of each checklist, SOP, and template, and a governance advisor that answers framework questions and reviews documents in Claude, Codex, and Copilot.
 5. **The public face (Tasks 14–16):** the site with a clickable application lifecycle wheel (questions to ask at each stage, linked to the tools), a field guide (CAMP, CSAM, CHAMP, and AIGP and how each applies on the job, plus where data governance fits), a six-exercise Halden practicum you can do in the browser (with a "Try it in 2 minutes" link on every page for hiring managers), three case studies from interviews with Eve, and the go-public checklist. The repo goes public only when Eve says so.
 
@@ -30,7 +30,7 @@ Timing: Tasks 1–6 take about two evenings. Each tool takes one or two evenings
 - No employer data. The private word list lives outside the repo at the path in `AGK_PRIVATE_WORDS`; the scan fails if it is unset or missing.
 - Copilot agent instructions: fail above 8,000 characters; warn above 6,000.
 - Every numbered step or `- [ ]` item in `checklist.md` and `sop.md` carries at least one `[[XW-NNN]]` tag that exists in the crosswalk.
-- Every crosswalk row has a non-empty `verified` date, entered by Eve after checking clause references against the standards.
+- Every crosswalk row has a non-empty `verified` date, entered after its clause references are checked against the standards' public tables of contents (source per row in `methods/crosswalk/sources.md`) and Eve has confirmed the evidence.
 - Tool outputs end with a fenced ```` ```findings ```` block holding a JSON list of `{"type": ..., "id": ...}`.
 - Commits: `type(scope): imperative summary`, ≤50 chars, lowercase after colon, ending with:
   `Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>` and
@@ -1526,9 +1526,9 @@ Columns: `id,theme,iso19770_1,cobit2019,iso27001,iso42001,summary,verified`. The
 
 Leave `iso19770_1`, `iso42001`, and `verified` blank for now. `make build` will fail with "not verified" until Step 2; that failure is expected.
 
-- [ ] **Step 2: Eve verifies every row** (human step, about 90 minutes)
+- [ ] **Step 2: Verify every row against public tables of contents** (research agent, then Eve, about 10 minutes of her time)
 
-For each row, Eve checks the COBIT and 27001 references, fills in the ISO/IEC 19770-1:2017 and ISO/IEC 42001:2023 clause references from her copies, corrects anything wrong, and enters today's date in `verified`. Rows with no honest mapping to a framework stay blank for that framework. Nothing here is copied from the standards; clause numbers only.
+A research agent checks each row's clause references against the standards' public tables of contents: ISO's Online Browsing Platform or official preview pages for ISO/IEC 19770-1, 27001:2022, and 42001:2023, and ISACA's published COBIT 2019 objective list. It fills missing ISO/IEC 19770-1 and 42001 cells where the public table of contents supports an honest match, corrects wrong ones, and leaves a cell blank when no public source supports it. It writes `methods/crosswalk/sources.md`: one table row per crosswalk cell it checked, giving the row id, framework, clause number, the clause title (a short heading, not body text), the source URL, and whether the source is primary (iso.org, isaca.org, an official preview) or secondary (only used when two independent secondary sources agree). It leaves `verified` empty. Eve then reads `sources.md` in a redline session and marks each row confirmed; the controller enters today's date in `verified` for confirmed rows only. Nothing here is copied from the standards beyond clause numbers and short headings.
 
 Run: `make build`
 Expected: `build ok` once every row has a date.
@@ -2490,7 +2490,7 @@ End with: "Names are used for reference only. No affiliation with or endorsement
 
 - [ ] **Step 4: Write `field-guide/standards.md` and `field-guide/glossary.md`**
 
-`standards.md`: what each ISO/IEC 19770 part is for, and how COBIT 2019, ISO/IEC 27001, and ISO/IEC 42001 relate, in our own words; link to the crosswalk explorer. Eve checks part numbers and purposes against her copies.
+`standards.md`: what each ISO/IEC 19770 part is for, and how COBIT 2019, ISO/IEC 27001, and ISO/IEC 42001 relate, in our own words; link to the crosswalk explorer. Part numbers and purposes are checked against ISO's public catalogue pages, with links.
 
 `glossary.md`: 25–40 terms (ITAM, SAM, HAM, APM, CMDB, entitlement, effective license position, true-up, reconciliation, normalization, SWID tag, shelfware, TIME model, orphaned account, access certification, segregation of duties, risk tier, and so on). Each: one-sentence definition plus a one-line Halden Logistics example.
 
