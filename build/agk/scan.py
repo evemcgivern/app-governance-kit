@@ -8,7 +8,7 @@ from pathlib import Path
 MAX_QUOTE_WORDS = 15
 SCAN_DIRS = ("methods", "agents", "case-studies", "site", "dist", "demo-estate", "README.md")
 QUOTE_DIRS = ("methods", "agents", "case-studies", "site")
-TEXT_SUFFIXES = {".md", ".csv", ".html", ".json", ".txt", ".svg"}
+TEXT_SUFFIXES = {".md", ".csv", ".html", ".json", ".txt", ".svg", ".py", ".yml", ".yaml", ".toml"}
 IMAGE_SUFFIXES = {".png", ".jpg", ".jpeg", ".gif", ".webp", ".ico"}
 QUOTE_RE = re.compile(r"[\"“]([^\"”]+)[\"”]")
 TAG_STRIP_RE = re.compile(r"<[^>]+>")
@@ -120,7 +120,7 @@ def _files(root: Path, entries: tuple[str, ...]):
         if p.is_file():
             yield p
         elif p.is_dir():
-            yield from (f for f in sorted(p.rglob("*")) if f.is_file())
+            yield from (f for f in sorted(p.rglob("*")) if f.is_file() and "__pycache__" not in f.parts)
 
 
 def scan(root: Path, words: list[str]) -> list[str]:

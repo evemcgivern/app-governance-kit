@@ -119,3 +119,24 @@ class ScanTests(unittest.TestCase):
         hits = long_quotes(text, "f")
         self.assertEqual(len(hits), 1)
         self.assertTrue(hits[0].startswith("f:2:"))
+
+    def test_scan_reads_python_source(self):
+        # A .py file containing "AcmeCorp" should produce a private-term hit
+        (self.tmp / "demo-estate").mkdir()
+        (self.tmp / "demo-estate" / "generate.py").write_text("# Client: AcmeCorp\nprint('hello')\n")
+        hits = scan(self.tmp, ["AcmeCorp"])
+        self.assertTrue(any("generate.py" in h and "private term" in h for h in hits))
+
+    def test_scan_clean_python_no_cannot_scan_hit(self):
+        # A clean .py file should not produce a "cannot scan" hit
+        (self.tmp / "demo-estate").mkdir()
+        (self.tmp / "demo-estate" / "generate.py").write_text("# Clean Python code\nprint('hello')\n")
+        hits = scan(self.tmp, ["AcmeCorp"])
+        self.assertFalse(any("generate.py" in h and "cannot scan" in h for h in hits))
+
+    def test_scan_skips_pycache(self):
+        # A .pyc file in __pycache__ should produce no hit at all
+        (self.tmp / "demo-estate" / "__pycache__").mkdir(parents=True)
+        (self.tmp / "demo-estate" / "__pycache__" / "x.cpython-314.pyc").write_bytes(b"dummy")
+        hits = scan(self.tmp, ["AcmeCorp"])
+        self.assertFalse(any("__pycache__" in h for h in hits))
