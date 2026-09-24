@@ -8,6 +8,7 @@ from agk.methods import MethodError, load_method, method_dirs
 from agk.render import (render_claude, render_claude_manifest, render_codex,
                         render_codex_agents, render_copilot)
 from agk.tags import check_tags
+from agk.themes import ThemesError, load_themes
 
 
 def build(root: Path) -> tuple[list[str], list[str]]:
@@ -17,6 +18,10 @@ def build(root: Path) -> tuple[list[str], list[str]]:
         known = load_crosswalk(crosswalk_csv)
     except (CrosswalkError, FileNotFoundError) as e:
         return [f"crosswalk: {e}"], []
+    try:
+        themes = load_themes(methods_dir / "crosswalk" / "themes.md", known)
+    except (ThemesError, FileNotFoundError) as e:
+        return [f"themes: {e}"], []
     errors: list[str] = []
     warnings: list[str] = []
     methods = []
