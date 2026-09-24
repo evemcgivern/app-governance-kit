@@ -59,3 +59,12 @@ class GradeTests(unittest.TestCase):
     def test_unknown_tool_raises(self):
         with self.assertRaisesRegex(GradeError, "no answer-key entries"):
             grade(set(), KEY, "nope")
+
+    def test_unexpected_finding_type_counts_as_extra(self):
+        f = {("duplicate_app", "APP-008+APP-041"), ("expired_license", "LIC-017"),
+             ("made_up", "X-001"), ("made_up", "X-002")}
+        r = grade(f, KEY, "rationalization")
+        self.assertFalse(r["passed"])
+        self.assertEqual(len(r["extra"]), 2)
+        self.assertIn(["made_up", "X-001"], r["extra"])
+        self.assertIn(["made_up", "X-002"], r["extra"])
