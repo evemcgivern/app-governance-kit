@@ -1,60 +1,80 @@
-All three controls have a match in `crosswalk.csv`: **C1 → XW-001, C2 → XW-016, C3 → XW-021**. The gaps are mostly in ISO 42001 (C1, C2) and in ISO 19770-1 and ISO 27001 (C3).
+## Crosswalk mapping: controls.md (C1–C3)
 
-## C1: Maintain an accurate inventory of software and who owns each application
+Source: `crosswalk.csv`. Every row used has a verified date of 2026-09-24. I took clause numbers straight from that file and didn't check them against the standards themselves.
 
-**In plain terms:** keep a complete list of your software, and name an owner for each application. This control makes two demands, so I mapped each one.
+---
 
-| Framework | Part (a): inventory, XW-001 | Part (b): ownership, XW-002 | What it asks for |
-|---|---|---|---|
-| ISO 19770-1 | 8.3 | 7.6.2 | A current record of all software assets; a named, accountable owner for each |
-| COBIT 2019 | BAI09.01 | BAI09.01 | Identify and record assets, including who is responsible for them |
-| ISO 27001 | A.5.9 | A.5.9 | An inventory of information assets, each with an owner |
-| ISO 42001 | no direct equivalent | no direct equivalent | — |
+### C1: Software inventory and application ownership
 
-**Why XW-001 is the best row:** "accurate inventory" is the main obligation. XW-002 only covers the ownership part, and it adds no framework that XW-001 lacks. XW-026 (data quality) supports the word "accurate" but also adds no framework.
+**Restated:** Keep a correct list of the software in use and name an owner for each application.
 
-**Gap:**
-- **ISO 42001:** no equivalent, because 42001 governs AI systems, not software in general. A 42001 auditor would still ask whether the inventory marks which applications are AI systems. XW-022 (AI inventory) has no 42001 clause either, so this gap holds even for AI.
+This control contains two obligations, so I split it:
+- **C1a, inventory:** matches **XW-001** (Application and software inventory). This is the best match because it covers the core of the control.
+- **C1b, ownership:** matches **XW-002** (Asset ownership assigned). I haven't added XW-002 as a second row because it covers the same three frameworks as XW-001 and adds none. The only difference is that it points to a different ISO 19770-1 clause (7.6.2).
 
-## C2: Review user access to applications on a schedule and remove access no longer needed
+| Framework | Clause (XW-001) | What it asks for |
+|---|---|---|
+| ISO/IEC 19770-1 | 8.3 | A maintained record of software assets |
+| COBIT 2019 | BAI09.01 | Identify and record current assets |
+| ISO/IEC 27001 | A.5.9 | An inventory of information and associated assets, including their owners |
+| ISO/IEC 42001 | No direct equivalent | — |
 
-**In plain terms:** on a set schedule, check who has access to each application and remove access that is no longer justified.
+**Gaps**
+- **ISO/IEC 42001:** No clause matches. The crosswalk's AI inventory row (XW-022) also has no 42001 clause. A 42001 auditor would still want to see which AI systems are in scope of the management system (the scope clause is 4.3, in XW-003), and that they appear in the inventory. At the moment this list covers only software, not AI systems.
+- **Wording:** The control says "accurate". XW-026 (data quality of asset records) uses the same clauses as XW-001, so it adds no coverage. An auditor would still ask how you show the list is accurate, for example by comparing it against discovered installs (XW-005).
+
+**Decision needed:** Should the mapping sheet record XW-002 as well, so the ownership part is traced separately (ISO 19770-1 7.6.2)? Or is XW-001 enough?
+
+---
+
+### C2: Periodic access review and removal
+
+**Restated:** Check on a schedule who can use each application, and remove access that's no longer needed.
+
+- Best match: **XW-016** (Periodic access review). Removing access that is no longer needed is what a review leads to, so it falls within this row.
+- **XW-017** (Leaver access removal) is related, but it covers removal when someone leaves or changes role, not removal after a review. It also adds no framework, so I haven't used it.
 
 | Framework | Clause (XW-016) | What it asks for |
 |---|---|---|
-| ISO 19770-1 | no direct equivalent | — |
-| COBIT 2019 | DSS05.04 | Manage identities and access rights, including periodic re-checks |
-| ISO 27001 | A.5.18 | Grant, review and remove access rights |
-| ISO 42001 | no direct equivalent | — |
+| ISO/IEC 19770-1 | No direct equivalent | — |
+| COBIT 2019 | DSS05.04 | Manage user identities and logical access, including periodic review |
+| ISO/IEC 27001 | A.5.18 | Grant, review, change and remove access rights |
+| ISO/IEC 42001 | No direct equivalent | — |
 
-**Why XW-016 is the best row:** a periodic review is the core of this control, and removal is what the review leads to. XW-017 (removing access when people leave) adds 27001 A.6.5 but no new framework, so I did not use it.
+**Gaps**
+- **ISO/IEC 19770-1:** This standard doesn't frame access as a security control. Its auditor would instead ask whether removed access leads to licences being reclaimed and entitlement records being updated (8.4, via XW-006 and XW-007).
+- **ISO/IEC 42001:** No row in the crosswalk links access review to 42001. An auditor would probably ask who can use, change or retrain AI systems, but the crosswalk has no clause for that, so I can't cite one.
 
-**Gaps:**
-- **ISO 19770-1:** it tracks assets and licenses, not user access. A 19770-1 auditor would instead ask whether removed accounts free up license entitlements (XW-007).
-- **ISO 42001:** a 42001 auditor would ask whether the review covers access to AI systems and their training data.
+**Decision needed:** Should C2 set a review frequency? "On a schedule" is not specific, and ISO 27001 and COBIT auditors will ask to see the defined interval.
 
-## C3: Assess each AI system for risk before it is deployed
+---
 
-**In plain terms:** no AI system goes into production until its risk and impact have been assessed.
+### C3: AI risk assessment before deployment
 
-| Framework | XW-021 (best) | XW-024 (second) | What it asks for |
-|---|---|---|---|
-| ISO 19770-1 | no direct equivalent | 6.1.2, 6.1.3 | General risk assessment and treatment for the asset management system |
-| COBIT 2019 | APO12 | APO12 | Manage risk |
-| ISO 27001 | no direct equivalent | 6.1.3 | Treat information-security risks |
-| ISO 42001 | 6.1.4, A.5 | 6.1.2, 6.1.3 | Assess an AI system's impact on people and society, plus general AI risk assessment |
+**Restated:** Assess each AI system's risks before it goes live.
 
-**Why these two rows:** XW-021 matches both the "AI" and "before deployment" parts of the control. I named XW-024 as a second row because it adds 19770-1 and 27001, which XW-021 lacks. It is generic risk handling, though, not a check before deployment.
+- Best match: **XW-021** (AI system risk and impact assessment before deployment). It matches both the theme and the timing.
+- **XW-024** (Risk register and treatment) adds ISO 19770-1 and ISO 27001 clauses that XW-021 lacks, so it qualifies as a second row. It only partly fits, though: it covers logging risks and treating them, not an impact assessment done before deployment.
 
-**Gaps:**
-- **ISO 19770-1:** no clause specific to AI or to deployment. An auditor would ask whether AI systems appear in the asset inventory (XW-022, 8.3).
-- **ISO 27001:** no step that blocks deployment. An auditor would expect security risks to be assessed for the AI system under clause 6.1.3.
-- **Decision needed:** whether to rely on XW-024 for 19770-1 and 27001 coverage, or accept that they have no direct equivalent for C3.
+| Framework | Clause (XW-021) | What it asks for |
+|---|---|---|
+| ISO/IEC 19770-1 | No direct equivalent (XW-024 gives 6.1.2, 6.1.3) | General risk identification and treatment for the asset management system |
+| COBIT 2019 | APO12 | Manage IT-related risk |
+| ISO/IEC 27001 | No direct equivalent (XW-024 gives 6.1.3) | Information security risk treatment |
+| ISO/IEC 42001 | 6.1.4, A.5 | Assess the effects of an AI system on people and society, and control those assessments |
 
-## Notes
-- No new rows are proposed, because every control had a match.
-- **Decision needed:** `checklist.md` item 6 requires a second person to review and date this mapping.
-- **Unverified:** every row shows a verified date of 2026-09-24, today. I did not check the clause numbers against the standards themselves.
+**Gaps**
+- **ISO/IEC 27001:** It has no AI-specific requirement. Its auditor would expect AI systems to go through the normal information security risk process, with results logged and treated (6.1.3 via XW-024). A separate AI assessment on its own wouldn't satisfy them.
+- **ISO/IEC 19770-1:** It has no deployment gate for AI. Its auditor would ask whether the AI system is recorded as an asset before it goes live (XW-022, 8.3).
+- **Scope:** "Each AI system" needs a complete AI inventory before you can show coverage, which links back to the C1 gap.
+
+**Decision needed:** Should the mapping sheet record XW-024 as a partial second row for C3, to get the ISO 19770-1 and ISO 27001 coverage?
+
+---
+
+### Overall
+- All three controls matched an existing row, so I'm not proposing any new rows.
+- **Decision needed:** Checklist item 6 requires a second person to review the mapping and date it. Who should that reviewer be?
 
 ```findings
 [
@@ -63,5 +83,3 @@ All three controls have a match in `crosswalk.csv`: **C1 → XW-001, C2 → XW-0
   {"type": "crosswalk_match", "id": "C3:XW-021"}
 ]
 ```
-
-🟢 All 3 controls mapped. Waiting on you: whether to use XW-024 for C3, and who does the second-person review.
