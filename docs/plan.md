@@ -18,7 +18,7 @@ We build this in five stretches.
 2. **The fake company (Task 5):** Halden Logistics, with 60 apps, licenses, staff accounts, AI systems, and a maturity questionnaire. Known problems are hidden in it, including a flawed draft charter for a software governance council, and an answer key records them. A grader (Task 6) scores each tool against that key.
 3. **The six tools (Tasks 7–11b):** the crosswalk first, because every other tool's steps point at it. Eve checks every ISO clause number against her own copies of the standards; the build won't accept an unchecked row.
 4. **The extras (Tasks 12–13):** the Claude reviewer agent, and Word/Excel exports of each checklist, SOP, and template.
-5. **The public face (Tasks 14–16):** the site with a clickable application lifecycle wheel (questions to ask at each stage, linked to the tools), a field guide (CAMP, CSAM, CHAMP, and AIGP and how each applies on the job, plus where data governance fits), a six-exercise Halden practicum with self-checking, three case studies from interviews with Eve, and the go-public checklist. The repo goes public only when Eve says so.
+5. **The public face (Tasks 14–16):** the site with a clickable application lifecycle wheel (questions to ask at each stage, linked to the tools), a field guide (CAMP, CSAM, CHAMP, and AIGP and how each applies on the job, plus where data governance fits), a six-exercise Halden practicum you can do in the browser (with a "Try it in 2 minutes" link on every page for hiring managers), three case studies from interviews with Eve, and the go-public checklist. The repo goes public only when Eve says so.
 
 Timing: Tasks 1–6 take about two evenings. Each tool takes one or two evenings, mostly Eve's review time. The site and case studies take about a week of evenings.
 
@@ -2659,6 +2659,189 @@ Add a "Practicum" section to `site/field-guide.html` linking to `practicum/READM
 ```bash
 git add -A
 git commit -m "docs(practicum): add halden practicum exercises" -m "Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01CKmdKvLPfRcNM16k2jQo1H"
+```
+
+---
+
+### Task 14f: Interactive practicum page and "Try it" link
+
+**Files:**
+- Create: `build/agk/practicum.py`, `tests/test_practicum_payload.py`, `site/practicum.html`
+- Modify: `build/agk/build.py`, `site/index.html`, `site/tools.html`, `site/crosswalk.html`, `site/case-studies.html`, `site/about.html`, `site/field-guide.html` (shared header link)
+
+**Interfaces:**
+- Consumes: `demo-estate/*.csv`, `controls.md`, `council-draft.md`, `answer-key.json` (Task 5); `MAX_EXTRA` from `agk.grade` (Task 6); `practicum/NN-<tool>.md` (Task 14e); `load_crosswalk` result (Task 2); `inject_data`, `broken_links` (Task 14).
+- Produces: `PracticumError(Exception)`; `ORDER` (the six tool names in exercise order); `practicum_payload(demo_dir: Path, exercises_dir: Path, crosswalk: dict) -> dict` with keys `exercises` (list of `{tool, title, scenario, file}`), `tables` (name → list of row dicts), `texts` (name → str), `key` (answer-key list), `crosswalk` (list of `{id, theme}`), `max_extra` (int). Build injects `[payload]` into `site/practicum.html` under name `PR`.
+
+- [ ] **Step 1: Write the failing tests**
+
+`tests/test_practicum_payload.py`:
+
+```python
+import importlib.util
+import tempfile
+import unittest
+from pathlib import Path
+
+from agk.grade import MAX_EXTRA
+from agk.practicum import ORDER, PracticumError, practicum_payload
+
+ROOT = Path(__file__).resolve().parent.parent
+spec = importlib.util.spec_from_file_location("generate", ROOT / "demo-estate" / "generate.py")
+gen = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(gen)
+
+XW = {"XW-001": {"id": "XW-001", "theme": "Inventory", "summary": "s", "iso27001": "A.5.9"}}
+
+
+def write_exercises(d: Path, skip: str = "", no_scenario: str = "") -> Path:
+    d.mkdir(parents=True, exist_ok=True)
+    for n, tool in enumerate(ORDER, start=1):
+        if tool == skip:
+            continue
+        body = "" if tool == no_scenario else "## Scenario\n\nYou are Halden's new lead.\n\n"
+        (d / f"{n:02d}-{tool}.md").write_text(f"# Exercise {n}: {tool}\n\n{body}## Files\n\nx\n")
+    return d
+
+
+class PayloadTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.tmp = Path(tempfile.mkdtemp())
+        gen.generate(cls.tmp / "demo")
+
+    def test_order_matches_graded_tools(self):
+        payload = practicum_payload(self.tmp / "demo", write_exercises(self.tmp / "ex1"), XW)
+        self.assertEqual([e["tool"] for e in payload["exercises"]], list(ORDER))
+        self.assertEqual({k["tool"] for k in payload["key"]}, set(ORDER))
+
+    def test_carries_tables_texts_and_grading_rule(self):
+        payload = practicum_payload(self.tmp / "demo", write_exercises(self.tmp / "ex2"), XW)
+        self.assertEqual(len(payload["tables"]["apps"]), 60)
+        self.assertIn("council-draft", payload["texts"])
+        self.assertEqual(payload["max_extra"], MAX_EXTRA)
+        self.assertEqual(payload["exercises"][0]["scenario"], "You are Halden's new lead.")
+
+    def test_crosswalk_carries_only_id_and_theme(self):
+        payload = practicum_payload(self.tmp / "demo", write_exercises(self.tmp / "ex3"), XW)
+        self.assertEqual(payload["crosswalk"], [{"id": "XW-001", "theme": "Inventory"}])
+
+    def test_missing_exercise_raises(self):
+        with self.assertRaisesRegex(PracticumError, "ai-intake"):
+            practicum_payload(self.tmp / "demo", write_exercises(self.tmp / "ex4", skip="ai-intake"), XW)
+
+    def test_missing_scenario_raises(self):
+        with self.assertRaisesRegex(PracticumError, "Scenario"):
+            practicum_payload(self.tmp / "demo", write_exercises(self.tmp / "ex5", no_scenario="crosswalk"), XW)
+```
+
+- [ ] **Step 2: Run to verify failure**
+
+Run: `PYTHONPATH=build python3 -m unittest tests.test_practicum_payload -v`
+Expected: FAIL with `No module named 'agk.practicum'`
+
+- [ ] **Step 3: Implement `build/agk/practicum.py`**
+
+```python
+import csv
+import json
+from pathlib import Path
+
+from agk.grade import MAX_EXTRA
+
+ORDER = ("program-setup", "itam-maturity", "crosswalk", "rationalization", "access-review", "ai-intake")
+TABLES = ("apps", "licenses", "employees", "accounts", "ai-systems", "maturity-answers")
+TEXTS = ("controls", "council-draft")
+
+
+class PracticumError(Exception):
+    pass
+
+
+def _section(text: str, heading: str) -> str:
+    parts = text.split(f"## {heading}\n", 1)
+    if len(parts) < 2:
+        return ""
+    return parts[1].split("\n## ", 1)[0].strip()
+
+
+def practicum_payload(demo_dir: Path, exercises_dir: Path, crosswalk: dict) -> dict:
+    tables = {}
+    for name in TABLES:
+        with open(demo_dir / f"{name}.csv", newline="", encoding="utf-8") as f:
+            tables[name] = list(csv.DictReader(f))
+    texts = {name: (demo_dir / f"{name}.md").read_text(encoding="utf-8") for name in TEXTS}
+    key = json.loads((demo_dir / "answer-key.json").read_text(encoding="utf-8"))
+    exercises = []
+    for tool in ORDER:
+        matches = sorted(exercises_dir.glob(f"[0-9][0-9]-{tool}.md"))
+        if len(matches) != 1:
+            raise PracticumError(f"expected one exercise for {tool}, found {len(matches)}")
+        text = matches[0].read_text(encoding="utf-8")
+        scenario = _section(text, "Scenario")
+        if not scenario:
+            raise PracticumError(f"{matches[0].name}: missing ## Scenario")
+        title = text.splitlines()[0].lstrip("#").strip()
+        exercises.append({"tool": tool, "title": title, "scenario": scenario, "file": matches[0].name})
+    return {"exercises": exercises, "tables": tables, "texts": texts, "key": key,
+            "crosswalk": [{"id": r["id"], "theme": r["theme"]} for r in crosswalk.values()],
+            "max_extra": MAX_EXTRA}
+```
+
+- [ ] **Step 4: Run tests to verify they pass**
+
+Run: `PYTHONPATH=build python3 -m unittest tests.test_practicum_payload -v`
+Expected: 5 PASS
+
+- [ ] **Step 5: Wire into the build**
+
+In `build/agk/build.py`, add `from agk.practicum import PracticumError, practicum_payload`, and inside the site block added in Task 14 (before the `broken_links` check):
+
+```python
+    practicum_page = root / "site" / "practicum.html"
+    if practicum_page.exists():
+        try:
+            payload = practicum_payload(root / "demo-estate", root / "practicum", known)
+        except (PracticumError, FileNotFoundError) as e:
+            errors.append(f"practicum: {e}")
+        else:
+            practicum_page.write_text(
+                inject_data(practicum_page.read_text(encoding="utf-8"), "PR", [payload]), encoding="utf-8")
+```
+
+Run: `PYTHONPATH=build python3 -m unittest discover -s tests -v` → all PASS.
+
+- [ ] **Step 6: Build `site/practicum.html`** (ui-engineer agent; load the `html` skill first)
+
+Same page rules as Task 14 Step 5 (self-contained, `:root` tokens with dark mode, 360px width with no horizontal page scroll — wide tables scroll inside their own container, keyboard accessible). The page contains `<!--PR-DATA--><!--/PR-DATA-->` and reads `#pr-data` (`JSON.parse(...)[0]`).
+
+- **Exercise list** in `exercises` order; each has an anchor `#<tool>`; loading `practicum.html#rationalization` opens that exercise. Each shows its title and scenario.
+- **Answer controls per tool** (every control has a visible label; tables have `<th scope="col">` headers):
+  - program-setup: the council draft text, then seven checkboxes for the gap slugs with plain labels (decision rights, executive sponsor, membership size, intake path, meeting cadence, success measures, escalation).
+  - itam-maturity: the maturity answers table with a checkbox per row, "pick the three weakest"; a fourth tick is refused with a polite message.
+  - crosswalk: for each control in the controls text (C1–C3), a select listing crosswalk rows as `XW-NNN theme`.
+  - rationalization: apps table with a checkbox per row and a "Mark selected as duplicates" button that records the two ticked apps as a pair (shows the pair list with remove buttons); licenses table with an "expired" checkbox per row.
+  - access-review: accounts table (with the employees table shown beside or below) and an "orphaned" checkbox per row.
+  - ai-intake: AI systems table with a tier select per row (prohibited, high, limited, minimal); "high" counts as a `high_risk_ai` finding.
+- **Check button** grades in the browser with the same rule as `agk.grade`: expected = answer-key entries for the tool; pair ids normalized by sorting their `+` parts; missed = expected − found; extra = found − expected (only types the tool grades); passed when nothing is missed and extra ≤ `max_extra`. Shows found / missed / extra counts and, per missed item, a hint by type that never names the answer: duplicate_app "Sort the apps by category and look for two doing the same job."; expired_license "Compare each expiry date with the checked-on date."; orphaned_account "Match every account's employee to the HR list, and check their status."; high_risk_ai "Which system makes decisions about people's jobs?"; maturity_gap "Look at the scores, not the labels."; crosswalk_match "Match the control's main verb to a theme."; charter_gap "Who can say no, who pays, and how many people vote?".
+- **"Copy my findings block"** button: copies the learner's answers as a fenced `findings` block, so they can run the command-line grader too.
+- **Progress** per exercise saved in `localStorage` (wrap every read and write in try/catch; the page works with no stored value). A "Reset" button per exercise.
+- Link each exercise to its printable Markdown version and to its tool card (`tools.html#<tool>`).
+
+- [ ] **Step 7: "Try it in 2 minutes" everywhere; home page top**
+
+In every page's shared header, add a link "Try it in 2 minutes" to `practicum.html#rationalization`, and add "Practicum" to the navigation after "Tools" (Tools stays first). On `site/index.html`, directly under the positioning line and above the lifecycle wheel, add a short strip: the "Try it in 2 minutes" link and a one-sentence teaser linking to the first case study.
+
+- [ ] **Step 8: Check it**
+
+Run: `make build && make scan`; expect `build ok` (no broken links) and `scan clean`. Dispatch the qa-explorer agent: for each exercise, submit the correct answers from `demo-estate/answer-key.json` (expect passed), then remove one (expect it listed as missed with its hint and no answer revealed), and add two wrong flags (expect not passed); test at 360px width, in dark mode, with keyboard only, and with `localStorage` blocked. Formalize the click path as a Playwright script under `evals/site/` if qa-explorer repeats it. Dispatch the accessibility-auditor agent on `site/practicum.html`; fix every serious or critical finding.
+
+- [ ] **Step 9: Commit**
+
+```bash
+git add -A
+git commit -m "feat(site): add interactive practicum page" -m "Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
 Claude-Session: https://claude.ai/code/session_01CKmdKvLPfRcNM16k2jQo1H"
 ```
 

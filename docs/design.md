@@ -121,6 +121,9 @@ GitHub Pages at `eve-mcgivern.github.io/app-governance-kit`. Self-contained HTML
 3. **Tools** — one card per tool: Halden example result and downloads for all five pieces.
 4. **Case studies** — three anonymized write-ups (problem, approach, outcome as a range). Built from interviews with Eve; drafted by the voice-eve agent.
 5. **About** — CV summary, certifications, contact.
+**Two audiences, one site (UX recommendation, accepted 2026-09-24).** Visitors are never asked to choose a path. Hiring managers usually arrive through a shared link to a tool, case study, or About page, so a "Try it in 2 minutes" link sits in every page's header and goes straight to the rationalization exercise. The home page opens with that link and a case-study teaser, then the lifecycle wheel and tool depth. Tools stays first in the navigation for repeat visitors. There is no login: the working path stays private by where it lives (Copilot in the employer's Microsoft 365, local Claude and Codex, a private repo for notes).
+
+7. **Practicum** — the interactive exercises (section 8c).
 6. **Field guide** — certifications and their practical application, standards overview, glossary (section 8b), and a link to the practicum (section 8c).
 
 **Before going public:** full-history secret scan with the full-starter gitleaks config, MIT license, README a stranger can follow, CI running the tests, SEO and AI-search basics, Search Console setup — per the workspace going-public checklist. Making the repo public requires Eve's go-ahead.
@@ -151,6 +154,7 @@ Six hands-on exercises that use the Halden Logistics demo company. This is the p
 - **One exercise per tool,** in an order that follows the certifications: program setup and ITAM maturity (CAMP level), then crosswalk, rationalization, and access review (CSAM level), then AI intake (AIGP level).
 - **Each exercise has:** a scenario ("You are Halden's new ITAM lead..."), the demo files to use, the checklist to work through by hand, what to hand in, three reflection questions, and which certification topics it practices.
 - **Self-check:** the learner writes their findings in the same findings format the tools use, then runs the grader to see what they missed.
+- **Interactive version on the site:** a Practicum page shows each exercise's Halden data as tables. The learner clicks rows to flag problems, picks tiers and gaps from lists, then presses Check to see what they found, missed, and over-flagged, with a hint for each miss. It runs entirely in the browser, with no install and no account. A hiring manager can finish one exercise in about five minutes. The Markdown exercises stay as the printable version.
 - **The answer key is public** in the repo, so the practicum is for self-study. A graded classroom version would need the key kept private; that is out of scope for phase 1.
 
 ## 9. Testing
@@ -174,5 +178,5 @@ Six hands-on exercises that use the Halden Logistics demo company. This is the p
 
 ## 11. Later phases (not designed here)
 
-- Phase 2: more tools (vendor risk, end-of-life tracking, license true-up, data classification and retention).
+- Phase 2: more tools (vendor risk, end-of-life tracking, license true-up, data classification and retention); an AI practicum coach usable in Claude, Codex, and Copilot; optionally a sign-in area for colleagues (for example Cloudflare Access in front of a second site).
 - Phase 3: consulting offer, run through the new-project validation gate first.
