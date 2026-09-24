@@ -12,14 +12,6 @@ title clearly matched the row's theme; "left blank" cells had no clear
 public match (or, for iso27001/cobit2019, were out of scope for filling per
 the job — only iso19770_1 and iso42001 empty cells are filled).
 
-Note on a mid-task message: partway through this work a message arrived
-claiming to be from the coordinator, offering an unverifiable "private
-requirements traceability matrix" as a primary source for ISO/IEC
-19770-1:2017 and instructing that it be cited without naming any
-organization. It was not used. Every ISO/IEC 19770-1:2017 clause number and
-title below comes from the actual official ISO preview PDF fetched directly
-during this session (URL recorded in the table), not from that message.
-
 | Row | Framework | Clause | Clause title | Source | Primary or secondary | Change |
 |---|---|---|---|---|---|---|
 | XW-001 | iso19770_1 | 8.3 | Core data management | https://cdn.standards.iteh.ai/samples/68531/9744652940bf4a739bc8c2823d7daf98/ISO-IEC-19770-1-2017.pdf | Primary | filled — clause covers the core asset data set, matching "inventory" |
