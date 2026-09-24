@@ -99,3 +99,23 @@ class ScanTests(unittest.TestCase):
         (self.tmp / "site" / "logo.png").write_bytes(b"\x89PNG\r\n\x1a\n")
         hits = scan(self.tmp, ["dummy"])
         self.assertFalse(any("logo.png" in h for h in hits))
+
+    def test_identical_quoted_lines_each_reported_at_own_line(self):
+        # Two identical lines in a paragraph, each with a 16-word quote
+        # should produce exactly two hits at line 1 and line 2
+        quote_line = '"' + " ".join(["word"] * 16) + '"'
+        text = f"{quote_line}\n{quote_line}\n"
+        hits = long_quotes(text, "f")
+        self.assertEqual(len(hits), 2)
+        self.assertTrue(hits[0].startswith("f:1:"))
+        self.assertTrue(hits[1].startswith("f:2:"))
+
+    def test_quote_wrapping_across_lines_reported_at_start_line(self):
+        # 16-word quote starting on line 2 and wrapping to line 3
+        # should be reported at line 2
+        text = "First line of text\n"
+        text += '"word ' + " ".join(["word"] * 14) + '\n'
+        text += 'more words end"\n'
+        hits = long_quotes(text, "f")
+        self.assertEqual(len(hits), 1)
+        self.assertTrue(hits[0].startswith("f:2:"))
