@@ -1,0 +1,1 @@
+Rationalize the portfolio in apps.csv and licenses.csv. In the findings block report duplicate applications as {"type": "duplicate_app", "id": "APP-x+APP-y"} and expired licenses as {"type": "expired_license", "id": "LIC-n"}.
