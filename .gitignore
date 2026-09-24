@@ -1,0 +1,5 @@
+dist/office/
+__pycache__/
+*.redline.html
+.DS_Store
+.superpowers/
