@@ -72,6 +72,8 @@ app-governance-kit/
 - Flag any figure the tool could not verify from the input.
 - Cite clause numbers; paraphrase clause meaning; never quote ISO or COBIT text.
 
+**Key work per theme.** Each of the 28 crosswalk themes has a short description in `methods/crosswalk/themes.md`, in our own words: what it means, the key work involved, the evidence it produces, and who usually owns it. The build fails if any theme lacks one. The descriptions appear in the crosswalk explorer when a theme is clicked, travel with every tool as a reference file, and are part of the governance advisor's reference files.
+
 **How the crosswalk is verified (decided 2026-09-24).** Each clause reference is checked against the standard's publicly published table of contents (ISO's Online Browsing Platform and the official preview pages; ISACA's published COBIT 2019 objective list), with the source link recorded per row in `methods/crosswalk/sources.md`. A research agent does the check; Eve reads the evidence and confirms each clause title fits its theme. The `verified` date means "checked against the published table of contents on this date". A cell with no public evidence stays blank rather than guessed. The site and README say so plainly and note that the crosswalk does not replace the standards. If Eve later buys the standards, rows can be re-checked and the method note updated.
 
 **Data governance lens.** Application governance manages the software; data governance manages the information inside it. The tools cover the places where the two meet:

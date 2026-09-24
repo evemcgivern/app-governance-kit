@@ -1601,6 +1601,175 @@ Claude-Session: https://claude.ai/code/session_01CxthZSoP1hm8J6w9VwKbX6"
 
 ---
 
+### Task 7b: Key work for each crosswalk theme
+
+**Files:**
+- Create: `build/agk/themes.py`, `tests/test_themes.py`, `methods/crosswalk/themes.md`
+- Modify: `build/agk/render.py` (ship `themes.md` beside `crosswalk.csv`), `build/agk/build.py`, `tests/helpers.py`, `tests/test_build.py`
+
+**Interfaces:**
+- Consumes: `load_crosswalk` result (Task 2).
+- Produces: `PARTS` (the four labels); `ThemesError(Exception)`; `load_themes(path: Path, known: Collection[str]) -> dict[str, dict[str, str]]` (row id → label → text). `build()` stores the result for later tasks as the local variable `themes`. Every skill folder and every Copilot `knowledge/` folder gets `themes.md` next to `crosswalk.csv`.
+
+- [ ] **Step 1: Write the failing tests**
+
+`tests/test_themes.py`:
+
+```python
+import tempfile
+import unittest
+from pathlib import Path
+
+from agk.themes import PARTS, ThemesError, load_themes
+
+KNOWN = {"XW-001", "XW-002"}
+
+
+def block(rid: str, title: str = "Theme", skip: str = "") -> str:
+    lines = [f"## {rid} {title}", ""]
+    lines += [f"- **{label}:** text for {label.lower()}" for label in PARTS if label != skip]
+    return "\n".join(lines) + "\n\n"
+
+
+class ThemesTests(unittest.TestCase):
+    def write(self, text: str) -> Path:
+        p = Path(tempfile.mkdtemp()) / "themes.md"
+        p.write_text("# Key work by theme\n\n" + text, encoding="utf-8")
+        return p
+
+    def test_loads_every_theme(self):
+        themes = load_themes(self.write(block("XW-001") + block("XW-002")), KNOWN)
+        self.assertEqual(themes["XW-002"]["Key work"], "text for key work")
+
+    def test_missing_theme_fails(self):
+        with self.assertRaisesRegex(ThemesError, "no description for XW-002"):
+            load_themes(self.write(block("XW-001")), KNOWN)
+
+    def test_missing_part_fails(self):
+        with self.assertRaisesRegex(ThemesError, "XW-002: missing 'Evidence it produces'"):
+            load_themes(self.write(block("XW-001") + block("XW-002", skip="Evidence it produces")), KNOWN)
+
+    def test_unknown_row_fails(self):
+        with self.assertRaisesRegex(ThemesError, "XW-099: not in the crosswalk"):
+            load_themes(self.write(block("XW-001") + block("XW-002") + block("XW-099")), KNOWN)
+
+    def test_duplicate_row_fails(self):
+        with self.assertRaisesRegex(ThemesError, "XW-001: described twice"):
+            load_themes(self.write(block("XW-001") + block("XW-001") + block("XW-002")), KNOWN)
+
+    def test_crlf_accepted(self):
+        text = (block("XW-001") + block("XW-002")).replace("\n", "\r\n")
+        self.assertEqual(len(load_themes(self.write(text), KNOWN)), 2)
+```
+
+Run: `PYTHONPATH=build python3 -m unittest tests.test_themes -v` → FAIL (no module).
+
+- [ ] **Step 2: Implement `build/agk/themes.py`**
+
+```python
+import re
+from collections.abc import Collection
+from pathlib import Path
+
+PARTS = ("What it means", "Key work", "Evidence it produces", "Usually owned by")
+HEAD_RE = re.compile(r"^## (XW-\d{3}) .+$", re.M)
+
+
+class ThemesError(Exception):
+    pass
+
+
+def load_themes(path: Path, known: Collection[str]) -> dict[str, dict[str, str]]:
+    text = path.read_text(encoding="utf-8-sig").replace("\r\n", "\n")
+    heads = list(HEAD_RE.finditer(text))
+    out: dict[str, dict[str, str]] = {}
+    for i, m in enumerate(heads):
+        rid = m.group(1)
+        if rid not in known:
+            raise ThemesError(f"{rid}: not in the crosswalk")
+        if rid in out:
+            raise ThemesError(f"{rid}: described twice")
+        body = text[m.end(): heads[i + 1].start() if i + 1 < len(heads) else len(text)]
+        parts = {}
+        for label in PARTS:
+            pm = re.search(rf"^- \*\*{re.escape(label)}:\*\* (.+)$", body, re.M)
+            if not pm or not pm.group(1).strip():
+                raise ThemesError(f"{rid}: missing '{label}'")
+            parts[label] = pm.group(1).strip()
+        out[rid] = parts
+    missing = sorted(set(known) - out.keys())
+    if missing:
+        raise ThemesError(f"no description for {', '.join(missing)}")
+    return out
+```
+
+Run the tests again → 6 PASS.
+
+- [ ] **Step 3: Require it in the build and ship it with every tool**
+
+In `tests/helpers.py`, `make_repo` also writes `methods/crosswalk/themes.md`:
+
+```python
+    (tmp / "methods" / "crosswalk" / "themes.md").write_text(
+        "## XW-001 Inventory\n\n- **What it means:** m\n- **Key work:** k\n"
+        "- **Evidence it produces:** e\n- **Usually owned by:** o\n", encoding="utf-8")
+```
+
+Add to `tests/test_build.py`:
+
+```python
+    def test_themes_shipped_with_every_tool(self):
+        errors, _ = build(self.root)
+        self.assertEqual(errors, [])
+        d = self.root / "dist"
+        self.assertTrue((d / "claude/skills/rationalization/themes.md").is_file())
+        self.assertTrue((d / "copilot/rationalization/knowledge/themes.md").is_file())
+        self.assertIn("`themes.md`", (d / "claude/skills/rationalization/SKILL.md").read_text())
+
+    def test_missing_theme_description_stops_build(self):
+        (self.root / "methods/crosswalk/themes.md").write_text("# empty\n")
+        errors, _ = build(self.root)
+        self.assertTrue(any(e.startswith("themes:") for e in errors))
+```
+
+In `build/agk/render.py`: `_reference_names` returns `[*REFERENCE_FILES, m.template.name, "crosswalk.csv", "themes.md"]`, and `_copy_references` also copies `crosswalk_csv.parent / "themes.md"` into `dest`. In `build/agk/build.py`, right after the crosswalk loads:
+
+```python
+    try:
+        themes = load_themes(methods_dir / "crosswalk" / "themes.md", known)
+    except (ThemesError, FileNotFoundError) as e:
+        return [f"themes: {e}"], []
+```
+
+(import `ThemesError, load_themes` from `agk.themes`). Run the full suite → all PASS. `make build` will now fail with "themes: ..." until Step 4 is done; that is expected.
+
+- [ ] **Step 4: Draft `methods/crosswalk/themes.md`** (content; our own words, no standards text)
+
+Heading `# Key work by crosswalk theme`, one intro sentence, then one section per row in id order:
+
+```markdown
+## XW-016 Periodic access review
+
+- **What it means:** People's access to each application is checked on a set schedule, and anything no longer needed is removed.
+- **Key work:** Pull account exports; match them to HR records; send privileged roles to owners for re-approval; remove orphaned and dormant access; record every decision.
+- **Evidence it produces:** A dated review log, owner sign-offs, and removal tickets.
+- **Usually owned by:** Application owners, with the identity and access team running the cycle.
+```
+
+Each part is one or two plain sentences; key work is three to six concrete activities separated by semicolons. Name roles, never people or organizations. Where a kit tool does the work, name it in Key work (e.g. "use the `access-review` tool").
+
+Run: `make build && make scan` → `build ok`, `scan clean`. Hand `themes.md` to Eve as a redline session; apply her edits verbatim.
+
+- [ ] **Step 5: Commit**
+
+```bash
+git add -A
+git commit -m "feat(crosswalk): describe key work per theme" -m "Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01CKmdKvLPfRcNM16k2jQo1H"
+```
+
+---
+
 ### Task 8: ITAM maturity check
 
 **Files:**
@@ -2181,7 +2350,8 @@ In `build/agk/build.py`, add `from agk.site import broken_links, inject_data` an
 ```python
     explorer = root / "site" / "crosswalk.html"
     if explorer.exists():
-        explorer.write_text(inject_data(explorer.read_text(encoding="utf-8"), "XW", list(known.values())),
+        rows = [dict(r, key_work=themes[r["id"]]) for r in known.values()]
+        explorer.write_text(inject_data(explorer.read_text(encoding="utf-8"), "XW", rows),
                             encoding="utf-8")
     if (root / "site").is_dir():
         errors += [f"site: broken link {b}" for b in broken_links(root / "site")]
@@ -2195,7 +2365,7 @@ Expected: all PASS
 All pages: self-contained HTML plus `style.css`; colors as `:root` tokens with dark-mode overrides; no external scripts or fonts; works at 360px width; shared header nav to all five pages.
 
 - `index.html` (the lifecycle wheel is added in Task 14c): name, one-line positioning ("Application governance: portfolio, AI, and access controls, traceable to ISO/IEC 19770, COBIT 2019, ISO/IEC 27001, and ISO/IEC 42001"), three area cards, link to crosswalk explorer. Positioning copy drafted by voice-eve, approved by Eve.
-- `crosswalk.html`: contains `<!--XW-DATA--><!--/XW-DATA-->`; vanilla JS reads `#xw-data`, renders a filterable list of themes; clicking one shows the four framework clauses and summary. Text filter; keyboard accessible; no quoted standards text (the data has none).
+- `crosswalk.html`: contains `<!--XW-DATA--><!--/XW-DATA-->`; vanilla JS reads `#xw-data`, renders a filterable list of themes; clicking one shows the four framework clauses, the summary, and its key work (what it means, key work, evidence it produces, usually owned by). Text filter; keyboard accessible; no quoted standards text (the data has none).
 - `tools.html`: six cards, each with `id="<tool name>"` so other pages can link to `tools.html#<tool>`: what it does, the Halden example (link to `../methods/<tool>/example/`), links to Claude, Codex, Copilot, checklist, SOP, template, platform guide in the GitHub repo.
 - `case-studies.html`: three sections, filled in Task 15.
 - `about.html`: CV summary, certifications, contact link; content from Eve.
@@ -2933,7 +3103,7 @@ def render_agent(agent_path: Path, dist: Path, knowledge: list[Path], methods: l
 Remove the loop that copies `agents/*.md` into `dist/claude/agents`. After the lifecycle block (Task 14c) and before the site block, add:
 
 ```python
-    knowledge = [crosswalk_csv]
+    knowledge = [crosswalk_csv, methods_dir / "crosswalk" / "themes.md"]
     if (dist / "lifecycle-questions.md").exists():
         knowledge.append(dist / "lifecycle-questions.md")
     knowledge += sorted((root / "field-guide").glob("*.md")) if (root / "field-guide").is_dir() else []
