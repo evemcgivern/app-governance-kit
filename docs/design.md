@@ -36,6 +36,7 @@ The portfolio is a six-page site on GitHub Pages under Eve's own name. Its flags
 | Work material | Anonymized patterns only |
 | Copilot at work | Agent Builder agents and chat prompts both available |
 | Approach | Write each method once, publish three ways |
+| Data governance | A lens across the existing tools, not a separate tool in phase 1 |
 | Repo home | `github.com/eve-mcgivern/app-governance-kit`, public under Eve's name |
 
 ## 3. Repository layout
@@ -70,6 +71,13 @@ app-governance-kit/
 - Mark every point where a human must decide; never make that decision.
 - Flag any figure the tool could not verify from the input.
 - Cite clause numbers; paraphrase clause meaning; never quote ISO or COBIT text.
+
+**Data governance lens.** Application governance manages the software; data governance manages the information inside it. The tools cover the places where the two meet:
+- Rationalization records what data each app holds and, for every retire or migrate call, the archive/migrate/delete decision and retention period (a decision for the data owner).
+- Access review orders its work by the data sensitivity of each app, most sensitive first.
+- AI intake records whether the system uses personal data and where its data came from.
+- The field guide explains where application governance ends and data governance begins.
+- Crosswalk row XW-028 covers data classification and handling.
 
 **Governance-reviewer agent (Claude only):** reviews any governance document against the crosswalk and reports missing controls and claims without evidence. Read-only.
 
@@ -123,6 +131,7 @@ A plain-language guide for Eve and for the people she briefs, in `field-guide/` 
 
 - **Certifications:** IAITAM's CAMP (Certified Asset Management Professional, the beginner-level overview), CSAM (Certified Software Asset Manager), and CHAMP (Certified Hardware Asset Management Professional), plus IAPP's AIGP. For each one: who it is for, what it covers (taken from the certifying body's public pages only), and its **practical application**: three concrete on-the-job tasks it prepares you for, each linked to the kit tool that practices that task.
 - **Standards:** what each part of ISO/IEC 19770 is for, and how COBIT 2019, ISO/IEC 27001, and ISO/IEC 42001 relate, in our own words.
+- **Data governance boundary:** where application governance ends and data governance begins, the four places they meet (retirement, sensitivity, AI data, asset-record quality), and the main data frameworks (DAMA-DMBOK, ISO 8000) described in our own words.
 - **Glossary:** ITAM, SAM, HAM, APM terms (for example effective license position, entitlement, true-up, reconciliation, TIME model), each with a one-line example from Halden Logistics.
 - **Naming rule:** always spell out "Certified Software Asset Manager (CSAM)" on first use. The bare acronym has an unrelated, very different meaning in general web search, so the long form keeps the page from being misread and from being filtered by search engines.
 - Course materials from IAITAM, IAPP, ISO, and ISACA are never reproduced. Names are used for reference only.
@@ -148,5 +157,5 @@ A plain-language guide for Eve and for the people she briefs, in `field-guide/` 
 
 ## 11. Later phases (not designed here)
 
-- Phase 2: more tools (vendor risk, end-of-life tracking, license true-up).
+- Phase 2: more tools (vendor risk, end-of-life tracking, license true-up, data classification and retention).
 - Phase 3: consulting offer, run through the new-project validation gate first.
