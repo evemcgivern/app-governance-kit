@@ -121,7 +121,7 @@ GitHub Pages at `eve-mcgivern.github.io/app-governance-kit`. Self-contained HTML
 3. **Tools** — one card per tool: Halden example result and downloads for all five pieces.
 4. **Case studies** — three anonymized write-ups (problem, approach, outcome as a range). Built from interviews with Eve; drafted by the voice-eve agent.
 5. **About** — CV summary, certifications, contact.
-6. **Field guide** — certifications and their practical application, standards overview, glossary (section 8b).
+6. **Field guide** — certifications and their practical application, standards overview, glossary (section 8b), and a link to the practicum (section 8c).
 
 **Before going public:** full-history secret scan with the full-starter gitleaks config, MIT license, README a stranger can follow, CI running the tests, SEO and AI-search basics, Search Console setup — per the workspace going-public checklist. Making the repo public requires Eve's go-ahead.
 
@@ -143,6 +143,15 @@ A plain-language guide for Eve and for the people she briefs, in `field-guide/` 
 - **Glossary:** ITAM, SAM, HAM, APM terms (for example effective license position, entitlement, true-up, reconciliation, TIME model), each with a one-line example from Halden Logistics.
 - **Naming rule:** always spell out "Certified Software Asset Manager (CSAM)" on first use. The bare acronym has an unrelated, very different meaning in general web search, so the long form keeps the page from being misread and from being filtered by search engines.
 - Course materials from IAITAM, IAPP, ISO, and ISACA are never reproduced. Names are used for reference only.
+
+## 8c. Halden practicum
+
+Six hands-on exercises that use the Halden Logistics demo company. This is the practical application the certification courses leave out, and it shows Eve can teach the work, not just do it.
+
+- **One exercise per tool,** in an order that follows the certifications: program setup and ITAM maturity (CAMP level), then crosswalk, rationalization, and access review (CSAM level), then AI intake (AIGP level).
+- **Each exercise has:** a scenario ("You are Halden's new ITAM lead..."), the demo files to use, the checklist to work through by hand, what to hand in, three reflection questions, and which certification topics it practices.
+- **Self-check:** the learner writes their findings in the same findings format the tools use, then runs the grader to see what they missed.
+- **The answer key is public** in the repo, so the practicum is for self-study. A graded classroom version would need the key kept private; that is out of scope for phase 1.
 
 ## 9. Testing
 
