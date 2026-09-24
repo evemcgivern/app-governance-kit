@@ -138,6 +138,7 @@ The home page's centerpiece is a clickable wheel of the application lifecycle in
 
 - The questions live in one file, `lifecycle/questions.csv` (stage, question, tool, crosswalk row). The build checks that every stage has questions, every tool exists, and every crosswalk row exists.
 - The build also turns the questions into a checklist, `dist/lifecycle-questions.md` (plus a Word version), grouped by stage. It works on its own at work: attach it to any Copilot agent, or print it for a review meeting.
+- **Rules and how the stages connect.** Each stage also states what happens there, the rules that apply (each tagged with its crosswalk row), the gate to move on, which stage or stages it hands off to, and who decides. Hand-offs include the loops: Review and optimize can send an application back to Plan (reinvest or replace) or on to Retire. A short "How it works together" explanation sits above the wheel: the lifecycle is the spine, the governance council owns the gates, the tools do the work at each stage, and the crosswalk shows which framework each rule satisfies. The build checks that every stage has every part, every rule is tagged, and every hand-off points at a real stage.
 - Questions cover the data lens too (for example, "What data does it hold, and will we archive, migrate, or delete it?" at Retire).
 
 ## 8b. Field guide

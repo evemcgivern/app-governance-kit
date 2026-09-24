@@ -18,7 +18,7 @@ We build this in five stretches.
 2. **The fake company (Task 5):** Halden Logistics, with 60 apps, licenses, staff accounts, AI systems, and a maturity questionnaire. Known problems are hidden in it, including a flawed draft charter for a software governance council, and an answer key records them. A grader (Task 6) scores each tool against that key.
 3. **The six tools (Tasks 7–11b):** the crosswalk first, because every other tool's steps point at it. A research agent checks every clause number against the standards' public tables of contents and records a source per row; Eve reads the evidence and confirms. The build won't accept an unchecked row.
 4. **The extras (Tasks 13 and 14g):** Word/Excel exports of each checklist, SOP, and template, and a governance advisor that answers framework questions and reviews documents in Claude, Codex, and Copilot.
-5. **The public face (Tasks 14–16):** the site with a clickable application lifecycle wheel (questions to ask at each stage, linked to the tools), a field guide (CAMP, CSAM, CHAMP, and AIGP and how each applies on the job, plus where data governance fits), a six-exercise Halden practicum you can do in the browser (with a "Try it in 2 minutes" link on every page for hiring managers), three case studies from interviews with Eve, and the go-public checklist. The repo goes public only when Eve says so.
+5. **The public face (Tasks 14–16):** the site with a clickable application lifecycle wheel (each stage's rules, gate, hand-offs, owner, and questions, linked to the tools and crosswalk, plus a short explanation of how it all works together), a field guide (CAMP, CSAM, CHAMP, and AIGP and how each applies on the job, plus where data governance fits), a six-exercise Halden practicum you can do in the browser (with a "Try it in 2 minutes" link on every page for hiring managers), three case studies from interviews with Eve, and the go-public checklist. The repo goes public only when Eve says so.
 
 Timing: Tasks 1–6 take about two evenings. Each tool takes one or two evenings, mostly Eve's review time. The site and case studies take about a week of evenings.
 
@@ -2621,6 +2621,220 @@ Expected: `build ok`, `scan clean`, `office export done`, `scan clean`. Open the
 git add -A
 git commit -m "feat(site): add lifecycle wheel and questions" -m "Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
 Claude-Session: https://claude.ai/code/session_01CxthZSoP1hm8J6w9VwKbX6"
+```
+
+---
+
+### Task 14d: Lifecycle rules, gates, and hand-offs
+
+**Files:**
+- Create: `lifecycle/stages.md`, `tests/test_lifecycle_stages.py`
+- Modify: `build/agk/lifecycle.py`, `build/agk/build.py`, `site/index.html` (wheel panel and "How it works together")
+
+**Interfaces:**
+- Consumes: `STAGES`, `load_questions`, `render_checklist` (Task 14c); `load_crosswalk` result (Task 2); `inject_data` (Task 14).
+- Produces: `STAGE_PARTS`; `load_stages(path: Path, known_xw: Collection[str]) -> dict` returning `{"together": str, "stages": {slug: {"What happens": str, "Gate to move on": str, "Hands off to": list[str], "Hand-off note": str, "Who decides": str, "rules": list[{"text": str, "xw": list[str]}]}}}`; `render_checklist(rows, stages=None) -> str` (stages optional; when given, each stage section starts with its rules and gate). Build injects `{"questions": rows, "stages": ...}` under name `LC` instead of the bare question list.
+
+- [ ] **Step 1: Write the failing tests**
+
+`tests/test_lifecycle_stages.py`:
+
+```python
+import tempfile
+import unittest
+from pathlib import Path
+
+from agk.lifecycle import STAGES, LifecycleError, load_stages, render_checklist
+
+XW = {"XW-001", "XW-027"}
+
+
+def stage(slug: str, handoff: str = "", rule: str = "- Nothing skips intake. [[XW-027]]", skip: str = "") -> str:
+    nxt = handoff or {"plan": "acquire", "acquire": "deploy", "deploy": "operate",
+                      "operate": "optimize", "optimize": "plan, retire", "retire": "plan"}[slug]
+    parts = {"What happens": "Work happens.", "Gate to move on": "Owner approves.",
+             "Hands off to": f"{nxt} — the record moves on.", "Who decides": "The council."}
+    lines = [f"## {slug} — Stage", ""] + [f"- **{k}:** {v}" for k, v in parts.items() if k != skip]
+    return "\n".join(lines) + f"\n\n### Rules that apply\n\n{rule}\n\n"
+
+
+def full(**over) -> str:
+    return "# Lifecycle\n\n## How it works together\n\nThe stages form a loop.\n\n" + \
+        "".join(over.get(s, stage(s)) for s, _ in STAGES)
+
+
+class StagesTests(unittest.TestCase):
+    def write(self, text):
+        p = Path(tempfile.mkdtemp()) / "stages.md"
+        p.write_text(text, encoding="utf-8")
+        return p
+
+    def test_loads_all_stages(self):
+        data = load_stages(self.write(full()), XW)
+        self.assertEqual(list(data["stages"]), [s for s, _ in STAGES])
+        self.assertEqual(data["stages"]["optimize"]["Hands off to"], ["plan", "retire"])
+        self.assertEqual(data["stages"]["plan"]["rules"][0]["xw"], ["XW-027"])
+        self.assertEqual(data["together"], "The stages form a loop.")
+
+    def test_missing_together_fails(self):
+        with self.assertRaisesRegex(LifecycleError, "How it works together"):
+            load_stages(self.write(full().replace("The stages form a loop.", "")), XW)
+
+    def test_missing_stage_fails(self):
+        with self.assertRaisesRegex(LifecycleError, "no section for stage: retire"):
+            load_stages(self.write(full(retire="")), XW)
+
+    def test_missing_part_fails(self):
+        with self.assertRaisesRegex(LifecycleError, "deploy: missing 'Who decides'"):
+            load_stages(self.write(full(deploy=stage("deploy", skip="Who decides"))), XW)
+
+    def test_untagged_rule_fails(self):
+        with self.assertRaisesRegex(LifecycleError, "acquire: rule has no clause tag"):
+            load_stages(self.write(full(acquire=stage("acquire", rule="- Buy carefully."))), XW)
+
+    def test_unknown_tag_fails(self):
+        with self.assertRaisesRegex(LifecycleError, "unknown crosswalk row XW-999"):
+            load_stages(self.write(full(acquire=stage("acquire", rule="- Buy. [[XW-999]]"))), XW)
+
+    def test_stage_without_rules_fails(self):
+        with self.assertRaisesRegex(LifecycleError, "operate: no rules"):
+            load_stages(self.write(full(operate=stage("operate", rule=""))), XW)
+
+    def test_handoff_to_unknown_stage_fails(self):
+        with self.assertRaisesRegex(LifecycleError, "retire: hands off to unknown stage 'archive'"):
+            load_stages(self.write(full(retire=stage("retire", handoff="archive"))), XW)
+
+    def test_checklist_includes_rules_and_gate(self):
+        data = load_stages(self.write(full()), XW)
+        rows = [{"stage": s, "question": f"Ask {s}?", "tool": "rationalization", "xw": "XW-001"} for s, _ in STAGES]
+        text = render_checklist(rows, data["stages"])
+        plan = text.split("## Plan and request")[1].split("## Acquire")[0]
+        self.assertIn("Nothing skips intake. [[XW-027]]", plan)
+        self.assertIn("Gate to move on: Owner approves.", plan)
+        self.assertIn("Hands off to: acquire", plan)
+```
+
+Run: `PYTHONPATH=build python3 -m unittest tests.test_lifecycle_stages -v` → FAIL (import error).
+
+- [ ] **Step 2: Implement in `build/agk/lifecycle.py`**
+
+Add `import re` and:
+
+```python
+STAGE_PARTS = ("What happens", "Gate to move on", "Hands off to", "Who decides")
+_TAG_RE = re.compile(r"\[\[(XW-\d{3})\]\]")
+
+
+def load_stages(path: Path, known_xw: Collection[str]) -> dict:
+    text = path.read_text(encoding="utf-8-sig").replace("\r\n", "\n")
+    together = re.search(r"^## How it works together\n(.*?)(?=^## |\Z)", text, re.M | re.S)
+    if not together or not together.group(1).strip():
+        raise LifecycleError("stages.md: missing 'How it works together' text")
+    slugs = [s for s, _ in STAGES]
+    heads = {m.group(1): m for m in re.finditer(rf"^## ({'|'.join(slugs)})\b.*$", text, re.M)}
+    missing = [s for s in slugs if s not in heads]
+    if missing:
+        raise LifecycleError(f"no section for stage: {', '.join(missing)}")
+    order = sorted(heads.values(), key=lambda m: m.start())
+    stages = {}
+    for i, m in enumerate(order):
+        slug = m.group(1)
+        body = text[m.end(): order[i + 1].start() if i + 1 < len(order) else len(text)]
+        info: dict = {}
+        for label in STAGE_PARTS:
+            pm = re.search(rf"^- \*\*{re.escape(label)}:\*\* (.+)$", body, re.M)
+            if not pm or not pm.group(1).strip():
+                raise LifecycleError(f"{slug}: missing '{label}'")
+            info[label] = pm.group(1).strip()
+        targets, _, note = info["Hands off to"].partition(" — ")
+        info["Hands off to"] = [t.strip() for t in targets.split(",") if t.strip()]
+        info["Hand-off note"] = note.strip()
+        for t in info["Hands off to"]:
+            if t not in slugs:
+                raise LifecycleError(f"{slug}: hands off to unknown stage {t!r}")
+        rules_part = body.split("### Rules that apply", 1)
+        rules = []
+        for line in (rules_part[1] if len(rules_part) > 1 else "").splitlines():
+            if not line.startswith("- "):
+                continue
+            tags = _TAG_RE.findall(line)
+            if not tags:
+                raise LifecycleError(f"{slug}: rule has no clause tag: {line[2:60]}")
+            for t in tags:
+                if t not in known_xw:
+                    raise LifecycleError(f"{slug}: unknown crosswalk row {t}")
+            rules.append({"text": _TAG_RE.sub("", line[2:]).strip(), "xw": tags})
+        if not rules:
+            raise LifecycleError(f"{slug}: no rules")
+        info["rules"] = rules
+        stages[slug] = info
+    return {"together": together.group(1).strip(), "stages": stages}
+```
+
+Change `render_checklist` to take an optional `stages: dict | None = None`; for each stage, when `stages` is given, add after the `## {label}` heading and blank line:
+
+```python
+            s = stages[slug]
+            out += [f"{s['What happens']}", "", "Rules that apply:", ""]
+            out += [f"- {r['text']} " + " ".join(f"[[{x}]]" for x in r["xw"]) for r in s["rules"]]
+            out += ["", f"Gate to move on: {s['Gate to move on']}",
+                    f"Hands off to: {', '.join(s['Hands off to'])}. {s['Hand-off note']}".rstrip(),
+                    f"Who decides: {s['Who decides']}", "", "Questions to ask:", ""]
+```
+
+Run the tests again → 9 PASS; run the full suite → all PASS (Task 14c's tests call `render_checklist(rows)` without stages and still pass).
+
+- [ ] **Step 3: Wire into the build**
+
+In the lifecycle block from Task 14c, after `questions` loads:
+
+```python
+            stages_md = root / "lifecycle" / "stages.md"
+            try:
+                stages = load_stages(stages_md, known) if stages_md.exists() else None
+            except LifecycleError as e:
+                errors.append(f"lifecycle: {e}")
+                stages = None
+```
+
+pass `stages["stages"] if stages else None` to `render_checklist`, and inject `{"questions": questions, "stages": stages}` under `LC` (wrap in a one-item list: `[{"questions": ..., "stages": ...}]`). Update Task 14c's wheel script to read `JSON.parse(...)[0].questions`.
+
+- [ ] **Step 4: Write `lifecycle/stages.md`** (content; our own words; roles, never people or organizations)
+
+Start with `## How it works together`: four to six sentences — the lifecycle is the spine every application travels; the governance council owns the gates between stages and delegates routine calls below its threshold; each stage's questions and rules are handled by a kit tool; each rule names the crosswalk row, so every decision traces to a framework; Review and optimize feeds back into Plan (reinvest or replace) or forward to Retire, which closes the loop by freeing licenses, data, and budget for the next Plan.
+
+Then one section per stage, `## <slug> — <label>`, with the four parts and 3–5 tagged rules. Example:
+
+```markdown
+## acquire — Acquire
+
+- **What happens:** The approved request becomes a purchase: license model chosen, contract negotiated, supplier assessed.
+- **Gate to move on:** Contract signed with audit, renewal, and exit terms reviewed; entitlements recorded.
+- **Hands off to:** deploy — the entitlement record and contract go with the application.
+- **Who decides:** Procurement with the application owner; the council above its cost or risk threshold.
+
+### Rules that apply
+
+- Nothing is bought above the council threshold without an approved intake request. [[XW-027]]
+- Every purchase records its entitlements before deployment starts. [[XW-006]]
+- Contracts are reviewed for audit rights, auto-renewal, and exit terms before signature. [[XW-013]]
+- Any AI component's supplier and model provider are assessed first. [[XW-023]]
+```
+
+Hands off to: plan → acquire; acquire → deploy; deploy → operate; operate → optimize; optimize → plan, retire; retire → plan.
+
+Run `make build && make scan` → `build ok`, `scan clean`. Hand `stages.md` to Eve as a redline session; apply her edits verbatim.
+
+- [ ] **Step 5: Show it on the wheel**
+
+In `site/index.html` (ui-engineer; same page rules as Task 14): put the "How it works together" text directly above the wheel. The selected stage's panel shows, in order: What happens; Rules that apply (each rule with its crosswalk row linking to `crosswalk.html`); Gate to move on; Hands off to (each target is a button that selects that stage); Who decides; then the questions. Draw the hand-off arrows on the wheel from the data, including optimize → plan and optimize → retire. Keyboard and screen-reader behavior as in Task 14c. Re-run the accessibility-auditor agent on the home page.
+
+- [ ] **Step 6: Commit**
+
+```bash
+git add -A
+git commit -m "feat(site): add lifecycle rules and hand-offs" -m "Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01CKmdKvLPfRcNM16k2jQo1H"
 ```
 
 ---
