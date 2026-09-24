@@ -18,7 +18,7 @@ We build this in five stretches.
 2. **The fake company (Task 5):** Halden Logistics, with 60 apps, licenses, staff accounts, AI systems, and a maturity questionnaire. Known problems are hidden in it, including a flawed draft charter for a software governance council, and an answer key records them. A grader (Task 6) scores each tool against that key.
 3. **The six tools (Tasks 7–11b):** the crosswalk first, because every other tool's steps point at it. Eve checks every ISO clause number against her own copies of the standards; the build won't accept an unchecked row.
 4. **The extras (Tasks 12–13):** the Claude reviewer agent, and Word/Excel exports of each checklist, SOP, and template.
-5. **The public face (Tasks 14–16):** the site, three case studies from interviews with Eve, and the go-public checklist. The repo goes public only when Eve says so.
+5. **The public face (Tasks 14–16):** the site, a field guide (CAMP, CSAM, CHAMP, and AIGP and how each applies on the job, plus where data governance fits), three case studies from interviews with Eve, and the go-public checklist. The repo goes public only when Eve says so.
 
 Timing: Tasks 1–6 take about two evenings. Each tool takes one or two evenings, mostly Eve's review time. The site and case studies take about a week of evenings.
 
@@ -1024,6 +1024,10 @@ class DemoEstateTests(unittest.TestCase):
     def test_sixty_apps(self):
         self.assertEqual(len(rows(self.out / "apps.csv")), 60)
 
+    def test_every_app_has_a_data_sensitivity(self):
+        values = {a["data_sensitivity"] for a in rows(self.out / "apps.csv")}
+        self.assertEqual(values, {"confidential", "internal"})
+
     def test_only_planted_duplicates_share_a_category(self):
         apps = rows(self.out / "apps.csv")
         counts = Counter(a["category"] for a in apps)
@@ -1111,6 +1115,8 @@ CATEGORIES = [
 ]
 # Planted duplicates: slot -> (partner slot, alternate vendor)
 DUPLICATES = {41: (8, "Tallysheet"), 52: (14, "Quickink"), 37: (22, "Linkup"), 58: (29, "Routesmith"), 46: (33, "Clearport")}
+CONFIDENTIAL = {"Payroll", "HR information system", "Recruiting", "CRM", "Expense management", "Treasury",
+                "Tax compliance", "Identity provider", "Customer support desk", "Accounts payable automation"}
 EXPIRED = {"LIC-017": "2026-03-31", "LIC-044": "2025-12-31"}
 TERMINATED = {"EMP-071": "2026-05-15", "EMP-072": "2026-07-02"}
 ORPHANS = {"ACC-019": "EMP-071", "ACC-063": "EMP-072", "ACC-104": "EMP-099"}
@@ -1171,8 +1177,9 @@ def generate(out: Path) -> None:
         key.append({"tool": "rationalization", "type": "duplicate_app",
                     "id": "+".join(sorted((f"APP-{partner:03d}", f"APP-{i:03d}")))})
     apps = [[f"APP-{i:03d}", f"{slots[i][1]} {slots[i][0]}", slots[i][1], slots[i][0],
-             round(5000 + (i * 7919) % 90000, -2), 20 + (i * 37) % 900] for i in range(1, 61)]
-    _write(out / "apps.csv", ["id", "name", "vendor", "category", "annual_cost_usd", "users"], apps)
+             round(5000 + (i * 7919) % 90000, -2), 20 + (i * 37) % 900,
+             "confidential" if slots[i][0] in CONFIDENTIAL else "internal"] for i in range(1, 61)]
+    _write(out / "apps.csv", ["id", "name", "vendor", "category", "annual_cost_usd", "users", "data_sensitivity"], apps)
 
     licenses = []
     for i in range(1, 61):
@@ -1219,7 +1226,7 @@ if __name__ == "__main__":
 - [ ] **Step 4: Run tests to verify they pass**
 
 Run: `PYTHONPATH=build python3 -m unittest tests.test_demo_estate -v`
-Expected: 8 PASS
+Expected: 9 PASS
 
 - [ ] **Step 5: Generate the committed data and write the README**
 
@@ -1432,7 +1439,7 @@ Prompt files (six; each tells the tool which demo files to read; none mention th
 - `evals/prompts/rationalization.txt`: `Rationalize the portfolio in apps.csv and licenses.csv. In the findings block report duplicate applications as {"type": "duplicate_app", "id": "APP-x+APP-y"} and expired licenses as {"type": "expired_license", "id": "LIC-n"}.`
 - `evals/prompts/ai-intake.txt`: `Run intake for every system in ai-systems.csv. In the findings block report each system you tier high-risk as {"type": "high_risk_ai", "id": "AI-n"}.`
 - `evals/prompts/program-setup.txt`: `Review council-draft.md as a charter for a software governance council. In the findings block report each gap as {"type": "charter_gap", "id": "<slug>"}, using these slugs where they apply: decision-rights, sponsor, membership-size, intake-path, cadence, metrics, escalation.`
-- `evals/prompts/access-review.txt`: `Review accounts.csv against employees.csv. In the findings block report each orphaned account as {"type": "orphaned_account", "id": "ACC-n"}.`
+- `evals/prompts/access-review.txt`: `Review accounts.csv against employees.csv, using apps.csv for data sensitivity. In the findings block report each orphaned account as {"type": "orphaned_account", "id": "ACC-n"}.`
 
 - [ ] **Step 6: Verify the runner fails cleanly before any tool exists**
 
@@ -1480,7 +1487,7 @@ Each tool is done when:
 - Create: `methods/crosswalk/{method.md, crosswalk.csv, checklist.md, sop.md, template.md, platform-guide.md, copilot-test.md, example/controls-mapped.md}`
 
 **Interfaces:**
-- Produces: crosswalk rows `XW-001`…`XW-027` used as tags by Tasks 8–11. Row IDs and themes below are fixed; other tasks depend on them.
+- Produces: crosswalk rows `XW-001`…`XW-028` used as tags by Tasks 8–11. Row IDs and themes below are fixed; other tasks depend on them.
 
 - [ ] **Step 1: Write `crosswalk.csv`**
 
@@ -1515,6 +1522,7 @@ Columns: `id,theme,iso19770_1,cobit2019,iso27001,iso42001,summary,verified`. The
 | XW-025 | Performance review and improvement | MEA01 | 9.1, 10.1 |
 | XW-026 | Data quality of asset records | BAI09.01 | A.5.9 |
 | XW-027 | Governance body, sponsor, and decision rights | EDM01, APO01 | 5.1, 5.3 |
+| XW-028 | Data classification and handling | APO14 | A.5.12, A.5.13 |
 
 Leave `iso19770_1`, `iso42001`, and `verified` blank for now. `make build` will fail with "not verified" until Step 2; that failure is expected.
 
@@ -1682,7 +1690,7 @@ Claude-Session: https://claude.ai/code/session_01CxthZSoP1hm8J6w9VwKbX6"
 - Create: `methods/rationalization/{method.md, checklist.md, sop.md, template.csv, platform-guide.md, copilot-test.md, example/halden-rationalization.md}`
 
 **Interfaces:**
-- Consumes: crosswalk rows XW-001, XW-002, XW-006–XW-013.
+- Consumes: crosswalk rows XW-001, XW-002, XW-006–XW-013, XW-028.
 - Produces: findings types `duplicate_app`, `expired_license`.
 
 - [ ] **Step 1: Write `method.md`**
@@ -1703,7 +1711,8 @@ You rationalize an application portfolio using the TIME model: Tolerate, Invest,
 3. Check licenses against the `checked_on` date: expired, expiring within 90 days, and entitlements far above users.
 4. Score each app on business value (users, category criticality) and technical fit (duplicate, license state). State the scoring you used.
 5. Assign TIME. For each duplicate pair, recommend which app to keep and why. **Decision needed:** final keep/retire calls.
-6. Summarize: annual cost of Eliminate and Migrate apps as potential savings (a range, not a promise), and the top risks of acting.
+6. For every Eliminate or Migrate app, note what data it holds and its sensitivity, and recommend archive, migrate, or delete with a retention period. **Decision needed:** the data owner's disposition call.
+7. Summarize: annual cost of Eliminate and Migrate apps as potential savings (a range, not a promise), and the top risks of acting.
 
 ## Output
 
@@ -1728,12 +1737,13 @@ Append the shared output rules block verbatim.
 7. Savings stated as a range and checked with finance [[XW-012]]
 8. Vendor contract terms checked before any eliminate decision [[XW-013]]
 9. Retirement plan raised for each eliminate decision [[XW-009]] [[XW-010]]
-10. Decisions and approvers recorded [[XW-020]]
+10. Data held by each retiring app identified; archive, migrate, or delete agreed with the data owner [[XW-010]] [[XW-028]]
+11. Decisions and approvers recorded [[XW-020]]
 ```
 
 `sop.md`: sections Purpose, Scope, Roles (portfolio manager, app owners, finance partner, architecture), Frequency (yearly plus before budget cycle), Steps (numbered, matching checklist, tags kept), Evidence to retain, Related.
 
-`template.csv`: columns `app_id,name,category,owner,annual_cost,users,license_status,business_value,technical_fit,time_decision,reason,approver,date`.
+`template.csv`: columns `app_id,name,category,owner,annual_cost,users,license_status,data_sensitivity,data_held,data_disposition,business_value,technical_fit,time_decision,reason,approver,date`.
 
 `platform-guide.md`: where each field lives in ServiceNow APM (business applications, application portfolio assessments) and SAM Pro (entitlements, license positions), and in Flexera One (application inventory, license position). Fetch current docs with WebFetch first; use only confirmed names; cite URLs.
 
@@ -1764,7 +1774,7 @@ Claude-Session: https://claude.ai/code/session_01CxthZSoP1hm8J6w9VwKbX6"
 - Create: `methods/ai-intake/{method.md, checklist.md, sop.md, template.md, platform-guide.md, copilot-test.md, example/halden-ai-intake.md}`
 
 **Interfaces:**
-- Consumes: crosswalk rows XW-020–XW-024.
+- Consumes: crosswalk rows XW-020–XW-024, XW-028.
 - Produces: findings type `high_risk_ai`.
 
 - [ ] **Step 1: Write `method.md`**
@@ -1780,7 +1790,7 @@ You run intake for AI systems. Legal content last reviewed: 2026-09. Say so in y
 
 ## Steps
 
-1. Restate the use case: purpose, who is affected, what decisions it makes or supports, and whether a person reviews each output.
+1. Restate the use case: purpose, who is affected, what decisions it makes or supports, whether a person reviews each output, what data it uses, whether that includes personal data, and where the data came from.
 2. Check prohibited practices first. If one might apply, stop and say **Decision needed:** legal review before anything else.
 3. Check the high-risk areas (for example employment and worker management, access to essential services, education, law enforcement, critical infrastructure). Employment uses such as ranking or filtering job applicants are high-risk.
 4. Otherwise tier as limited-risk (people must be told they're dealing with AI, as with chatbots) or minimal-risk.
@@ -1802,19 +1812,20 @@ Append the shared output rules block verbatim.
 # AI intake checklist
 
 1. Use case restated: purpose, affected people, decisions, human review [[XW-021]]
-2. Prohibited practices ruled out, or escalated to legal [[XW-021]]
-3. Risk tier assigned with reasoning [[XW-021]]
-4. Required controls listed for the tier [[XW-024]]
-5. Supplier and model provider identified and assessed [[XW-023]]
-6. Record added to the AI inventory [[XW-022]]
-7. Risk entered in the risk register with an owner [[XW-024]]
-8. Approval decision and approver recorded [[XW-020]]
-9. Re-review date set, and triggered on any change of use [[XW-021]]
+2. Data used, personal data, and data provenance recorded [[XW-028]]
+3. Prohibited practices ruled out, or escalated to legal [[XW-021]]
+4. Risk tier assigned with reasoning [[XW-021]]
+5. Required controls listed for the tier [[XW-024]]
+6. Supplier and model provider identified and assessed [[XW-023]]
+7. Record added to the AI inventory [[XW-022]]
+8. Risk entered in the risk register with an owner [[XW-024]]
+9. Approval decision and approver recorded [[XW-020]]
+10. Re-review date set, and triggered on any change of use [[XW-021]]
 ```
 
 `sop.md`: sections Purpose, Scope, Roles (requesting team, AI governance lead, legal, security, data protection), Frequency (every new system; every change of use; yearly re-review), Steps (numbered, matching checklist, tags kept), Evidence to retain, Related. Include "Legal content last reviewed: 2026-09" under Purpose.
 
-`template.md`: inventory record fields: id, name, owner, purpose, affected people, decisions made or supported, human review, supplier, data used, risk tier, reasoning, required controls, approval, approver, date, next review.
+`template.md`: inventory record fields: id, name, owner, purpose, affected people, decisions made or supported, human review, supplier, data used, personal data (yes/no), data provenance, risk tier, reasoning, required controls, approval, approver, date, next review.
 
 `platform-guide.md`: where an AI inventory and AI risk assessments live in ServiceNow (AI governance / IRM capabilities) and how Flexera One can surface AI software and SaaS usage. Fetch current docs with WebFetch first; use only confirmed names; cite URLs.
 
@@ -1845,7 +1856,7 @@ Claude-Session: https://claude.ai/code/session_01CxthZSoP1hm8J6w9VwKbX6"
 - Create: `methods/access-review/{method.md, checklist.md, sop.md, template.csv, platform-guide.md, copilot-test.md, example/halden-access-review.md}`
 
 **Interfaces:**
-- Consumes: crosswalk rows XW-014–XW-020.
+- Consumes: crosswalk rows XW-014–XW-020, XW-028.
 - Produces: findings type `orphaned_account`.
 
 - [ ] **Step 1: Write `method.md`**
@@ -1862,12 +1873,13 @@ You prepare an application access review.
 ## Steps
 
 1. Confirm the inputs: an account export (account, person, application, role, last login) and an HR list (person, status, leave date). List missing columns as **Unverified:**.
-2. Match every account to a person. Accounts with no matching person, or whose person has left, are orphaned.
-3. Flag privileged roles (admin or equivalent) for owner re-approval.
-4. Flag accounts with no login in 90 days before the export date as dormant.
-5. Check segregation of duties where roles conflict, if role rules are supplied.
-6. Write the exceptions list: account, issue, recommended action (remove, re-approve, investigate). **Decision needed:** each removal, by the application owner.
-7. Write the evidence summary and a one-page auditor memo: scope, population, method, exceptions, actions, and the clauses satisfied (XW-016, XW-017, XW-018).
+2. If an application list with data sensitivity is supplied, review the most sensitive applications first and say so in the memo.
+3. Match every account to a person. Accounts with no matching person, or whose person has left, are orphaned.
+4. Flag privileged roles (admin or equivalent) for owner re-approval.
+5. Flag accounts with no login in 90 days before the export date as dormant.
+6. Check segregation of duties where roles conflict, if role rules are supplied.
+7. Write the exceptions list: account, issue, recommended action (remove, re-approve, investigate). **Decision needed:** each removal, by the application owner.
+8. Write the evidence summary and a one-page auditor memo: scope, population, method, exceptions, actions, and the clauses satisfied (XW-016, XW-017, XW-018).
 
 ## Output
 
@@ -1885,13 +1897,14 @@ Append the shared output rules block verbatim.
 
 1. Review scope set: applications, period, export date [[XW-016]]
 2. Account export and HR list obtained from the systems of record [[XW-016]]
-3. Every account matched to a person [[XW-015]]
-4. Orphaned and leaver accounts flagged for removal [[XW-017]]
-5. Privileged roles sent to owners for re-approval [[XW-018]]
-6. Dormant accounts flagged [[XW-016]]
-7. Role conflicts checked against segregation-of-duties rules [[XW-019]]
-8. Owners' decisions collected and actions completed [[XW-016]]
-9. Evidence pack and auditor memo filed [[XW-020]]
+3. Applications ordered by data sensitivity, most sensitive first [[XW-028]]
+4. Every account matched to a person [[XW-015]]
+5. Orphaned and leaver accounts flagged for removal [[XW-017]]
+6. Privileged roles sent to owners for re-approval [[XW-018]]
+7. Dormant accounts flagged [[XW-016]]
+8. Role conflicts checked against segregation-of-duties rules [[XW-019]]
+9. Owners' decisions collected and actions completed [[XW-016]]
+10. Evidence pack and auditor memo filed [[XW-020]]
 ```
 
 `sop.md`: sections Purpose, Scope, Roles (review coordinator, application owners, HR, IAM team, internal audit), Frequency (quarterly for privileged and in-scope systems; yearly for others), Steps (numbered, matching checklist, tags kept), Evidence to retain, Related.
@@ -1900,7 +1913,7 @@ Append the shared output rules block verbatim.
 
 `platform-guide.md`: how access reviews run in ServiceNow (IRM attestations or access certification capabilities) and where user-to-application data comes from; Flexera One's role (application usage data for dormant access). Fetch current docs with WebFetch first; use only confirmed names; cite URLs.
 
-`copilot-test.md`: attach `demo-estate/accounts.csv` and `employees.csv`; pass if ACC-019, ACC-063, ACC-104 are flagged orphaned.
+`copilot-test.md`: attach `demo-estate/accounts.csv`, `employees.csv`, and `apps.csv`; pass if ACC-019, ACC-063, ACC-104 are flagged orphaned.
 
 `example/halden-access-review.md`: passing Claude eval output.
 
@@ -2245,7 +2258,7 @@ Claude-Session: https://claude.ai/code/session_01CxthZSoP1hm8J6w9VwKbX6"
 ### Task 14b: Field guide (certifications, standards, glossary)
 
 **Files:**
-- Create: `field-guide/certifications.md`, `field-guide/standards.md`, `field-guide/glossary.md`, `site/field-guide.html`
+- Create: `field-guide/certifications.md`, `field-guide/standards.md`, `field-guide/data-governance.md`, `field-guide/glossary.md`, `site/field-guide.html`
 - Modify: `build/agk/scan.py` (add `"field-guide"` to `SCAN_DIRS` and `QUOTE_DIRS`), `tests/test_scan.py`, site nav in all pages
 
 - [ ] **Step 1: Extend the scan to the new folder (test first)**
@@ -2281,9 +2294,13 @@ End with: "Names are used for reference only. No affiliation with or endorsement
 
 `glossary.md`: 25–40 terms (ITAM, SAM, HAM, APM, CMDB, entitlement, effective license position, true-up, reconciliation, normalization, SWID tag, shelfware, TIME model, orphaned account, access certification, segregation of duties, risk tier, and so on). Each: one-sentence definition plus a one-line Halden Logistics example.
 
+- [ ] **Step 4b: Write `field-guide/data-governance.md`**
+
+In our own words: application governance manages the software (inventory, ownership, cost, licensing, access, lifecycle); data governance manages the information inside it (definitions, ownership and stewardship, quality, classification, retention, privacy). A two-column comparison table (what each asks, who owns it, main frameworks: ISO/IEC 19770, COBIT BAI09, ISO/IEC 27001 versus DAMA-DMBOK, ISO 8000, privacy law). Then the four places they meet, each with a Halden example and the kit tool that covers it: retiring an app is a data decision (rationalization); data sensitivity sets access-review priority (access review); AI systems depend on their data (AI intake); asset records are themselves data (XW-026, ITAM maturity check). End with: a full data classification and retention tool is planned for phase 2.
+
 - [ ] **Step 5: Build the page and check**
 
-Add `site/field-guide.html` (same rules as Task 14 Step 5) with three sections rendered from the three Markdown files, and add it to every page's nav. Run `make build && make scan`; expect `build ok` and `scan clean`. Hand the three Markdown files to Eve as a redline session; apply her edits verbatim.
+Add `site/field-guide.html` (same rules as Task 14 Step 5) with four sections rendered from the four Markdown files, and add it to every page's nav. Run `make build && make scan`; expect `build ok` and `scan clean`. Hand the four Markdown files to Eve as a redline session; apply her edits verbatim.
 
 - [ ] **Step 6: Commit**
 
