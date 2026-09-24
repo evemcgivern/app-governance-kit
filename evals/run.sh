@@ -11,13 +11,25 @@ prompt="$(cat "$skill")
 
 $(cat "$root/evals/prompts/$tool.txt")"
 work="$(mktemp -d)"
-trap "rm -rf '$work'" EXIT
+iso_home="$(mktemp -d)"
+trap "rm -rf '$work' '$iso_home'" EXIT
 find "$root/demo-estate" -maxdepth 1 -type f ! -name answer-key.json ! -name generate.py -exec cp {} "$work" \;
 find "$(dirname "$skill")" -maxdepth 1 -type f ! -name SKILL.md -exec cp {} "$work" \;
 cd "$work"
 case "$runner" in
-  claude) claude -p --allowedTools Read -- "$prompt" > "$out" ;;
-  codex)  codex exec --sandbox read-only --skip-git-repo-check --ignore-user-config -- "$prompt" > "$out" ;;
+  # --safe-mode disables CLAUDE.md, personal skills, installed plugins, hooks,
+  # MCP servers, custom commands/agents (auth still works normally).
+  claude) claude -p --safe-mode --allowedTools Read -- "$prompt" > "$out" ;;
+  # Codex has no equivalent single flag: --ignore-user-config only skips
+  # $CODEX_HOME/config.toml, not the personal skill directories under $HOME.
+  # Isolate with a throwaway HOME, and make ONLY the login credential
+  # available there via symlink (never copied, never logged).
+  codex)
+    mkdir -p "$iso_home/.codex"
+    ln -s "$HOME/.codex/auth.json" "$iso_home/.codex/auth.json"
+    env -i HOME="$iso_home" CODEX_HOME="$iso_home/.codex" PATH="$PATH" TERM="${TERM:-xterm}" \
+      codex exec --sandbox read-only --skip-git-repo-check -- "$prompt" > "$out"
+    ;;
   *) echo "runner must be claude or codex" >&2; exit 2 ;;
 esac
 cd "$root"
