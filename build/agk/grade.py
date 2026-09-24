@@ -39,9 +39,8 @@ def grade(findings: set[tuple[str, str]], key: list[dict], tool: str) -> dict:
     expected = {(k["type"], _norm(k["id"])) for k in key if k["tool"] == tool}
     if not expected:
         raise GradeError(f"no answer-key entries for tool {tool!r}")
-    types = {t for t, _ in expected}
     missed = sorted(expected - findings)
-    extra = sorted(f for f in findings - expected if f[0] in types)
+    extra = sorted(findings - expected)
     return {"passed": not missed and len(extra) <= MAX_EXTRA,
             "missed": [list(m) for m in missed], "extra": [list(e) for e in extra]}
 
