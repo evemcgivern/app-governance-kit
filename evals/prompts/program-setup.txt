@@ -1,0 +1,1 @@
+Review council-draft.md as a charter for a software governance council. In the findings block report each gap as {"type": "charter_gap", "id": "<slug>"}, using these slugs where they apply: decision-rights, sponsor, membership-size, intake-path, cadence, metrics, escalation.

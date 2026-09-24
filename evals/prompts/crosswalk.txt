@@ -1,0 +1,1 @@
+Map each control in controls.md to crosswalk rows. In the findings block, report each match as {"type": "crosswalk_match", "id": "<control>:<XW id>"}, using only the single best row per control.

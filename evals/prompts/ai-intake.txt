@@ -1,0 +1,1 @@
+Run intake for every system in ai-systems.csv. In the findings block report each system you tier high-risk as {"type": "high_risk_ai", "id": "AI-n"}.

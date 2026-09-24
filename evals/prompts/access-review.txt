@@ -1,0 +1,1 @@
+Review accounts.csv against employees.csv, using apps.csv for data sensitivity. In the findings block report each orphaned account as {"type": "orphaned_account", "id": "ACC-n"}.

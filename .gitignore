@@ -3,3 +3,4 @@ __pycache__/
 *.redline.html
 .DS_Store
 .superpowers/
+evals/results/*.md
