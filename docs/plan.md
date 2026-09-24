@@ -18,7 +18,7 @@ We build this in five stretches.
 2. **The fake company (Task 5):** Halden Logistics, with 60 apps, licenses, staff accounts, AI systems, and a maturity questionnaire. Known problems are hidden in it, including a flawed draft charter for a software governance council, and an answer key records them. A grader (Task 6) scores each tool against that key.
 3. **The six tools (Tasks 7–11b):** the crosswalk first, because every other tool's steps point at it. A research agent checks every clause number against the standards' public tables of contents and records a source per row; Eve reads the evidence and confirms. The build won't accept an unchecked row.
 4. **The extras (Tasks 13 and 14g):** Word/Excel exports of each checklist, SOP, and template, and a governance advisor that answers framework questions and reviews documents in Claude, Codex, and Copilot.
-5. **The public face (Tasks 14–16):** the site with a clickable application lifecycle wheel (each stage's rules, gate, hand-offs, owner, and questions, linked to the tools and crosswalk, plus a short explanation of how it all works together), a field guide (CAMP, CSAM, CHAMP, and AIGP and how each applies on the job, plus where data governance fits), a six-exercise Halden practicum you can do in the browser (with a "Try it in 2 minutes" link on every page for hiring managers), three case studies from interviews with Eve, and the go-public checklist. The repo goes public only when Eve says so.
+5. **The public face (Tasks 14–16):** the site with a clickable application lifecycle wheel (each stage's rules, gate, hand-offs, owner, and questions, linked to the tools and crosswalk, plus a short explanation of how it all works together; rules and questions link to each other across stages — refers to, may impact, blocks, leads to — with a "show what this affects" overlay), a field guide (CAMP, CSAM, CHAMP, and AIGP and how each applies on the job, plus where data governance fits), a six-exercise Halden practicum you can do in the browser (with a "Try it in 2 minutes" link on every page for hiring managers), three case studies from interviews with Eve, and the go-public checklist. The repo goes public only when Eve says so.
 
 Timing: Tasks 1–6 take about two evenings. Each tool takes one or two evenings, mostly Eve's review time. The site and case studies take about a week of evenings.
 
@@ -2834,6 +2834,208 @@ In `site/index.html` (ui-engineer; same page rules as Task 14): put the "How it 
 ```bash
 git add -A
 git commit -m "feat(site): add lifecycle rules and hand-offs" -m "Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01CKmdKvLPfRcNM16k2jQo1H"
+```
+
+---
+
+### Task 14h: Linked steps and the "what this affects" overlay
+
+Follows the UX designer's recommendation (accepted by Eve with the overlay).
+
+**Files:**
+- Create: `build/agk/links.py`, `tests/test_links.py`, `lifecycle/links.csv`
+- Modify: `build/agk/lifecycle.py` (question and rule ids), `tests/test_lifecycle.py`, `tests/test_lifecycle_stages.py`, `tests/test_build.py`, `lifecycle/questions.csv`, `lifecycle/stages.md`, `build/agk/build.py`, `site/index.html`
+
+**Interfaces:**
+- Consumes: `load_questions`, `load_stages`, `render_checklist`, `STAGES` (Tasks 14c, 14d); `inject_data` (Task 14).
+- Produces: question rows gain `id` (pattern `q-<stage>-<word>`), rules gain `id` (pattern `r-<stage>-<word>`); `TYPES` (type → (forward label, reverse label)); `LinkError(Exception)`; `link_items(questions: list[dict], stages: dict) -> dict[str, dict]` (id → `{stage, kind, text}`; stage slugs are items too, kind `stage`); `load_links(path: Path, items: dict) -> dict[str, list[dict]]` (id → list of `{label, type, target, note, inverse}`); `render_checklist(rows, stages=None, links=None, items=None)`. The `LC` payload becomes `[{"questions", "stages", "items", "links"}]`.
+
+- [ ] **Step 1: Ids on questions and rules (tests first)**
+
+`load_questions`: `COLUMNS` becomes `("id", "stage", "question", "tool", "xw")`; each id must match `^q-[a-z0-9-]+$` (error `line {n}: bad id {id!r}`) and be unique (error `line {n}: duplicate id {id}`). In `tests/test_lifecycle.py`, change `HEADER` to `"id,stage,question,tool,xw\n"`, give every fixture row a leading unique id (e.g. `q-{slug}-1` in `full_bank`, `q-plan-9` for added rows), and add tests for a bad id and a duplicate id. Update the lifecycle rows in `tests/test_build.py` the same way.
+
+`load_stages`: every rule line must be `- {#r-...} text [[XW-NNN]]`; parse the id with `^- \{#(r-[a-z0-9-]+)\} ` (error `{slug}: rule has no id: ...`), store it as `"id"` in the rule dict, and strip the `{#...}` from `text`. Rule ids must be unique across all stages (error `duplicate rule id {id}`). In `tests/test_lifecycle_stages.py`, change the default rule to `"- {#r-x} Nothing skips intake. [[XW-027]]"` (make ids unique per stage, e.g. `{#r-" + slug + "-1}`), and add tests for a missing id and a duplicate id. `render_checklist` output is unchanged except rule text no longer shows the `{#...}` marker.
+
+Run: `PYTHONPATH=build python3 -m unittest tests.test_lifecycle tests.test_lifecycle_stages -v` — new tests fail first, then pass after the change.
+
+- [ ] **Step 2: Write the failing link tests**
+
+`tests/test_links.py`:
+
+```python
+import tempfile
+import unittest
+from pathlib import Path
+
+from agk.links import TYPES, LinkError, link_items, load_links
+
+QUESTIONS = [{"id": "q-plan-data", "stage": "plan", "question": "What data will it hold?", "tool": "t", "xw": "XW-028"}]
+STAGES = {"retire": {"rules": [{"id": "r-retire-data", "text": "Decide the data's fate.", "xw": ["XW-028"]}]},
+          "acquire": {"rules": [{"id": "r-acquire-exit", "text": "Review exit terms.", "xw": ["XW-013"]}]}}
+HEADER = "from_id,type,to_id,note\n"
+
+
+class LinkTests(unittest.TestCase):
+    def setUp(self):
+        self.items = link_items(QUESTIONS, STAGES)
+
+    def write(self, rows: str) -> Path:
+        p = Path(tempfile.mkdtemp()) / "links.csv"
+        p.write_text(HEADER + rows, encoding="utf-8")
+        return p
+
+    def test_items_index_questions_rules_and_stages(self):
+        self.assertEqual(self.items["q-plan-data"], {"stage": "plan", "kind": "question", "text": "What data will it hold?"})
+        self.assertEqual(self.items["r-retire-data"]["kind"], "rule")
+        self.assertEqual(self.items["optimize"]["kind"], "stage")
+
+    def test_duplicate_item_id_fails(self):
+        with self.assertRaisesRegex(LinkError, "id r-retire-data used twice"):
+            link_items(QUESTIONS + [{"id": "r-retire-data", "stage": "plan", "question": "Q", "tool": "t", "xw": "x"}], STAGES)
+
+    def test_forward_and_generated_reverse(self):
+        links = load_links(self.write('r-retire-data,refers_to,q-plan-data,"fate depends on sensitivity"\n'), self.items)
+        self.assertEqual(links["r-retire-data"], [{"label": "Refers to", "type": "refers_to", "target": "q-plan-data",
+                                                   "note": "fate depends on sensitivity", "inverse": False}])
+        self.assertEqual(links["q-plan-data"][0]["label"], "Referenced by")
+        self.assertTrue(links["q-plan-data"][0]["inverse"])
+
+    def test_every_type_has_a_reverse_label(self):
+        self.assertEqual(set(TYPES), {"refers_to", "may_impact", "blocks", "leads_to"})
+        self.assertEqual(TYPES["blocks"], ("Blocks", "Blocked by"))
+
+    def test_unknown_type_fails(self):
+        with self.assertRaisesRegex(LinkError, "line 2: unknown link type 'causes'"):
+            load_links(self.write("r-retire-data,causes,q-plan-data,x\n"), self.items)
+
+    def test_unknown_step_fails(self):
+        with self.assertRaisesRegex(LinkError, "line 2: unknown step 'r-nope'"):
+            load_links(self.write("r-nope,blocks,q-plan-data,x\n"), self.items)
+
+    def test_self_link_fails(self):
+        with self.assertRaisesRegex(LinkError, "links to itself"):
+            load_links(self.write("q-plan-data,refers_to,q-plan-data,x\n"), self.items)
+
+    def test_leads_to_only_between_stages(self):
+        self.assertIn("optimize", load_links(self.write("optimize,leads_to,plan,reinvest\n"), self.items))
+        with self.assertRaisesRegex(LinkError, "leads_to links stages only"):
+            load_links(self.write("r-retire-data,leads_to,plan,x\n"), self.items)
+
+    def test_duplicate_link_fails(self):
+        with self.assertRaisesRegex(LinkError, "line 3: duplicate link"):
+            load_links(self.write("r-acquire-exit,may_impact,r-retire-data,x\nr-acquire-exit,may_impact,r-retire-data,y\n"), self.items)
+
+    def test_wrong_columns_fail(self):
+        p = Path(tempfile.mkdtemp()) / "links.csv"
+        p.write_text("from,to\na,b\n")
+        with self.assertRaisesRegex(LinkError, "columns"):
+            load_links(p, self.items)
+```
+
+Run: `PYTHONPATH=build python3 -m unittest tests.test_links -v` → FAIL (no module).
+
+- [ ] **Step 3: Implement `build/agk/links.py`**
+
+```python
+import csv
+from pathlib import Path
+
+from agk.lifecycle import STAGES
+
+TYPES = {
+    "refers_to": ("Refers to", "Referenced by"),
+    "may_impact": ("May impact", "May be impacted by"),
+    "blocks": ("Blocks", "Blocked by"),
+    "leads_to": ("Leads to", "Led from"),
+}
+COLUMNS = ("from_id", "type", "to_id", "note")
+
+
+class LinkError(Exception):
+    pass
+
+
+def link_items(questions: list[dict], stages: dict) -> dict[str, dict]:
+    items: dict[str, dict] = {slug: {"stage": slug, "kind": "stage", "text": label} for slug, label in STAGES}
+
+    def add(item_id: str, entry: dict) -> None:
+        if item_id in items:
+            raise LinkError(f"id {item_id} used twice")
+        items[item_id] = entry
+
+    for q in questions:
+        add(q["id"], {"stage": q["stage"], "kind": "question", "text": q["question"]})
+    for slug, info in stages.items():
+        for r in info["rules"]:
+            add(r["id"], {"stage": slug, "kind": "rule", "text": r["text"]})
+    return items
+
+
+def load_links(path: Path, items: dict[str, dict]) -> dict[str, list[dict]]:
+    with open(path, newline="", encoding="utf-8-sig") as f:
+        reader = csv.DictReader(f)
+        if tuple(reader.fieldnames or ()) != COLUMNS:
+            raise LinkError(f"columns must be {','.join(COLUMNS)}; got {reader.fieldnames}")
+        out: dict[str, list[dict]] = {}
+        seen = set()
+        for n, row in enumerate(reader, start=2):
+            a, kind, b, note = ((row.get(c) or "").strip() for c in COLUMNS)
+            if kind not in TYPES:
+                raise LinkError(f"line {n}: unknown link type {kind!r}")
+            for step in (a, b):
+                if step not in items:
+                    raise LinkError(f"line {n}: unknown step {step!r}")
+            if a == b:
+                raise LinkError(f"line {n}: {a} links to itself")
+            if kind == "leads_to" and not (items[a]["kind"] == items[b]["kind"] == "stage"):
+                raise LinkError(f"line {n}: leads_to links stages only")
+            if (a, kind, b) in seen:
+                raise LinkError(f"line {n}: duplicate link")
+            seen.add((a, kind, b))
+            forward, reverse = TYPES[kind]
+            out.setdefault(a, []).append({"label": forward, "type": kind, "target": b, "note": note, "inverse": False})
+            out.setdefault(b, []).append({"label": reverse, "type": kind, "target": a, "note": note, "inverse": True})
+    return out
+```
+
+Run the link tests → 10 PASS.
+
+- [ ] **Step 4: Links in the checklist and the build**
+
+`render_checklist(rows, stages=None, links=None, items=None)`: after each rule line and each question line, when `links` has entries for that id, add indented plain bullets (not steps) — `  - {label}: {stage label} — {target text}` where the stage label comes from `STAGES` and the text from `items`. Add a test in `tests/test_lifecycle_stages.py` that a rule with a "blocks" link shows `  - Blocks: Operate — ...` under it, and the target shows `  - Blocked by: ...`.
+
+In `build/agk/build.py`, after stages load: if `lifecycle/links.csv` exists, `items = link_items(questions, stages["stages"])`, `links = load_links(...)` (errors prefixed `lifecycle links:`); pass both to `render_checklist`; inject `[{"questions": questions, "stages": stages, "items": items, "links": links}]` under `LC`. Add a build test with a two-row `links.csv` that checks the rendered checklist contains a reverse label, and one with a bad link that checks the error prefix.
+
+Run the full suite → all PASS.
+
+- [ ] **Step 5: Content**
+
+Add an `id` to every row of `lifecycle/questions.csv` (`q-<stage>-<one or two words>`, e.g. `q-plan-duplicate`, `q-retire-data`) and a `{#r-<stage>-<word>}` marker to every rule in `lifecycle/stages.md`.
+
+Write `lifecycle/links.csv` with 20–30 links. Include at least: the three loops as `leads_to` (optimize → plan, optimize → retire, retire → plan); acquire's contract-terms rule `may_impact` retire's contract-ending question; deploy's inventory rule `blocks` operate's access-review question; retire's data question `refers_to` plan's data-sensitivity question; acquire's AI-supplier rule `refers_to` plan's AI-tier question; optimize's cost question `may_impact` plan's reuse question. Use `blocks` only for real gate dependencies. Every note is one short sentence in plain words.
+
+Run `make build && make scan` → `build ok`, `scan clean`. Hand `links.csv` (rendered as a readable table) to Eve as a redline session; apply her edits verbatim.
+
+- [ ] **Step 6: Navigation and overlay on the wheel** (ui-engineer; same page rules as Task 14)
+
+- In the stage panel, under each rule and question, list its links as real anchors whose text reads "`<label>`: `<Stage>` — `<target text>`" (e.g. "Blocks: Operate — Is access reviewed on schedule…"). Never rely on color or icons alone.
+- Every rule and question has an element id equal to its item id and a heading-level focus target (`tabindex="-1"`). Address format: `#<stage>/<item-id>` (a stage alone: `#<stage>`).
+- Following a link: `history.pushState` the new address; select the target stage; scroll the target into view; move focus to it; flash a highlight for about 600ms (none when `prefers-reduced-motion` is set); announce "Now viewing `<Stage>`: `<text>`" in an `aria-live="polite"` region; show a one-step "← Back to `<Stage>`: `<source text>`" link above the panel content (only when reached through a link).
+- The browser back and forward buttons restore the previous stage and item (`popstate`). Loading the page with an address opens that stage and item with no back link.
+- The wheel draws only the stage order plus the three `leads_to` loops, labelled.
+- **"Show what this affects" toggle** in the panel (a real button with `aria-pressed`, off by default, not remembered): when on, dims the wheel's other segments and lights up every stage linked to or from the current stage's rules and questions, with a small legend counting links by type (e.g. "Blocks 1 · May impact 2 · Refers to 3"). Turning it off or changing stage resets it. It must work at 360px and with keyboard only; the linked-stage list is also given as text next to the legend.
+- Tap targets at least 44px on phones.
+
+- [ ] **Step 7: Check it**
+
+Run `make build && make scan`. Dispatch the qa-explorer agent: follow five links of different types and back again with the in-panel back link and the browser back button; load a deep link directly; use the overlay on three stages; repeat keyboard-only and at 360px; formalize the path as a Playwright script under `evals/site/`. Dispatch the accessibility-auditor agent on `site/index.html`; fix every serious or critical finding.
+
+- [ ] **Step 8: Commit**
+
+```bash
+git add -A
+git commit -m "feat(site): link lifecycle steps and overlay" -m "Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
 Claude-Session: https://claude.ai/code/session_01CKmdKvLPfRcNM16k2jQo1H"
 ```
 
