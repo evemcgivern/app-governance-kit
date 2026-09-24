@@ -65,3 +65,37 @@ class ScanTests(unittest.TestCase):
         (self.tmp / "methods" / "a.md").write_text("Clean text\n")
         with mock.patch.dict(os.environ, {"AGK_PRIVATE_WORDS": str(words)}):
             self.assertEqual(main(["--root", str(self.tmp)]), 0)
+
+    def test_long_quote_wrapped_across_lines(self):
+        # 16-word quote split over two lines should be flagged with first line number
+        text = 'Say "word ' + " ".join(["word"] * 14) + '\nmore"\n'
+        hits = long_quotes(text, "f")
+        self.assertEqual(len(hits), 1)
+        self.assertTrue(hits[0].startswith("f:1:"))
+
+    def test_long_blockquote_wrapped_across_lines(self):
+        # 16-word blockquote over three lines should be flagged once with first line number
+        text = "> word " + " ".join(["word"] * 9) + "\n> " + " ".join(["word"] * 6) + "\n"
+        hits = long_quotes(text, "f")
+        self.assertEqual(len(hits), 1)
+        self.assertTrue(hits[0].startswith("f:1:"))
+
+    def test_multiple_short_quotes_in_separate_paragraphs(self):
+        # Two separate paragraphs with short quotes should not be flagged
+        text = 'First: "short" quote.\n\nSecond: "also short" text.\n'
+        hits = long_quotes(text, "f")
+        self.assertEqual(len(hits), 0)
+
+    def test_scan_flags_pdf_as_unreadable(self):
+        # A PDF file should produce a "cannot scan" hit
+        (self.tmp / "dist").mkdir()
+        (self.tmp / "dist" / "report.pdf").write_bytes(b"%PDF-1.4")
+        hits = scan(self.tmp, ["dummy"])
+        self.assertTrue(any("report.pdf" in h and "cannot scan" in h for h in hits))
+
+    def test_scan_allows_png_image(self):
+        # A PNG file should not produce any errors
+        (self.tmp / "site").mkdir()
+        (self.tmp / "site" / "logo.png").write_bytes(b"\x89PNG\r\n\x1a\n")
+        hits = scan(self.tmp, ["dummy"])
+        self.assertFalse(any("logo.png" in h for h in hits))
