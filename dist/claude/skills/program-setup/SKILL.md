@@ -26,7 +26,7 @@ If given a draft charter, review it against the steps below and report gaps. Oth
 
 ## Output
 
-Draft mode: the charter from `template.md`, the decision-rights table, and the 90-day plan. Review mode: a gap table (step, what's missing, why it matters, fix). Either way, end with the findings block: one `charter_gap` per gap found, using the slugs decision-rights, sponsor, membership-size, intake-path, cadence, metrics, escalation. Those seven are the only slugs a `charter_gap` finding may use; a gap that doesn't fit one of them still belongs in the gap table, just not in the findings block.
+Draft mode: the charter from [`template.md`](template.md), the decision-rights table, and the 90-day plan. Review mode: a gap table (step, what's missing, why it matters, fix). Either way, end with the findings block: one `charter_gap` per gap found, using the slugs decision-rights, sponsor, membership-size, intake-path, cadence, metrics, escalation. Those seven are the only slugs a `charter_gap` finding may use; a gap that doesn't fit one of them still belongs in the gap table, just not in the findings block.
 
 Present any drafted charter wording as plain text or in a table, not in quotation marks.
 
@@ -35,7 +35,7 @@ Present any drafted charter wording as plain text or in a table, not in quotatio
 - Show the reasoning behind each conclusion.
 - Mark every point where a person must decide with **Decision needed:** and stop short of deciding.
 - Flag any figure you could not verify from the input with **Unverified:**.
-- Cite framework clauses by number from `crosswalk.csv`. Paraphrase; never quote standards text.
+- Cite framework clauses by number from [`crosswalk.csv`](../crosswalk/crosswalk.csv). Paraphrase; never quote standards text.
 - End your answer with a fenced block labelled `findings` containing a JSON list of `{"type": ..., "id": ...}` objects, as the task describes. Use `[]` when there are none.
 
 ## Reference files

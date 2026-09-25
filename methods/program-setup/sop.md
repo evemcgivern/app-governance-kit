@@ -46,8 +46,8 @@ Design the intake log, decision log, and metrics review so each is a direct by-p
 
 ## Related
 
-- **Governance framework crosswalk** (`crosswalk`) — supplies the framework rows this program's charter and decision rights map to.
-- **ITAM maturity check** (`itam-maturity`) — its governance area score depends on this program's charter, sponsor, and decision rights being in place.
-- **Application rationalization** (`rationalization`) — brings its consolidate/retain/retire recommendations to this body for decisions above threshold.
-- **AI system intake and risk tiering** (`ai-intake`) — routes high-risk and prohibited-practice findings to this body for the sponsor and legal decision it flags.
-- **Access review pack** (`access-review`) — reports its exceptions to the sponsor and owner roles this program names.
+- [**Governance framework crosswalk**](../crosswalk/) (`crosswalk`) — supplies the framework rows this program's charter and decision rights map to.
+- [**ITAM maturity check**](../itam-maturity/) (`itam-maturity`) — its governance area score depends on this program's charter, sponsor, and decision rights being in place.
+- [**Application rationalization**](../rationalization/) (`rationalization`) — brings its consolidate/retain/retire recommendations to this body for decisions above threshold.
+- [**AI system intake and risk tiering**](../ai-intake/) (`ai-intake`) — routes high-risk and prohibited-practice findings to this body for the sponsor and legal decision it flags.
+- [**Access review pack**](../access-review/) (`access-review`) — reports its exceptions to the sponsor and owner roles this program names.

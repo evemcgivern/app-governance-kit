@@ -4,6 +4,7 @@ import sys
 from pathlib import Path
 
 from agk.crosswalk import CrosswalkError, load_crosswalk
+from agk.doclinks import broken_doc_links
 from agk.methods import MethodError, load_method, method_dirs
 from agk.render import (render_claude, render_claude_manifest, render_codex,
                         render_codex_agents, render_copilot)
@@ -34,6 +35,7 @@ def build(root: Path) -> tuple[list[str], list[str]]:
     for m in methods:
         for f in ("checklist.md", "sop.md"):
             errors += check_tags((m.dir / f).read_text(encoding="utf-8"), known, f"{m.name}/{f}")
+    errors += [f"doc link: {b}" for b in broken_doc_links(methods_dir)]
     if errors:
         return errors, warnings
     if dist.exists():

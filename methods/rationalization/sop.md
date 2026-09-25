@@ -44,8 +44,8 @@ A full rationalization every year, plus a lighter pass before each budget cycle.
 
 ## Related
 
-- Governance framework crosswalk (`crosswalk`)
-- ITAM maturity check (`itam-maturity`)
-- AI system intake and risk tiering (`ai-intake`)
-- Access review pack (`access-review`)
-- Stand up a governance program (`program-setup`)
+- [Governance framework crosswalk](../crosswalk/) (`crosswalk`)
+- [ITAM maturity check](../itam-maturity/) (`itam-maturity`)
+- [AI system intake and risk tiering](../ai-intake/) (`ai-intake`)
+- [Access review pack](../access-review/) (`access-review`)
+- [Stand up a governance program](../program-setup/) (`program-setup`)

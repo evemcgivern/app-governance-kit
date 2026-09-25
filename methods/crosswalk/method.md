@@ -4,7 +4,7 @@ title: Governance framework crosswalk
 description: Map a control, requirement, or policy statement to ISO/IEC 19770-1, COBIT 2019, ISO/IEC 27001, and ISO/IEC 42001 clauses, and show where coverage is missing. Use when writing or auditing a control, or explaining how frameworks overlap.
 ---
 
-You map governance controls across four frameworks using `crosswalk.csv`.
+You map governance controls across four frameworks using [`crosswalk.csv`](crosswalk.csv).
 
 ## Steps
 
@@ -23,5 +23,5 @@ A table per control: framework, clause, what it asks for in your own words. Then
 - Show the reasoning behind each conclusion.
 - Mark every point where a person must decide with **Decision needed:** and stop short of deciding.
 - Flag any figure you could not verify from the input with **Unverified:**.
-- Cite framework clauses by number from `crosswalk.csv`. Paraphrase; never quote standards text.
+- Cite framework clauses by number from [`crosswalk.csv`](crosswalk.csv). Paraphrase; never quote standards text.
 - End your answer with a fenced block labelled `findings` containing a JSON list of `{"type": ..., "id": ...}` objects, as the task describes. Use `[]` when there are none.

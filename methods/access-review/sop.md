@@ -43,8 +43,8 @@ Quarterly for privileged accounts and other in-scope systems holding confidentia
 
 ## Related
 
-- **Governance framework crosswalk** (`crosswalk`) — supplies the framework rows this review's exceptions and evidence map to.
-- **ITAM maturity check** (`itam-maturity`) — its security area score draws on how consistently this review runs.
-- **Application rationalization** (`rationalization`) — takes over an application once this review flags it as a retirement or migration candidate for its data disposition.
-- **AI system intake and risk tiering** (`ai-intake`) — this review covers who can use or administer an AI system once intake has approved it.
-- **Stand up a governance program** (`program-setup`) — stands up the sponsor and owner roles this review reports its exceptions to.
+- [**Governance framework crosswalk**](../crosswalk/) (`crosswalk`) — supplies the framework rows this review's exceptions and evidence map to.
+- [**ITAM maturity check**](../itam-maturity/) (`itam-maturity`) — its security area score draws on how consistently this review runs.
+- [**Application rationalization**](../rationalization/) (`rationalization`) — takes over an application once this review flags it as a retirement or migration candidate for its data disposition.
+- [**AI system intake and risk tiering**](../ai-intake/) (`ai-intake`) — this review covers who can use or administer an AI system once intake has approved it.
+- [**Stand up a governance program**](../program-setup/) (`program-setup`) — stands up the sponsor and owner roles this review reports its exceptions to.
