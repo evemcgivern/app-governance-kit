@@ -15,24 +15,19 @@ Six certifications come up most often around this kit's three areas — portfoli
 
 The comparison above lines up the certifications' own attributes. This one lines up on-the-job tasks instead — which certifications actually teach the skill a task needs, independent of which kit tool applies (the per-certification sections below already name those). Three tasks are taught by more than one certification; the rest are each one certification's specialty.
 
-**Tasks taught by more than one certification:**
+| On-the-job task | CAMP | CSAM | CHAMP | AIGP | ITIL 4 Foundation | IAM Certificate |
+|---|---|---|---|---|---|---|
+| Stand up program governance and policy | ✓ | | | | | ✓ |
+| Baseline or score ITAM process maturity | ✓ | ✓ | ✓ | | | ✓ |
+| Assign real ownership across the inventory | ✓ | | | | | |
+| Establish a license position before a vendor audit | | ✓ | | | | |
+| Find and consolidate duplicate or underused assets | | ✓ | | | | ✓ |
+| Retire hardware and track refresh cost | | | ✓ | | | |
+| Manage vendor and contract relationships | | | | | ✓ | |
+| Tier, log, and control a new AI use case | | | | ✓ | | |
+| Govern the technical change or release itself | | | | | ✓* | |
 
-| On-the-job task | Certifications |
-|---|---|
-| Stand up program governance and policy | CAMP, IAM Certificate |
-| Baseline or score ITAM process maturity | CAMP, CSAM, CHAMP, IAM Certificate |
-| Find and consolidate duplicate or underused assets | CSAM, IAM Certificate |
-
-**Specialty tasks, one certification each:**
-
-| On-the-job task | Certification |
-|---|---|
-| Assign real ownership across the inventory | CAMP |
-| Establish a license position before a vendor audit | CSAM |
-| Retire hardware and track refresh cost | CHAMP |
-| Manage vendor and contract relationships | ITIL 4 Foundation |
-| Tier, log, and control a new AI use case | AIGP |
-| Govern the technical change or release itself | ITIL 4 Foundation (out of this kit's scope — see the ITIL 4 Foundation section below) |
+\* ITIL 4 Foundation teaches this — out of this kit's own tool scope; see the ITIL 4 Foundation section below.
 
 ## Certified Asset Management Professional (CAMP)
 
