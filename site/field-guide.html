@@ -36,21 +36,24 @@
     <h2 id="cert-heading">Certifications</h2>
     <p class="prose">Six certifications come up most often around this kit's three areas — portfolio, AI, and access. This states what each one actually covers and ties it to a task the kit's tools already do. It isn't a study guide, and it isn't a recommendation to sit any particular exam.</p>
 
-    <nav class="fg-jumpnav" id="cert-nav" aria-label="Certifications quick navigation">
-      <p class="fg-jumpnav__label">Jump to:</p>
-      <ul>
-        <li><a href="#cert-compare">Comparison table</a></li>
-        <li><a href="#cert-task-matrix">Task matrix</a></li>
-        <li><a href="#cert-camp">CAMP</a></li>
-        <li><a href="#cert-csam">CSAM</a></li>
-        <li><a href="#cert-champ">CHAMP</a></li>
-        <li><a href="#cert-aigp">AIGP</a></li>
-        <li><a href="#cert-itil4">ITIL 4 Foundation</a></li>
-        <li><a href="#cert-iam">IAM Certificate</a></li>
-      </ul>
-    </nav>
+    <div class="fg-layout">
+      <nav class="fg-jumpnav" id="cert-nav" aria-label="Certifications quick navigation">
+        <p class="fg-jumpnav__label">Jump to:</p>
+        <ul>
+          <li><a href="#cert-compare">Comparison table</a></li>
+          <li><a href="#cert-task-matrix">Task matrix</a></li>
+          <li><a href="#cert-suggested-order">Suggested order for someone new</a></li>
+          <li><a href="#cert-camp">CAMP</a></li>
+          <li><a href="#cert-csam">CSAM</a></li>
+          <li><a href="#cert-champ">CHAMP</a></li>
+          <li><a href="#cert-aigp">AIGP</a></li>
+          <li><a href="#cert-itil4">ITIL 4 Foundation</a></li>
+          <li><a href="#cert-iam">IAM Certificate</a></li>
+        </ul>
+      </nav>
 
-    <div class="table-scroll" id="cert-compare">
+      <div class="fg-content">
+        <div class="table-scroll" id="cert-compare">
       <table>
         <caption class="visually-hidden">Certification comparison at a glance</caption>
         <thead><tr><th>Certification</th><th>Governing body</th><th>Best for</th><th>Typical domains</th><th>Pros</th><th>Cons</th></tr></thead>
@@ -64,6 +67,7 @@
         </tbody>
       </table>
     </div>
+    <p class="meta"><a href="#cert-nav"><span aria-hidden="true">&uarr; </span>Back to certification list</a> · <a href="#main">Back to top</a></p>
 
     <h3 id="cert-task-matrix">Cross-certification task matrix</h3>
     <p class="prose">The comparison above lines up the certifications' own attributes. This one lines up on-the-job tasks instead — which certifications actually teach the skill a task needs, independent of which kit tool applies (the per-certification sections below already name those). Three tasks are taught by more than one certification; the rest are each one certification's specialty.</p>
@@ -86,6 +90,7 @@
       </table>
     </div>
     <p class="prose">* ITIL 4 Foundation teaches this — out of this kit's own tool scope; see the ITIL 4 Foundation section below.</p>
+    <p class="meta"><a href="#cert-nav"><span aria-hidden="true">&uarr; </span>Back to certification list</a> · <a href="#main">Back to top</a></p>
 
     <h3 id="cert-camp" class="cert-anchor">Certified Asset Management Professional (CAMP)</h3>
     <p class="prose"><strong>Who it's for:</strong> people new to IT asset management who need the foundational program and process picture before they specialize.</p>
@@ -99,7 +104,7 @@
         <tr><td>Get real ownership assigned across the inventory</td><td>Every application has a named owner, not "unassigned"</td><td><a href="tools.html#rationalization">rationalization</a></td></tr>
       </tbody>
     </table>
-    <p class="meta"><a href="#cert-nav"><span aria-hidden="true">&uarr; </span>Back to certification list</a></p>
+    <p class="meta"><a href="#cert-nav"><span aria-hidden="true">&uarr; </span>Back to certification list</a> · <a href="#main">Back to top</a></p>
 
     <h3 id="cert-csam" class="cert-anchor">Certified Software Asset Manager (CSAM)</h3>
     <p class="prose"><strong>Who it's for:</strong> people with little or no prior software asset management background who need to run licensing, compliance, and audit response day to day.</p>
@@ -113,7 +118,7 @@
         <tr><td>Score software-process maturity ahead of a compliance review</td><td>Evidence is collected per process area and gaps are ranked, not just listed</td><td><a href="tools.html#itam-maturity">itam-maturity</a></td></tr>
       </tbody>
     </table>
-    <p class="meta"><a href="#cert-nav"><span aria-hidden="true">&uarr; </span>Back to certification list</a></p>
+    <p class="meta"><a href="#cert-nav"><span aria-hidden="true">&uarr; </span>Back to certification list</a> · <a href="#main">Back to top</a></p>
 
     <h3 id="cert-champ" class="cert-anchor">Certified Hardware Asset Management Professional (CHAMP)</h3>
     <p class="prose"><strong>Who it's for:</strong> people with little or no prior hardware asset management background who own the physical device lifecycle. (Released in 2004 — one of IAITAM's original certifications, not a recent addition.)</p>
@@ -127,7 +132,7 @@
         <tr><td>Name hardware alongside software when scoping a maturity baseline</td><td>The scope statement says explicitly which asset types are in view before scoring starts</td><td><a href="tools.html#itam-maturity">itam-maturity</a> (asset-type-agnostic, though this kit's own example dataset is software-only)</td></tr>
       </tbody>
     </table>
-    <p class="meta"><a href="#cert-nav"><span aria-hidden="true">&uarr; </span>Back to certification list</a></p>
+    <p class="meta"><a href="#cert-nav"><span aria-hidden="true">&uarr; </span>Back to certification list</a> · <a href="#main">Back to top</a></p>
 
     <h3 id="cert-aigp" class="cert-anchor">Artificial Intelligence Governance Professional (AIGP)</h3>
     <p class="prose"><strong>Who it's for:</strong> anyone who needs to understand and carry out responsible AI governance, across any industry, not only technical AI roles.</p>
@@ -141,7 +146,7 @@
         <tr><td>Assign controls and a re-review date for the tier</td><td>Controls match the tier, and re-review is also triggered by any change of use, not only the calendar</td><td><a href="tools.html#ai-intake">ai-intake</a></td></tr>
       </tbody>
     </table>
-    <p class="meta"><a href="#cert-nav"><span aria-hidden="true">&uarr; </span>Back to certification list</a></p>
+    <p class="meta"><a href="#cert-nav"><span aria-hidden="true">&uarr; </span>Back to certification list</a> · <a href="#main">Back to top</a></p>
 
     <h3 id="cert-itil4" class="cert-anchor">ITIL 4 Foundation</h3>
     <p class="prose"><strong>Who it's for:</strong> anyone working in or around IT service delivery who needs a shared vocabulary for how IT services get planned, built, run, and improved — PeopleCert markets it as suitable at any career stage, not asset-management-specific.</p>
@@ -155,7 +160,7 @@
         <tr><td>Govern the technical change or release itself</td><td>—</td><td>Out of this kit's scope; this kit governs whether and why an application exists or changes hands, not the operational mechanics of deploying a change</td></tr>
       </tbody>
     </table>
-    <p class="meta"><a href="#cert-nav"><span aria-hidden="true">&uarr; </span>Back to certification list</a></p>
+    <p class="meta"><a href="#cert-nav"><span aria-hidden="true">&uarr; </span>Back to certification list</a> · <a href="#main">Back to top</a></p>
 
     <h3 id="cert-iam" class="cert-anchor">IAM Certificate (Principles of Asset Management)</h3>
     <p class="prose"><strong>Who it's for:</strong> people new to asset management, or with some initial experience in an asset-management role — no entry prerequisites beyond IAM registration.</p>
@@ -169,11 +174,14 @@
         <tr><td>Score how well the organization's asset management system actually functions, not just its inventory accuracy</td><td>Evidence-backed process scoring, the same discipline ISO 55001's clauses 9-10 (performance evaluation, improvement) ask for</td><td><a href="tools.html#itam-maturity">itam-maturity</a></td></tr>
       </tbody>
     </table>
-    <p class="meta"><a href="#cert-nav"><span aria-hidden="true">&uarr; </span>Back to certification list</a></p>
+    <p class="meta"><a href="#cert-nav"><span aria-hidden="true">&uarr; </span>Back to certification list</a> · <a href="#main">Back to top</a></p>
 
-    <h3>Suggested order for someone new</h3>
+    <h3 id="cert-suggested-order">Suggested order for someone new</h3>
     <p class="prose">CAMP first — it's the foundational program-and-process view everything else builds on. From there, pick CSAM or CHAMP by which asset type you actually own (software versus hardware) rather than doing both by default. The IAM Certificate is worth adding if your remit reaches beyond IT into physical or infrastructure assets generally; ITIL 4 Foundation is worth adding if your organization already runs formal IT service management and you need its vocabulary. AIGP sits apart from all of these; take it when AI governance specifically is the job, regardless of where you are on the ITAM path.</p>
+    <p class="meta"><a href="#cert-nav"><span aria-hidden="true">&uarr; </span>Back to certification list</a> · <a href="#main">Back to top</a></p>
     <p class="meta">Names are used for reference only. No affiliation with or endorsement by IAITAM, IAPP, PeopleCert/AXELOS, or the Institute of Asset Management.</p>
+      </div>
+    </div>
   </section>
 
   <section aria-labelledby="standards-heading">

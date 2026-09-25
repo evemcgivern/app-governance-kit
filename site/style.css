@@ -1072,3 +1072,32 @@ code {
   border-left: 3px solid var(--accent);
   background: var(--chip-bg);
 }
+
+.fg-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.5rem;
+  align-items: start;
+}
+
+@media (min-width: 46rem) {
+  .fg-layout {
+    grid-template-columns: 20rem minmax(0, 1fr);
+  }
+
+  .fg-layout .fg-jumpnav {
+    position: sticky;
+    top: 1rem;
+    max-height: calc(100vh - 2rem);
+    overflow-y: auto;
+  }
+
+  .fg-layout .fg-jumpnav ul {
+    flex-direction: column;
+    flex-wrap: nowrap;
+  }
+
+  .fg-layout .fg-jumpnav a {
+    display: block;
+  }
+}
