@@ -120,7 +120,7 @@ Each tool must find all of its planted problems.
 
 GitHub Pages at `evemcgivern.github.io/app-governance-kit`. Self-contained HTML, no build step.
 
-1. **Home** — who Eve is, the three areas, what's different about her approach, and the lifecycle wheel (section 8a).
+1. **Home** — who Eve is, the three areas, what's different about her approach, and a teaser linking to the lifecycle wheel (section 8a).
 2. **Crosswalk explorer** — click a control, see matching clauses across the four frameworks. Flagship page.
 3. **Tools** — one card per tool: Halden example result and downloads for all five pieces.
 4. **Case studies** — three anonymized write-ups (problem, approach, outcome as a range). Built from interviews with Eve; drafted by the voice-eve agent.
@@ -134,7 +134,7 @@ GitHub Pages at `evemcgivern.github.io/app-governance-kit`. Self-contained HTML,
 
 ## 8a. Application lifecycle wheel
 
-The home page's centerpiece is a clickable wheel of the application lifecycle in six stages: Plan and request, Acquire, Deploy, Operate, Review and optimize, Retire. Clicking a stage shows the questions to ask at that stage. Each question names the crosswalk row it satisfies and links to the tool that handles it.
+Its own page (`site/lifecycle.html`, linked from Home and from the nav) is a clickable wheel of the application lifecycle in six stages: Plan and request, Acquire, Deploy, Operate, Review and optimize, Retire. Clicking a stage shows the questions to ask at that stage. Each question names the crosswalk row it satisfies and links to the tool that handles it.
 
 - The questions live in one file, `lifecycle/questions.csv` (stage, question, tool, crosswalk row). The build checks that every stage has questions, every tool exists, and every crosswalk row exists.
 - The build also turns the questions into a checklist, `dist/lifecycle-questions.md` (plus a Word version), grouped by stage. It works on its own at work: attach it to any Copilot agent, or print it for a review meeting.
