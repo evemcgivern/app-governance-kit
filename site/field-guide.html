@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Field guide — Eve McGivern</title>
+<meta name="description" content="Certifications, standards, glossary, and data governance, in plain terms.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="index.html">Eve McGivern</a>
+    <nav class="site-nav" aria-label="Main">
+      <ul>
+        <li><a href="tools.html">Tools</a></li>
+        <li><a href="lifecycle.html">Lifecycle</a></li>
+        <li><a href="crosswalk.html">Crosswalk explorer</a></li>
+        <li><a href="impact-map.html">Impact map</a></li>
+        <li><a href="field-guide.html" aria-current="page">Field guide</a></li>
+        <li><a href="case-studies.html">Case studies</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero">
+    <h1>Field guide</h1>
+    <p class="positioning">Certifications, standards, a glossary, and how application governance relates to data governance — reference material for anyone reading the rest of this site, in plain terms.</p>
+  </section>
+
+  <section aria-labelledby="cert-heading">
+    <h2 id="cert-heading">Certifications</h2>
+    <p class="prose">Four certifications come up most often around this kit's three areas — portfolio, AI, and access. This states what each one actually covers and ties it to a task the kit's tools already do. It isn't a study guide, and it isn't a recommendation to sit any particular exam.</p>
+
+    <h3>Certified Asset Management Professional (CAMP)</h3>
+    <p class="prose"><strong>Who it's for:</strong> people new to IT asset management who need the foundational program and process picture before they specialize.</p>
+    <p class="prose"><strong>What it covers:</strong> CAMP is IAITAM's entry-level credential, organized around the association's 12 Key Process Areas — inventory and asset identification, acquisition, compliance, disposal, financial management, vendor management, policy, and program management, among others — plus how ITAM fits alongside IT service management. No prior ITAM experience is assumed. It's taught as an 8-hour live-online session plus 10-12 hours of self-study, or a 90-day self-paced course, ending in a 100-question, 3-hour exam with an 85% pass mark and two included attempts. The credential is renewed yearly; renewing within six months of expiry only requires the exam again, and after that the full course has to be retaken. (Source: <a href="https://iaitam.org/camp/">iaitam.org/camp</a>, fetched 2026-09-25.)</p>
+    <table>
+      <caption class="visually-hidden">CAMP practical application</caption>
+      <thead><tr><th>On-the-job task</th><th>What "good" looks like</th><th>Kit tool</th></tr></thead>
+      <tbody>
+        <tr><td>Stand up an ITAM program and its governance council</td><td>A charter with a named sponsor, written decision rights and thresholds, and a 90-day launch plan — not just a meeting schedule</td><td><a href="tools.html#program-setup">program-setup</a></td></tr>
+        <tr><td>Baseline the program's process maturity</td><td>Every process area carries an evidence citation, not a self-rating alone, and named gaps</td><td><a href="tools.html#itam-maturity">itam-maturity</a></td></tr>
+        <tr><td>Get real ownership assigned across the inventory</td><td>Every application has a named owner, not "unassigned"</td><td><a href="tools.html#rationalization">rationalization</a></td></tr>
+      </tbody>
+    </table>
+
+    <h3>Certified Software Asset Manager (CSAM)</h3>
+    <p class="prose"><strong>Who it's for:</strong> people with little or no prior software asset management background who need to run licensing, compliance, and audit response day to day.</p>
+    <p class="prose"><strong>What it covers:</strong> CSAM shares CAMP's exam format (100 questions, 3-hour limit, 85% pass mark, two attempts, live or self-paced delivery, annual renewal with a 6-month grace window) but turns the curriculum toward software specifically: discovery and harvesting tools, license types and negotiation, EULA interpretation, compliance enforcement, and audit procedures. (Source: <a href="https://iaitam.org/csam/">iaitam.org/csam</a>, fetched 2026-09-25.)</p>
+    <table>
+      <caption class="visually-hidden">CSAM practical application</caption>
+      <thead><tr><th>On-the-job task</th><th>What "good" looks like</th><th>Kit tool</th></tr></thead>
+      <tbody>
+        <tr><td>Establish an effective license position before a vendor audit</td><td>The position compares entitlements to actual deployment/usage, not just user counts, and states what's unverified</td><td><a href="tools.html#rationalization">rationalization</a> + <a href="tools.html#itam-maturity">itam-maturity</a></td></tr>
+        <tr><td>Find duplicate or underused applications to consolidate</td><td>Duplicates are matched by category and function, and a keep/retire call is made with a stated reason</td><td><a href="tools.html#rationalization">rationalization</a></td></tr>
+        <tr><td>Score software-process maturity ahead of a compliance review</td><td>Evidence is collected per process area and gaps are ranked, not just listed</td><td><a href="tools.html#itam-maturity">itam-maturity</a></td></tr>
+      </tbody>
+    </table>
+
+    <h3>CHAMP</h3>
+    <p class="prose"><strong>Who it's for:</strong> people with little or no prior hardware asset management background who own the physical device lifecycle.</p>
+    <p class="prose"><strong>What it covers:</strong> CHAMP is IAITAM's hardware-focused counterpart to CSAM — the same 12 Key Practice Areas framing and the same course/exam structure (8-hour live or 90-day self-paced, 100-question/85%-pass/3-hour exam, annual renewal with a 6-month grace period) — but the subject matter is the physical hardware lifecycle: acquisition, deployment, maintenance, refresh, and disposal. (Source: <a href="https://iaitam.org/champ/">iaitam.org/champ</a>, fetched 2026-09-25.)</p>
+    <table>
+      <caption class="visually-hidden">CHAMP practical application</caption>
+      <thead><tr><th>On-the-job task</th><th>What "good" looks like</th><th>Kit tool</th></tr></thead>
+      <tbody>
+        <tr><td>Retire hardware with disposal and data-wipe evidence</td><td>—</td><td>Out of this kit's phase-1 scope; no tool here covers physical hardware disposition</td></tr>
+        <tr><td>Track a hardware refresh cycle against budget</td><td>—</td><td>Out of this kit's phase-1 scope; no tool here tracks hardware refresh</td></tr>
+        <tr><td>Name hardware alongside software when scoping a maturity baseline</td><td>The scope statement says explicitly which asset types are in view before scoring starts</td><td><a href="tools.html#itam-maturity">itam-maturity</a> (asset-type-agnostic, though this kit's own example dataset is software-only)</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Artificial Intelligence Governance Professional (AIGP)</h3>
+    <p class="prose"><strong>Who it's for:</strong> anyone who needs to understand and carry out responsible AI governance, across any industry, not only technical AI roles.</p>
+    <p class="prose"><strong>What it covers:</strong> AIGP is IAPP's AI-governance credential — a different body and a different subject than the three above. Its body of knowledge covers how AI systems and their use cases work, AI's impacts and the responsible-AI principles meant to manage them, current and emerging AI law, the major governance frameworks, the AI lifecycle and its risk management, and open debates in the field. The exam runs 100 questions over 2 hours 45 minutes, with a 15-minute break, delivered at a Pearson VUE test center or via OnVUE remote proctoring; some questions are multi-select with no partial credit. (Source: <a href="https://iapp.org/certify/aigp/">iapp.org/certify/aigp</a>, fetched 2026-09-25.) Recertification runs on continuing-education credits plus a maintenance fee — a flat per-term fee, or coverage through an IAPP membership — rather than a yearly retest. (Source: <a href="https://iapp.org/certify/faqs">iapp.org/certify/faqs</a>, fetched 2026-09-25.) Secondary sources describe the term as two years with 20 credits required (checked 2026-09-25); IAPP's own CPE-policy document could not be read during this research pass, so treat that specific figure as reported secondhand, not confirmed directly against IAPP's own document.</p>
+    <table>
+      <caption class="visually-hidden">AIGP practical application</caption>
+      <thead><tr><th>On-the-job task</th><th>What "good" looks like</th><th>Kit tool</th></tr></thead>
+      <tbody>
+        <tr><td>Tier a new AI use case for risk</td><td>The tier is stated with reasoning tied to the system's actual decisions and who it affects, not just its category</td><td><a href="tools.html#ai-intake">ai-intake</a></td></tr>
+        <tr><td>Record data provenance and rule out prohibited practices</td><td>Data source and personal-data use are logged; a prohibited-practice check is done or explicitly escalated to legal</td><td><a href="tools.html#ai-intake">ai-intake</a></td></tr>
+        <tr><td>Assign controls and a re-review date for the tier</td><td>Controls match the tier, and re-review is also triggered by any change of use, not only the calendar</td><td><a href="tools.html#ai-intake">ai-intake</a></td></tr>
+      </tbody>
+    </table>
+
+    <h3>Suggested order for someone new</h3>
+    <p class="prose">CAMP first — it's the foundational program-and-process view everything else builds on. From there, pick CSAM or CHAMP by which asset type you actually own (software versus hardware) rather than doing both by default. AIGP sits apart from the other three; take it when AI governance specifically is the job, regardless of where you are on the ITAM path.</p>
+    <p class="meta">Names are used for reference only. No affiliation with or endorsement by IAITAM or IAPP.</p>
+  </section>
+
+  <section aria-labelledby="standards-heading">
+    <h2 id="standards-heading">Standards and frameworks</h2>
+    <p class="prose">This kit's <a href="crosswalk.html">crosswalk explorer</a> maps each of its 28 control themes to ISO/IEC 19770, COBIT 2019, ISO/IEC 27001, and ISO/IEC 42001. This section explains what each of those actually is, and how they relate to one another — the explorer is where you see the exact clause-by-clause mapping.</p>
+
+    <h3>ISO/IEC 19770 — the IT asset management family</h3>
+    <p class="prose">ISO/IEC 19770 isn't one document; it's a growing family of standards and technical specifications, each covering a different slice of IT asset management. As of this research pass, the following parts are published:</p>
+    <table>
+      <caption class="visually-hidden">ISO/IEC 19770 family parts</caption>
+      <thead><tr><th>Part</th><th>Title</th><th>Source</th></tr></thead>
+      <tbody>
+        <tr><td>19770-1:2017</td><td>IT asset management systems — Requirements</td><td><a href="https://www.iso.org/standard/68531.html">iso.org/standard/68531</a></td></tr>
+        <tr><td>19770-2:2015</td><td>Software identification tag</td><td><a href="https://www.iso.org/standard/65666.html">iso.org/standard/65666</a></td></tr>
+        <tr><td>19770-3:2016</td><td>Entitlement schema</td><td><a href="https://www.iso.org/standard/52293.html">iso.org/standard/52293</a></td></tr>
+        <tr><td>19770-4:2017</td><td>Resource utilization measurement</td><td><a href="https://www.iso.org/standard/68431.html">iso.org/standard/68431</a></td></tr>
+        <tr><td>19770-5:2015</td><td>Overview and vocabulary</td><td><a href="https://www.iso.org/standard/68291.html">iso.org/standard/68291</a></td></tr>
+        <tr><td>19770-6:2024</td><td>Hardware identification tag</td><td><a href="https://www.iso.org/standard/77642.html">iso.org/standard/77642</a></td></tr>
+        <tr><td>19770-8:2020</td><td>Guidelines for mapping industry practices to/from the family</td><td><a href="https://www.iso.org/standard/72588.html">iso.org/standard/72588</a></td></tr>
+        <tr><td>19770-TS 10:2025</td><td>Guidance for implementing ITAM</td><td><a href="https://www.iso.org/standard/86588.html">iso.org/standard/86588</a></td></tr>
+        <tr><td>19770-11:2021</td><td>Requirements for bodies auditing and certifying an ITAMS</td><td><a href="https://www.iso.org/standard/77741.html">iso.org/standard/77741</a></td></tr>
+        <tr><td>19770-TS 13:2026</td><td>IT asset management (title only confirmed; full scope not retrievable during this research pass)</td><td><a href="https://www.iso.org/standard/88836.html">iso.org/standard/88836</a></td></tr>
+      </tbody>
+    </table>
+    <p class="prose">Part 1 is the management-system backbone: it sets scope, roles, IT asset risk assessment and treatment, license management, core data management, audit trails, and the review cycle that turns a one-off inventory into an ongoing system. This kit's crosswalk cites Part 1 clauses for most of its ISO/IEC 19770 rows, and adds Part 2's software-identification-tag clause, Part 3's entitlement-schema clause, or Part 4's resource-utilization clause on the handful of rows where the underlying data structure — not just the process — is the point. Parts 5, 6, 8, 10, 11, and 13 round out the family — vocabulary, a hardware equivalent of the software tag, mapping and implementation guidance, and auditor requirements — but this kit doesn't cite them directly today.</p>
+
+    <h3>COBIT 2019</h3>
+    <p class="prose">COBIT is ISACA's framework for governing and managing enterprise IT — not an ISO standard, and broader than asset management alone. It organizes IT governance and management into objectives across five domains, each with its own goals and practices. Where ISO/IEC 19770-1 describes what an IT asset management system does, COBIT objectives like BAI09 (Managed Assets), APO01 (governance framework), APO10 (vendor management), APO12 (risk management), DSS05 (security services), and MEA02 (monitoring internal control) describe the broader governance and management structure that ITAM, AI governance, and access control all sit inside. The crosswalk cites specific COBIT objectives alongside the matching ISO clause for each control theme.</p>
+
+    <h3>ISO/IEC 27001</h3>
+    <p class="prose">ISO/IEC 27001 is the information security management system (ISMS) standard — requirements for protecting the confidentiality, integrity, and availability of information, backed by an Annex A catalog of security controls. Where 19770-1 asks whether an asset is known and managed through its lifecycle, 27001 asks whether access to it is controlled and its data protected. The two standards share several clause numbers (4.3, 5.1, 5.2, 5.3, 6.1, 7.5, 9.1, 9.3, 10) because both are built on ISO's common high-level management-system structure — the same reason the crosswalk can line up a single control theme against near-identical clause numbers in both frameworks.</p>
+
+    <h3>ISO/IEC 42001</h3>
+    <p class="prose">ISO/IEC 42001 applies that same management-system structure to artificial intelligence specifically: an AI policy (clause 5.2), assigned roles and responsibilities (5.3), AI-specific risk assessment and treatment (6.1.2 through 6.1.4), and an Annex A of AI-specific controls covering areas like AI system impact assessment, supplier oversight, and data for AI systems. It relates to 19770 the way a specialized management-system standard relates to a general one: 42001 is to an AI system roughly what 19770-1 is to an IT asset generally, and the two overlap wherever this kit treats an AI system as an entry in the same asset inventory an application would get.</p>
+
+    <h3>How they fit together</h3>
+    <p class="prose">None of these four stands alone in the crosswalk: a single control theme is usually backed by an ISO/IEC 19770 clause for the asset-management process, a COBIT objective for the governance context, and either ISO/IEC 27001 or ISO/IEC 42001 (sometimes both) for the security or AI-specific control. The <a href="crosswalk.html">crosswalk explorer</a> is where that exact mapping lives, row by row, with the specific clause title and source for every cell.</p>
+  </section>
+
+  <section aria-labelledby="glossary-heading">
+    <h2 id="glossary-heading">Glossary</h2>
+    <p class="prose">Plain-English definitions for terms used across this kit's methods, tied to a Halden Logistics example wherever one exists in the demo data.</p>
+    <dl class="prose">
+      <dt><strong>ITAM (IT Asset Management)</strong></dt><dd>The overall discipline of knowing what IT assets an organization has and managing them through their lifecycle. <em>Halden example: every method in this kit — rationalization, access review, AI intake — is a slice of ITAM applied to Halden's estate.</em></dd>
+      <dt><strong>SAM (Software Asset Management)</strong></dt><dd>The software-specific slice of ITAM: licensing, entitlements, and compliance. <em>Halden example: the license checks in rationalization against licenses.csv are SAM work.</em></dd>
+      <dt><strong>HAM (Hardware Asset Management)</strong></dt><dd>The physical-device slice of ITAM: acquisition, deployment, maintenance, refresh, and retirement of hardware. <em>Halden example: Halden's laptop and device refresh cycle isn't tracked by any tool in this kit yet — see the CHAMP section above.</em></dd>
+      <dt><strong>APM (Application Portfolio Management)</strong></dt><dd>Deciding what to keep, replace, consolidate, or retire across an application estate. <em>Halden example: the rationalization tool's tolerate/invest/migrate/eliminate call between Clausebase and Tallysheet.</em></dd>
+      <dt><strong>CMDB (Configuration Management Database)</strong></dt><dd>A system of record for IT assets and how they relate to one another. <em>Halden example: apps.csv and licenses.csv function as a lightweight CMDB extract for the demo estate.</em></dd>
+      <dt><strong>Entitlement</strong></dt><dd>The specific usage right a license grants — not just the fact that software is installed. <em>Halden example: Payflow's license entitlements don't match its 748 users, an open license-position question the rationalization run flags as unverified.</em></dd>
+      <dt><strong>Effective license position (ELP)</strong></dt><dd>The gap between what's licensed (entitlements) and what's actually deployed or used. <em>Halden example: comparing Payflow's licensed entitlements to its real user count before a vendor audit.</em></dd>
+      <dt><strong>True-up</strong></dt><dd>Paying for usage that exceeded licensed entitlement, usually settled at renewal or after an audit. <em>Halden example: if Payflow's usage is found to exceed its entitlement, Halden owes a true-up at the next renewal.</em></dd>
+      <dt><strong>Reconciliation</strong></dt><dd>Matching what's deployed or in use against what's licensed or recorded, to surface the gap. <em>Halden example: matching accounts.csv logins against employees.csv to find orphaned accounts is the same reconciliation logic applied to access instead of licenses.</em></dd>
+      <dt><strong>Normalization</strong></dt><dd>Cleaning inconsistent product or vendor names so the same thing isn't counted twice under different labels. <em>Halden example: Clausebase and Tallysheet are both normalized to "contract management," not left as two unrelated names.</em></dd>
+      <dt><strong>SWID tag (software identification tag)</strong></dt><dd>A machine-readable file that identifies an installed software product, defined in ISO/IEC 19770-2. <em>Halden example: none of Halden's demo apps ship SWID tags, so today's inventory work is manual.</em></dd>
+      <dt><strong>Shelfware</strong></dt><dd>Licensed or purchased software sitting mostly or entirely unused. <em>Halden example: Pulseboard carries 350 entitlements against only 45 users — a shelfware candidate the rationalization run flags.</em></dd>
+      <dt><strong>TIME model</strong></dt><dd>The tolerate/invest/migrate/eliminate categorization used to decide an application's fate. <em>Halden example: Northbeam ERP is tolerated as-is; Clausebase is eliminated in favor of the cheaper, functionally equal Tallysheet.</em></dd>
+      <dt><strong>Orphaned account</strong></dt><dd>An active account with no valid current owner, most often a leaver's account that was never disabled. <em>Halden example: ACC-063, still active 37 days after EMP-072's termination date.</em></dd>
+      <dt><strong>Access certification (access review)</strong></dt><dd>A periodic check that every account's access is still valid, owned, and appropriately scoped. <em>Halden example: the review that surfaced ACC-063, ACC-104, and seven privileged admin accounts needing owner re-approval.</em></dd>
+      <dt><strong>Segregation of duties (SoD)</strong></dt><dd>Making sure no one person holds two roles that together let them create and approve the same transaction unchecked. <em>Halden example: SoD wasn't tested in the sample review because no SoD rules had been supplied to check against — a named gap, not a clean result.</em></dd>
+      <dt><strong>Risk tier</strong></dt><dd>A category — such as minimal, limited, or high-risk — assigned to a system or use case that determines which controls apply. <em>Halden example: AI-004, the HR candidate-shortlisting tool, tiers as high-risk; the email spam filter (AI-001) tiers as minimal.</em></dd>
+      <dt><strong>AI inventory</strong></dt><dd>The AI-system equivalent of a software inventory: one record per use case, with purpose, data, and risk tier. <em>Halden example: each of Halden's six AI systems gets one row once ai-intake runs.</em></dd>
+      <dt><strong>Prohibited practice</strong></dt><dd>An AI use explicitly barred by law regardless of risk tier — for example certain manipulation or social-scoring uses. <em>Halden example: ai-intake's step 3 rules this out, or escalates to legal, before tiering continues for any of Halden's six systems.</em></dd>
+      <dt><strong>Human-in-the-loop</strong></dt><dd>A person reviews, or can override, an automated decision before or after it takes effect. <em>Halden example: AI-002's invoice field extraction has a person review the fields; AI-001's spam quarantine does not — itself a finding, since nothing releases quarantined mail automatically either.</em></dd>
+      <dt><strong>Chargeback / showback</strong></dt><dd>Allocating (chargeback) or simply reporting (showback) IT cost to the business unit that incurs it. <em>Halden example: neither is possible with Halden's current data — no app in apps.csv carries a cost-center field yet.</em></dd>
+      <dt><strong>Vendor management</strong></dt><dd>Tracking supplier relationships, contract terms, and renewal or termination notice periods. <em>Halden example: the rationalization run can't finalize an eliminate decision for Clausebase because no vendor contract terms were supplied.</em></dd>
+      <dt><strong>Governance council (steering committee)</strong></dt><dd>A standing body with named authority to approve, reject, or set policy for software or AI decisions. <em>Halden example: the draft Halden Software Governance Council, reviewed by program-setup and found to have no sponsor or written decision rights yet.</em></dd>
+      <dt><strong>Decision rights</strong></dt><dd>A written statement of who decides what, and at what threshold, so intake doesn't default to "everything goes to committee." <em>Halden example: the council's draft charter names a cost-or-risk threshold but never sets it, leaving the triage owner nothing to check requests against.</em></dd>
+      <dt><strong>Sponsor</strong></dt><dd>The executive who holds budget authority and gives a governance body the power to actually act. <em>Halden example: the council review's central finding — no sponsor is named anywhere in the draft charter.</em></dd>
+      <dt><strong>Escalation path</strong></dt><dd>A named route, and person, for resolving disputes a governance body can't settle itself. <em>Halden example: the Halden council escalates disputes to the COO, who sits outside the council and breaks ties.</em></dd>
+      <dt><strong>Recertification</strong></dt><dd>The requirement to periodically retest, or re-earn continuing-education credit, to keep a professional certification active. <em>Annual for CAMP, CSAM, and CHAMP; a multi-year continuing-education cycle for AIGP — see the Certifications section above.</em></dd>
+      <dt><strong>Privileged access</strong></dt><dd>An account with elevated rights — typically admin — that can change configuration or data beyond an ordinary user's reach. <em>Halden example: seven admin-role accounts in the sample review, each routed back to its app owner for re-approval.</em></dd>
+      <dt><strong>Dormant account</strong></dt><dd>An account with no recent login activity — a distinct access-review finding from an orphaned one, which is about ownership rather than activity. <em>Halden example: zero were found in the most recent export, though the review flags that the export window is too short to call this conclusive.</em></dd>
+      <dt><strong>Data provenance</strong></dt><dd>Where a system's data actually came from — necessary to know before its privacy or quality risk can be judged. <em>Halden example: ai-intake's step 2 records this for each of the six AI systems; several aren't stated by the source CSV alone and are marked unverified.</em></dd>
+      <dt><strong>Risk register</strong></dt><dd>A running, owned log of identified risks and their treatment, rather than a one-time note. <em>Halden example: AI-004's high-risk tiering gets a risk-register entry with HR as the named owner.</em></dd>
+    </dl>
+  </section>
+
+  <section aria-labelledby="data-gov-heading">
+    <h2 id="data-gov-heading">Application governance vs. data governance</h2>
+    <p class="prose">These two disciplines get used interchangeably, but they ask different questions and are usually owned by different people. Application governance manages the <em>software</em>: what applications exist, who owns each one, what they cost, how they're licensed, who has access to them, and when they get retired — the subject of this whole kit. Data governance manages the <em>information inside those applications</em>: what each data element means, who's accountable for its quality and stewardship, how sensitive it is, how long it has to be kept, and what privacy law says about it. This kit doesn't build that discipline out — the comparison below exists so the boundary is clear, and so the four places the two disciplines meet don't get missed.</p>
+
+    <table>
+      <caption class="visually-hidden">Application governance vs. data governance comparison</caption>
+      <thead><tr><th></th><th>Application governance</th><th>Data governance</th></tr></thead>
+      <tbody>
+        <tr><td>What it asks</td><td>What do we have, who owns it, what does it cost, is it licensed correctly, who can access it, when does it get retired?</td><td>What does this data mean, who's accountable for its quality, how sensitive is it, how long must it be kept, what does privacy law require?</td></tr>
+        <tr><td>Who typically owns it</td><td>An ITAM function, application owners, a software governance council</td><td>A data governance or data management function, data stewards, a chief data officer where one exists</td></tr>
+        <tr><td>Main frameworks</td><td>ISO/IEC 19770 family, COBIT (notably BAI09, Managed Assets), ISO/IEC 27001</td><td>DAMA-DMBOK, ISO 8000 (data quality), applicable privacy law (e.g. GDPR, sector-specific statutes)</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Where they meet</h3>
+    <p class="prose"><strong>Retiring an application is a data decision, not just a software one.</strong> Before an app is eliminated, someone has to decide what happens to the data it holds — archive it, migrate it, or delete it — and that decision needs a data owner's sign-off, not just an IT one. <em>Halden example: the rationalization checklist's retirement step requires exactly this before any eliminate decision is executed; it isn't optional cleanup.</em></p>
+    <p class="prose"><strong>Data sensitivity sets access-review priority.</strong> Which accounts get reviewed first should follow how sensitive the underlying data is, not just an alphabetical or convenient order. <em>Halden example: the access review deliberately checked the 10 confidential apps before the 50 internal ones, and two of the three orphaned accounts it found were on confidential systems.</em></p>
+    <p class="prose"><strong>AI systems are only as trustworthy as the data behind them.</strong> An AI system's risk tier and its controls both depend on what data it uses, where that data came from, and whether it includes personal data. <em>Halden example: ai-intake's step 2 records data used, personal-data status, and provenance for each of Halden's six systems before any tier is assigned.</em></p>
+    <p class="prose"><strong>Asset records are themselves data, and need the same quality discipline.</strong> An inventory that's wrong — missing owners, mismatched user counts, stale entitlements — isn't just an ITAM problem; it's a data-quality problem inside the ITAM system. <em>Halden example: the crosswalk's data-quality-of-asset-records theme, and the itam-maturity check's evidence-per-area step, both treat the accuracy of the asset data itself as something to verify, not assume.</em></p>
+    <p class="prose">A full data classification and retention tool is planned for phase 2 of this kit; today, these four intersection points are handled inside the existing tools rather than by a dedicated one.</p>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <p>Eve McGivern · <a href="https://github.com/evemcgivern">github.com/evemcgivern</a></p>
+  <p>Questions? Comments? <span id="contact-email">email me</span>.</p>
+  <noscript><p>Email: evemcgivern at gmail dot com</p></noscript>
+</footer>
+<script>
+(function () {
+  "use strict";
+  var user = "evemcgivern", domain = "gmail.com";
+  var el = document.getElementById("contact-email");
+  if (!el) { return; }
+  var a = document.createElement("a");
+  a.href = "mailto:" + user + "@" + domain;
+  a.textContent = "Email me";
+  el.replaceWith(a);
+})();
+</script>
+</body>
+</html>
