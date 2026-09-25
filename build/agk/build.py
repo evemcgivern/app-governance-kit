@@ -1,11 +1,13 @@
 import argparse
+import re
 import shutil
 import sys
+from html import escape
 from pathlib import Path
 
 from agk.crosswalk import CrosswalkError, load_crosswalk
 from agk.doclinks import broken_doc_links
-from agk.lifecycle import LifecycleError, load_questions, render_checklist
+from agk.lifecycle import LifecycleError, load_questions, load_stages, render_checklist
 from agk.lifecycle_impact import LifecycleImpactError, load_lifecycle_impact
 from agk.methods import MethodError, load_method, method_dirs
 from agk.render import (render_claude, render_claude_manifest, render_codex,
@@ -66,11 +68,24 @@ def build(root: Path) -> tuple[list[str], list[str]]:
         except LifecycleError as e:
             errors.append(f"lifecycle: {e}")
         else:
-            (dist / "lifecycle-questions.md").write_text(render_checklist(questions), encoding="utf-8")
+            stages_md = root / "lifecycle" / "stages.md"
+            try:
+                stages = load_stages(stages_md, known) if stages_md.exists() else None
+            except LifecycleError as e:
+                errors.append(f"lifecycle: {e}")
+                stages = None
+            (dist / "lifecycle-questions.md").write_text(
+                render_checklist(questions, stages["stages"] if stages else None), encoding="utf-8")
             lifecycle_page = root / "site" / "lifecycle.html"
             if lifecycle_page.exists():
-                lifecycle_page.write_text(inject_data(lifecycle_page.read_text(encoding="utf-8"), "LC", questions),
-                                          encoding="utf-8")
+                lc_payload = [{"questions": questions, "stages": stages["stages"] if stages else None}]
+                page_text = inject_data(lifecycle_page.read_text(encoding="utf-8"), "LC", lc_payload)
+                together_re = re.compile(r"<!--LC-TOGETHER-->.*?<!--/LC-TOGETHER-->", re.S)
+                if stages and together_re.search(page_text):
+                    together_html = (f'<!--LC-TOGETHER--><p class="lc-together">{escape(stages["together"])}'
+                                      f'</p><!--/LC-TOGETHER-->')
+                    page_text = together_re.sub(lambda _: together_html, page_text)
+                lifecycle_page.write_text(page_text, encoding="utf-8")
     explorer = root / "site" / "crosswalk.html"
     if explorer.exists():
         rows = [dict(r, key_work=themes[r["id"]], stages=lifecycle_impact[r["id"]]) for r in known.values()]

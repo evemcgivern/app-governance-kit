@@ -4,6 +4,22 @@ Questions to ask at each stage. Each names the crosswalk row it satisfies and th
 
 ## Plan and request
 
+A request is written up: the problem, the owner, and any AI risk.
+
+Rules that apply:
+
+- Nothing is bought or built above the council's threshold without an approved request. [[XW-027]]
+- Every request names an accountable owner before it moves forward. [[XW-002]]
+- A request that duplicates an application already owned is flagged first. [[XW-011]]
+- Any AI component is flagged at intake for a risk-tier assessment. [[XW-021]]
+- The data the application will hold, and its sensitivity, is recorded early. [[XW-028]]
+
+Gate to move on: The council or its delegate approves the request and assigns an owner.
+Hands off to: acquire. the approved request becomes the basis for a purchase.
+Who decides: The application owner drafts it; the council or its delegate approves it.
+
+Questions to ask:
+
 - [ ] What problem does this solve, and do we own an app that does it? [[XW-011]] (tool: `rationalization`)
 - [ ] Who will own it, and who is the executive sponsor? [[XW-002]] (tool: `program-setup`)
 - [ ] Does the request meet the council's threshold and come through the intake path? [[XW-027]] (tool: `program-setup`)
@@ -12,12 +28,42 @@ Questions to ask at each stage. Each names the crosswalk row it satisfies and th
 
 ## Acquire
 
+The approved request becomes a purchase: license chosen, contract negotiated, supplier assessed.
+
+Rules that apply:
+
+- Nothing is bought above the council's threshold without an approved request. [[XW-027]]
+- Every purchase records its entitlements before deployment starts. [[XW-006]]
+- Contracts are checked for audit, renewal, and exit terms before signature. [[XW-013]]
+- Any AI supplier and model provider is assessed before the purchase closes. [[XW-023]]
+
+Gate to move on: Contract signed with audit, renewal, and exit terms reviewed; entitlements recorded.
+Hands off to: deploy. the entitlement record and contract travel with the application.
+Who decides: Procurement with the application owner; the council above its cost threshold.
+
+Questions to ask:
+
 - [ ] What license model applies, and how many entitlements do we need? [[XW-006]] (tool: `rationalization`)
 - [ ] Does the contract give audit, renewal, and exit terms we can live with? [[XW-013]] (tool: `rationalization`)
 - [ ] Have the supplier and any AI model provider been assessed? [[XW-023]] (tool: `ai-intake`)
 - [ ] Is the purchase recorded against an owner and a cost center? [[XW-012]] (tool: `itam-maturity`)
 
 ## Deploy
+
+The application is installed, added to the inventory, and given access roles.
+
+Rules that apply:
+
+- The application is recorded in the inventory with owner and data sensitivity. [[XW-001]]
+- Access roles are defined, and new access only granted through an approved path. [[XW-015]]
+- Privileged and administrative accounts are limited and named individually. [[XW-018]]
+- An AI system's inventory record and risk entry are complete before go-live. [[XW-022]]
+
+Gate to move on: The inventory record and access roles are complete before wider rollout.
+Hands off to: operate. the live system and its access records carry forward.
+Who decides: The application owner, with access approved through the named policy.
+
+Questions to ask:
 
 - [ ] Is the app in the inventory with owner, category, and data sensitivity? [[XW-001]] (tool: `itam-maturity`)
 - [ ] Are access roles defined, and who approves new access? [[XW-015]] (tool: `access-review`)
@@ -26,6 +72,21 @@ Questions to ask at each stage. Each names the crosswalk row it satisfies and th
 
 ## Operate
 
+The application runs day to day: usage tracked, access kept current, records reconciled.
+
+Rules that apply:
+
+- Installed copies and active users are kept within held entitlements. [[XW-007]]
+- Access is reviewed on schedule, and leavers are removed promptly. [[XW-016]]
+- Asset records are reconciled against what is actually installed. [[XW-026]]
+- A changed AI system's use is reassessed, not assumed unchanged. [[XW-021]]
+
+Gate to move on: Installs stay within entitlements and access reviews happen on schedule.
+Hands off to: optimize. the running history and asset record get reviewed.
+Who decides: The application owner, checked periodically by whoever runs access reviews.
+
+Questions to ask:
+
 - [ ] Do installs and users stay within entitlements? [[XW-007]] (tool: `rationalization`)
 - [ ] Is access reviewed on schedule, and are leavers removed? [[XW-016]] (tool: `access-review`)
 - [ ] Are asset records accurate and reconciled? [[XW-026]] (tool: `itam-maturity`)
@@ -33,12 +94,42 @@ Questions to ask at each stage. Each names the crosswalk row it satisfies and th
 
 ## Review and optimize
 
+The portfolio is reviewed to decide whether each application still earns its cost.
+
+Rules that apply:
+
+- Every application is periodically assessed against tolerate, invest, migrate, or eliminate. [[XW-011]]
+- Anything expiring within the review window is flagged before it lapses. [[XW-008]]
+- The review checks where the organization's own asset process is weakest. [[XW-025]]
+- The council's own decision log is checked for bottlenecks or rubber-stamping. [[XW-025]]
+
+Gate to move on: The owner or council records a decision: keep, invest, migrate, or retire.
+Hands off to: plan, retire. reinvest or replace starts a new request; otherwise retire begins.
+Who decides: The application owner recommends; the council decides above its threshold.
+
+Questions to ask:
+
 - [ ] Is it still worth its cost: tolerate, invest, migrate, or eliminate? [[XW-011]] (tool: `rationalization`)
 - [ ] Is anything expiring or due for renewal in the next 90 days? [[XW-008]] (tool: `rationalization`)
 - [ ] Where is our asset management process weakest this year? [[XW-025]] (tool: `itam-maturity`)
 - [ ] Does the council's decision log show bottlenecks or rubber-stamping? [[XW-025]] (tool: `program-setup`)
 
 ## Retire
+
+The application is decommissioned: data archived, migrated, or deleted; access and licenses unwound.
+
+Rules that apply:
+
+- What happens to the application's data is decided and recorded, not left implicit. [[XW-028]]
+- All accounts tied to the application are removed and licenses reclaimed. [[XW-017]]
+- The contract is ended on schedule, with any auto-renewal cancelled in time. [[XW-013]]
+- The inventory record is formally closed, with evidence retained for audit. [[XW-020]]
+
+Gate to move on: Accounts removed, licenses reclaimed, and the inventory record closed with evidence.
+Hands off to: plan. the freed licenses, data capacity, and budget go to the next request.
+Who decides: The application owner executes; the council confirms closure above its threshold.
+
+Questions to ask:
 
 - [ ] What data does it hold, and will we archive, migrate, or delete it? [[XW-028]] (tool: `rationalization`)
 - [ ] Are all accounts removed and licenses cancelled or reclaimed? [[XW-017]] (tool: `access-review`)
