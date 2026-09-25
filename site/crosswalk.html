@@ -80,6 +80,7 @@
   var PARTS = ["What it means", "Key work", "Evidence it produces", "Usually owned by"];
 
   var selectedId = null;
+  var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   function cell(value) {
     var v = (value || "").trim();
@@ -125,9 +126,7 @@
         btn.setAttribute("aria-current", "true");
       }
       btn.addEventListener("click", function () {
-        selectedId = row.id;
-        renderList(filterEl.value);
-        renderDetail(row);
+        selectRow(row, true);
       });
 
       var idSpan = document.createElement("span");
@@ -156,6 +155,8 @@
     detailEl.innerHTML = "";
 
     var heading = document.createElement("h2");
+    heading.id = "xw-detail-heading";
+    heading.tabIndex = -1;
     heading.textContent = row.theme;
     detailEl.appendChild(heading);
 
@@ -197,11 +198,36 @@
     detailEl.appendChild(partsList);
   }
 
+  function selectRow(row, moveFocus) {
+    selectedId = row.id;
+    renderList(filterEl.value);
+    renderDetail(row);
+    history.replaceState(null, "", "#" + row.id);
+
+    var opt = document.getElementById("xw-opt-" + row.id);
+    if (opt) {
+      opt.scrollIntoView({ block: "nearest" });
+    }
+    var heading = document.getElementById("xw-detail-heading");
+    if (heading && moveFocus) {
+      heading.focus({ preventScroll: true });
+    }
+    if (heading) {
+      heading.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "nearest" });
+    }
+  }
+
   filterEl.addEventListener("input", function () {
     renderList(filterEl.value);
   });
 
   renderList("");
+
+  var initialId = (window.location.hash || "").replace(/^#/, "");
+  var initialRow = rows.filter(function (r) { return r.id === initialId; })[0];
+  if (initialRow) {
+    selectRow(initialRow, false);
+  }
 })();
 </script>
 </body>
