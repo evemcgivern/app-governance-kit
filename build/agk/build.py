@@ -7,6 +7,7 @@ from agk.crosswalk import CrosswalkError, load_crosswalk
 from agk.methods import MethodError, load_method, method_dirs
 from agk.render import (render_claude, render_claude_manifest, render_codex,
                         render_codex_agents, render_copilot)
+from agk.site import broken_links, inject_data
 from agk.tags import check_tags
 from agk.themes import ThemesError, load_themes
 
@@ -50,6 +51,13 @@ def build(root: Path) -> tuple[list[str], list[str]]:
     agents_dest.mkdir(parents=True, exist_ok=True)
     for agent in sorted((root / "agents").glob("*.md")):
         shutil.copyfile(agent, agents_dest / agent.name)
+    explorer = root / "site" / "crosswalk.html"
+    if explorer.exists():
+        rows = [dict(r, key_work=themes[r["id"]]) for r in known.values()]
+        explorer.write_text(inject_data(explorer.read_text(encoding="utf-8"), "XW", rows),
+                            encoding="utf-8")
+    if (root / "site").is_dir():
+        errors += [f"site: broken link {b}" for b in broken_links(root / "site")]
     return errors, warnings
 
 
