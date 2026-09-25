@@ -1,0 +1,35 @@
+# Platform guide: Application rationalization
+
+Where the fields this tool uses live in ServiceNow APM and SAM Pro, and in Flexera One, drawn only from sources I could reach. Where I could not confirm a named module, table, or field, I say so rather than guess.
+
+## ServiceNow APM: applications and portfolio assessment
+
+Applications are held as **Business Applications**, the object ServiceNow's own documentation and product pages describe as the subject of Application Portfolio Management (APM). Portfolio assessment runs through **Assessment Indicators** — individual evaluation criteria such as cost, risk, quality, or usability — grouped into a **Scoring Profile**, which weights the indicators for a given assessment context and produces an **Application Score** per app. Assessments cover named dimensions including cost, quality, technical risk, investment, user satisfaction, and business value, matching the business-value and technical-fit split this method scores on. Results surface through an **Application 360** view and bubble-chart visualizations for portfolio-level review.
+
+APM's own documentation describes application portfolio rationalization as a decision to **invest, sustain, migrate, or retire** an application — its own four labels, not this method's Tolerate/Invest/Migrate/Eliminate wording. Map this tool's TIME output onto APM by treating Tolerate as ServiceNow's "sustain" and Eliminate as its "retire"; Invest and Migrate carry over directly. I found no ServiceNow documentation naming the specific field or table that stores a TIME-style decision on the Business Application record, so I'm not naming one.
+
+I could not load ServiceNow's own APM product page (`servicenow.com/products/application-portfolio-management.html`) or a Business Application form reference page; both returned an error to automated fetches rather than a page I could read. The terms above come from a ServiceNow docs-bundle page that did load.
+
+## ServiceNow SAM Pro: entitlements and license position
+
+License records are held as **Software Entitlements** — the purchase records for owned software. SAM Pro's **Reconciliation** step matches entitlements against actual installations using its licensing rules engine to produce a **License Compliance Position**, the record this method's license-expiry and over-entitlement check corresponds to. Each entitlement carries a **License Metric** (the licensing model, such as per-user or per-processor) and can be enriched from a **PPN (Publisher Part Number)**, the vendor SKU that prefills metric, downgrade rights, and end-of-life data. **License consumption rules** govern which installations draw against a given entitlement.
+
+I found no confirmed SAM Pro field name for an entitlement's expiry date; the community source describes blank renewal dates as a common data-entry mistake that stops SAM Pro from flagging a renewal, without naming the field itself, so I'm not naming one. This method's `checked_on`/expiry check maps to that renewal-tracking behavior, not to a named field.
+
+## Flexera One: application inventory and license position
+
+Flexera One's SaaS inventory comes from **comprehensive SaaS discovery** feeding a **multi-source data engine** that combines financial systems, expense reports, API connectors, SSO providers, and browser extensions; on-prem and cloud assets are covered by the same **hybrid IT discovery** used for application inventory generally. Every discovered title is normalized against **Technopedia**, which Flexera states recognizes and normalizes titles at over 98%. Duplicate detection is a named capability — **application redundancy identification**, backed by **automated application categorization** — which is the direct analog of this method's duplicate-finding step.
+
+License position work uses **verified usage metering** (login-depth usage data, not just login events) to report active, inactive, and never-active users and cost per user, surfacing **unused and unassigned licenses** for **automated reclamation workflows**. **Dependency mapping** flags what would break before an app is decommissioned, which matters for this method's Migrate/Eliminate data-disposition step. Flexera's own rationalization framing groups outcomes as **Re-host, Re-platform, Retire, Retain** — its "4 R's" — again a different label set from this method's TIME model; map Retain to Tolerate, Retire to Eliminate, and treat Re-host/Re-platform together as Migrate.
+
+I found no confirmed Flexera One field or table name for storing a rationalization decision itself (TIME or 4 R's); its documented capabilities support the inventory and usage evidence the decision is based on, not a decision record. Flexera's documentation site (`docs.flexera.com/...`) returned an error to automated fetches, so nothing below cites it directly.
+
+## Sources checked
+
+- [Application assessment — ServiceNow Docs (Yokohama, Application Portfolio Management)](https://www.servicenow.com/docs/bundle/yokohama-application-portfolio-management/page/product/application-portfolio-management/concept/application-assessment.html) — Assessment Indicators, Scoring Profiles, Application Scores, Application 360, bubble-chart visualization, assessment dimensions.
+- [Application Portfolio Management landing page — ServiceNow Docs (Washington DC)](https://www.servicenow.com/docs/bundle/washingtondc-application-portfolio-management/page/product/application-portfolio-management/concept/application-portfolio-management-landing-page.html) — Business Applications as the managed object; rationalization framed as invest, sustain, migrate, or retire.
+- [Review Software Entitlements — ServiceNow Community](https://www.servicenow.com/community/sam-blog/review-software-entitlements/ba-p/3304445) — Software Entitlements, Reconciliation, License Compliance Position, License Metric, License consumption rules, PPN, and the blank-renewal-date pitfall.
+- [Streamline Your SaaS Portfolio with Application Rationalization — Flexera](https://www.flexera.com/solutions/saas-spend/application-rationalization) — comprehensive SaaS discovery, multi-source data engine, verified usage metering, application redundancy identification, automated application categorization, unused/unassigned licenses, automated reclamation workflows.
+- [Application Rationalization & Management — Flexera](https://www.flexera.com/flexera-one/it-visibility/application-rationalization) — hybrid IT discovery, automated categorization, dependency mapping, Technopedia recognition/normalization rate, the Re-host/Re-platform/Retire/Retain framing.
+
+Two pages I would otherwise have cited returned an error to automated fetches rather than a page I could read: ServiceNow's own APM product page (`servicenow.com/products/application-portfolio-management.html`) and Business Application form reference (`servicenow.com/docs/r/application-portfolio-management/business-application-form.html`) returned 403 and 404 respectively, and Flexera's documentation site (`docs.flexera.com/...`) returned 403. Everything above comes from a page that loaded.
