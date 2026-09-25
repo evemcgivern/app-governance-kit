@@ -205,6 +205,11 @@ h1, h2, h3 {
   padding: 1.25rem;
 }
 
+.card:target {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px var(--accent);
+}
+
 .card h2, .card h3 {
   margin-top: 0;
 }
