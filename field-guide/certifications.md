@@ -2,6 +2,13 @@
 
 Four certifications come up most often around this kit's three areas — portfolio, AI, and access. This page states what each one actually covers, in plain terms, and ties it to a task the kit's tools already do. It isn't a study guide, and it isn't a recommendation to sit any particular exam.
 
+| Certification | Best for | Pros | Cons |
+|---|---|---|---|
+| CAMP | Newcomers to ITAM overall | Foundational, broad process view; the only one of the four that doesn't assume a specialization yet | Doesn't go deep on software or hardware specifics; annual renewal |
+| Certified Software Asset Manager (CSAM) | Software-heavy licensing/compliance work | Ties directly to two of this kit's tools (`rationalization`, `itam-maturity`); most audit-relevant of the four | Annual renewal; no hardware coverage |
+| CHAMP | Hardware lifecycle owners | The only one of the four covering physical assets | This kit has no tool support for hardware yet (a stated phase-1 gap); annual renewal |
+| AIGP | AI governance specifically | The only AI-focused credential here; industry-agnostic; ties to `ai-intake` | Separate body/ecosystem from the other three; harder exam format (multi-select, no partial credit); one recertification detail is flagged elsewhere on this page as unconfirmed |
+
 ## Certified Asset Management Professional (CAMP)
 
 **Who it's for:** People new to IT asset management who need the foundational program and process picture before they specialize.

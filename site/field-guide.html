@@ -36,6 +36,19 @@
     <h2 id="cert-heading">Certifications</h2>
     <p class="prose">Four certifications come up most often around this kit's three areas — portfolio, AI, and access. This states what each one actually covers and ties it to a task the kit's tools already do. It isn't a study guide, and it isn't a recommendation to sit any particular exam.</p>
 
+    <div class="table-scroll">
+      <table>
+        <caption class="visually-hidden">Certification comparison at a glance</caption>
+        <thead><tr><th>Certification</th><th>Best for</th><th>Pros</th><th>Cons</th></tr></thead>
+        <tbody>
+          <tr><td>CAMP</td><td>Newcomers to ITAM overall</td><td>Foundational, broad process view; the only one of the four that doesn't assume a specialization yet</td><td>Doesn't go deep on software or hardware specifics; annual renewal</td></tr>
+          <tr><td>Certified Software Asset Manager (CSAM)</td><td>Software-heavy licensing/compliance work</td><td>Ties directly to two of this kit's tools (rationalization, itam-maturity); most audit-relevant of the four</td><td>Annual renewal; no hardware coverage</td></tr>
+          <tr><td>CHAMP</td><td>Hardware lifecycle owners</td><td>The only one of the four covering physical assets</td><td>This kit has no tool support for hardware yet (a stated phase-1 gap); annual renewal</td></tr>
+          <tr><td>AIGP</td><td>AI governance specifically</td><td>The only AI-focused credential here; industry-agnostic; ties to ai-intake</td><td>Separate body/ecosystem from the other three; harder exam format (multi-select, no partial credit); one recertification detail is flagged elsewhere on this page as unconfirmed</td></tr>
+        </tbody>
+      </table>
+    </div>
+
     <h3>Certified Asset Management Professional (CAMP)</h3>
     <p class="prose"><strong>Who it's for:</strong> people new to IT asset management who need the foundational program and process picture before they specialize.</p>
     <p class="prose"><strong>What it covers:</strong> CAMP is IAITAM's entry-level credential, organized around the association's 12 Key Process Areas — inventory and asset identification, acquisition, compliance, disposal, financial management, vendor management, policy, and program management, among others — plus how ITAM fits alongside IT service management. No prior ITAM experience is assumed. It's taught as an 8-hour live-online session plus 10-12 hours of self-study, or a 90-day self-paced course, ending in a 100-question, 3-hour exam with an 85% pass mark and two included attempts. The credential is renewed yearly; renewing within six months of expiry only requires the exam again, and after that the full course has to be retaken. (Source: <a href="https://iaitam.org/camp/">iaitam.org/camp</a>, fetched 2026-09-25.)</p>
@@ -188,6 +201,12 @@
     <p class="prose"><strong>AI systems are only as trustworthy as the data behind them.</strong> An AI system's risk tier and its controls both depend on what data it uses, where that data came from, and whether it includes personal data. <em>Halden example: ai-intake's step 2 records data used, personal-data status, and provenance for each of Halden's six systems before any tier is assigned.</em></p>
     <p class="prose"><strong>Asset records are themselves data, and need the same quality discipline.</strong> An inventory that's wrong — missing owners, mismatched user counts, stale entitlements — isn't just an ITAM problem; it's a data-quality problem inside the ITAM system. <em>Halden example: the crosswalk's data-quality-of-asset-records theme, and the itam-maturity check's evidence-per-area step, both treat the accuracy of the asset data itself as something to verify, not assume.</em></p>
     <p class="prose">A full data classification and retention tool is planned for phase 2 of this kit; today, these four intersection points are handled inside the existing tools rather than by a dedicated one.</p>
+  </section>
+
+  <section aria-labelledby="practicum-heading">
+    <h2 id="practicum-heading">Practicum</h2>
+    <p class="prose">Six hands-on exercises, all built around Halden Logistics and the same demo data referenced throughout this field guide. Each one has you work a real governance problem by hand with only a checklist, then check your own answer with this kit's grader — no AI shortcuts, and no one grading over your shoulder. They're grouped by the certifications above: program setup and ITAM maturity for CAMP, crosswalk mapping, rationalization, and access review for CSAM, and AI intake for AIGP.</p>
+    <p class="prose">Start with <a href="https://github.com/evemcgivern/app-governance-kit/blob/main/practicum/README.md">practicum/README.md on GitHub</a>, which lists all six exercises in order and explains how the self-checking grader works.</p>
   </section>
 </main>
 
