@@ -296,7 +296,7 @@ th, td {
 }
 
 tbody tr:nth-child(even) {
-  background: var(--chip-bg);
+  background: var(--border);
 }
 
 th {
