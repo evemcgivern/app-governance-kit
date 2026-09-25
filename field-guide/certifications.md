@@ -2,20 +2,20 @@
 
 Six certifications come up most often around this kit's three areas — portfolio, AI, and access. This page states what each one actually covers, in plain terms, and ties it to a task the kit's tools already do. It isn't a study guide, and it isn't a recommendation to sit any particular exam.
 
-| Certification | Governing body | Best for | Typical domains | Pros | Cons |
-|---|---|---|---|---|---|
-| CAMP | International Association of Information Technology Asset Managers (IAITAM) | Newcomers to ITAM overall | Cross-industry; strongest pull in regulated/compliance-heavy sectors (finance, government, healthcare) where audit-readiness matters most | Foundational, broad process view; the only one of the six that doesn't assume a specialization yet | Doesn't go deep on software or hardware specifics; annual renewal |
-| Certified Software Asset Manager (CSAM) | International Association of Information Technology Asset Managers (IAITAM) | Software-heavy licensing/compliance work | Large software estates facing vendor true-up risk — finance, healthcare, government, any enterprise running Microsoft/Oracle/SAP-scale license agreements | Ties directly to two of this kit's tools (`rationalization`, `itam-maturity`); most audit-relevant of the four IAITAM credentials | Annual renewal; no hardware coverage |
-| Certified Hardware Asset Management Professional (CHAMP) | International Association of Information Technology Asset Managers (IAITAM) | Hardware lifecycle owners | Hardware-fleet-heavy sectors — manufacturing, healthcare (medical equipment), education (device fleets), retail/logistics (warehouse and POS hardware), government | The only one of the six covering physical assets; ties directly to this kit's `hardware-lifecycle` tool | Annual renewal |
-| Artificial Intelligence Governance Professional (AIGP) | International Association of Privacy Professionals (IAPP) | AI governance specifically | Deliberately cross-industry by design — any sector deploying AI, in compliance/legal/risk/data-science roles rather than a particular vertical | The only AI-focused credential here; industry-agnostic; ties to `ai-intake` | Separate body/ecosystem from the IAITAM three; harder exam format (multi-select, no partial credit); one recertification detail is flagged below as unconfirmed |
-| ITIL 4 Foundation | PeopleCert | Anyone working in or around IT service delivery | Complex, service-heavy IT environments — banking, insurance, healthcare, telecommunications, government, and managed-service/IT-outsourcing providers | Broad recognition outside ITAM specifically; the practice most other frameworks assume as the operating layer underneath them | Not asset-management-specific — its ties to this kit's tools are real but indirect; renewal every 3 years |
-| IAM Certificate (Principles of Asset Management) | Institute of Asset Management (IAM) | People new to (or early in) formal asset management, beyond IT alone | Asset-intensive, infrastructure-heavy sectors — utilities (water, electricity, gas), transport and rail, oil and gas, mining, manufacturing, airports, government and public infrastructure | The only one of the six built on general (not just IT) asset management; the ISO 55000 series it's grounded in traces back to a standard the IAM itself helped originate | UK-centred exam logistics (Pearson-approved IAM venues); no IT- or software-specific content of its own |
+## Suggested order for someone new
+
+1. **CAMP** — start here: it's the foundational program-and-process view everything else builds on.
+2. **CSAM or CHAMP** — pick by which asset type you actually own (software versus hardware), not both by default.
+3. **IAM Certificate** — add it if your remit reaches beyond IT into physical or infrastructure assets generally.
+4. **ITIL 4 Foundation** — add it if your organization already runs formal IT service management and you need its vocabulary.
+
+AIGP sits apart from this sequence — take it when AI governance specifically is the job, regardless of where you are on the ITAM path.
 
 ## Cross-certification task matrix
 
-The comparison above lines up the certifications' own attributes. This one lines up on-the-job tasks instead — which certifications actually teach the skill a task needs, independent of which kit tool applies (the per-certification sections below already name those). Three tasks are taught by more than one certification; the rest are each one certification's specialty.
+Before comparing the certifications' own attributes, start from the job: which certification(s) actually teach the skill a given task needs, independent of which kit tool applies (the per-certification sections below already name those). Three tasks are taught by more than one certification; the rest are each one certification's specialty. Certification names below link to that certification's own section, where its practical-application table shows what depth actually looks like for that task — a shared ✓ here doesn't mean equal depth (see the CAMP/CSAM/CHAMP/IAM Certificate maturity row, for one example).
 
-| On-the-job task | CAMP | CSAM | CHAMP | AIGP | ITIL 4 Foundation | IAM Certificate |
+| On-the-job task | [CAMP](#certified-asset-management-professional-camp) | [CSAM](#certified-software-asset-manager-csam) | [CHAMP](#certified-hardware-asset-management-professional-champ) | [AIGP](#artificial-intelligence-governance-professional-aigp) | [ITIL 4 Foundation](#itil-4-foundation) | [IAM Certificate](#iam-certificate-principles-of-asset-management) |
 |---|---|---|---|---|---|---|
 | Stand up program governance and policy | ✓ | | | | | ✓ |
 | Baseline or score ITAM process maturity | ✓ | ✓ | ✓ | | | ✓ |
@@ -28,6 +28,19 @@ The comparison above lines up the certifications' own attributes. This one lines
 | Govern the technical change or release itself | | | | | ✓* | |
 
 \* ITIL 4 Foundation teaches this — out of this kit's own tool scope; see the ITIL 4 Foundation section below.
+
+## Certification comparison
+
+The task matrix above says which certification(s) cover a task; this table compares the certifications themselves — useful once you've narrowed to two or three candidates and need a tie-breaker.
+
+| Certification | Governing body | Best for | Typical domains | Pros | Cons |
+|---|---|---|---|---|---|
+| CAMP | International Association of Information Technology Asset Managers (IAITAM) | Newcomers to ITAM overall | Cross-industry; strongest pull in regulated/compliance-heavy sectors (finance, government, healthcare) where audit-readiness matters most | Foundational, broad process view; the only one of the six that doesn't assume a specialization yet | Doesn't go deep on software or hardware specifics; annual renewal |
+| Certified Software Asset Manager (CSAM) | International Association of Information Technology Asset Managers (IAITAM) | Software-heavy licensing/compliance work | Large software estates facing vendor true-up risk — finance, healthcare, government, any enterprise running Microsoft/Oracle/SAP-scale license agreements | Ties directly to two of this kit's tools (`rationalization`, `itam-maturity`); most audit-relevant of the four IAITAM credentials | Annual renewal; no hardware coverage |
+| Certified Hardware Asset Management Professional (CHAMP) | International Association of Information Technology Asset Managers (IAITAM) | Hardware lifecycle owners | Hardware-fleet-heavy sectors — manufacturing, healthcare (medical equipment), education (device fleets), retail/logistics (warehouse and POS hardware), government | The only one of the six covering physical assets; ties directly to this kit's `hardware-lifecycle` tool | Annual renewal |
+| Artificial Intelligence Governance Professional (AIGP) | International Association of Privacy Professionals (IAPP) | AI governance specifically | Deliberately cross-industry by design — any sector deploying AI, in compliance/legal/risk/data-science roles rather than a particular vertical | The only AI-focused credential here; industry-agnostic; ties to `ai-intake` | Separate body/ecosystem from the IAITAM three; harder exam format (multi-select, no partial credit); one recertification detail is flagged below as unconfirmed |
+| ITIL 4 Foundation | PeopleCert | Anyone working in or around IT service delivery | Complex, service-heavy IT environments — banking, insurance, healthcare, telecommunications, government, and managed-service/IT-outsourcing providers | Broad recognition outside ITAM specifically; the practice most other frameworks assume as the operating layer underneath them | Not asset-management-specific — its ties to this kit's tools are real but indirect; renewal every 3 years |
+| IAM Certificate (Principles of Asset Management) | Institute of Asset Management (IAM) | People new to (or early in) formal asset management, beyond IT alone | Asset-intensive, infrastructure-heavy sectors — utilities (water, electricity, gas), transport and rail, oil and gas, mining, manufacturing, airports, government and public infrastructure | The only one of the six built on general (not just IT) asset management; the ISO 55000 series it's grounded in traces back to a standard the IAM itself helped originate | UK-centred exam logistics (Pearson-approved IAM venues); no IT- or software-specific content of its own |
 
 ## Certified Asset Management Professional (CAMP)
 
@@ -53,7 +66,7 @@ The comparison above lines up the certifications' own attributes. This one lines
 
 | On-the-job task | What "good" looks like | Kit tool |
 |---|---|---|
-| Establish an effective license position before a vendor audit | The position compares entitlements to actual deployment/usage, not just user counts, and states what's unverified | `rationalization` + `itam-maturity` |
+| Establish an [effective license position](glossary.md#effective-license-position) before a vendor audit | The position compares [entitlements](glossary.md#entitlement) to actual deployment/usage, not just user counts, and states what's unverified | `rationalization` + `itam-maturity` |
 | Find duplicate or underused applications to consolidate | Duplicates are matched by category and function, and a keep/retire call is made with a stated reason | `rationalization` |
 | Score software-process maturity ahead of a compliance review | Evidence is collected per process area and gaps are ranked, not just listed | `itam-maturity` |
 
@@ -112,10 +125,6 @@ The comparison above lines up the certifications' own attributes. This one lines
 | Treat the application portfolio as a managed asset base, not just an inventory | Every decision (retain, invest, retire) is tied to a stated value and risk case, not just a cost line | `rationalization` |
 | Set an asset management policy with real scope and rules | The policy states what counts as a managed asset and who owns the rules, matching this kit's own program-setup step | `program-setup` |
 | Score how well the organization's asset management system actually functions, not just its inventory accuracy | Evidence-backed process scoring, the same discipline ISO 55001's clauses 9-10 (performance evaluation, improvement) ask for | `itam-maturity` |
-
-## Suggested order for someone new
-
-CAMP first — it's the foundational program-and-process view everything else builds on. From there, pick CSAM or CHAMP by which asset type you actually own (software versus hardware) rather than doing both by default. The IAM Certificate is worth adding if your remit reaches beyond IT into physical or infrastructure assets generally; ITIL 4 Foundation is worth adding if your organization already runs formal IT service management and you need its vocabulary. AIGP sits apart from all of these; take it when AI governance specifically is the job, regardless of where you are on the ITAM path.
 
 ---
 

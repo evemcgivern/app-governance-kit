@@ -40,9 +40,9 @@
       <nav class="fg-jumpnav" id="cert-nav" aria-label="Certifications quick navigation">
         <p class="fg-jumpnav__label">Jump to:</p>
         <ul>
-          <li><a href="#cert-compare">Comparison table</a></li>
-          <li><a href="#cert-task-matrix">Task matrix</a></li>
           <li><a href="#cert-suggested-order">Suggested order for someone new</a></li>
+          <li><a href="#cert-task-matrix">Task matrix</a></li>
+          <li><a href="#cert-compare">Comparison table</a></li>
           <li><a href="#cert-camp">CAMP</a></li>
           <li><a href="#cert-csam">CSAM</a></li>
           <li><a href="#cert-champ">CHAMP</a></li>
@@ -53,6 +53,43 @@
       </nav>
 
       <div class="fg-content">
+        <h3 id="cert-suggested-order">Suggested order for someone new</h3>
+        <p class="meta"><a href="#cert-nav"><span aria-hidden="true">&uarr; </span>Back to certification list</a> · <a href="#main">Back to top</a></p>
+        <ol class="prose">
+          <li><strong>CAMP</strong> — start here: it's the foundational program-and-process view everything else builds on.</li>
+          <li><strong>CSAM or CHAMP</strong> — pick by which asset type you actually own (software versus hardware), not both by default.</li>
+          <li><strong>IAM Certificate</strong> — add it if your remit reaches beyond IT into physical or infrastructure assets generally.</li>
+          <li><strong>ITIL 4 Foundation</strong> — add it if your organization already runs formal IT service management and you need its vocabulary.</li>
+        </ol>
+        <p class="prose">AIGP sits apart from this sequence — take it when AI governance specifically is the job, regardless of where you are on the ITAM path.</p>
+        <p class="meta"><a href="#cert-nav"><span aria-hidden="true">&uarr; </span>Back to certification list</a> · <a href="#main">Back to top</a></p>
+
+        <h3 id="cert-task-matrix">Cross-certification task matrix</h3>
+        <p class="meta"><a href="#cert-nav"><span aria-hidden="true">&uarr; </span>Back to certification list</a> · <a href="#main">Back to top</a></p>
+        <p class="prose">Before the certifications' own attributes below, start from the job: which certification(s) actually teach the skill a task needs, independent of which kit tool applies (the per-certification sections below already name those). Three tasks are taught by more than one certification; the rest are each one certification's specialty. Certification names in the header link to that certification's own section — a shared checkmark here doesn't mean equal depth (see the CAMP/CSAM/CHAMP/IAM Certificate maturity row for one example).</p>
+
+        <div class="table-scroll">
+          <table>
+            <caption class="visually-hidden">Cross-certification task matrix</caption>
+            <thead><tr><th>On-the-job task</th><th><a href="#cert-camp">CAMP</a></th><th><a href="#cert-csam">CSAM</a></th><th><a href="#cert-champ">CHAMP</a></th><th><a href="#cert-aigp">AIGP</a></th><th><a href="#cert-itil4">ITIL 4 Foundation</a></th><th><a href="#cert-iam">IAM Certificate</a></th></tr></thead>
+            <tbody>
+              <tr><td>Stand up program governance and policy</td><td>✓</td><td></td><td></td><td></td><td></td><td>✓</td></tr>
+              <tr><td>Baseline or score ITAM process maturity</td><td>✓</td><td>✓</td><td>✓</td><td></td><td></td><td>✓</td></tr>
+              <tr><td>Assign real ownership across the inventory</td><td>✓</td><td></td><td></td><td></td><td></td><td></td></tr>
+              <tr><td>Establish a license position before a vendor audit</td><td></td><td>✓</td><td></td><td></td><td></td><td></td></tr>
+              <tr><td>Find and consolidate duplicate or underused assets</td><td></td><td>✓</td><td></td><td></td><td></td><td>✓</td></tr>
+              <tr><td>Retire hardware and track refresh cost</td><td></td><td></td><td>✓</td><td></td><td></td><td></td></tr>
+              <tr><td>Manage vendor and contract relationships</td><td></td><td></td><td></td><td></td><td>✓</td><td></td></tr>
+              <tr><td>Tier, log, and control a new AI use case</td><td></td><td></td><td></td><td>✓</td><td></td><td></td></tr>
+              <tr><td>Govern the technical change or release itself</td><td></td><td></td><td></td><td></td><td>✓*</td><td></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="prose">* ITIL 4 Foundation teaches this — out of this kit's own tool scope; see the ITIL 4 Foundation section below.</p>
+        <p class="meta"><a href="#cert-nav"><span aria-hidden="true">&uarr; </span>Back to certification list</a> · <a href="#main">Back to top</a></p>
+
+        <h3 id="cert-compare-heading">Certification comparison</h3>
+        <p class="prose">The task matrix above says which certification(s) cover a task; this table compares the certifications themselves — useful once you've narrowed to two or three candidates and need a tie-breaker.</p>
         <div class="table-scroll" id="cert-compare">
       <p class="meta"><a href="#cert-nav"><span aria-hidden="true">&uarr; </span>Back to certification list</a> · <a href="#main">Back to top</a></p>
       <table>
@@ -68,30 +105,6 @@
         </tbody>
       </table>
     </div>
-    <p class="meta"><a href="#cert-nav"><span aria-hidden="true">&uarr; </span>Back to certification list</a> · <a href="#main">Back to top</a></p>
-
-    <h3 id="cert-task-matrix">Cross-certification task matrix</h3>
-    <p class="meta"><a href="#cert-nav"><span aria-hidden="true">&uarr; </span>Back to certification list</a> · <a href="#main">Back to top</a></p>
-    <p class="prose">The comparison above lines up the certifications' own attributes. This one lines up on-the-job tasks instead — which certifications actually teach the skill a task needs, independent of which kit tool applies (the per-certification sections below already name those). Three tasks are taught by more than one certification; the rest are each one certification's specialty.</p>
-
-    <div class="table-scroll">
-      <table>
-        <caption class="visually-hidden">Cross-certification task matrix</caption>
-        <thead><tr><th>On-the-job task</th><th>CAMP</th><th>CSAM</th><th>CHAMP</th><th>AIGP</th><th>ITIL 4 Foundation</th><th>IAM Certificate</th></tr></thead>
-        <tbody>
-          <tr><td>Stand up program governance and policy</td><td>✓</td><td></td><td></td><td></td><td></td><td>✓</td></tr>
-          <tr><td>Baseline or score ITAM process maturity</td><td>✓</td><td>✓</td><td>✓</td><td></td><td></td><td>✓</td></tr>
-          <tr><td>Assign real ownership across the inventory</td><td>✓</td><td></td><td></td><td></td><td></td><td></td></tr>
-          <tr><td>Establish a license position before a vendor audit</td><td></td><td>✓</td><td></td><td></td><td></td><td></td></tr>
-          <tr><td>Find and consolidate duplicate or underused assets</td><td></td><td>✓</td><td></td><td></td><td></td><td>✓</td></tr>
-          <tr><td>Retire hardware and track refresh cost</td><td></td><td></td><td>✓</td><td></td><td></td><td></td></tr>
-          <tr><td>Manage vendor and contract relationships</td><td></td><td></td><td></td><td></td><td>✓</td><td></td></tr>
-          <tr><td>Tier, log, and control a new AI use case</td><td></td><td></td><td></td><td>✓</td><td></td><td></td></tr>
-          <tr><td>Govern the technical change or release itself</td><td></td><td></td><td></td><td></td><td>✓*</td><td></td></tr>
-        </tbody>
-      </table>
-    </div>
-    <p class="prose">* ITIL 4 Foundation teaches this — out of this kit's own tool scope; see the ITIL 4 Foundation section below.</p>
     <p class="meta"><a href="#cert-nav"><span aria-hidden="true">&uarr; </span>Back to certification list</a> · <a href="#main">Back to top</a></p>
 
     <h3 id="cert-camp" class="cert-anchor">Certified Asset Management Professional (CAMP)</h3>
@@ -184,10 +197,6 @@
     </table>
     <p class="meta"><a href="#cert-nav"><span aria-hidden="true">&uarr; </span>Back to certification list</a> · <a href="#main">Back to top</a></p>
 
-    <h3 id="cert-suggested-order">Suggested order for someone new</h3>
-    <p class="meta"><a href="#cert-nav"><span aria-hidden="true">&uarr; </span>Back to certification list</a> · <a href="#main">Back to top</a></p>
-    <p class="prose">CAMP first — it's the foundational program-and-process view everything else builds on. From there, pick CSAM or CHAMP by which asset type you actually own (software versus hardware) rather than doing both by default. The IAM Certificate is worth adding if your remit reaches beyond IT into physical or infrastructure assets generally; ITIL 4 Foundation is worth adding if your organization already runs formal IT service management and you need its vocabulary. AIGP sits apart from all of these; take it when AI governance specifically is the job, regardless of where you are on the ITAM path.</p>
-    <p class="meta"><a href="#cert-nav"><span aria-hidden="true">&uarr; </span>Back to certification list</a> · <a href="#main">Back to top</a></p>
     <p class="meta">Names are used for reference only. No affiliation with or endorsement by IAITAM, IAPP, PeopleCert/AXELOS, or the Institute of Asset Management.</p>
       </div>
     </div>

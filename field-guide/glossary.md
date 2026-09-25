@@ -12,9 +12,9 @@ Plain-English definitions for terms used across this kit's methods, tied to a Ha
 
 **CMDB (Configuration Management Database).** A system of record for IT assets and how they relate to one another. *Halden example: `apps.csv` and `licenses.csv` function as a lightweight CMDB extract for the demo estate.*
 
-**Entitlement.** The specific usage right a license grants — not just the fact that software is installed. *Halden example: Payflow's license entitlements don't match its 748 users, an open license-position question the rationalization run flags as unverified.*
+<a id="entitlement"></a>**Entitlement.** The specific usage right a license grants — not just the fact that software is installed. *Halden example: Payflow's license entitlements don't match its 748 users, an open license-position question the rationalization run flags as unverified.*
 
-**Effective license position (ELP).** The gap between what's licensed (entitlements) and what's actually deployed or used. *Halden example: comparing Payflow's licensed entitlements to its real user count before a vendor audit.*
+<a id="effective-license-position"></a>**Effective license position (ELP).** The gap between what's licensed (entitlements) and what's actually deployed or used. *Halden example: comparing Payflow's licensed entitlements to its real user count before a vendor audit.*
 
 **True-up.** Paying for usage that exceeded licensed entitlement, usually settled at renewal or after an audit. *Halden example: if Payflow's usage is found to exceed its entitlement, Halden owes a true-up at the next renewal.*
 
@@ -22,7 +22,7 @@ Plain-English definitions for terms used across this kit's methods, tied to a Ha
 
 **Normalization.** Cleaning inconsistent product or vendor names so the same thing isn't counted twice under different labels. *Halden example: Clausebase and Tallysheet are both normalized to "contract management," not left as two unrelated names.*
 
-**SWID tag (software identification tag).** A machine-readable file that identifies an installed software product, defined in ISO/IEC 19770-2. *Halden example: none of Halden's demo apps ship SWID tags, so today's inventory work is manual.*
+<a id="swid-tag"></a>**SWID tag (software identification tag).** A machine-readable file that identifies an installed software product, defined in ISO/IEC 19770-2. *Halden example: none of Halden's demo apps ship SWID tags, so today's inventory work is manual.*
 
 **Shelfware.** Licensed or purchased software sitting mostly or entirely unused. *Halden example: Pulseboard carries 350 entitlements against only 45 users — a shelfware candidate the rationalization run flags.*
 
