@@ -187,6 +187,11 @@ main {
   margin: 0;
 }
 
+.prose.prose-wide,
+.hero p.positioning.prose-wide {
+  max-width: 55rem;
+}
+
 .prose {
   max-width: 46rem;
 }
