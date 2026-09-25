@@ -5,6 +5,7 @@ from pathlib import Path
 
 from agk.crosswalk import CrosswalkError, load_crosswalk
 from agk.doclinks import broken_doc_links
+from agk.lifecycle import LifecycleError, load_questions, render_checklist
 from agk.methods import MethodError, load_method, method_dirs
 from agk.render import (render_claude, render_claude_manifest, render_codex,
                         render_codex_agents, render_copilot)
@@ -53,6 +54,17 @@ def build(root: Path) -> tuple[list[str], list[str]]:
     agents_dest.mkdir(parents=True, exist_ok=True)
     for agent in sorted((root / "agents").glob("*.md")):
         shutil.copyfile(agent, agents_dest / agent.name)
+    questions_csv = root / "lifecycle" / "questions.csv"
+    if questions_csv.exists():
+        try:
+            questions = load_questions(questions_csv, {m.name for m in methods}, known)
+        except LifecycleError as e:
+            errors.append(f"lifecycle: {e}")
+        else:
+            (dist / "lifecycle-questions.md").write_text(render_checklist(questions), encoding="utf-8")
+            home = root / "site" / "index.html"
+            if home.exists():
+                home.write_text(inject_data(home.read_text(encoding="utf-8"), "LC", questions), encoding="utf-8")
     explorer = root / "site" / "crosswalk.html"
     if explorer.exists():
         rows = [dict(r, key_work=themes[r["id"]]) for r in known.values()]

@@ -81,3 +81,18 @@ class BuildTests(unittest.TestCase):
         (self.root / "methods/crosswalk/themes.md").write_text("# empty\n")
         errors, _ = build(self.root)
         self.assertTrue(any(e.startswith("themes:") for e in errors))
+
+    def test_lifecycle_bank_builds_checklist(self):
+        from agk.lifecycle import STAGES
+        (self.root / "lifecycle").mkdir()
+        rows = "".join(f'{s},"Ask about {s}?",rationalization,XW-001\n' for s, _ in STAGES)
+        (self.root / "lifecycle" / "questions.csv").write_text("stage,question,tool,xw\n" + rows)
+        errors, _ = build(self.root)
+        self.assertEqual(errors, [])
+        self.assertIn("## Retire", (self.root / "dist" / "lifecycle-questions.md").read_text())
+
+    def test_lifecycle_bank_errors_stop_build(self):
+        (self.root / "lifecycle").mkdir()
+        (self.root / "lifecycle" / "questions.csv").write_text('stage,question,tool,xw\nplan,"Q?",nope,XW-001\n')
+        errors, _ = build(self.root)
+        self.assertTrue(any(e.startswith("lifecycle:") for e in errors))
