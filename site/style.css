@@ -1010,3 +1010,65 @@ code {
   font-size: 0.82rem;
   text-align: center;
 }
+
+/* Field guide — certification jump nav */
+
+.fg-jumpnav {
+  margin: 1.25rem 0 1.5rem;
+  padding: 1rem 1.25rem;
+  background: var(--chip-bg);
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  scroll-margin-top: 1rem;
+}
+
+.fg-jumpnav__label {
+  margin: 0 0 0.6rem;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: var(--muted);
+}
+
+.fg-jumpnav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 0.6rem;
+}
+
+.fg-jumpnav a {
+  display: inline-block;
+  padding: 0.4rem 0.8rem;
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  background: var(--surface);
+  color: var(--fg);
+  text-decoration: none;
+  font-size: 0.92rem;
+}
+
+.fg-jumpnav a:hover,
+.fg-jumpnav a:focus-visible {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.table-scroll,
+.cert-anchor {
+  scroll-margin-top: 1rem;
+}
+
+.table-scroll:target {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 0.4rem;
+}
+
+.cert-anchor:target {
+  padding-left: 0.75rem;
+  border-left: 3px solid var(--accent);
+  background: var(--chip-bg);
+}
