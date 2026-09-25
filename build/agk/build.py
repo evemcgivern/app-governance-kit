@@ -12,6 +12,7 @@ from agk.lifecycle import LifecycleError, load_questions, load_stages, render_ch
 from agk.lifecycle_impact import LifecycleImpactError, load_lifecycle_impact
 from agk.links import LinkError, link_items, load_links
 from agk.methods import MethodError, load_method, method_dirs
+from agk.practicum import PracticumError, practicum_payload
 from agk.render import (render_claude, render_claude_manifest, render_codex,
                         render_codex_agents, render_copilot)
 from agk.site import broken_links, inject_data
@@ -109,6 +110,15 @@ def build(root: Path) -> tuple[list[str], list[str]]:
         im_rows = [{"id": r["id"], "theme": r["theme"], "stages": lifecycle_impact[r["id"]]} for r in known.values()]
         impact_map.write_text(inject_data(impact_map.read_text(encoding="utf-8"), "IM", im_rows),
                               encoding="utf-8")
+    practicum_page = root / "site" / "practicum.html"
+    if practicum_page.exists():
+        try:
+            payload = practicum_payload(root / "demo-estate", root / "practicum", known)
+        except (PracticumError, FileNotFoundError) as e:
+            errors.append(f"practicum: {e}")
+        else:
+            practicum_page.write_text(
+                inject_data(practicum_page.read_text(encoding="utf-8"), "PR", [payload]), encoding="utf-8")
     if (root / "site").is_dir():
         warnings += write_downloads(root)
         errors += [f"site: broken link {b}" for b in broken_links(root / "site")]
