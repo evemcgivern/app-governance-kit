@@ -1,0 +1,24 @@
+# Platform guide: Access review pack
+
+Where the fields this tool uses live in ServiceNow's GRC attestation capability, and in Flexera One, drawn only from sources I could reach. Where I could not confirm a named module, table, or field, I say so rather than guess.
+
+## ServiceNow: access certification through Policy and Compliance Management attestations
+
+ServiceNow's own access-certification capability sits inside **Policy and Compliance Management**, part of its Integrated Risk Management (IRM) product line, and is driven by **control attestations** rather than a standalone "access review" object. The setup pattern a ServiceNow Community thread describes for running a user access review: create a **Control Objective** and link it to the **Entity Type** being reviewed (for example, users holding access to a given system); that generates one **Control** per entity, and each control routes an **Attestation** to its named **Control Owner**, who confirms the access is still needed and attaches their decision as evidence.
+
+Evidence collection runs one of two ways. A **Manual Indicator** is used to gather the control owner's response as evidence by hand. Where ServiceNow has been connected to an identity and access management (IAM) solution, an **Automated Indicator** can instead continuously monitor the control, which is the mechanism this method's account-to-person matching maps onto: the account and person data behind an automated indicator's continuous check is expected to come from that connected IAM system, not from a table inside ServiceNow itself. I found no ServiceNow documentation naming a specific field or table that stores the account-to-person match this method's step 3 performs; the Attestation and Control Owner objects above are what carries the *decision*, not the underlying account export.
+
+I could not load ServiceNow's own IRM product page (`servicenow.com/products/integrated-risk-management.html`) or its Policy and Compliance Management structural-overview and attestation concept pages under `docs.servicenow.com`; all three returned either an error or a page with no readable body to automated fetches. The Control Objective / Entity Type / Control / Control Owner / Attestation / Manual Indicator / Automated Indicator terminology above comes from a ServiceNow Community discussion that did load and that matches the vocabulary used across ServiceNow's GRC release notes.
+
+## Flexera One: application usage data for dormant access
+
+Flexera One's SaaS Management surfaces the usage evidence this method's dormant-access check (no login in 90 days) would draw on. Flexera states it can **identify underused licenses** and find downgrade opportunities from bundled subscriptions, built on **detailed usage insights** drawn from multiple discovery methods — financial data, API connectors including a Universal Connector, a browser extension, and connections to SSO and CASB technologies — covering both sanctioned and unsanctioned (shadow) applications. The product combines application usage, spend, and contract information to recommend right-sizing licenses and eliminating unused applications.
+
+I found no confirmed Flexera One field or table name for a per-account last-login timestamp equivalent to this method's `last_login` column; its documented capability is a usage-based license-optimization recommendation, not a named field this method's account export could be validated against. Flexera's documentation site (`docs.flexera.com/...`) returned an error to automated fetches for every page I tried, so nothing above cites it directly; everything comes from Flexera's own marketing page, which did load.
+
+## Sources checked
+
+- [Access Reviews in P&C — ServiceNow Community](https://www.servicenow.com/community/grc-forum/access-reviews-in-p-amp-c/m-p/2342369) — Control Objective, Entity Type, Control, Control Owner, Attestation, Manual Indicator, Automated Indicator, and the connected-IAM-solution route to continuous monitoring.
+- [Optimize SaaS spend and utilization with Flexera One SaaS Management — Flexera](https://www.flexera.com/products/flexera-one/saas-management) — underused-license identification, multi-source discovery (financial data, API connectors, browser extension, SSO/CASB), usage-and-spend-based optimization recommendations.
+
+Three pages I would otherwise have cited did not return a readable page to automated fetches: ServiceNow's own IRM product page (`servicenow.com/products/integrated-risk-management.html`, error), its Policy and Compliance Management structural-overview page, and its control-attestation concept page under `docs.servicenow.com` (both returned a page with no documentation content, only navigation). Flexera's documentation site (`docs.flexera.com/...`) returned an error to automated fetches on every page tried, including the Usage Tab reference. Everything above comes from a page that loaded.
