@@ -256,6 +256,33 @@ h1, h2, h3 {
   margin: 0.75rem 0 0;
 }
 
+/* Visual actions — download / print for tables & diagrams */
+
+.visual-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 0.6rem;
+  margin: 0.85rem 0;
+}
+
+.visual-actions__link {
+  display: inline-block;
+  padding: 0.4rem 0.9rem;
+  border: 1px solid var(--accent);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.visual-actions__link:hover,
+.visual-actions__link:focus-visible {
+  filter: brightness(1.08);
+}
+
 .link-list {
   list-style: none;
   padding: 0;
@@ -537,7 +564,8 @@ code {
   .lc-rule-xw,
   .lc-link-anchor,
   .lc-overlay-toggle,
-  .lc-back-link-anchor {
+  .lc-back-link-anchor,
+  .visual-actions__link {
     min-height: 44px;
     display: inline-flex;
     align-items: center;
