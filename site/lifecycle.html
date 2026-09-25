@@ -30,6 +30,8 @@
     <p class="positioning">An application moves through six stages from request to retirement. Pick a stage on the wheel to see the questions to ask there, each tied to the crosswalk row it satisfies and the kit tool that handles it.</p>
   </section>
 
+  <!--LC-TOGETHER--><p class="lc-together">The lifecycle is the spine every application travels, from a first request to retirement. The governance council owns the gate between each pair of stages, and delegates routine calls below its threshold. Each stage&#x27;s questions and rules are handled by a specific kit tool. Every rule below names the crosswalk row it satisfies, so each decision traces back to a control. Review and optimize is where the loop branches: most applications feed back into Plan to be reinvested in or replaced, while the rest move forward into Retire, which closes the loop by freeing licenses, data, and budget for the next Plan.</p><!--/LC-TOGETHER-->
+
   <noscript>
     <p>This wheel needs JavaScript. Here are all six stages' questions, and you can also browse them in
       <a href="https://github.com/evemcgivern/app-governance-kit/blob/main/dist/lifecycle-questions.md">lifecycle-questions.md on GitHub</a>.</p>
@@ -80,24 +82,26 @@
 
   <div class="lc-layout">
     <div class="lc-wheel-wrap">
-      <svg class="lc-wheel" viewBox="0 0 320 320" role="group" aria-label="Application lifecycle stages">
-        <circle cx="160" cy="160" r="150" class="lc-wheel-ring" fill="none"></circle>
+      <svg class="lc-wheel" viewBox="0 0 400 400" role="group" aria-label="Application lifecycle stages">
+        <circle cx="200" cy="200" r="150" class="lc-wheel-ring" fill="none"></circle>
         <g id="lc-segments"></g>
         <g id="lc-arrow" aria-hidden="true"></g>
-        <text id="lc-hub-label" x="160" y="160" class="lc-hub-label" text-anchor="middle" dominant-baseline="middle"></text>
+        <text id="lc-hub-label" x="200" y="200" class="lc-hub-label" text-anchor="middle" dominant-baseline="middle"></text>
       </svg>
-      <ul id="lc-fallback-list" class="visually-hidden"></ul>
+      <ul id="lc-fallback-list" class="visually-hidden" aria-hidden="true"></ul>
     </div>
 
-    <div id="lc-panel" class="lc-panel" aria-live="polite">
-      <h3 id="lc-panel-heading" tabindex="-1"></h3>
+    <div id="lc-panel" class="lc-panel">
+      <h2 id="lc-panel-heading" tabindex="-1"></h2>
+      <div id="lc-panel-info" class="lc-stage-info"></div>
+      <h3 class="lc-questions-heading">Questions to ask</h3>
       <ul id="lc-panel-list" class="lc-question-list"></ul>
     </div>
   </div>
 
   <p><a class="button button--ghost" href="https://github.com/evemcgivern/app-governance-kit/blob/main/dist/lifecycle-questions.md">Download the lifecycle questions</a></p>
 
-  <!--LC-DATA--><script type="application/json" id="lc-data">[{"stage": "plan", "question": "What problem does this solve, and do we own an app that does it?", "tool": "rationalization", "xw": "XW-011"}, {"stage": "plan", "question": "Who will own it, and who is the executive sponsor?", "tool": "program-setup", "xw": "XW-002"}, {"stage": "plan", "question": "Does the request meet the council's threshold and come through the intake path?", "tool": "program-setup", "xw": "XW-027"}, {"stage": "plan", "question": "Does it use AI? If so, what risk tier is it?", "tool": "ai-intake", "xw": "XW-021"}, {"stage": "plan", "question": "What data will it hold, and how sensitive is that data?", "tool": "access-review", "xw": "XW-028"}, {"stage": "acquire", "question": "What license model applies, and how many entitlements do we need?", "tool": "rationalization", "xw": "XW-006"}, {"stage": "acquire", "question": "Does the contract give audit, renewal, and exit terms we can live with?", "tool": "rationalization", "xw": "XW-013"}, {"stage": "acquire", "question": "Have the supplier and any AI model provider been assessed?", "tool": "ai-intake", "xw": "XW-023"}, {"stage": "acquire", "question": "Is the purchase recorded against an owner and a cost center?", "tool": "itam-maturity", "xw": "XW-012"}, {"stage": "deploy", "question": "Is the app in the inventory with owner, category, and data sensitivity?", "tool": "itam-maturity", "xw": "XW-001"}, {"stage": "deploy", "question": "Are access roles defined, and who approves new access?", "tool": "access-review", "xw": "XW-015"}, {"stage": "deploy", "question": "Are privileged accounts limited and named?", "tool": "access-review", "xw": "XW-018"}, {"stage": "deploy", "question": "For AI systems: is the inventory record complete and the risk in the register?", "tool": "ai-intake", "xw": "XW-022"}, {"stage": "operate", "question": "Do installs and users stay within entitlements?", "tool": "rationalization", "xw": "XW-007"}, {"stage": "operate", "question": "Is access reviewed on schedule, and are leavers removed?", "tool": "access-review", "xw": "XW-016"}, {"stage": "operate", "question": "Are asset records accurate and reconciled?", "tool": "itam-maturity", "xw": "XW-026"}, {"stage": "operate", "question": "Has the AI system's use changed since intake?", "tool": "ai-intake", "xw": "XW-021"}, {"stage": "optimize", "question": "Is it still worth its cost: tolerate, invest, migrate, or eliminate?", "tool": "rationalization", "xw": "XW-011"}, {"stage": "optimize", "question": "Is anything expiring or due for renewal in the next 90 days?", "tool": "rationalization", "xw": "XW-008"}, {"stage": "optimize", "question": "Where is our asset management process weakest this year?", "tool": "itam-maturity", "xw": "XW-025"}, {"stage": "optimize", "question": "Does the council's decision log show bottlenecks or rubber-stamping?", "tool": "program-setup", "xw": "XW-025"}, {"stage": "retire", "question": "What data does it hold, and will we archive, migrate, or delete it?", "tool": "rationalization", "xw": "XW-028"}, {"stage": "retire", "question": "Are all accounts removed and licenses cancelled or reclaimed?", "tool": "access-review", "xw": "XW-017"}, {"stage": "retire", "question": "Is the contract ended on time, without auto-renewal?", "tool": "rationalization", "xw": "XW-013"}, {"stage": "retire", "question": "Is the inventory record closed, with evidence kept?", "tool": "itam-maturity", "xw": "XW-020"}]</script><!--/LC-DATA-->
+  <!--LC-DATA--><script type="application/json" id="lc-data">[{"questions": [{"stage": "plan", "question": "What problem does this solve, and do we own an app that does it?", "tool": "rationalization", "xw": "XW-011"}, {"stage": "plan", "question": "Who will own it, and who is the executive sponsor?", "tool": "program-setup", "xw": "XW-002"}, {"stage": "plan", "question": "Does the request meet the council's threshold and come through the intake path?", "tool": "program-setup", "xw": "XW-027"}, {"stage": "plan", "question": "Does it use AI? If so, what risk tier is it?", "tool": "ai-intake", "xw": "XW-021"}, {"stage": "plan", "question": "What data will it hold, and how sensitive is that data?", "tool": "access-review", "xw": "XW-028"}, {"stage": "acquire", "question": "What license model applies, and how many entitlements do we need?", "tool": "rationalization", "xw": "XW-006"}, {"stage": "acquire", "question": "Does the contract give audit, renewal, and exit terms we can live with?", "tool": "rationalization", "xw": "XW-013"}, {"stage": "acquire", "question": "Have the supplier and any AI model provider been assessed?", "tool": "ai-intake", "xw": "XW-023"}, {"stage": "acquire", "question": "Is the purchase recorded against an owner and a cost center?", "tool": "itam-maturity", "xw": "XW-012"}, {"stage": "deploy", "question": "Is the app in the inventory with owner, category, and data sensitivity?", "tool": "itam-maturity", "xw": "XW-001"}, {"stage": "deploy", "question": "Are access roles defined, and who approves new access?", "tool": "access-review", "xw": "XW-015"}, {"stage": "deploy", "question": "Are privileged accounts limited and named?", "tool": "access-review", "xw": "XW-018"}, {"stage": "deploy", "question": "For AI systems: is the inventory record complete and the risk in the register?", "tool": "ai-intake", "xw": "XW-022"}, {"stage": "operate", "question": "Do installs and users stay within entitlements?", "tool": "rationalization", "xw": "XW-007"}, {"stage": "operate", "question": "Is access reviewed on schedule, and are leavers removed?", "tool": "access-review", "xw": "XW-016"}, {"stage": "operate", "question": "Are asset records accurate and reconciled?", "tool": "itam-maturity", "xw": "XW-026"}, {"stage": "operate", "question": "Has the AI system's use changed since intake?", "tool": "ai-intake", "xw": "XW-021"}, {"stage": "optimize", "question": "Is it still worth its cost: tolerate, invest, migrate, or eliminate?", "tool": "rationalization", "xw": "XW-011"}, {"stage": "optimize", "question": "Is anything expiring or due for renewal in the next 90 days?", "tool": "rationalization", "xw": "XW-008"}, {"stage": "optimize", "question": "Where is our asset management process weakest this year?", "tool": "itam-maturity", "xw": "XW-025"}, {"stage": "optimize", "question": "Does the council's decision log show bottlenecks or rubber-stamping?", "tool": "program-setup", "xw": "XW-025"}, {"stage": "retire", "question": "What data does it hold, and will we archive, migrate, or delete it?", "tool": "rationalization", "xw": "XW-028"}, {"stage": "retire", "question": "Are all accounts removed and licenses cancelled or reclaimed?", "tool": "access-review", "xw": "XW-017"}, {"stage": "retire", "question": "Is the contract ended on time, without auto-renewal?", "tool": "rationalization", "xw": "XW-013"}, {"stage": "retire", "question": "Is the inventory record closed, with evidence kept?", "tool": "itam-maturity", "xw": "XW-020"}], "stages": {"plan": {"What happens": "A request is written up: the problem, the owner, and any AI risk.", "Gate to move on": "The council or its delegate approves the request and assigns an owner.", "Hands off to": ["acquire"], "Who decides": "The application owner drafts it; the council or its delegate approves it.", "Hand-off note": "the approved request becomes the basis for a purchase.", "rules": [{"text": "Nothing is bought or built above the council's threshold without an approved request.", "xw": ["XW-027"]}, {"text": "Every request names an accountable owner before it moves forward.", "xw": ["XW-002"]}, {"text": "A request that duplicates an application already owned is flagged first.", "xw": ["XW-011"]}, {"text": "Any AI component is flagged at intake for a risk-tier assessment.", "xw": ["XW-021"]}, {"text": "The data the application will hold, and its sensitivity, is recorded early.", "xw": ["XW-028"]}]}, "acquire": {"What happens": "The approved request becomes a purchase: license chosen, contract negotiated, supplier assessed.", "Gate to move on": "Contract signed with audit, renewal, and exit terms reviewed; entitlements recorded.", "Hands off to": ["deploy"], "Who decides": "Procurement with the application owner; the council above its cost threshold.", "Hand-off note": "the entitlement record and contract travel with the application.", "rules": [{"text": "Nothing is bought above the council's threshold without an approved request.", "xw": ["XW-027"]}, {"text": "Every purchase records its entitlements before deployment starts.", "xw": ["XW-006"]}, {"text": "Contracts are checked for audit, renewal, and exit terms before signature.", "xw": ["XW-013"]}, {"text": "Any AI supplier and model provider is assessed before the purchase closes.", "xw": ["XW-023"]}]}, "deploy": {"What happens": "The application is installed, added to the inventory, and given access roles.", "Gate to move on": "The inventory record and access roles are complete before wider rollout.", "Hands off to": ["operate"], "Who decides": "The application owner, with access approved through the named policy.", "Hand-off note": "the live system and its access records carry forward.", "rules": [{"text": "The application is recorded in the inventory with owner and data sensitivity.", "xw": ["XW-001"]}, {"text": "Access roles are defined, and new access only granted through an approved path.", "xw": ["XW-015"]}, {"text": "Privileged and administrative accounts are limited and named individually.", "xw": ["XW-018"]}, {"text": "An AI system's inventory record and risk entry are complete before go-live.", "xw": ["XW-022"]}]}, "operate": {"What happens": "The application runs day to day: usage tracked, access kept current, records reconciled.", "Gate to move on": "Installs stay within entitlements and access reviews happen on schedule.", "Hands off to": ["optimize"], "Who decides": "The application owner, checked periodically by whoever runs access reviews.", "Hand-off note": "the running history and asset record get reviewed.", "rules": [{"text": "Installed copies and active users are kept within held entitlements.", "xw": ["XW-007"]}, {"text": "Access is reviewed on schedule, and leavers are removed promptly.", "xw": ["XW-016"]}, {"text": "Asset records are reconciled against what is actually installed.", "xw": ["XW-026"]}, {"text": "A changed AI system's use is reassessed, not assumed unchanged.", "xw": ["XW-021"]}]}, "optimize": {"What happens": "The portfolio is reviewed to decide whether each application still earns its cost.", "Gate to move on": "The owner or council records a decision: keep, invest, migrate, or retire.", "Hands off to": ["plan", "retire"], "Who decides": "The application owner recommends; the council decides above its threshold.", "Hand-off note": "reinvest or replace starts a new request; otherwise retire begins.", "rules": [{"text": "Every application is periodically assessed against tolerate, invest, migrate, or eliminate.", "xw": ["XW-011"]}, {"text": "Anything expiring within the review window is flagged before it lapses.", "xw": ["XW-008"]}, {"text": "The review checks where the organization's own asset process is weakest.", "xw": ["XW-025"]}, {"text": "The council's own decision log is checked for bottlenecks or rubber-stamping.", "xw": ["XW-025"]}]}, "retire": {"What happens": "The application is decommissioned: data archived, migrated, or deleted; access and licenses unwound.", "Gate to move on": "Accounts removed, licenses reclaimed, and the inventory record closed with evidence.", "Hands off to": ["plan"], "Who decides": "The application owner executes; the council confirms closure above its threshold.", "Hand-off note": "the freed licenses, data capacity, and budget go to the next request.", "rules": [{"text": "What happens to the application's data is decided and recorded, not left implicit.", "xw": ["XW-028"]}, {"text": "All accounts tied to the application are removed and licenses reclaimed.", "xw": ["XW-017"]}, {"text": "The contract is ended on schedule, with any auto-renewal cancelled in time.", "xw": ["XW-013"]}, {"text": "The inventory record is formally closed, with evidence retained for audit.", "xw": ["XW-020"]}]}}}]</script><!--/LC-DATA-->
 </main>
 
 <footer class="site-footer">
@@ -118,10 +122,12 @@
   ];
 
   var SVG_NS = "http://www.w3.org/2000/svg";
-  var CX = 160, CY = 160, R_OUTER = 150, R_INNER = 78;
+  var CX = 200, CY = 200, R_OUTER = 150, R_INNER = 78;
 
   var dataEl = document.getElementById("lc-data");
-  var rows = dataEl ? JSON.parse(dataEl.textContent) : [];
+  var payload = dataEl ? JSON.parse(dataEl.textContent) : [{}];
+  var rows = payload[0].questions || [];
+  var stagesData = payload[0].stages || null;
 
   var byStage = {};
   STAGES.forEach(function (pair) { byStage[pair[0]] = []; });
@@ -133,6 +139,7 @@
   var arrowGroup = document.getElementById("lc-arrow");
   var hubLabel = document.getElementById("lc-hub-label");
   var panelHeading = document.getElementById("lc-panel-heading");
+  var panelInfo = document.getElementById("lc-panel-info");
   var panelList = document.getElementById("lc-panel-list");
   var fallbackList = document.getElementById("lc-fallback-list");
 
@@ -192,9 +199,80 @@
     }
   }
 
+  function stageIndex(slug) {
+    for (var i = 0; i < STAGES.length; i++) {
+      if (STAGES[i][0] === slug) { return i; }
+    }
+    return -1;
+  }
+
+  function renderStageInfo(slug) {
+    if (!panelInfo) { return; }
+    panelInfo.innerHTML = "";
+    var info = stagesData ? stagesData[slug] : null;
+    if (!info) { return; }
+
+    var whatP = document.createElement("p");
+    whatP.className = "lc-stage-what";
+    whatP.textContent = info["What happens"];
+    panelInfo.appendChild(whatP);
+
+    var rulesHeading = document.createElement("p");
+    rulesHeading.className = "lc-stage-subhead";
+    rulesHeading.textContent = "Rules that apply";
+    panelInfo.appendChild(rulesHeading);
+
+    var rulesList = document.createElement("ul");
+    rulesList.className = "lc-rule-list";
+    (info.rules || []).forEach(function (rule) {
+      var li = document.createElement("li");
+      li.className = "lc-rule";
+      li.appendChild(document.createTextNode(rule.text + " "));
+      rule.xw.forEach(function (xw, i) {
+        if (i > 0) { li.appendChild(document.createTextNode(", ")); }
+        var a = document.createElement("a");
+        a.href = "crosswalk.html#" + xw;
+        a.textContent = xw;
+        li.appendChild(a);
+      });
+      rulesList.appendChild(li);
+    });
+    panelInfo.appendChild(rulesList);
+
+    var gateP = document.createElement("p");
+    gateP.className = "lc-stage-gate";
+    gateP.appendChild(document.createTextNode("Gate to move on: "));
+    gateP.appendChild(document.createTextNode(info["Gate to move on"]));
+    panelInfo.appendChild(gateP);
+
+    var handsP = document.createElement("p");
+    handsP.className = "lc-stage-handoff";
+    handsP.appendChild(document.createTextNode("Hands off to: "));
+    (info["Hands off to"] || []).forEach(function (target, i) {
+      if (i > 0) { handsP.appendChild(document.createTextNode(", ")); }
+      var btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "lc-handoff-btn";
+      btn.textContent = labelFor(target);
+      btn.addEventListener("click", function () { selectStage(target); });
+      handsP.appendChild(btn);
+    });
+    if (info["Hand-off note"]) {
+      handsP.appendChild(document.createTextNode(". " + info["Hand-off note"]));
+    }
+    panelInfo.appendChild(handsP);
+
+    var whoP = document.createElement("p");
+    whoP.className = "lc-stage-who";
+    whoP.appendChild(document.createTextNode("Who decides: "));
+    whoP.appendChild(document.createTextNode(info["Who decides"]));
+    panelInfo.appendChild(whoP);
+  }
+
   function renderPanel(slug) {
     var label = labelFor(slug);
     panelHeading.textContent = label;
+    renderStageInfo(slug);
     panelList.innerHTML = "";
 
     (byStage[slug] || []).forEach(function (row) {
@@ -258,26 +336,56 @@
     segmentsGroup.appendChild(text);
   }
 
-  function buildArrow() {
-    var tipDeg = -90;
-    var tailDeg = -90 - 12;
-    var arrowR = R_OUTER + 14;
-    var tail = polar(arrowR, tailDeg);
-    var tip = polar(arrowR, tipDeg);
+  function drawHandoffArrow(tailDeg, tipDeg, radius, labelText, labelRadius) {
+    // All hand-off arrows on this wheel sweep clockwise (increasing angle);
+    // normalize so a tip angle that wrapped past 360 still sweeps forward.
+    while (tipDeg < tailDeg) { tipDeg += 360; }
+    var tail = polar(radius, tailDeg);
+    var tip = polar(radius, tipDeg);
 
     var arc = document.createElementNS(SVG_NS, "path");
     arc.setAttribute("d", "M " + tail[0] + " " + tail[1] +
-      " A " + arrowR + " " + arrowR + " 0 0 1 " + tip[0] + " " + tip[1]);
+      " A " + radius + " " + radius + " 0 0 1 " + tip[0] + " " + tip[1]);
     arc.setAttribute("class", "lc-arrow-arc");
     arrowGroup.appendChild(arc);
 
-    var p1 = polar(arrowR + 7, tipDeg - 5);
-    var p2 = polar(arrowR - 7, tipDeg - 5);
-    var p3 = polar(arrowR, tipDeg + 7);
+    var p1 = polar(radius + 6, tipDeg - 6);
+    var p2 = polar(radius - 6, tipDeg - 6);
+    var p3 = polar(radius, tipDeg + 5);
     var head = document.createElementNS(SVG_NS, "polygon");
     head.setAttribute("points", p1.join(",") + " " + p2.join(",") + " " + p3.join(","));
     head.setAttribute("class", "lc-arrow-head");
     arrowGroup.appendChild(head);
+
+    var midDeg = (tailDeg + tipDeg) / 2;
+    var labelPos = polar(labelRadius, midDeg);
+    var label = document.createElementNS(SVG_NS, "text");
+    label.setAttribute("x", labelPos[0]);
+    label.setAttribute("y", labelPos[1]);
+    label.setAttribute("class", "lc-arrow-label");
+    label.setAttribute("text-anchor", "middle");
+    label.setAttribute("aria-hidden", "true");
+    label.textContent = labelText;
+    arrowGroup.appendChild(label);
+  }
+
+  function buildHandoffs() {
+    var step = 360 / STAGES.length;
+    var outerR = R_OUTER + 14;
+    var outerLabelR = R_OUTER + 22;
+    var seam = stageIndex("plan") * step - 90;
+
+    // retire -> plan: closes the main loop at the top seam.
+    drawHandoffArrow(seam - 10, seam + 10, outerR, "closes the loop", outerLabelR);
+
+    // optimize -> retire: the retire branch, at the optimize/retire seam.
+    var retireSeam = stageIndex("retire") * step - 90;
+    drawHandoffArrow(retireSeam - 10, retireSeam + 10, outerR, "retire branch", outerLabelR);
+
+    // optimize -> plan: the reinvest/replace branch, cutting across the hub.
+    var optimizeStart = stageIndex("optimize") * step - 90;
+    var planEnd = (stageIndex("plan") + 1) * step - 90;
+    drawHandoffArrow(optimizeStart + 10, planEnd - 10, R_INNER - 22, "reinvest or replace", R_INNER - 34);
   }
 
   function buildWheel() {
@@ -309,7 +417,7 @@
       addSegmentLabel(polar((R_OUTER + R_INNER) / 2, start + step / 2), label);
     });
 
-    buildArrow();
+    buildHandoffs();
     hubLabel.textContent = "Lifecycle";
   }
 

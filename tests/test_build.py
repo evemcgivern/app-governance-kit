@@ -1,4 +1,5 @@
 import json
+import re
 import tempfile
 import unittest
 from pathlib import Path
@@ -89,6 +90,45 @@ class BuildTests(unittest.TestCase):
         (self.root / "lifecycle" / "questions.csv").write_text("stage,question,tool,xw\n" + rows)
         errors, _ = build(self.root)
         self.assertEqual(errors, [])
+        self.assertIn("## Retire", (self.root / "dist" / "lifecycle-questions.md").read_text())
+
+    def test_stages_flow_into_checklist_and_wheel_page(self):
+        from agk.lifecycle import STAGES
+        (self.root / "lifecycle").mkdir()
+        rows = "".join(f'{s},"Ask about {s}?",rationalization,XW-001\n' for s, _ in STAGES)
+        (self.root / "lifecycle" / "questions.csv").write_text("stage,question,tool,xw\n" + rows)
+        handoff = {"plan": "acquire", "acquire": "deploy", "deploy": "operate",
+                   "operate": "optimize", "optimize": "plan, retire", "retire": "plan"}
+        stages_md = "# Lifecycle\n\n## How it works together\n\nThe stages form a loop.\n\n"
+        for slug, _ in STAGES:
+            stages_md += (f"## {slug} — Stage\n\n- **What happens:** Work happens.\n"
+                          f"- **Gate to move on:** Owner approves.\n"
+                          f"- **Hands off to:** {handoff[slug]} — moves on.\n"
+                          f"- **Who decides:** The council.\n\n"
+                          f"### Rules that apply\n\n- Do the thing. [[XW-001]]\n\n")
+        (self.root / "lifecycle" / "stages.md").write_text(stages_md, encoding="utf-8")
+        site = self.root / "site"
+        site.mkdir()
+        (site / "lifecycle.html").write_text(
+            "<html><body><!--LC-TOGETHER--><!--/LC-TOGETHER-->"
+            "<!--LC-DATA--><!--/LC-DATA--></body></html>", encoding="utf-8")
+        errors, _ = build(self.root)
+        self.assertEqual(errors, [])
+        html = (site / "lifecycle.html").read_text(encoding="utf-8")
+        self.assertIn('<p class="lc-together">The stages form a loop.</p>', html)
+        payload = json.loads(re.search(r'<script[^>]*>(.*?)</script>', html, re.S).group(1))
+        self.assertEqual(payload[0]["stages"]["optimize"]["Hands off to"], ["plan", "retire"])
+        md = (self.root / "dist" / "lifecycle-questions.md").read_text()
+        self.assertIn("Gate to move on: Owner approves.", md)
+
+    def test_invalid_stages_reports_error_but_keeps_questions(self):
+        from agk.lifecycle import STAGES
+        (self.root / "lifecycle").mkdir()
+        rows = "".join(f'{s},"Ask about {s}?",rationalization,XW-001\n' for s, _ in STAGES)
+        (self.root / "lifecycle" / "questions.csv").write_text("stage,question,tool,xw\n" + rows)
+        (self.root / "lifecycle" / "stages.md").write_text("# Lifecycle\n\nNo sections here.\n", encoding="utf-8")
+        errors, _ = build(self.root)
+        self.assertTrue(any(e.startswith("lifecycle:") for e in errors))
         self.assertIn("## Retire", (self.root / "dist" / "lifecycle-questions.md").read_text())
 
     def test_lifecycle_bank_errors_stop_build(self):

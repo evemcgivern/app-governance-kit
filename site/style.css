@@ -552,6 +552,11 @@ code {
   filter: drop-shadow(0 0 3px var(--focus));
 }
 
+.lc-segment[aria-current="true"]:focus-visible {
+  stroke: var(--accent-fg);
+  filter: drop-shadow(0 0 3px var(--accent-fg));
+}
+
 .lc-segment-label {
   fill: var(--fg);
   font-size: 0.72rem;
@@ -579,6 +584,20 @@ code {
   fill: var(--muted);
 }
 
+.lc-arrow-label {
+  fill: var(--muted);
+  font-size: 0.6rem;
+  font-weight: 600;
+  pointer-events: none;
+}
+
+.lc-together {
+  font-size: 1.05rem;
+  color: var(--muted);
+  max-width: 46rem;
+  margin: 0 0 1.5rem;
+}
+
 .lc-panel {
   background: var(--surface);
   border: 1px solid var(--border);
@@ -587,8 +606,59 @@ code {
   min-height: 12rem;
 }
 
-.lc-panel h3 {
+.lc-panel h2 {
   margin-top: 0;
+}
+
+.lc-questions-heading {
+  margin: 1.25rem 0 0.5rem;
+  font-size: 1rem;
+}
+
+.lc-stage-info {
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.lc-stage-what {
+  margin: 0 0 0.75rem;
+}
+
+.lc-stage-subhead {
+  margin: 0 0 0.4rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.lc-rule-list {
+  margin: 0 0 0.75rem;
+  padding-left: 1.1rem;
+}
+
+.lc-rule {
+  margin: 0.25rem 0;
+}
+
+.lc-stage-gate,
+.lc-stage-handoff,
+.lc-stage-who {
+  margin: 0.4rem 0;
+}
+
+.lc-handoff-btn {
+  font: inherit;
+  font-weight: 600;
+  color: var(--accent);
+  background: var(--chip-bg);
+  border: 1px solid var(--accent);
+  border-radius: 999px;
+  padding: 0.15rem 0.65rem;
+  cursor: pointer;
+}
+
+.lc-handoff-btn:hover {
+  border-color: var(--accent);
 }
 
 .lc-question-list {
