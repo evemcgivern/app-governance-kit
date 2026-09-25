@@ -5,7 +5,7 @@ XW-003,plan;optimize,
 XW-004,plan;optimize,
 XW-005,deploy;operate,retire
 XW-006,acquire;operate,retire
-XW-007,operate;optimize,
+XW-007,operate;optimize,deploy
 XW-008,operate;optimize,acquire
 XW-009,plan;optimize;retire,acquire;deploy;operate
 XW-010,retire,

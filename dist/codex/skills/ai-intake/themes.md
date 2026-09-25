@@ -47,7 +47,7 @@ Each of the 28 crosswalk themes below sets out what it means in practice, the co
 ## XW-007 License compliance position
 
 - **What it means:** The organization knows whether it holds enough licenses for what's actually deployed, or too many.
-- **Key work:** Compare deployed install counts to entitlement quantities per product; flag products that are over-deployed or under-deployed; quantify the compliance or cost exposure; report the position to the asset owner; use the `rationalization` tool to weigh whether to true up, reduce, or renegotiate.
+- **Key work:** Compare deployed install counts to entitlement quantities per product; check available entitlement before approving a self-service install request; flag products that are over-deployed or under-deployed; quantify the compliance or cost exposure; report the position to the asset owner; use the `rationalization` tool to weigh whether to true up, reduce, or renegotiate.
 - **Evidence it produces:** A compliance position report per product, with the resulting decision recorded.
 - **Usually owned by:** The software asset management team, with the budget owner approving any true-up spend.
 
