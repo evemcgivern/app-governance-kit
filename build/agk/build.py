@@ -6,6 +6,7 @@ from pathlib import Path
 from agk.crosswalk import CrosswalkError, load_crosswalk
 from agk.doclinks import broken_doc_links
 from agk.lifecycle import LifecycleError, load_questions, render_checklist
+from agk.lifecycle_impact import LifecycleImpactError, load_lifecycle_impact
 from agk.methods import MethodError, load_method, method_dirs
 from agk.render import (render_claude, render_claude_manifest, render_codex,
                         render_codex_agents, render_copilot)
@@ -25,6 +26,10 @@ def build(root: Path) -> tuple[list[str], list[str]]:
         themes = load_themes(methods_dir / "crosswalk" / "themes.md", known)
     except (ThemesError, FileNotFoundError) as e:
         return [f"themes: {e}"], []
+    try:
+        lifecycle_impact = load_lifecycle_impact(methods_dir / "crosswalk" / "lifecycle-impact.csv", known)
+    except (LifecycleImpactError, FileNotFoundError) as e:
+        return [f"lifecycle-impact: {e}"], []
     errors: list[str] = []
     warnings: list[str] = []
     methods = []
@@ -68,7 +73,7 @@ def build(root: Path) -> tuple[list[str], list[str]]:
                                           encoding="utf-8")
     explorer = root / "site" / "crosswalk.html"
     if explorer.exists():
-        rows = [dict(r, key_work=themes[r["id"]]) for r in known.values()]
+        rows = [dict(r, key_work=themes[r["id"]], stages=lifecycle_impact[r["id"]]) for r in known.values()]
         explorer.write_text(inject_data(explorer.read_text(encoding="utf-8"), "XW", rows),
                             encoding="utf-8")
     if (root / "site").is_dir():

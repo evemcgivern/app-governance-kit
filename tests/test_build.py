@@ -96,3 +96,31 @@ class BuildTests(unittest.TestCase):
         (self.root / "lifecycle" / "questions.csv").write_text('stage,question,tool,xw\nplan,"Q?",nope,XW-001\n')
         errors, _ = build(self.root)
         self.assertTrue(any(e.startswith("lifecycle:") for e in errors))
+
+    def test_missing_lifecycle_impact_stops_build(self):
+        (self.root / "methods/crosswalk/lifecycle-impact.csv").unlink()
+        errors, _ = build(self.root)
+        self.assertTrue(any(e.startswith("lifecycle-impact:") for e in errors))
+        self.assertFalse((self.root / "dist").exists())
+
+    def test_invalid_lifecycle_impact_stops_build(self):
+        (self.root / "methods/crosswalk/lifecycle-impact.csv").write_text(
+            'xw_id,primary_stages,secondary_stages\nXW-001,"launch",""\n', encoding="utf-8")
+        errors, _ = build(self.root)
+        self.assertTrue(any(e.startswith("lifecycle-impact:") for e in errors))
+        self.assertFalse((self.root / "dist").exists())
+
+    def test_valid_lifecycle_impact_flows_into_crosswalk_data(self):
+        site = self.root / "site"
+        site.mkdir()
+        (site / "crosswalk.html").write_text(
+            "<html><body><!--XW-DATA--><!--/XW-DATA--></body></html>", encoding="utf-8")
+        errors, _ = build(self.root)
+        self.assertEqual(errors, [])
+        html = (site / "crosswalk.html").read_text(encoding="utf-8")
+        marker = "<!--XW-DATA-->"
+        payload = html[html.index(marker):]
+        data = json.loads(payload[payload.index("[") : payload.index("</script>")])
+        row = next(r for r in data if r["id"] == "XW-001")
+        self.assertEqual(row["stages"]["primary"], ["deploy", "operate"])
+        self.assertEqual(row["stages"]["secondary"], ["plan", "acquire", "optimize", "retire"])

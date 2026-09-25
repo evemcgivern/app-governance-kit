@@ -314,7 +314,10 @@
   }
 
   buildWheel();
-  selectStage(STAGES[0][0], false);
+
+  var initialSlug = (window.location.hash || "").replace(/^#/, "");
+  var knownSlug = STAGES.filter(function (p) { return p[0] === initialSlug; })[0];
+  selectStage(knownSlug ? knownSlug[0] : STAGES[0][0], false);
 })();
 </script>
 </body>
