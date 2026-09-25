@@ -13,6 +13,7 @@ IMAGE_SUFFIXES = {".png", ".jpg", ".jpeg", ".gif", ".webp", ".ico"}
 QUOTE_RE = re.compile(r"[\"“]([^\"”]*)[\"”]")
 TAG_STRIP_RE = re.compile(r"<[^>]+>")
 JSON_DATA_BLOCK_RE = re.compile(r'<script type="application/json"[^>]*>.*?</script>', re.S)
+SVG_PATH_D_RE = re.compile(r'\bd="[^"]*"')
 
 
 def _blank_json_data_blocks(text: str) -> str:
@@ -22,7 +23,12 @@ def _blank_json_data_blocks(text: str) -> str:
     # syntax and often run past 15 words per field. Blank them out
     # (preserving line numbers for anything after) so they're never
     # mistaken for a copyright-risk quoted run.
-    return JSON_DATA_BLOCK_RE.sub(lambda m: "\n" * m.group(0).count("\n"), text)
+    text = JSON_DATA_BLOCK_RE.sub(lambda m: "\n" * m.group(0).count("\n"), text)
+    # Generated SVG path data (site/downloads/*.svg and the print pages that
+    # embed them): a single `d="M 200 50 A 150 150 0 0 1 ..."` attribute is a
+    # long run of space-separated numeric tokens, not prose -- the word-count
+    # check has no way to tell that apart from a 15+-word quoted sentence.
+    return SVG_PATH_D_RE.sub('d=""', text)
 
 
 def load_words(path: Path) -> list[str]:
@@ -126,6 +132,20 @@ def docx_text(path: Path) -> str:
     return "\n".join(parts)
 
 
+def zip_member_hits(path: Path, words: list[str], label: str) -> list[str]:
+    # A plain data-bundle zip (e.g. site/downloads/all-visuals.zip) holds copies of
+    # files already scanned individually on disk -- scan its members for private
+    # terms too so a bundle can't smuggle one past the check, without re-running
+    # the quoted-run check a second time on content already covered as a real file.
+    hits = []
+    with zipfile.ZipFile(path) as z:
+        for name in z.namelist():
+            if Path(name).suffix in TEXT_SUFFIXES:
+                text = z.read(name).decode("utf-8", "replace")
+                hits += private_hits(text, words, f"{label}:{name}")
+    return hits
+
+
 def _files(root: Path, entries: tuple[str, ...]):
     for entry in entries:
         p = root / entry
@@ -144,6 +164,8 @@ def scan(root: Path, words: list[str]) -> list[str]:
             continue
         if f.suffix in (".docx", ".xlsx", ".pptx"):
             hits += private_hits(docx_text(f), words, label)
+        elif f.suffix == ".zip":
+            hits += zip_member_hits(f, words, label)
         elif f.suffix in TEXT_SUFFIXES:
             hits += private_hits(f.read_text(encoding="utf-8", errors="replace"), words, label)
         elif f.suffix not in IMAGE_SUFFIXES:
