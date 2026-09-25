@@ -6,7 +6,7 @@ Plain-English definitions for terms used across this kit's methods, tied to a Ha
 
 **SAM (Software Asset Management).** The software-specific slice of ITAM: licensing, entitlements, and compliance. *Halden example: the license checks in `rationalization` against `licenses.csv` are SAM work.*
 
-**HAM (Hardware Asset Management).** The physical-device slice of ITAM: acquisition, deployment, maintenance, refresh, and retirement of hardware. *Halden example: Halden's laptop and device refresh cycle isn't tracked by any tool in this kit yet — see [certifications.md](certifications.md)'s CHAMP section.*
+**HAM (Hardware Asset Management).** The physical-device slice of ITAM: acquisition, deployment, maintenance, refresh, and retirement of hardware. *Halden example: Halden's laptop and device refresh cycle is tracked by the `hardware-lifecycle` tool — see [certifications.md](certifications.md)'s CHAMP section.*
 
 **APM (Application Portfolio Management).** Deciding what to keep, replace, consolidate, or retire across an application estate. *Halden example: the `rationalization` tool's tolerate/invest/migrate/eliminate call between Clausebase and Tallysheet.*
 
