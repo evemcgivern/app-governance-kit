@@ -93,7 +93,13 @@
     </div>
 
     <div id="lc-panel" class="lc-panel">
+      <div id="lc-announcer" class="visually-hidden" aria-live="polite"></div>
+      <p id="lc-back-link" class="lc-back-link" hidden></p>
       <h2 id="lc-panel-heading" tabindex="-1"></h2>
+      <div class="lc-overlay-bar">
+        <button type="button" id="lc-overlay-toggle" class="lc-overlay-toggle" aria-pressed="false" aria-expanded="false" aria-controls="lc-overlay-legend">Show what this affects</button>
+        <div id="lc-overlay-legend" class="lc-overlay-legend" hidden></div>
+      </div>
       <div id="lc-panel-info" class="lc-stage-info"></div>
       <h3 class="lc-questions-heading">Questions to ask</h3>
       <ul id="lc-panel-list" class="lc-question-list"></ul>
@@ -102,7 +108,7 @@
 
   <p><a class="button button--ghost" href="https://github.com/evemcgivern/app-governance-kit/blob/main/dist/lifecycle-questions.md">Download the lifecycle questions</a></p>
 
-  <!--LC-DATA--><script type="application/json" id="lc-data">[{"questions": [{"stage": "plan", "question": "What problem does this solve, and do we own an app that does it?", "tool": "rationalization", "xw": "XW-011"}, {"stage": "plan", "question": "Who will own it, and who is the executive sponsor?", "tool": "program-setup", "xw": "XW-002"}, {"stage": "plan", "question": "Does the request meet the council's threshold and come through the intake path?", "tool": "program-setup", "xw": "XW-027"}, {"stage": "plan", "question": "Does it use AI? If so, what risk tier is it?", "tool": "ai-intake", "xw": "XW-021"}, {"stage": "plan", "question": "What data will it hold, and how sensitive is that data?", "tool": "access-review", "xw": "XW-028"}, {"stage": "acquire", "question": "What license model applies, and how many entitlements do we need?", "tool": "rationalization", "xw": "XW-006"}, {"stage": "acquire", "question": "Does the contract give audit, renewal, and exit terms we can live with?", "tool": "rationalization", "xw": "XW-013"}, {"stage": "acquire", "question": "Have the supplier and any AI model provider been assessed?", "tool": "ai-intake", "xw": "XW-023"}, {"stage": "acquire", "question": "Is the purchase recorded against an owner and a cost center?", "tool": "itam-maturity", "xw": "XW-012"}, {"stage": "deploy", "question": "Is the app in the inventory with owner, category, and data sensitivity?", "tool": "itam-maturity", "xw": "XW-001"}, {"stage": "deploy", "question": "Are access roles defined, and who approves new access?", "tool": "access-review", "xw": "XW-015"}, {"stage": "deploy", "question": "Are privileged accounts limited and named?", "tool": "access-review", "xw": "XW-018"}, {"stage": "deploy", "question": "For AI systems: is the inventory record complete and the risk in the register?", "tool": "ai-intake", "xw": "XW-022"}, {"stage": "operate", "question": "Do installs and users stay within entitlements?", "tool": "rationalization", "xw": "XW-007"}, {"stage": "operate", "question": "Is access reviewed on schedule, and are leavers removed?", "tool": "access-review", "xw": "XW-016"}, {"stage": "operate", "question": "Are asset records accurate and reconciled?", "tool": "itam-maturity", "xw": "XW-026"}, {"stage": "operate", "question": "Has the AI system's use changed since intake?", "tool": "ai-intake", "xw": "XW-021"}, {"stage": "optimize", "question": "Is it still worth its cost: tolerate, invest, migrate, or eliminate?", "tool": "rationalization", "xw": "XW-011"}, {"stage": "optimize", "question": "Is anything expiring or due for renewal in the next 90 days?", "tool": "rationalization", "xw": "XW-008"}, {"stage": "optimize", "question": "Where is our asset management process weakest this year?", "tool": "itam-maturity", "xw": "XW-025"}, {"stage": "optimize", "question": "Does the council's decision log show bottlenecks or rubber-stamping?", "tool": "program-setup", "xw": "XW-025"}, {"stage": "retire", "question": "What data does it hold, and will we archive, migrate, or delete it?", "tool": "rationalization", "xw": "XW-028"}, {"stage": "retire", "question": "Are all accounts removed and licenses cancelled or reclaimed?", "tool": "access-review", "xw": "XW-017"}, {"stage": "retire", "question": "Is the contract ended on time, without auto-renewal?", "tool": "rationalization", "xw": "XW-013"}, {"stage": "retire", "question": "Is the inventory record closed, with evidence kept?", "tool": "itam-maturity", "xw": "XW-020"}], "stages": {"plan": {"What happens": "A request is written up: the problem, the owner, and any AI risk.", "Gate to move on": "The council or its delegate approves the request and assigns an owner.", "Hands off to": ["acquire"], "Who decides": "The application owner drafts it; the council or its delegate approves it.", "Hand-off note": "the approved request becomes the basis for a purchase.", "rules": [{"text": "Nothing is bought or built above the council's threshold without an approved request.", "xw": ["XW-027"]}, {"text": "Every request names an accountable owner before it moves forward.", "xw": ["XW-002"]}, {"text": "A request that duplicates an application already owned is flagged first.", "xw": ["XW-011"]}, {"text": "Any AI component is flagged at intake for a risk-tier assessment.", "xw": ["XW-021"]}, {"text": "The data the application will hold, and its sensitivity, is recorded early.", "xw": ["XW-028"]}]}, "acquire": {"What happens": "The approved request becomes a purchase: license chosen, contract negotiated, supplier assessed.", "Gate to move on": "Contract signed with audit, renewal, and exit terms reviewed; entitlements recorded.", "Hands off to": ["deploy"], "Who decides": "Procurement with the application owner; the council above its cost threshold.", "Hand-off note": "the entitlement record and contract travel with the application.", "rules": [{"text": "Nothing is bought above the council's threshold without an approved request.", "xw": ["XW-027"]}, {"text": "Every purchase records its entitlements before deployment starts.", "xw": ["XW-006"]}, {"text": "Contracts are checked for audit, renewal, and exit terms before signature.", "xw": ["XW-013"]}, {"text": "Any AI supplier and model provider is assessed before the purchase closes.", "xw": ["XW-023"]}]}, "deploy": {"What happens": "The application is installed, added to the inventory, and given access roles.", "Gate to move on": "The inventory record and access roles are complete before wider rollout.", "Hands off to": ["operate"], "Who decides": "The application owner, with access approved through the named policy.", "Hand-off note": "the live system and its access records carry forward.", "rules": [{"text": "The application is recorded in the inventory with owner and data sensitivity.", "xw": ["XW-001"]}, {"text": "Access roles are defined, and new access only granted through an approved path.", "xw": ["XW-015"]}, {"text": "Privileged and administrative accounts are limited and named individually.", "xw": ["XW-018"]}, {"text": "An AI system's inventory record and risk entry are complete before go-live.", "xw": ["XW-022"]}]}, "operate": {"What happens": "The application runs day to day: usage tracked, access kept current, records reconciled.", "Gate to move on": "Installs stay within entitlements and access reviews happen on schedule.", "Hands off to": ["optimize"], "Who decides": "The application owner, checked periodically by whoever runs access reviews.", "Hand-off note": "the running history and asset record get reviewed.", "rules": [{"text": "Installed copies and active users are kept within held entitlements.", "xw": ["XW-007"]}, {"text": "Access is reviewed on schedule, and leavers are removed promptly.", "xw": ["XW-016"]}, {"text": "Asset records are reconciled against what is actually installed.", "xw": ["XW-026"]}, {"text": "A changed AI system's use is reassessed, not assumed unchanged.", "xw": ["XW-021"]}]}, "optimize": {"What happens": "The portfolio is reviewed to decide whether each application still earns its cost.", "Gate to move on": "The owner or council records a decision: keep, invest, migrate, or retire.", "Hands off to": ["plan", "retire"], "Who decides": "The application owner recommends; the council decides above its threshold.", "Hand-off note": "reinvest or replace starts a new request; otherwise retire begins.", "rules": [{"text": "Every application is periodically assessed against tolerate, invest, migrate, or eliminate.", "xw": ["XW-011"]}, {"text": "Anything expiring within the review window is flagged before it lapses.", "xw": ["XW-008"]}, {"text": "The review checks where the organization's own asset process is weakest.", "xw": ["XW-025"]}, {"text": "The council's own decision log is checked for bottlenecks or rubber-stamping.", "xw": ["XW-025"]}]}, "retire": {"What happens": "The application is decommissioned: data archived, migrated, or deleted; access and licenses unwound.", "Gate to move on": "Accounts removed, licenses reclaimed, and the inventory record closed with evidence.", "Hands off to": ["plan"], "Who decides": "The application owner executes; the council confirms closure above its threshold.", "Hand-off note": "the freed licenses, data capacity, and budget go to the next request.", "rules": [{"text": "What happens to the application's data is decided and recorded, not left implicit.", "xw": ["XW-028"]}, {"text": "All accounts tied to the application are removed and licenses reclaimed.", "xw": ["XW-017"]}, {"text": "The contract is ended on schedule, with any auto-renewal cancelled in time.", "xw": ["XW-013"]}, {"text": "The inventory record is formally closed, with evidence retained for audit.", "xw": ["XW-020"]}]}}}]</script><!--/LC-DATA-->
+  <!--LC-DATA--><script type="application/json" id="lc-data">[{"questions": [{"id": "q-plan-duplicate", "stage": "plan", "question": "What problem does this solve, and do we own an app that does it?", "tool": "rationalization", "xw": "XW-011"}, {"id": "q-plan-owner", "stage": "plan", "question": "Who will own it, and who is the executive sponsor?", "tool": "program-setup", "xw": "XW-002"}, {"id": "q-plan-intake", "stage": "plan", "question": "Does the request meet the council's threshold and come through the intake path?", "tool": "program-setup", "xw": "XW-027"}, {"id": "q-plan-ai-tier", "stage": "plan", "question": "Does it use AI? If so, what risk tier is it?", "tool": "ai-intake", "xw": "XW-021"}, {"id": "q-plan-data", "stage": "plan", "question": "What data will it hold, and how sensitive is that data?", "tool": "access-review", "xw": "XW-028"}, {"id": "q-acquire-entitlements", "stage": "acquire", "question": "What license model applies, and how many entitlements do we need?", "tool": "rationalization", "xw": "XW-006"}, {"id": "q-acquire-contract-terms", "stage": "acquire", "question": "Does the contract give audit, renewal, and exit terms we can live with?", "tool": "rationalization", "xw": "XW-013"}, {"id": "q-acquire-ai-supplier", "stage": "acquire", "question": "Have the supplier and any AI model provider been assessed?", "tool": "ai-intake", "xw": "XW-023"}, {"id": "q-acquire-cost-center", "stage": "acquire", "question": "Is the purchase recorded against an owner and a cost center?", "tool": "itam-maturity", "xw": "XW-012"}, {"id": "q-deploy-inventory", "stage": "deploy", "question": "Is the app in the inventory with owner, category, and data sensitivity?", "tool": "itam-maturity", "xw": "XW-001"}, {"id": "q-deploy-access-roles", "stage": "deploy", "question": "Are access roles defined, and who approves new access?", "tool": "access-review", "xw": "XW-015"}, {"id": "q-deploy-privileged", "stage": "deploy", "question": "Are privileged accounts limited and named?", "tool": "access-review", "xw": "XW-018"}, {"id": "q-deploy-ai-register", "stage": "deploy", "question": "For AI systems: is the inventory record complete and the risk in the register?", "tool": "ai-intake", "xw": "XW-022"}, {"id": "q-operate-entitlements", "stage": "operate", "question": "Do installs and users stay within entitlements?", "tool": "rationalization", "xw": "XW-007"}, {"id": "q-operate-access-review", "stage": "operate", "question": "Is access reviewed on schedule, and are leavers removed?", "tool": "access-review", "xw": "XW-016"}, {"id": "q-operate-asset-records", "stage": "operate", "question": "Are asset records accurate and reconciled?", "tool": "itam-maturity", "xw": "XW-026"}, {"id": "q-operate-ai-change", "stage": "operate", "question": "Has the AI system's use changed since intake?", "tool": "ai-intake", "xw": "XW-021"}, {"id": "q-optimize-cost", "stage": "optimize", "question": "Is it still worth its cost: tolerate, invest, migrate, or eliminate?", "tool": "rationalization", "xw": "XW-011"}, {"id": "q-optimize-expiring", "stage": "optimize", "question": "Is anything expiring or due for renewal in the next 90 days?", "tool": "rationalization", "xw": "XW-008"}, {"id": "q-optimize-process-weak", "stage": "optimize", "question": "Where is our asset management process weakest this year?", "tool": "itam-maturity", "xw": "XW-025"}, {"id": "q-optimize-decision-log", "stage": "optimize", "question": "Does the council's decision log show bottlenecks or rubber-stamping?", "tool": "program-setup", "xw": "XW-025"}, {"id": "q-retire-data", "stage": "retire", "question": "What data does it hold, and will we archive, migrate, or delete it?", "tool": "rationalization", "xw": "XW-028"}, {"id": "q-retire-accounts", "stage": "retire", "question": "Are all accounts removed and licenses cancelled or reclaimed?", "tool": "access-review", "xw": "XW-017"}, {"id": "q-retire-contract-end", "stage": "retire", "question": "Is the contract ended on time, without auto-renewal?", "tool": "rationalization", "xw": "XW-013"}, {"id": "q-retire-inventory-closed", "stage": "retire", "question": "Is the inventory record closed, with evidence kept?", "tool": "itam-maturity", "xw": "XW-020"}], "stages": {"plan": {"What happens": "A request is written up: the problem, the owner, and any AI risk.", "Gate to move on": "The council or its delegate approves the request and assigns an owner.", "Hands off to": ["acquire"], "Who decides": "The application owner drafts it; the council or its delegate approves it.", "Hand-off note": "the approved request becomes the basis for a purchase.", "rules": [{"id": "r-plan-threshold", "text": "Nothing is bought or built above the council's threshold without an approved request.", "xw": ["XW-027"]}, {"id": "r-plan-owner", "text": "Every request names an accountable owner before it moves forward.", "xw": ["XW-002"]}, {"id": "r-plan-duplicate", "text": "A request that duplicates an application already owned is flagged first.", "xw": ["XW-011"]}, {"id": "r-plan-ai-tier", "text": "Any AI component is flagged at intake for a risk-tier assessment.", "xw": ["XW-021"]}, {"id": "r-plan-data", "text": "The data the application will hold, and its sensitivity, is recorded early.", "xw": ["XW-028"]}]}, "acquire": {"What happens": "The approved request becomes a purchase: license chosen, contract negotiated, supplier assessed.", "Gate to move on": "Contract signed with audit, renewal, and exit terms reviewed; entitlements recorded.", "Hands off to": ["deploy"], "Who decides": "Procurement with the application owner; the council above its cost threshold.", "Hand-off note": "the entitlement record and contract travel with the application.", "rules": [{"id": "r-acquire-threshold", "text": "Nothing is bought above the council's threshold without an approved request.", "xw": ["XW-027"]}, {"id": "r-acquire-entitlements", "text": "Every purchase records its entitlements before deployment starts.", "xw": ["XW-006"]}, {"id": "r-acquire-contract-terms", "text": "Contracts are checked for audit, renewal, and exit terms before signature.", "xw": ["XW-013"]}, {"id": "r-acquire-ai-supplier", "text": "Any AI supplier and model provider is assessed before the purchase closes.", "xw": ["XW-023"]}]}, "deploy": {"What happens": "The application is installed, added to the inventory, and given access roles.", "Gate to move on": "The inventory record and access roles are complete before wider rollout.", "Hands off to": ["operate"], "Who decides": "The application owner, with access approved through the named policy.", "Hand-off note": "the live system and its access records carry forward.", "rules": [{"id": "r-deploy-inventory", "text": "The application is recorded in the inventory with owner and data sensitivity.", "xw": ["XW-001"]}, {"id": "r-deploy-access-roles", "text": "Access roles are defined, and new access only granted through an approved path.", "xw": ["XW-015"]}, {"id": "r-deploy-privileged", "text": "Privileged and administrative accounts are limited and named individually.", "xw": ["XW-018"]}, {"id": "r-deploy-ai-register", "text": "An AI system's inventory record and risk entry are complete before go-live.", "xw": ["XW-022"]}]}, "operate": {"What happens": "The application runs day to day: usage tracked, access kept current, records reconciled.", "Gate to move on": "Installs stay within entitlements and access reviews happen on schedule.", "Hands off to": ["optimize"], "Who decides": "The application owner, checked periodically by whoever runs access reviews.", "Hand-off note": "the running history and asset record get reviewed.", "rules": [{"id": "r-operate-entitlements", "text": "Installed copies and active users are kept within held entitlements.", "xw": ["XW-007"]}, {"id": "r-operate-access-review", "text": "Access is reviewed on schedule, and leavers are removed promptly.", "xw": ["XW-016"]}, {"id": "r-operate-asset-records", "text": "Asset records are reconciled against what is actually installed.", "xw": ["XW-026"]}, {"id": "r-operate-ai-change", "text": "A changed AI system's use is reassessed, not assumed unchanged.", "xw": ["XW-021"]}]}, "optimize": {"What happens": "The portfolio is reviewed to decide whether each application still earns its cost.", "Gate to move on": "The owner or council records a decision: keep, invest, migrate, or retire.", "Hands off to": ["plan", "retire"], "Who decides": "The application owner recommends; the council decides above its threshold.", "Hand-off note": "reinvest or replace starts a new request; otherwise retire begins.", "rules": [{"id": "r-optimize-cost", "text": "Every application is periodically assessed against tolerate, invest, migrate, or eliminate.", "xw": ["XW-011"]}, {"id": "r-optimize-expiring", "text": "Anything expiring within the review window is flagged before it lapses.", "xw": ["XW-008"]}, {"id": "r-optimize-process-weak", "text": "The review checks where the organization's own asset process is weakest.", "xw": ["XW-025"]}, {"id": "r-optimize-decision-log", "text": "The council's own decision log is checked for bottlenecks or rubber-stamping.", "xw": ["XW-025"]}]}, "retire": {"What happens": "The application is decommissioned: data archived, migrated, or deleted; access and licenses unwound.", "Gate to move on": "Accounts removed, licenses reclaimed, and the inventory record closed with evidence.", "Hands off to": ["plan"], "Who decides": "The application owner executes; the council confirms closure above its threshold.", "Hand-off note": "the freed licenses, data capacity, and budget go to the next request.", "rules": [{"id": "r-retire-data", "text": "What happens to the application's data is decided and recorded, not left implicit.", "xw": ["XW-028"]}, {"id": "r-retire-accounts", "text": "All accounts tied to the application are removed and licenses reclaimed.", "xw": ["XW-017"]}, {"id": "r-retire-contract-end", "text": "The contract is ended on schedule, with any auto-renewal cancelled in time.", "xw": ["XW-013"]}, {"id": "r-retire-inventory-closed", "text": "The inventory record is formally closed, with evidence retained for audit.", "xw": ["XW-020"]}]}}, "items": {"plan": {"stage": "plan", "kind": "stage", "text": "Plan and request"}, "acquire": {"stage": "acquire", "kind": "stage", "text": "Acquire"}, "deploy": {"stage": "deploy", "kind": "stage", "text": "Deploy"}, "operate": {"stage": "operate", "kind": "stage", "text": "Operate"}, "optimize": {"stage": "optimize", "kind": "stage", "text": "Review and optimize"}, "retire": {"stage": "retire", "kind": "stage", "text": "Retire"}, "q-plan-duplicate": {"stage": "plan", "kind": "question", "text": "What problem does this solve, and do we own an app that does it?"}, "q-plan-owner": {"stage": "plan", "kind": "question", "text": "Who will own it, and who is the executive sponsor?"}, "q-plan-intake": {"stage": "plan", "kind": "question", "text": "Does the request meet the council's threshold and come through the intake path?"}, "q-plan-ai-tier": {"stage": "plan", "kind": "question", "text": "Does it use AI? If so, what risk tier is it?"}, "q-plan-data": {"stage": "plan", "kind": "question", "text": "What data will it hold, and how sensitive is that data?"}, "q-acquire-entitlements": {"stage": "acquire", "kind": "question", "text": "What license model applies, and how many entitlements do we need?"}, "q-acquire-contract-terms": {"stage": "acquire", "kind": "question", "text": "Does the contract give audit, renewal, and exit terms we can live with?"}, "q-acquire-ai-supplier": {"stage": "acquire", "kind": "question", "text": "Have the supplier and any AI model provider been assessed?"}, "q-acquire-cost-center": {"stage": "acquire", "kind": "question", "text": "Is the purchase recorded against an owner and a cost center?"}, "q-deploy-inventory": {"stage": "deploy", "kind": "question", "text": "Is the app in the inventory with owner, category, and data sensitivity?"}, "q-deploy-access-roles": {"stage": "deploy", "kind": "question", "text": "Are access roles defined, and who approves new access?"}, "q-deploy-privileged": {"stage": "deploy", "kind": "question", "text": "Are privileged accounts limited and named?"}, "q-deploy-ai-register": {"stage": "deploy", "kind": "question", "text": "For AI systems: is the inventory record complete and the risk in the register?"}, "q-operate-entitlements": {"stage": "operate", "kind": "question", "text": "Do installs and users stay within entitlements?"}, "q-operate-access-review": {"stage": "operate", "kind": "question", "text": "Is access reviewed on schedule, and are leavers removed?"}, "q-operate-asset-records": {"stage": "operate", "kind": "question", "text": "Are asset records accurate and reconciled?"}, "q-operate-ai-change": {"stage": "operate", "kind": "question", "text": "Has the AI system's use changed since intake?"}, "q-optimize-cost": {"stage": "optimize", "kind": "question", "text": "Is it still worth its cost: tolerate, invest, migrate, or eliminate?"}, "q-optimize-expiring": {"stage": "optimize", "kind": "question", "text": "Is anything expiring or due for renewal in the next 90 days?"}, "q-optimize-process-weak": {"stage": "optimize", "kind": "question", "text": "Where is our asset management process weakest this year?"}, "q-optimize-decision-log": {"stage": "optimize", "kind": "question", "text": "Does the council's decision log show bottlenecks or rubber-stamping?"}, "q-retire-data": {"stage": "retire", "kind": "question", "text": "What data does it hold, and will we archive, migrate, or delete it?"}, "q-retire-accounts": {"stage": "retire", "kind": "question", "text": "Are all accounts removed and licenses cancelled or reclaimed?"}, "q-retire-contract-end": {"stage": "retire", "kind": "question", "text": "Is the contract ended on time, without auto-renewal?"}, "q-retire-inventory-closed": {"stage": "retire", "kind": "question", "text": "Is the inventory record closed, with evidence kept?"}, "r-plan-threshold": {"stage": "plan", "kind": "rule", "text": "Nothing is bought or built above the council's threshold without an approved request."}, "r-plan-owner": {"stage": "plan", "kind": "rule", "text": "Every request names an accountable owner before it moves forward."}, "r-plan-duplicate": {"stage": "plan", "kind": "rule", "text": "A request that duplicates an application already owned is flagged first."}, "r-plan-ai-tier": {"stage": "plan", "kind": "rule", "text": "Any AI component is flagged at intake for a risk-tier assessment."}, "r-plan-data": {"stage": "plan", "kind": "rule", "text": "The data the application will hold, and its sensitivity, is recorded early."}, "r-acquire-threshold": {"stage": "acquire", "kind": "rule", "text": "Nothing is bought above the council's threshold without an approved request."}, "r-acquire-entitlements": {"stage": "acquire", "kind": "rule", "text": "Every purchase records its entitlements before deployment starts."}, "r-acquire-contract-terms": {"stage": "acquire", "kind": "rule", "text": "Contracts are checked for audit, renewal, and exit terms before signature."}, "r-acquire-ai-supplier": {"stage": "acquire", "kind": "rule", "text": "Any AI supplier and model provider is assessed before the purchase closes."}, "r-deploy-inventory": {"stage": "deploy", "kind": "rule", "text": "The application is recorded in the inventory with owner and data sensitivity."}, "r-deploy-access-roles": {"stage": "deploy", "kind": "rule", "text": "Access roles are defined, and new access only granted through an approved path."}, "r-deploy-privileged": {"stage": "deploy", "kind": "rule", "text": "Privileged and administrative accounts are limited and named individually."}, "r-deploy-ai-register": {"stage": "deploy", "kind": "rule", "text": "An AI system's inventory record and risk entry are complete before go-live."}, "r-operate-entitlements": {"stage": "operate", "kind": "rule", "text": "Installed copies and active users are kept within held entitlements."}, "r-operate-access-review": {"stage": "operate", "kind": "rule", "text": "Access is reviewed on schedule, and leavers are removed promptly."}, "r-operate-asset-records": {"stage": "operate", "kind": "rule", "text": "Asset records are reconciled against what is actually installed."}, "r-operate-ai-change": {"stage": "operate", "kind": "rule", "text": "A changed AI system's use is reassessed, not assumed unchanged."}, "r-optimize-cost": {"stage": "optimize", "kind": "rule", "text": "Every application is periodically assessed against tolerate, invest, migrate, or eliminate."}, "r-optimize-expiring": {"stage": "optimize", "kind": "rule", "text": "Anything expiring within the review window is flagged before it lapses."}, "r-optimize-process-weak": {"stage": "optimize", "kind": "rule", "text": "The review checks where the organization's own asset process is weakest."}, "r-optimize-decision-log": {"stage": "optimize", "kind": "rule", "text": "The council's own decision log is checked for bottlenecks or rubber-stamping."}, "r-retire-data": {"stage": "retire", "kind": "rule", "text": "What happens to the application's data is decided and recorded, not left implicit."}, "r-retire-accounts": {"stage": "retire", "kind": "rule", "text": "All accounts tied to the application are removed and licenses reclaimed."}, "r-retire-contract-end": {"stage": "retire", "kind": "rule", "text": "The contract is ended on schedule, with any auto-renewal cancelled in time."}, "r-retire-inventory-closed": {"stage": "retire", "kind": "rule", "text": "The inventory record is formally closed, with evidence retained for audit."}}, "links": {"optimize": [{"label": "Leads to", "type": "leads_to", "target": "plan", "note": "Most applications get reinvested in or replaced here.", "inverse": false}, {"label": "Leads to", "type": "leads_to", "target": "retire", "note": "The rest move forward into decommissioning.", "inverse": false}], "plan": [{"label": "Led from", "type": "leads_to", "target": "optimize", "note": "Most applications get reinvested in or replaced here.", "inverse": true}, {"label": "Led from", "type": "leads_to", "target": "retire", "note": "Freed licenses and budget start the next request.", "inverse": true}], "retire": [{"label": "Led from", "type": "leads_to", "target": "optimize", "note": "The rest move forward into decommissioning.", "inverse": true}, {"label": "Leads to", "type": "leads_to", "target": "plan", "note": "Freed licenses and budget start the next request.", "inverse": false}], "r-acquire-contract-terms": [{"label": "May impact", "type": "may_impact", "target": "q-retire-contract-end", "note": "Weak exit terms make an orderly contract end harder later.", "inverse": false}], "q-retire-contract-end": [{"label": "May be impacted by", "type": "may_impact", "target": "r-acquire-contract-terms", "note": "Weak exit terms make an orderly contract end harder later.", "inverse": true}, {"label": "May be impacted by", "type": "may_impact", "target": "q-optimize-expiring", "note": "An expiring contract flagged here can trigger retirement.", "inverse": true}], "r-deploy-inventory": [{"label": "Blocks", "type": "blocks", "target": "q-operate-access-review", "note": "The review needs the inventory record deploy creates first.", "inverse": false}, {"label": "Referenced by", "type": "refers_to", "target": "r-retire-inventory-closed", "note": "Closing the record retires the entry deploy first created.", "inverse": true}], "q-operate-access-review": [{"label": "Blocked by", "type": "blocks", "target": "r-deploy-inventory", "note": "The review needs the inventory record deploy creates first.", "inverse": true}, {"label": "May be impacted by", "type": "may_impact", "target": "r-deploy-access-roles", "note": "Roles defined at deploy set the baseline the review checks.", "inverse": true}, {"label": "May be impacted by", "type": "may_impact", "target": "r-deploy-privileged", "note": "Privileged accounts need extra scrutiny in the periodic review.", "inverse": true}], "q-retire-data": [{"label": "Refers to", "type": "refers_to", "target": "q-plan-data", "note": "The data's fate depends on the sensitivity recorded at intake.", "inverse": false}, {"label": "Blocks", "type": "blocks", "target": "r-retire-inventory-closed", "note": "The record can't close until the data's fate is decided.", "inverse": false}], "q-plan-data": [{"label": "Referenced by", "type": "refers_to", "target": "q-retire-data", "note": "The data's fate depends on the sensitivity recorded at intake.", "inverse": true}], "r-acquire-ai-supplier": [{"label": "Refers to", "type": "refers_to", "target": "q-plan-ai-tier", "note": "The assessment depth follows the risk tier set at intake.", "inverse": false}], "q-plan-ai-tier": [{"label": "Referenced by", "type": "refers_to", "target": "r-acquire-ai-supplier", "note": "The assessment depth follows the risk tier set at intake.", "inverse": true}], "q-optimize-cost": [{"label": "May impact", "type": "may_impact", "target": "q-plan-duplicate", "note": "A low-value app kept alive discourages reuse checks at intake.", "inverse": false}, {"label": "May be impacted by", "type": "may_impact", "target": "q-acquire-cost-center", "note": "The recorded cost center is what optimize reviews for value.", "inverse": true}], "q-plan-duplicate": [{"label": "May be impacted by", "type": "may_impact", "target": "q-optimize-cost", "note": "A low-value app kept alive discourages reuse checks at intake.", "inverse": true}], "r-deploy-ai-register": [{"label": "Refers to", "type": "refers_to", "target": "q-acquire-ai-supplier", "note": "The register carries forward the supplier assessment.", "inverse": false}, {"label": "Referenced by", "type": "refers_to", "target": "q-operate-ai-change", "note": "Changed use should update the risk register entry.", "inverse": true}], "q-acquire-ai-supplier": [{"label": "Referenced by", "type": "refers_to", "target": "r-deploy-ai-register", "note": "The register carries forward the supplier assessment.", "inverse": true}], "q-operate-ai-change": [{"label": "Refers to", "type": "refers_to", "target": "r-deploy-ai-register", "note": "Changed use should update the risk register entry.", "inverse": false}], "r-plan-ai-tier": [{"label": "May impact", "type": "may_impact", "target": "q-deploy-ai-register", "note": "The assigned risk tier shapes what the register must capture.", "inverse": false}], "q-deploy-ai-register": [{"label": "May be impacted by", "type": "may_impact", "target": "r-plan-ai-tier", "note": "The assigned risk tier shapes what the register must capture.", "inverse": true}], "r-acquire-entitlements": [{"label": "Refers to", "type": "refers_to", "target": "q-operate-entitlements", "note": "Entitlements recorded at purchase are what operate checks against.", "inverse": false}], "q-operate-entitlements": [{"label": "Referenced by", "type": "refers_to", "target": "r-acquire-entitlements", "note": "Entitlements recorded at purchase are what operate checks against.", "inverse": true}], "r-deploy-access-roles": [{"label": "May impact", "type": "may_impact", "target": "q-operate-access-review", "note": "Roles defined at deploy set the baseline the review checks.", "inverse": false}], "r-deploy-privileged": [{"label": "May impact", "type": "may_impact", "target": "q-operate-access-review", "note": "Privileged accounts need extra scrutiny in the periodic review.", "inverse": false}], "r-operate-access-review": [{"label": "Refers to", "type": "refers_to", "target": "q-retire-accounts", "note": "Leavers removed in review should already match retirement's account cleanup.", "inverse": false}], "q-retire-accounts": [{"label": "Referenced by", "type": "refers_to", "target": "r-operate-access-review", "note": "Leavers removed in review should already match retirement's account cleanup.", "inverse": true}], "q-optimize-expiring": [{"label": "May impact", "type": "may_impact", "target": "q-retire-contract-end", "note": "An expiring contract flagged here can trigger retirement.", "inverse": false}], "q-optimize-process-weak": [{"label": "Refers to", "type": "refers_to", "target": "r-operate-asset-records", "note": "Weak reconciliation in operate shows up here first.", "inverse": false}], "r-operate-asset-records": [{"label": "Referenced by", "type": "refers_to", "target": "q-optimize-process-weak", "note": "Weak reconciliation in operate shows up here first.", "inverse": true}], "q-optimize-decision-log": [{"label": "Refers to", "type": "refers_to", "target": "q-plan-intake", "note": "The decision log covers requests that came through this intake path.", "inverse": false}], "q-plan-intake": [{"label": "Referenced by", "type": "refers_to", "target": "q-optimize-decision-log", "note": "The decision log covers requests that came through this intake path.", "inverse": true}, {"label": "Referenced by", "type": "refers_to", "target": "r-acquire-threshold", "note": "The same threshold gate applies again before the purchase itself.", "inverse": true}], "r-retire-inventory-closed": [{"label": "Refers to", "type": "refers_to", "target": "r-deploy-inventory", "note": "Closing the record retires the entry deploy first created.", "inverse": false}, {"label": "Blocked by", "type": "blocks", "target": "q-retire-data", "note": "The record can't close until the data's fate is decided.", "inverse": true}], "q-acquire-cost-center": [{"label": "May impact", "type": "may_impact", "target": "q-optimize-cost", "note": "The recorded cost center is what optimize reviews for value.", "inverse": false}], "r-plan-duplicate": [{"label": "Blocks", "type": "blocks", "target": "q-acquire-entitlements", "note": "A flagged duplicate should stop a new purchase until resolved.", "inverse": false}], "q-acquire-entitlements": [{"label": "Blocked by", "type": "blocks", "target": "r-plan-duplicate", "note": "A flagged duplicate should stop a new purchase until resolved.", "inverse": true}], "r-plan-data": [{"label": "Refers to", "type": "refers_to", "target": "q-deploy-inventory", "note": "The sensitivity recorded at plan carries into the inventory record.", "inverse": false}], "q-deploy-inventory": [{"label": "Referenced by", "type": "refers_to", "target": "r-plan-data", "note": "The sensitivity recorded at plan carries into the inventory record.", "inverse": true}], "r-acquire-threshold": [{"label": "Refers to", "type": "refers_to", "target": "q-plan-intake", "note": "The same threshold gate applies again before the purchase itself.", "inverse": false}]}}]</script><!--/LC-DATA-->
 </main>
 
 <footer class="site-footer">
@@ -131,6 +137,8 @@
   var payload = dataEl ? JSON.parse(dataEl.textContent) : [{}];
   var rows = payload[0].questions || [];
   var stagesData = payload[0].stages || null;
+  var itemsData = payload[0].items || {};
+  var linksData = payload[0].links || {};
 
   var byStage = {};
   STAGES.forEach(function (pair) { byStage[pair[0]] = []; });
@@ -145,12 +153,24 @@
   var panelInfo = document.getElementById("lc-panel-info");
   var panelList = document.getElementById("lc-panel-list");
   var fallbackList = document.getElementById("lc-fallback-list");
+  var announcer = document.getElementById("lc-announcer");
+  var backLinkEl = document.getElementById("lc-back-link");
+  var overlayToggle = document.getElementById("lc-overlay-toggle");
+  var overlayLegend = document.getElementById("lc-overlay-legend");
 
   if (!segmentsGroup) {
     return;
   }
 
   var buttons = {};
+  var currentStageSlug = null;
+  var currentItemId = null;
+  var currentSourceId = null;
+  var overlayOn = false;
+  var flashTimer = null;
+
+  var TYPE_NAMES = { blocks: "Blocks", may_impact: "May impact", refers_to: "Refers to", leads_to: "Leads to" };
+  var TYPE_ORDER = ["blocks", "may_impact", "refers_to", "leads_to"];
 
   function polar(r, deg) {
     var rad = (deg * Math.PI) / 180;
@@ -186,7 +206,74 @@
     }
   }
 
-  function selectStage(slug, moveFocus) {
+  function focusItemEl(el) {
+    if (!el) { return; }
+    el.focus({ preventScroll: true });
+    if (typeof el.scrollIntoView === "function") {
+      el.scrollIntoView({ behavior: prefersReducedMotion() ? "auto" : "smooth", block: "center" });
+    }
+    if (flashTimer) {
+      window.clearTimeout(flashTimer);
+      flashTimer = null;
+    }
+    if (!prefersReducedMotion()) {
+      el.classList.add("lc-flash");
+      flashTimer = window.setTimeout(function () {
+        el.classList.remove("lc-flash");
+        flashTimer = null;
+      }, 600);
+    }
+  }
+
+  function announce(text) {
+    if (!announcer) { return; }
+    announcer.textContent = "";
+    window.setTimeout(function () { announcer.textContent = text; }, 30);
+  }
+
+  function addressFor(stage, itemId) {
+    return itemId ? (stage + "/" + itemId) : stage;
+  }
+
+  function parseHash(hash) {
+    var raw = (hash || "").replace(/^#/, "");
+    if (!raw) { return null; }
+    var slashAt = raw.indexOf("/");
+    var stageSlug = slashAt === -1 ? raw : raw.slice(0, slashAt);
+    var itemId = slashAt === -1 ? null : raw.slice(slashAt + 1);
+    var known = STAGES.filter(function (p) { return p[0] === stageSlug; })[0];
+    if (!known) { return null; }
+    if (itemId && (!itemsData[itemId] || itemsData[itemId].stage !== stageSlug)) {
+      itemId = null;
+    }
+    return { stage: stageSlug, itemId: itemId };
+  }
+
+  function hideBackLink() {
+    if (!backLinkEl) { return; }
+    backLinkEl.hidden = true;
+    backLinkEl.textContent = "";
+  }
+
+  function showBackLink(sourceId) {
+    if (!backLinkEl) { return; }
+    var src = itemsData[sourceId];
+    if (!src) { hideBackLink(); return; }
+    backLinkEl.textContent = "";
+    var a = document.createElement("a");
+    a.href = "#" + addressFor(src.stage, sourceId);
+    a.className = "lc-back-link-anchor";
+    a.textContent = "← Back to " + labelFor(src.stage) + ": " + src.text;
+    a.addEventListener("click", function (e) {
+      e.preventDefault();
+      goToItem(src.stage, sourceId, { viaLink: false, push: true });
+    });
+    backLinkEl.appendChild(a);
+    backLinkEl.hidden = false;
+  }
+
+  function applyStage(slug) {
+    currentStageSlug = slug;
     STAGES.forEach(function (pair) {
       var btn = buttons[pair[0]];
       if (!btn) { return; }
@@ -197,9 +284,180 @@
       }
     });
     renderPanel(slug);
+    resetOverlay();
+  }
+
+  function selectStage(slug, moveFocus) {
+    applyStage(slug);
+    currentItemId = null;
+    currentSourceId = null;
+    hideBackLink();
     if (moveFocus !== false) {
       focusPanel();
     }
+  }
+
+  function goToItem(stage, itemId, opts) {
+    opts = opts || {};
+    applyStage(stage);
+    currentItemId = itemId || null;
+    currentSourceId = opts.viaLink ? (opts.sourceId || null) : null;
+
+    if (opts.push !== false) {
+      history.pushState({ stage: stage, itemId: currentItemId, sourceId: currentSourceId }, "",
+        "#" + addressFor(stage, currentItemId));
+    }
+
+    var el = currentItemId ? document.getElementById(currentItemId) : null;
+    if (el) {
+      focusItemEl(el);
+    } else {
+      focusPanel();
+    }
+
+    if (currentSourceId) {
+      showBackLink(currentSourceId);
+    } else {
+      hideBackLink();
+    }
+
+    if (currentItemId && itemsData[currentItemId]) {
+      announce("Now viewing " + labelFor(stage) + ": " + itemsData[currentItemId].text);
+    } else if (opts.viaLink) {
+      announce("Now viewing " + labelFor(stage));
+    }
+  }
+
+  function buildLinkList(itemId) {
+    var entries = linksData[itemId];
+    if (!entries || !entries.length) { return null; }
+    var ul = document.createElement("ul");
+    ul.className = "lc-link-list";
+    entries.forEach(function (link) {
+      var target = itemsData[link.target];
+      if (!target) { return; }
+      var targetItemId = target.kind === "stage" ? null : link.target;
+      var li = document.createElement("li");
+      var a = document.createElement("a");
+      a.className = "lc-link-anchor";
+      a.href = "#" + addressFor(target.stage, targetItemId);
+      a.setAttribute("data-target-id", targetItemId || "");
+      a.setAttribute("data-target-stage", target.stage);
+      a.setAttribute("data-source-id", itemId);
+      a.textContent = target.kind === "stage"
+        ? (link.label + ": " + labelFor(target.stage))
+        : (link.label + ": " + labelFor(target.stage) + " — " + target.text);
+      li.appendChild(a);
+      ul.appendChild(li);
+    });
+    return ul;
+  }
+
+  function onPanelLinkClick(e) {
+    var target = e.target;
+    var container = e.currentTarget;
+    while (target && target !== container) {
+      if (target.classList && target.classList.contains("lc-link-anchor")) {
+        e.preventDefault();
+        goToItem(target.getAttribute("data-target-stage"), target.getAttribute("data-target-id"),
+          { viaLink: true, sourceId: target.getAttribute("data-source-id"), push: true });
+        return;
+      }
+      target = target.parentNode;
+    }
+  }
+
+  function computeAffected(slug) {
+    var ids = [slug];
+    var info = stagesData ? stagesData[slug] : null;
+    if (info) {
+      (info.rules || []).forEach(function (r) { ids.push(r.id); });
+    }
+    (byStage[slug] || []).forEach(function (row) { ids.push(row.id); });
+
+    var counts = {};
+    var stageSet = {};
+    ids.forEach(function (id) {
+      (linksData[id] || []).forEach(function (link) {
+        counts[link.type] = (counts[link.type] || 0) + 1;
+        var target = itemsData[link.target];
+        if (target && target.stage && target.stage !== slug) {
+          stageSet[target.stage] = true;
+        }
+      });
+    });
+    return { counts: counts, stages: Object.keys(stageSet) };
+  }
+
+  function renderLegend(slug) {
+    if (!overlayLegend) { return []; }
+    var data = computeAffected(slug);
+    var parts = TYPE_ORDER.filter(function (t) { return data.counts[t]; })
+      .map(function (t) { return TYPE_NAMES[t] + " " + data.counts[t]; });
+    var countsText = parts.length ? parts.join(" · ") : "No links from this stage.";
+    var stageNames = data.stages.map(labelFor);
+    var stagesText = stageNames.length ? ("Linked stages: " + stageNames.join(", ") + ".") : "No other stages affected.";
+
+    overlayLegend.textContent = "";
+    var p1 = document.createElement("p");
+    p1.className = "lc-overlay-counts";
+    p1.textContent = countsText;
+    var p2 = document.createElement("p");
+    p2.className = "lc-overlay-stages";
+    p2.textContent = stagesText;
+    overlayLegend.appendChild(p1);
+    overlayLegend.appendChild(p2);
+
+    return data.stages;
+  }
+
+  function applyWheelDim(slug, affectedStages) {
+    var keep = {};
+    keep[slug] = true;
+    affectedStages.forEach(function (s) { keep[s] = true; });
+    STAGES.forEach(function (pair) {
+      var btn = buttons[pair[0]];
+      if (!btn) { return; }
+      if (keep[pair[0]]) {
+        btn.classList.remove("lc-segment--dim");
+      } else {
+        btn.classList.add("lc-segment--dim");
+      }
+      if (affectedStages.indexOf(pair[0]) !== -1) {
+        btn.classList.add("lc-segment--linked");
+      } else {
+        btn.classList.remove("lc-segment--linked");
+      }
+    });
+  }
+
+  function clearWheelDim() {
+    STAGES.forEach(function (pair) {
+      var btn = buttons[pair[0]];
+      if (!btn) { return; }
+      btn.classList.remove("lc-segment--dim");
+      btn.classList.remove("lc-segment--linked");
+    });
+  }
+
+  function setOverlay(on) {
+    overlayOn = on;
+    if (!overlayToggle) { return; }
+    overlayToggle.setAttribute("aria-pressed", on ? "true" : "false");
+    overlayToggle.setAttribute("aria-expanded", on ? "true" : "false");
+    overlayToggle.textContent = on ? "Hide what this affects" : "Show what this affects";
+    if (!on) {
+      if (overlayLegend) { overlayLegend.hidden = true; }
+      clearWheelDim();
+      return;
+    }
+    var affected = renderLegend(currentStageSlug);
+    if (overlayLegend) { overlayLegend.hidden = false; }
+    applyWheelDim(currentStageSlug, affected);
+  }
+
+  function resetOverlay() {
+    setOverlay(false);
   }
 
   function stageIndex(slug) {
@@ -262,6 +520,15 @@
 
     panelInfo.appendChild(factsList);
 
+    var stageLinkList = buildLinkList(slug);
+    if (stageLinkList) {
+      var stageLinksHeading = document.createElement("p");
+      stageLinksHeading.className = "lc-stage-subhead";
+      stageLinksHeading.textContent = "Also part of the loop";
+      panelInfo.appendChild(stageLinksHeading);
+      panelInfo.appendChild(stageLinkList);
+    }
+
     var rulesHeading = document.createElement("p");
     rulesHeading.className = "lc-stage-subhead";
     rulesHeading.textContent = "Rules that apply";
@@ -272,6 +539,8 @@
     (info.rules || []).forEach(function (rule) {
       var li = document.createElement("li");
       li.className = "lc-rule-chip";
+      li.id = rule.id;
+      li.tabIndex = -1;
       li.appendChild(document.createTextNode(rule.text));
       rule.xw.forEach(function (xw) {
         li.appendChild(document.createTextNode(" "));
@@ -281,6 +550,8 @@
         a.textContent = xw;
         li.appendChild(a);
       });
+      var linkList = buildLinkList(rule.id);
+      if (linkList) { li.appendChild(linkList); }
       rulesList.appendChild(li);
     });
     panelInfo.appendChild(rulesList);
@@ -295,6 +566,8 @@
     (byStage[slug] || []).forEach(function (row) {
       var li = document.createElement("li");
       li.className = "lc-question";
+      li.id = row.id;
+      li.tabIndex = -1;
 
       var q = document.createElement("p");
       q.className = "lc-question-text";
@@ -318,6 +591,10 @@
       meta.appendChild(toolLink);
 
       li.appendChild(meta);
+
+      var linkList = buildLinkList(row.id);
+      if (linkList) { li.appendChild(linkList); }
+
       panelList.appendChild(li);
     });
 
@@ -440,9 +717,29 @@
 
   buildWheel();
 
-  var initialSlug = (window.location.hash || "").replace(/^#/, "");
-  var knownSlug = STAGES.filter(function (p) { return p[0] === initialSlug; })[0];
-  selectStage(knownSlug ? knownSlug[0] : STAGES[0][0], false);
+  if (panelInfo) { panelInfo.addEventListener("click", onPanelLinkClick); }
+  if (panelList) { panelList.addEventListener("click", onPanelLinkClick); }
+  if (overlayToggle) {
+    overlayToggle.addEventListener("click", function () { setOverlay(!overlayOn); });
+  }
+
+  window.addEventListener("popstate", function (e) {
+    var state = e.state;
+    var parsed = state ? { stage: state.stage, itemId: state.itemId } : parseHash(window.location.hash);
+    if (!parsed) {
+      selectStage(STAGES[0][0], true);
+      return;
+    }
+    goToItem(parsed.stage, parsed.itemId,
+      { push: false, viaLink: !!(state && state.sourceId), sourceId: state && state.sourceId });
+  });
+
+  var initial = parseHash(window.location.hash);
+  if (initial) {
+    goToItem(initial.stage, initial.itemId, { push: false });
+  } else {
+    selectStage(STAGES[0][0], false);
+  }
 })();
 </script>
 <script>

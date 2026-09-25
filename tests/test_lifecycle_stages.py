@@ -7,12 +7,14 @@ from agk.lifecycle import STAGES, LifecycleError, load_stages, render_checklist
 XW = {"XW-001", "XW-027"}
 
 
-def stage(slug: str, handoff: str = "", rule: str = "- Nothing skips intake. [[XW-027]]", skip: str = "") -> str:
+def stage(slug: str, handoff: str = "", rule: str | None = None, skip: str = "") -> str:
     nxt = handoff or {"plan": "acquire", "acquire": "deploy", "deploy": "operate",
                       "operate": "optimize", "optimize": "plan, retire", "retire": "plan"}[slug]
     parts = {"What happens": "Work happens.", "Gate to move on": "Owner approves.",
              "Hands off to": f"{nxt} — the record moves on.", "Who decides": "The council."}
     lines = [f"## {slug} — Stage", ""] + [f"- **{k}:** {v}" for k, v in parts.items() if k != skip]
+    if rule is None:
+        rule = f"- {{#r-{slug}-1}} Nothing skips intake. [[XW-027]]"
     return "\n".join(lines) + f"\n\n### Rules that apply\n\n{rule}\n\n"
 
 
@@ -48,11 +50,22 @@ class StagesTests(unittest.TestCase):
 
     def test_untagged_rule_fails(self):
         with self.assertRaisesRegex(LifecycleError, "acquire: rule has no clause tag"):
-            load_stages(self.write(full(acquire=stage("acquire", rule="- Buy carefully."))), XW)
+            load_stages(self.write(full(acquire=stage("acquire", rule="- {#r-acquire-1} Buy carefully."))), XW)
 
     def test_unknown_tag_fails(self):
         with self.assertRaisesRegex(LifecycleError, "unknown crosswalk row XW-999"):
-            load_stages(self.write(full(acquire=stage("acquire", rule="- Buy. [[XW-999]]"))), XW)
+            load_stages(self.write(full(acquire=stage("acquire", rule="- {#r-acquire-1} Buy. [[XW-999]]"))), XW)
+
+    def test_missing_id_fails(self):
+        with self.assertRaisesRegex(LifecycleError, "acquire: rule has no id"):
+            load_stages(self.write(full(acquire=stage("acquire", rule="- Buy carefully. [[XW-027]]"))), XW)
+
+    def test_duplicate_rule_id_fails(self):
+        with self.assertRaisesRegex(LifecycleError, "duplicate rule id r-dup"):
+            load_stages(self.write(full(
+                plan=stage("plan", rule="- {#r-dup} Nothing skips intake. [[XW-027]]"),
+                acquire=stage("acquire", rule="- {#r-dup} Buy carefully. [[XW-027]]"),
+            )), XW)
 
     def test_stage_without_rules_fails(self):
         with self.assertRaisesRegex(LifecycleError, "operate: no rules"):
@@ -64,9 +77,20 @@ class StagesTests(unittest.TestCase):
 
     def test_checklist_includes_rules_and_gate(self):
         data = load_stages(self.write(full()), XW)
-        rows = [{"stage": s, "question": f"Ask {s}?", "tool": "rationalization", "xw": "XW-001"} for s, _ in STAGES]
+        rows = [{"id": f"q-{s}-1", "stage": s, "question": f"Ask {s}?", "tool": "rationalization", "xw": "XW-001"} for s, _ in STAGES]
         text = render_checklist(rows, data["stages"])
         plan = text.split("## Plan and request")[1].split("## Acquire")[0]
         self.assertIn("Nothing skips intake. [[XW-027]]", plan)
         self.assertIn("Gate to move on: Owner approves.", plan)
         self.assertIn("Hands off to: acquire", plan)
+
+    def test_checklist_shows_links_under_rules_and_questions(self):
+        data = load_stages(self.write(full()), XW)
+        rows = [{"id": f"q-{s}-1", "stage": s, "question": f"Ask {s}?", "tool": "rationalization", "xw": "XW-001"} for s, _ in STAGES]
+        items = {"r-plan-1": {"stage": "plan", "kind": "rule", "text": "Nothing skips intake."},
+                 "q-operate-1": {"stage": "operate", "kind": "question", "text": "Ask operate?"}}
+        links = {"r-plan-1": [{"label": "Blocks", "type": "blocks", "target": "q-operate-1", "note": "n", "inverse": False}],
+                 "q-operate-1": [{"label": "Blocked by", "type": "blocks", "target": "r-plan-1", "note": "n", "inverse": True}]}
+        text = render_checklist(rows, data["stages"], links, items)
+        self.assertIn("  - Blocks: Operate — Ask operate?", text)
+        self.assertIn("  - Blocked by:", text)

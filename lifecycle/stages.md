@@ -13,11 +13,11 @@ The lifecycle is the spine every application travels, from a first request to re
 
 ### Rules that apply
 
-- Nothing is bought or built above the council's threshold without an approved request. [[XW-027]]
-- Every request names an accountable owner before it moves forward. [[XW-002]]
-- A request that duplicates an application already owned is flagged first. [[XW-011]]
-- Any AI component is flagged at intake for a risk-tier assessment. [[XW-021]]
-- The data the application will hold, and its sensitivity, is recorded early. [[XW-028]]
+- {#r-plan-threshold} Nothing is bought or built above the council's threshold without an approved request. [[XW-027]]
+- {#r-plan-owner} Every request names an accountable owner before it moves forward. [[XW-002]]
+- {#r-plan-duplicate} A request that duplicates an application already owned is flagged first. [[XW-011]]
+- {#r-plan-ai-tier} Any AI component is flagged at intake for a risk-tier assessment. [[XW-021]]
+- {#r-plan-data} The data the application will hold, and its sensitivity, is recorded early. [[XW-028]]
 
 ## acquire — Acquire
 
@@ -28,10 +28,10 @@ The lifecycle is the spine every application travels, from a first request to re
 
 ### Rules that apply
 
-- Nothing is bought above the council's threshold without an approved request. [[XW-027]]
-- Every purchase records its entitlements before deployment starts. [[XW-006]]
-- Contracts are checked for audit, renewal, and exit terms before signature. [[XW-013]]
-- Any AI supplier and model provider is assessed before the purchase closes. [[XW-023]]
+- {#r-acquire-threshold} Nothing is bought above the council's threshold without an approved request. [[XW-027]]
+- {#r-acquire-entitlements} Every purchase records its entitlements before deployment starts. [[XW-006]]
+- {#r-acquire-contract-terms} Contracts are checked for audit, renewal, and exit terms before signature. [[XW-013]]
+- {#r-acquire-ai-supplier} Any AI supplier and model provider is assessed before the purchase closes. [[XW-023]]
 
 ## deploy — Deploy
 
@@ -42,10 +42,10 @@ The lifecycle is the spine every application travels, from a first request to re
 
 ### Rules that apply
 
-- The application is recorded in the inventory with owner and data sensitivity. [[XW-001]]
-- Access roles are defined, and new access only granted through an approved path. [[XW-015]]
-- Privileged and administrative accounts are limited and named individually. [[XW-018]]
-- An AI system's inventory record and risk entry are complete before go-live. [[XW-022]]
+- {#r-deploy-inventory} The application is recorded in the inventory with owner and data sensitivity. [[XW-001]]
+- {#r-deploy-access-roles} Access roles are defined, and new access only granted through an approved path. [[XW-015]]
+- {#r-deploy-privileged} Privileged and administrative accounts are limited and named individually. [[XW-018]]
+- {#r-deploy-ai-register} An AI system's inventory record and risk entry are complete before go-live. [[XW-022]]
 
 ## operate — Operate
 
@@ -56,10 +56,10 @@ The lifecycle is the spine every application travels, from a first request to re
 
 ### Rules that apply
 
-- Installed copies and active users are kept within held entitlements. [[XW-007]]
-- Access is reviewed on schedule, and leavers are removed promptly. [[XW-016]]
-- Asset records are reconciled against what is actually installed. [[XW-026]]
-- A changed AI system's use is reassessed, not assumed unchanged. [[XW-021]]
+- {#r-operate-entitlements} Installed copies and active users are kept within held entitlements. [[XW-007]]
+- {#r-operate-access-review} Access is reviewed on schedule, and leavers are removed promptly. [[XW-016]]
+- {#r-operate-asset-records} Asset records are reconciled against what is actually installed. [[XW-026]]
+- {#r-operate-ai-change} A changed AI system's use is reassessed, not assumed unchanged. [[XW-021]]
 
 ## optimize — Review and optimize
 
@@ -70,10 +70,10 @@ The lifecycle is the spine every application travels, from a first request to re
 
 ### Rules that apply
 
-- Every application is periodically assessed against tolerate, invest, migrate, or eliminate. [[XW-011]]
-- Anything expiring within the review window is flagged before it lapses. [[XW-008]]
-- The review checks where the organization's own asset process is weakest. [[XW-025]]
-- The council's own decision log is checked for bottlenecks or rubber-stamping. [[XW-025]]
+- {#r-optimize-cost} Every application is periodically assessed against tolerate, invest, migrate, or eliminate. [[XW-011]]
+- {#r-optimize-expiring} Anything expiring within the review window is flagged before it lapses. [[XW-008]]
+- {#r-optimize-process-weak} The review checks where the organization's own asset process is weakest. [[XW-025]]
+- {#r-optimize-decision-log} The council's own decision log is checked for bottlenecks or rubber-stamping. [[XW-025]]
 
 ## retire — Retire
 
@@ -84,7 +84,7 @@ The lifecycle is the spine every application travels, from a first request to re
 
 ### Rules that apply
 
-- What happens to the application's data is decided and recorded, not left implicit. [[XW-028]]
-- All accounts tied to the application are removed and licenses reclaimed. [[XW-017]]
-- The contract is ended on schedule, with any auto-renewal cancelled in time. [[XW-013]]
-- The inventory record is formally closed, with evidence retained for audit. [[XW-020]]
+- {#r-retire-data} What happens to the application's data is decided and recorded, not left implicit. [[XW-028]]
+- {#r-retire-accounts} All accounts tied to the application are removed and licenses reclaimed. [[XW-017]]
+- {#r-retire-contract-end} The contract is ended on schedule, with any auto-renewal cancelled in time. [[XW-013]]
+- {#r-retire-inventory-closed} The inventory record is formally closed, with evidence retained for audit. [[XW-020]]

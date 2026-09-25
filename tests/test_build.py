@@ -86,8 +86,8 @@ class BuildTests(unittest.TestCase):
     def test_lifecycle_bank_builds_checklist(self):
         from agk.lifecycle import STAGES
         (self.root / "lifecycle").mkdir()
-        rows = "".join(f'{s},"Ask about {s}?",rationalization,XW-001\n' for s, _ in STAGES)
-        (self.root / "lifecycle" / "questions.csv").write_text("stage,question,tool,xw\n" + rows)
+        rows = "".join(f'q-{s}-1,{s},"Ask about {s}?",rationalization,XW-001\n' for s, _ in STAGES)
+        (self.root / "lifecycle" / "questions.csv").write_text("id,stage,question,tool,xw\n" + rows)
         errors, _ = build(self.root)
         self.assertEqual(errors, [])
         self.assertIn("## Retire", (self.root / "dist" / "lifecycle-questions.md").read_text())
@@ -95,8 +95,8 @@ class BuildTests(unittest.TestCase):
     def test_stages_flow_into_checklist_and_wheel_page(self):
         from agk.lifecycle import STAGES
         (self.root / "lifecycle").mkdir()
-        rows = "".join(f'{s},"Ask about {s}?",rationalization,XW-001\n' for s, _ in STAGES)
-        (self.root / "lifecycle" / "questions.csv").write_text("stage,question,tool,xw\n" + rows)
+        rows = "".join(f'q-{s}-1,{s},"Ask about {s}?",rationalization,XW-001\n' for s, _ in STAGES)
+        (self.root / "lifecycle" / "questions.csv").write_text("id,stage,question,tool,xw\n" + rows)
         handoff = {"plan": "acquire", "acquire": "deploy", "deploy": "operate",
                    "operate": "optimize", "optimize": "plan, retire", "retire": "plan"}
         stages_md = "# Lifecycle\n\n## How it works together\n\nThe stages form a loop.\n\n"
@@ -105,7 +105,7 @@ class BuildTests(unittest.TestCase):
                           f"- **Gate to move on:** Owner approves.\n"
                           f"- **Hands off to:** {handoff[slug]} — moves on.\n"
                           f"- **Who decides:** The council.\n\n"
-                          f"### Rules that apply\n\n- Do the thing. [[XW-001]]\n\n")
+                          f"### Rules that apply\n\n- {{#r-{slug}-1}} Do the thing. [[XW-001]]\n\n")
         (self.root / "lifecycle" / "stages.md").write_text(stages_md, encoding="utf-8")
         site = self.root / "site"
         site.mkdir()
@@ -124,8 +124,8 @@ class BuildTests(unittest.TestCase):
     def test_invalid_stages_reports_error_but_keeps_questions(self):
         from agk.lifecycle import STAGES
         (self.root / "lifecycle").mkdir()
-        rows = "".join(f'{s},"Ask about {s}?",rationalization,XW-001\n' for s, _ in STAGES)
-        (self.root / "lifecycle" / "questions.csv").write_text("stage,question,tool,xw\n" + rows)
+        rows = "".join(f'q-{s}-1,{s},"Ask about {s}?",rationalization,XW-001\n' for s, _ in STAGES)
+        (self.root / "lifecycle" / "questions.csv").write_text("id,stage,question,tool,xw\n" + rows)
         (self.root / "lifecycle" / "stages.md").write_text("# Lifecycle\n\nNo sections here.\n", encoding="utf-8")
         errors, _ = build(self.root)
         self.assertTrue(any(e.startswith("lifecycle:") for e in errors))
@@ -133,9 +133,42 @@ class BuildTests(unittest.TestCase):
 
     def test_lifecycle_bank_errors_stop_build(self):
         (self.root / "lifecycle").mkdir()
-        (self.root / "lifecycle" / "questions.csv").write_text('stage,question,tool,xw\nplan,"Q?",nope,XW-001\n')
+        (self.root / "lifecycle" / "questions.csv").write_text('id,stage,question,tool,xw\nq-plan-1,plan,"Q?",nope,XW-001\n')
         errors, _ = build(self.root)
         self.assertTrue(any(e.startswith("lifecycle:") for e in errors))
+
+    def test_links_csv_flows_into_checklist_with_reverse_label(self):
+        from agk.lifecycle import STAGES
+        (self.root / "lifecycle").mkdir()
+        rows = "".join(f'q-{s}-1,{s},"Ask about {s}?",rationalization,XW-001\n' for s, _ in STAGES)
+        (self.root / "lifecycle" / "questions.csv").write_text("id,stage,question,tool,xw\n" + rows)
+        handoff = {"plan": "acquire", "acquire": "deploy", "deploy": "operate",
+                   "operate": "optimize", "optimize": "plan, retire", "retire": "plan"}
+        stages_md = "# Lifecycle\n\n## How it works together\n\nThe stages form a loop.\n\n"
+        for slug, _ in STAGES:
+            stages_md += (f"## {slug} — Stage\n\n- **What happens:** Work happens.\n"
+                          f"- **Gate to move on:** Owner approves.\n"
+                          f"- **Hands off to:** {handoff[slug]} — moves on.\n"
+                          f"- **Who decides:** The council.\n\n"
+                          f"### Rules that apply\n\n- {{#r-{slug}-1}} Do the thing. [[XW-001]]\n\n")
+        (self.root / "lifecycle" / "stages.md").write_text(stages_md, encoding="utf-8")
+        (self.root / "lifecycle" / "links.csv").write_text(
+            "from_id,type,to_id,note\nr-plan-1,blocks,q-operate-1,note text\n", encoding="utf-8")
+        errors, _ = build(self.root)
+        self.assertEqual(errors, [])
+        md = (self.root / "dist" / "lifecycle-questions.md").read_text()
+        self.assertIn("Blocked by:", md)
+        self.assertIn("Blocks:", md)
+
+    def test_bad_links_csv_stops_build_with_prefix(self):
+        from agk.lifecycle import STAGES
+        (self.root / "lifecycle").mkdir()
+        rows = "".join(f'q-{s}-1,{s},"Ask about {s}?",rationalization,XW-001\n' for s, _ in STAGES)
+        (self.root / "lifecycle" / "questions.csv").write_text("id,stage,question,tool,xw\n" + rows)
+        (self.root / "lifecycle" / "links.csv").write_text(
+            "from_id,type,to_id,note\nq-plan-1,causes,q-acquire-1,note\n", encoding="utf-8")
+        errors, _ = build(self.root)
+        self.assertTrue(any(e.startswith("lifecycle links:") for e in errors))
 
     def test_missing_lifecycle_impact_stops_build(self):
         (self.root / "methods/crosswalk/lifecycle-impact.csv").unlink()

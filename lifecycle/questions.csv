@@ -1,26 +1,26 @@
-stage,question,tool,xw
-plan,"What problem does this solve, and do we own an app that does it?",rationalization,XW-011
-plan,"Who will own it, and who is the executive sponsor?",program-setup,XW-002
-plan,"Does the request meet the council's threshold and come through the intake path?",program-setup,XW-027
-plan,"Does it use AI? If so, what risk tier is it?",ai-intake,XW-021
-plan,"What data will it hold, and how sensitive is that data?",access-review,XW-028
-acquire,"What license model applies, and how many entitlements do we need?",rationalization,XW-006
-acquire,"Does the contract give audit, renewal, and exit terms we can live with?",rationalization,XW-013
-acquire,"Have the supplier and any AI model provider been assessed?",ai-intake,XW-023
-acquire,"Is the purchase recorded against an owner and a cost center?",itam-maturity,XW-012
-deploy,"Is the app in the inventory with owner, category, and data sensitivity?",itam-maturity,XW-001
-deploy,"Are access roles defined, and who approves new access?",access-review,XW-015
-deploy,"Are privileged accounts limited and named?",access-review,XW-018
-deploy,"For AI systems: is the inventory record complete and the risk in the register?",ai-intake,XW-022
-operate,"Do installs and users stay within entitlements?",rationalization,XW-007
-operate,"Is access reviewed on schedule, and are leavers removed?",access-review,XW-016
-operate,"Are asset records accurate and reconciled?",itam-maturity,XW-026
-operate,"Has the AI system's use changed since intake?",ai-intake,XW-021
-optimize,"Is it still worth its cost: tolerate, invest, migrate, or eliminate?",rationalization,XW-011
-optimize,"Is anything expiring or due for renewal in the next 90 days?",rationalization,XW-008
-optimize,"Where is our asset management process weakest this year?",itam-maturity,XW-025
-optimize,"Does the council's decision log show bottlenecks or rubber-stamping?",program-setup,XW-025
-retire,"What data does it hold, and will we archive, migrate, or delete it?",rationalization,XW-028
-retire,"Are all accounts removed and licenses cancelled or reclaimed?",access-review,XW-017
-retire,"Is the contract ended on time, without auto-renewal?",rationalization,XW-013
-retire,"Is the inventory record closed, with evidence kept?",itam-maturity,XW-020
+id,stage,question,tool,xw
+q-plan-duplicate,plan,"What problem does this solve, and do we own an app that does it?",rationalization,XW-011
+q-plan-owner,plan,"Who will own it, and who is the executive sponsor?",program-setup,XW-002
+q-plan-intake,plan,"Does the request meet the council's threshold and come through the intake path?",program-setup,XW-027
+q-plan-ai-tier,plan,"Does it use AI? If so, what risk tier is it?",ai-intake,XW-021
+q-plan-data,plan,"What data will it hold, and how sensitive is that data?",access-review,XW-028
+q-acquire-entitlements,acquire,"What license model applies, and how many entitlements do we need?",rationalization,XW-006
+q-acquire-contract-terms,acquire,"Does the contract give audit, renewal, and exit terms we can live with?",rationalization,XW-013
+q-acquire-ai-supplier,acquire,"Have the supplier and any AI model provider been assessed?",ai-intake,XW-023
+q-acquire-cost-center,acquire,"Is the purchase recorded against an owner and a cost center?",itam-maturity,XW-012
+q-deploy-inventory,deploy,"Is the app in the inventory with owner, category, and data sensitivity?",itam-maturity,XW-001
+q-deploy-access-roles,deploy,"Are access roles defined, and who approves new access?",access-review,XW-015
+q-deploy-privileged,deploy,"Are privileged accounts limited and named?",access-review,XW-018
+q-deploy-ai-register,deploy,"For AI systems: is the inventory record complete and the risk in the register?",ai-intake,XW-022
+q-operate-entitlements,operate,"Do installs and users stay within entitlements?",rationalization,XW-007
+q-operate-access-review,operate,"Is access reviewed on schedule, and are leavers removed?",access-review,XW-016
+q-operate-asset-records,operate,"Are asset records accurate and reconciled?",itam-maturity,XW-026
+q-operate-ai-change,operate,"Has the AI system's use changed since intake?",ai-intake,XW-021
+q-optimize-cost,optimize,"Is it still worth its cost: tolerate, invest, migrate, or eliminate?",rationalization,XW-011
+q-optimize-expiring,optimize,"Is anything expiring or due for renewal in the next 90 days?",rationalization,XW-008
+q-optimize-process-weak,optimize,"Where is our asset management process weakest this year?",itam-maturity,XW-025
+q-optimize-decision-log,optimize,"Does the council's decision log show bottlenecks or rubber-stamping?",program-setup,XW-025
+q-retire-data,retire,"What data does it hold, and will we archive, migrate, or delete it?",rationalization,XW-028
+q-retire-accounts,retire,"Are all accounts removed and licenses cancelled or reclaimed?",access-review,XW-017
+q-retire-contract-end,retire,"Is the contract ended on time, without auto-renewal?",rationalization,XW-013
+q-retire-inventory-closed,retire,"Is the inventory record closed, with evidence kept?",itam-maturity,XW-020
