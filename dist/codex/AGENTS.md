@@ -2,6 +2,7 @@
 
 Governance skills. Each folder under `skills/` holds a SKILL.md and its reference files.
 
+- `skills/access-review/SKILL.md` — Access review pack: Review application user and role exports against HR records, find orphaned, excessive, and privileged access, and produce an evidence summary and auditor-ready memo mapped to ISO/IEC 27001 and COBIT DSS05. Use for quarterly or annual access reviews.
 - `skills/ai-intake/SKILL.md` — AI system intake and risk tiering: Take a description of an AI use case, assign a risk tier under the EU AI Act with NIST AI RMF and ISO/IEC 42001 controls, and produce an AI inventory record. Use whenever a team proposes a new AI tool or changes how one is used.
 - `skills/crosswalk/SKILL.md` — Governance framework crosswalk: Map a control, requirement, or policy statement to ISO/IEC 19770-1, COBIT 2019, ISO/IEC 27001, and ISO/IEC 42001 clauses, and show where coverage is missing. Use when writing or auditing a control, or explaining how frameworks overlap.
 - `skills/itam-maturity/SKILL.md` — ITAM maturity check: Score an organization's IT asset management maturity across nine process areas, name the three biggest gaps, and produce a 90-day plan tied to ISO/IEC 19770-1 and COBIT BAI09. Use for a baseline assessment or a yearly re-check.
