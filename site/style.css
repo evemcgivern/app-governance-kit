@@ -734,3 +734,96 @@ code {
   color: var(--muted);
   font-size: 0.9rem;
 }
+
+/* Impact map */
+
+.im-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem 1.75rem;
+  margin: 1.25rem 0;
+  padding: 0;
+  list-style: none;
+}
+
+.im-legend li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.im-legend-glyph {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  font-size: 0.9rem;
+}
+
+.im-legend-glyph--primary {
+  background: var(--accent);
+  color: var(--accent-fg);
+  border-color: var(--accent);
+}
+
+.im-legend-glyph--secondary {
+  background: var(--chip-bg);
+  color: var(--fg);
+}
+
+.im-legend-glyph--none {
+  background: transparent;
+  color: var(--muted);
+}
+
+.im-table-wrap {
+  display: none;
+  overflow-x: auto;
+  margin: 1.5rem 0;
+}
+
+.im-table th,
+.im-table td {
+  text-align: center;
+  white-space: nowrap;
+}
+
+.im-table th[scope="row"] {
+  text-align: left;
+  white-space: normal;
+}
+
+.im-cell {
+  border-radius: 0.3rem;
+}
+
+.im-cell--primary {
+  background: var(--accent);
+  color: var(--accent-fg);
+}
+
+.im-cell--secondary {
+  background: var(--chip-bg);
+}
+
+.im-glyph {
+  font-size: 1rem;
+}
+
+#im-cards {
+  display: grid;
+}
+
+@media (min-width: 46rem) {
+  .im-table-wrap {
+    display: block;
+  }
+
+  #im-cards {
+    display: none;
+  }
+}

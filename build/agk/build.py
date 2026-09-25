@@ -91,6 +91,11 @@ def build(root: Path) -> tuple[list[str], list[str]]:
         rows = [dict(r, key_work=themes[r["id"]], stages=lifecycle_impact[r["id"]]) for r in known.values()]
         explorer.write_text(inject_data(explorer.read_text(encoding="utf-8"), "XW", rows),
                             encoding="utf-8")
+    impact_map = root / "site" / "impact-map.html"
+    if impact_map.exists():
+        im_rows = [{"id": r["id"], "theme": r["theme"], "stages": lifecycle_impact[r["id"]]} for r in known.values()]
+        impact_map.write_text(inject_data(impact_map.read_text(encoding="utf-8"), "IM", im_rows),
+                              encoding="utf-8")
     if (root / "site").is_dir():
         errors += [f"site: broken link {b}" for b in broken_links(root / "site")]
     return errors, warnings
