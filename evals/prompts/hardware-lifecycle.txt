@@ -1,0 +1,1 @@
+Check the hardware fleet in devices.csv. In the findings block report devices overdue for refresh as {"type": "overdue_refresh", "id": "DEV-n"} and retired devices with no confirmed data wipe as {"type": "unwiped_retired_device", "id": "DEV-n"}.

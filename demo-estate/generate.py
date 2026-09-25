@@ -1,10 +1,12 @@
 """Generate the Halden Logistics demo estate. Deterministic; standard library only."""
 import csv
+import datetime
 import json
 import sys
 from pathlib import Path
 
 CHECKED_ON = "2026-09-01"
+CHECKED_ON_DATE = datetime.date(2026, 9, 1)
 
 CATEGORIES = [
     ("ERP", "Northbeam"), ("Payroll", "Paylane"), ("HR information system", "Staffhub"),
@@ -49,6 +51,16 @@ MATURITY = [
     ("reporting", "Reporting and improvement", 3),
 ]
 CHARTER_FLAWS = ["decision-rights", "sponsor", "membership-size"]
+DEVICE_TYPES = ["laptop", "desktop", "mobile", "server"]
+DEVICE_REFRESH_CYCLE_MONTHS = {"laptop": 36, "desktop": 48, "mobile": 24, "server": 60}
+DEVICE_VENDORS = {"laptop": ["Dell", "Lenovo"], "desktop": ["Dell", "HP"],
+                   "mobile": ["Apple", "Samsung"], "server": ["Dell", "HPE"]}
+DEVICE_BASE_COST = {"laptop": 1200, "desktop": 900, "mobile": 600, "server": 6000}
+# Planted problems: slots overdue for refresh (active, past their cycle) and
+# retired slots with no confirmed data wipe (subset of DEVICE_RETIRED).
+DEVICE_RETIRED = {5, 11, 18, 24, 29, 35, 42, 48, 53, 59}
+DEVICE_OVERDUE = {8, 27, 45}
+DEVICE_UNWIPED = {11, 42}
 CHARTER_DRAFT = """# Halden Software Governance Council — draft charter
 
 ## Purpose
@@ -136,6 +148,41 @@ def generate(out: Path) -> None:
 
     (out / "council-draft.md").write_text(CHARTER_DRAFT, encoding="utf-8")
     key += [{"tool": "program-setup", "type": "charter_gap", "id": f} for f in CHARTER_FLAWS]
+
+    devices = []
+    for i in range(1, 61):
+        dtype = DEVICE_TYPES[(i - 1) % 4]
+        cycle = DEVICE_REFRESH_CYCLE_MONTHS[dtype]
+        vendor = DEVICE_VENDORS[dtype][(i // 4) % len(DEVICE_VENDORS[dtype])]
+        owner = f"EMP-{((i * 13) % 80) + 1:03d}"
+        cost = DEVICE_BASE_COST[dtype] + (i * 173) % DEVICE_BASE_COST[dtype]
+        retired = i in DEVICE_RETIRED
+        status = "retired" if retired else "active"
+        if i in DEVICE_OVERDUE:
+            months_since_deploy = cycle + 6
+        elif retired:
+            months_since_deploy = 24 + (i * 7) % 40
+        else:
+            months_since_deploy = 3 + (i * 11) % (cycle - 6)
+        deploy_date = CHECKED_ON_DATE - datetime.timedelta(days=months_since_deploy * 30)
+        if retired:
+            refresh_due_date = ""
+            retire_months_ago = months_since_deploy - 18
+            retirement_date = (CHECKED_ON_DATE - datetime.timedelta(days=retire_months_ago * 30)).isoformat()
+            data_wipe_confirmed = "no" if i in DEVICE_UNWIPED else "yes"
+        else:
+            refresh_due_date = (deploy_date + datetime.timedelta(days=cycle * 30)).isoformat()
+            retirement_date = ""
+            data_wipe_confirmed = ""
+        devices.append([f"DEV-{i:03d}", dtype, vendor, owner, deploy_date.isoformat(), refresh_due_date,
+                         status, retirement_date, data_wipe_confirmed, cost, CHECKED_ON])
+    _write(out / "devices.csv", ["device_id", "type", "vendor", "owner", "deploy_date", "refresh_due_date",
+                                  "status", "retirement_date", "data_wipe_confirmed", "cost_usd", "checked_on"],
+           devices)
+    key += [{"tool": "hardware-lifecycle", "type": "overdue_refresh", "id": f"DEV-{i:03d}"}
+            for i in sorted(DEVICE_OVERDUE)]
+    key += [{"tool": "hardware-lifecycle", "type": "unwiped_retired_device", "id": f"DEV-{i:03d}"}
+            for i in sorted(DEVICE_UNWIPED)]
 
     key.sort(key=lambda k: (k["tool"], k["type"], k["id"]))
     (out / "answer-key.json").write_text(json.dumps(key, indent=2) + "\n", encoding="utf-8")

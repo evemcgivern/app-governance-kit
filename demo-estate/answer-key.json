@@ -35,6 +35,31 @@
     "id": "C3:XW-021"
   },
   {
+    "tool": "hardware-lifecycle",
+    "type": "overdue_refresh",
+    "id": "DEV-008"
+  },
+  {
+    "tool": "hardware-lifecycle",
+    "type": "overdue_refresh",
+    "id": "DEV-027"
+  },
+  {
+    "tool": "hardware-lifecycle",
+    "type": "overdue_refresh",
+    "id": "DEV-045"
+  },
+  {
+    "tool": "hardware-lifecycle",
+    "type": "unwiped_retired_device",
+    "id": "DEV-011"
+  },
+  {
+    "tool": "hardware-lifecycle",
+    "type": "unwiped_retired_device",
+    "id": "DEV-042"
+  },
+  {
     "tool": "itam-maturity",
     "type": "maturity_gap",
     "id": "data-quality"

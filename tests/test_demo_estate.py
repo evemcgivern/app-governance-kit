@@ -76,6 +76,23 @@ class DemoEstateTests(unittest.TestCase):
         self.assertEqual(self.expected("charter_gap"), {"decision-rights", "sponsor", "membership-size"})
         self.assertGreater(members.count(",") + members.count(";") + 1, 9)
 
+    def test_sixty_devices(self):
+        self.assertEqual(len(rows(self.out / "devices.csv")), 60)
+
+    def test_only_planted_devices_overdue_refresh(self):
+        devices = rows(self.out / "devices.csv")
+        overdue = {d["device_id"] for d in devices
+                   if d["status"] == "active" and d["refresh_due_date"] < d["checked_on"]}
+        self.assertEqual(overdue, self.expected("overdue_refresh"))
+        self.assertEqual(len(overdue), 3)
+
+    def test_only_planted_retired_devices_unwiped(self):
+        devices = rows(self.out / "devices.csv")
+        unwiped = {d["device_id"] for d in devices
+                   if d["status"] == "retired" and d["data_wipe_confirmed"] != "yes"}
+        self.assertEqual(unwiped, self.expected("unwiped_retired_device"))
+        self.assertEqual(len(unwiped), 2)
+
     def test_generation_is_deterministic(self):
         other = Path(tempfile.mkdtemp())
         gen.generate(other)
