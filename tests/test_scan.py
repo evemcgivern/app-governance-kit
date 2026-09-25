@@ -231,6 +231,13 @@ class ScanTests(unittest.TestCase):
         hits = scan(self.tmp, ["AcmeCorp"])
         self.assertTrue(any("generate.py" in h and "private term" in h for h in hits))
 
+    def test_scan_reads_xml(self):
+        (self.tmp / "site").mkdir()
+        (self.tmp / "site" / "sitemap.xml").write_text("<urlset><url><loc>AcmeCorp</loc></url></urlset>\n")
+        hits = scan(self.tmp, ["AcmeCorp"])
+        self.assertTrue(any("sitemap.xml" in h and "private term" in h for h in hits))
+        self.assertFalse(any("sitemap.xml" in h and "cannot scan" in h for h in hits))
+
     def test_scan_clean_python_no_cannot_scan_hit(self):
         # A clean .py file should not produce a "cannot scan" hit
         (self.tmp / "demo-estate").mkdir()
