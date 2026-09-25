@@ -9,6 +9,7 @@ from agk.crosswalk import CrosswalkError, load_crosswalk
 from agk.doclinks import broken_doc_links
 from agk.lifecycle import LifecycleError, load_questions, load_stages, render_checklist
 from agk.lifecycle_impact import LifecycleImpactError, load_lifecycle_impact
+from agk.links import LinkError, link_items, load_links
 from agk.methods import MethodError, load_method, method_dirs
 from agk.render import (render_claude, render_claude_manifest, render_codex,
                         render_codex_agents, render_copilot)
@@ -74,11 +75,22 @@ def build(root: Path) -> tuple[list[str], list[str]]:
             except LifecycleError as e:
                 errors.append(f"lifecycle: {e}")
                 stages = None
+            lc_items = None
+            lc_links = None
+            links_csv = root / "lifecycle" / "links.csv"
+            if links_csv.exists():
+                lc_items = link_items(questions, stages["stages"] if stages else {})
+                try:
+                    lc_links = load_links(links_csv, lc_items)
+                except LinkError as e:
+                    errors.append(f"lifecycle links: {e}")
             (dist / "lifecycle-questions.md").write_text(
-                render_checklist(questions, stages["stages"] if stages else None), encoding="utf-8")
+                render_checklist(questions, stages["stages"] if stages else None, lc_links, lc_items),
+                encoding="utf-8")
             lifecycle_page = root / "site" / "lifecycle.html"
             if lifecycle_page.exists():
-                lc_payload = [{"questions": questions, "stages": stages["stages"] if stages else None}]
+                lc_payload = [{"questions": questions, "stages": stages["stages"] if stages else None,
+                               "items": lc_items, "links": lc_links}]
                 page_text = inject_data(lifecycle_page.read_text(encoding="utf-8"), "LC", lc_payload)
                 together_re = re.compile(r"<!--LC-TOGETHER-->.*?<!--/LC-TOGETHER-->", re.S)
                 if stages and together_re.search(page_text):
