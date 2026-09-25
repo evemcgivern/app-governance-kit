@@ -38,6 +38,66 @@ class ScanTests(unittest.TestCase):
     def test_long_blockquote_flagged(self):
         self.assertEqual(len(long_quotes("> " + " ".join(["w"] * 15) + "\n", "f")), 1)
 
+    def test_empty_double_quoted_string_does_not_break_pairing(self):
+        # An empty double-quoted string ("") has zero characters between
+        # its quote marks. The old regex's [^"]+ required at least one
+        # character there, so it could never pair "" as its own
+        # (empty, zero-word) match -- instead one of its two quote
+        # characters was left "unpaired" and became the opening delimiter
+        # of a new match that ran all the way to whatever double-quote
+        # character appeared next, potentially spanning a huge amount of
+        # unrelated code as a false "long quote". This is exactly the
+        # real-world case: (window.location.hash || "").replace(/^#/, "")
+        # followed by ordinary code and eventually another string literal.
+        text = (
+            'var initialId = (window.location.hash || "").replace(/^#/, "");\n'
+            "var initialRow = rows.filter(function (r) { return r.id === initialId; })[0];\n"
+            "if (initialRow) {\n"
+            "  selectRow(initialRow, false);\n"
+            "}\n"
+            'var user = "evemcgivern", domain = "gmail.com";\n'
+        )
+        self.assertEqual(long_quotes(text, "f"), [])
+
+    def test_long_quote_still_flagged_alongside_empty_quotes(self):
+        # A real long quote in the same paragraph as some empty ""
+        # strings must still be caught.
+        text = (
+            'var a = "";\n'
+            '"' + " ".join(["word"] * 16) + '"\n'
+        )
+        hits = long_quotes(text, "f")
+        self.assertEqual(len(hits), 1)
+
+    def test_injected_json_data_blob_not_flagged(self):
+        # site/crosswalk.html etc. inject a <script type="application/json">
+        # blob of real field data (theme summaries, key-work text) that is
+        # our own original writing, not a copied quotation -- it just
+        # happens to use JSON's double-quote string syntax and often runs
+        # well past 15 words per field. It must not be treated as a
+        # copyright-risk "quoted run".
+        text = (
+            '<script type="application/json" id="xw-data">'
+            '[{"id": "XW-001", "summary": "Keep a current, complete record '
+            'of every application and software asset in use across the '
+            'whole estate, not just the ones anyone remembers."}]'
+            "</script>\n"
+        )
+        self.assertEqual(long_quotes(text, "f"), [])
+
+    def test_long_quote_still_flagged_outside_json_data_blob(self):
+        # A real long quote elsewhere in the file must still be caught
+        # even when the file also has a JSON data blob.
+        text = (
+            '<script type="application/json" id="xw-data">'
+            '[{"id": "XW-001", "summary": "short"}]'
+            "</script>\n"
+            "\n"
+            '<p>"' + " ".join(["word"] * 16) + '"</p>\n'
+        )
+        hits = long_quotes(text, "f")
+        self.assertEqual(len(hits), 1)
+
     def test_docx_text_includes_properties(self):
         p = self.tmp / "a.docx"
         make_docx(p, "Hello")
