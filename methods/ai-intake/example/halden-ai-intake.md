@@ -1,3 +1,11 @@
+## Reviewer's notes (2026-09-24)
+
+- **AI-004, "Unverified" delay note (~line 165):** the model treated the push-back of the Annex III high-risk deadline as a pending "digital omnibus" proposal. It is not pending: Regulation (EU) 2026/1744 (the Digital Omnibus on AI), adopted 8 July 2026 and in force from 27 July 2026, amends Regulation (EU) 2024/1689 and confirmed on EUR-Lex (https://eur-lex.europa.eu/eli/reg/2026/1744/oj/eng) that the Annex III high-risk obligations now apply from 2 December 2027, not 2 August 2026 as originally set. Treat the date below as superseded by this confirmed, adopted change.
+- **AI-004, Art. 50(1) transparency duty (~lines 213, 237):** the model attributes this duty to whoever operates the chatbot. Article 50(1) of the AI Act binds the *provider* of the AI system, not the *deployer*. Halden, running a vendor chatbot in its own website chat, is the deployer here, not the provider — the disclosure duty still needs to be met, but the model named the wrong legally-bound party.
+- **AI-004, log retention citation (~line 173):** the model cites "Art. 26" for the six-month log-retention point. The specific paragraph is Art. 26(6), not Article 26 as a whole.
+
+---
+
 I've run intake for all six systems in `ai-systems.csv`. The legal content behind this skill was last reviewed in 2026-09, so treat the EU AI Act points below as a starting point. **Legal review is required for AI-004**, which is tiered high-risk.
 
 **Summary**
