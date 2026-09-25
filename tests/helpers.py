@@ -32,6 +32,9 @@ def make_repo(tmp: Path) -> Path:
     (tmp / "methods" / "crosswalk" / "themes.md").write_text(
         "## XW-001 Inventory\n\n- **What it means:** m\n- **Key work:** k\n"
         "- **Evidence it produces:** e\n- **Usually owned by:** o\n", encoding="utf-8")
+    (tmp / "methods" / "crosswalk" / "lifecycle-impact.csv").write_text(
+        'xw_id,primary_stages,secondary_stages\n'
+        'XW-001,"deploy;operate","plan;acquire;optimize;retire"\n', encoding="utf-8")
     (tmp / "agents").mkdir()
     (tmp / "agents" / "governance-reviewer.md").write_text(
         "---\nname: governance-reviewer\ndescription: test\n---\nReview.\n", encoding="utf-8")
