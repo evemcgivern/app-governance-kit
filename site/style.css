@@ -620,45 +620,93 @@ code {
   border-bottom: 1px solid var(--border);
 }
 
-.lc-stage-what {
-  margin: 0 0 0.75rem;
-}
-
 .lc-stage-subhead {
-  margin: 0 0 0.4rem;
+  margin: 0 0 0.5rem;
   font-weight: 600;
   font-size: 0.9rem;
   color: var(--muted);
 }
 
-.lc-rule-list {
-  margin: 0 0 0.75rem;
-  padding-left: 1.1rem;
+.lc-facts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+  gap: 0.75rem;
+  margin: 0 0 1.25rem;
 }
 
-.lc-rule {
-  margin: 0.25rem 0;
+.lc-fact {
+  background: var(--chip-bg);
+  border-radius: 0.4rem;
+  padding: 0.65rem 0.85rem;
 }
 
-.lc-stage-gate,
-.lc-stage-handoff,
-.lc-stage-who {
-  margin: 0.4rem 0;
+.lc-fact dt {
+  margin: 0 0 0.3rem;
+  font-weight: 600;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: var(--muted);
+}
+
+.lc-fact dd {
+  margin: 0;
+}
+
+.lc-fact-note {
+  display: block;
+  margin-top: 0.35rem;
+  color: var(--muted);
+  font-size: 0.9rem;
 }
 
 .lc-handoff-btn {
   font: inherit;
   font-weight: 600;
   color: var(--accent);
-  background: var(--chip-bg);
+  background: var(--surface);
   border: 1px solid var(--accent);
   border-radius: 999px;
   padding: 0.15rem 0.65rem;
+  margin: 0 0.4rem 0.4rem 0;
   cursor: pointer;
 }
 
-.lc-handoff-btn:hover {
-  border-color: var(--accent);
+.lc-handoff-btn:hover,
+.lc-handoff-btn:focus-visible {
+  filter: brightness(1.08);
+}
+
+.lc-rule-chips {
+  list-style: none;
+  margin: 0 0 1.25rem;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.lc-rule-chip {
+  background: var(--chip-bg);
+  border-radius: 0.4rem;
+  padding: 0.55rem 0.75rem;
+}
+
+.lc-rule-xw {
+  display: inline-block;
+  padding: 0.05rem 0.55rem;
+  border: 1px solid var(--accent);
+  border-radius: 999px;
+  color: var(--accent);
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.lc-rule-xw:hover,
+.lc-rule-xw:focus-visible {
+  filter: brightness(1.08);
 }
 
 .lc-question-list {

@@ -206,16 +206,58 @@
     return -1;
   }
 
+  function addFact(factsList, label, buildDd) {
+    var wrap = document.createElement("div");
+    wrap.className = "lc-fact";
+    var dt = document.createElement("dt");
+    dt.textContent = label;
+    wrap.appendChild(dt);
+    var dd = document.createElement("dd");
+    buildDd(dd);
+    wrap.appendChild(dd);
+    factsList.appendChild(wrap);
+  }
+
   function renderStageInfo(slug) {
     if (!panelInfo) { return; }
     panelInfo.innerHTML = "";
     var info = stagesData ? stagesData[slug] : null;
     if (!info) { return; }
 
-    var whatP = document.createElement("p");
-    whatP.className = "lc-stage-what";
-    whatP.textContent = info["What happens"];
-    panelInfo.appendChild(whatP);
+    var factsList = document.createElement("dl");
+    factsList.className = "lc-facts";
+
+    addFact(factsList, "What happens", function (dd) {
+      dd.textContent = info["What happens"];
+    });
+
+    addFact(factsList, "Gate to move on", function (dd) {
+      dd.textContent = info["Gate to move on"];
+    });
+
+    addFact(factsList, "Hands off to", function (dd) {
+      (info["Hands off to"] || []).forEach(function (target) {
+        var btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "lc-handoff-btn";
+        btn.textContent = labelFor(target);
+        btn.addEventListener("click", function () { selectStage(target); });
+        dd.appendChild(btn);
+      });
+      if (info["Hand-off note"]) {
+        var note = document.createElement("span");
+        note.className = "lc-fact-note";
+        var text = info["Hand-off note"];
+        note.textContent = text.charAt(0).toUpperCase() + text.slice(1);
+        dd.appendChild(note);
+      }
+    });
+
+    addFact(factsList, "Who decides", function (dd) {
+      dd.textContent = info["Who decides"];
+    });
+
+    panelInfo.appendChild(factsList);
 
     var rulesHeading = document.createElement("p");
     rulesHeading.className = "lc-stage-subhead";
@@ -223,14 +265,15 @@
     panelInfo.appendChild(rulesHeading);
 
     var rulesList = document.createElement("ul");
-    rulesList.className = "lc-rule-list";
+    rulesList.className = "lc-rule-chips";
     (info.rules || []).forEach(function (rule) {
       var li = document.createElement("li");
-      li.className = "lc-rule";
-      li.appendChild(document.createTextNode(rule.text + " "));
-      rule.xw.forEach(function (xw, i) {
-        if (i > 0) { li.appendChild(document.createTextNode(", ")); }
+      li.className = "lc-rule-chip";
+      li.appendChild(document.createTextNode(rule.text));
+      rule.xw.forEach(function (xw) {
+        li.appendChild(document.createTextNode(" "));
         var a = document.createElement("a");
+        a.className = "lc-rule-xw";
         a.href = "crosswalk.html#" + xw;
         a.textContent = xw;
         li.appendChild(a);
@@ -238,35 +281,6 @@
       rulesList.appendChild(li);
     });
     panelInfo.appendChild(rulesList);
-
-    var gateP = document.createElement("p");
-    gateP.className = "lc-stage-gate";
-    gateP.appendChild(document.createTextNode("Gate to move on: "));
-    gateP.appendChild(document.createTextNode(info["Gate to move on"]));
-    panelInfo.appendChild(gateP);
-
-    var handsP = document.createElement("p");
-    handsP.className = "lc-stage-handoff";
-    handsP.appendChild(document.createTextNode("Hands off to: "));
-    (info["Hands off to"] || []).forEach(function (target, i) {
-      if (i > 0) { handsP.appendChild(document.createTextNode(", ")); }
-      var btn = document.createElement("button");
-      btn.type = "button";
-      btn.className = "lc-handoff-btn";
-      btn.textContent = labelFor(target);
-      btn.addEventListener("click", function () { selectStage(target); });
-      handsP.appendChild(btn);
-    });
-    if (info["Hand-off note"]) {
-      handsP.appendChild(document.createTextNode(". " + info["Hand-off note"]));
-    }
-    panelInfo.appendChild(handsP);
-
-    var whoP = document.createElement("p");
-    whoP.className = "lc-stage-who";
-    whoP.appendChild(document.createTextNode("Who decides: "));
-    whoP.appendChild(document.createTextNode(info["Who decides"]));
-    panelInfo.appendChild(whoP);
   }
 
   function renderPanel(slug) {
