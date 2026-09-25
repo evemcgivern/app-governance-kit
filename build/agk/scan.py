@@ -10,8 +10,19 @@ SCAN_DIRS = ("methods", "agents", "case-studies", "site", "dist", "demo-estate",
 QUOTE_DIRS = ("methods", "agents", "case-studies", "site")
 TEXT_SUFFIXES = {".md", ".csv", ".html", ".json", ".txt", ".svg", ".py", ".yml", ".yaml", ".toml", ".css"}
 IMAGE_SUFFIXES = {".png", ".jpg", ".jpeg", ".gif", ".webp", ".ico"}
-QUOTE_RE = re.compile(r"[\"“]([^\"”]+)[\"”]")
+QUOTE_RE = re.compile(r"[\"“]([^\"”]*)[\"”]")
 TAG_STRIP_RE = re.compile(r"<[^>]+>")
+JSON_DATA_BLOCK_RE = re.compile(r'<script type="application/json"[^>]*>.*?</script>', re.S)
+
+
+def _blank_json_data_blocks(text: str) -> str:
+    # Injected data blobs (site/*.html's <script type="application/json">
+    # payloads) hold real field values -- our own prose, not a copied
+    # quotation -- that just happen to use JSON's double-quote string
+    # syntax and often run past 15 words per field. Blank them out
+    # (preserving line numbers for anything after) so they're never
+    # mistaken for a copyright-risk quoted run.
+    return JSON_DATA_BLOCK_RE.sub(lambda m: "\n" * m.group(0).count("\n"), text)
 
 
 def load_words(path: Path) -> list[str]:
@@ -30,6 +41,7 @@ def private_hits(text: str, words: list[str], label: str) -> list[str]:
 
 def long_quotes(text: str, label: str) -> list[str]:
     hits = []
+    text = _blank_json_data_blocks(text)
     lines = text.splitlines()
 
     # Split into paragraphs (separated by blank lines)
