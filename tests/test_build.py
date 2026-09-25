@@ -164,3 +164,19 @@ class BuildTests(unittest.TestCase):
         row = next(r for r in data if r["id"] == "XW-001")
         self.assertEqual(row["stages"]["primary"], ["deploy", "operate"])
         self.assertEqual(row["stages"]["secondary"], ["plan", "acquire", "optimize", "retire"])
+
+    def test_valid_lifecycle_impact_flows_into_impact_map_data(self):
+        site = self.root / "site"
+        site.mkdir()
+        (site / "impact-map.html").write_text(
+            "<html><body><!--IM-DATA--><!--/IM-DATA--></body></html>", encoding="utf-8")
+        errors, _ = build(self.root)
+        self.assertEqual(errors, [])
+        html = (site / "impact-map.html").read_text(encoding="utf-8")
+        marker = "<!--IM-DATA-->"
+        payload = html[html.index(marker):]
+        data = json.loads(payload[payload.index("[") : payload.index("</script>")])
+        row = next(r for r in data if r["id"] == "XW-001")
+        self.assertEqual(set(row.keys()), {"id", "theme", "stages"})
+        self.assertEqual(row["stages"]["primary"], ["deploy", "operate"])
+        self.assertEqual(row["stages"]["secondary"], ["plan", "acquire", "optimize", "retire"])

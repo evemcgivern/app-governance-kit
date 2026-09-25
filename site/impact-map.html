@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Impact map — Eve McGivern</title>
+<meta name="description" content="Every crosswalk theme mapped against every lifecycle stage, by impact.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="index.html">Eve McGivern</a>
+    <nav class="site-nav" aria-label="Main">
+      <ul>
+        <li><a href="tools.html">Tools</a></li>
+        <li><a href="lifecycle.html">Lifecycle</a></li>
+        <li><a href="crosswalk.html">Crosswalk explorer</a></li>
+        <li><a href="impact-map.html" aria-current="page">Impact map</a></li>
+        <li><a href="case-studies.html">Case studies</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero">
+    <h1>Impact map</h1>
+    <p class="positioning">All 28 crosswalk themes against all 6 lifecycle stages at once: where each theme has its greatest impact, where it also applies, and where it doesn't apply at all.</p>
+  </section>
+
+  <noscript>
+    <p>This impact map needs JavaScript. You can browse the same data directly in
+      <a href="https://github.com/evemcgivern/app-governance-kit/blob/main/methods/crosswalk/lifecycle-impact.csv">lifecycle-impact.csv on GitHub</a>.</p>
+  </noscript>
+
+  <ul class="im-legend" aria-label="Legend">
+    <li><span class="im-legend-glyph im-legend-glyph--primary" aria-hidden="true">&#9679;</span> Primary — this is where the theme has its <strong>greatest impact</strong>.</li>
+    <li><span class="im-legend-glyph im-legend-glyph--secondary" aria-hidden="true">&#9680;</span> Secondary — the theme also touches this stage.</li>
+    <li><span class="im-legend-glyph im-legend-glyph--none" aria-hidden="true">&#9675;</span> None — this theme has no defined impact at this stage.</li>
+  </ul>
+
+  <div id="im-table-wrap" class="im-table-wrap" tabindex="0" role="region" aria-label="Impact map table, scroll to see more stages"></div>
+
+  <div id="im-cards" class="card-grid"></div>
+
+  <!--IM-DATA--><script type="application/json" id="im-data">[{"id": "XW-001", "theme": "Application and software inventory", "stages": {"primary": ["deploy", "operate"], "secondary": ["plan", "acquire", "optimize", "retire"]}}, {"id": "XW-002", "theme": "Asset ownership assigned", "stages": {"primary": ["acquire", "deploy", "operate"], "secondary": ["plan", "optimize", "retire"]}}, {"id": "XW-003", "theme": "Asset management policy and scope", "stages": {"primary": ["plan", "optimize"], "secondary": ["acquire", "deploy", "operate", "retire"]}}, {"id": "XW-004", "theme": "Roles and responsibilities", "stages": {"primary": ["plan", "optimize"], "secondary": ["acquire", "deploy", "operate", "retire"]}}, {"id": "XW-005", "theme": "Discovery and reconciliation of installs", "stages": {"primary": ["deploy", "operate"], "secondary": ["plan", "acquire", "optimize", "retire"]}}, {"id": "XW-006", "theme": "Entitlement records kept", "stages": {"primary": ["acquire", "operate"], "secondary": ["plan", "deploy", "optimize", "retire"]}}, {"id": "XW-007", "theme": "License compliance position", "stages": {"primary": ["operate", "optimize"], "secondary": ["plan", "acquire", "deploy", "retire"]}}, {"id": "XW-008", "theme": "License renewal and expiry tracking", "stages": {"primary": ["operate", "optimize"], "secondary": ["plan", "acquire", "deploy", "retire"]}}, {"id": "XW-009", "theme": "Lifecycle, request to retirement", "stages": {"primary": ["plan", "optimize", "retire"], "secondary": ["acquire", "deploy", "operate"]}}, {"id": "XW-010", "theme": "Retirement and decommissioning", "stages": {"primary": ["retire"], "secondary": ["plan", "acquire", "deploy", "operate", "optimize"]}}, {"id": "XW-011", "theme": "Portfolio value optimization (rationalization)", "stages": {"primary": ["plan", "optimize"], "secondary": ["acquire", "deploy", "operate", "retire"]}}, {"id": "XW-012", "theme": "Cost and budget tracking", "stages": {"primary": ["acquire", "operate"], "secondary": ["plan", "deploy", "optimize", "retire"]}}, {"id": "XW-013", "theme": "Vendor and contract management", "stages": {"primary": ["acquire", "retire"], "secondary": ["plan", "deploy", "operate", "optimize"]}}, {"id": "XW-014", "theme": "Access control policy", "stages": {"primary": ["plan", "optimize"], "secondary": ["acquire", "deploy", "operate", "retire"]}}, {"id": "XW-015", "theme": "Access provisioning", "stages": {"primary": ["deploy", "operate"], "secondary": ["plan", "acquire", "optimize", "retire"]}}, {"id": "XW-016", "theme": "Periodic access review", "stages": {"primary": ["operate"], "secondary": ["plan", "acquire", "deploy", "optimize", "retire"]}}, {"id": "XW-017", "theme": "Leaver access removal", "stages": {"primary": ["operate", "retire"], "secondary": ["plan", "acquire", "deploy", "optimize"]}}, {"id": "XW-018", "theme": "Privileged access", "stages": {"primary": ["deploy", "operate"], "secondary": ["plan", "acquire", "optimize", "retire"]}}, {"id": "XW-019", "theme": "Segregation of duties", "stages": {"primary": ["deploy", "operate"], "secondary": ["plan", "acquire", "optimize", "retire"]}}, {"id": "XW-020", "theme": "Evidence retention for audit", "stages": {"primary": ["optimize", "retire"], "secondary": ["plan", "acquire", "deploy", "operate"]}}, {"id": "XW-021", "theme": "AI system risk and impact assessment before deployment", "stages": {"primary": ["plan", "deploy"], "secondary": ["acquire", "operate", "optimize", "retire"]}}, {"id": "XW-022", "theme": "AI system inventory", "stages": {"primary": ["deploy", "operate"], "secondary": ["plan", "acquire", "optimize", "retire"]}}, {"id": "XW-023", "theme": "AI supplier and third-party oversight", "stages": {"primary": ["acquire", "operate"], "secondary": ["plan", "deploy", "optimize", "retire"]}}, {"id": "XW-024", "theme": "Risk register and treatment", "stages": {"primary": ["operate", "optimize"], "secondary": ["plan", "acquire", "deploy", "retire"]}}, {"id": "XW-025", "theme": "Performance review and improvement", "stages": {"primary": ["optimize"], "secondary": ["plan", "acquire", "deploy", "operate", "retire"]}}, {"id": "XW-026", "theme": "Data quality of asset records", "stages": {"primary": ["operate"], "secondary": ["plan", "acquire", "deploy", "optimize", "retire"]}}, {"id": "XW-027", "theme": "Governance body, sponsor, and decision rights", "stages": {"primary": ["plan", "optimize"], "secondary": ["acquire", "deploy", "operate", "retire"]}}, {"id": "XW-028", "theme": "Data classification and handling", "stages": {"primary": ["plan", "retire"], "secondary": ["acquire", "deploy", "operate", "optimize"]}}]</script><!--/IM-DATA-->
+</main>
+
+<footer class="site-footer">
+  <p>Eve McGivern · <a href="https://github.com/evemcgivern">github.com/evemcgivern</a></p>
+</footer>
+
+<script>
+(function () {
+  "use strict";
+
+  var dataEl = document.getElementById("im-data");
+  var rows = dataEl ? JSON.parse(dataEl.textContent) : [];
+
+  var STAGES = [
+    ["plan", "Plan and request"],
+    ["acquire", "Acquire"],
+    ["deploy", "Deploy"],
+    ["operate", "Operate"],
+    ["optimize", "Review and optimize"],
+    ["retire", "Retire"]
+  ];
+
+  var tableWrap = document.getElementById("im-table-wrap");
+  var cardsEl = document.getElementById("im-cards");
+
+  function stageLabel(slug) {
+    var match = STAGES.filter(function (p) { return p[0] === slug; })[0];
+    return match ? match[1] : slug;
+  }
+
+  function stateFor(stages, slug) {
+    if ((stages.primary || []).indexOf(slug) !== -1) {
+      return "primary";
+    }
+    if ((stages.secondary || []).indexOf(slug) !== -1) {
+      return "secondary";
+    }
+    return "none";
+  }
+
+  var GLYPHS = { primary: "●", secondary: "◐", none: "○" };
+  var STATE_TEXT = {
+    primary: "Primary impact",
+    secondary: "Secondary impact",
+    none: "Not applicable"
+  };
+
+  function buildCell(state) {
+    var td = document.createElement("td");
+    td.className = "im-cell im-cell--" + state;
+
+    var glyph = document.createElement("span");
+    glyph.className = "im-glyph";
+    glyph.setAttribute("aria-hidden", "true");
+    glyph.textContent = GLYPHS[state];
+    td.appendChild(glyph);
+
+    var sr = document.createElement("span");
+    sr.className = "visually-hidden";
+    sr.textContent = STATE_TEXT[state];
+    td.appendChild(sr);
+
+    return td;
+  }
+
+  function buildTable() {
+    if (!tableWrap) {
+      return;
+    }
+
+    var table = document.createElement("table");
+    table.className = "im-table";
+
+    var caption = document.createElement("caption");
+    caption.className = "visually-hidden";
+    caption.textContent = "Impact of each governance theme across the six lifecycle stages";
+    table.appendChild(caption);
+
+    var thead = document.createElement("thead");
+    var headRow = document.createElement("tr");
+
+    var cornerTh = document.createElement("th");
+    cornerTh.setAttribute("scope", "col");
+    cornerTh.textContent = "Theme";
+    headRow.appendChild(cornerTh);
+
+    STAGES.forEach(function (pair) {
+      var th = document.createElement("th");
+      th.setAttribute("scope", "col");
+      var a = document.createElement("a");
+      a.href = "lifecycle.html#" + pair[0];
+      a.textContent = pair[1];
+      th.appendChild(a);
+      headRow.appendChild(th);
+    });
+
+    thead.appendChild(headRow);
+    table.appendChild(thead);
+
+    var tbody = document.createElement("tbody");
+    rows.forEach(function (row) {
+      var tr = document.createElement("tr");
+
+      var rowTh = document.createElement("th");
+      rowTh.setAttribute("scope", "row");
+      var rowA = document.createElement("a");
+      rowA.href = "crosswalk.html#" + row.id;
+      rowA.textContent = row.theme;
+      rowTh.appendChild(rowA);
+      tr.appendChild(rowTh);
+
+      var stages = row.stages || {};
+      STAGES.forEach(function (pair) {
+        tr.appendChild(buildCell(stateFor(stages, pair[0])));
+      });
+
+      tbody.appendChild(tr);
+    });
+    table.appendChild(tbody);
+
+    tableWrap.appendChild(table);
+  }
+
+  function buildCards() {
+    if (!cardsEl) {
+      return;
+    }
+
+    rows.forEach(function (row) {
+      var card = document.createElement("div");
+      card.className = "card";
+      card.id = "im-card-" + row.id;
+
+      var h2 = document.createElement("h2");
+      var a = document.createElement("a");
+      a.href = "crosswalk.html#" + row.id;
+      a.textContent = row.theme;
+      h2.appendChild(a);
+      card.appendChild(h2);
+
+      var dl = document.createElement("dl");
+      dl.className = "xw-stages";
+      var stages = row.stages || {};
+
+      var groups = [
+        ["Greatest impact at", stages.primary || [], true],
+        ["Also touches", stages.secondary || [], false]
+      ];
+
+      groups.forEach(function (group) {
+        var label = group[0], slugs = group[1], isPrimary = group[2];
+        if (slugs.length === 0) {
+          return;
+        }
+
+        var dt = document.createElement("dt");
+        dt.textContent = label;
+        var dd = document.createElement("dd");
+        var ul = document.createElement("ul");
+
+        slugs.forEach(function (slug) {
+          var li = document.createElement("li");
+          var link = document.createElement("a");
+          link.href = "lifecycle.html#" + slug;
+          link.textContent = stageLabel(slug);
+          if (!isPrimary) {
+            link.className = "muted-link";
+          }
+          if (isPrimary) {
+            var strong = document.createElement("strong");
+            strong.appendChild(link);
+            li.appendChild(strong);
+          } else {
+            li.appendChild(link);
+          }
+          ul.appendChild(li);
+        });
+
+        dd.appendChild(ul);
+        dl.appendChild(dt);
+        dl.appendChild(dd);
+      });
+
+      card.appendChild(dl);
+      cardsEl.appendChild(card);
+    });
+  }
+
+  buildTable();
+  buildCards();
+})();
+</script>
+</body>
+</html>
