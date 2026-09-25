@@ -11,6 +11,29 @@ Six certifications come up most often around this kit's three areas — portfoli
 | ITIL 4 Foundation | PeopleCert | Anyone working in or around IT service delivery | Complex, service-heavy IT environments — banking, insurance, healthcare, telecommunications, government, and managed-service/IT-outsourcing providers | Broad recognition outside ITAM specifically; the practice most other frameworks assume as the operating layer underneath them | Not asset-management-specific — its ties to this kit's tools are real but indirect; renewal every 3 years |
 | IAM Certificate (Principles of Asset Management) | Institute of Asset Management (IAM) | People new to (or early in) formal asset management, beyond IT alone | Asset-intensive, infrastructure-heavy sectors — utilities (water, electricity, gas), transport and rail, oil and gas, mining, manufacturing, airports, government and public infrastructure | The only one of the six built on general (not just IT) asset management; the ISO 55000 series it's grounded in traces back to a standard the IAM itself helped originate | UK-centred exam logistics (Pearson-approved IAM venues); no IT- or software-specific content of its own |
 
+## Cross-certification task matrix
+
+The comparison above lines up the certifications' own attributes. This one lines up on-the-job tasks instead — which certifications actually teach the skill a task needs, independent of which kit tool applies (the per-certification sections below already name those). Three tasks are taught by more than one certification; the rest are each one certification's specialty.
+
+**Tasks taught by more than one certification:**
+
+| On-the-job task | Certifications |
+|---|---|
+| Stand up program governance and policy | CAMP, IAM Certificate |
+| Baseline or score ITAM process maturity | CAMP, CSAM, CHAMP, IAM Certificate |
+| Find and consolidate duplicate or underused assets | CSAM, IAM Certificate |
+
+**Specialty tasks, one certification each:**
+
+| On-the-job task | Certification |
+|---|---|
+| Assign real ownership across the inventory | CAMP |
+| Establish a license position before a vendor audit | CSAM |
+| Retire hardware and track refresh cost | CHAMP |
+| Manage vendor and contract relationships | ITIL 4 Foundation |
+| Tier, log, and control a new AI use case | AIGP |
+| Govern the technical change or release itself | ITIL 4 Foundation (out of this kit's scope — see the ITIL 4 Foundation section below) |
+
 ## Certified Asset Management Professional (CAMP)
 
 **Who it's for:** People new to IT asset management who need the foundational program and process picture before they specialize.
