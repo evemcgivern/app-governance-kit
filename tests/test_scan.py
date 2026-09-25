@@ -5,7 +5,13 @@ import zipfile
 from pathlib import Path
 from unittest import mock
 
-from agk.scan import docx_text, load_words, long_quotes, main, private_hits, scan
+from agk.scan import docx_text, load_words, long_quotes, main, private_hits, scan, zip_member_hits
+
+
+def make_zip(path: Path, members: dict) -> None:
+    with zipfile.ZipFile(path, "w") as z:
+        for name, text in members.items():
+            z.writestr(name, text)
 
 
 def make_docx(path: Path, body: str) -> None:
@@ -98,6 +104,25 @@ class ScanTests(unittest.TestCase):
         hits = long_quotes(text, "f")
         self.assertEqual(len(hits), 1)
 
+    def test_svg_path_data_not_flagged_as_long_quote(self):
+        # A generated SVG's d="M 200 50 A 150 150 0 0 1 ..." attribute is a
+        # long run of space-separated numeric tokens inside one quoted
+        # string -- geometry, not prose. It must not be treated as a
+        # copyright-risk "quoted run" just because it has 15+ space-separated
+        # tokens between double quotes.
+        text = ('<path class="lc-segment" d="M 200.0 50.0 A 150 150 0 0 1 '
+                '329.9 125.0 L 267.5 161.0 A 78 78 0 0 0 200.0 122.0 Z"></path>\n')
+        self.assertEqual(long_quotes(text, "f"), [])
+
+    def test_long_quote_still_flagged_outside_svg_path_data(self):
+        text = (
+            '<path d="M 1 1 A 1 1 0 0 1 2 2 Z"></path>\n'
+            "\n"
+            '<p>"' + " ".join(["word"] * 16) + '"</p>\n'
+        )
+        hits = long_quotes(text, "f")
+        self.assertEqual(len(hits), 1)
+
     def test_docx_text_includes_properties(self):
         p = self.tmp / "a.docx"
         make_docx(p, "Hello")
@@ -159,6 +184,25 @@ class ScanTests(unittest.TestCase):
         (self.tmp / "site" / "logo.png").write_bytes(b"\x89PNG\r\n\x1a\n")
         hits = scan(self.tmp, ["dummy"])
         self.assertFalse(any("logo.png" in h for h in hits))
+
+    def test_zip_member_hits_finds_term_in_text_member(self):
+        p = self.tmp / "bundle.zip"
+        make_zip(p, {"a.csv": "id,note\n1,AcmeCorp\n", "b.svg": "<svg></svg>"})
+        hits = zip_member_hits(p, ["AcmeCorp"], "bundle.zip")
+        self.assertEqual(hits, ["bundle.zip:a.csv:2: private term 'AcmeCorp'"])
+
+    def test_scan_finds_term_inside_zip_member(self):
+        (self.tmp / "site" / "downloads").mkdir(parents=True)
+        make_zip(self.tmp / "site" / "downloads" / "all-visuals.zip", {"data.csv": "AcmeCorp\n"})
+        hits = scan(self.tmp, ["AcmeCorp"])
+        self.assertTrue(any("all-visuals.zip:data.csv" in h for h in hits))
+
+    def test_scan_allows_clean_zip_with_no_cannot_scan_hit(self):
+        (self.tmp / "site" / "downloads").mkdir(parents=True)
+        make_zip(self.tmp / "site" / "downloads" / "all-visuals.zip",
+                  {"data.csv": "id,note\n1,fine\n", "page.html": "<html></html>"})
+        hits = scan(self.tmp, ["dummy"])
+        self.assertFalse(any("cannot scan" in h for h in hits))
 
     def test_identical_quoted_lines_each_reported_at_own_line(self):
         # Two identical lines in a paragraph, each with a 16-word quote
