@@ -29,6 +29,11 @@
     <p class="positioning">28 governance themes, each mapped to ISO/IEC 19770, COBIT 2019, ISO/IEC 27001, and ISO/IEC 42001, with the work it actually takes to run it. Pick a theme to see the mapping and the key work behind it.</p>
   </section>
 
+  <noscript>
+    <p>This explorer needs JavaScript. You can browse the same data directly in
+      <a href="https://github.com/eve-mcgivern/app-governance-kit/blob/main/methods/crosswalk/crosswalk.csv">crosswalk.csv on GitHub</a>.</p>
+  </noscript>
+
   <div class="xw-layout">
     <div>
       <label for="xw-filter">Filter themes</label>
@@ -36,6 +41,7 @@
              placeholder="Search by name or keyword, e.g. access, AI, inventory">
       <ul id="xw-list" aria-label="Crosswalk themes"></ul>
       <p id="xw-empty" hidden>No themes match your filter.</p>
+      <p id="xw-status" class="visually-hidden" role="status" aria-live="polite"></p>
     </div>
 
     <div id="xw-detail" class="xw-detail" aria-live="polite">
@@ -59,6 +65,7 @@
 
   var listEl = document.getElementById("xw-list");
   var emptyEl = document.getElementById("xw-empty");
+  var statusEl = document.getElementById("xw-status");
   var filterEl = document.getElementById("xw-filter");
   var detailEl = document.getElementById("xw-detail");
 
@@ -76,6 +83,22 @@
   function cell(value) {
     var v = (value || "").trim();
     return v === "" ? "—" : v;
+  }
+
+  function setClauseValue(dd, value) {
+    var v = (value || "").trim();
+    if (v === "") {
+      var dash = document.createElement("span");
+      dash.setAttribute("aria-hidden", "true");
+      dash.textContent = "—";
+      var sr = document.createElement("span");
+      sr.className = "visually-hidden";
+      sr.textContent = "Not mapped";
+      dd.appendChild(dash);
+      dd.appendChild(sr);
+    } else {
+      dd.textContent = v;
+    }
   }
 
   function renderList(filterText) {
@@ -110,6 +133,12 @@
       idSpan.className = "xw-id";
       idSpan.textContent = row.id;
       btn.appendChild(idSpan);
+
+      var sep = document.createElement("span");
+      sep.className = "visually-hidden";
+      sep.textContent = ": ";
+      btn.appendChild(sep);
+
       btn.appendChild(document.createTextNode(row.theme));
 
       li.appendChild(btn);
@@ -117,6 +146,9 @@
     });
 
     emptyEl.hidden = shown !== 0;
+    statusEl.textContent = shown === 0
+      ? "No themes match your filter."
+      : shown + (shown === 1 ? " theme shown." : " themes shown.");
   }
 
   function renderDetail(row) {
@@ -139,7 +171,7 @@
       var dt = document.createElement("dt");
       dt.textContent = pair[0];
       var dd = document.createElement("dd");
-      dd.textContent = cell(row[pair[1]]);
+      setClauseValue(dd, row[pair[1]]);
       wrap.appendChild(dt);
       wrap.appendChild(dd);
       clauseGrid.appendChild(wrap);
