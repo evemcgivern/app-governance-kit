@@ -7,6 +7,7 @@ from pathlib import Path
 
 from agk.crosswalk import CrosswalkError, load_crosswalk
 from agk.doclinks import broken_doc_links
+from agk.downloads import write_downloads
 from agk.lifecycle import LifecycleError, load_questions, load_stages, render_checklist
 from agk.lifecycle_impact import LifecycleImpactError, load_lifecycle_impact
 from agk.links import LinkError, link_items, load_links
@@ -109,6 +110,7 @@ def build(root: Path) -> tuple[list[str], list[str]]:
         impact_map.write_text(inject_data(impact_map.read_text(encoding="utf-8"), "IM", im_rows),
                               encoding="utf-8")
     if (root / "site").is_dir():
+        warnings += write_downloads(root)
         errors += [f"site: broken link {b}" for b in broken_links(root / "site")]
     return errors, warnings
 
