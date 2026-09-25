@@ -134,6 +134,20 @@
 
 <footer class="site-footer">
   <p>Eve McGivern · <a href="https://github.com/evemcgivern">github.com/evemcgivern</a></p>
+  <p>Questions? Comments? <span id="contact-email">email me</span>.</p>
+  <noscript><p>Email: evemcgivern at gmail dot com</p></noscript>
 </footer>
+<script>
+(function () {
+  "use strict";
+  var user = "evemcgivern", domain = "gmail.com";
+  var el = document.getElementById("contact-email");
+  if (!el) { return; }
+  var a = document.createElement("a");
+  a.href = "mailto:" + user + "@" + domain;
+  a.textContent = "Email me";
+  el.replaceWith(a);
+})();
+</script>
 </body>
 </html>
