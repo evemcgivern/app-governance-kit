@@ -187,6 +187,10 @@ main {
   margin: 0;
 }
 
+.prose {
+  max-width: 46rem;
+}
+
 h1, h2, h3 {
   line-height: 1.25;
 }
@@ -238,6 +242,13 @@ h1, h2, h3 {
   background: transparent;
   color: var(--accent);
   border: 1px solid var(--accent);
+}
+
+.cta-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin: 0.75rem 0 0;
 }
 
 .link-list {
@@ -826,4 +837,60 @@ code {
   #im-cards {
     display: none;
   }
+}
+
+/* Home page hero wheel preview */
+
+.hero-flex {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.5rem;
+  align-items: center;
+}
+
+@media (min-width: 46rem) {
+  .hero-flex {
+    grid-template-columns: minmax(0, 1fr) 11rem;
+  }
+}
+
+.hero-wheel-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  justify-self: center;
+}
+
+.hero-wheel {
+  width: 100%;
+  max-width: 11rem;
+  height: auto;
+}
+
+.hero-wheel-segment {
+  fill: var(--chip-bg);
+  stroke: var(--bg);
+  stroke-width: 2;
+}
+
+.hero-wheel-segment--accent {
+  fill: var(--accent);
+}
+
+.hero-wheel-num {
+  fill: var(--fg);
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.hero-wheel-num--accent {
+  fill: var(--accent-fg);
+}
+
+.hero-wheel-caption {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.82rem;
+  text-align: center;
 }
