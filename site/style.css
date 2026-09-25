@@ -272,6 +272,14 @@ table {
   margin: 1rem 0;
 }
 
+.table-scroll {
+  overflow-x: auto;
+}
+
+.table-scroll table {
+  min-width: 34rem;
+}
+
 th, td {
   text-align: left;
   padding: 0.5rem 0.6rem;
