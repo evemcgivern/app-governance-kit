@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lifecycle — Eve McGivern</title>
+<meta name="description" content="Six lifecycle stages, each with the governance questions to ask along the way.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="index.html">Eve McGivern</a>
+    <nav class="site-nav" aria-label="Main">
+      <ul>
+        <li><a href="tools.html">Tools</a></li>
+        <li><a href="lifecycle.html" aria-current="page">Lifecycle</a></li>
+        <li><a href="crosswalk.html">Crosswalk explorer</a></li>
+        <li><a href="case-studies.html">Case studies</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero">
+    <h1>Ask the right question at every stage</h1>
+    <p class="positioning">An application moves through six stages from request to retirement. Pick a stage on the wheel to see the questions to ask there, each tied to the crosswalk row it satisfies and the kit tool that handles it.</p>
+  </section>
+
+  <noscript>
+    <p>This wheel needs JavaScript. Here are all six stages' questions, and you can also browse them in
+      <a href="https://github.com/evemcgivern/app-governance-kit/blob/main/dist/lifecycle-questions.md">lifecycle-questions.md on GitHub</a>.</p>
+    <h2>Plan and request</h2>
+    <ul>
+      <li>What problem does this solve, and do we own an app that does it? (crosswalk row XW-011; tool: rationalization)</li>
+      <li>Who will own it, and who is the executive sponsor? (crosswalk row XW-002; tool: program-setup)</li>
+      <li>Does the request meet the council&#x27;s threshold and come through the intake path? (crosswalk row XW-027; tool: program-setup)</li>
+      <li>Does it use AI? If so, what risk tier is it? (crosswalk row XW-021; tool: ai-intake)</li>
+      <li>What data will it hold, and how sensitive is that data? (crosswalk row XW-028; tool: access-review)</li>
+    </ul>
+    <h2>Acquire</h2>
+    <ul>
+      <li>What license model applies, and how many entitlements do we need? (crosswalk row XW-006; tool: rationalization)</li>
+      <li>Does the contract give audit, renewal, and exit terms we can live with? (crosswalk row XW-013; tool: rationalization)</li>
+      <li>Have the supplier and any AI model provider been assessed? (crosswalk row XW-023; tool: ai-intake)</li>
+      <li>Is the purchase recorded against an owner and a cost center? (crosswalk row XW-012; tool: itam-maturity)</li>
+    </ul>
+    <h2>Deploy</h2>
+    <ul>
+      <li>Is the app in the inventory with owner, category, and data sensitivity? (crosswalk row XW-001; tool: itam-maturity)</li>
+      <li>Are access roles defined, and who approves new access? (crosswalk row XW-015; tool: access-review)</li>
+      <li>Are privileged accounts limited and named? (crosswalk row XW-018; tool: access-review)</li>
+      <li>For AI systems: is the inventory record complete and the risk in the register? (crosswalk row XW-022; tool: ai-intake)</li>
+    </ul>
+    <h2>Operate</h2>
+    <ul>
+      <li>Do installs and users stay within entitlements? (crosswalk row XW-007; tool: rationalization)</li>
+      <li>Is access reviewed on schedule, and are leavers removed? (crosswalk row XW-016; tool: access-review)</li>
+      <li>Are asset records accurate and reconciled? (crosswalk row XW-026; tool: itam-maturity)</li>
+      <li>Has the AI system&#x27;s use changed since intake? (crosswalk row XW-021; tool: ai-intake)</li>
+    </ul>
+    <h2>Review and optimize</h2>
+    <ul>
+      <li>Is it still worth its cost: tolerate, invest, migrate, or eliminate? (crosswalk row XW-011; tool: rationalization)</li>
+      <li>Is anything expiring or due for renewal in the next 90 days? (crosswalk row XW-008; tool: rationalization)</li>
+      <li>Where is our asset management process weakest this year? (crosswalk row XW-025; tool: itam-maturity)</li>
+      <li>Does the council&#x27;s decision log show bottlenecks or rubber-stamping? (crosswalk row XW-025; tool: program-setup)</li>
+    </ul>
+    <h2>Retire</h2>
+    <ul>
+      <li>What data does it hold, and will we archive, migrate, or delete it? (crosswalk row XW-028; tool: rationalization)</li>
+      <li>Are all accounts removed and licenses cancelled or reclaimed? (crosswalk row XW-017; tool: access-review)</li>
+      <li>Is the contract ended on time, without auto-renewal? (crosswalk row XW-013; tool: rationalization)</li>
+      <li>Is the inventory record closed, with evidence kept? (crosswalk row XW-020; tool: itam-maturity)</li>
+    </ul>
+  </noscript>
+
+  <div class="lc-layout">
+    <div class="lc-wheel-wrap">
+      <svg class="lc-wheel" viewBox="0 0 320 320" role="group" aria-label="Application lifecycle stages">
+        <circle cx="160" cy="160" r="150" class="lc-wheel-ring" fill="none"></circle>
+        <g id="lc-segments"></g>
+        <g id="lc-arrow" aria-hidden="true"></g>
+        <text id="lc-hub-label" x="160" y="160" class="lc-hub-label" text-anchor="middle" dominant-baseline="middle"></text>
+      </svg>
+      <ul id="lc-fallback-list" class="visually-hidden"></ul>
+    </div>
+
+    <div id="lc-panel" class="lc-panel" aria-live="polite">
+      <h3 id="lc-panel-heading" tabindex="-1"></h3>
+      <ul id="lc-panel-list" class="lc-question-list"></ul>
+    </div>
+  </div>
+
+  <p><a class="button button--ghost" href="https://github.com/evemcgivern/app-governance-kit/blob/main/dist/lifecycle-questions.md">Download the lifecycle questions</a></p>
+
+  <!--LC-DATA--><script type="application/json" id="lc-data">[{"stage": "plan", "question": "What problem does this solve, and do we own an app that does it?", "tool": "rationalization", "xw": "XW-011"}, {"stage": "plan", "question": "Who will own it, and who is the executive sponsor?", "tool": "program-setup", "xw": "XW-002"}, {"stage": "plan", "question": "Does the request meet the council's threshold and come through the intake path?", "tool": "program-setup", "xw": "XW-027"}, {"stage": "plan", "question": "Does it use AI? If so, what risk tier is it?", "tool": "ai-intake", "xw": "XW-021"}, {"stage": "plan", "question": "What data will it hold, and how sensitive is that data?", "tool": "access-review", "xw": "XW-028"}, {"stage": "acquire", "question": "What license model applies, and how many entitlements do we need?", "tool": "rationalization", "xw": "XW-006"}, {"stage": "acquire", "question": "Does the contract give audit, renewal, and exit terms we can live with?", "tool": "rationalization", "xw": "XW-013"}, {"stage": "acquire", "question": "Have the supplier and any AI model provider been assessed?", "tool": "ai-intake", "xw": "XW-023"}, {"stage": "acquire", "question": "Is the purchase recorded against an owner and a cost center?", "tool": "itam-maturity", "xw": "XW-012"}, {"stage": "deploy", "question": "Is the app in the inventory with owner, category, and data sensitivity?", "tool": "itam-maturity", "xw": "XW-001"}, {"stage": "deploy", "question": "Are access roles defined, and who approves new access?", "tool": "access-review", "xw": "XW-015"}, {"stage": "deploy", "question": "Are privileged accounts limited and named?", "tool": "access-review", "xw": "XW-018"}, {"stage": "deploy", "question": "For AI systems: is the inventory record complete and the risk in the register?", "tool": "ai-intake", "xw": "XW-022"}, {"stage": "operate", "question": "Do installs and users stay within entitlements?", "tool": "rationalization", "xw": "XW-007"}, {"stage": "operate", "question": "Is access reviewed on schedule, and are leavers removed?", "tool": "access-review", "xw": "XW-016"}, {"stage": "operate", "question": "Are asset records accurate and reconciled?", "tool": "itam-maturity", "xw": "XW-026"}, {"stage": "operate", "question": "Has the AI system's use changed since intake?", "tool": "ai-intake", "xw": "XW-021"}, {"stage": "optimize", "question": "Is it still worth its cost: tolerate, invest, migrate, or eliminate?", "tool": "rationalization", "xw": "XW-011"}, {"stage": "optimize", "question": "Is anything expiring or due for renewal in the next 90 days?", "tool": "rationalization", "xw": "XW-008"}, {"stage": "optimize", "question": "Where is our asset management process weakest this year?", "tool": "itam-maturity", "xw": "XW-025"}, {"stage": "optimize", "question": "Does the council's decision log show bottlenecks or rubber-stamping?", "tool": "program-setup", "xw": "XW-025"}, {"stage": "retire", "question": "What data does it hold, and will we archive, migrate, or delete it?", "tool": "rationalization", "xw": "XW-028"}, {"stage": "retire", "question": "Are all accounts removed and licenses cancelled or reclaimed?", "tool": "access-review", "xw": "XW-017"}, {"stage": "retire", "question": "Is the contract ended on time, without auto-renewal?", "tool": "rationalization", "xw": "XW-013"}, {"stage": "retire", "question": "Is the inventory record closed, with evidence kept?", "tool": "itam-maturity", "xw": "XW-020"}]</script><!--/LC-DATA-->
+</main>
+
+<footer class="site-footer">
+  <p>Eve McGivern · <a href="https://github.com/evemcgivern">github.com/evemcgivern</a></p>
+</footer>
+
+<script>
+(function () {
+  "use strict";
+
+  var STAGES = [
+    ["plan", "Plan and request"],
+    ["acquire", "Acquire"],
+    ["deploy", "Deploy"],
+    ["operate", "Operate"],
+    ["optimize", "Review and optimize"],
+    ["retire", "Retire"]
+  ];
+
+  var SVG_NS = "http://www.w3.org/2000/svg";
+  var CX = 160, CY = 160, R_OUTER = 150, R_INNER = 78;
+
+  var dataEl = document.getElementById("lc-data");
+  var rows = dataEl ? JSON.parse(dataEl.textContent) : [];
+
+  var byStage = {};
+  STAGES.forEach(function (pair) { byStage[pair[0]] = []; });
+  rows.forEach(function (r) {
+    if (byStage[r.stage]) { byStage[r.stage].push(r); }
+  });
+
+  var segmentsGroup = document.getElementById("lc-segments");
+  var arrowGroup = document.getElementById("lc-arrow");
+  var hubLabel = document.getElementById("lc-hub-label");
+  var panelHeading = document.getElementById("lc-panel-heading");
+  var panelList = document.getElementById("lc-panel-list");
+  var fallbackList = document.getElementById("lc-fallback-list");
+
+  if (!segmentsGroup) {
+    return;
+  }
+
+  var buttons = {};
+
+  function polar(r, deg) {
+    var rad = (deg * Math.PI) / 180;
+    return [CX + r * Math.cos(rad), CY + r * Math.sin(rad)];
+  }
+
+  function arcPath(startDeg, endDeg) {
+    var o1 = polar(R_OUTER, startDeg);
+    var o2 = polar(R_OUTER, endDeg);
+    var i1 = polar(R_INNER, startDeg);
+    var i2 = polar(R_INNER, endDeg);
+    return ["M", o1[0], o1[1],
+            "A", R_OUTER, R_OUTER, 0, 0, 1, o2[0], o2[1],
+            "L", i2[0], i2[1],
+            "A", R_INNER, R_INNER, 0, 0, 0, i1[0], i1[1],
+            "Z"].join(" ");
+  }
+
+  function labelFor(slug) {
+    var match = STAGES.filter(function (p) { return p[0] === slug; })[0];
+    return match ? match[1] : slug;
+  }
+
+  function prefersReducedMotion() {
+    return !!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+  }
+
+  function focusPanel() {
+    if (!panelHeading) { return; }
+    panelHeading.focus({ preventScroll: true });
+    if (typeof panelHeading.scrollIntoView === "function") {
+      panelHeading.scrollIntoView({ behavior: prefersReducedMotion() ? "auto" : "smooth", block: "nearest" });
+    }
+  }
+
+  function selectStage(slug, moveFocus) {
+    STAGES.forEach(function (pair) {
+      var btn = buttons[pair[0]];
+      if (!btn) { return; }
+      if (pair[0] === slug) {
+        btn.setAttribute("aria-current", "true");
+      } else {
+        btn.removeAttribute("aria-current");
+      }
+    });
+    renderPanel(slug);
+    if (moveFocus !== false) {
+      focusPanel();
+    }
+  }
+
+  function renderPanel(slug) {
+    var label = labelFor(slug);
+    panelHeading.textContent = label;
+    panelList.innerHTML = "";
+
+    (byStage[slug] || []).forEach(function (row) {
+      var li = document.createElement("li");
+      li.className = "lc-question";
+
+      var q = document.createElement("p");
+      q.className = "lc-question-text";
+      q.textContent = row.question;
+      li.appendChild(q);
+
+      var meta = document.createElement("p");
+      meta.className = "lc-question-meta";
+      meta.appendChild(document.createTextNode("Crosswalk row "));
+
+      var xwLink = document.createElement("a");
+      xwLink.href = "crosswalk.html";
+      xwLink.textContent = "(" + row.xw + ")";
+      meta.appendChild(xwLink);
+
+      meta.appendChild(document.createTextNode(" · Tool: "));
+
+      var toolLink = document.createElement("a");
+      toolLink.href = "tools.html#" + row.tool;
+      toolLink.textContent = row.tool;
+      meta.appendChild(toolLink);
+
+      li.appendChild(meta);
+      panelList.appendChild(li);
+    });
+
+    buildFallbackList(slug);
+  }
+
+  function buildFallbackList(slug) {
+    if (!fallbackList) { return; }
+    fallbackList.innerHTML = "";
+    (byStage[slug] || []).forEach(function (row) {
+      var itemLi = document.createElement("li");
+      itemLi.textContent = row.question + " (crosswalk row " + row.xw + "; tool: " + row.tool + ")";
+      fallbackList.appendChild(itemLi);
+    });
+  }
+
+  function addSegmentLabel(pos, label) {
+    var text = document.createElementNS(SVG_NS, "text");
+    text.setAttribute("x", pos[0]);
+    text.setAttribute("y", pos[1]);
+    text.setAttribute("class", "lc-segment-label");
+    text.setAttribute("text-anchor", "middle");
+    text.setAttribute("aria-hidden", "true");
+
+    var words = label.split(" ");
+    words.forEach(function (word, i) {
+      var tspan = document.createElementNS(SVG_NS, "tspan");
+      tspan.setAttribute("x", pos[0]);
+      tspan.setAttribute("dy", i === 0 ? -((words.length - 1) * 0.55) + "em" : "1.1em");
+      tspan.textContent = word;
+      text.appendChild(tspan);
+    });
+    segmentsGroup.appendChild(text);
+  }
+
+  function buildArrow() {
+    var tipDeg = -90;
+    var tailDeg = -90 - 12;
+    var arrowR = R_OUTER + 14;
+    var tail = polar(arrowR, tailDeg);
+    var tip = polar(arrowR, tipDeg);
+
+    var arc = document.createElementNS(SVG_NS, "path");
+    arc.setAttribute("d", "M " + tail[0] + " " + tail[1] +
+      " A " + arrowR + " " + arrowR + " 0 0 1 " + tip[0] + " " + tip[1]);
+    arc.setAttribute("class", "lc-arrow-arc");
+    arrowGroup.appendChild(arc);
+
+    var p1 = polar(arrowR + 7, tipDeg - 5);
+    var p2 = polar(arrowR - 7, tipDeg - 5);
+    var p3 = polar(arrowR, tipDeg + 7);
+    var head = document.createElementNS(SVG_NS, "polygon");
+    head.setAttribute("points", p1.join(",") + " " + p2.join(",") + " " + p3.join(","));
+    head.setAttribute("class", "lc-arrow-head");
+    arrowGroup.appendChild(head);
+  }
+
+  function buildWheel() {
+    var step = 360 / STAGES.length;
+    STAGES.forEach(function (pair, i) {
+      var slug = pair[0], label = pair[1];
+      var start = -90 + i * step;
+      var end = start + step;
+
+      var path = document.createElementNS(SVG_NS, "path");
+      path.setAttribute("d", arcPath(start, end));
+      path.setAttribute("class", "lc-segment");
+      path.setAttribute("role", "button");
+      path.setAttribute("tabindex", "0");
+      path.setAttribute("aria-label", label + " stage");
+      path.dataset.stage = slug;
+
+      path.addEventListener("click", function () { selectStage(slug); });
+      path.addEventListener("keydown", function (e) {
+        if (e.key === "Enter" || e.key === " " || e.key === "Spacebar") {
+          e.preventDefault();
+          selectStage(slug);
+        }
+      });
+
+      segmentsGroup.appendChild(path);
+      buttons[slug] = path;
+
+      addSegmentLabel(polar((R_OUTER + R_INNER) / 2, start + step / 2), label);
+    });
+
+    buildArrow();
+    hubLabel.textContent = "Lifecycle";
+  }
+
+  buildWheel();
+  selectStage(STAGES[0][0], false);
+})();
+</script>
+</body>
+</html>
