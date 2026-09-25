@@ -278,6 +278,14 @@ table {
 
 .table-scroll table {
   min-width: 34rem;
+  width: 100%;
+  table-layout: fixed;
+}
+
+.table-scroll th,
+.table-scroll td {
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 th, td {
@@ -1082,7 +1090,7 @@ code {
 
 @media (min-width: 46rem) {
   .fg-layout {
-    grid-template-columns: 13rem minmax(0, 1fr);
+    grid-template-columns: 11rem minmax(0, 1fr);
   }
 
   .fg-layout .fg-jumpnav {
