@@ -1,12 +1,12 @@
 id,theme,iso19770_1,cobit2019,iso27001,iso42001,summary,verified
-XW-001,Application and software inventory,8.3,BAI09.01,A.5.9,,"Keep a current, complete record of every application and software asset in use.",2026-09-24
+XW-001,Application and software inventory,"8.3; 19770-2 §8.5.1 (SoftwareIdentity)",BAI09.01,A.5.9,,"Keep a current, complete record of every application and software asset in use.",2026-09-24
 XW-002,Asset ownership assigned,7.6.2,BAI09.01,A.5.9,,Assign a named owner accountable for each application or software asset.,2026-09-24
 XW-003,Asset management policy and scope,"4.3, 5.2",APO01,A.5.1,"4.3, 5.2",Define and approve a policy that sets the scope and rules for managing software assets.,2026-09-24
 XW-004,Roles and responsibilities,5.3,APO01,A.5.2,5.3,Define who holds each governance role and keep those assignments current.,2026-09-24
-XW-005,Discovery and reconciliation of installs,8.3,BAI09.01,A.5.9,,Regularly discover installed software and reconcile it against the inventory record.,2026-09-24
-XW-006,Entitlement records kept,8.4,BAI09.05,A.5.32,,Keep records of the software licenses and entitlements the organization holds.,2026-09-24
-XW-007,License compliance position,8.4,BAI09.05,A.5.32,,Compare entitlements against deployed installs to know whether the organization is over- or under-licensed.,2026-09-24
-XW-008,License renewal and expiry tracking,8.4,BAI09.05,A.5.32,,Track license renewal and expiry dates so contracts do not lapse or overrun unnoticed.,2026-09-24
+XW-005,Discovery and reconciliation of installs,"8.3; 19770-2 §8.5.1 (SoftwareIdentity)",BAI09.01,A.5.9,,Regularly discover installed software and reconcile it against the inventory record.,2026-09-24
+XW-006,Entitlement records kept,"8.4; 19770-3 §8.6.3 (Ent)",BAI09.05,A.5.32,,Keep records of the software licenses and entitlements the organization holds.,2026-09-24
+XW-007,License compliance position,"8.4; 19770-3 §8.6.3 (Ent); 19770-4 §8.4.1/8.4.3 (Resource Utilization/Measurement)",BAI09.05,A.5.32,,Compare entitlements against deployed installs to know whether the organization is over- or under-licensed.,2026-09-24
+XW-008,License renewal and expiry tracking,"8.4; 19770-3 §8.6.3 (Ent)",BAI09.05,A.5.32,,Track license renewal and expiry dates so contracts do not lapse or overrun unnoticed.,2026-09-24
 XW-009,"Lifecycle, request to retirement",,BAI09.03,A.5.9,,"Manage each application through its full lifecycle, from initial request to eventual retirement.",2026-09-24
 XW-010,Retirement and decommissioning,,BAI09.03,A.8.10,,Formally decommission applications and remove their data and access when they are retired.,2026-09-24
 XW-011,Portfolio value optimization (rationalization),,BAI09.04,,,"Periodically assess the application portfolio to decide what to keep, consolidate, or eliminate.",2026-09-24
