@@ -29,7 +29,7 @@ Every new system at proposal; every material change of use; a full re-review eve
 5. Otherwise tier as limited-risk or minimal-risk [[XW-021]]
 6. List the required controls for the tier, mapped through the crosswalk and the NIST AI RMF functions [[XW-024]]
 7. Identify the supplier and model provider and assess them [[XW-023]]
-8. Add the system to the AI inventory using `template.md` [[XW-022]]
+8. Add the system to the AI inventory using [`template.md`](template.md) [[XW-022]]
 9. Enter any identified risk in the risk register with an owner [[XW-024]]
 10. Record the approval decision and the approver, with legal review for any high-risk or prohibited result [[XW-020]]
 11. Set a re-review date, and re-run intake on any change of use [[XW-021]]
@@ -46,8 +46,8 @@ Every new system at proposal; every material change of use; a full re-review eve
 
 ## Related
 
-- Governance framework crosswalk (`crosswalk`) — supplies the framework rows this intake's controls and tier map to.
-- ITAM maturity check (`itam-maturity`) — its inventory and lifecycle questions extend to AI systems entering the estate through this intake.
-- Application rationalization (`rationalization`) — takes over an AI system once it's on the inventory, to decide whether it's still worth keeping.
-- Access review pack (`access-review`) — reviews who can use or administer an AI system once this intake has approved it.
-- Stand up a governance program (`program-setup`) — stands up the sponsor and AI governance lead role this intake reports its decisions to.
+- [Governance framework crosswalk](../crosswalk/) (`crosswalk`) — supplies the framework rows this intake's controls and tier map to.
+- [ITAM maturity check](../itam-maturity/) (`itam-maturity`) — its inventory and lifecycle questions extend to AI systems entering the estate through this intake.
+- [Application rationalization](../rationalization/) (`rationalization`) — takes over an AI system once it's on the inventory, to decide whether it's still worth keeping.
+- [Access review pack](../access-review/) (`access-review`) — reviews who can use or administer an AI system once this intake has approved it.
+- [Stand up a governance program](../program-setup/) (`program-setup`) — stands up the sponsor and AI governance lead role this intake reports its decisions to.
