@@ -1021,6 +1021,15 @@ code {
   align-items: center;
   gap: 0.5rem;
   justify-self: center;
+  text-decoration: none;
+  color: inherit;
+  border-radius: 0.5rem;
+  transition: filter 0.15s ease;
+}
+
+.hero-wheel-wrap:hover,
+.hero-wheel-wrap:focus-visible {
+  filter: brightness(1.08);
 }
 
 .hero-wheel {
