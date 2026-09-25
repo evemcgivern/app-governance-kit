@@ -205,3 +205,8 @@ class ScanTests(unittest.TestCase):
         (self.tmp / "field-guide").mkdir()
         (self.tmp / "field-guide" / "g.md").write_text("Worked at AcmeCorp\n")
         self.assertTrue(any("field-guide" in h for h in scan(self.tmp, ["AcmeCorp"])))
+
+    def test_practicum_is_scanned(self):
+        (self.tmp / "practicum").mkdir()
+        (self.tmp / "practicum" / "01-x.md").write_text("Worked at AcmeCorp\n")
+        self.assertTrue(any("practicum" in h for h in scan(self.tmp, ["AcmeCorp"])))
