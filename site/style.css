@@ -465,6 +465,13 @@ code {
   fill: var(--accent);
 }
 
+.lc-segment:focus-visible {
+  outline: none;
+  stroke: var(--focus);
+  stroke-width: 4;
+  filter: drop-shadow(0 0 3px var(--focus));
+}
+
 .lc-segment-label {
   fill: var(--fg);
   font-size: 0.72rem;

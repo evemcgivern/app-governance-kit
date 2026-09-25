@@ -62,9 +62,10 @@ def build(root: Path) -> tuple[list[str], list[str]]:
             errors.append(f"lifecycle: {e}")
         else:
             (dist / "lifecycle-questions.md").write_text(render_checklist(questions), encoding="utf-8")
-            home = root / "site" / "index.html"
-            if home.exists():
-                home.write_text(inject_data(home.read_text(encoding="utf-8"), "LC", questions), encoding="utf-8")
+            lifecycle_page = root / "site" / "lifecycle.html"
+            if lifecycle_page.exists():
+                lifecycle_page.write_text(inject_data(lifecycle_page.read_text(encoding="utf-8"), "LC", questions),
+                                          encoding="utf-8")
     explorer = root / "site" / "crosswalk.html"
     if explorer.exists():
         rows = [dict(r, key_work=themes[r["id"]]) for r in known.values()]
