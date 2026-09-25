@@ -1082,7 +1082,7 @@ code {
 
 @media (min-width: 46rem) {
   .fg-layout {
-    grid-template-columns: 20rem minmax(0, 1fr);
+    grid-template-columns: 13rem minmax(0, 1fr);
   }
 
   .fg-layout .fg-jumpnav {
