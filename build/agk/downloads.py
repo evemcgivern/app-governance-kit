@@ -293,8 +293,13 @@ def write_downloads(root: Path) -> list[str]:
     written += ["lifecycle-wheel.svg", "lifecycle-wheel-print.html"]
 
     if written:
+        # A fixed date_time (not each file's real mtime, which changes on every
+        # build) keeps the zip's bytes reproducible, so `git diff` sees a real
+        # content change and nothing else -- not every CI run touching this file.
         with zipfile.ZipFile(out / "all-visuals.zip", "w", zipfile.ZIP_DEFLATED) as z:
             for name in written:
-                z.write(out / name, arcname=name)
+                info = zipfile.ZipInfo(filename=name, date_time=(2020, 1, 1, 0, 0, 0))
+                info.compress_type = zipfile.ZIP_DEFLATED
+                z.writestr(info, (out / name).read_bytes())
 
     return warnings
