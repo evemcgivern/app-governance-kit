@@ -25,9 +25,9 @@ If given a draft charter, review it against the steps below and report gaps. Oth
 
 ## Output
 
-Draft mode: the charter from `template.md`, the decision-rights table, and the 90-day plan. Review mode: a gap table covering every step (step, what's missing, why it matters, fix).
+Draft mode: the charter from `template.md`, the decision-rights table, and the 90-day plan. Review mode: a gap table (step, what's missing, why it matters, fix). Either way, end with the findings block: one `charter_gap` per gap found, using the slugs decision-rights, sponsor, membership-size, intake-path, cadence, metrics, escalation. Those seven are the only slugs a `charter_gap` finding may use; a gap that doesn't fit one of them still belongs in the gap table, just not in the findings block.
 
-In the findings block, reserve `charter_gap` for gaps that only the organization can close — a missing sponsor, undefined decision rights, or a voting body outside the 5–9 range. A charter can't function without these, and no amount of drafting fixes them for it. For intake path, cadence, escalation, and success measures, draft the missing piece directly in the gap table's fix column instead of raising a finding — these are mechanical to write once the three fundamentals are settled, so treat them as part of the deliverable, not as a decision blocking someone else. Use the slugs decision-rights, sponsor, and membership-size for what you do report. Use `[]` when none of the three fundamentals is missing.
+Present any drafted charter wording as plain text or in a table, not in quotation marks.
 
 ## Output rules
 
