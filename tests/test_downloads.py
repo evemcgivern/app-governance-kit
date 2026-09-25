@@ -186,6 +186,15 @@ class WriteDownloadsTests(unittest.TestCase):
         self.assertEqual((out / "lifecycle-impact.csv").read_text(),
                           (self.root / "methods/crosswalk/lifecycle-impact.csv").read_text())
 
+    def test_zip_bytes_are_reproducible_across_rebuilds(self):
+        write_downloads(self.root)
+        out = self.root / "site" / "downloads"
+        first = (out / "all-visuals.zip").read_bytes()
+        (out / "all-visuals.zip").unlink()
+        write_downloads(self.root)
+        second = (out / "all-visuals.zip").read_bytes()
+        self.assertEqual(first, second)
+
     def test_no_site_dir_is_a_noop(self):
         root = make_repo(Path(tempfile.mkdtemp()))
         self.assertEqual(write_downloads(root), [])
