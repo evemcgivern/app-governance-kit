@@ -37,7 +37,7 @@ The portfolio is a six-page site on GitHub Pages under Eve's own name. Its flags
 | Copilot at work | Agent Builder agents and chat prompts both available |
 | Approach | Write each method once, publish three ways |
 | Data governance | A lens across the existing tools, not a separate tool in phase 1 |
-| Repo home | `github.com/eve-mcgivern/app-governance-kit`, public under Eve's name |
+| Repo home | `github.com/evemcgivern/app-governance-kit`, public under Eve's name |
 
 ## 3. Repository layout
 
@@ -118,7 +118,7 @@ Each tool must find all of its planted problems.
 
 ## 8. Portfolio site
 
-GitHub Pages at `eve-mcgivern.github.io/app-governance-kit`. Self-contained HTML, no build step.
+GitHub Pages at `evemcgivern.github.io/app-governance-kit`. Self-contained HTML, no build step.
 
 1. **Home** — who Eve is, the three areas, what's different about her approach, and the lifecycle wheel (section 8a).
 2. **Crosswalk explorer** — click a control, see matching clauses across the four frameworks. Flagship page.

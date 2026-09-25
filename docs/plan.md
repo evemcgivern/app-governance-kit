@@ -25,7 +25,7 @@ Timing: Tasks 1–6 take about two evenings. Each tool takes one or two evenings
 ## Global Constraints
 
 - Python standard library only in `build/` and `demo-estate/`. No pip installs. (Memory: no third-party runtime deps in skills.)
-- Repo: `/Applications/Development/Projects/app-governance-kit`; remote `github.com/eve-mcgivern/app-governance-kit`, created **private** first; public only on Eve's explicit go-ahead (Task 16).
+- Repo: `/Applications/Development/Projects/app-governance-kit`; remote `github.com/evemcgivern/app-governance-kit`, created **private** first; public only on Eve's explicit go-ahead (Task 16).
 - Never quote ISO or COBIT text. Cite clause numbers; paraphrase meaning. Quoted runs of 15+ words fail the scan.
 - No employer data. The private word list lives outside the repo at the path in `AGK_PRIVATE_WORDS`; the scan fails if it is unset or missing.
 - Copilot agent instructions: fail above 8,000 characters; warn above 6,000.
@@ -3786,10 +3786,10 @@ Claude-Session: https://claude.ai/code/session_01CxthZSoP1hm8J6w9VwKbX6"
 
 ### Task 16: Go public (only on Eve's explicit go-ahead)
 
-- [ ] **Step 1: Create the private remote** (ask Eve first): `gh repo create eve-mcgivern/app-governance-kit --private --source . --push`
+- [ ] **Step 1: Create the private remote** (ask Eve first): `gh repo create evemcgivern/app-governance-kit --private --source . --push`
 - [ ] **Step 2: Full-history secret scan** with the `full-starter` gitleaks config: `gitleaks detect --config ../full-starter/.gitleaks.toml --log-opts="--all"`. Expected: no leaks. Stop on any hit.
 - [ ] **Step 3: Final checks.** `make test && make build && make scan` all clean; compliance-reviewer agent on `methods/`, `case-studies/`, `field-guide/`, `practicum/`, `site/` for quoted standards text and employer details; README a stranger can follow (what it is, install for Claude/Codex/Copilot, run the evals, license); MIT `LICENSE`; README note that ISO, IEC, COBIT, ServiceNow, and Flexera names are used for reference only and imply no endorsement.
 - [ ] **Step 4: SEO and AI-search basics** (seo-gao-specialist agent): title and description, canonical, Open Graph and Twitter cards with absolute image URLs, JSON-LD (Person + SoftwareSourceCode), `sitemap.xml`, `llms.txt`. No version numbers or dates in metadata.
-- [ ] **Step 5: Eve says "make it public."** Then: `gh repo edit eve-mcgivern/app-governance-kit --visibility public --accept-visibility-change-consequences`, enable GitHub Pages from `/site` on `main`.
-- [ ] **Step 6: Search Console.** `eve-mcgivern.github.io` is not yet verified: prepare a URL-prefix property for `https://eve-mcgivern.github.io/app-governance-kit/` with an HTML-file verification (Eve clicks). Tell Eve the exact sitemap URL to submit, and remind her until she confirms.
+- [ ] **Step 5: Eve says "make it public."** Then: `gh repo edit evemcgivern/app-governance-kit --visibility public --accept-visibility-change-consequences`, enable GitHub Pages from `/site` on `main`.
+- [ ] **Step 6: Search Console.** `evemcgivern.github.io` is not yet verified: prepare a URL-prefix property for `https://evemcgivern.github.io/app-governance-kit/` with an HTML-file verification (Eve clicks). Tell Eve the exact sitemap URL to submit, and remind her until she confirms.
 - [ ] **Step 7: Portfolio card (optional, Eve's call).** If wanted, add a card on stylusnexus.github.io and update its JSON-LD, `llms.txt`, and `sitemap.xml`.
