@@ -295,6 +295,10 @@ th, td {
   vertical-align: top;
 }
 
+tbody tr:nth-child(even) {
+  background: var(--chip-bg);
+}
+
 th {
   color: var(--muted);
   font-weight: 600;
