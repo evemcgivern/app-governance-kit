@@ -36,7 +36,21 @@
     <h2 id="cert-heading">Certifications</h2>
     <p class="prose">Six certifications come up most often around this kit's three areas — portfolio, AI, and access. This states what each one actually covers and ties it to a task the kit's tools already do. It isn't a study guide, and it isn't a recommendation to sit any particular exam.</p>
 
-    <div class="table-scroll">
+    <nav class="fg-jumpnav" id="cert-nav" aria-label="Certifications quick navigation">
+      <p class="fg-jumpnav__label">Jump to:</p>
+      <ul>
+        <li><a href="#cert-compare">Comparison table</a></li>
+        <li><a href="#cert-task-matrix">Task matrix</a></li>
+        <li><a href="#cert-camp">CAMP</a></li>
+        <li><a href="#cert-csam">CSAM</a></li>
+        <li><a href="#cert-champ">CHAMP</a></li>
+        <li><a href="#cert-aigp">AIGP</a></li>
+        <li><a href="#cert-itil4">ITIL 4 Foundation</a></li>
+        <li><a href="#cert-iam">IAM Certificate</a></li>
+      </ul>
+    </nav>
+
+    <div class="table-scroll" id="cert-compare">
       <table>
         <caption class="visually-hidden">Certification comparison at a glance</caption>
         <thead><tr><th>Certification</th><th>Governing body</th><th>Best for</th><th>Typical domains</th><th>Pros</th><th>Cons</th></tr></thead>
@@ -51,7 +65,7 @@
       </table>
     </div>
 
-    <h3>Cross-certification task matrix</h3>
+    <h3 id="cert-task-matrix">Cross-certification task matrix</h3>
     <p class="prose">The comparison above lines up the certifications' own attributes. This one lines up on-the-job tasks instead — which certifications actually teach the skill a task needs, independent of which kit tool applies (the per-certification sections below already name those). Three tasks are taught by more than one certification; the rest are each one certification's specialty.</p>
 
     <table>
@@ -77,7 +91,7 @@
       </tbody>
     </table>
 
-    <h3>Certified Asset Management Professional (CAMP)</h3>
+    <h3 id="cert-camp" class="cert-anchor">Certified Asset Management Professional (CAMP)</h3>
     <p class="prose"><strong>Who it's for:</strong> people new to IT asset management who need the foundational program and process picture before they specialize.</p>
     <p class="prose"><strong>What it covers:</strong> CAMP is IAITAM's entry-level credential, organized around the association's 12 Key Process Areas — inventory and asset identification, acquisition, compliance, disposal, financial management, vendor management, policy, and program management, among others — plus how ITAM fits alongside IT service management. No prior ITAM experience is assumed. It's taught as an 8-hour live-online session plus 10-12 hours of self-study, or a 90-day self-paced course, ending in a 100-question, 3-hour exam with an 85% pass mark and two included attempts. The credential is renewed yearly; renewing within six months of expiry only requires the exam again, and after that the full course has to be retaken. (Source: <a href="https://iaitam.org/camp/">iaitam.org/camp</a>, fetched 2026-09-25.)</p>
     <table>
@@ -89,8 +103,9 @@
         <tr><td>Get real ownership assigned across the inventory</td><td>Every application has a named owner, not "unassigned"</td><td><a href="tools.html#rationalization">rationalization</a></td></tr>
       </tbody>
     </table>
+    <p class="meta"><a href="#cert-nav"><span aria-hidden="true">&uarr; </span>Back to certification list</a></p>
 
-    <h3>Certified Software Asset Manager (CSAM)</h3>
+    <h3 id="cert-csam" class="cert-anchor">Certified Software Asset Manager (CSAM)</h3>
     <p class="prose"><strong>Who it's for:</strong> people with little or no prior software asset management background who need to run licensing, compliance, and audit response day to day.</p>
     <p class="prose"><strong>What it covers:</strong> CSAM shares CAMP's exam format (100 questions, 3-hour limit, 85% pass mark, two attempts, live or self-paced delivery, annual renewal with a 6-month grace window) but turns the curriculum toward software specifically: discovery and harvesting tools, license types and negotiation, EULA interpretation, compliance enforcement, and audit procedures. (Source: <a href="https://iaitam.org/csam/">iaitam.org/csam</a>, fetched 2026-09-25.)</p>
     <table>
@@ -102,8 +117,9 @@
         <tr><td>Score software-process maturity ahead of a compliance review</td><td>Evidence is collected per process area and gaps are ranked, not just listed</td><td><a href="tools.html#itam-maturity">itam-maturity</a></td></tr>
       </tbody>
     </table>
+    <p class="meta"><a href="#cert-nav"><span aria-hidden="true">&uarr; </span>Back to certification list</a></p>
 
-    <h3>Certified Hardware Asset Management Professional (CHAMP)</h3>
+    <h3 id="cert-champ" class="cert-anchor">Certified Hardware Asset Management Professional (CHAMP)</h3>
     <p class="prose"><strong>Who it's for:</strong> people with little or no prior hardware asset management background who own the physical device lifecycle. (Released in 2004 — one of IAITAM's original certifications, not a recent addition.)</p>
     <p class="prose"><strong>What it covers:</strong> CHAMP is IAITAM's hardware-focused counterpart to CSAM — the same 12 Key Practice Areas framing and the same course/exam structure (8-hour live or 90-day self-paced, 100-question/85%-pass/3-hour exam, annual renewal with a 6-month grace period) — but the subject matter is the physical hardware lifecycle: acquisition, deployment, maintenance, refresh, and disposal. (Source: <a href="https://iaitam.org/champ/">iaitam.org/champ</a>, fetched 2026-09-25.)</p>
     <table>
@@ -115,8 +131,9 @@
         <tr><td>Name hardware alongside software when scoping a maturity baseline</td><td>The scope statement says explicitly which asset types are in view before scoring starts</td><td><a href="tools.html#itam-maturity">itam-maturity</a> (asset-type-agnostic, though this kit's own example dataset is software-only)</td></tr>
       </tbody>
     </table>
+    <p class="meta"><a href="#cert-nav"><span aria-hidden="true">&uarr; </span>Back to certification list</a></p>
 
-    <h3>Artificial Intelligence Governance Professional (AIGP)</h3>
+    <h3 id="cert-aigp" class="cert-anchor">Artificial Intelligence Governance Professional (AIGP)</h3>
     <p class="prose"><strong>Who it's for:</strong> anyone who needs to understand and carry out responsible AI governance, across any industry, not only technical AI roles.</p>
     <p class="prose"><strong>What it covers:</strong> AIGP is IAPP's AI-governance credential — a different body and a different subject than the three above. Its body of knowledge covers how AI systems and their use cases work, AI's impacts and the responsible-AI principles meant to manage them, current and emerging AI law, the major governance frameworks, the AI lifecycle and its risk management, and open debates in the field. The exam runs 100 questions over 2 hours 45 minutes, with a 15-minute break, delivered at a Pearson VUE test center or via OnVUE remote proctoring; some questions are multi-select with no partial credit. (Source: <a href="https://iapp.org/certify/aigp/">iapp.org/certify/aigp</a>, fetched 2026-09-25.) Recertification runs on continuing-education credits plus a maintenance fee — a flat per-term fee, or coverage through an IAPP membership — rather than a yearly retest. (Source: <a href="https://iapp.org/certify/faqs">iapp.org/certify/faqs</a>, fetched 2026-09-25.) Secondary sources describe the term as two years with 20 credits required (checked 2026-09-25); IAPP's own CPE-policy document could not be read during this research pass, so treat that specific figure as reported secondhand, not confirmed directly against IAPP's own document.</p>
     <table>
@@ -128,8 +145,9 @@
         <tr><td>Assign controls and a re-review date for the tier</td><td>Controls match the tier, and re-review is also triggered by any change of use, not only the calendar</td><td><a href="tools.html#ai-intake">ai-intake</a></td></tr>
       </tbody>
     </table>
+    <p class="meta"><a href="#cert-nav"><span aria-hidden="true">&uarr; </span>Back to certification list</a></p>
 
-    <h3>ITIL 4 Foundation</h3>
+    <h3 id="cert-itil4" class="cert-anchor">ITIL 4 Foundation</h3>
     <p class="prose"><strong>Who it's for:</strong> anyone working in or around IT service delivery who needs a shared vocabulary for how IT services get planned, built, run, and improved — PeopleCert markets it as suitable at any career stage, not asset-management-specific.</p>
     <p class="prose"><strong>What it covers:</strong> ITIL 4 Foundation is PeopleCert's entry-level IT service management certification: the Service Value System and Service Value Chain, the four dimensions of service management, the seven guiding principles, and a set of ITIL practices (including configuration management, service level management, and continual improvement) plus key metrics. The exam is 40 closed-book multiple-choice questions in 60 minutes, with a 65% pass mark, available in 12 languages online-proctored or at a test centre. The certification is renewed every 3 years, either by logging 60 continuing-education points through PeopleCert Plus or by passing a different exam in the same product suite. (Source: <a href="https://www.peoplecert.org/browse-certifications/it-governance-and-service-management/ITIL-1/itil-4-foundation-2565">peoplecert.org ITIL 4 Foundation</a>, fetched 2026-09-25.)</p>
     <table>
@@ -141,8 +159,9 @@
         <tr><td>Govern the technical change or release itself</td><td>—</td><td>Out of this kit's scope; this kit governs whether and why an application exists or changes hands, not the operational mechanics of deploying a change</td></tr>
       </tbody>
     </table>
+    <p class="meta"><a href="#cert-nav"><span aria-hidden="true">&uarr; </span>Back to certification list</a></p>
 
-    <h3>IAM Certificate (Principles of Asset Management)</h3>
+    <h3 id="cert-iam" class="cert-anchor">IAM Certificate (Principles of Asset Management)</h3>
     <p class="prose"><strong>Who it's for:</strong> people new to asset management, or with some initial experience in an asset-management role — no entry prerequisites beyond IAM registration.</p>
     <p class="prose"><strong>What it covers:</strong> The IAM Certificate (its exam is titled "Principles of Asset Management") is the entry-level qualification from the UK's Institute of Asset Management, covering asset management beyond IT alone: five compulsory modules — Principles of Asset Management, Asset Management Policy/Strategy/Planning, Managing Asset Life Cycle Decisions and Activities, Assessing and Managing Asset Management Risks, and Finance and Business Impact. The exam is 60 closed-book multiple-choice questions over 2 hours, delivered at approved IAM exam venues, needing at least 65% overall and a minimum of 50% in every module; roughly 150 study hours are recommended. (Source: <a href="https://theiam.org/professional-development/qualifications/iam-certificate/">theiam.org IAM Certificate</a>, fetched 2026-09-25.) The certificate's own page doesn't cite the ISO 55000 series directly, but the IAM (with the British Standards Institution) originally developed PAS 55 — the asset-management specification ISO used as the direct basis for the 55000/55001/55002 series when it launched in 2014 — so the certificate's syllabus follows the same asset-management-system logic this kit's ISO/IEC 19770-1 citations already rely on. (Source: <a href="https://en.wikipedia.org/wiki/ISO_55000">Wikipedia, ISO 55000</a>, checked 2026-09-25 — a tertiary source, cited here for the historical PAS 55 connection specifically, not for the certificate's own content.)</p>
     <table>
@@ -154,6 +173,7 @@
         <tr><td>Score how well the organization's asset management system actually functions, not just its inventory accuracy</td><td>Evidence-backed process scoring, the same discipline ISO 55001's clauses 9-10 (performance evaluation, improvement) ask for</td><td><a href="tools.html#itam-maturity">itam-maturity</a></td></tr>
       </tbody>
     </table>
+    <p class="meta"><a href="#cert-nav"><span aria-hidden="true">&uarr; </span>Back to certification list</a></p>
 
     <h3>Suggested order for someone new</h3>
     <p class="prose">CAMP first — it's the foundational program-and-process view everything else builds on. From there, pick CSAM or CHAMP by which asset type you actually own (software versus hardware) rather than doing both by default. The IAM Certificate is worth adding if your remit reaches beyond IT into physical or infrastructure assets generally; ITIL 4 Foundation is worth adding if your organization already runs formal IT service management and you need its vocabulary. AIGP sits apart from all of these; take it when AI governance specifically is the job, regardless of where you are on the ITAM path.</p>
