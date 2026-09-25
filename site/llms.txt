@@ -1,0 +1,36 @@
+# App Governance Kit
+
+> A free, MIT-licensed toolkit of seven application governance methods covering application portfolio management, IT asset management, AI governance, and access controls. Each method is packaged as a Claude skill, a Codex skill, and a Microsoft Copilot agent, and also ships as a checklist, SOP, template, and platform guide for use by hand. Every method traces to clauses in ISO/IEC 19770, COBIT 2019, ISO/IEC 27001, and ISO/IEC 42001 through a 28-row crosswalk. Built by Eve McGivern.
+
+Key facts:
+
+- Cost and license: free, MIT license. No account, sign-up, or paid tier.
+- Platforms: Claude (skills), Codex (skills), Microsoft Copilot (agents). The same source generates all three.
+- Demo data: every tool is exercised against Halden Logistics, a fictional company with planted, findable problems. It is not real client data.
+- Scope: the kit gives methods and reasoning support. It is not a governance platform, a certification, or legal advice.
+- Framework names (ISO, COBIT, NIST, IAITAM, IAPP, PeopleCert) are used for reference only; no affiliation or endorsement.
+
+## The seven tools
+
+- [Stand up a governance program](https://evemcgivern.github.io/app-governance-kit/tools.html): design or review a software, ITAM, or AI governance body: charter, decision rights, membership, intake path, cadence, and a 90-day launch plan.
+- [ITAM maturity check](https://evemcgivern.github.io/app-governance-kit/tools.html): score IT asset management maturity across nine process areas, name the three biggest gaps, and produce a 90-day plan tied to ISO/IEC 19770-1 and COBIT BAI09.
+- [Governance framework crosswalk](https://evemcgivern.github.io/app-governance-kit/tools.html): map a control or policy statement to ISO/IEC 19770-1, COBIT 2019, ISO/IEC 27001, and ISO/IEC 42001 clauses, and show where coverage is missing.
+- [Application rationalization](https://evemcgivern.github.io/app-governance-kit/tools.html): recommend tolerate, invest, migrate, or eliminate for each application; find duplicates and license problems; summarize savings and risk.
+- [Access review pack](https://evemcgivern.github.io/app-governance-kit/tools.html): review user and role exports against HR records, find orphaned, excessive, and privileged access, and produce an auditor-ready memo mapped to ISO/IEC 27001 and COBIT DSS05.
+- [AI system intake and risk tiering](https://evemcgivern.github.io/app-governance-kit/tools.html): assign a risk tier to a proposed AI use case under the EU AI Act, with NIST AI RMF and ISO/IEC 42001 controls, and produce an AI inventory record.
+- [Hardware lifecycle check](https://evemcgivern.github.io/app-governance-kit/tools.html): check a device fleet for hardware overdue for refresh and retired devices missing a confirmed data wipe, estimate replacement cost, and summarize disposal readiness.
+
+## Reference pages
+
+- [Home](https://evemcgivern.github.io/app-governance-kit/): overview of the three areas (portfolio, AI, access) and how they map to the four frameworks.
+- [Practicum](https://evemcgivern.github.io/app-governance-kit/practicum.html): seven hands-on exercises, one per tool, worked by hand against the Halden Logistics demo estate and self-checked in the browser.
+- [Lifecycle](https://evemcgivern.github.io/app-governance-kit/lifecycle.html): six application lifecycle stages, from request to retirement, with the governance questions to ask at each and the tool that handles them.
+- [Crosswalk explorer](https://evemcgivern.github.io/app-governance-kit/crosswalk.html): 28 governance themes mapped across ISO/IEC 19770, COBIT 2019, ISO/IEC 27001, and ISO/IEC 42001.
+- [Impact map](https://evemcgivern.github.io/app-governance-kit/impact-map.html): every crosswalk theme plotted against every lifecycle stage, by impact.
+- [Field guide](https://evemcgivern.github.io/app-governance-kit/field-guide.html): certifications (CAMP, CSAM, CHAMP, AIGP), standards, glossary, and data governance, in plain terms.
+
+## Optional
+
+- [Case studies](https://evemcgivern.github.io/app-governance-kit/case-studies.html): anonymized case studies, in preparation; nothing is published yet.
+- [About](https://evemcgivern.github.io/app-governance-kit/about.html): Eve McGivern, application governance manager.
+- [Source code](https://github.com/evemcgivern/app-governance-kit): the full repository, including methods, practicum, demo estate, and build system.
