@@ -346,6 +346,10 @@ code {
   font-size: 0.9em;
 }
 
+.install code {
+  overflow-wrap: anywhere;
+}
+
 /* Crosswalk explorer */
 
 .xw-layout {
