@@ -25,6 +25,32 @@ Each ships to `dist/claude/skills/`, `dist/codex/skills/`, and
 `dist/copilot/` in the platform-native shape those tools expect, built from
 one shared source under `methods/`.
 
+## Install
+
+Pick your platform. Skills come as ZIPs on the [Tools page](https://evemcgivern.github.io/app-governance-kit/tools.html#install) (one per platform, or one per tool), or copy them from `dist/` after a `git clone`.
+
+**Claude Code** (the `claude` command-line tool)
+
+1. Install it: `curl -fsSL https://claude.ai/install.sh | bash` on macOS, Linux, or WSL; `irm https://claude.ai/install.ps1 | iex` in Windows PowerShell; or `brew install --cask claude-code`. Run `claude` once to sign in (needs a Pro, Max, Team, Enterprise, or Console account). [Docs](https://code.claude.com/docs/en/setup).
+2. Add the skills: `cp -R dist/claude/skills/* ~/.claude/skills/` (for one project only, use that project's `.claude/skills/`).
+3. Ask for a tool by name, or type `/access-review`.
+
+**Claude app (claude.ai or Desktop)** — go to Settings, then Capabilities, then Skills, and choose Upload skill. Upload one tool's Claude ZIP at a time; the app accepts a single skill per ZIP, and code execution must be on.
+
+**Codex**
+
+1. Install it: `curl -fsSL https://chatgpt.com/codex/install.sh | sh`, then run `codex` and sign in with ChatGPT. [Docs](https://developers.openai.com/codex/cli).
+2. Add the skills: `cp -R dist/codex/skills/* ~/.agents/skills/` (for one repo only, use that repo's `.agents/skills/`).
+3. Type `$access-review`, or describe the task and let Codex pick the skill.
+
+**Microsoft 365 Copilot and Copilot Studio** — create an agent in [agent builder](https://learn.microsoft.com/en-us/microsoft-365-copilot/extensibility/agent-builder-build-agents) or Copilot Studio. Each tool is a folder under `dist/copilot/<tool>/`:
+
+1. Paste `agent-instructions.md` into the agent's instructions (the limit is 8,000 characters; ours are under 3,000).
+2. Upload the files in `knowledge/` as knowledge sources. If an upload rejects `.md` files, rename them to `.txt`.
+3. Run `test-script.md` against the demo estate to check it works.
+
+**Microsoft Copilot chat (no agent)** — paste `chat-prompt.md` into a chat, then attach your data files.
+
 ## Try it
 
 - **Read a method directly**: `methods/<tool>/method.md` for the full workflow, `checklist.md` for the a la carte version, `platform-guide.md` for where each field lives in ServiceNow/Flexera/etc.

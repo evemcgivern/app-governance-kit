@@ -195,6 +195,40 @@ class WriteDownloadsTests(unittest.TestCase):
         second = (out / "all-visuals.zip").read_bytes()
         self.assertEqual(first, second)
 
+    def _make_dist(self):
+        for rel in ("claude/skills/alpha", "codex/skills/alpha", "copilot/alpha"):
+            d = self.root / "dist" / rel
+            d.mkdir(parents=True)
+            (d / "SKILL.md").write_text("alpha", encoding="utf-8")
+        pycache = self.root / "dist" / "claude" / "skills" / "alpha" / "__pycache__"
+        pycache.mkdir()
+        (pycache / "x.pyc").write_bytes(b"x")
+
+    def test_skill_zips_bundle_and_per_tool_hold_tool_folders(self):
+        self._make_dist()
+        write_downloads(self.root)
+        zips = self.root / "site" / "downloads" / "skills"
+        for name in ("claude-skills", "codex-skills", "copilot-agents",
+                     "alpha-claude", "alpha-codex", "alpha-copilot"):
+            self.assertTrue((zips / f"{name}.zip").is_file(), name)
+        with zipfile.ZipFile(zips / "claude-skills.zip") as z:
+            self.assertEqual(z.namelist(), ["alpha/SKILL.md"])
+        with zipfile.ZipFile(zips / "alpha-copilot.zip") as z:
+            self.assertEqual(z.namelist(), ["alpha/SKILL.md"])
+
+    def test_skill_zip_bytes_are_reproducible_across_rebuilds(self):
+        self._make_dist()
+        write_downloads(self.root)
+        zip_path = self.root / "site" / "downloads" / "skills" / "claude-skills.zip"
+        first = zip_path.read_bytes()
+        zip_path.unlink()
+        write_downloads(self.root)
+        self.assertEqual(first, zip_path.read_bytes())
+
+    def test_no_dist_writes_no_skill_zips(self):
+        write_downloads(self.root)
+        self.assertFalse((self.root / "site" / "downloads" / "skills").exists())
+
     def test_no_site_dir_is_a_noop(self):
         root = make_repo(Path(tempfile.mkdtemp()))
         self.assertEqual(write_downloads(root), [])

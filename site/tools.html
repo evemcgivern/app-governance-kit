@@ -73,6 +73,44 @@
     <p class="positioning">Each tool ships as a Claude skill, a Codex skill, and a Copilot agent, plus a checklist, SOP, template, and platform guide you can run by hand. Every one is exercised against Halden Logistics, a fictional demo estate with planted problems, so you can see exactly what it finds.</p>
   </section>
 
+  <section class="install prose prose-wide" id="install">
+    <h2>Install</h2>
+    <p>Download all seven tools for your platform, or one tool from its card below. Each ZIP holds one folder per tool. Prefer git? The <a href="https://github.com/evemcgivern/app-governance-kit#install">README</a> has the clone-and-copy steps.</p>
+    <div class="visual-actions">
+      <a class="visual-actions__link" href="downloads/skills/claude-skills.zip">Claude skills (ZIP)</a>
+      <a class="visual-actions__link" href="downloads/skills/codex-skills.zip">Codex skills (ZIP)</a>
+      <a class="visual-actions__link" href="downloads/skills/copilot-agents.zip">Copilot agents (ZIP)</a>
+    </div>
+
+    <h3>Claude Code (the <code>claude</code> command)</h3>
+    <ol>
+      <li>Install it: <code>curl -fsSL https://claude.ai/install.sh | bash</code> on macOS, Linux, or WSL; <code>irm https://claude.ai/install.ps1 | iex</code> in Windows PowerShell; or <code>brew install --cask claude-code</code>. Run <code>claude</code> once to sign in (needs a Pro, Max, Team, Enterprise, or Console account). <a href="https://code.claude.com/docs/en/setup">Claude Code setup docs</a>.</li>
+      <li>Add the skills: <code>unzip claude-skills.zip -d ~/.claude/skills</code>. For one project only, use that project's <code>.claude/skills</code> folder.</li>
+      <li>Ask for a tool by name, or type <code>/access-review</code>.</li>
+    </ol>
+
+    <h3>Claude app (claude.ai or Desktop)</h3>
+    <p>Go to Settings, then Capabilities, then Skills, and choose Upload skill. Upload one tool's Claude ZIP at a time (from its card below). The app accepts a single skill per ZIP, and code execution must be on.</p>
+
+    <h3>Codex</h3>
+    <ol>
+      <li>Install it: <code>curl -fsSL https://chatgpt.com/codex/install.sh | sh</code>, then run <code>codex</code> and sign in with ChatGPT. <a href="https://developers.openai.com/codex/cli">Codex CLI docs</a>.</li>
+      <li>Add the skills: <code>unzip codex-skills.zip -d ~/.agents/skills</code>. For one repo only, use that repo's <code>.agents/skills</code> folder.</li>
+      <li>Type <code>$access-review</code>, or describe the task and let Codex pick the skill.</li>
+    </ol>
+
+    <h3>Microsoft 365 Copilot and Copilot Studio</h3>
+    <p>Create an agent in <a href="https://learn.microsoft.com/en-us/microsoft-365-copilot/extensibility/agent-builder-build-agents">agent builder</a> or Copilot Studio. Unzip <code>copilot-agents.zip</code>; each tool is a folder.</p>
+    <ol>
+      <li>Paste <code>agent-instructions.md</code> into the agent's instructions. The limit is 8,000 characters; these are under 3,000.</li>
+      <li>Upload the files in <code>knowledge/</code> as knowledge sources. If an upload rejects <code>.md</code> files, rename them to <code>.txt</code>.</li>
+      <li>Run <code>test-script.md</code> against the demo estate to check it works.</li>
+    </ol>
+
+    <h3>Microsoft Copilot chat (no agent)</h3>
+    <p>Paste a tool's <code>chat-prompt.md</code> into a chat, then attach your data files.</p>
+  </section>
+
   <div class="card-grid">
 
     <article class="card" id="crosswalk">
@@ -88,6 +126,7 @@
         <li><a href="https://github.com/evemcgivern/app-governance-kit/tree/main/dist/claude/skills/crosswalk">Claude<span class="visually-hidden"> skill for Governance framework crosswalk</span></a> ·
             <a href="https://github.com/evemcgivern/app-governance-kit/tree/main/dist/codex/skills/crosswalk">Codex<span class="visually-hidden"> skill for Governance framework crosswalk</span></a> ·
             <a href="https://github.com/evemcgivern/app-governance-kit/tree/main/dist/copilot/crosswalk">Copilot<span class="visually-hidden"> agent for Governance framework crosswalk</span></a></li>
+        <li>Download: <a href="downloads/skills/crosswalk-claude.zip">Claude<span class="visually-hidden"> skill ZIP for this tool</span></a> · <a href="downloads/skills/crosswalk-codex.zip">Codex<span class="visually-hidden"> skill ZIP for this tool</span></a> · <a href="downloads/skills/crosswalk-copilot.zip">Copilot<span class="visually-hidden"> agent ZIP for this tool</span></a></li>
       </ul>
     </article>
 
@@ -104,6 +143,7 @@
         <li><a href="https://github.com/evemcgivern/app-governance-kit/tree/main/dist/claude/skills/itam-maturity">Claude<span class="visually-hidden"> skill for ITAM maturity check</span></a> ·
             <a href="https://github.com/evemcgivern/app-governance-kit/tree/main/dist/codex/skills/itam-maturity">Codex<span class="visually-hidden"> skill for ITAM maturity check</span></a> ·
             <a href="https://github.com/evemcgivern/app-governance-kit/tree/main/dist/copilot/itam-maturity">Copilot<span class="visually-hidden"> agent for ITAM maturity check</span></a></li>
+        <li>Download: <a href="downloads/skills/itam-maturity-claude.zip">Claude<span class="visually-hidden"> skill ZIP for this tool</span></a> · <a href="downloads/skills/itam-maturity-codex.zip">Codex<span class="visually-hidden"> skill ZIP for this tool</span></a> · <a href="downloads/skills/itam-maturity-copilot.zip">Copilot<span class="visually-hidden"> agent ZIP for this tool</span></a></li>
       </ul>
     </article>
 
@@ -120,6 +160,7 @@
         <li><a href="https://github.com/evemcgivern/app-governance-kit/tree/main/dist/claude/skills/rationalization">Claude<span class="visually-hidden"> skill for Application rationalization</span></a> ·
             <a href="https://github.com/evemcgivern/app-governance-kit/tree/main/dist/codex/skills/rationalization">Codex<span class="visually-hidden"> skill for Application rationalization</span></a> ·
             <a href="https://github.com/evemcgivern/app-governance-kit/tree/main/dist/copilot/rationalization">Copilot<span class="visually-hidden"> agent for Application rationalization</span></a></li>
+        <li>Download: <a href="downloads/skills/rationalization-claude.zip">Claude<span class="visually-hidden"> skill ZIP for this tool</span></a> · <a href="downloads/skills/rationalization-codex.zip">Codex<span class="visually-hidden"> skill ZIP for this tool</span></a> · <a href="downloads/skills/rationalization-copilot.zip">Copilot<span class="visually-hidden"> agent ZIP for this tool</span></a></li>
       </ul>
     </article>
 
@@ -136,6 +177,7 @@
         <li><a href="https://github.com/evemcgivern/app-governance-kit/tree/main/dist/claude/skills/ai-intake">Claude<span class="visually-hidden"> skill for AI system intake and risk tiering</span></a> ·
             <a href="https://github.com/evemcgivern/app-governance-kit/tree/main/dist/codex/skills/ai-intake">Codex<span class="visually-hidden"> skill for AI system intake and risk tiering</span></a> ·
             <a href="https://github.com/evemcgivern/app-governance-kit/tree/main/dist/copilot/ai-intake">Copilot<span class="visually-hidden"> agent for AI system intake and risk tiering</span></a></li>
+        <li>Download: <a href="downloads/skills/ai-intake-claude.zip">Claude<span class="visually-hidden"> skill ZIP for this tool</span></a> · <a href="downloads/skills/ai-intake-codex.zip">Codex<span class="visually-hidden"> skill ZIP for this tool</span></a> · <a href="downloads/skills/ai-intake-copilot.zip">Copilot<span class="visually-hidden"> agent ZIP for this tool</span></a></li>
       </ul>
     </article>
 
@@ -152,6 +194,7 @@
         <li><a href="https://github.com/evemcgivern/app-governance-kit/tree/main/dist/claude/skills/access-review">Claude<span class="visually-hidden"> skill for Access review pack</span></a> ·
             <a href="https://github.com/evemcgivern/app-governance-kit/tree/main/dist/codex/skills/access-review">Codex<span class="visually-hidden"> skill for Access review pack</span></a> ·
             <a href="https://github.com/evemcgivern/app-governance-kit/tree/main/dist/copilot/access-review">Copilot<span class="visually-hidden"> agent for Access review pack</span></a></li>
+        <li>Download: <a href="downloads/skills/access-review-claude.zip">Claude<span class="visually-hidden"> skill ZIP for this tool</span></a> · <a href="downloads/skills/access-review-codex.zip">Codex<span class="visually-hidden"> skill ZIP for this tool</span></a> · <a href="downloads/skills/access-review-copilot.zip">Copilot<span class="visually-hidden"> agent ZIP for this tool</span></a></li>
       </ul>
     </article>
 
@@ -168,6 +211,7 @@
         <li><a href="https://github.com/evemcgivern/app-governance-kit/tree/main/dist/claude/skills/program-setup">Claude<span class="visually-hidden"> skill for Stand up a governance program</span></a> ·
             <a href="https://github.com/evemcgivern/app-governance-kit/tree/main/dist/codex/skills/program-setup">Codex<span class="visually-hidden"> skill for Stand up a governance program</span></a> ·
             <a href="https://github.com/evemcgivern/app-governance-kit/tree/main/dist/copilot/program-setup">Copilot<span class="visually-hidden"> agent for Stand up a governance program</span></a></li>
+        <li>Download: <a href="downloads/skills/program-setup-claude.zip">Claude<span class="visually-hidden"> skill ZIP for this tool</span></a> · <a href="downloads/skills/program-setup-codex.zip">Codex<span class="visually-hidden"> skill ZIP for this tool</span></a> · <a href="downloads/skills/program-setup-copilot.zip">Copilot<span class="visually-hidden"> agent ZIP for this tool</span></a></li>
       </ul>
     </article>
 
@@ -184,6 +228,7 @@
         <li><a href="https://github.com/evemcgivern/app-governance-kit/tree/main/dist/claude/skills/hardware-lifecycle">Claude<span class="visually-hidden"> skill for Hardware lifecycle check</span></a> ·
             <a href="https://github.com/evemcgivern/app-governance-kit/tree/main/dist/codex/skills/hardware-lifecycle">Codex<span class="visually-hidden"> skill for Hardware lifecycle check</span></a> ·
             <a href="https://github.com/evemcgivern/app-governance-kit/tree/main/dist/copilot/hardware-lifecycle">Copilot<span class="visually-hidden"> agent for Hardware lifecycle check</span></a></li>
+        <li>Download: <a href="downloads/skills/hardware-lifecycle-claude.zip">Claude<span class="visually-hidden"> skill ZIP for this tool</span></a> · <a href="downloads/skills/hardware-lifecycle-codex.zip">Codex<span class="visually-hidden"> skill ZIP for this tool</span></a> · <a href="downloads/skills/hardware-lifecycle-copilot.zip">Copilot<span class="visually-hidden"> agent ZIP for this tool</span></a></li>
       </ul>
     </article>
 

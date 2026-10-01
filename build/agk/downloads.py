@@ -234,6 +234,43 @@ def lifecycle_impact_print_html(csv_text: str) -> str:
 def lifecycle_wheel_print_html(svg: str) -> str:
     return print_page_html("Lifecycle wheel diagram", f'<div class="lc-wheel-print">{svg}</div>')
 
+SKILL_PLATFORMS = (
+    ("claude", "claude-skills", Path("claude") / "skills"),
+    ("codex", "codex-skills", Path("codex") / "skills"),
+    ("copilot", "copilot-agents", Path("copilot")),
+)
+SKIP_NAMES = {"__pycache__", ".DS_Store"}
+
+
+def _zip_files(source_dirs: list[Path], target: Path) -> None:
+    """Zip each source dir under its own name, in sorted order with fixed timestamps
+    and permissions, so rebuilds produce identical bytes (see the all-visuals note)."""
+    entries = sorted(
+        (d.name + "/" + f.relative_to(d).as_posix(), f)
+        for d in source_dirs for f in d.rglob("*")
+        if f.is_file() and not SKIP_NAMES.intersection(f.relative_to(d).parts))
+    with zipfile.ZipFile(target, "w", zipfile.ZIP_DEFLATED) as z:
+        for name, f in entries:
+            info = zipfile.ZipInfo(filename=name, date_time=(2020, 1, 1, 0, 0, 0))
+            info.compress_type = zipfile.ZIP_DEFLATED
+            info.external_attr = 0o644 << 16
+            z.writestr(info, f.read_bytes())
+
+
+def write_skill_zips(root: Path, out: Path) -> None:
+    """One zip per platform (every tool) and one per tool per platform, built from dist/.
+    Each zip holds `<tool>/...` folders, so unzipping into the platform's skills folder works."""
+    zips = out / "skills"
+    for _platform, bundle, rel in SKILL_PLATFORMS:
+        base = root / "dist" / rel
+        if not base.is_dir():
+            continue
+        zips.mkdir(parents=True, exist_ok=True)
+        tools = sorted(d for d in base.iterdir() if d.is_dir() and d.name not in SKIP_NAMES)
+        _zip_files(tools, zips / f"{bundle}.zip")
+        for tool in tools:
+            _zip_files([tool], zips / f"{tool.name}-{_platform}.zip")
+
 
 def write_downloads(root: Path) -> list[str]:
     """Generate site/downloads/* from the repo's single sources of truth. Best-effort:
@@ -302,4 +339,5 @@ def write_downloads(root: Path) -> list[str]:
                 info.compress_type = zipfile.ZIP_DEFLATED
                 z.writestr(info, (out / name).read_bytes())
 
+    write_skill_zips(root, out)
     return warnings
