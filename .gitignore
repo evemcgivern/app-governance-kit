@@ -4,3 +4,16 @@ __pycache__/
 .DS_Store
 .superpowers/
 evals/results/*.md
+*.code-workspace
+.claude/
+.env
+.env.*
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.vscode/
+.idea/
+*.log
+*.pyc
