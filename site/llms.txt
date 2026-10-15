@@ -1,6 +1,6 @@
 # App Governance Kit
 
-> A free, MIT-licensed toolkit of seven application governance methods covering application portfolio management, IT asset management, AI governance, and access controls. Each method is packaged as a Claude skill, a Codex skill, and a Microsoft Copilot agent, and also ships as a checklist, SOP, template, and platform guide for use by hand. Every method traces to clauses in ISO/IEC 19770, COBIT 2019, ISO/IEC 27001, and ISO/IEC 42001 through a 28-row crosswalk. Built by Eve McGivern.
+> A free, MIT-licensed toolkit of seven application governance methods covering application portfolio management, IT asset management, AI governance, and access controls. Each method is packaged as a Claude skill, a Codex skill, and a Microsoft Copilot agent, and also ships as a checklist, SOP, template, and platform guide for use by hand. Every method traces to clauses in ISO/IEC 19770, COBIT 2019, ISO/IEC 27001, and ISO/IEC 42001 through a 28-row crosswalk. Built by Eve McGivern. It also includes an application governance router, a certification study coach, and an eight-file SAM toolkit.
 
 Key facts:
 
@@ -12,13 +12,13 @@ Key facts:
 
 ## The seven tools
 
-- [Stand up a governance program](https://evemcgivern.github.io/app-governance-kit/tools.html): design or review a software, ITAM, or AI governance body: charter, decision rights, membership, intake path, cadence, and a 90-day launch plan.
-- [ITAM maturity check](https://evemcgivern.github.io/app-governance-kit/tools.html): score IT asset management maturity across nine process areas, name the three biggest gaps, and produce a 90-day plan tied to ISO/IEC 19770-1 and COBIT BAI09.
-- [Governance framework crosswalk](https://evemcgivern.github.io/app-governance-kit/tools.html): map a control or policy statement to ISO/IEC 19770-1, COBIT 2019, ISO/IEC 27001, and ISO/IEC 42001 clauses, and show where coverage is missing.
-- [Application rationalization](https://evemcgivern.github.io/app-governance-kit/tools.html): recommend tolerate, invest, migrate, or eliminate for each application; find duplicates and license problems; summarize savings and risk.
-- [Access review pack](https://evemcgivern.github.io/app-governance-kit/tools.html): review user and role exports against HR records, find orphaned, excessive, and privileged access, and produce an auditor-ready memo mapped to ISO/IEC 27001 and COBIT DSS05.
-- [AI system intake and risk tiering](https://evemcgivern.github.io/app-governance-kit/tools.html): assign a risk tier to a proposed AI use case under the EU AI Act, with NIST AI RMF and ISO/IEC 42001 controls, and produce an AI inventory record.
-- [Hardware lifecycle check](https://evemcgivern.github.io/app-governance-kit/tools.html): check a device fleet for hardware overdue for refresh and retired devices missing a confirmed data wipe, estimate replacement cost, and summarize disposal readiness.
+- [Stand up a governance program](https://evemcgivern.github.io/app-governance-kit/tools.html#program-setup): design or review a software, ITAM, or AI governance body: charter, decision rights, membership, intake path, cadence, and a 90-day launch plan.
+- [ITAM maturity check](https://evemcgivern.github.io/app-governance-kit/tools.html#itam-maturity): score IT asset management maturity across nine process areas, name the three biggest gaps, and produce a 90-day plan tied to ISO/IEC 19770-1 and COBIT BAI09.
+- [Governance framework crosswalk](https://evemcgivern.github.io/app-governance-kit/tools.html#crosswalk): map a control or policy statement to ISO/IEC 19770-1, COBIT 2019, ISO/IEC 27001, and ISO/IEC 42001 clauses, and show where coverage is missing.
+- [Application rationalization](https://evemcgivern.github.io/app-governance-kit/tools.html#rationalization): recommend tolerate, invest, migrate, or eliminate for each application; find duplicates and license problems; summarize savings and risk.
+- [Access review pack](https://evemcgivern.github.io/app-governance-kit/tools.html#access-review): review user and role exports against HR records, find orphaned, excessive, and privileged access, and produce an auditor-ready memo mapped to ISO/IEC 27001 and COBIT DSS05.
+- [AI system intake and risk tiering](https://evemcgivern.github.io/app-governance-kit/tools.html#ai-intake): assign a risk tier to a proposed AI use case under the EU AI Act, with NIST AI RMF and ISO/IEC 42001 controls, and produce an AI inventory record.
+- [Hardware lifecycle check](https://evemcgivern.github.io/app-governance-kit/tools.html#hardware-lifecycle): check a device fleet for hardware overdue for refresh and retired devices missing a confirmed data wipe, estimate replacement cost, and summarize disposal readiness.
 
 ## Router
 
@@ -37,6 +37,13 @@ Key facts:
 - [Crosswalk explorer](https://evemcgivern.github.io/app-governance-kit/crosswalk.html): 28 governance themes mapped across ISO/IEC 19770, COBIT 2019, ISO/IEC 27001, and ISO/IEC 42001.
 - [Impact map](https://evemcgivern.github.io/app-governance-kit/impact-map.html): every crosswalk theme plotted against every lifecycle stage, by impact.
 - [Field guide](https://evemcgivern.github.io/app-governance-kit/field-guide.html): certifications (CAMP, CSAM, CHAMP, AIGP), standards, glossary, and data governance, in plain terms.
+
+## Downloads
+
+- [SAM toolkit (ZIP)](https://evemcgivern.github.io/app-governance-kit/downloads/sam-toolkit.zip): eight templates and checklists with a guide.
+- [Crosswalk (CSV)](https://evemcgivern.github.io/app-governance-kit/downloads/crosswalk.csv): the 28-row mapping as plain text.
+- [Lifecycle impact (CSV)](https://evemcgivern.github.io/app-governance-kit/downloads/lifecycle-impact.csv): every theme against every lifecycle stage.
+- [Claude skills (ZIP)](https://evemcgivern.github.io/app-governance-kit/downloads/skills/claude-skills.zip), [Codex skills (ZIP)](https://evemcgivern.github.io/app-governance-kit/downloads/skills/codex-skills.zip), [Copilot agents (ZIP)](https://evemcgivern.github.io/app-governance-kit/downloads/skills/copilot-agents.zip).
 
 ## Optional
 
