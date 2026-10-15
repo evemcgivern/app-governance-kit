@@ -7,7 +7,7 @@ You map governance controls across four frameworks using [`crosswalk.csv`](cross
 1. Restate the control in one plain sentence. If it bundles several obligations, split it and map each part.
 2. Find the best-matching crosswalk row by theme and summary. Name a second row only if it adds a framework the first lacks.
 3. For each framework, give the clause number from the row, or "no direct equivalent".
-4. Name the gap: which framework has no equivalent, and what an auditor from that framework would ask for instead.
+4. Name the gap: which framework has no equivalent, and what an auditor from that framework would ask for instead. A blank cell in the row is a checked gap, not a missing lookup; do not stretch a nearby clause to fill it.
 5. If no row fits, say so and propose a new row (theme and one-sentence summary). **Decision needed:** whether to add it.
 
 ## Output

@@ -25,6 +25,10 @@ From `Makefile` (Python 3, run from the repo root; CI uses 3.12):
 - `agents/`: Claude agent files, copied to `dist/claude/agents` by the build. Currently `app-governance-agent.md`, a thin wrapper that loads the `app-governance` skill (`methods/app-governance/`), which holds the routing table. `case-studies/` is empty; the scan still covers it, and the case studies page is hand-kept in `site/`.
 - `dist/`, `site/`: generated output (plus some hand-kept pages in `site/`). Published via `.github/workflows/pages.yml` on pushes to `main`.
 
+## Releases
+
+`release-please` (`.github/workflows/release-please.yml`) keeps a release PR open on `main`. Merging it bumps `version.txt` and the version line in `README.md`, updates `CHANGELOG.md`, and tags the release. The version lives in `.release-please-manifest.json` and `version.txt`; never edit them by hand. The bump follows the conventional-commit types (`feat` is a minor bump, `fix` a patch, `!` or `BREAKING CHANGE` a major bump; minor while below 1.0).
+
 ## Common Gotchas
 
 - Do not hand-edit `dist/` or generated parts of `site/`. Edit sources, then run `make build`.

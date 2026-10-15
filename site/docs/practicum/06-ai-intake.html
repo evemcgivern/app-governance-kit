@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Exercise 06: AI intake — Halden&#x27;s six AI systems — Eve McGivern</title>
+<meta name="description" content="Level: AIGP · Time: 30–45 minutes">
+<meta name="author" content="Eve McGivern">
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../apple-touch-icon.png">
+<link rel="stylesheet" href="../../style.css">
+<script src="../../nav.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="support-bar"><a class="coffee-link" href="https://buymeacoffee.com/a8w5iiqszp" rel="noopener"><svg class="coffee-icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M5 9h11v5a5 5 0 0 1-5 5h-1a5 5 0 0 1-5-5V9z" fill="#2f9e6e"/><path d="M16 10.5h1.2a2.4 2.4 0 0 1 0 4.8H16" fill="none" stroke="#2f9e6e" stroke-width="1.8" stroke-linecap="round"/><path d="M8.5 3.5c0 1.3 1 1.3 1 2.6M12 3.5c0 1.3 1 1.3 1 2.6" fill="none" stroke="#2f9e6e" stroke-width="1.6" stroke-linecap="round"/></svg><span>Buy me a coffee</span></a></div>
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="https://evemcgivern.github.io/">Eve McGivern</a>
+    <nav class="site-nav" aria-label="Main">
+      <ul>
+        <li><a href="../../tools.html" aria-describedby="tip-tools">Tools</a><span class="nav-tip" role="tooltip" id="tip-tools">The seven governance methods, packaged as skills for Claude, Codex, and Copilot.</span></li>
+        <li><a href="../../sam-toolkit.html" aria-describedby="tip-sam-toolkit">SAM toolkit</a><span class="nav-tip" role="tooltip" id="tip-sam-toolkit">Templates and checklists for running software asset management by hand.</span></li>
+        <li><a href="../../practicum.html" aria-describedby="tip-practicum">Practicum</a><span class="nav-tip" role="tooltip" id="tip-practicum">Hands-on exercises on a fictional company, with answers you can check.</span></li>
+        <li><a href="../../lifecycle.html" aria-describedby="tip-lifecycle">Lifecycle</a><span class="nav-tip" role="tooltip" id="tip-lifecycle">Six stages from request to retirement, with the questions to ask at each.</span></li>
+        <li><a href="../../crosswalk.html" aria-describedby="tip-crosswalk">Crosswalk explorer</a><span class="nav-tip" role="tooltip" id="tip-crosswalk">See how each control maps to ISO/IEC 19770, COBIT, 27001, and 42001.</span></li>
+        <li><a href="../../impact-map.html" aria-describedby="tip-impact-map">Impact map</a><span class="nav-tip" role="tooltip" id="tip-impact-map">One grid showing every control theme against every lifecycle stage.</span></li>
+        <li><a href="../../field-guide.html" aria-describedby="tip-field-guide">Field guide</a><span class="nav-tip" role="tooltip" id="tip-field-guide">Plain-language guides to the standards, certifications, and key terms.</span></li>
+        <li><a href="../../case-studies.html" aria-describedby="tip-case-studies">Case studies</a><span class="nav-tip" role="tooltip" id="tip-case-studies">What is coming next: worked examples of the kit in use.</span></li>
+        <li><a href="../../about.html" aria-describedby="tip-about">About</a><span class="nav-tip" role="tooltip" id="tip-about">Who built the kit, and how to get in touch.</span></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<main id="main" class="doc-page">
+  <p class="doc-back"><a href="../../practicum.html">&larr; Practicum</a></p>
+  <h1>Exercise 06: AI intake — Halden&#x27;s six AI systems</h1>
+  <div class="visual-actions doc-actions">
+    <a class="visual-actions__link" href="06-ai-intake.docx">Download Word (.docx)</a>
+    <button type="button" class="visual-actions__link doc-print" onclick="window.print()">Print or save as PDF</button>
+  </div>
+
+  <div class="doc-body prose prose-wide">
+<p><strong>Level:</strong> AIGP · <strong>Time:</strong> 30–45 minutes</p>
+<h2 id="scenario">Scenario</h2>
+<p>Halden has quietly accumulated six AI systems across different departments, and nobody has ever tiered any of them for risk. Before the AI governance board&#x27;s first meeting, someone needs to go through the list and flag which system, if any, needs to stop and get legal review before anything else happens to it.</p>
+<h2 id="files">Files</h2>
+<ul><li>demo-estate/ai-systems.csv — six systems, each with an owner and a one-line description</li></ul>
+<h2 id="work-through">Work through</h2>
+<p>Use <a href="../ai-intake/checklist.html">AI intake checklist</a> by hand, without AI.</p>
+<ul><li>For each system, ask who it affects and what decision it makes or supports about a real person, not just what department owns it. A system that only ranks or scores things (routes, forecasts, spam) is a different case from one that ranks <em>people</em>.</li><li>Check whether a person reviews the output before it takes effect on someone. Two systems in this file already have a human in the loop by description; the rest don&#x27;t, and that absence matters more for some systems than others.</li><li>Employment-related uses — screening, ranking, or shortlisting people for a job — are treated as high-risk regardless of how small or well-intentioned the tool sounds. Look for that pattern specifically before you tier anything as merely limited or minimal.</li></ul>
+<h2 id="hand-in">Hand in</h2>
+<p>One short section per system: the use case restated, the risk tier with your reasoning, and the controls you&#x27;d require for that tier (tie each control back to a crosswalk row if you can). Then set each system&#x27;s tier (prohibited, high, limited, minimal) on the interactive practicum page.</p>
+<h2 id="check-yourself">Check yourself</h2>
+<p>Open the interactive practicum page and enter your findings there — no installs, no command line. &quot;Passed&quot; means the high-risk system(s) in the key are in your findings, with at most one extra; &quot;missed&quot; names any high-risk system you didn&#x27;t tier that way; &quot;extra&quot; names any system you tiered high-risk that the key doesn&#x27;t. The key is <code>demo-estate/answer-key.json</code> in this repo — it&#x27;s public, so check yourself before you open it.</p>
+<h2 id="reflect">Reflect</h2>
+<ol><li>Two systems in this file involve a human reviewing the output before it affects anyone. Does that change the risk tier you&#x27;d assign, or only the controls you&#x27;d require at that tier?</li><li>The high-risk system here is a small internal tool, not a flagship product. What made you tier it that way regardless of its size or how routine it sounded to its owner?</li><li>If Halden&#x27;s forecasting system started being used to schedule individual warehouse shifts instead of just planning volume, would that change its tier — and what would trigger the re-review that catches a change like that?</li></ol>
+<h2 id="certification-link">Certification link</h2>
+<p>This exercise practices the AIGP body of knowledge&#x27;s risk-tiering and lifecycle ground: recognizing a high-risk use case by its effect on real people rather than its size or department, checking for prohibited practices before tiering, and setting controls and a re-review trigger tied to the tier rather than to a calendar alone.</p>
+  </div>
+</main>
+<footer class="site-footer">
+  <p>Eve McGivern · <a href="https://evemcgivern.github.io/">evemcgivern.github.io</a></p>
+  <p>Questions? Comments? <span id="contact-email">email me</span>.</p>
+  <p><a href="https://buymeacoffee.com/a8w5iiqszp" rel="noopener">Buy me a coffee</a> if these tools help.</p>
+  <noscript><p>Email: evemcgivern at gmail dot com</p></noscript>
+</footer>
+<script>
+(function () {
+  "use strict";
+  var user = "evemcgivern", domain = "gmail.com";
+  var el = document.getElementById("contact-email");
+  if (!el) { return; }
+  var a = document.createElement("a");
+  a.href = "mailto:" + user + "@" + domain;
+  a.textContent = "Email me";
+  el.replaceWith(a);
+})();
+</script>
+
+</body>
+</html>

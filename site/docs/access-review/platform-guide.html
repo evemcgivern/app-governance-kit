@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Platform guide: Access review pack — Eve McGivern</title>
+<meta name="description" content="Where the fields this tool uses live in ServiceNow&#x27;s GRC attestation capability, and in…">
+<meta name="author" content="Eve McGivern">
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../apple-touch-icon.png">
+<link rel="stylesheet" href="../../style.css">
+<script src="../../nav.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="support-bar"><a class="coffee-link" href="https://buymeacoffee.com/a8w5iiqszp" rel="noopener"><svg class="coffee-icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M5 9h11v5a5 5 0 0 1-5 5h-1a5 5 0 0 1-5-5V9z" fill="#2f9e6e"/><path d="M16 10.5h1.2a2.4 2.4 0 0 1 0 4.8H16" fill="none" stroke="#2f9e6e" stroke-width="1.8" stroke-linecap="round"/><path d="M8.5 3.5c0 1.3 1 1.3 1 2.6M12 3.5c0 1.3 1 1.3 1 2.6" fill="none" stroke="#2f9e6e" stroke-width="1.6" stroke-linecap="round"/></svg><span>Buy me a coffee</span></a></div>
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="https://evemcgivern.github.io/">Eve McGivern</a>
+    <nav class="site-nav" aria-label="Main">
+      <ul>
+        <li><a href="../../tools.html" aria-describedby="tip-tools">Tools</a><span class="nav-tip" role="tooltip" id="tip-tools">The seven governance methods, packaged as skills for Claude, Codex, and Copilot.</span></li>
+        <li><a href="../../sam-toolkit.html" aria-describedby="tip-sam-toolkit">SAM toolkit</a><span class="nav-tip" role="tooltip" id="tip-sam-toolkit">Templates and checklists for running software asset management by hand.</span></li>
+        <li><a href="../../practicum.html" aria-describedby="tip-practicum">Practicum</a><span class="nav-tip" role="tooltip" id="tip-practicum">Hands-on exercises on a fictional company, with answers you can check.</span></li>
+        <li><a href="../../lifecycle.html" aria-describedby="tip-lifecycle">Lifecycle</a><span class="nav-tip" role="tooltip" id="tip-lifecycle">Six stages from request to retirement, with the questions to ask at each.</span></li>
+        <li><a href="../../crosswalk.html" aria-describedby="tip-crosswalk">Crosswalk explorer</a><span class="nav-tip" role="tooltip" id="tip-crosswalk">See how each control maps to ISO/IEC 19770, COBIT, 27001, and 42001.</span></li>
+        <li><a href="../../impact-map.html" aria-describedby="tip-impact-map">Impact map</a><span class="nav-tip" role="tooltip" id="tip-impact-map">One grid showing every control theme against every lifecycle stage.</span></li>
+        <li><a href="../../field-guide.html" aria-describedby="tip-field-guide">Field guide</a><span class="nav-tip" role="tooltip" id="tip-field-guide">Plain-language guides to the standards, certifications, and key terms.</span></li>
+        <li><a href="../../case-studies.html" aria-describedby="tip-case-studies">Case studies</a><span class="nav-tip" role="tooltip" id="tip-case-studies">What is coming next: worked examples of the kit in use.</span></li>
+        <li><a href="../../about.html" aria-describedby="tip-about">About</a><span class="nav-tip" role="tooltip" id="tip-about">Who built the kit, and how to get in touch.</span></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<main id="main" class="doc-page">
+  <p class="doc-back"><a href="../../tools.html">&larr; Tools</a></p>
+  <h1>Platform guide: Access review pack</h1>
+  <div class="visual-actions doc-actions">
+    <a class="visual-actions__link" href="platform-guide.docx">Download Word (.docx)</a>
+    <button type="button" class="visual-actions__link doc-print" onclick="window.print()">Print or save as PDF</button>
+  </div>
+
+  <div class="doc-body prose prose-wide">
+<p>Where the fields this tool uses live in ServiceNow&#x27;s GRC attestation capability, and in Flexera One. Where no source names a module, table, or field, that is stated as a gap rather than guessed.</p>
+<h2 id="servicenow-access-certification-through-policy-and-compliance-management-attestations">ServiceNow: access certification through Policy and Compliance Management attestations</h2>
+<p>ServiceNow&#x27;s own access-certification capability sits inside <strong>Policy and Compliance Management</strong>, part of its Integrated Risk Management (IRM) product line, and is driven by <strong>control attestations</strong> rather than a standalone &quot;access review&quot; object. ServiceNow&#x27;s own documentation confirms the structure directly: the Control Objectives module is the main hub of the Policy and Compliance Management application; a <strong>Control</strong> is a specific implementation of a control objective; an <strong>Entity</strong> is a person, process, department, application, or object whose risk exposure must be managed and monitored; and <strong>Attestation</strong> assesses the control to continuously monitor its compliance. No backing table name is given for any of these records. The setup pattern a ServiceNow Community thread describes for running a user access review: create a <strong>Control Objective</strong> and link it to the <strong>Entity Type</strong> being reviewed (for example, users holding access to a given system); that generates one <strong>Control</strong> per entity, and each control routes an <strong>Attestation</strong> to its named <strong>Control Owner</strong>, who confirms the access is still needed and attaches their decision as evidence.</p>
+<p>Evidence collection runs one of two ways. A <strong>Manual Indicator</strong> is used to gather the control owner&#x27;s response as evidence by hand. Where ServiceNow has been connected to an identity and access management (IAM) solution, an <strong>Automated Indicator</strong> can instead continuously monitor the control, which is the mechanism this method&#x27;s account-to-person matching maps onto: the account and person data behind an automated indicator&#x27;s continuous check is expected to come from that connected IAM system, not from a table inside ServiceNow itself. No ServiceNow documentation names a specific field or table that stores the account-to-person match this method&#x27;s step 3 performs; the Attestation and Control Owner objects above are what carries the <em>decision</em>, not the underlying account export.</p>
+<p>ServiceNow does not natively ship a standalone identity-governance or access-certification module beyond Policy and Compliance Management&#x27;s attestations; full identity-governance workflows (for example, certification campaigns run against an identity warehouse) are delivered by third-party apps such as Saviynt&#x27;s ServiceNow Store integration, not by ServiceNow itself.</p>
+<p>The Control Objective / Entity Type / Control / Control Owner / Attestation / Manual Indicator / Automated Indicator terminology above comes from a ServiceNow Community discussion, cross-checked against ServiceNow&#x27;s own structural-overview and entity-definition documentation, and matches the vocabulary used across ServiceNow&#x27;s GRC release notes.</p>
+<h2 id="flexera-one-application-usage-data-for-dormant-access">Flexera One: application usage data for dormant access</h2>
+<p>Flexera One&#x27;s SaaS Management surfaces the usage evidence this method&#x27;s dormant-access check (no login in 90 days) would draw on. Flexera states it can <strong>identify underused licenses</strong> and find downgrade opportunities from bundled subscriptions, built on <strong>detailed usage insights</strong> drawn from multiple discovery methods — financial data, API connectors including a Universal Connector, a browser extension, and connections to SSO and CASB technologies — covering both sanctioned and unsanctioned (shadow) applications. The product combines application usage, spend, and contract information to recommend right-sizing licenses and eliminating unused applications.</p>
+<p>Flexera One&#x27;s SaaS Management Users Tab has a named column, <strong>Days Since Last Activity</strong>, which reports &quot;Never Active&quot; for accounts with no recorded login — the threshold is 60 days without login, or 30 days when an application is first integrated — the closest named equivalent to this method&#x27;s <code>last_login</code> column. Flexera&#x27;s documentation site (<code>docs.flexera.com/...</code>) does not return readable content to a direct automated fetch, so the column name above is sourced from a search-engine-indexed excerpt of the Flexera-authored page rather than a direct fetch; everything else in this section comes from Flexera&#x27;s own marketing page, which did load.</p>
+<h2 id="sources-checked">Sources checked</h2>
+<ul><li><a href="https://www.servicenow.com/community/grc-forum/access-reviews-in-p-amp-c/m-p/2342369">Access Reviews in P&amp;C — ServiceNow Community</a> — Control Objective, Entity Type, Control, Control Owner, Attestation, Manual Indicator, Automated Indicator, and the connected-IAM-solution route to continuous monitoring.</li><li><a href="https://www.servicenow.com/docs/r/xanadu/governance-risk-compliance/policy-and-compliance-management/pc-structural-overview-policy-comp.html">Policy and Compliance Management structural overview — ServiceNow Docs, Xanadu</a> — Control Objectives module, Control, and Attestation definitions.</li><li><a href="https://www.servicenow.com/docs/r/washingtondc/governance-risk-compliance/grc-common-functions/what-is-an-entity.html">What is an Entity? — ServiceNow Docs (GRC common functions), Washington DC</a> — Entity and Entity Type definitions.</li><li><a href="https://saviynt.com/blog/identity-governance-servicenow">Identity governance on ServiceNow — Saviynt blog</a> (search-confirmed; not independently fetched) — the third-party, partner-built route to full access-certification workflows.</li><li><a href="https://www.flexera.com/products/flexera-one/saas-management">Optimize SaaS spend and utilization with Flexera One SaaS Management — Flexera</a> — underused-license identification, multi-source discovery (financial data, API connectors, browser extension, SSO/CASB), usage-and-spend-based optimization recommendations.</li><li><a href="https://docs.flexera.com/flexera-one/saas/saas-manager/saas-management-user-interface-reference/saas-application-details/users-tab">SaaS Management Users Tab reference — Flexera Docs</a> (search-indexed excerpt only; direct fetch returns 403) — the &quot;Days Since Last Activity&quot; column.</li><li><a href="https://docs.flexera.com/flexera-one/saas/saas-manager/managing-saas-applications/tracking-user-activity">Tracking user activity — Flexera Docs</a> (search-indexed excerpt only; direct fetch returns 403) — the 60-day (&quot;Never Active&quot;) / 30-day (first integration) thresholds.</li></ul>
+<p>ServiceNow&#x27;s own IRM product page (<code>servicenow.com/products/integrated-risk-management.html</code>) does not return readable content to an automated fetch. Flexera&#x27;s documentation site (<code>docs.flexera.com/...</code>) does not return readable content to a direct automated fetch on any page tried, including the Users Tab and activity-tracking references cited above by search-indexed excerpt. Everything else above comes from a page that loaded.</p>
+  </div>
+</main>
+<footer class="site-footer">
+  <p>Eve McGivern · <a href="https://evemcgivern.github.io/">evemcgivern.github.io</a></p>
+  <p>Questions? Comments? <span id="contact-email">email me</span>.</p>
+  <p><a href="https://buymeacoffee.com/a8w5iiqszp" rel="noopener">Buy me a coffee</a> if these tools help.</p>
+  <noscript><p>Email: evemcgivern at gmail dot com</p></noscript>
+</footer>
+<script>
+(function () {
+  "use strict";
+  var user = "evemcgivern", domain = "gmail.com";
+  var el = document.getElementById("contact-email");
+  if (!el) { return; }
+  var a = document.createElement("a");
+  a.href = "mailto:" + user + "@" + domain;
+  a.textContent = "Email me";
+  el.replaceWith(a);
+})();
+</script>
+
+</body>
+</html>

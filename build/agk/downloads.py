@@ -7,6 +7,8 @@ import zipfile
 from html import escape
 from pathlib import Path
 
+from agk.docs import docx_bytes, parse_markdown
+
 LINK_RE = re.compile(r"\[([^\]]+)\]\([^)]*\)")
 WHEEL_SVG_RE = re.compile(r'<svg class="lc-wheel".*?</svg>', re.S)
 
@@ -273,25 +275,29 @@ def write_skill_zips(root: Path, out: Path) -> None:
 
 
 def write_sam_toolkit(root: Path, out: Path) -> list[str]:
-    """Copy sam-toolkit/ into site/downloads/sam-toolkit/ and bundle it as sam-toolkit.zip.
-    The zip uses a fixed date_time so its bytes only change when a source file does."""
+    """Copy the toolkit's CSV templates into site/downloads/sam-toolkit/ and bundle them, with the
+    documents as Word files, as sam-toolkit.zip. No Markdown is published: each document has a site page
+    (see docs.py). The zip uses a fixed date_time so its bytes only change when a source file does."""
     src = root / "sam-toolkit"
     if not src.is_dir():
         return []
     dest = out / "sam-toolkit"
     if dest.exists():
         shutil.rmtree(dest)
-    files = sorted(p for p in src.rglob("*") if p.is_file() and p.suffix in (".csv", ".md"))
-    for f in files:
+    csvs = sorted(p for p in src.rglob("*") if p.is_file() and p.suffix == ".csv")
+    for f in csvs:
         target = dest / f.relative_to(src)
         target.parent.mkdir(parents=True, exist_ok=True)
         shutil.copyfile(f, target)
+    entries = [(f"sam-toolkit/{f.relative_to(src).as_posix()}", f.read_bytes()) for f in csvs]
+    for f in sorted(src.glob("*.md")):
+        blocks = parse_markdown(f.read_text(encoding="utf-8"))
+        entries.append((f"sam-toolkit/{f.stem}.docx", docx_bytes(blocks)))
     with zipfile.ZipFile(out / "sam-toolkit.zip", "w", zipfile.ZIP_DEFLATED) as z:
-        for f in files:
-            info = zipfile.ZipInfo(filename=f"sam-toolkit/{f.relative_to(src).as_posix()}",
-                                   date_time=(2020, 1, 1, 0, 0, 0))
+        for name, data in sorted(entries):
+            info = zipfile.ZipInfo(filename=name, date_time=(2020, 1, 1, 0, 0, 0))
             info.compress_type = zipfile.ZIP_DEFLATED
-            z.writestr(info, f.read_bytes())
+            z.writestr(info, data)
     return []
 
 

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Exercise 07: Hardware lifecycle — Halden&#x27;s device fleet — Eve McGivern</title>
+<meta name="description" content="Level: CHAMP · Time: 30–45 minutes">
+<meta name="author" content="Eve McGivern">
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../apple-touch-icon.png">
+<link rel="stylesheet" href="../../style.css">
+<script src="../../nav.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="support-bar"><a class="coffee-link" href="https://buymeacoffee.com/a8w5iiqszp" rel="noopener"><svg class="coffee-icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M5 9h11v5a5 5 0 0 1-5 5h-1a5 5 0 0 1-5-5V9z" fill="#2f9e6e"/><path d="M16 10.5h1.2a2.4 2.4 0 0 1 0 4.8H16" fill="none" stroke="#2f9e6e" stroke-width="1.8" stroke-linecap="round"/><path d="M8.5 3.5c0 1.3 1 1.3 1 2.6M12 3.5c0 1.3 1 1.3 1 2.6" fill="none" stroke="#2f9e6e" stroke-width="1.6" stroke-linecap="round"/></svg><span>Buy me a coffee</span></a></div>
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="https://evemcgivern.github.io/">Eve McGivern</a>
+    <nav class="site-nav" aria-label="Main">
+      <ul>
+        <li><a href="../../tools.html" aria-describedby="tip-tools">Tools</a><span class="nav-tip" role="tooltip" id="tip-tools">The seven governance methods, packaged as skills for Claude, Codex, and Copilot.</span></li>
+        <li><a href="../../sam-toolkit.html" aria-describedby="tip-sam-toolkit">SAM toolkit</a><span class="nav-tip" role="tooltip" id="tip-sam-toolkit">Templates and checklists for running software asset management by hand.</span></li>
+        <li><a href="../../practicum.html" aria-describedby="tip-practicum">Practicum</a><span class="nav-tip" role="tooltip" id="tip-practicum">Hands-on exercises on a fictional company, with answers you can check.</span></li>
+        <li><a href="../../lifecycle.html" aria-describedby="tip-lifecycle">Lifecycle</a><span class="nav-tip" role="tooltip" id="tip-lifecycle">Six stages from request to retirement, with the questions to ask at each.</span></li>
+        <li><a href="../../crosswalk.html" aria-describedby="tip-crosswalk">Crosswalk explorer</a><span class="nav-tip" role="tooltip" id="tip-crosswalk">See how each control maps to ISO/IEC 19770, COBIT, 27001, and 42001.</span></li>
+        <li><a href="../../impact-map.html" aria-describedby="tip-impact-map">Impact map</a><span class="nav-tip" role="tooltip" id="tip-impact-map">One grid showing every control theme against every lifecycle stage.</span></li>
+        <li><a href="../../field-guide.html" aria-describedby="tip-field-guide">Field guide</a><span class="nav-tip" role="tooltip" id="tip-field-guide">Plain-language guides to the standards, certifications, and key terms.</span></li>
+        <li><a href="../../case-studies.html" aria-describedby="tip-case-studies">Case studies</a><span class="nav-tip" role="tooltip" id="tip-case-studies">What is coming next: worked examples of the kit in use.</span></li>
+        <li><a href="../../about.html" aria-describedby="tip-about">About</a><span class="nav-tip" role="tooltip" id="tip-about">Who built the kit, and how to get in touch.</span></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<main id="main" class="doc-page">
+  <p class="doc-back"><a href="../../practicum.html">&larr; Practicum</a></p>
+  <h1>Exercise 07: Hardware lifecycle — Halden&#x27;s device fleet</h1>
+  <div class="visual-actions doc-actions">
+    <a class="visual-actions__link" href="07-hardware-lifecycle.docx">Download Word (.docx)</a>
+    <button type="button" class="visual-actions__link doc-print" onclick="window.print()">Print or save as PDF</button>
+  </div>
+
+  <div class="doc-body prose prose-wide">
+<p><strong>Level:</strong> CHAMP · <strong>Time:</strong> 30–45 minutes</p>
+<h2 id="scenario">Scenario</h2>
+<p>Halden&#x27;s IT operations lead is planning next quarter&#x27;s hardware budget and wants two things settled before the number goes to finance: which devices are already past due for replacement, and whether every retired device actually got its data wiped before it left the estate. You&#x27;ve been handed the device fleet and asked to find both problems in one pass.</p>
+<h2 id="files">Files</h2>
+<ul><li>demo-estate/devices.csv — 60 laptops, desktops, mobile devices, and servers, with owner, deploy date, refresh-due date, status, retirement date, data-wipe confirmation, and cost</li></ul>
+<h2 id="work-through">Work through</h2>
+<p>Use <a href="../hardware-lifecycle/checklist.html">Hardware lifecycle checklist</a> by hand, without AI.</p>
+<ul><li>Only <code>active</code> devices have a <code>refresh_due_date</code> worth checking — compare it against the device&#x27;s own <code>checked_on</code> date, not today&#x27;s date or a date you assume for the whole file. There are exactly three devices already past due.</li><li>Only <code>retired</code> devices carry a <code>data_wipe_confirmed</code> value. A blank value belongs to an active device and isn&#x27;t a finding; the finding is a retired device whose confirmation reads anything other than <code>yes</code>. There are exactly two.</li><li>Group the overdue devices by <code>type</code> before you price a replacement — a laptop refresh and a server refresh don&#x27;t cost the same, and lumping them into one number will make your range meaningless.</li></ul>
+<h2 id="hand-in">Hand in</h2>
+<p>A table of the devices needing action (id, type, status, issue, recommendation), a replacement-cost range grouped by device type for the overdue devices, and a list of the retired devices still blocking disposal with the wipe or destruction method you&#x27;d require before closing each one out. Then, on the interactive practicum page: tick each overdue device and each unwiped retired device you found.</p>
+<h2 id="check-yourself">Check yourself</h2>
+<p>Open the interactive practicum page and enter your findings there — no installs, no command line. &quot;Passed&quot; means every overdue device and every unwiped retired device in the key showed up in your findings, with at most one extra finding the key doesn&#x27;t recognize; &quot;missed&quot; lists anything real you didn&#x27;t flag; &quot;extra&quot; lists anything you flagged that isn&#x27;t in the key. The key is <code>demo-estate/answer-key.json</code> in this repo — it&#x27;s public, so check your own answer before you look at it.</p>
+<h2 id="reflect">Reflect</h2>
+<ol><li>One of the three overdue devices is a server, not a laptop or a phone. Does an overdue server carry the same urgency as an overdue laptop, or does the type change how you&#x27;d prioritize the replacement order?</li><li>Neither unwiped retired device is also an overdue-refresh device. What does that tell you about treating &quot;still in service&quot; and &quot;safely retired&quot; as two separate checks rather than assuming one implies the other?</li><li>Your replacement-cost range has a low end and a high end. What real-world fact (a bulk-order discount, a trade-in credit, a device that turns out to need an early replacement anyway) would move the actual spend toward one end even after every order is placed?</li></ol>
+<h2 id="certification-link">Certification link</h2>
+<p>This exercise practices the CHAMP body of knowledge&#x27;s asset-lifecycle and disposal ground: tracking a device from deployment through refresh eligibility, and holding disposal open until data destruction is actually evidenced rather than assumed.</p>
+  </div>
+</main>
+<footer class="site-footer">
+  <p>Eve McGivern · <a href="https://evemcgivern.github.io/">evemcgivern.github.io</a></p>
+  <p>Questions? Comments? <span id="contact-email">email me</span>.</p>
+  <p><a href="https://buymeacoffee.com/a8w5iiqszp" rel="noopener">Buy me a coffee</a> if these tools help.</p>
+  <noscript><p>Email: evemcgivern at gmail dot com</p></noscript>
+</footer>
+<script>
+(function () {
+  "use strict";
+  var user = "evemcgivern", domain = "gmail.com";
+  var el = document.getElementById("contact-email");
+  if (!el) { return; }
+  var a = document.createElement("a");
+  a.href = "mailto:" + user + "@" + domain;
+  a.textContent = "Email me";
+  el.replaceWith(a);
+})();
+</script>
+
+</body>
+</html>

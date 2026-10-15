@@ -1,12 +1,14 @@
 # app-governance-kit
 
+Version 0.1.0 <!-- x-release-please-version -->
+
 Seven governance methods — portfolio, AI, and access — packaged as skills for
 Claude, Codex, and Microsoft Copilot, plus a public reference site and a set
 of hands-on practicum exercises for learning the underlying certifications
 (CAMP, CSAM, CHAMP, AIGP) by hand before using the tools.
 
 Each method maps to real standards (ISO/IEC 19770, COBIT 2019, ISO/IEC 27001,
-ISO/IEC 42001) via a 28-row crosswalk, so every recommendation traces back to
+ISO/IEC 42001) via a 29-row crosswalk, so every recommendation traces back to
 a clause, not just a rule of thumb.
 
 ## The seven tools

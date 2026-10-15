@@ -283,10 +283,10 @@ class RealRepoTests(unittest.TestCase):
         self.assertEqual(len(r), 10)  # header + 9 tasks
         self.assertEqual(r[0][1:], ["CAMP", "CSAM", "CHAMP", "AIGP", "ITIL 4 Foundation", "IAM Certificate"])
 
-    def test_crosswalk_and_impact_copies_have_28_data_rows(self):
+    def test_crosswalk_and_impact_copies_have_29_data_rows(self):
         for name in ("crosswalk.csv", "lifecycle-impact.csv"):
             r = rows((self.out / "site" / "downloads" / name).read_text())
-            self.assertEqual(len(r) - 1, 28, name)
+            self.assertEqual(len(r) - 1, 29, name)
 
     def test_wheel_svg_is_well_formed_with_all_segments(self):
         text = (self.out / "site" / "downloads" / "lifecycle-wheel.svg").read_text()
@@ -370,19 +370,24 @@ class SamToolkitTests(unittest.TestCase):
         shutil.copytree(self.TOOLKIT, root / "sam-toolkit")
         write_downloads(root)
         out = root / "site" / "downloads"
-        self.assertTrue((out / "sam-toolkit" / "guide.md").is_file())
+        self.assertTrue((out / "sam-toolkit" / "asset-record.csv").is_file())
+        self.assertFalse(list((out / "sam-toolkit").rglob("*.md")))
         self.assertTrue((out / "sam-toolkit" / "examples" / "license-position-example.csv").is_file())
         with zipfile.ZipFile(out / "sam-toolkit.zip") as z:
             names = z.namelist()
-        self.assertIn("sam-toolkit/guide.md", names)
+        self.assertIn("sam-toolkit/guide.docx", names)
+        self.assertFalse([n for n in names if n.endswith(".md")])
         self.assertIn("sam-toolkit/license-position.csv", names)
 
-    def test_page_links_every_published_file(self):
+    def test_page_links_every_document_page(self):
         page = (ROOT / "site" / "sam-toolkit.html").read_text(encoding="utf-8")
         for f in sorted(self.TOOLKIT.rglob("*")):
-            if f.is_file() and f.suffix in (".csv", ".md"):
-                rel = f.relative_to(self.TOOLKIT).as_posix()
-                self.assertIn(f"downloads/sam-toolkit/{rel}", page, rel)
+            if f.is_file() and f.suffix in (".csv", ".md") and f.parent.name != "examples":
+                self.assertIn(f"docs/sam-toolkit/{f.stem}.html", page, f.name)
+
+    def test_page_links_no_markdown_files(self):
+        page = (ROOT / "site" / "sam-toolkit.html").read_text(encoding="utf-8")
+        self.assertNotIn(".md\"", page)
 
 
 class AgentDownloadTests(unittest.TestCase):

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI system intake and risk tiering — Eve McGivern</title>
+<meta name="description" content="You run intake for AI systems. Legal content last reviewed: 2026-09. Say so in…">
+<meta name="author" content="Eve McGivern">
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../apple-touch-icon.png">
+<link rel="stylesheet" href="../../style.css">
+<script src="../../nav.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="support-bar"><a class="coffee-link" href="https://buymeacoffee.com/a8w5iiqszp" rel="noopener"><svg class="coffee-icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M5 9h11v5a5 5 0 0 1-5 5h-1a5 5 0 0 1-5-5V9z" fill="#2f9e6e"/><path d="M16 10.5h1.2a2.4 2.4 0 0 1 0 4.8H16" fill="none" stroke="#2f9e6e" stroke-width="1.8" stroke-linecap="round"/><path d="M8.5 3.5c0 1.3 1 1.3 1 2.6M12 3.5c0 1.3 1 1.3 1 2.6" fill="none" stroke="#2f9e6e" stroke-width="1.6" stroke-linecap="round"/></svg><span>Buy me a coffee</span></a></div>
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="https://evemcgivern.github.io/">Eve McGivern</a>
+    <nav class="site-nav" aria-label="Main">
+      <ul>
+        <li><a href="../../tools.html" aria-describedby="tip-tools">Tools</a><span class="nav-tip" role="tooltip" id="tip-tools">The seven governance methods, packaged as skills for Claude, Codex, and Copilot.</span></li>
+        <li><a href="../../sam-toolkit.html" aria-describedby="tip-sam-toolkit">SAM toolkit</a><span class="nav-tip" role="tooltip" id="tip-sam-toolkit">Templates and checklists for running software asset management by hand.</span></li>
+        <li><a href="../../practicum.html" aria-describedby="tip-practicum">Practicum</a><span class="nav-tip" role="tooltip" id="tip-practicum">Hands-on exercises on a fictional company, with answers you can check.</span></li>
+        <li><a href="../../lifecycle.html" aria-describedby="tip-lifecycle">Lifecycle</a><span class="nav-tip" role="tooltip" id="tip-lifecycle">Six stages from request to retirement, with the questions to ask at each.</span></li>
+        <li><a href="../../crosswalk.html" aria-describedby="tip-crosswalk">Crosswalk explorer</a><span class="nav-tip" role="tooltip" id="tip-crosswalk">See how each control maps to ISO/IEC 19770, COBIT, 27001, and 42001.</span></li>
+        <li><a href="../../impact-map.html" aria-describedby="tip-impact-map">Impact map</a><span class="nav-tip" role="tooltip" id="tip-impact-map">One grid showing every control theme against every lifecycle stage.</span></li>
+        <li><a href="../../field-guide.html" aria-describedby="tip-field-guide">Field guide</a><span class="nav-tip" role="tooltip" id="tip-field-guide">Plain-language guides to the standards, certifications, and key terms.</span></li>
+        <li><a href="../../case-studies.html" aria-describedby="tip-case-studies">Case studies</a><span class="nav-tip" role="tooltip" id="tip-case-studies">What is coming next: worked examples of the kit in use.</span></li>
+        <li><a href="../../about.html" aria-describedby="tip-about">About</a><span class="nav-tip" role="tooltip" id="tip-about">Who built the kit, and how to get in touch.</span></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<main id="main" class="doc-page">
+  <p class="doc-back"><a href="../../tools.html">&larr; Tools</a></p>
+  <h1>AI system intake and risk tiering</h1>
+  <div class="visual-actions doc-actions">
+    <a class="visual-actions__link" href="method.docx">Download Word (.docx)</a>
+    <button type="button" class="visual-actions__link doc-print" onclick="window.print()">Print or save as PDF</button>
+  </div>
+
+  <div class="doc-body prose prose-wide">
+<p>You run intake for AI systems. Legal content last reviewed: 2026-09. Say so in your answer and recommend legal review for any high-risk or prohibited result.</p>
+<h2 id="steps">Steps</h2>
+<ol><li>Restate the use case: purpose, who is affected, what decisions it makes or supports, whether a person reviews each output, what data it uses, whether that includes personal data, and where the data came from.</li><li>Check prohibited practices first. If one might apply, stop and say <strong>Decision needed:</strong> legal review before anything else.</li><li>Check the high-risk areas (for example employment and worker management, access to essential services, education, law enforcement, critical infrastructure). Employment uses such as ranking or filtering job applicants are high-risk. Do not state application dates for these obligations; say they are phased in and that the current official timeline must be checked.</li><li>Otherwise tier as limited-risk (people must be told they&#x27;re dealing with AI, as with chatbots) or minimal-risk.</li><li>List required controls for the tier, mapped through the crosswalk (XW-021 risk assessment, XW-022 inventory, XW-023 supplier oversight, XW-024 risk register, XW-028 data handling, XW-020 approval record) and the NIST AI RMF functions (Govern, Map, Measure, Manage). Re-review on any change of use maps to XW-021.</li><li>Fill the inventory record from <a href="template.html">AI inventory record template</a>. <strong>Decision needed:</strong> approval to proceed.</li></ol>
+<h2 id="output">Output</h2>
+<p>One section per system: restatement, tier with reasoning, required controls, inventory record. Then the findings block: one <code>high_risk_ai</code> per system tiered high-risk.</p>
+<h2 id="output-rules">Output rules</h2>
+<ul><li>Show the reasoning behind each conclusion.</li><li>Mark every point where a person must decide with <strong>Decision needed:</strong> and stop short of deciding.</li><li>Flag any figure you could not verify from the input with <strong>Unverified:</strong>.</li><li>Cite framework clauses by number from <a href="../../downloads/crosswalk.csv">crosswalk.csv</a>. Paraphrase; never quote standards text.</li><li>End your answer with a fenced block labeled <code>findings</code> containing a JSON list of <code>{&quot;type&quot;: ..., &quot;id&quot;: ...}</code> objects, as the task describes. Use <code>[]</code> when there are none.</li></ul>
+  </div>
+</main>
+<footer class="site-footer">
+  <p>Eve McGivern · <a href="https://evemcgivern.github.io/">evemcgivern.github.io</a></p>
+  <p>Questions? Comments? <span id="contact-email">email me</span>.</p>
+  <p><a href="https://buymeacoffee.com/a8w5iiqszp" rel="noopener">Buy me a coffee</a> if these tools help.</p>
+  <noscript><p>Email: evemcgivern at gmail dot com</p></noscript>
+</footer>
+<script>
+(function () {
+  "use strict";
+  var user = "evemcgivern", domain = "gmail.com";
+  var el = document.getElementById("contact-email");
+  if (!el) { return; }
+  var a = document.createElement("a");
+  a.href = "mailto:" + user + "@" + domain;
+  a.textContent = "Email me";
+  el.replaceWith(a);
+})();
+</script>
+
+</body>
+</html>

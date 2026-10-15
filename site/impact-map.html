@@ -45,24 +45,28 @@
  ]
 }
 </script>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="stylesheet" href="style.css">
+<script src="nav.js" defer></script>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
+<div class="support-bar"><a class="coffee-link" href="https://buymeacoffee.com/a8w5iiqszp" rel="noopener"><svg class="coffee-icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M5 9h11v5a5 5 0 0 1-5 5h-1a5 5 0 0 1-5-5V9z" fill="#2f9e6e"/><path d="M16 10.5h1.2a2.4 2.4 0 0 1 0 4.8H16" fill="none" stroke="#2f9e6e" stroke-width="1.8" stroke-linecap="round"/><path d="M8.5 3.5c0 1.3 1 1.3 1 2.6M12 3.5c0 1.3 1 1.3 1 2.6" fill="none" stroke="#2f9e6e" stroke-width="1.6" stroke-linecap="round"/></svg><span>Buy me a coffee</span></a></div>
 <header class="site-header">
   <div class="site-header__inner">
     <a class="brand" href="https://evemcgivern.github.io/">Eve McGivern</a>
     <nav class="site-nav" aria-label="Main">
       <ul>
-        <li><a href="tools.html">Tools</a></li>
-        <li><a href="sam-toolkit.html">SAM toolkit</a></li>
-        <li><a href="practicum.html">Practicum</a></li>
-        <li><a href="lifecycle.html">Lifecycle</a></li>
-        <li><a href="crosswalk.html">Crosswalk explorer</a></li>
-        <li><a href="impact-map.html" aria-current="page">Impact map</a></li>
-        <li><a href="field-guide.html">Field guide</a></li>
-        <li><a href="case-studies.html">Case studies</a></li>
-        <li><a href="about.html">About</a></li>
+        <li><a href="tools.html" aria-describedby="tip-tools">Tools</a><span class="nav-tip" role="tooltip" id="tip-tools">The seven governance methods, packaged as skills for Claude, Codex, and Copilot.</span></li>
+        <li><a href="sam-toolkit.html" aria-describedby="tip-sam-toolkit">SAM toolkit</a><span class="nav-tip" role="tooltip" id="tip-sam-toolkit">Templates and checklists for running software asset management by hand.</span></li>
+        <li><a href="practicum.html" aria-describedby="tip-practicum">Practicum</a><span class="nav-tip" role="tooltip" id="tip-practicum">Hands-on exercises on a fictional company, with answers you can check.</span></li>
+        <li><a href="lifecycle.html" aria-describedby="tip-lifecycle">Lifecycle</a><span class="nav-tip" role="tooltip" id="tip-lifecycle">Six stages from request to retirement, with the questions to ask at each.</span></li>
+        <li><a href="crosswalk.html" aria-describedby="tip-crosswalk">Crosswalk explorer</a><span class="nav-tip" role="tooltip" id="tip-crosswalk">See how each control maps to ISO/IEC 19770, COBIT, 27001, and 42001.</span></li>
+        <li><a href="impact-map.html" aria-current="page" aria-describedby="tip-impact-map">Impact map</a><span class="nav-tip" role="tooltip" id="tip-impact-map">One grid showing every control theme against every lifecycle stage.</span></li>
+        <li><a href="field-guide.html" aria-describedby="tip-field-guide">Field guide</a><span class="nav-tip" role="tooltip" id="tip-field-guide">Plain-language guides to the standards, certifications, and key terms.</span></li>
+        <li><a href="case-studies.html" aria-describedby="tip-case-studies">Case studies</a><span class="nav-tip" role="tooltip" id="tip-case-studies">What is coming next: worked examples of the kit in use.</span></li>
+        <li><a href="about.html" aria-describedby="tip-about">About</a><span class="nav-tip" role="tooltip" id="tip-about">Who built the kit, and how to get in touch.</span></li>
       </ul>
     </nav>
   </div>
@@ -71,12 +75,12 @@
 <main id="main">
   <section class="hero">
     <h1>Impact map</h1>
-    <p class="positioning">All 28 crosswalk themes against all 6 lifecycle stages at once: where each theme has its greatest impact, where it also applies, and where it doesn't apply at all.</p>
+    <p class="positioning">All 29 crosswalk themes against all 6 lifecycle stages at once: where each theme has its greatest impact, where it also applies, and where it doesn't apply at all.</p>
   </section>
 
   <noscript>
     <p>This impact map needs JavaScript. You can browse the same data directly in
-      <a href="https://github.com/evemcgivern/app-governance-kit/blob/main/methods/crosswalk/lifecycle-impact.csv">lifecycle-impact.csv on GitHub</a>.</p>
+      <a href="downloads/lifecycle-impact-print.html">the full impact table</a>.</p>
   </noscript>
 
   <p class="visual-actions">
@@ -94,11 +98,11 @@
 
   <div id="im-cards" class="card-grid"></div>
 
-  <!--IM-DATA--><script type="application/json" id="im-data">[{"id": "XW-001", "theme": "Application and software inventory", "stages": {"primary": ["deploy", "operate"], "secondary": ["optimize", "retire"]}}, {"id": "XW-002", "theme": "Asset ownership assigned", "stages": {"primary": ["acquire", "deploy", "operate"], "secondary": ["plan"]}}, {"id": "XW-003", "theme": "Asset management policy and scope", "stages": {"primary": ["plan", "optimize"], "secondary": []}}, {"id": "XW-004", "theme": "Roles and responsibilities", "stages": {"primary": ["plan", "optimize"], "secondary": []}}, {"id": "XW-005", "theme": "Discovery and reconciliation of installs", "stages": {"primary": ["deploy", "operate"], "secondary": ["retire"]}}, {"id": "XW-006", "theme": "Entitlement records kept", "stages": {"primary": ["acquire", "operate"], "secondary": ["retire"]}}, {"id": "XW-007", "theme": "License compliance position", "stages": {"primary": ["operate", "optimize"], "secondary": ["deploy"]}}, {"id": "XW-008", "theme": "License renewal and expiry tracking", "stages": {"primary": ["operate", "optimize"], "secondary": ["acquire"]}}, {"id": "XW-009", "theme": "Lifecycle, request to retirement", "stages": {"primary": ["plan", "optimize", "retire"], "secondary": ["acquire", "deploy", "operate"]}}, {"id": "XW-010", "theme": "Retirement and decommissioning", "stages": {"primary": ["retire"], "secondary": []}}, {"id": "XW-011", "theme": "Portfolio value optimization (rationalization)", "stages": {"primary": ["plan", "optimize"], "secondary": []}}, {"id": "XW-012", "theme": "Cost and budget tracking", "stages": {"primary": ["acquire", "operate"], "secondary": []}}, {"id": "XW-013", "theme": "Vendor and contract management", "stages": {"primary": ["acquire", "retire"], "secondary": ["operate", "optimize"]}}, {"id": "XW-014", "theme": "Access control policy", "stages": {"primary": ["plan", "optimize"], "secondary": []}}, {"id": "XW-015", "theme": "Access provisioning", "stages": {"primary": ["deploy", "operate"], "secondary": []}}, {"id": "XW-016", "theme": "Periodic access review", "stages": {"primary": ["operate"], "secondary": []}}, {"id": "XW-017", "theme": "Leaver access removal", "stages": {"primary": ["operate", "retire"], "secondary": []}}, {"id": "XW-018", "theme": "Privileged access", "stages": {"primary": ["deploy", "operate"], "secondary": []}}, {"id": "XW-019", "theme": "Segregation of duties", "stages": {"primary": ["deploy", "operate"], "secondary": []}}, {"id": "XW-020", "theme": "Evidence retention for audit", "stages": {"primary": ["optimize", "retire"], "secondary": ["plan", "acquire", "deploy", "operate"]}}, {"id": "XW-021", "theme": "AI system risk and impact assessment before deployment", "stages": {"primary": ["plan", "deploy"], "secondary": ["operate"]}}, {"id": "XW-022", "theme": "AI system inventory", "stages": {"primary": ["deploy", "operate"], "secondary": ["plan"]}}, {"id": "XW-023", "theme": "AI supplier and third-party oversight", "stages": {"primary": ["acquire", "operate"], "secondary": ["optimize"]}}, {"id": "XW-024", "theme": "Risk register and treatment", "stages": {"primary": ["operate", "optimize"], "secondary": []}}, {"id": "XW-025", "theme": "Performance review and improvement", "stages": {"primary": ["optimize"], "secondary": []}}, {"id": "XW-026", "theme": "Data quality of asset records", "stages": {"primary": ["operate"], "secondary": ["optimize"]}}, {"id": "XW-027", "theme": "Governance body, sponsor, and decision rights", "stages": {"primary": ["plan", "optimize"], "secondary": ["acquire", "retire"]}}, {"id": "XW-028", "theme": "Data classification and handling", "stages": {"primary": ["plan", "retire"], "secondary": ["acquire", "deploy", "operate", "optimize"]}}]</script><!--/IM-DATA-->
+  <!--IM-DATA--><script type="application/json" id="im-data">[{"id": "XW-001", "theme": "Application and software inventory", "stages": {"primary": ["deploy", "operate"], "secondary": ["optimize", "retire"]}}, {"id": "XW-002", "theme": "Asset ownership assigned", "stages": {"primary": ["acquire", "deploy", "operate"], "secondary": ["plan"]}}, {"id": "XW-003", "theme": "Asset management policy and scope", "stages": {"primary": ["plan", "optimize"], "secondary": []}}, {"id": "XW-004", "theme": "Roles and responsibilities", "stages": {"primary": ["plan", "optimize"], "secondary": []}}, {"id": "XW-005", "theme": "Discovery and reconciliation of installs", "stages": {"primary": ["deploy", "operate"], "secondary": ["retire"]}}, {"id": "XW-006", "theme": "Entitlement records kept", "stages": {"primary": ["acquire", "operate"], "secondary": ["retire"]}}, {"id": "XW-007", "theme": "License compliance position", "stages": {"primary": ["operate", "optimize"], "secondary": ["deploy"]}}, {"id": "XW-008", "theme": "License renewal and expiry tracking", "stages": {"primary": ["operate", "optimize"], "secondary": ["acquire"]}}, {"id": "XW-009", "theme": "Lifecycle, request to retirement", "stages": {"primary": ["plan", "optimize", "retire"], "secondary": ["acquire", "deploy", "operate"]}}, {"id": "XW-010", "theme": "Retirement and decommissioning", "stages": {"primary": ["retire"], "secondary": []}}, {"id": "XW-011", "theme": "Portfolio value optimization (rationalization)", "stages": {"primary": ["plan", "optimize"], "secondary": []}}, {"id": "XW-012", "theme": "Cost and budget tracking", "stages": {"primary": ["acquire", "operate"], "secondary": []}}, {"id": "XW-013", "theme": "Vendor and contract management", "stages": {"primary": ["acquire", "retire"], "secondary": ["operate", "optimize"]}}, {"id": "XW-014", "theme": "Access control policy", "stages": {"primary": ["plan", "optimize"], "secondary": []}}, {"id": "XW-015", "theme": "Access provisioning", "stages": {"primary": ["deploy", "operate"], "secondary": []}}, {"id": "XW-016", "theme": "Periodic access review", "stages": {"primary": ["operate"], "secondary": []}}, {"id": "XW-017", "theme": "Leaver access removal", "stages": {"primary": ["operate", "retire"], "secondary": []}}, {"id": "XW-018", "theme": "Privileged access", "stages": {"primary": ["deploy", "operate"], "secondary": []}}, {"id": "XW-019", "theme": "Segregation of duties", "stages": {"primary": ["deploy", "operate"], "secondary": []}}, {"id": "XW-020", "theme": "Evidence retention for audit", "stages": {"primary": ["optimize", "retire"], "secondary": ["plan", "acquire", "deploy", "operate"]}}, {"id": "XW-021", "theme": "AI system risk and impact assessment before deployment", "stages": {"primary": ["plan", "deploy"], "secondary": ["operate"]}}, {"id": "XW-022", "theme": "AI system inventory", "stages": {"primary": ["deploy", "operate"], "secondary": ["plan"]}}, {"id": "XW-023", "theme": "AI supplier and third-party oversight", "stages": {"primary": ["acquire", "operate"], "secondary": ["optimize"]}}, {"id": "XW-024", "theme": "Risk register and treatment", "stages": {"primary": ["operate", "optimize"], "secondary": []}}, {"id": "XW-025", "theme": "Performance review and improvement", "stages": {"primary": ["optimize"], "secondary": []}}, {"id": "XW-026", "theme": "Data quality of asset records", "stages": {"primary": ["operate"], "secondary": ["optimize"]}}, {"id": "XW-027", "theme": "Governance body, sponsor, and decision rights", "stages": {"primary": ["plan", "optimize"], "secondary": ["acquire", "retire"]}}, {"id": "XW-028", "theme": "Data classification and handling", "stages": {"primary": ["plan", "retire"], "secondary": ["acquire", "deploy", "operate", "optimize"]}}, {"id": "XW-029", "theme": "Change management", "stages": {"primary": ["deploy", "operate"], "secondary": ["plan", "optimize"]}}]</script><!--/IM-DATA-->
 </main>
 
 <footer class="site-footer">
-  <p>Eve McGivern · <a href="https://github.com/evemcgivern">github.com/evemcgivern</a></p>
+  <p>Eve McGivern · <a href="https://evemcgivern.github.io/">evemcgivern.github.io</a></p>
   <p>Questions? Comments? <span id="contact-email">email me</span>.</p>
   <p><a href="https://buymeacoffee.com/a8w5iiqszp" rel="noopener">Buy me a coffee</a> if these tools help.</p>
   <noscript><p>Email: evemcgivern at gmail dot com</p></noscript>

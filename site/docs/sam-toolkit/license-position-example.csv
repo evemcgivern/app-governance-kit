@@ -1,0 +1,13 @@
+app_id,product,vendor,license_metric,entitlements_owned,in_use_count,position,status,evidence_source,checked_on,reviewer,notes
+APP-001,Northbeam ERP,Northbeam,named user,38,57,-19,shortfall,demo-estate licenses.csv and apps.csv,2026-09-01,,User count stands in for licensed seats; confirm against the vendor's metric.
+APP-002,Paylane Payroll,Paylane,named user,51,94,-43,shortfall,demo-estate licenses.csv and apps.csv,2026-09-01,,User count stands in for licensed seats; confirm against the vendor's metric.
+APP-003,Staffhub HR information system,Staffhub,named user,64,131,-67,shortfall,demo-estate licenses.csv and apps.csv,2026-09-01,,User count stands in for licensed seats; confirm against the vendor's metric.
+APP-004,Hirewell Recruiting,Hirewell,named user,77,168,-91,shortfall,demo-estate licenses.csv and apps.csv,2026-09-01,,User count stands in for licensed seats; confirm against the vendor's metric.
+APP-005,Coursefield Learning management,Coursefield,named user,90,205,-115,shortfall,demo-estate licenses.csv and apps.csv,2026-09-01,,User count stands in for licensed seats; confirm against the vendor's metric.
+APP-006,Receiptly Expense management,Receiptly,named user,103,242,-139,shortfall,demo-estate licenses.csv and apps.csv,2026-09-01,,User count stands in for licensed seats; confirm against the vendor's metric.
+APP-007,Buyline Procurement,Buyline,named user,116,279,-163,shortfall,demo-estate licenses.csv and apps.csv,2026-09-01,,User count stands in for licensed seats; confirm against the vendor's metric.
+APP-008,Clausebase Contract management,Clausebase,named user,129,316,-187,shortfall,demo-estate licenses.csv and apps.csv,2026-09-01,,User count stands in for licensed seats; confirm against the vendor's metric.
+APP-009,Relato CRM,Relato,named user,142,353,-211,shortfall,demo-estate licenses.csv and apps.csv,2026-09-01,,User count stands in for licensed seats; confirm against the vendor's metric.
+APP-010,Campaignly Marketing automation,Campaignly,named user,155,390,-235,shortfall,demo-estate licenses.csv and apps.csv,2026-09-01,,User count stands in for licensed seats; confirm against the vendor's metric.
+APP-011,Helpwise Customer support desk,Helpwise,named user,168,427,-259,shortfall,demo-estate licenses.csv and apps.csv,2026-09-01,,User count stands in for licensed seats; confirm against the vendor's metric.
+APP-012,Chattera Live chat,Chattera,named user,181,464,-283,shortfall,demo-estate licenses.csv and apps.csv,2026-09-01,,User count stands in for licensed seats; confirm against the vendor's metric.

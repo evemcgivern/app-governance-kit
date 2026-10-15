@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Platform guide: Application rationalization — Eve McGivern</title>
+<meta name="description" content="Where the fields this tool uses live in ServiceNow&#x27;s Enterprise Architecture and SAM Pro…">
+<meta name="author" content="Eve McGivern">
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../apple-touch-icon.png">
+<link rel="stylesheet" href="../../style.css">
+<script src="../../nav.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="support-bar"><a class="coffee-link" href="https://buymeacoffee.com/a8w5iiqszp" rel="noopener"><svg class="coffee-icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M5 9h11v5a5 5 0 0 1-5 5h-1a5 5 0 0 1-5-5V9z" fill="#2f9e6e"/><path d="M16 10.5h1.2a2.4 2.4 0 0 1 0 4.8H16" fill="none" stroke="#2f9e6e" stroke-width="1.8" stroke-linecap="round"/><path d="M8.5 3.5c0 1.3 1 1.3 1 2.6M12 3.5c0 1.3 1 1.3 1 2.6" fill="none" stroke="#2f9e6e" stroke-width="1.6" stroke-linecap="round"/></svg><span>Buy me a coffee</span></a></div>
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="https://evemcgivern.github.io/">Eve McGivern</a>
+    <nav class="site-nav" aria-label="Main">
+      <ul>
+        <li><a href="../../tools.html" aria-describedby="tip-tools">Tools</a><span class="nav-tip" role="tooltip" id="tip-tools">The seven governance methods, packaged as skills for Claude, Codex, and Copilot.</span></li>
+        <li><a href="../../sam-toolkit.html" aria-describedby="tip-sam-toolkit">SAM toolkit</a><span class="nav-tip" role="tooltip" id="tip-sam-toolkit">Templates and checklists for running software asset management by hand.</span></li>
+        <li><a href="../../practicum.html" aria-describedby="tip-practicum">Practicum</a><span class="nav-tip" role="tooltip" id="tip-practicum">Hands-on exercises on a fictional company, with answers you can check.</span></li>
+        <li><a href="../../lifecycle.html" aria-describedby="tip-lifecycle">Lifecycle</a><span class="nav-tip" role="tooltip" id="tip-lifecycle">Six stages from request to retirement, with the questions to ask at each.</span></li>
+        <li><a href="../../crosswalk.html" aria-describedby="tip-crosswalk">Crosswalk explorer</a><span class="nav-tip" role="tooltip" id="tip-crosswalk">See how each control maps to ISO/IEC 19770, COBIT, 27001, and 42001.</span></li>
+        <li><a href="../../impact-map.html" aria-describedby="tip-impact-map">Impact map</a><span class="nav-tip" role="tooltip" id="tip-impact-map">One grid showing every control theme against every lifecycle stage.</span></li>
+        <li><a href="../../field-guide.html" aria-describedby="tip-field-guide">Field guide</a><span class="nav-tip" role="tooltip" id="tip-field-guide">Plain-language guides to the standards, certifications, and key terms.</span></li>
+        <li><a href="../../case-studies.html" aria-describedby="tip-case-studies">Case studies</a><span class="nav-tip" role="tooltip" id="tip-case-studies">What is coming next: worked examples of the kit in use.</span></li>
+        <li><a href="../../about.html" aria-describedby="tip-about">About</a><span class="nav-tip" role="tooltip" id="tip-about">Who built the kit, and how to get in touch.</span></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<main id="main" class="doc-page">
+  <p class="doc-back"><a href="../../tools.html">&larr; Tools</a></p>
+  <h1>Platform guide: Application rationalization</h1>
+  <div class="visual-actions doc-actions">
+    <a class="visual-actions__link" href="platform-guide.docx">Download Word (.docx)</a>
+    <button type="button" class="visual-actions__link doc-print" onclick="window.print()">Print or save as PDF</button>
+  </div>
+
+  <div class="doc-body prose prose-wide">
+<p>Where the fields this tool uses live in ServiceNow&#x27;s Enterprise Architecture and SAM Pro, and in Flexera One. Every module, table, or field named below is confirmed on a source in the Sources list; where no source names one, that is stated as a gap rather than guessed.</p>
+<h2 id="servicenow-enterprise-architecture-formerly-application-portfolio-management-applications-and-portfolio-assessment">ServiceNow Enterprise Architecture (formerly Application Portfolio Management): applications and portfolio assessment</h2>
+<p>Applications are held as <strong>Business Applications</strong> (table <code>cmdb_ci_business_app</code>), the object ServiceNow&#x27;s <strong>Enterprise Architecture</strong> product treats as the subject of portfolio management. Starting with the Xanadu release, ServiceNow renamed Application Portfolio Management (APM) to Enterprise Architecture, still documented in doc titles and breadcrumbs as &quot;Enterprise Architecture (formerly Application Portfolio Management)&quot;; ServiceNow frames the rename as additive rather than a removal of any APM capability, broadening scope beyond a single application portfolio into wider enterprise modeling. Portfolio assessment runs through <strong>Assessment Indicators</strong> — individual evaluation criteria such as cost, risk, quality, or usability — grouped into a <strong>Scoring Profile</strong>, which weights the indicators for a given assessment context and produces an <strong>Application Score</strong> per app. Assessments cover named dimensions including cost, quality, technical risk, investment, user satisfaction, and business value, matching the business-value and technical-fit split this method scores on. Results surface through an <strong>Application 360</strong> view and bubble-chart visualizations, and from Xanadu onward through the <strong>Enterprise Architecture Workspace (EAW)</strong>&#x27;s &quot;Application Migration &amp; Rationalization&quot; lens as well as the classic Business Application form — both read and write the same underlying records.</p>
+<p>Enterprise Architecture&#x27;s own documentation still frames application portfolio rationalization as a decision to <strong>invest, sustain, migrate, or retire</strong> an application — its own four labels, not this method&#x27;s Tolerate/Invest/Migrate/Eliminate wording. Map this tool&#x27;s TIME output onto Enterprise Architecture by treating Tolerate as &quot;sustain&quot; and Eliminate as &quot;retire&quot;; Invest and Migrate carry over directly. That decision is stored in a field named <strong>Planned Disposition</strong> on the Business Application, confirmed on ServiceNow&#x27;s Enterprise Architecture Workspace rationalization documentation and a ServiceNow Community thread titled &quot;Definitions of Planned Disposition values?&quot;; ServiceNow&#x27;s public documentation does not name the underlying table/column identifier for that field.</p>
+<p>ServiceNow&#x27;s own Application Portfolio Management product page (<code>servicenow.com/products/application-portfolio-management.html</code>) and a Business Application form reference page do not return readable content to an automated fetch — 403 and 404 respectively, including a Washington DC-bundle equivalent of the form page, which also 404&#x27;d. The terms above come from ServiceNow docs-bundle pages that did load.</p>
+<h2 id="servicenow-sam-pro-entitlements-and-license-position">ServiceNow SAM Pro: entitlements and license position</h2>
+<p>License records are held as <strong>Software Entitlements</strong> (table <code>alm_license</code>) — the purchase records for owned software. SAM Pro&#x27;s <strong>Reconciliation</strong> step matches entitlements against actual installations using its licensing rules engine to produce a <strong>License Compliance Position</strong>, the record this method&#x27;s license-expiry and over-entitlement check corresponds to. Each entitlement carries a <strong>License Metric</strong> (the licensing model, such as per-user or per-processor) and can be enriched from a <strong>PPN (Publisher Part Number)</strong>, the vendor SKU that prefills metric, downgrade rights, and end-of-life data. <strong>License consumption rules</strong> govern which installations draw against a given entitlement.</p>
+<p>ServiceNow&#x27;s community documentation names the relevant date fields only as &quot;Effective/expiry dates&quot; on the entitlement and &quot;End date&quot; on the linked Contract (<code>ast_contract</code>) record, and confirms that SAM Pro&#x27;s renewal calendar and dashboard notifications key off the <strong>contract&#x27;s</strong> end date, not the entitlement&#x27;s own end date — a separate community thread describes blank renewal dates as a common data-entry mistake that stops SAM Pro from flagging a renewal. No ServiceNow-published source names a more specific column identifier for either field. This method&#x27;s <code>checked_on</code>/expiry check maps to that contract-driven renewal-tracking behavior, not to a single named entitlement-expiry column.</p>
+<h2 id="flexera-one-application-inventory-and-license-position">Flexera One: application inventory and license position</h2>
+<p>Flexera One&#x27;s SaaS inventory comes from <strong>comprehensive SaaS discovery</strong> feeding a <strong>multi-source data engine</strong> that combines financial systems, expense reports, API connectors, SSO providers, and browser extensions; on-prem and cloud assets are covered by the same <strong>hybrid IT discovery</strong> used for application inventory generally. Every discovered title is normalized against <strong>Technopedia</strong>, which Flexera states recognizes and normalizes titles at over 98%. Duplicate detection is a named capability — <strong>application redundancy identification</strong>, backed by <strong>automated application categorization</strong> — which is the direct analog of this method&#x27;s duplicate-finding step.</p>
+<p>License position work uses <strong>verified usage metering</strong> (login-depth usage data, not just login events) to report active, inactive, and never-active users and cost per user, surfacing <strong>unused and unassigned licenses</strong> for <strong>automated reclamation workflows</strong>. <strong>Dependency mapping</strong> flags what would break before an app is decommissioned, which matters for this method&#x27;s Migrate/Eliminate data-disposition step. Flexera&#x27;s own rationalization framing groups outcomes as <strong>Re-host, Re-platform, Retire, Retain</strong> — its &quot;4 R&#x27;s&quot; — again a different label set from this method&#x27;s TIME model; map Retain to Tolerate, Retire to Eliminate, and treat Re-host/Re-platform together as Migrate.</p>
+<p>No confirmed Flexera One field or table name exists for storing a rationalization decision itself (TIME or 4 R&#x27;s); its documented capabilities support the inventory and usage evidence the decision is based on, not a decision record. Flexera&#x27;s documentation site (<code>docs.flexera.com/...</code>) does not return readable content to automated fetches, so nothing above cites it directly.</p>
+<h2 id="sources-checked">Sources checked</h2>
+<ul><li><a href="https://www.servicenow.com/docs/bundle/yokohama-application-portfolio-management/page/product/application-portfolio-management/concept/application-assessment.html">Application assessment — ServiceNow Docs (Yokohama, Application Portfolio Management)</a> — Assessment Indicators, Scoring Profiles, Application Scores, Application 360, bubble-chart visualization, assessment dimensions.</li><li><a href="https://www.servicenow.com/docs/bundle/washingtondc-application-portfolio-management/page/product/application-portfolio-management/concept/application-portfolio-management-landing-page.html">Application Portfolio Management landing page — ServiceNow Docs (Washington DC)</a> — Business Applications as the managed object; rationalization framed as invest, sustain, migrate, or retire.</li><li><a href="https://www.servicenow.com/community/enterprise-architecture-articles/enterprise-architecture-formerly-application-portfolio/ta-p/2382292">Enterprise Architecture (formerly Application Portfolio Management) — Start your EA Journey Toolkit — ServiceNow Community</a> — the Xanadu rename and ServiceNow&#x27;s own framing of what changed.</li><li><a href="https://www.servicenow.com/docs/r/xanadu/application-portfolio-management/enterprise-architecture/apm-use-case.html">Enterprise Architecture (formerly Application Portfolio Management) and CSDM tables — ServiceNow Docs, Xanadu</a> — <code>cmdb_ci_business_app</code> and related table names.</li><li><a href="https://www.servicenow.com/docs/bundle/xanadu-application-portfolio-management/page/product/application-portfolio-management/concept/eaw-concept/eaw-rationalize-business-applications.html">Set the planned disposition of a business application — ServiceNow Docs, Xanadu (Enterprise Architecture Workspace)</a> — the Planned Disposition field and the EAW &quot;Application Migration &amp; Rationalization&quot; lens.</li><li><a href="https://www.servicenow.com/community/enterprise-architecture-forum/definitions-of-planned-disposition-values/m-p/2849144">Definitions of Planned Disposition values? — ServiceNow Community</a> — confirms the field name and its invest/sustain/migrate/retire values.</li><li><a href="https://www.servicenow.com/community/sam-blog/review-software-entitlements/ba-p/3304445">Review Software Entitlements — ServiceNow Community</a> — Software Entitlements, Reconciliation, License Compliance Position, License Metric, License consumption rules, PPN, and the blank-renewal-date pitfall.</li><li>[Software Asset Management - Software Entitlement [alm_license] — ServiceNow Community](https://www.servicenow.com/community/sam-forum/software-asset-management-software-entitlement-alm-license-gt-br/m-p/3083406) — confirms the <code>alm_license</code> table name.</li><li><a href="https://www.servicenow.com/community/sam-forum/guidance-on-sam-pro-license-renewal-process/m-p/3510712">Guidance on SAM Pro license renewal process — ServiceNow Community</a> — &quot;Effective/expiry dates&quot; and Contract &quot;End date&quot; field labels; renewal calendar keyed to the contract&#x27;s end date.</li><li><a href="https://www.flexera.com/solutions/saas-spend/application-rationalization">Streamline Your SaaS Portfolio with Application Rationalization — Flexera</a> — comprehensive SaaS discovery, multi-source data engine, verified usage metering, application redundancy identification, automated application categorization, unused/unassigned licenses, automated reclamation workflows.</li><li><a href="https://www.flexera.com/flexera-one/it-visibility/application-rationalization">Application Rationalization &amp; Management — Flexera</a> — hybrid IT discovery, automated categorization, dependency mapping, Technopedia recognition/normalization rate, the Re-host/Re-platform/Retire/Retain framing.</li></ul>
+<p>Pages that do not return readable content to an automated fetch: ServiceNow&#x27;s own Application Portfolio Management product page (<code>servicenow.com/products/application-portfolio-management.html</code>, 403) and its Business Application form reference (<code>servicenow.com/docs/r/application-portfolio-management/business-application-form.html</code>, 404, also 404 on the Washington DC-bundle equivalent); and Flexera&#x27;s documentation site (<code>docs.flexera.com/...</code>, 403). Everything above comes from a page that loaded.</p>
+  </div>
+</main>
+<footer class="site-footer">
+  <p>Eve McGivern · <a href="https://evemcgivern.github.io/">evemcgivern.github.io</a></p>
+  <p>Questions? Comments? <span id="contact-email">email me</span>.</p>
+  <p><a href="https://buymeacoffee.com/a8w5iiqszp" rel="noopener">Buy me a coffee</a> if these tools help.</p>
+  <noscript><p>Email: evemcgivern at gmail dot com</p></noscript>
+</footer>
+<script>
+(function () {
+  "use strict";
+  var user = "evemcgivern", domain = "gmail.com";
+  var el = document.getElementById("contact-email");
+  if (!el) { return; }
+  var a = document.createElement("a");
+  a.href = "mailto:" + user + "@" + domain;
+  a.textContent = "Email me";
+  el.replaceWith(a);
+})();
+</script>
+
+</body>
+</html>

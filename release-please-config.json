@@ -1,0 +1,15 @@
+{
+  "$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json",
+  "bootstrap-sha": "fad711bb39372c3697b0927e6a063b9d0f748d21",
+  "include-v-in-tag": true,
+  "bump-minor-pre-major": true,
+  "bump-patch-for-minor-pre-major": false,
+  "packages": {
+    ".": {
+      "release-type": "simple",
+      "package-name": "app-governance-kit",
+      "changelog-path": "CHANGELOG.md",
+      "extra-files": ["README.md"]
+    }
+  }
+}

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Exercise 05: Access review — Halden&#x27;s account export — Eve McGivern</title>
+<meta name="description" content="Level: CSAM · Time: 45–60 minutes">
+<meta name="author" content="Eve McGivern">
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../apple-touch-icon.png">
+<link rel="stylesheet" href="../../style.css">
+<script src="../../nav.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="support-bar"><a class="coffee-link" href="https://buymeacoffee.com/a8w5iiqszp" rel="noopener"><svg class="coffee-icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M5 9h11v5a5 5 0 0 1-5 5h-1a5 5 0 0 1-5-5V9z" fill="#2f9e6e"/><path d="M16 10.5h1.2a2.4 2.4 0 0 1 0 4.8H16" fill="none" stroke="#2f9e6e" stroke-width="1.8" stroke-linecap="round"/><path d="M8.5 3.5c0 1.3 1 1.3 1 2.6M12 3.5c0 1.3 1 1.3 1 2.6" fill="none" stroke="#2f9e6e" stroke-width="1.6" stroke-linecap="round"/></svg><span>Buy me a coffee</span></a></div>
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="https://evemcgivern.github.io/">Eve McGivern</a>
+    <nav class="site-nav" aria-label="Main">
+      <ul>
+        <li><a href="../../tools.html" aria-describedby="tip-tools">Tools</a><span class="nav-tip" role="tooltip" id="tip-tools">The seven governance methods, packaged as skills for Claude, Codex, and Copilot.</span></li>
+        <li><a href="../../sam-toolkit.html" aria-describedby="tip-sam-toolkit">SAM toolkit</a><span class="nav-tip" role="tooltip" id="tip-sam-toolkit">Templates and checklists for running software asset management by hand.</span></li>
+        <li><a href="../../practicum.html" aria-describedby="tip-practicum">Practicum</a><span class="nav-tip" role="tooltip" id="tip-practicum">Hands-on exercises on a fictional company, with answers you can check.</span></li>
+        <li><a href="../../lifecycle.html" aria-describedby="tip-lifecycle">Lifecycle</a><span class="nav-tip" role="tooltip" id="tip-lifecycle">Six stages from request to retirement, with the questions to ask at each.</span></li>
+        <li><a href="../../crosswalk.html" aria-describedby="tip-crosswalk">Crosswalk explorer</a><span class="nav-tip" role="tooltip" id="tip-crosswalk">See how each control maps to ISO/IEC 19770, COBIT, 27001, and 42001.</span></li>
+        <li><a href="../../impact-map.html" aria-describedby="tip-impact-map">Impact map</a><span class="nav-tip" role="tooltip" id="tip-impact-map">One grid showing every control theme against every lifecycle stage.</span></li>
+        <li><a href="../../field-guide.html" aria-describedby="tip-field-guide">Field guide</a><span class="nav-tip" role="tooltip" id="tip-field-guide">Plain-language guides to the standards, certifications, and key terms.</span></li>
+        <li><a href="../../case-studies.html" aria-describedby="tip-case-studies">Case studies</a><span class="nav-tip" role="tooltip" id="tip-case-studies">What is coming next: worked examples of the kit in use.</span></li>
+        <li><a href="../../about.html" aria-describedby="tip-about">About</a><span class="nav-tip" role="tooltip" id="tip-about">Who built the kit, and how to get in touch.</span></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<main id="main" class="doc-page">
+  <p class="doc-back"><a href="../../practicum.html">&larr; Practicum</a></p>
+  <h1>Exercise 05: Access review — Halden&#x27;s account export</h1>
+  <div class="visual-actions doc-actions">
+    <a class="visual-actions__link" href="05-access-review.docx">Download Word (.docx)</a>
+    <button type="button" class="visual-actions__link doc-print" onclick="window.print()">Print or save as PDF</button>
+  </div>
+
+  <div class="doc-body prose prose-wide">
+<p><strong>Level:</strong> CSAM · <strong>Time:</strong> 45–60 minutes</p>
+<h2 id="scenario">Scenario</h2>
+<p>Halden&#x27;s auditor asked for a quarterly access review across the applications in scope. You have the account export, the HR roster, and the application list. Before anything else goes in the memo, every account has to be matched to a real, currently-employed person — and &quot;the login worked recently&quot; is not the same as &quot;this person still works here.&quot;</p>
+<h2 id="files">Files</h2>
+<ul><li>demo-estate/accounts.csv — one row per account, with the employee id, app, role, and last login</li><li>demo-estate/employees.csv — employee id, status, and termination date</li><li>demo-estate/apps.csv — application data sensitivity, to set review order</li></ul>
+<h2 id="work-through">Work through</h2>
+<p>Use <a href="../access-review/checklist.html">Access review checklist</a> by hand, without AI.</p>
+<ul><li>Check the applications&#x27; <code>data_sensitivity</code> column first and review the <code>confidential</code> apps before the <code>internal</code> ones, as the checklist asks — it changes which accounts you&#x27;ll look at first, not just the write-up order.</li><li>For every account, look up its <code>employee_id</code> in <code>employees.csv</code> two ways: is that employee&#x27;s status <code>terminated</code>, and does that employee id even <em>appear</em> in the roster at all. Those are two different reasons for the same finding, and one of them won&#x27;t show up if you only check status.</li><li><code>last_login</code> alone won&#x27;t tell you an account is orphaned — a recent login from a terminated employee&#x27;s account is exactly the failure mode this checklist step exists to catch, not a reason to skip it.</li></ul>
+<h2 id="hand-in">Hand in</h2>
+<p>An exceptions table (account id, employee id, app, issue, recommended action), a short evidence summary (scope, population reviewed, method), and a one-paragraph auditor memo. Then tick &quot;orphaned&quot; next to each account you found on the interactive practicum page.</p>
+<h2 id="check-yourself">Check yourself</h2>
+<p>Open the interactive practicum page and enter your findings there — no installs, no command line. &quot;Passed&quot; means every orphaned account in the key is in your findings, with at most one extra; &quot;missed&quot; lists any orphaned account you didn&#x27;t catch; &quot;extra&quot; lists any account you flagged that the key doesn&#x27;t. The key is <code>demo-estate/answer-key.json</code> in this repo — it&#x27;s public, so check your own answer before you open it.</p>
+<h2 id="reflect">Reflect</h2>
+<ol><li>One orphaned account belongs to an employee id that isn&#x27;t in <code>employees.csv</code> at all, rather than one marked terminated. What process failure would produce an account like that, and is it the same fix as a slow offboarding?</li><li>You reviewed confidential apps first. Did that change which orphaned accounts you found first, or only the order you wrote them up in?</li><li>If you could add one column to <code>accounts.csv</code> that would have made this review faster without changing what counts as orphaned, what would it be?</li></ol>
+<h2 id="certification-link">Certification link</h2>
+<p>This exercise practices access-certification ground shared across the CSAM syllabus and ISO/IEC 27001&#x27;s access-control controls: matching every account to a real, current person, prioritizing review by data sensitivity, and treating a missing HR record as seriously as an explicit termination date.</p>
+  </div>
+</main>
+<footer class="site-footer">
+  <p>Eve McGivern · <a href="https://evemcgivern.github.io/">evemcgivern.github.io</a></p>
+  <p>Questions? Comments? <span id="contact-email">email me</span>.</p>
+  <p><a href="https://buymeacoffee.com/a8w5iiqszp" rel="noopener">Buy me a coffee</a> if these tools help.</p>
+  <noscript><p>Email: evemcgivern at gmail dot com</p></noscript>
+</footer>
+<script>
+(function () {
+  "use strict";
+  var user = "evemcgivern", domain = "gmail.com";
+  var el = document.getElementById("contact-email");
+  if (!el) { return; }
+  var a = document.createElement("a");
+  a.href = "mailto:" + user + "@" + domain;
+  a.textContent = "Email me";
+  el.replaceWith(a);
+})();
+</script>
+
+</body>
+</html>

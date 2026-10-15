@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Platform guide: Hardware lifecycle check — Eve McGivern</title>
+<meta name="description" content="Where the fields this tool uses live in ServiceNow Hardware Asset Management (HAM), and…">
+<meta name="author" content="Eve McGivern">
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../apple-touch-icon.png">
+<link rel="stylesheet" href="../../style.css">
+<script src="../../nav.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="support-bar"><a class="coffee-link" href="https://buymeacoffee.com/a8w5iiqszp" rel="noopener"><svg class="coffee-icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M5 9h11v5a5 5 0 0 1-5 5h-1a5 5 0 0 1-5-5V9z" fill="#2f9e6e"/><path d="M16 10.5h1.2a2.4 2.4 0 0 1 0 4.8H16" fill="none" stroke="#2f9e6e" stroke-width="1.8" stroke-linecap="round"/><path d="M8.5 3.5c0 1.3 1 1.3 1 2.6M12 3.5c0 1.3 1 1.3 1 2.6" fill="none" stroke="#2f9e6e" stroke-width="1.6" stroke-linecap="round"/></svg><span>Buy me a coffee</span></a></div>
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="https://evemcgivern.github.io/">Eve McGivern</a>
+    <nav class="site-nav" aria-label="Main">
+      <ul>
+        <li><a href="../../tools.html" aria-describedby="tip-tools">Tools</a><span class="nav-tip" role="tooltip" id="tip-tools">The seven governance methods, packaged as skills for Claude, Codex, and Copilot.</span></li>
+        <li><a href="../../sam-toolkit.html" aria-describedby="tip-sam-toolkit">SAM toolkit</a><span class="nav-tip" role="tooltip" id="tip-sam-toolkit">Templates and checklists for running software asset management by hand.</span></li>
+        <li><a href="../../practicum.html" aria-describedby="tip-practicum">Practicum</a><span class="nav-tip" role="tooltip" id="tip-practicum">Hands-on exercises on a fictional company, with answers you can check.</span></li>
+        <li><a href="../../lifecycle.html" aria-describedby="tip-lifecycle">Lifecycle</a><span class="nav-tip" role="tooltip" id="tip-lifecycle">Six stages from request to retirement, with the questions to ask at each.</span></li>
+        <li><a href="../../crosswalk.html" aria-describedby="tip-crosswalk">Crosswalk explorer</a><span class="nav-tip" role="tooltip" id="tip-crosswalk">See how each control maps to ISO/IEC 19770, COBIT, 27001, and 42001.</span></li>
+        <li><a href="../../impact-map.html" aria-describedby="tip-impact-map">Impact map</a><span class="nav-tip" role="tooltip" id="tip-impact-map">One grid showing every control theme against every lifecycle stage.</span></li>
+        <li><a href="../../field-guide.html" aria-describedby="tip-field-guide">Field guide</a><span class="nav-tip" role="tooltip" id="tip-field-guide">Plain-language guides to the standards, certifications, and key terms.</span></li>
+        <li><a href="../../case-studies.html" aria-describedby="tip-case-studies">Case studies</a><span class="nav-tip" role="tooltip" id="tip-case-studies">What is coming next: worked examples of the kit in use.</span></li>
+        <li><a href="../../about.html" aria-describedby="tip-about">About</a><span class="nav-tip" role="tooltip" id="tip-about">Who built the kit, and how to get in touch.</span></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<main id="main" class="doc-page">
+  <p class="doc-back"><a href="../../tools.html">&larr; Tools</a></p>
+  <h1>Platform guide: Hardware lifecycle check</h1>
+  <div class="visual-actions doc-actions">
+    <a class="visual-actions__link" href="platform-guide.docx">Download Word (.docx)</a>
+    <button type="button" class="visual-actions__link doc-print" onclick="window.print()">Print or save as PDF</button>
+  </div>
+
+  <div class="doc-body prose prose-wide">
+<p>Where the fields this tool uses live in ServiceNow Hardware Asset Management (HAM), and in Flexera One. Every module, table, or field named below is confirmed on a source in the Sources list; where no source names one, that is stated as a gap rather than guessed.</p>
+<h2 id="servicenow-hardware-asset-management-refresh-eligibility-and-disposal">ServiceNow Hardware Asset Management: refresh eligibility and disposal</h2>
+<p>Hardware assets are held on the <strong>Hardware [</strong><strong><code>alm_hardware</code></strong><strong>]</strong> table, the object ServiceNow&#x27;s HAM product manages through procurement, deployment, refresh, and disposal. Refresh eligibility is not left to a manual date comparison: a scheduled job, the <strong>&quot;SAM - Calculate Asset Refresh Eligibility&quot;</strong> job, runs weekly and compares each asset&#x27;s <code>created on</code> date against a <strong><code>useful_life</code></strong> field carried on the asset&#x27;s hardware model; an asset outside its useful-life window is flagged true on an <strong>Eligible for refresh</strong> field, present on the hardware asset form starting with the Orlando release. That is the direct analog of this method&#x27;s refresh-due check, except ServiceNow derives the due date from the model&#x27;s useful life rather than storing a per-asset refresh-due date directly. A refresh itself is raised as a <strong>Hardware Asset Refresh Order</strong> (Service Catalog &gt; Asset Lifecycle), which can replace aged assets with a single model or a mix of models; once approved, a <strong>Hardware Asset Refresh Line</strong> flow runs each replaced asset through Asset pick, Prepare asset, Schedule refresh, Deploy new asset, and Reclaim aged asset, after which the reclaimed asset moves to <strong>In stock</strong> state with a <strong>Pending disposal</strong> substate.</p>
+<p><code>alm_hardware</code> carries a state/substate pair with substates including, under <strong>In Stock</strong>: Available, Reserved, Defective, Pending Repair, Pending Install, Pending Disposal, Pending Transfer, Pre-Allocated; under <strong>In Use</strong>: the same set plus In Transit; under <strong>Retired</strong>: Disposed, Sold, Donated, Vendor Credit, Pending Disposal; and under <strong>Missing</strong>: Lost, Stolen. No ServiceNow-published source documents the specific conditions that trigger each transition.</p>
+<p>Disposal itself runs as a <strong>Hardware Disposal Order</strong>, progressing through named stages — Draft (Verify Assets task), Scheduling (Schedule Pickup task), Transit (Asset Departure task; cancelable only up to this stage), Confirmation (Vendor Confirmation task), Documentation (Disposal Documentation task), then Completed. For a data-bearing device, ServiceNow&#x27;s own guidance states a <strong>Certificate of Destruction</strong> is required — documentation confirming data-bearing media was destroyed in compliance with applicable law and industry standards — attachable to the asset record or to a contract record with the disposal vendor. That is the direct analog of this method&#x27;s data-wipe confirmation and its retired-device disposal-blocking check; no ServiceNow-published source names the specific field the certificate attachment or the wipe-confirmed flag lives on.</p>
+<h2 id="flexera-one-hardware-lifecycle-end-of-life-detection-and-disposal">Flexera One: hardware lifecycle, end-of-life detection, and disposal</h2>
+<p>Flexera One&#x27;s <strong>Hardware Asset Management</strong> (part of its IT Asset Lifecycle suite) inventories hardware and integrates with hardware vendors, asset registers, procurement systems, inventory tools, barcoding equipment, and disposal vendors to set and track an asset&#x27;s disposition automatically as it moves through its lifecycle — request, procurement, deployment, tracking and monitoring, maintenance and support, and retirement and disposal. Flexera frames end-of-life detection through <strong>Technopedia</strong>, its own database of end-of-life (EOL) and end-of-support (EOS) intelligence, surfaced as lifecycle alerts when new hardware arrives, reaches end of life, its warranty expires, or its lease terminates — the direct analog of this method&#x27;s refresh-due check, though driven by vendor EOL/EOS data rather than a fixed per-type refresh cycle. On retirement, Flexera <strong>automatically reclaims software and subscription licenses</strong> tied to the retiring device before disposal proceeds.</p>
+<p>Flexera&#x27;s own disposal-integration language describes coordinating with connected <strong>disposal vendors</strong> to set asset disposition, but no Flexera-published source names a specific field, table, or status value for a data-wipe or destruction-certificate confirmation; a Certificate of Destruction for a data-bearing device is described industry-wide (including by ITAD vendors Flexera can integrate with) as something the disposal vendor issues, not a native Flexera One record. That gap is stated here rather than guessed — this method&#x27;s <code>data_wipe_confirmed</code> field maps to that external certificate&#x27;s existence, tracked as an attribute in the governance record, not to a confirmed Flexera One field name.</p>
+<h2 id="sources-checked">Sources checked</h2>
+<ul><li><a href="https://support.servicenow.com/kb?id=kb_article_view&amp;sysparm_article=KB0829089">Eligible for refresh field on hardware asset records (alm_hardware) — KB0829089, Now Support Portal</a> — the <code>alm_hardware</code> table and the Eligible for refresh field, fetched 2026-09-25.</li><li><a href="https://www.servicenow.com/docs/bundle/zurich-it-asset-management/page/product/hardware-asset-management/task/hardware-asset-refresh.html">Request a Hardware Asset Refresh — ServiceNow Docs (Zurich, IT Asset Management)</a> — the <code>alm_hardware</code> table, the &quot;SAM - Calculate Asset Refresh Eligibility&quot; scheduled job, <code>useful_life</code> comparison logic, the Hardware Asset Refresh Order catalog item, and the refresh-line fulfillment flow ending in In stock / Pending disposal, fetched 2026-09-25.</li><li><a href="https://www.servicenow.com/docs/r/it-asset-management/hardware-asset-management/hardware-disposal-stages.html">Hardware disposal order stages — ServiceNow Docs</a> — the Draft/Scheduling/Transit/Confirmation/Documentation/Completed/Cancelled disposal-order stages and their tasks, fetched 2026-09-25.</li><li><a href="https://www.servicenow.com/community/itsm-forum/documentation-of-state-and-sub-state-of-asset-in-alm-hardware/m-p/2460389">Documentation of state and sub state of asset in alm_hardware — ServiceNow Community</a> — the In Stock / In Use / Retired / Missing state and substate values on <code>alm_hardware</code>, fetched 2026-09-25.</li><li><a href="https://www.servicenow.com/community/sam-forum/hardware-asset-management-refresh-reclaim-lost-stolen-disposal/m-p/1303905">Hardware Asset Management, refresh, reclaim, lost/stolen, disposal process requirements mapping — ServiceNow Community</a> — confirms HAM&#x27;s refresh, reclaim, lost/stolen, and disposal as named, distinct processes, fetched 2026-09-25.</li><li><a href="https://www.servicenow.com/community/s/cgfwn76974/attachments/cgfwn76974/hardware-asset-management-forum/2863/1/User%20Guide%20-%20Disposal%20Orders%20-%20Paramount%20April%202024.pdf">User Guide - Disposal Orders - ServiceNow Community attachment</a> — the Certificate of Destruction requirement for data-bearing hardware assets and where it can be attached; found via search 2026-09-25, and not fetched directly (it is a linked attachment, not a page WebFetch resolved), so it is sourced from the search index&#x27;s excerpt of the document rather than a direct fetch.</li><li><a href="https://www.flexera.com/solutions/it-asset-lifecycle/hardware-asset-management">IT Hardware Asset Management Solutions — Flexera</a> — hardware lifecycle integration (vendors, asset registers, procurement, inventory, barcoding, disposal vendors), automated disposition, warranty/lease tracking, and software-license reclamation on retirement, fetched 2026-09-25.</li><li><a href="https://www.flexera.com/solutions/it-asset-lifecycle/hardware-lifecycle-management">Strategic Hardware Lifecycle Management — Flexera</a> — the five-stage lifecycle (planning, acquisition, utilization, maintenance, renewal or disposal), Technopedia-sourced EOL/EOS lifecycle alerts, and Flexera One IT Visibility discovery, fetched 2026-09-25.</li></ul>
+<p>Pages that do not return readable content to an automated fetch: ServiceNow&#x27;s own Hardware Asset Management product page (<code>servicenow.com/products/hardware-asset-management.html</code>, 403). Everything above comes from a page that loaded, or is flagged where it did not.</p>
+  </div>
+</main>
+<footer class="site-footer">
+  <p>Eve McGivern · <a href="https://evemcgivern.github.io/">evemcgivern.github.io</a></p>
+  <p>Questions? Comments? <span id="contact-email">email me</span>.</p>
+  <p><a href="https://buymeacoffee.com/a8w5iiqszp" rel="noopener">Buy me a coffee</a> if these tools help.</p>
+  <noscript><p>Email: evemcgivern at gmail dot com</p></noscript>
+</footer>
+<script>
+(function () {
+  "use strict";
+  var user = "evemcgivern", domain = "gmail.com";
+  var el = document.getElementById("contact-email");
+  if (!el) { return; }
+  var a = document.createElement("a");
+  a.href = "mailto:" + user + "@" + domain;
+  a.textContent = "Email me";
+  el.replaceWith(a);
+})();
+</script>
+
+</body>
+</html>

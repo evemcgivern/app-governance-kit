@@ -2,7 +2,7 @@
 
 A short check of how far your IT asset management has got, using the three tiers in ISO/IEC 19770-1:2017 Annex B. The tiers are cumulative: tier 2 expects tier 1, and tier 3 expects both. Use this as a starting point before the full ITAM maturity check.
 
-**How to use it:** answer each question yes, partly, or no, and write down the evidence you could show an auditor. Stop at the first tier where you have a "no" or several "partly" answers. That tier is your next piece of work.
+**How to use it:** answer each question yes, partly, or no, and write down the evidence you could show an auditor. A tier counts as met when no question is a "no" and at most one is "partly". Your assumed tier is the highest tier you meet, along with every tier below it. The first tier you do not meet is your next piece of work.
 
 The Annex B tier names and aims are summarized here. Which Annex A processes sit in which tier is shown in Figure B.2 of the standard. Check that figure in your copy before using this to scope a certification.
 
@@ -45,6 +45,44 @@ Aim: greater efficiency and effectiveness through the cross-cutting functional p
 | 3.3 | Are the service levels that ITAM depends on defined and recorded? | | |
 | 3.4 | Are risks not covered elsewhere managed, with the treatment checked? (6.1.2, 6.1.3) | | |
 | 3.5 | Is ITAM performance measured and reported, financial and non-financial? (9.1) | | |
+
+## Work out your tier
+
+Count your answers for each tier, then check the last column. The web page and the Excel workbook do this for you; in Word, count by hand.
+
+| Tier | Yes | Partly | No | Met? (no "no", at most one "partly") |
+| --- | --- | --- | --- | --- |
+| 1 | | | | |
+| 2 | | | | |
+| 3 | | | | |
+
+Your assumed tier: the highest tier you met, where every tier below it is also met. If tier 1 is not met, you are below tier 1.
+
+## Gap report
+
+List every question you answered "no" or "partly", with the step that closes it. The web page builds this from your answers, and the Excel workbook has a Gap report sheet you can filter. In Word, write your answer in the third column and delete the rows you do not need.
+
+| # | Question | Your answer | What closes the gap | Owner | Due date |
+| --- | --- | --- | --- | --- | --- |
+| 1.1 | A record for every asset, with an owner | | Build one record per asset in scope and name an owner for each. Start from the asset record template. | | |
+| 1.2 | Each record says whether the asset is authorized | | Add an authorized yes/no field to every record and fill it from purchase and approval evidence. | | |
+| 1.3 | Records verified against what is installed | | Set a schedule (at least quarterly) to compare records with discovery data, and log the differences found. | | |
+| 1.4 | Entitlement records held | | Collect licenses, contracts, and proofs of purchase into one entitlement list per product. | | |
+| 1.5 | Entitlements compared with usage | | Run the license position workbook on a schedule and give each shortfall or surplus an owner. | | |
+| 1.6 | A measurable target for data accuracy | | Pick a measurable accuracy target, such as the share of records verified this quarter, and report against it. | | |
+| 1.7 | Changes to the asset record controlled | | Require an authorization entry before any record changes, and log who changed what and when. | | |
+| 1.8 | Security applied to the asset data | | Limit who can view and edit the asset data, and review that access on a schedule. | | |
+| 2.1 | Specification and approval before purchase | | Add a request step that records the need and an approval before any purchase. | | |
+| 2.2 | Acquisitions recorded when they happen | | Make creating the asset record a step of buying, not a later cleanup. | | |
+| 2.3 | Release and deployment update the record | | Add a record-update step to the release and deployment checklists. | | |
+| 2.4 | Use monitored, including cost-effectiveness | | Track usage for each major asset and review its cost against its value on a schedule. | | |
+| 2.5 | Retirement is a defined step | | Write a retirement procedure that covers disposal, data removal, and closing the record. | | |
+| 2.6 | Authorizations and their execution logged | | Use the authorization log template for approvals and for who carried them out. | | |
+| 3.1 | Suppliers and contracts managed | | Keep a vendor and contract register, and check compliance with contract terms as well as licensing. | | |
+| 3.2 | Costs and values tied to budgets | | Record the cost and value of each asset and tie them to budget lines. | | |
+| 3.3 | Service levels defined | | List the services ITAM depends on and record the agreed service level for each. | | |
+| 3.4 | Other risks managed | | Run an ITAM risk assessment, record the treatment for each risk, and check that it worked. | | |
+| 3.5 | Performance measured and reported | | Define financial and non-financial ITAM measures and report them to management on a schedule. | | |
 
 ## Result
 

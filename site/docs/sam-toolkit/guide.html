@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SAM toolkit guide — Eve McGivern</title>
+<meta name="description" content="Eight working files to support a software and IT asset management (SAM/ITAM) practice. They…">
+<meta name="author" content="Eve McGivern">
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../apple-touch-icon.png">
+<link rel="stylesheet" href="../../style.css">
+<script src="../../nav.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="support-bar"><a class="coffee-link" href="https://buymeacoffee.com/a8w5iiqszp" rel="noopener"><svg class="coffee-icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M5 9h11v5a5 5 0 0 1-5 5h-1a5 5 0 0 1-5-5V9z" fill="#2f9e6e"/><path d="M16 10.5h1.2a2.4 2.4 0 0 1 0 4.8H16" fill="none" stroke="#2f9e6e" stroke-width="1.8" stroke-linecap="round"/><path d="M8.5 3.5c0 1.3 1 1.3 1 2.6M12 3.5c0 1.3 1 1.3 1 2.6" fill="none" stroke="#2f9e6e" stroke-width="1.6" stroke-linecap="round"/></svg><span>Buy me a coffee</span></a></div>
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="https://evemcgivern.github.io/">Eve McGivern</a>
+    <nav class="site-nav" aria-label="Main">
+      <ul>
+        <li><a href="../../tools.html" aria-describedby="tip-tools">Tools</a><span class="nav-tip" role="tooltip" id="tip-tools">The seven governance methods, packaged as skills for Claude, Codex, and Copilot.</span></li>
+        <li><a href="../../sam-toolkit.html" aria-describedby="tip-sam-toolkit">SAM toolkit</a><span class="nav-tip" role="tooltip" id="tip-sam-toolkit">Templates and checklists for running software asset management by hand.</span></li>
+        <li><a href="../../practicum.html" aria-describedby="tip-practicum">Practicum</a><span class="nav-tip" role="tooltip" id="tip-practicum">Hands-on exercises on a fictional company, with answers you can check.</span></li>
+        <li><a href="../../lifecycle.html" aria-describedby="tip-lifecycle">Lifecycle</a><span class="nav-tip" role="tooltip" id="tip-lifecycle">Six stages from request to retirement, with the questions to ask at each.</span></li>
+        <li><a href="../../crosswalk.html" aria-describedby="tip-crosswalk">Crosswalk explorer</a><span class="nav-tip" role="tooltip" id="tip-crosswalk">See how each control maps to ISO/IEC 19770, COBIT, 27001, and 42001.</span></li>
+        <li><a href="../../impact-map.html" aria-describedby="tip-impact-map">Impact map</a><span class="nav-tip" role="tooltip" id="tip-impact-map">One grid showing every control theme against every lifecycle stage.</span></li>
+        <li><a href="../../field-guide.html" aria-describedby="tip-field-guide">Field guide</a><span class="nav-tip" role="tooltip" id="tip-field-guide">Plain-language guides to the standards, certifications, and key terms.</span></li>
+        <li><a href="../../case-studies.html" aria-describedby="tip-case-studies">Case studies</a><span class="nav-tip" role="tooltip" id="tip-case-studies">What is coming next: worked examples of the kit in use.</span></li>
+        <li><a href="../../about.html" aria-describedby="tip-about">About</a><span class="nav-tip" role="tooltip" id="tip-about">Who built the kit, and how to get in touch.</span></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<main id="main" class="doc-page">
+  <p class="doc-back"><a href="../../sam-toolkit.html">&larr; SAM toolkit</a></p>
+  <h1>SAM toolkit guide</h1>
+  <div class="visual-actions doc-actions">
+    <a class="visual-actions__link" href="guide.docx">Download Word (.docx)</a>
+    <button type="button" class="visual-actions__link doc-print" onclick="window.print()">Print or save as PDF</button>
+  </div>
+
+  <div class="doc-body prose prose-wide">
+<p>Eight working files to support a software and IT asset management (SAM/ITAM) practice. They are blank templates and checklists. Open the CSV files in Excel, Google Sheets, or any spreadsheet; they are plain text, so nothing is locked. All data in the examples is fictional (the Halden Logistics demo estate).</p>
+<p>The files follow ISO/IEC 19770-1:2017. Clause numbers are given so you can trace each file back to the standard. The text is paraphrased and does not replace the standard. No affiliation with or endorsement by ISO or IEC.</p>
+<h2 id="where-to-start">Where to start</h2>
+<ol><li><a href="tier-self-assessment.html">Tier self-assessment</a>: find out which tier you are at.</li><li><a href="statement-of-applicability.html">Statement of applicability template</a>: decide which processes are in scope.</li><li><a href="asset-record.html">Asset record template</a> and <a href="license-position.html">License position template</a>: get the data right first (tier 1).</li><li><a href="renewal-calendar.html">Renewal calendar template</a>, <a href="authorization-log.html">Authorization log template</a>, <a href="vendor-contract-register.html">Vendor contract register template</a>: add the records that keep it right.</li><li><a href="audit-and-review-checklist.html">Internal audit and management review checklist</a>: check the system on a schedule.</li></ol>
+<h2 id="the-files">The files</h2>
+<h3 id="license-position-csv-clause-8-4">license-position.csv (clause 8.4)</h3>
+<p>One row per product. Reconcile what you own against what is in use.</p>
+<ul><li><code>entitlements_owned</code>: the count of licenses you hold, in the vendor&#x27;s license metric (<code>license_metric</code>: user, device, core, and so on).</li><li><code>in_use_count</code>: installs, users or cores in use, in the same metric. Do not mix metrics in one row.</li><li><code>position</code>: <code>entitlements_owned</code> minus <code>in_use_count</code>. Negative is a shortfall.</li><li><code>status</code>: shortfall, surplus or balanced.</li><li><code>evidence_source</code>, <code>checked_on</code>, <code>reviewer</code>: where the numbers came from, when, and who checked.</li></ul>
+<p>A user count is not always the licensed quantity. Confirm the vendor&#x27;s metric before acting on a shortfall. See <a href="license-position-example.html">License position example</a>.</p>
+<h3 id="renewal-calendar-csv-clause-8-4-crosswalk-xw-008">renewal-calendar.csv (clause 8.4, crosswalk XW-008)</h3>
+<p>One row per license or contract.</p>
+<ul><li><code>notice_deadline</code>: <code>contract_end</code> minus <code>notice_days</code>. This is the date that matters, not the end date.</li><li><code>auto_renews</code>: yes or no.</li><li><code>in_use_last_90_days</code>: usage before you decide, so you do not renew shelfware.</li><li><code>decision</code>: renew, reduce or cancel. Record <code>reason</code>, <code>decision_owner</code>, <code>approver</code> and <code>decided_on</code>.</li></ul>
+<h3 id="asset-record-csv-clause-8-3-7-6-2">asset-record.csv (clause 8.3, 7.6.2)</h3>
+<p>The core data record. One row per asset (software, hardware, or an IT service).</p>
+<ul><li><code>owner</code>: the named person accountable. <code>custodian</code>: who looks after it day to day.</li><li><code>authorized</code>: yes or no, with <code>authorization_ref</code> pointing to the entry in the authorization log.</li><li><code>status</code>: for example requested, in use, retiring, retired. Add <code>retired_on</code> when it leaves use.</li><li><code>source_system</code> and <code>last_verified_on</code>: where the data came from and when it was last checked.</li></ul>
+<p>The standard requires accurate data for every core asset through its life and a record of whether each asset is authorized.</p>
+<h3 id="authorization-log-csv-clause-7-6-3">authorization-log.csv (clause 7.6.3)</h3>
+<p>Record who made each authorization, when, and why. Record who carried it out, when, and against which authorization.</p>
+<ul><li><code>authorization_type</code>: financial, security, operational or managerial.</li><li><code>scope</code>: the organization, a unit, a group of people, one asset or a class of assets.</li><li><code>valid_until</code>: leave blank if there is no end date.</li><li>An example of an execution is installing authorized software; put the ticket or change reference in <code>execution_ref</code>.</li></ul>
+<h3 id="statement-of-applicability-csv-clause-6-2-2">statement-of-applicability.csv (clause 6.2.2)</h3>
+<p>Pre-filled with the 15 processes in Annex A. For each, say whether it is in scope and why. The standard asks for a justification for every inclusion and exclusion.</p>
+<ul><li>Change, core data, license and security management are marked &quot;always included&quot;. The standard says their objectives are already part of clause 8.</li><li><code>tier</code>: fill in from Annex B, Figure B.2 of your copy of the standard.</li><li><code>evidence_location</code>: where an auditor can see the process working.</li></ul>
+<h3 id="vendor-contract-register-csv-clause-8-7-crosswalk-xw-013">vendor-contract-register.csv (clause 8.7, crosswalk XW-013)</h3>
+<p>One row per supplier contract that affects ITAM.</p>
+<ul><li><code>activities_outsourced</code>: the scope and boundaries of what the supplier does.</li><li><code>mixed_responsibilities</code>: where you and the supplier share ownership of devices, servers, software or data, say so. This is where the risk sits.</li><li><code>risk_assessed_on</code>, <code>risk_rating</code>, <code>risk_owner</code>: the standard requires you to assess the risk of outsourcing.</li><li><code>knowledge_sharing_arrangement</code>: how information is shared with the supplier.</li><li><code>performance_reviewed_on</code> and <code>contract_terms_verified_on</code>: monitor performance, and check compliance with terms beyond licensing.</li></ul>
+<h3 id="tier-self-assessment-annex-a-and-b">Tier self-assessment (Annex A and B)</h3>
+<p>A yes/partly/no check across three tiers, with a place for evidence.</p>
+<h3 id="internal-audit-and-management-review-checklist-clauses-9-2-9-3-10-1">Internal audit and management review checklist (clauses 9.2, 9.3, 10.1)</h3>
+<p>A plan-and-record checklist for the internal audit, and a pack list for the management review.</p>
+<h2 id="limits">Limits</h2>
+<p>These are templates, not a platform. They do not discover installs, read vendor license terms, or tell you what a license permits. Verify license terms against the contract. A governance decision still needs a person to make it.</p>
+  </div>
+</main>
+<footer class="site-footer">
+  <p>Eve McGivern · <a href="https://evemcgivern.github.io/">evemcgivern.github.io</a></p>
+  <p>Questions? Comments? <span id="contact-email">email me</span>.</p>
+  <p><a href="https://buymeacoffee.com/a8w5iiqszp" rel="noopener">Buy me a coffee</a> if these tools help.</p>
+  <noscript><p>Email: evemcgivern at gmail dot com</p></noscript>
+</footer>
+<script>
+(function () {
+  "use strict";
+  var user = "evemcgivern", domain = "gmail.com";
+  var el = document.getElementById("contact-email");
+  if (!el) { return; }
+  var a = document.createElement("a");
+  a.href = "mailto:" + user + "@" + domain;
+  a.textContent = "Email me";
+  el.replaceWith(a);
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Platform guide: Stand up a governance program — Eve McGivern</title>
+<meta name="description" content="Where this method&#x27;s intake, approval, and meeting-input steps map onto ServiceNow and Flexera One…">
+<meta name="author" content="Eve McGivern">
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../apple-touch-icon.png">
+<link rel="stylesheet" href="../../style.css">
+<script src="../../nav.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="support-bar"><a class="coffee-link" href="https://buymeacoffee.com/a8w5iiqszp" rel="noopener"><svg class="coffee-icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M5 9h11v5a5 5 0 0 1-5 5h-1a5 5 0 0 1-5-5V9z" fill="#2f9e6e"/><path d="M16 10.5h1.2a2.4 2.4 0 0 1 0 4.8H16" fill="none" stroke="#2f9e6e" stroke-width="1.8" stroke-linecap="round"/><path d="M8.5 3.5c0 1.3 1 1.3 1 2.6M12 3.5c0 1.3 1 1.3 1 2.6" fill="none" stroke="#2f9e6e" stroke-width="1.6" stroke-linecap="round"/></svg><span>Buy me a coffee</span></a></div>
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="https://evemcgivern.github.io/">Eve McGivern</a>
+    <nav class="site-nav" aria-label="Main">
+      <ul>
+        <li><a href="../../tools.html" aria-describedby="tip-tools">Tools</a><span class="nav-tip" role="tooltip" id="tip-tools">The seven governance methods, packaged as skills for Claude, Codex, and Copilot.</span></li>
+        <li><a href="../../sam-toolkit.html" aria-describedby="tip-sam-toolkit">SAM toolkit</a><span class="nav-tip" role="tooltip" id="tip-sam-toolkit">Templates and checklists for running software asset management by hand.</span></li>
+        <li><a href="../../practicum.html" aria-describedby="tip-practicum">Practicum</a><span class="nav-tip" role="tooltip" id="tip-practicum">Hands-on exercises on a fictional company, with answers you can check.</span></li>
+        <li><a href="../../lifecycle.html" aria-describedby="tip-lifecycle">Lifecycle</a><span class="nav-tip" role="tooltip" id="tip-lifecycle">Six stages from request to retirement, with the questions to ask at each.</span></li>
+        <li><a href="../../crosswalk.html" aria-describedby="tip-crosswalk">Crosswalk explorer</a><span class="nav-tip" role="tooltip" id="tip-crosswalk">See how each control maps to ISO/IEC 19770, COBIT, 27001, and 42001.</span></li>
+        <li><a href="../../impact-map.html" aria-describedby="tip-impact-map">Impact map</a><span class="nav-tip" role="tooltip" id="tip-impact-map">One grid showing every control theme against every lifecycle stage.</span></li>
+        <li><a href="../../field-guide.html" aria-describedby="tip-field-guide">Field guide</a><span class="nav-tip" role="tooltip" id="tip-field-guide">Plain-language guides to the standards, certifications, and key terms.</span></li>
+        <li><a href="../../case-studies.html" aria-describedby="tip-case-studies">Case studies</a><span class="nav-tip" role="tooltip" id="tip-case-studies">What is coming next: worked examples of the kit in use.</span></li>
+        <li><a href="../../about.html" aria-describedby="tip-about">About</a><span class="nav-tip" role="tooltip" id="tip-about">Who built the kit, and how to get in touch.</span></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<main id="main" class="doc-page">
+  <p class="doc-back"><a href="../../tools.html">&larr; Tools</a></p>
+  <h1>Platform guide: Stand up a governance program</h1>
+  <div class="visual-actions doc-actions">
+    <a class="visual-actions__link" href="platform-guide.docx">Download Word (.docx)</a>
+    <button type="button" class="visual-actions__link doc-print" onclick="window.print()">Print or save as PDF</button>
+  </div>
+
+  <div class="doc-body prose prose-wide">
+<p>Where this method&#x27;s intake, approval, and meeting-input steps map onto ServiceNow and Flexera One. Where no source names a module, table, or field, that is stated as a gap rather than guessed.</p>
+<h2 id="servicenow-intake-through-a-catalog-item-decisions-through-an-approval-workflow">ServiceNow: intake through a catalog item, decisions through an approval workflow</h2>
+<p>A governance intake form (this method&#x27;s step 5) maps onto a <strong>Service Catalog</strong> item: a catalog item carries a request form and a <strong>Workflow</strong> field that defines its fulfilment process, including any approval step. Submitting the item creates a <strong>Request</strong> (table <code>sc_request</code>), which in turn creates one or more <strong>Requested Items</strong> (<code>sc_req_item</code>, referencing the originating <strong>Catalog Item</strong> on <code>sc_cat_item</code>); the request-level approval covers everything in the cart, and once that clears, each requested item&#x27;s own fulfilment work is tracked as <strong>Catalog Tasks</strong> (<code>sc_task</code>).</p>
+<p>Approval logic is built either in the classic <strong>Workflow Editor</strong> or in <strong>Flow Designer</strong>, using activities such as <strong>Approval - User</strong>, <strong>Approval - Group</strong>, or <strong>Approval - Action</strong>, evaluated against a <strong>Condition</strong> — the mechanism a cost or risk threshold (this method&#x27;s step 3) would be built on, for example routing to the council only when a requested item&#x27;s cost exceeds a set figure. Approval records live on table <strong><code>sysapproval_approver</code></strong>, confirmed by multiple ServiceNow Community and Support sources, and move through states such as Requested, Approved, Rejected, and Canceled — the natural place to attach this method&#x27;s decision log, alongside workflow activity logs and notifications for each decision. A council&#x27;s decision log therefore maps onto ServiceNow&#x27;s own Service Catalog tables end to end: <code>sc_request</code> → <code>sc_req_item</code> (from <code>sc_cat_item</code>) → <code>sc_task</code>, with approvals on <code>sysapproval_approver</code>. ServiceNow&#x27;s own documentation confirming the exact field-level distinction within the approval table (for example, between an &quot;Approving&quot; and an &quot;Approval for&quot; field) could not be loaded; the table name itself is confirmed by multiple sources.</p>
+<p>ServiceNow&#x27;s own Service Catalog Management documentation under <code>docs.servicenow.com</code> and its Service Catalog Management product page (<code>servicenow.com/products/service-catalog-management.html</code>) do not return readable article content to an automated fetch — the docs pages redirect to a generic landing page (tried across the current, Sandiego, and Quebec bundle URL forms) and the product page returns a 403. The Workflow / Flow Designer / Approval - User / Approval - Group / RITM / Request terminology above comes from a ServiceNow Community how-to thread that did load.</p>
+<h2 id="flexera-one-usage-spend-and-shadow-it-discovery-as-meeting-inputs">Flexera One: usage, spend, and shadow IT discovery as meeting inputs</h2>
+<p>Flexera One&#x27;s SaaS Management product is built to feed exactly the kind of item this method&#x27;s intake and meeting inputs need: it combines <strong>application usage, license data, and spend insights</strong> to surface waste, and its discovery draws on multiple sources at once — Flexera names financial and expense data, API connectors, a browser extension, and connections to single sign-on (SSO) and Cloud Access Security Broker (CASB) systems — to build a fuller picture than any one source alone, including applications nobody sanctioned. That combined view of usage, spend, and contract data is what Flexera positions as the basis for governance and license-optimization decisions, which is the natural agenda input for this method&#x27;s cadence step (rather than convening the body with no live item to decide on).</p>
+<p>No confirmed Flexera One field, table, or dashboard name exists for a per-application &quot;last reviewed&quot; or &quot;last decided&quot; date that this method&#x27;s decision log could cite directly; Flexera&#x27;s documented capability is usage-and-spend-based discovery and optimization recommendations, not a named governance-decision object. The claims above come from Flexera&#x27;s product and solution marketing pages, which loaded and are cited directly.</p>
+<h2 id="sources-checked">Sources checked</h2>
+<ul><li><a href="https://www.servicenow.com/community/servicenow-ai-platform-forum/understanding-approval-workflows-in-servicenow-a-practical-guide/td-p/3129602">Understanding Approval Workflows in ServiceNow: A Practical Guide — ServiceNow Community</a> — Flow Designer, Workflow Editor, Approval - User/Group/Action activities, condition-based triggers, RITM/Request objects, approval states, and workflow activity logs.</li><li><a href="https://www.servicenow.com/community/developer-forum/service-catalog-important-tables-for-req-ritm-sctask-catagory/m-p/2115312">Service Catalog: important tables for REQ, RITM, SCTASK — ServiceNow Community</a> — confirms <code>sc_request</code>, <code>sc_req_item</code>, and <code>sc_task</code> table names.</li><li><a href="https://support.servicenow.com/kb?id=kb_article_view&amp;sysparm_article=KB0813783">Populating field from Catalog Item (sc_cat_item) to produced RITM record (sc_req_item) — Now Support KB</a> — confirms the <code>sc_cat_item</code> table name.</li><li><a href="https://www.flexera.com/products/flexera-one/saas-management">Optimize SaaS spend and utilization with Flexera One SaaS Management — Flexera</a> — combined usage, license, and spend insights; multi-source discovery (financial data, API connectors, browser extension, SSO/CASB); license right-sizing and unused-application elimination.</li><li><a href="https://www.flexera.com/solutions/saas-spend/shadow-it">Mitigate Risks with Shadow IT Discovery and Management — Flexera</a> — shadow IT discovery methods (usage metering, CASB, browser extension, financial records, SSO) and the case for combining multiple sources over relying on one.</li></ul>
+<p>Pages that do not return readable article content to an automated fetch: ServiceNow&#x27;s Service Catalog Management documentation under <code>docs.servicenow.com</code> (redirects to a generic docs landing page across three release-bundle URL forms tried) and its Service Catalog Management product page (<code>servicenow.com/products/service-catalog-management.html</code>, 403). A Now Support KB and a third-party integration doc describing the approval table&#x27;s field-level distinctions also returned only page chrome, no article body, on every attempt. Everything above comes from a page that loaded.</p>
+  </div>
+</main>
+<footer class="site-footer">
+  <p>Eve McGivern · <a href="https://evemcgivern.github.io/">evemcgivern.github.io</a></p>
+  <p>Questions? Comments? <span id="contact-email">email me</span>.</p>
+  <p><a href="https://buymeacoffee.com/a8w5iiqszp" rel="noopener">Buy me a coffee</a> if these tools help.</p>
+  <noscript><p>Email: evemcgivern at gmail dot com</p></noscript>
+</footer>
+<script>
+(function () {
+  "use strict";
+  var user = "evemcgivern", domain = "gmail.com";
+  var el = document.getElementById("contact-email");
+  if (!el) { return; }
+  var a = document.createElement("a");
+  a.href = "mailto:" + user + "@" + domain;
+  a.textContent = "Email me";
+  el.replaceWith(a);
+})();
+</script>
+
+</body>
+</html>

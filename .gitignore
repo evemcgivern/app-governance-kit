@@ -3,7 +3,8 @@ __pycache__/
 *.redline.html
 .DS_Store
 .superpowers/
-evals/results/*.md
+evals/results/*
+!evals/results/.gitkeep
 *.code-workspace
 .claude/
 .env
@@ -17,4 +18,29 @@ venv/
 .idea/
 *.log
 *.pyc
-docs/
+/docs/
+
+# Licensed standards, and text pulled out of them: never publish
+ISO*.pdf
+*ISO*IEC*.pdf
+/standards/
+
+# Local agent settings and personal notes
+.codex/
+.cursor/
+.agents/
+.copilot/
+*.local.md
+/notes/
+/scratch/
+
+# Private word list for `make scan` (kept outside the repo)
+private-words*
+
+# Editor and tool leftovers
+*.bak
+*.orig
+*.swp
+.coverage
+htmlcov/
+node_modules/

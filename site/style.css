@@ -11,6 +11,11 @@
   --focus: #1f4c5e;
   --code-bg: #eef1f4;
   --chip-bg: #eef3f5;
+  --control-border: #767f89;
+  --glow: rgba(31, 76, 94, 0.10);
+  --shadow: 0 0 0 1px rgba(26, 33, 43, 0.07), 0 1px 2px rgba(26, 33, 43, 0.05), 0 4px 12px rgba(26, 33, 43, 0.05);
+  --shadow-hover: 0 0 0 1px rgba(26, 33, 43, 0.09), 0 2px 4px rgba(26, 33, 43, 0.06), 0 10px 24px rgba(26, 33, 43, 0.09);
+  --ease: cubic-bezier(0.2, 0, 0, 1);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -25,6 +30,10 @@
     --focus: #9fd4e8;
     --code-bg: #131a22;
     --chip-bg: #1e2a33;
+    --control-border: #6b7886;
+    --glow: rgba(127, 194, 221, 0.10);
+    --shadow: 0 0 0 1px rgba(255, 255, 255, 0.08), 0 1px 2px rgba(0, 0, 0, 0.3), 0 4px 12px rgba(0, 0, 0, 0.25);
+    --shadow-hover: 0 0 0 1px rgba(255, 255, 255, 0.13), 0 2px 4px rgba(0, 0, 0, 0.35), 0 10px 24px rgba(0, 0, 0, 0.4);
   }
 }
 
@@ -39,6 +48,10 @@
   --focus: #9fd4e8;
   --code-bg: #131a22;
   --chip-bg: #1e2a33;
+  --control-border: #6b7886;
+  --glow: rgba(127, 194, 221, 0.10);
+  --shadow: 0 0 0 1px rgba(255, 255, 255, 0.08), 0 1px 2px rgba(0, 0, 0, 0.3), 0 4px 12px rgba(0, 0, 0, 0.25);
+  --shadow-hover: 0 0 0 1px rgba(255, 255, 255, 0.13), 0 2px 4px rgba(0, 0, 0, 0.35), 0 10px 24px rgba(0, 0, 0, 0.4);
 }
 
 * {
@@ -51,11 +64,24 @@ html {
 
 body {
   margin: 0;
-  background: var(--bg);
+  background:
+    radial-gradient(60rem 22rem at 50% -8rem, var(--glow), transparent 70%),
+    var(--bg);
+  background-repeat: no-repeat;
   color: var(--fg);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  line-height: 1.55;
+  line-height: 1.6;
   min-width: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3 {
+  text-wrap: balance;
+}
+
+p, li {
+  text-wrap: pretty;
 }
 
 .visually-hidden {
@@ -110,8 +136,8 @@ a:not(.button) {
 }
 
 .site-header {
-  border-bottom: 1px solid var(--border);
   background: var(--surface);
+  box-shadow: 0 1px 0 var(--border), 0 4px 16px rgba(0, 0, 0, 0.04);
 }
 
 .site-header__inner {
@@ -141,27 +167,37 @@ a:not(.button) {
   list-style: none;
   display: flex;
   flex-wrap: wrap;
-  gap: 0.25rem 1.25rem;
+  gap: 0.25rem;
   margin: 0;
   padding: 0;
 }
 
 .site-nav a {
-  display: inline-block;
-  padding: 0.35rem 0;
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+  padding: 0 0.8rem;
+  border-radius: 999px;
   color: var(--fg);
   text-decoration: none;
-  border-bottom: 2px solid transparent;
+  transition-property: background-color, color, scale;
+  transition-duration: 0.15s;
+  transition-timing-function: var(--ease);
 }
 
 .site-nav a:hover,
 .site-nav a:focus-visible {
   color: var(--accent);
+  background: var(--chip-bg);
+}
+
+.site-nav a:active {
+  scale: 0.96;
 }
 
 .site-nav a[aria-current="page"] {
-  color: var(--accent);
-  border-bottom-color: var(--accent);
+  color: var(--accent-fg);
+  background: var(--accent);
   font-weight: 600;
 }
 
@@ -176,8 +212,10 @@ main {
 }
 
 .hero h1 {
-  font-size: clamp(1.6rem, 4vw, 2.3rem);
-  margin: 0 0 0.75rem;
+  font-size: clamp(1.9rem, 5vw, 2.9rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin: 0 0 1rem;
 }
 
 .hero p.positioning {
@@ -198,6 +236,11 @@ main {
 
 h1, h2, h3 {
   line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+
+main section + section {
+  margin-top: 2.5rem;
 }
 
 .card-grid {
@@ -209,8 +252,8 @@ h1, h2, h3 {
 
 .card {
   background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 0.5rem;
+  box-shadow: var(--shadow);
+  border-radius: 12px;
   padding: 1.25rem;
 }
 
@@ -228,25 +271,37 @@ h1, h2, h3 {
 }
 
 .button {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
   background: var(--accent);
   color: var(--accent-fg);
-  padding: 0.55rem 1rem;
-  border-radius: 0.3rem;
+  padding: 0 1.25rem;
+  border-radius: 999px;
   text-decoration: none;
   font-weight: 600;
   border: 1px solid transparent;
+  box-shadow: var(--shadow);
+  transition-property: box-shadow, filter, scale;
+  transition-duration: 0.2s;
+  transition-timing-function: var(--ease);
 }
 
 .button:hover,
 .button:focus-visible {
   filter: brightness(1.08);
+  box-shadow: var(--shadow-hover);
+}
+
+.button:active {
+  scale: 0.96;
 }
 
 .button--ghost {
-  background: transparent;
+  background: var(--surface);
   color: var(--accent);
   border: 1px solid var(--accent);
+  box-shadow: none;
 }
 
 .cta-buttons {
@@ -276,11 +331,21 @@ h1, h2, h3 {
   font-size: 0.85rem;
   font-weight: 600;
   white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+  transition-property: filter, scale;
+  transition-duration: 0.15s;
+  transition-timing-function: var(--ease);
 }
 
 .visual-actions__link:hover,
 .visual-actions__link:focus-visible {
   filter: brightness(1.08);
+}
+
+.visual-actions__link:active {
+  scale: 0.96;
 }
 
 .link-list {
@@ -328,7 +393,11 @@ th, td {
 }
 
 tbody tr:nth-child(even) {
-  background: var(--border);
+  background: var(--chip-bg);
+}
+
+td, th {
+  font-variant-numeric: tabular-nums;
 }
 
 th {
@@ -368,7 +437,7 @@ code {
 .xw-filter {
   width: 100%;
   padding: 0.6rem 0.75rem;
-  border: 1px solid var(--border);
+  border: 1px solid var(--control-border);
   border-radius: 0.3rem;
   background: var(--surface);
   color: var(--fg);
@@ -382,8 +451,8 @@ code {
   padding: 0;
   max-height: 32rem;
   overflow-y: auto;
-  border: 1px solid var(--border);
-  border-radius: 0.5rem;
+  box-shadow: var(--shadow);
+  border-radius: 12px;
   background: var(--surface);
 }
 
@@ -430,8 +499,8 @@ code {
 
 .xw-detail {
   background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 0.5rem;
+  box-shadow: var(--shadow);
+  border-radius: 12px;
   padding: 1.25rem 1.5rem;
   min-height: 12rem;
 }
@@ -450,7 +519,7 @@ code {
 .xw-clause {
   position: relative;
   background: var(--chip-bg);
-  border-radius: 0.4rem;
+  border-radius: 8px;
   padding: 0.6rem 0.75rem;
 }
 
@@ -553,6 +622,7 @@ code {
 
 .site-footer {
   border-top: 1px solid var(--border);
+  margin-top: 2rem;
   color: var(--muted);
   font-size: 0.9rem;
   text-align: center;
@@ -682,8 +752,8 @@ code {
 
 .lc-panel {
   background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 0.5rem;
+  box-shadow: var(--shadow);
+  border-radius: 12px;
   padding: 1.25rem 1.5rem;
   min-height: 12rem;
 }
@@ -835,6 +905,7 @@ code {
 }
 
 .lc-overlay-toggle {
+  min-height: 40px;
   font: inherit;
   font-weight: 600;
   color: var(--accent);
@@ -1097,11 +1168,14 @@ code {
   gap: 0.5rem 0.6rem;
 }
 
+
 .fg-jumpnav a {
-  display: inline-block;
-  padding: 0.4rem 0.8rem;
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+  padding: 0 0.9rem;
   border: 1px solid var(--border);
-  border-radius: 1rem;
+  border-radius: 999px;
   background: var(--surface);
   color: var(--fg);
   text-decoration: none;
@@ -1156,7 +1230,7 @@ code {
   }
 
   .fg-layout .fg-jumpnav a {
-    display: block;
+    display: flex;
   }
 }
 
@@ -1164,8 +1238,8 @@ code {
 
 .pr-exercise {
   background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 0.5rem;
+  box-shadow: var(--shadow);
+  border-radius: 12px;
   padding: 1.25rem;
   margin: 0 0 1.5rem;
   scroll-margin-top: 1rem;
@@ -1228,7 +1302,7 @@ code {
 
 .pr-select {
   padding: 0.3rem 0.5rem;
-  border: 1px solid var(--border);
+  border: 1px solid var(--control-border);
   border-radius: 0.3rem;
   background: var(--surface);
   color: var(--fg);
@@ -1281,7 +1355,7 @@ code {
   height: 8rem;
   padding: 0.5rem;
   margin: 0.5rem 0;
-  border: 1px solid var(--border);
+  border: 1px solid var(--control-border);
   border-radius: 0.3rem;
   background: var(--code-bg);
   color: var(--fg);
@@ -1322,7 +1396,7 @@ code {
 }
 
 .pr-pair-remove {
-  border: 1px solid var(--border);
+  border: 1px solid var(--control-border);
   background: var(--surface);
   color: var(--fg);
   border-radius: 0.3rem;
@@ -1339,4 +1413,236 @@ code {
 
 .pr-source-links {
   margin-top: 0.75rem;
+}
+
+/* Page entrance: the hero and first sections fade up once; skipped when motion is reduced */
+
+@keyframes rise {
+  from { opacity: 0; translate: 0 8px; filter: blur(4px); }
+  to { opacity: 1; translate: 0 0; filter: blur(0); }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  main > section:nth-child(-n+4) {
+    animation: rise 0.5s var(--ease) both;
+  }
+
+  main > section:nth-child(2) { animation-delay: 0.08s; }
+  main > section:nth-child(3) { animation-delay: 0.16s; }
+  main > section:nth-child(4) { animation-delay: 0.24s; }
+}
+
+/* Support link: a small bar above the header */
+
+.support-bar {
+  max-width: 68rem;
+  margin: 0 auto;
+  padding: 0.5rem 1.25rem 0;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.coffee-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  min-height: 40px;
+  padding: 0 0.9rem 0 0.7rem;
+  border-radius: 999px;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  color: var(--accent);
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition-property: box-shadow, scale;
+  transition-duration: 0.2s;
+  transition-timing-function: var(--ease);
+}
+
+.coffee-link:hover,
+.coffee-link:focus-visible {
+  box-shadow: var(--shadow-hover);
+}
+
+.coffee-link:active {
+  scale: 0.96;
+}
+
+.coffee-icon {
+  flex: none;
+}
+
+/* Navigation tooltips: shown on hover and keyboard focus, Escape hides them (see nav.js) */
+
+.site-header {
+  position: relative;
+  z-index: 30;
+}
+
+.site-nav li {
+  position: relative;
+}
+
+.nav-tip {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 40;
+  width: max-content;
+  max-width: min(16rem, calc(100vw - 2.5rem));
+  margin-top: 0.4rem;
+  padding: 0.55rem 0.8rem;
+  border-radius: 8px;
+  background: var(--surface);
+  box-shadow: var(--shadow-hover);
+  color: var(--fg);
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+
+/* keeps the tip open while the pointer travels from the link to the tip */
+.nav-tip::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -0.5rem;
+  height: 0.5rem;
+}
+
+.site-nav li:nth-last-child(-n+3) .nav-tip {
+  left: auto;
+  right: 0;
+}
+
+.site-nav li:hover:not([data-tip-hidden]) .nav-tip,
+.site-nav li:focus-within:not([data-tip-hidden]) .nav-tip {
+  display: block;
+}
+
+/* Document pages (generated from the Markdown and CSV sources) */
+
+.doc-page .doc-back {
+  margin: 0 0 0.5rem;
+}
+
+.doc-page h1 {
+  font-size: clamp(1.7rem, 4.5vw, 2.4rem);
+  line-height: 1.15;
+  margin: 0 0 1rem;
+}
+
+.doc-body table.checklist {
+  min-width: 34rem;
+  table-layout: auto;
+}
+
+.checklist td.checklist-write {
+  min-width: 8rem;
+  height: 2.75rem;
+}
+
+.checklist-choices {
+  white-space: nowrap;
+}
+
+.checklist-choice {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  min-height: 28px;
+  cursor: pointer;
+}
+
+.checklist-choice input,
+.checklist-items input {
+  width: 1.05rem;
+  height: 1.05rem;
+}
+
+.checklist-items {
+  list-style: none;
+  padding-left: 0.5rem;
+}
+
+button.visual-actions__link {
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.tier-bar {
+  position: sticky;
+  top: 0.5rem;
+  z-index: 10;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem 1rem;
+  margin: 0.75rem 0 1rem;
+  padding: 0.6rem 1rem;
+  border-radius: 12px;
+  background: var(--chip-bg);
+  box-shadow: var(--shadow-hover);
+}
+
+.tier-bar p {
+  margin: 0;
+}
+
+@media print {
+  .support-bar,
+  .site-header,
+  .site-footer,
+  .skip-link,
+  .doc-back,
+  .doc-actions,
+  #tier-clear {
+    display: none !important;
+  }
+
+  body {
+    background: #fff;
+    color: #000;
+  }
+
+  .tier-bar {
+    position: static;
+    box-shadow: none;
+    border: 1px solid #000;
+  }
+
+  .doc-body table.checklist {
+    min-width: 0;
+    font-size: 0.85rem;
+  }
+
+  .checklist th,
+  .checklist td {
+    border: 1px solid #777;
+  }
+
+  .checklist tr,
+  .checklist-choices {
+    break-inside: avoid;
+  }
+}
+
+.checklist td:first-child,
+.checklist th:first-child {
+  white-space: nowrap;
+}
+
+/* The caption repeats the heading above the table, so keep it for screen readers only */
+.doc-body table.checklist caption {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
 }
