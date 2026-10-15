@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Asset record template — Eve McGivern</title>
-<meta name="description" content="Asset record template">
+<meta name="description" content="A blank template with 16 columns. Download it and open it in Excel or…">
 <meta name="author" content="Eve McGivern">
 <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="../../apple-touch-icon.png">
@@ -33,7 +33,10 @@
   </div>
 </header>
 <main id="main" class="doc-page">
-  <p class="doc-back"><a href="../../sam-toolkit.html">&larr; SAM toolkit</a></p>
+  <div class="doc-top">
+    <p class="doc-back"><a href="../../sam-toolkit.html">&larr; SAM toolkit</a></p>
+    <button type="button" class="print-icon" onclick="window.print()" aria-label="Print this page" title="Print"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="M7 9V3.5h10V9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M7 17H4.5A1.5 1.5 0 0 1 3 15.5v-5A1.5 1.5 0 0 1 4.5 9h15a1.5 1.5 0 0 1 1.5 1.5v5a1.5 1.5 0 0 1-1.5 1.5H17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><rect x="7" y="14" width="10" height="6.5" rx="0.8" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17.5" cy="12" r="0.9" fill="currentColor"/></svg></button>
+  </div>
   <h1>Asset record template</h1>
   <div class="visual-actions doc-actions">
     <a class="visual-actions__link" href="asset-record.xlsx">Download Excel (.xlsx)</a>
@@ -42,8 +45,15 @@
   </div>
 
   <div class="doc-body prose prose-wide">
-<div class="table-scroll"><table class="checklist"><thead><tr><th scope="col">asset_id</th><th scope="col">asset_type</th><th scope="col">name</th><th scope="col">vendor</th><th scope="col">version</th><th scope="col">owner</th><th scope="col">custodian</th><th scope="col">hosting_or_service</th><th scope="col">environment</th><th scope="col">authorized</th><th scope="col">authorization_ref</th><th scope="col">status</th><th scope="col">acquired_on</th><th scope="col">retired_on</th><th scope="col">source_system</th><th scope="col">last_verified_on</th></tr></thead><tbody></tbody></table></div>
+<p>A blank template with 16 columns. Download it and open it in Excel or Google Sheets, then add one row per record.</p>
+<h2 id="columns">Columns</h2>
+<ul class="column-list"><li><code>asset_id</code></li><li><code>asset_type</code></li><li><code>name</code></li><li><code>vendor</code></li><li><code>version</code></li><li><code>owner</code></li><li><code>custodian</code></li><li><code>hosting_or_service</code></li><li><code>environment</code></li><li><code>authorized</code></li><li><code>authorization_ref</code></li><li><code>status</code></li><li><code>acquired_on</code></li><li><code>retired_on</code></li><li><code>source_system</code></li><li><code>last_verified_on</code></li></ul>
+<h2 id="how-to-fill-it-in">How to fill it in</h2>
+<p>The core data record. One row per asset (software, hardware, or an IT service).</p>
+<ul><li><code>owner</code>: the named person accountable. <code>custodian</code>: who looks after it day to day.</li><li><code>authorized</code>: yes or no, with <code>authorization_ref</code> pointing to the entry in the authorization log.</li><li><code>status</code>: for example requested, in use, retiring, retired. Add <code>retired_on</code> when it leaves use.</li><li><code>source_system</code> and <code>last_verified_on</code>: where the data came from and when it was last checked.</li></ul>
+<p>The standard requires accurate data for every core asset through its life and a record of whether each asset is authorized.</p>
   </div>
+  <div class="doc-bottom"><button type="button" class="print-icon" onclick="window.print()" aria-label="Print this page" title="Print"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="M7 9V3.5h10V9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M7 17H4.5A1.5 1.5 0 0 1 3 15.5v-5A1.5 1.5 0 0 1 4.5 9h15a1.5 1.5 0 0 1 1.5 1.5v5a1.5 1.5 0 0 1-1.5 1.5H17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><rect x="7" y="14" width="10" height="6.5" rx="0.8" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17.5" cy="12" r="0.9" fill="currentColor"/></svg></button></div>
 </main>
 <footer class="site-footer">
   <p>Eve McGivern · <a href="https://evemcgivern.github.io/">evemcgivern.github.io</a></p>
