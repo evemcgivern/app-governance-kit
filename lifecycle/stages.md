@@ -86,5 +86,5 @@ The lifecycle is the spine every application travels, from a first request to re
 
 - {#r-retire-data} What happens to the application's data is decided and recorded, not left implicit. [[XW-028]]
 - {#r-retire-accounts} All accounts tied to the application are removed and licenses reclaimed. [[XW-017]]
-- {#r-retire-contract-end} The contract is ended on schedule, with any auto-renewal cancelled in time. [[XW-013]]
+- {#r-retire-contract-end} The contract is ended on schedule, with any auto-renewal canceled in time. [[XW-013]]
 - {#r-retire-inventory-closed} The inventory record is formally closed, with evidence retained for audit. [[XW-020]]

@@ -101,7 +101,7 @@ Rules that apply:
 
 - Installed copies and active users are kept within held entitlements. [[XW-007]]
 - Access is reviewed on schedule, and leavers are removed promptly. [[XW-016]]
-  - Refers to: Retire — Are all accounts removed and licenses cancelled or reclaimed?
+  - Refers to: Retire — Are all accounts removed and licenses canceled or reclaimed?
 - Asset records are reconciled against what is actually installed. [[XW-026]]
   - Referenced by: Review and optimize — Where is our asset management process weakest this year?
 - A changed AI system's use is reassessed, not assumed unchanged. [[XW-021]]
@@ -157,7 +157,7 @@ Rules that apply:
 
 - What happens to the application's data is decided and recorded, not left implicit. [[XW-028]]
 - All accounts tied to the application are removed and licenses reclaimed. [[XW-017]]
-- The contract is ended on schedule, with any auto-renewal cancelled in time. [[XW-013]]
+- The contract is ended on schedule, with any auto-renewal canceled in time. [[XW-013]]
 - The inventory record is formally closed, with evidence retained for audit. [[XW-020]]
   - Refers to: Deploy — The application is recorded in the inventory with owner and data sensitivity.
   - Blocked by: Retire — What data does it hold, and will we archive, migrate, or delete it?
@@ -171,7 +171,7 @@ Questions to ask:
 - [ ] What data does it hold, and will we archive, migrate, or delete it? [[XW-028]] (tool: `rationalization`)
   - Refers to: Plan and request — What data will it hold, and how sensitive is that data?
   - Blocks: Retire — The inventory record is formally closed, with evidence retained for audit.
-- [ ] Are all accounts removed and licenses cancelled or reclaimed? [[XW-017]] (tool: `access-review`)
+- [ ] Are all accounts removed and licenses canceled or reclaimed? [[XW-017]] (tool: `access-review`)
   - Referenced by: Operate — Access is reviewed on schedule, and leavers are removed promptly.
 - [ ] Is the contract ended on time, without auto-renewal? [[XW-013]] (tool: `rationalization`)
   - May be impacted by: Acquire — Contracts are checked for audit, renewal, and exit terms before signature.
