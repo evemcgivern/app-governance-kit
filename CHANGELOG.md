@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.3.0](https://github.com/evemcgivern/app-governance-kit/compare/app-governance-kit-v0.2.0...app-governance-kit-v0.3.0) (2026-10-15)
+
+
+### Features
+
+* **seo:** refresh sitemap, llms.txt, doc metadata ([#19](https://github.com/evemcgivern/app-governance-kit/issues/19)) ([f2582eb](https://github.com/evemcgivern/app-governance-kit/commit/f2582ebc92272dea52dabe41cb8bcd0aea264108))
+
+
+### Bug Fixes
+
+* **site:** correct and extend certifications ([#22](https://github.com/evemcgivern/app-governance-kit/issues/22)) ([023bbb5](https://github.com/evemcgivern/app-governance-kit/commit/023bbb5c25d97dc591f04d87a65878b6056f68ea))
+
 ## [0.2.0](https://github.com/evemcgivern/app-governance-kit/compare/app-governance-kit-v0.1.0...app-governance-kit-v0.2.0) (2026-10-15)
 
 
