@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Application lifecycle questions — Eve McGivern</title>
+<meta name="description" content="Questions to ask at each stage. Each names the crosswalk row it satisfies and…">
+<meta name="author" content="Eve McGivern">
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../apple-touch-icon.png">
+<link rel="stylesheet" href="../../style.css">
+<script src="../../nav.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="support-bar"><a class="coffee-link" href="https://buymeacoffee.com/a8w5iiqszp" rel="noopener"><svg class="coffee-icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M5 9h11v5a5 5 0 0 1-5 5h-1a5 5 0 0 1-5-5V9z" fill="#2f9e6e"/><path d="M16 10.5h1.2a2.4 2.4 0 0 1 0 4.8H16" fill="none" stroke="#2f9e6e" stroke-width="1.8" stroke-linecap="round"/><path d="M8.5 3.5c0 1.3 1 1.3 1 2.6M12 3.5c0 1.3 1 1.3 1 2.6" fill="none" stroke="#2f9e6e" stroke-width="1.6" stroke-linecap="round"/></svg><span>Buy me a coffee</span></a></div>
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="https://evemcgivern.github.io/">Eve McGivern</a>
+    <nav class="site-nav" aria-label="Main">
+      <ul>
+        <li><a href="../../tools.html" aria-describedby="tip-tools">Tools</a><span class="nav-tip" role="tooltip" id="tip-tools">The seven governance methods, packaged as skills for Claude, Codex, and Copilot.</span></li>
+        <li><a href="../../sam-toolkit.html" aria-describedby="tip-sam-toolkit">SAM toolkit</a><span class="nav-tip" role="tooltip" id="tip-sam-toolkit">Templates and checklists for running software asset management by hand.</span></li>
+        <li><a href="../../practicum.html" aria-describedby="tip-practicum">Practicum</a><span class="nav-tip" role="tooltip" id="tip-practicum">Hands-on exercises on a fictional company, with answers you can check.</span></li>
+        <li><a href="../../lifecycle.html" aria-describedby="tip-lifecycle">Lifecycle</a><span class="nav-tip" role="tooltip" id="tip-lifecycle">Six stages from request to retirement, with the questions to ask at each.</span></li>
+        <li><a href="../../crosswalk.html" aria-describedby="tip-crosswalk">Crosswalk explorer</a><span class="nav-tip" role="tooltip" id="tip-crosswalk">See how each control maps to ISO/IEC 19770, COBIT, 27001, and 42001.</span></li>
+        <li><a href="../../impact-map.html" aria-describedby="tip-impact-map">Impact map</a><span class="nav-tip" role="tooltip" id="tip-impact-map">One grid showing every control theme against every lifecycle stage.</span></li>
+        <li><a href="../../field-guide.html" aria-describedby="tip-field-guide">Field guide</a><span class="nav-tip" role="tooltip" id="tip-field-guide">Plain-language guides to the standards, certifications, and key terms.</span></li>
+        <li><a href="../../case-studies.html" aria-describedby="tip-case-studies">Case studies</a><span class="nav-tip" role="tooltip" id="tip-case-studies">What is coming next: worked examples of the kit in use.</span></li>
+        <li><a href="../../about.html" aria-describedby="tip-about">About</a><span class="nav-tip" role="tooltip" id="tip-about">Who built the kit, and how to get in touch.</span></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<main id="main" class="doc-page">
+  <p class="doc-back"><a href="../../lifecycle.html">&larr; Lifecycle</a></p>
+  <h1>Application lifecycle questions</h1>
+  <div class="visual-actions doc-actions">
+    <a class="visual-actions__link" href="questions.docx">Download Word (.docx)</a>
+    <button type="button" class="visual-actions__link doc-print" onclick="window.print()">Print or save as PDF</button>
+  </div>
+
+  <div class="doc-body prose prose-wide">
+<p>Questions to ask at each stage. Each names the crosswalk row it satisfies and the kit tool that handles it.</p>
+<h2 id="plan-and-request">Plan and request</h2>
+<p>A request is written up: the problem, the owner, and any AI risk.</p>
+<p>Rules that apply:</p>
+<ul><li>Nothing is bought or built above the council&#x27;s threshold without an approved request. <a class="xw-tag" href="../../crosswalk.html">XW-027</a></li><li>Every request names an accountable owner before it moves forward. <a class="xw-tag" href="../../crosswalk.html">XW-002</a></li><li>A request that duplicates an application already owned is flagged first. <a class="xw-tag" href="../../crosswalk.html">XW-011</a><ul><li>Blocks: Acquire — What license model applies, and how many entitlements do we need?</li></ul></li><li>Any AI component is flagged at intake for a risk-tier assessment. <a class="xw-tag" href="../../crosswalk.html">XW-021</a><ul><li>May impact: Deploy — For AI systems: is the inventory record complete and the risk in the register?</li></ul></li><li>The data the application will hold, and its sensitivity, is recorded early. <a class="xw-tag" href="../../crosswalk.html">XW-028</a><ul><li>Refers to: Deploy — Is the app in the inventory with owner, category, and data sensitivity?</li></ul></li></ul>
+<p>Gate to move on: The council or its delegate approves the request and assigns an owner. Hands off to: acquire. the approved request becomes the basis for a purchase. Who decides: The application owner drafts it; the council or its delegate approves it.</p>
+<p>Questions to ask:</p>
+<ul class="checklist-items"><li><input type="checkbox" disabled> What problem does this solve, and do we own an app that does it? <a class="xw-tag" href="../../crosswalk.html">XW-011</a> (tool: <code>rationalization</code>)<ul><li>May be impacted by: Review and optimize — Is it still worth its cost: tolerate, invest, migrate, or eliminate?</li></ul></li><li><input type="checkbox" disabled> Who will own it, and who is the executive sponsor? <a class="xw-tag" href="../../crosswalk.html">XW-002</a> (tool: <code>program-setup</code>)</li><li><input type="checkbox" disabled> Does the request meet the council&#x27;s threshold and come through the intake path? <a class="xw-tag" href="../../crosswalk.html">XW-027</a> (tool: <code>program-setup</code>)<ul><li>Referenced by: Review and optimize — Does the council&#x27;s decision log show bottlenecks or rubber-stamping?</li><li>Referenced by: Acquire — Nothing is bought above the council&#x27;s threshold without an approved request.</li></ul></li><li><input type="checkbox" disabled> Does it use AI? If so, what risk tier is it? <a class="xw-tag" href="../../crosswalk.html">XW-021</a> (tool: <code>ai-intake</code>)<ul><li>Referenced by: Acquire — Any AI supplier and model provider is assessed before the purchase closes.</li></ul></li><li><input type="checkbox" disabled> What data will it hold, and how sensitive is that data? <a class="xw-tag" href="../../crosswalk.html">XW-028</a> (tool: <code>access-review</code>)<ul><li>Referenced by: Retire — What data does it hold, and will we archive, migrate, or delete it?</li></ul></li></ul>
+<h2 id="acquire">Acquire</h2>
+<p>The approved request becomes a purchase: license chosen, contract negotiated, supplier assessed.</p>
+<p>Rules that apply:</p>
+<ul><li>Nothing is bought above the council&#x27;s threshold without an approved request. <a class="xw-tag" href="../../crosswalk.html">XW-027</a><ul><li>Refers to: Plan and request — Does the request meet the council&#x27;s threshold and come through the intake path?</li></ul></li><li>Every purchase records its entitlements before deployment starts. <a class="xw-tag" href="../../crosswalk.html">XW-006</a><ul><li>Refers to: Operate — Do installs and users stay within entitlements?</li></ul></li><li>Contracts are checked for audit, renewal, and exit terms before signature. <a class="xw-tag" href="../../crosswalk.html">XW-013</a><ul><li>May impact: Retire — Is the contract ended on time, without auto-renewal?</li></ul></li><li>Any AI supplier and model provider is assessed before the purchase closes. <a class="xw-tag" href="../../crosswalk.html">XW-023</a><ul><li>Refers to: Plan and request — Does it use AI? If so, what risk tier is it?</li></ul></li></ul>
+<p>Gate to move on: Contract signed with audit, renewal, and exit terms reviewed; entitlements recorded. Hands off to: deploy. the entitlement record and contract travel with the application. Who decides: Procurement with the application owner; the council above its cost threshold.</p>
+<p>Questions to ask:</p>
+<ul class="checklist-items"><li><input type="checkbox" disabled> What license model applies, and how many entitlements do we need? <a class="xw-tag" href="../../crosswalk.html">XW-006</a> (tool: <code>rationalization</code>)<ul><li>Blocked by: Plan and request — A request that duplicates an application already owned is flagged first.</li></ul></li><li><input type="checkbox" disabled> Does the contract give audit, renewal, and exit terms we can live with? <a class="xw-tag" href="../../crosswalk.html">XW-013</a> (tool: <code>rationalization</code>)</li><li><input type="checkbox" disabled> Have the supplier and any AI model provider been assessed? <a class="xw-tag" href="../../crosswalk.html">XW-023</a> (tool: <code>ai-intake</code>)<ul><li>Referenced by: Deploy — An AI system&#x27;s inventory record and risk entry are complete before go-live.</li></ul></li><li><input type="checkbox" disabled> Is the purchase recorded against an owner and a cost center? <a class="xw-tag" href="../../crosswalk.html">XW-012</a> (tool: <code>itam-maturity</code>)<ul><li>May impact: Review and optimize — Is it still worth its cost: tolerate, invest, migrate, or eliminate?</li></ul></li></ul>
+<h2 id="deploy">Deploy</h2>
+<p>The application is installed, added to the inventory, and given access roles.</p>
+<p>Rules that apply:</p>
+<ul><li>The application is recorded in the inventory with owner and data sensitivity. <a class="xw-tag" href="../../crosswalk.html">XW-001</a><ul><li>Blocks: Operate — Is access reviewed on schedule, and are leavers removed?</li><li>Referenced by: Retire — The inventory record is formally closed, with evidence retained for audit.</li></ul></li><li>Access roles are defined, and new access only granted through an approved path. <a class="xw-tag" href="../../crosswalk.html">XW-015</a><ul><li>May impact: Operate — Is access reviewed on schedule, and are leavers removed?</li></ul></li><li>Privileged and administrative accounts are limited and named individually. <a class="xw-tag" href="../../crosswalk.html">XW-018</a><ul><li>May impact: Operate — Is access reviewed on schedule, and are leavers removed?</li></ul></li><li>An AI system&#x27;s inventory record and risk entry are complete before go-live. <a class="xw-tag" href="../../crosswalk.html">XW-022</a><ul><li>Refers to: Acquire — Have the supplier and any AI model provider been assessed?</li><li>Referenced by: Operate — Has the AI system&#x27;s use changed since intake?</li></ul></li></ul>
+<p>Gate to move on: The inventory record and access roles are complete before wider rollout. Hands off to: operate. the live system and its access records carry forward. Who decides: The application owner, with access approved through the named policy.</p>
+<p>Questions to ask:</p>
+<ul class="checklist-items"><li><input type="checkbox" disabled> Is the app in the inventory with owner, category, and data sensitivity? <a class="xw-tag" href="../../crosswalk.html">XW-001</a> (tool: <code>itam-maturity</code>)<ul><li>Referenced by: Plan and request — The data the application will hold, and its sensitivity, is recorded early.</li></ul></li><li><input type="checkbox" disabled> Are access roles defined, and who approves new access? <a class="xw-tag" href="../../crosswalk.html">XW-015</a> (tool: <code>access-review</code>)</li><li><input type="checkbox" disabled> Are privileged accounts limited and named? <a class="xw-tag" href="../../crosswalk.html">XW-018</a> (tool: <code>access-review</code>)</li><li><input type="checkbox" disabled> For AI systems: is the inventory record complete and the risk in the register? <a class="xw-tag" href="../../crosswalk.html">XW-022</a> (tool: <code>ai-intake</code>)<ul><li>May be impacted by: Plan and request — Any AI component is flagged at intake for a risk-tier assessment.</li></ul></li></ul>
+<h2 id="operate">Operate</h2>
+<p>The application runs day to day: usage tracked, access kept current, records reconciled.</p>
+<p>Rules that apply:</p>
+<ul><li>Installed copies and active users are kept within held entitlements. <a class="xw-tag" href="../../crosswalk.html">XW-007</a></li><li>Access is reviewed on schedule, and leavers are removed promptly. <a class="xw-tag" href="../../crosswalk.html">XW-016</a><ul><li>Refers to: Retire — Are all accounts removed and licenses canceled or reclaimed?</li></ul></li><li>Asset records are reconciled against what is actually installed. <a class="xw-tag" href="../../crosswalk.html">XW-026</a><ul><li>Referenced by: Review and optimize — Where is our asset management process weakest this year?</li></ul></li><li>Changes are assessed for risk and approved before they are made. <a class="xw-tag" href="../../crosswalk.html">XW-029</a></li><li>A changed AI system&#x27;s use is reassessed, not assumed unchanged. <a class="xw-tag" href="../../crosswalk.html">XW-021</a></li></ul>
+<p>Gate to move on: Installs stay within entitlements and access reviews happen on schedule. Hands off to: optimize. the running history and asset record get reviewed. Who decides: The application owner, checked periodically by whoever runs access reviews.</p>
+<p>Questions to ask:</p>
+<ul class="checklist-items"><li><input type="checkbox" disabled> Do installs and users stay within entitlements? <a class="xw-tag" href="../../crosswalk.html">XW-007</a> (tool: <code>rationalization</code>)<ul><li>Referenced by: Acquire — Every purchase records its entitlements before deployment starts.</li></ul></li><li><input type="checkbox" disabled> Is access reviewed on schedule, and are leavers removed? <a class="xw-tag" href="../../crosswalk.html">XW-016</a> (tool: <code>access-review</code>)<ul><li>Blocked by: Deploy — The application is recorded in the inventory with owner and data sensitivity.</li><li>May be impacted by: Deploy — Access roles are defined, and new access only granted through an approved path.</li><li>May be impacted by: Deploy — Privileged and administrative accounts are limited and named individually.</li></ul></li><li><input type="checkbox" disabled> Are asset records accurate and reconciled? <a class="xw-tag" href="../../crosswalk.html">XW-026</a> (tool: <code>itam-maturity</code>)</li><li><input type="checkbox" disabled> Are changes assessed and approved before they are made? <a class="xw-tag" href="../../crosswalk.html">XW-029</a> (tool: <code>itam-maturity</code>)</li><li><input type="checkbox" disabled> Has the AI system&#x27;s use changed since intake? <a class="xw-tag" href="../../crosswalk.html">XW-021</a> (tool: <code>ai-intake</code>)<ul><li>Refers to: Deploy — An AI system&#x27;s inventory record and risk entry are complete before go-live.</li></ul></li></ul>
+<h2 id="review-and-optimize">Review and optimize</h2>
+<p>The portfolio is reviewed to decide whether each application still earns its cost.</p>
+<p>Rules that apply:</p>
+<ul><li>Every application is periodically assessed against tolerate, invest, migrate, or eliminate. <a class="xw-tag" href="../../crosswalk.html">XW-011</a></li><li>Anything expiring within the review window is flagged before it lapses. <a class="xw-tag" href="../../crosswalk.html">XW-008</a></li><li>The review checks where the organization&#x27;s own asset process is weakest. <a class="xw-tag" href="../../crosswalk.html">XW-025</a></li><li>The council&#x27;s own decision log is checked for bottlenecks or rubber-stamping. <a class="xw-tag" href="../../crosswalk.html">XW-025</a></li></ul>
+<p>Gate to move on: The owner or council records a decision: keep, invest, migrate, or retire. Hands off to: plan, retire. reinvest or replace starts a new request; otherwise retire begins. Who decides: The application owner recommends; the council decides above its threshold.</p>
+<p>Questions to ask:</p>
+<ul class="checklist-items"><li><input type="checkbox" disabled> Is it still worth its cost: tolerate, invest, migrate, or eliminate? <a class="xw-tag" href="../../crosswalk.html">XW-011</a> (tool: <code>rationalization</code>)<ul><li>May impact: Plan and request — What problem does this solve, and do we own an app that does it?</li><li>May be impacted by: Acquire — Is the purchase recorded against an owner and a cost center?</li></ul></li><li><input type="checkbox" disabled> Is anything expiring or due for renewal in the next 90 days? <a class="xw-tag" href="../../crosswalk.html">XW-008</a> (tool: <code>rationalization</code>)<ul><li>May impact: Retire — Is the contract ended on time, without auto-renewal?</li></ul></li><li><input type="checkbox" disabled> Where is our asset management process weakest this year? <a class="xw-tag" href="../../crosswalk.html">XW-025</a> (tool: <code>itam-maturity</code>)<ul><li>Refers to: Operate — Asset records are reconciled against what is actually installed.</li></ul></li><li><input type="checkbox" disabled> Does the council&#x27;s decision log show bottlenecks or rubber-stamping? <a class="xw-tag" href="../../crosswalk.html">XW-025</a> (tool: <code>program-setup</code>)<ul><li>Refers to: Plan and request — Does the request meet the council&#x27;s threshold and come through the intake path?</li></ul></li></ul>
+<h2 id="retire">Retire</h2>
+<p>The application is decommissioned: data archived, migrated, or deleted; access and licenses unwound.</p>
+<p>Rules that apply:</p>
+<ul><li>What happens to the application&#x27;s data is decided and recorded, not left implicit. <a class="xw-tag" href="../../crosswalk.html">XW-010</a></li><li>All accounts tied to the application are removed and licenses reclaimed. <a class="xw-tag" href="../../crosswalk.html">XW-017</a></li><li>The contract is ended on schedule, with any auto-renewal canceled in time. <a class="xw-tag" href="../../crosswalk.html">XW-013</a></li><li>The inventory record is formally closed, with evidence retained for audit. <a class="xw-tag" href="../../crosswalk.html">XW-020</a><ul><li>Refers to: Deploy — The application is recorded in the inventory with owner and data sensitivity.</li><li>Blocked by: Retire — What data does it hold, and will we archive, migrate, or delete it?</li></ul></li></ul>
+<p>Gate to move on: Accounts removed, licenses reclaimed, and the inventory record closed with evidence. Hands off to: plan. the freed licenses, data capacity, and budget go to the next request. Who decides: The application owner executes; the council confirms closure above its threshold.</p>
+<p>Questions to ask:</p>
+<ul class="checklist-items"><li><input type="checkbox" disabled> What data does it hold, and will we archive, migrate, or delete it? <a class="xw-tag" href="../../crosswalk.html">XW-010</a> (tool: <code>rationalization</code>)<ul><li>Refers to: Plan and request — What data will it hold, and how sensitive is that data?</li><li>Blocks: Retire — The inventory record is formally closed, with evidence retained for audit.</li></ul></li><li><input type="checkbox" disabled> Are all accounts removed and licenses canceled or reclaimed? <a class="xw-tag" href="../../crosswalk.html">XW-017</a> (tool: <code>access-review</code>)<ul><li>Referenced by: Operate — Access is reviewed on schedule, and leavers are removed promptly.</li></ul></li><li><input type="checkbox" disabled> Is the contract ended on time, without auto-renewal? <a class="xw-tag" href="../../crosswalk.html">XW-013</a> (tool: <code>rationalization</code>)<ul><li>May be impacted by: Acquire — Contracts are checked for audit, renewal, and exit terms before signature.</li><li>May be impacted by: Review and optimize — Is anything expiring or due for renewal in the next 90 days?</li></ul></li><li><input type="checkbox" disabled> Is the inventory record closed, with evidence kept? <a class="xw-tag" href="../../crosswalk.html">XW-020</a> (tool: <code>itam-maturity</code>)</li></ul>
+  </div>
+</main>
+<footer class="site-footer">
+  <p>Eve McGivern · <a href="https://evemcgivern.github.io/">evemcgivern.github.io</a></p>
+  <p>Questions? Comments? <span id="contact-email">email me</span>.</p>
+  <p><a href="https://buymeacoffee.com/a8w5iiqszp" rel="noopener">Buy me a coffee</a> if these tools help.</p>
+  <noscript><p>Email: evemcgivern at gmail dot com</p></noscript>
+</footer>
+<script>
+(function () {
+  "use strict";
+  var user = "evemcgivern", domain = "gmail.com";
+  var el = document.getElementById("contact-email");
+  if (!el) { return; }
+  var a = document.createElement("a");
+  a.href = "mailto:" + user + "@" + domain;
+  a.textContent = "Email me";
+  el.replaceWith(a);
+})();
+</script>
+
+</body>
+</html>

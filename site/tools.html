@@ -153,6 +153,7 @@
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="stylesheet" href="style.css">
+<script src="nav.js" defer></script>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -162,15 +163,15 @@
     <a class="brand" href="https://evemcgivern.github.io/">Eve McGivern</a>
     <nav class="site-nav" aria-label="Main">
       <ul>
-        <li><a href="tools.html" aria-current="page">Tools</a></li>
-        <li><a href="sam-toolkit.html">SAM toolkit</a></li>
-        <li><a href="practicum.html">Practicum</a></li>
-        <li><a href="lifecycle.html">Lifecycle</a></li>
-        <li><a href="crosswalk.html">Crosswalk explorer</a></li>
-        <li><a href="impact-map.html">Impact map</a></li>
-        <li><a href="field-guide.html">Field guide</a></li>
-        <li><a href="case-studies.html">Case studies</a></li>
-        <li><a href="about.html">About</a></li>
+        <li><a href="tools.html" aria-current="page" aria-describedby="tip-tools">Tools</a><span class="nav-tip" role="tooltip" id="tip-tools">The seven governance methods, packaged as skills for Claude, Codex, and Copilot.</span></li>
+        <li><a href="sam-toolkit.html" aria-describedby="tip-sam-toolkit">SAM toolkit</a><span class="nav-tip" role="tooltip" id="tip-sam-toolkit">Templates and checklists for running software asset management by hand.</span></li>
+        <li><a href="practicum.html" aria-describedby="tip-practicum">Practicum</a><span class="nav-tip" role="tooltip" id="tip-practicum">Hands-on exercises on a fictional company, with answers you can check.</span></li>
+        <li><a href="lifecycle.html" aria-describedby="tip-lifecycle">Lifecycle</a><span class="nav-tip" role="tooltip" id="tip-lifecycle">Six stages from request to retirement, with the questions to ask at each.</span></li>
+        <li><a href="crosswalk.html" aria-describedby="tip-crosswalk">Crosswalk explorer</a><span class="nav-tip" role="tooltip" id="tip-crosswalk">See how each control maps to ISO/IEC 19770, COBIT, 27001, and 42001.</span></li>
+        <li><a href="impact-map.html" aria-describedby="tip-impact-map">Impact map</a><span class="nav-tip" role="tooltip" id="tip-impact-map">One grid showing every control theme against every lifecycle stage.</span></li>
+        <li><a href="field-guide.html" aria-describedby="tip-field-guide">Field guide</a><span class="nav-tip" role="tooltip" id="tip-field-guide">Plain-language guides to the standards, certifications, and key terms.</span></li>
+        <li><a href="case-studies.html" aria-describedby="tip-case-studies">Case studies</a><span class="nav-tip" role="tooltip" id="tip-case-studies">What is coming next: worked examples of the kit in use.</span></li>
+        <li><a href="about.html" aria-describedby="tip-about">About</a><span class="nav-tip" role="tooltip" id="tip-about">Who built the kit, and how to get in touch.</span></li>
       </ul>
     </nav>
   </div>
@@ -227,12 +228,12 @@
       <h2>Governance framework crosswalk</h2>
       <p>Map a control, requirement, or policy statement to ISO/IEC 19770-1, COBIT 2019, ISO/IEC 27001, and ISO/IEC 42001 clauses, and show where coverage is missing. Use when writing or auditing a control, or explaining how frameworks overlap.</p>
       <ul class="link-list">
-        <li><a href="https://github.com/evemcgivern/app-governance-kit/tree/main/methods/crosswalk">Method files<span class="visually-hidden"> for Governance framework crosswalk</span></a></li>
-        <li><a href="https://github.com/evemcgivern/app-governance-kit/tree/main/methods/crosswalk/example">Halden example<span class="visually-hidden"> for Governance framework crosswalk</span></a></li>
-        <li><a href="https://github.com/evemcgivern/app-governance-kit/blob/main/methods/crosswalk/checklist.md">Checklist<span class="visually-hidden"> for Governance framework crosswalk</span></a> ·
-            <a href="https://github.com/evemcgivern/app-governance-kit/blob/main/methods/crosswalk/sop.md">SOP<span class="visually-hidden"> for Governance framework crosswalk</span></a> ·
-            <a href="https://github.com/evemcgivern/app-governance-kit/blob/main/methods/crosswalk/template.md">Template<span class="visually-hidden"> for Governance framework crosswalk</span></a> ·
-            <a href="https://github.com/evemcgivern/app-governance-kit/blob/main/methods/crosswalk/platform-guide.md">Platform guide<span class="visually-hidden"> for Governance framework crosswalk</span></a></li>
+        <li><a href="docs/crosswalk/method.html">Method<span class="visually-hidden"> for Governance framework crosswalk</span></a></li>
+        <li><a href="docs/crosswalk/example-controls-mapped.html">Halden example<span class="visually-hidden"> for Governance framework crosswalk</span></a></li>
+        <li><a href="docs/crosswalk/checklist.html">Checklist<span class="visually-hidden"> for Governance framework crosswalk</span></a> ·
+            <a href="docs/crosswalk/sop.html">SOP<span class="visually-hidden"> for Governance framework crosswalk</span></a> ·
+            <a href="docs/crosswalk/template.html">Template<span class="visually-hidden"> for Governance framework crosswalk</span></a> ·
+            <a href="docs/crosswalk/platform-guide.html">Platform guide<span class="visually-hidden"> for Governance framework crosswalk</span></a></li>
         <li><a href="https://github.com/evemcgivern/app-governance-kit/tree/main/dist/claude/skills/crosswalk">Claude<span class="visually-hidden"> skill for Governance framework crosswalk</span></a> ·
             <a href="https://github.com/evemcgivern/app-governance-kit/tree/main/dist/codex/skills/crosswalk">Codex<span class="visually-hidden"> skill for Governance framework crosswalk</span></a> ·
             <a href="https://github.com/evemcgivern/app-governance-kit/tree/main/dist/copilot/crosswalk">Copilot<span class="visually-hidden"> agent for Governance framework crosswalk</span></a></li>
@@ -244,12 +245,12 @@
       <h2>ITAM maturity check</h2>
       <p>Score an organization's IT asset management maturity across nine process areas, name the three biggest gaps, and produce a 90-day plan tied to ISO/IEC 19770-1 and COBIT BAI09. Use for a baseline assessment or a yearly re-check.</p>
       <ul class="link-list">
-        <li><a href="https://github.com/evemcgivern/app-governance-kit/tree/main/methods/itam-maturity">Method files<span class="visually-hidden"> for ITAM maturity check</span></a></li>
-        <li><a href="https://github.com/evemcgivern/app-governance-kit/tree/main/methods/itam-maturity/example">Halden example<span class="visually-hidden"> for ITAM maturity check</span></a></li>
-        <li><a href="https://github.com/evemcgivern/app-governance-kit/blob/main/methods/itam-maturity/checklist.md">Checklist<span class="visually-hidden"> for ITAM maturity check</span></a> ·
-            <a href="https://github.com/evemcgivern/app-governance-kit/blob/main/methods/itam-maturity/sop.md">SOP<span class="visually-hidden"> for ITAM maturity check</span></a> ·
-            <a href="https://github.com/evemcgivern/app-governance-kit/blob/main/methods/itam-maturity/template.csv">Template<span class="visually-hidden"> for ITAM maturity check</span></a> ·
-            <a href="https://github.com/evemcgivern/app-governance-kit/blob/main/methods/itam-maturity/platform-guide.md">Platform guide<span class="visually-hidden"> for ITAM maturity check</span></a></li>
+        <li><a href="docs/itam-maturity/method.html">Method<span class="visually-hidden"> for ITAM maturity check</span></a></li>
+        <li><a href="docs/itam-maturity/example-halden-assessment.html">Halden example<span class="visually-hidden"> for ITAM maturity check</span></a></li>
+        <li><a href="docs/itam-maturity/checklist.html">Checklist<span class="visually-hidden"> for ITAM maturity check</span></a> ·
+            <a href="docs/itam-maturity/sop.html">SOP<span class="visually-hidden"> for ITAM maturity check</span></a> ·
+            <a href="docs/itam-maturity/template.html">Template<span class="visually-hidden"> for ITAM maturity check</span></a> ·
+            <a href="docs/itam-maturity/platform-guide.html">Platform guide<span class="visually-hidden"> for ITAM maturity check</span></a></li>
         <li><a href="https://github.com/evemcgivern/app-governance-kit/tree/main/dist/claude/skills/itam-maturity">Claude<span class="visually-hidden"> skill for ITAM maturity check</span></a> ·
             <a href="https://github.com/evemcgivern/app-governance-kit/tree/main/dist/codex/skills/itam-maturity">Codex<span class="visually-hidden"> skill for ITAM maturity check</span></a> ·
             <a href="https://github.com/evemcgivern/app-governance-kit/tree/main/dist/copilot/itam-maturity">Copilot<span class="visually-hidden"> agent for ITAM maturity check</span></a></li>
@@ -261,12 +262,12 @@
       <h2>Application rationalization</h2>
       <p>Recommend tolerate, invest, migrate, or eliminate for each application in an inventory, find duplicates and license problems, and summarize savings and risk. Use for portfolio reviews, budget cycles, or post-merger cleanup.</p>
       <ul class="link-list">
-        <li><a href="https://github.com/evemcgivern/app-governance-kit/tree/main/methods/rationalization">Method files<span class="visually-hidden"> for Application rationalization</span></a></li>
-        <li><a href="https://github.com/evemcgivern/app-governance-kit/tree/main/methods/rationalization/example">Halden example<span class="visually-hidden"> for Application rationalization</span></a></li>
-        <li><a href="https://github.com/evemcgivern/app-governance-kit/blob/main/methods/rationalization/checklist.md">Checklist<span class="visually-hidden"> for Application rationalization</span></a> ·
-            <a href="https://github.com/evemcgivern/app-governance-kit/blob/main/methods/rationalization/sop.md">SOP<span class="visually-hidden"> for Application rationalization</span></a> ·
-            <a href="https://github.com/evemcgivern/app-governance-kit/blob/main/methods/rationalization/template.csv">Template<span class="visually-hidden"> for Application rationalization</span></a> ·
-            <a href="https://github.com/evemcgivern/app-governance-kit/blob/main/methods/rationalization/platform-guide.md">Platform guide<span class="visually-hidden"> for Application rationalization</span></a></li>
+        <li><a href="docs/rationalization/method.html">Method<span class="visually-hidden"> for Application rationalization</span></a></li>
+        <li><a href="docs/rationalization/example-halden-rationalization.html">Halden example<span class="visually-hidden"> for Application rationalization</span></a></li>
+        <li><a href="docs/rationalization/checklist.html">Checklist<span class="visually-hidden"> for Application rationalization</span></a> ·
+            <a href="docs/rationalization/sop.html">SOP<span class="visually-hidden"> for Application rationalization</span></a> ·
+            <a href="docs/rationalization/template.html">Template<span class="visually-hidden"> for Application rationalization</span></a> ·
+            <a href="docs/rationalization/platform-guide.html">Platform guide<span class="visually-hidden"> for Application rationalization</span></a></li>
         <li><a href="https://github.com/evemcgivern/app-governance-kit/tree/main/dist/claude/skills/rationalization">Claude<span class="visually-hidden"> skill for Application rationalization</span></a> ·
             <a href="https://github.com/evemcgivern/app-governance-kit/tree/main/dist/codex/skills/rationalization">Codex<span class="visually-hidden"> skill for Application rationalization</span></a> ·
             <a href="https://github.com/evemcgivern/app-governance-kit/tree/main/dist/copilot/rationalization">Copilot<span class="visually-hidden"> agent for Application rationalization</span></a></li>
@@ -278,12 +279,12 @@
       <h2>AI system intake and risk tiering</h2>
       <p>Take a description of an AI use case, assign a risk tier under the EU AI Act with NIST AI RMF and ISO/IEC 42001 controls, and produce an AI inventory record. Use whenever a team proposes a new AI tool or changes how one is used.</p>
       <ul class="link-list">
-        <li><a href="https://github.com/evemcgivern/app-governance-kit/tree/main/methods/ai-intake">Method files<span class="visually-hidden"> for AI system intake and risk tiering</span></a></li>
-        <li><a href="https://github.com/evemcgivern/app-governance-kit/tree/main/methods/ai-intake/example">Halden example<span class="visually-hidden"> for AI system intake and risk tiering</span></a></li>
-        <li><a href="https://github.com/evemcgivern/app-governance-kit/blob/main/methods/ai-intake/checklist.md">Checklist<span class="visually-hidden"> for AI system intake and risk tiering</span></a> ·
-            <a href="https://github.com/evemcgivern/app-governance-kit/blob/main/methods/ai-intake/sop.md">SOP<span class="visually-hidden"> for AI system intake and risk tiering</span></a> ·
-            <a href="https://github.com/evemcgivern/app-governance-kit/blob/main/methods/ai-intake/template.md">Template<span class="visually-hidden"> for AI system intake and risk tiering</span></a> ·
-            <a href="https://github.com/evemcgivern/app-governance-kit/blob/main/methods/ai-intake/platform-guide.md">Platform guide<span class="visually-hidden"> for AI system intake and risk tiering</span></a></li>
+        <li><a href="docs/ai-intake/method.html">Method<span class="visually-hidden"> for AI system intake and risk tiering</span></a></li>
+        <li><a href="docs/ai-intake/example-halden-ai-intake.html">Halden example<span class="visually-hidden"> for AI system intake and risk tiering</span></a></li>
+        <li><a href="docs/ai-intake/checklist.html">Checklist<span class="visually-hidden"> for AI system intake and risk tiering</span></a> ·
+            <a href="docs/ai-intake/sop.html">SOP<span class="visually-hidden"> for AI system intake and risk tiering</span></a> ·
+            <a href="docs/ai-intake/template.html">Template<span class="visually-hidden"> for AI system intake and risk tiering</span></a> ·
+            <a href="docs/ai-intake/platform-guide.html">Platform guide<span class="visually-hidden"> for AI system intake and risk tiering</span></a></li>
         <li><a href="https://github.com/evemcgivern/app-governance-kit/tree/main/dist/claude/skills/ai-intake">Claude<span class="visually-hidden"> skill for AI system intake and risk tiering</span></a> ·
             <a href="https://github.com/evemcgivern/app-governance-kit/tree/main/dist/codex/skills/ai-intake">Codex<span class="visually-hidden"> skill for AI system intake and risk tiering</span></a> ·
             <a href="https://github.com/evemcgivern/app-governance-kit/tree/main/dist/copilot/ai-intake">Copilot<span class="visually-hidden"> agent for AI system intake and risk tiering</span></a></li>
@@ -295,12 +296,12 @@
       <h2>Access review pack</h2>
       <p>Review application user and role exports against HR records, find orphaned, excessive, and privileged access, and produce an evidence summary and auditor-ready memo mapped to ISO/IEC 27001 and COBIT DSS05. Use for quarterly or annual access reviews.</p>
       <ul class="link-list">
-        <li><a href="https://github.com/evemcgivern/app-governance-kit/tree/main/methods/access-review">Method files<span class="visually-hidden"> for Access review pack</span></a></li>
-        <li><a href="https://github.com/evemcgivern/app-governance-kit/tree/main/methods/access-review/example">Halden example<span class="visually-hidden"> for Access review pack</span></a></li>
-        <li><a href="https://github.com/evemcgivern/app-governance-kit/blob/main/methods/access-review/checklist.md">Checklist<span class="visually-hidden"> for Access review pack</span></a> ·
-            <a href="https://github.com/evemcgivern/app-governance-kit/blob/main/methods/access-review/sop.md">SOP<span class="visually-hidden"> for Access review pack</span></a> ·
-            <a href="https://github.com/evemcgivern/app-governance-kit/blob/main/methods/access-review/template.csv">Template<span class="visually-hidden"> for Access review pack</span></a> ·
-            <a href="https://github.com/evemcgivern/app-governance-kit/blob/main/methods/access-review/platform-guide.md">Platform guide<span class="visually-hidden"> for Access review pack</span></a></li>
+        <li><a href="docs/access-review/method.html">Method<span class="visually-hidden"> for Access review pack</span></a></li>
+        <li><a href="docs/access-review/example-halden-access-review.html">Halden example<span class="visually-hidden"> for Access review pack</span></a></li>
+        <li><a href="docs/access-review/checklist.html">Checklist<span class="visually-hidden"> for Access review pack</span></a> ·
+            <a href="docs/access-review/sop.html">SOP<span class="visually-hidden"> for Access review pack</span></a> ·
+            <a href="docs/access-review/template.html">Template<span class="visually-hidden"> for Access review pack</span></a> ·
+            <a href="docs/access-review/platform-guide.html">Platform guide<span class="visually-hidden"> for Access review pack</span></a></li>
         <li><a href="https://github.com/evemcgivern/app-governance-kit/tree/main/dist/claude/skills/access-review">Claude<span class="visually-hidden"> skill for Access review pack</span></a> ·
             <a href="https://github.com/evemcgivern/app-governance-kit/tree/main/dist/codex/skills/access-review">Codex<span class="visually-hidden"> skill for Access review pack</span></a> ·
             <a href="https://github.com/evemcgivern/app-governance-kit/tree/main/dist/copilot/access-review">Copilot<span class="visually-hidden"> agent for Access review pack</span></a></li>
@@ -312,12 +313,12 @@
       <h2>Stand up a governance program</h2>
       <p>Design or review the launch of a governance body such as a software governance council, ITAM steering group, or AI governance board — charter, decision rights, membership, intake path, cadence, 90-day launch plan, and success measures. Use when starting a council or when an existing one has become a bottleneck or a rubber stamp.</p>
       <ul class="link-list">
-        <li><a href="https://github.com/evemcgivern/app-governance-kit/tree/main/methods/program-setup">Method files<span class="visually-hidden"> for Stand up a governance program</span></a></li>
-        <li><a href="https://github.com/evemcgivern/app-governance-kit/tree/main/methods/program-setup/example">Halden example<span class="visually-hidden"> for Stand up a governance program</span></a></li>
-        <li><a href="https://github.com/evemcgivern/app-governance-kit/blob/main/methods/program-setup/checklist.md">Checklist<span class="visually-hidden"> for Stand up a governance program</span></a> ·
-            <a href="https://github.com/evemcgivern/app-governance-kit/blob/main/methods/program-setup/sop.md">SOP<span class="visually-hidden"> for Stand up a governance program</span></a> ·
-            <a href="https://github.com/evemcgivern/app-governance-kit/blob/main/methods/program-setup/template.md">Template<span class="visually-hidden"> for Stand up a governance program</span></a> ·
-            <a href="https://github.com/evemcgivern/app-governance-kit/blob/main/methods/program-setup/platform-guide.md">Platform guide<span class="visually-hidden"> for Stand up a governance program</span></a></li>
+        <li><a href="docs/program-setup/method.html">Method<span class="visually-hidden"> for Stand up a governance program</span></a></li>
+        <li><a href="docs/program-setup/example-halden-council-review.html">Halden example<span class="visually-hidden"> for Stand up a governance program</span></a></li>
+        <li><a href="docs/program-setup/checklist.html">Checklist<span class="visually-hidden"> for Stand up a governance program</span></a> ·
+            <a href="docs/program-setup/sop.html">SOP<span class="visually-hidden"> for Stand up a governance program</span></a> ·
+            <a href="docs/program-setup/template.html">Template<span class="visually-hidden"> for Stand up a governance program</span></a> ·
+            <a href="docs/program-setup/platform-guide.html">Platform guide<span class="visually-hidden"> for Stand up a governance program</span></a></li>
         <li><a href="https://github.com/evemcgivern/app-governance-kit/tree/main/dist/claude/skills/program-setup">Claude<span class="visually-hidden"> skill for Stand up a governance program</span></a> ·
             <a href="https://github.com/evemcgivern/app-governance-kit/tree/main/dist/codex/skills/program-setup">Codex<span class="visually-hidden"> skill for Stand up a governance program</span></a> ·
             <a href="https://github.com/evemcgivern/app-governance-kit/tree/main/dist/copilot/program-setup">Copilot<span class="visually-hidden"> agent for Stand up a governance program</span></a></li>
@@ -329,12 +330,12 @@
       <h2>Hardware lifecycle check</h2>
       <p>Check a device fleet for hardware overdue for refresh and retired devices missing a confirmed data wipe, estimate replacement cost, and produce a disposal-readiness summary. Use for a refresh cycle review, before a hardware budget request, or before closing out a disposal.</p>
       <ul class="link-list">
-        <li><a href="https://github.com/evemcgivern/app-governance-kit/tree/main/methods/hardware-lifecycle">Method files<span class="visually-hidden"> for Hardware lifecycle check</span></a></li>
-        <li><a href="https://github.com/evemcgivern/app-governance-kit/tree/main/methods/hardware-lifecycle/example">Halden example<span class="visually-hidden"> for Hardware lifecycle check</span></a></li>
-        <li><a href="https://github.com/evemcgivern/app-governance-kit/blob/main/methods/hardware-lifecycle/checklist.md">Checklist<span class="visually-hidden"> for Hardware lifecycle check</span></a> ·
-            <a href="https://github.com/evemcgivern/app-governance-kit/blob/main/methods/hardware-lifecycle/sop.md">SOP<span class="visually-hidden"> for Hardware lifecycle check</span></a> ·
-            <a href="https://github.com/evemcgivern/app-governance-kit/blob/main/methods/hardware-lifecycle/template.csv">Template<span class="visually-hidden"> for Hardware lifecycle check</span></a> ·
-            <a href="https://github.com/evemcgivern/app-governance-kit/blob/main/methods/hardware-lifecycle/platform-guide.md">Platform guide<span class="visually-hidden"> for Hardware lifecycle check</span></a></li>
+        <li><a href="docs/hardware-lifecycle/method.html">Method<span class="visually-hidden"> for Hardware lifecycle check</span></a></li>
+        <li><a href="docs/hardware-lifecycle/example-halden-hardware-lifecycle.html">Halden example<span class="visually-hidden"> for Hardware lifecycle check</span></a></li>
+        <li><a href="docs/hardware-lifecycle/checklist.html">Checklist<span class="visually-hidden"> for Hardware lifecycle check</span></a> ·
+            <a href="docs/hardware-lifecycle/sop.html">SOP<span class="visually-hidden"> for Hardware lifecycle check</span></a> ·
+            <a href="docs/hardware-lifecycle/template.html">Template<span class="visually-hidden"> for Hardware lifecycle check</span></a> ·
+            <a href="docs/hardware-lifecycle/platform-guide.html">Platform guide<span class="visually-hidden"> for Hardware lifecycle check</span></a></li>
         <li><a href="https://github.com/evemcgivern/app-governance-kit/tree/main/dist/claude/skills/hardware-lifecycle">Claude<span class="visually-hidden"> skill for Hardware lifecycle check</span></a> ·
             <a href="https://github.com/evemcgivern/app-governance-kit/tree/main/dist/codex/skills/hardware-lifecycle">Codex<span class="visually-hidden"> skill for Hardware lifecycle check</span></a> ·
             <a href="https://github.com/evemcgivern/app-governance-kit/tree/main/dist/copilot/hardware-lifecycle">Copilot<span class="visually-hidden"> agent for Hardware lifecycle check</span></a></li>
@@ -346,12 +347,12 @@
       <h2>Certification study coach</h2>
       <p>Coach a learner preparing for CAMP, CSAM, CHAMP, AIGP, ITIL 4 Foundation, or the IAM Certificate with scenario drills on the Halden demo estate, then log gaps and plan the next drills. Practice only: not exam content and not a pass guarantee.</p>
       <ul class="link-list">
-        <li><a href="https://github.com/evemcgivern/app-governance-kit/tree/main/methods/cert-prep">Method files<span class="visually-hidden"> for Certification study coach</span></a></li>
-        <li><a href="https://github.com/evemcgivern/app-governance-kit/tree/main/methods/cert-prep/example">Halden example<span class="visually-hidden"> for Certification study coach</span></a></li>
-        <li><a href="https://github.com/evemcgivern/app-governance-kit/blob/main/methods/cert-prep/checklist.md">Checklist<span class="visually-hidden"> for Certification study coach</span></a> ·
-            <a href="https://github.com/evemcgivern/app-governance-kit/blob/main/methods/cert-prep/sop.md">SOP<span class="visually-hidden"> for Certification study coach</span></a> ·
-            <a href="https://github.com/evemcgivern/app-governance-kit/blob/main/methods/cert-prep/template.csv">Template<span class="visually-hidden"> for Certification study coach</span></a> ·
-            <a href="https://github.com/evemcgivern/app-governance-kit/blob/main/methods/cert-prep/platform-guide.md">Platform guide<span class="visually-hidden"> for Certification study coach</span></a></li>
+        <li><a href="docs/cert-prep/method.html">Method<span class="visually-hidden"> for Certification study coach</span></a></li>
+        <li><a href="docs/cert-prep/example-halden-cert-prep.html">Halden example<span class="visually-hidden"> for Certification study coach</span></a></li>
+        <li><a href="docs/cert-prep/checklist.html">Checklist<span class="visually-hidden"> for Certification study coach</span></a> ·
+            <a href="docs/cert-prep/sop.html">SOP<span class="visually-hidden"> for Certification study coach</span></a> ·
+            <a href="docs/cert-prep/template.html">Template<span class="visually-hidden"> for Certification study coach</span></a> ·
+            <a href="docs/cert-prep/platform-guide.html">Platform guide<span class="visually-hidden"> for Certification study coach</span></a></li>
         <li><a href="https://github.com/evemcgivern/app-governance-kit/tree/main/dist/claude/skills/cert-prep">Claude<span class="visually-hidden"> skill for Certification study coach</span></a> ·
             <a href="https://github.com/evemcgivern/app-governance-kit/tree/main/dist/codex/skills/cert-prep">Codex<span class="visually-hidden"> skill for Certification study coach</span></a> ·
             <a href="https://github.com/evemcgivern/app-governance-kit/tree/main/dist/copilot/cert-prep">Copilot<span class="visually-hidden"> agent for Certification study coach</span></a></li>
@@ -363,12 +364,12 @@
       <h2>Application governance router</h2>
       <p>Pick the right governance skill for a plain request about a software estate, AI systems, access, or devices, ask for the data, run that skill, and hand every decision back to a person. Use when you have a governance question but have not chosen a tool.</p>
       <ul class="link-list">
-        <li><a href="https://github.com/evemcgivern/app-governance-kit/tree/main/methods/app-governance">Method files<span class="visually-hidden"> for Application governance router</span></a></li>
-        <li><a href="https://github.com/evemcgivern/app-governance-kit/tree/main/methods/app-governance/example">Halden example<span class="visually-hidden"> for Application governance router</span></a></li>
-        <li><a href="https://github.com/evemcgivern/app-governance-kit/blob/main/methods/app-governance/checklist.md">Checklist<span class="visually-hidden"> for Application governance router</span></a> ·
-            <a href="https://github.com/evemcgivern/app-governance-kit/blob/main/methods/app-governance/sop.md">SOP<span class="visually-hidden"> for Application governance router</span></a> ·
-            <a href="https://github.com/evemcgivern/app-governance-kit/blob/main/methods/app-governance/template.csv">Template<span class="visually-hidden"> for Application governance router</span></a> ·
-            <a href="https://github.com/evemcgivern/app-governance-kit/blob/main/methods/app-governance/platform-guide.md">Platform guide<span class="visually-hidden"> for Application governance router</span></a></li>
+        <li><a href="docs/app-governance/method.html">Method<span class="visually-hidden"> for Application governance router</span></a></li>
+        <li><a href="docs/app-governance/example-halden-app-governance.html">Halden example<span class="visually-hidden"> for Application governance router</span></a></li>
+        <li><a href="docs/app-governance/checklist.html">Checklist<span class="visually-hidden"> for Application governance router</span></a> ·
+            <a href="docs/app-governance/sop.html">SOP<span class="visually-hidden"> for Application governance router</span></a> ·
+            <a href="docs/app-governance/template.html">Template<span class="visually-hidden"> for Application governance router</span></a> ·
+            <a href="docs/app-governance/platform-guide.html">Platform guide<span class="visually-hidden"> for Application governance router</span></a></li>
         <li><a href="https://github.com/evemcgivern/app-governance-kit/tree/main/dist/claude/skills/app-governance">Claude<span class="visually-hidden"> skill for Application governance router</span></a> ·
             <a href="https://github.com/evemcgivern/app-governance-kit/tree/main/dist/codex/skills/app-governance">Codex<span class="visually-hidden"> skill for Application governance router</span></a> ·
             <a href="https://github.com/evemcgivern/app-governance-kit/tree/main/dist/copilot/app-governance">Copilot<span class="visually-hidden"> agent for Application governance router</span></a></li>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Stand up a governance program — Eve McGivern</title>
+<meta name="description" content="You help stand up a governance body that makes real decisions without becoming a…">
+<meta name="author" content="Eve McGivern">
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../apple-touch-icon.png">
+<link rel="stylesheet" href="../../style.css">
+<script src="../../nav.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="support-bar"><a class="coffee-link" href="https://buymeacoffee.com/a8w5iiqszp" rel="noopener"><svg class="coffee-icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M5 9h11v5a5 5 0 0 1-5 5h-1a5 5 0 0 1-5-5V9z" fill="#2f9e6e"/><path d="M16 10.5h1.2a2.4 2.4 0 0 1 0 4.8H16" fill="none" stroke="#2f9e6e" stroke-width="1.8" stroke-linecap="round"/><path d="M8.5 3.5c0 1.3 1 1.3 1 2.6M12 3.5c0 1.3 1 1.3 1 2.6" fill="none" stroke="#2f9e6e" stroke-width="1.6" stroke-linecap="round"/></svg><span>Buy me a coffee</span></a></div>
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="https://evemcgivern.github.io/">Eve McGivern</a>
+    <nav class="site-nav" aria-label="Main">
+      <ul>
+        <li><a href="../../tools.html" aria-describedby="tip-tools">Tools</a><span class="nav-tip" role="tooltip" id="tip-tools">The seven governance methods, packaged as skills for Claude, Codex, and Copilot.</span></li>
+        <li><a href="../../sam-toolkit.html" aria-describedby="tip-sam-toolkit">SAM toolkit</a><span class="nav-tip" role="tooltip" id="tip-sam-toolkit">Templates and checklists for running software asset management by hand.</span></li>
+        <li><a href="../../practicum.html" aria-describedby="tip-practicum">Practicum</a><span class="nav-tip" role="tooltip" id="tip-practicum">Hands-on exercises on a fictional company, with answers you can check.</span></li>
+        <li><a href="../../lifecycle.html" aria-describedby="tip-lifecycle">Lifecycle</a><span class="nav-tip" role="tooltip" id="tip-lifecycle">Six stages from request to retirement, with the questions to ask at each.</span></li>
+        <li><a href="../../crosswalk.html" aria-describedby="tip-crosswalk">Crosswalk explorer</a><span class="nav-tip" role="tooltip" id="tip-crosswalk">See how each control maps to ISO/IEC 19770, COBIT, 27001, and 42001.</span></li>
+        <li><a href="../../impact-map.html" aria-describedby="tip-impact-map">Impact map</a><span class="nav-tip" role="tooltip" id="tip-impact-map">One grid showing every control theme against every lifecycle stage.</span></li>
+        <li><a href="../../field-guide.html" aria-describedby="tip-field-guide">Field guide</a><span class="nav-tip" role="tooltip" id="tip-field-guide">Plain-language guides to the standards, certifications, and key terms.</span></li>
+        <li><a href="../../case-studies.html" aria-describedby="tip-case-studies">Case studies</a><span class="nav-tip" role="tooltip" id="tip-case-studies">What is coming next: worked examples of the kit in use.</span></li>
+        <li><a href="../../about.html" aria-describedby="tip-about">About</a><span class="nav-tip" role="tooltip" id="tip-about">Who built the kit, and how to get in touch.</span></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<main id="main" class="doc-page">
+  <p class="doc-back"><a href="../../tools.html">&larr; Tools</a></p>
+  <h1>Stand up a governance program</h1>
+  <div class="visual-actions doc-actions">
+    <a class="visual-actions__link" href="method.docx">Download Word (.docx)</a>
+    <button type="button" class="visual-actions__link doc-print" onclick="window.print()">Print or save as PDF</button>
+  </div>
+
+  <div class="doc-body prose prose-wide">
+<p>You help stand up a governance body that makes real decisions without becoming a bottleneck.</p>
+<h2 id="mode">Mode</h2>
+<p>If given a draft charter, review it against the steps below and report gaps. Otherwise ask for: the body&#x27;s purpose, the organization&#x27;s size, who would sponsor it, and what currently goes wrong without it. Then draft.</p>
+<h2 id="steps">Steps</h2>
+<ol><li>Purpose: one sentence on what goes wrong today that this body fixes.</li><li>Sponsor: an executive who controls the relevant budget. No sponsor means no enforcement; flag it.</li><li>Decision rights: what the body decides, what it only advises on, and the thresholds (cost, risk, AI use) that send an item to it. Everything below threshold is decided by a named role, not the council.</li><li>Membership: 5–9 voting members (typically IT, security, procurement, finance, legal, architecture, one or two business leads). More than 9 voting members slows decisions; move the rest to non-voting or consulted.</li><li>Intake path: one request form; triage by a named role; only exceptions, high-cost, and high-risk items reach the meeting.</li><li>Enforcement: procurement will not buy what the body hasn&#x27;t approved above threshold. Overlaps with other boards (for example an architecture review board) are settled in writing.</li><li>Cadence and agenda: meeting frequency, standing agenda, decision log, and an out-of-cycle path for urgent items.</li><li>Escalation: where disputes go and who breaks ties.</li><li>Success measures: time from request to decision, share of software bought through the intake path, savings, and exceptions granted.</li><li>90-day launch plan: charter approval, members named, intake live, first three meetings, first metrics review. <strong>Decision needed:</strong> sponsor sign-off.</li></ol>
+<h2 id="output">Output</h2>
+<p>Draft mode: the charter from <a href="template.html">Governance charter template</a>, the decision-rights table, and the 90-day plan. Review mode: a gap table (step, what&#x27;s missing, why it matters, fix). Either way, end with the findings block: one <code>charter_gap</code> per gap found, using the slugs decision-rights, sponsor, membership-size, intake-path, cadence, metrics, escalation. Those seven are the only slugs a <code>charter_gap</code> finding may use; a gap that doesn&#x27;t fit one of them still belongs in the gap table, just not in the findings block.</p>
+<p>Present any drafted charter wording as plain text or in a table, not in quotation marks.</p>
+<h2 id="output-rules">Output rules</h2>
+<ul><li>Show the reasoning behind each conclusion.</li><li>Mark every point where a person must decide with <strong>Decision needed:</strong> and stop short of deciding.</li><li>Flag any figure you could not verify from the input with <strong>Unverified:</strong>.</li><li>Cite framework clauses by number from <a href="../../downloads/crosswalk.csv">crosswalk.csv</a>. Paraphrase; never quote standards text.</li><li>End your answer with a fenced block labeled <code>findings</code> containing a JSON list of <code>{&quot;type&quot;: ..., &quot;id&quot;: ...}</code> objects, as the task describes. Use <code>[]</code> when there are none.</li></ul>
+  </div>
+</main>
+<footer class="site-footer">
+  <p>Eve McGivern · <a href="https://evemcgivern.github.io/">evemcgivern.github.io</a></p>
+  <p>Questions? Comments? <span id="contact-email">email me</span>.</p>
+  <p><a href="https://buymeacoffee.com/a8w5iiqszp" rel="noopener">Buy me a coffee</a> if these tools help.</p>
+  <noscript><p>Email: evemcgivern at gmail dot com</p></noscript>
+</footer>
+<script>
+(function () {
+  "use strict";
+  var user = "evemcgivern", domain = "gmail.com";
+  var el = document.getElementById("contact-email");
+  if (!el) { return; }
+  var a = document.createElement("a");
+  a.href = "mailto:" + user + "@" + domain;
+  a.textContent = "Email me";
+  el.replaceWith(a);
+})();
+</script>
+
+</body>
+</html>

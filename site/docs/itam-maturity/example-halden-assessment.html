@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ITAM maturity assessment: Halden Logistics (baseline, 2026-09-24) — Eve McGivern</title>
+<meta name="description" content="Main caveat: maturity-answers.csv gives only a score for each area. There is no evidence…">
+<meta name="author" content="Eve McGivern">
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../apple-touch-icon.png">
+<link rel="stylesheet" href="../../style.css">
+<script src="../../nav.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="support-bar"><a class="coffee-link" href="https://buymeacoffee.com/a8w5iiqszp" rel="noopener"><svg class="coffee-icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M5 9h11v5a5 5 0 0 1-5 5h-1a5 5 0 0 1-5-5V9z" fill="#2f9e6e"/><path d="M16 10.5h1.2a2.4 2.4 0 0 1 0 4.8H16" fill="none" stroke="#2f9e6e" stroke-width="1.8" stroke-linecap="round"/><path d="M8.5 3.5c0 1.3 1 1.3 1 2.6M12 3.5c0 1.3 1 1.3 1 2.6" fill="none" stroke="#2f9e6e" stroke-width="1.6" stroke-linecap="round"/></svg><span>Buy me a coffee</span></a></div>
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="https://evemcgivern.github.io/">Eve McGivern</a>
+    <nav class="site-nav" aria-label="Main">
+      <ul>
+        <li><a href="../../tools.html" aria-describedby="tip-tools">Tools</a><span class="nav-tip" role="tooltip" id="tip-tools">The seven governance methods, packaged as skills for Claude, Codex, and Copilot.</span></li>
+        <li><a href="../../sam-toolkit.html" aria-describedby="tip-sam-toolkit">SAM toolkit</a><span class="nav-tip" role="tooltip" id="tip-sam-toolkit">Templates and checklists for running software asset management by hand.</span></li>
+        <li><a href="../../practicum.html" aria-describedby="tip-practicum">Practicum</a><span class="nav-tip" role="tooltip" id="tip-practicum">Hands-on exercises on a fictional company, with answers you can check.</span></li>
+        <li><a href="../../lifecycle.html" aria-describedby="tip-lifecycle">Lifecycle</a><span class="nav-tip" role="tooltip" id="tip-lifecycle">Six stages from request to retirement, with the questions to ask at each.</span></li>
+        <li><a href="../../crosswalk.html" aria-describedby="tip-crosswalk">Crosswalk explorer</a><span class="nav-tip" role="tooltip" id="tip-crosswalk">See how each control maps to ISO/IEC 19770, COBIT, 27001, and 42001.</span></li>
+        <li><a href="../../impact-map.html" aria-describedby="tip-impact-map">Impact map</a><span class="nav-tip" role="tooltip" id="tip-impact-map">One grid showing every control theme against every lifecycle stage.</span></li>
+        <li><a href="../../field-guide.html" aria-describedby="tip-field-guide">Field guide</a><span class="nav-tip" role="tooltip" id="tip-field-guide">Plain-language guides to the standards, certifications, and key terms.</span></li>
+        <li><a href="../../case-studies.html" aria-describedby="tip-case-studies">Case studies</a><span class="nav-tip" role="tooltip" id="tip-case-studies">What is coming next: worked examples of the kit in use.</span></li>
+        <li><a href="../../about.html" aria-describedby="tip-about">About</a><span class="nav-tip" role="tooltip" id="tip-about">Who built the kit, and how to get in touch.</span></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<main id="main" class="doc-page">
+  <p class="doc-back"><a href="../../tools.html">&larr; Tools</a></p>
+  <h1>ITAM maturity assessment: Halden Logistics (baseline, 2026-09-24)</h1>
+  <div class="visual-actions doc-actions">
+    <a class="visual-actions__link" href="example-halden-assessment.docx">Download Word (.docx)</a>
+    <a class="visual-actions__link" href="example-halden-assessment.xlsx">Download Excel (.xlsx)</a>
+    <button type="button" class="visual-actions__link doc-print" onclick="window.print()">Print or save as PDF</button>
+  </div>
+
+  <div class="doc-body prose prose-wide">
+<p><strong>Main caveat:</strong> <a href="example-maturity-answers.html">Maturity answers (example data)</a> gives only a score for each area. There is no evidence column, so every score below is self-reported and <strong>Unverified:</strong>. To test the scores, I checked them against the demo estate files (<code>apps.csv</code>, <code>licenses.csv</code>, <code>accounts.csv</code>, <code>employees.csv</code>). I only lowered a score when that data contradicted the question the area actually asks.</p>
+<h2 id="score-table">Score table</h2>
+<div class="table-scroll"><table class="checklist"><caption>Score table</caption><thead><tr><th scope="col">Area</th><th scope="col">Stated</th><th scope="col">Assessed</th><th scope="col">Crosswalk (ISO/IEC 19770-1 · COBIT 2019 · ISO 27001)</th><th scope="col">Reasoning</th></tr></thead><tbody><tr><td>governance</td><td>3</td><td>3 <strong>Unverified:</strong></td><td>XW-003 (4.3, 5.2 · APO01 · A.5.1), XW-004 (5.3 · APO01 · A.5.2)</td><td>No policy was supplied. Council draft has a scope but no decision rights, quorum or sponsor, which fits 3 at best.</td></tr><tr><td>inventory</td><td>3</td><td>3 <strong>Unverified:</strong></td><td>XW-001, XW-005 (8.3 · BAI09.01 · A.5.9)</td><td>60 apps are recorded with every field filled in. No discovery or reconcile date is given.</td></tr><tr><td>entitlement</td><td>1</td><td><strong>1</strong></td><td>XW-006/007/008 (8.4 · BAI09.05 · A.5.32)</td><td>The data supports this score. Two licenses have expired but the apps are still in use (details below). For 41 of 60 apps, recorded users exceed entitlements.</td></tr><tr><td>lifecycle</td><td>2</td><td><strong>2</strong></td><td>XW-009 (19770-1 Annex A · BAI09.03 · A.5.9), XW-010 (19770-1 Annex A Retirement · BAI09.03 · A.8.10).</td><td>The data doesn&#x27;t contradict this. Apps keep running after their licenses lapse, and there&#x27;s no retirement trail.</td></tr><tr><td>vendor</td><td>4</td><td>4 <strong>Unverified:</strong></td><td>XW-013 (8.7 · APO10 · A.5.19, A.5.20)</td><td>Renewal dates are on file. No vendor risk ratings are supplied, so I can&#x27;t confirm the &quot;Measured&quot; level.</td></tr><tr><td>data-quality</td><td>1</td><td><strong>1</strong></td><td>XW-026 (8.3 · BAI09.01 · A.5.9)</td><td>The data supports this score. Account ACC-104 belongs to EMP-099, who isn&#x27;t in the employee records. Five categories each have two overlapping products that nobody has reconciled.</td></tr><tr><td>security</td><td>3</td><td>3 <strong>Unverified:</strong></td><td>XW-014 (DSS05.04 · A.5.15)</td><td>Held at 3, with a serious related finding (see below).</td></tr><tr><td>cost</td><td>4</td><td>4 <strong>Unverified:</strong></td><td>XW-012 (APO06)</td><td>No budget-versus-actual data was supplied.</td></tr><tr><td>reporting</td><td>3</td><td>3 <strong>Unverified:</strong></td><td>XW-025 (9.1–9.3, 10.3 · MEA01 · 9.1, 10.1)</td><td>No metrics pack or review action was supplied.</td></tr></tbody></table></div>
+<h3 id="findings-that-affect-scoring">Findings that affect scoring</h3>
+<ul><li><strong>Expired licenses on apps still in use:</strong><ul><li>LIC-044 for Payflow (APP-044, confidential data, $83,400 a year) expired on 2025-12-31. It still had a login on 2026-08-21.</li><li>LIC-017 for Meetrix (APP-017, $49,600 a year, 649 users) expired on 2026-03-31.</li><li>I count these as evidence for <strong>entitlement</strong>, because renewal tracking is XW-008. So they don&#x27;t lower <strong>vendor</strong>, where renewal dates are on file.</li></ul></li><li><strong>Terminated staff still logging in:</strong><ul><li>EMP-071 left on 2026-05-15 and logged in on 2026-08-20 (ACC-019).</li><li>EMP-072 left on 2026-07-02 and logged in on 2026-08-08 to the confidential HR system APP-003 (ACC-063).</li><li>This is a leaver-removal failure (XW-017), not the pre-go-live access check the security question asks about (XW-014). So I held security at 3.</li><li><strong>Decision needed:</strong> should the sponsor rescore security to 2 given this finding? Separately from this assessment, these accounts need immediate action through the access review process.</li></ul></li><li><strong>License shortfall:</strong> for 41 of 60 apps, recorded users exceed entitlements. <strong>Unverified:</strong> a user count isn&#x27;t the same as licensed seats or installs, so this points to a problem rather than proving one.</li></ul>
+<h2 id="the-three-gaps">The three gaps</h2>
+<ol><li><strong>entitlement (1).</strong> This has the most direct financial and audit exposure. Two lapsed licenses cover $133,000 of annual spend, and the license position on most of the estate is unknown. That creates risk from vendor audits and true-up bills.</li><li><strong>data-quality (1).</strong> It ties with entitlement on score. I broke the tie by business risk and put it second: its harm is indirect, but it undermines every other area. You can&#x27;t fix the license position or retire apps reliably when records have unknown owners and unreconciled duplicates.</li><li><strong>lifecycle (2).</strong> This is the only area at 2, so no tie-break was needed for third place. Apps running past their licenses show that nothing currently decides whether an app gets renewed or retired.</li></ol>
+<h2 id="90-day-plan">90-day plan</h2>
+<p><strong>Decision needed:</strong> the sponsor must confirm the owner roles and approve a budget for each gap. The roles below are proposals, and I haven&#x27;t estimated costs.</p>
+<div class="table-scroll"><table class="checklist"><caption>90-day plan</caption><thead><tr><th scope="col">Gap</th><th scope="col">Proposed owner role</th><th scope="col">Actions (days 0–90)</th><th scope="col">Evidence of progress</th></tr></thead><tbody><tr><td>entitlement</td><td>Software asset / license manager</td><td>1. Resolve LIC-017 and LIC-044 within 30 days (renew or shut down). 2. Build a compliance position for the top 10 apps by cost, comparing entitlements to actual installs and seats (XW-007). 3. Set up renewal alerts 90 days before every expiry (XW-008).</td><td>A dated compliance position for the top 10 apps, no expired licenses on live apps, and a renewal calendar.</td></tr><tr><td>data-quality</td><td>ITAM manager (with the HR data owner)</td><td>1. Set the required fields and a monthly 10-record sample check. 2. Reconcile all accounts against the HR employee records. Fix or remove ACC-104 and any other account with no matching employee. 3. Review the 5 overlapping category pairs and record a keep/merge decision for each.</td><td>Sample accuracy rising month on month, zero accounts without a matching employee, and a decision log for the 5 pairs.</td></tr><tr><td>lifecycle</td><td>Application portfolio owner</td><td>1. Document the path from request to approval, renewal and retirement (XW-009). 2. Add a decommissioning checklist covering data removal and access removal (XW-010). 3. Run one real retirement through it, for example a loser from the overlap review.</td><td>An approved process document and one retirement with its full audit trail.</td></tr></tbody></table></div>
+<p><strong>Decision needed:</strong> before next year&#x27;s re-check, should process owners be required to supply one piece of evidence per area? Without it, the next assessment will also rest on self-reported scores.</p>
+<p>``<code>findings [ {&quot;type&quot;: &quot;maturity_gap&quot;, &quot;id&quot;: &quot;entitlement&quot;}, {&quot;type&quot;: &quot;maturity_gap&quot;, &quot;id&quot;: &quot;data-quality&quot;}, {&quot;type&quot;: &quot;maturity_gap&quot;, &quot;id&quot;: &quot;lifecycle&quot;} ] </code>``</p>
+  </div>
+</main>
+<footer class="site-footer">
+  <p>Eve McGivern · <a href="https://evemcgivern.github.io/">evemcgivern.github.io</a></p>
+  <p>Questions? Comments? <span id="contact-email">email me</span>.</p>
+  <p><a href="https://buymeacoffee.com/a8w5iiqszp" rel="noopener">Buy me a coffee</a> if these tools help.</p>
+  <noscript><p>Email: evemcgivern at gmail dot com</p></noscript>
+</footer>
+<script>
+(function () {
+  "use strict";
+  var user = "evemcgivern", domain = "gmail.com";
+  var el = document.getElementById("contact-email");
+  if (!el) { return; }
+  var a = document.createElement("a");
+  a.href = "mailto:" + user + "@" + domain;
+  a.textContent = "Email me";
+  el.replaceWith(a);
+})();
+</script>
+
+</body>
+</html>

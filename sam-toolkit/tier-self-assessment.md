@@ -2,7 +2,7 @@
 
 A short check of how far your IT asset management has got, using the three tiers in ISO/IEC 19770-1:2017 Annex B. The tiers are cumulative: tier 2 expects tier 1, and tier 3 expects both. Use this as a starting point before the full ITAM maturity check.
 
-**How to use it:** answer each question yes, partly, or no, and write down the evidence you could show an auditor. Stop at the first tier where you have a "no" or several "partly" answers. That tier is your next piece of work.
+**How to use it:** answer each question yes, partly, or no, and write down the evidence you could show an auditor. A tier counts as met when no question is a "no" and at most one is "partly". Your assumed tier is the highest tier you meet, along with every tier below it. The first tier you do not meet is your next piece of work.
 
 The Annex B tier names and aims are summarized here. Which Annex A processes sit in which tier is shown in Figure B.2 of the standard. Check that figure in your copy before using this to scope a certification.
 
@@ -45,6 +45,18 @@ Aim: greater efficiency and effectiveness through the cross-cutting functional p
 | 3.3 | Are the service levels that ITAM depends on defined and recorded? | | |
 | 3.4 | Are risks not covered elsewhere managed, with the treatment checked? (6.1.2, 6.1.3) | | |
 | 3.5 | Is ITAM performance measured and reported, financial and non-financial? (9.1) | | |
+
+## Work out your tier
+
+Count your answers for each tier, then check the last column. The web page and the Excel workbook do this for you; in Word, count by hand.
+
+| Tier | Yes | Partly | No | Met? (no "no", at most one "partly") |
+| --- | --- | --- | --- | --- |
+| 1 | | | | |
+| 2 | | | | |
+| 3 | | | | |
+
+Your assumed tier: the highest tier you met, where every tier below it is also met. If tier 1 is not met, you are below tier 1.
 
 ## Result
 

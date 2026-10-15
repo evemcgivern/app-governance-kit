@@ -1472,3 +1472,177 @@ code {
 .coffee-icon {
   flex: none;
 }
+
+/* Navigation tooltips: shown on hover and keyboard focus, Escape hides them (see nav.js) */
+
+.site-header {
+  position: relative;
+  z-index: 30;
+}
+
+.site-nav li {
+  position: relative;
+}
+
+.nav-tip {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 40;
+  width: max-content;
+  max-width: min(16rem, calc(100vw - 2.5rem));
+  margin-top: 0.4rem;
+  padding: 0.55rem 0.8rem;
+  border-radius: 8px;
+  background: var(--surface);
+  box-shadow: var(--shadow-hover);
+  color: var(--fg);
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+
+/* keeps the tip open while the pointer travels from the link to the tip */
+.nav-tip::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -0.5rem;
+  height: 0.5rem;
+}
+
+.site-nav li:nth-last-child(-n+3) .nav-tip {
+  left: auto;
+  right: 0;
+}
+
+.site-nav li:hover:not([data-tip-hidden]) .nav-tip,
+.site-nav li:focus-within:not([data-tip-hidden]) .nav-tip {
+  display: block;
+}
+
+/* Document pages (generated from the Markdown and CSV sources) */
+
+.doc-page .doc-back {
+  margin: 0 0 0.5rem;
+}
+
+.doc-page h1 {
+  font-size: clamp(1.7rem, 4.5vw, 2.4rem);
+  line-height: 1.15;
+  margin: 0 0 1rem;
+}
+
+.doc-body table.checklist {
+  min-width: 34rem;
+  table-layout: auto;
+}
+
+.checklist td.checklist-write {
+  min-width: 8rem;
+  height: 2.75rem;
+}
+
+.checklist-choices {
+  white-space: nowrap;
+}
+
+.checklist-choice {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  min-height: 28px;
+  cursor: pointer;
+}
+
+.checklist-choice input,
+.checklist-items input {
+  width: 1.05rem;
+  height: 1.05rem;
+}
+
+.checklist-items {
+  list-style: none;
+  padding-left: 0.5rem;
+}
+
+button.visual-actions__link {
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.tier-bar {
+  position: sticky;
+  top: 0.5rem;
+  z-index: 10;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem 1rem;
+  margin: 0.75rem 0 1rem;
+  padding: 0.6rem 1rem;
+  border-radius: 12px;
+  background: var(--chip-bg);
+  box-shadow: var(--shadow-hover);
+}
+
+.tier-bar p {
+  margin: 0;
+}
+
+@media print {
+  .support-bar,
+  .site-header,
+  .site-footer,
+  .skip-link,
+  .doc-back,
+  .doc-actions,
+  #tier-clear {
+    display: none !important;
+  }
+
+  body {
+    background: #fff;
+    color: #000;
+  }
+
+  .tier-bar {
+    position: static;
+    box-shadow: none;
+    border: 1px solid #000;
+  }
+
+  .doc-body table.checklist {
+    min-width: 0;
+    font-size: 0.85rem;
+  }
+
+  .checklist th,
+  .checklist td {
+    border: 1px solid #777;
+  }
+
+  .checklist tr,
+  .checklist-choices {
+    break-inside: avoid;
+  }
+}
+
+.checklist td:first-child,
+.checklist th:first-child {
+  white-space: nowrap;
+}
+
+/* The caption repeats the heading above the table, so keep it for screen readers only */
+.doc-body table.checklist caption {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}

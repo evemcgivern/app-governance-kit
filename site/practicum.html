@@ -48,6 +48,7 @@
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="stylesheet" href="style.css">
+<script src="nav.js" defer></script>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -57,15 +58,15 @@
     <a class="brand" href="https://evemcgivern.github.io/">Eve McGivern</a>
     <nav class="site-nav" aria-label="Main">
       <ul>
-        <li><a href="tools.html">Tools</a></li>
-        <li><a href="sam-toolkit.html">SAM toolkit</a></li>
-        <li><a href="practicum.html" aria-current="page">Practicum</a></li>
-        <li><a href="lifecycle.html">Lifecycle</a></li>
-        <li><a href="crosswalk.html">Crosswalk explorer</a></li>
-        <li><a href="impact-map.html">Impact map</a></li>
-        <li><a href="field-guide.html">Field guide</a></li>
-        <li><a href="case-studies.html">Case studies</a></li>
-        <li><a href="about.html">About</a></li>
+        <li><a href="tools.html" aria-describedby="tip-tools">Tools</a><span class="nav-tip" role="tooltip" id="tip-tools">The seven governance methods, packaged as skills for Claude, Codex, and Copilot.</span></li>
+        <li><a href="sam-toolkit.html" aria-describedby="tip-sam-toolkit">SAM toolkit</a><span class="nav-tip" role="tooltip" id="tip-sam-toolkit">Templates and checklists for running software asset management by hand.</span></li>
+        <li><a href="practicum.html" aria-current="page" aria-describedby="tip-practicum">Practicum</a><span class="nav-tip" role="tooltip" id="tip-practicum">Hands-on exercises on a fictional company, with answers you can check.</span></li>
+        <li><a href="lifecycle.html" aria-describedby="tip-lifecycle">Lifecycle</a><span class="nav-tip" role="tooltip" id="tip-lifecycle">Six stages from request to retirement, with the questions to ask at each.</span></li>
+        <li><a href="crosswalk.html" aria-describedby="tip-crosswalk">Crosswalk explorer</a><span class="nav-tip" role="tooltip" id="tip-crosswalk">See how each control maps to ISO/IEC 19770, COBIT, 27001, and 42001.</span></li>
+        <li><a href="impact-map.html" aria-describedby="tip-impact-map">Impact map</a><span class="nav-tip" role="tooltip" id="tip-impact-map">One grid showing every control theme against every lifecycle stage.</span></li>
+        <li><a href="field-guide.html" aria-describedby="tip-field-guide">Field guide</a><span class="nav-tip" role="tooltip" id="tip-field-guide">Plain-language guides to the standards, certifications, and key terms.</span></li>
+        <li><a href="case-studies.html" aria-describedby="tip-case-studies">Case studies</a><span class="nav-tip" role="tooltip" id="tip-case-studies">What is coming next: worked examples of the kit in use.</span></li>
+        <li><a href="about.html" aria-describedby="tip-about">About</a><span class="nav-tip" role="tooltip" id="tip-about">Who built the kit, and how to get in touch.</span></li>
       </ul>
     </nav>
   </div>
@@ -81,10 +82,10 @@
     <p class="pr-clear-all-message" id="pr-clear-all-message" role="status" aria-live="polite"></p>
   </section>
 
-  <p class="prose prose-wide">Start with <a href="https://github.com/evemcgivern/app-governance-kit/blob/main/practicum/README.md">practicum/README.md on GitHub</a> if you haven't worked these exercises before — it explains how self-checking works and the order to take them in. The answer key behind this page, <code>demo-estate/answer-key.json</code>, is public in this repo; check your own answer before you look at it, or you're only checking whether you can copy one.</p>
+  <p class="prose prose-wide">Start with <a href="docs/practicum/overview.html">the practicum overview</a> if you haven't worked these exercises before — it explains how self-checking works and the order to take them in. The answer key behind this page, <code>demo-estate/answer-key.json</code>, is public in this repo; check your own answer before you look at it, or you're only checking whether you can copy one.</p>
 
   <noscript>
-    <p>This page needs JavaScript to build the data tables and grade your answers. The exercise text below still reads fine without it — for the interactive version, printable copies are linked from each exercise's GitHub source, listed under "Files" in <a href="https://github.com/evemcgivern/app-governance-kit/blob/main/practicum/README.md">practicum/README.md</a>.</p>
+    <p>This page needs JavaScript to build the data tables and grade your answers. The exercise text below still reads fine without it — for the interactive version, printable copies are linked from each exercise's GitHub source, listed under "Files" in <a href="docs/practicum/overview.html">practicum/README.md</a>.</p>
   </noscript>
 
   <div class="fg-layout">
@@ -142,7 +143,7 @@
         </details>
 
         <p class="pr-source-links meta">
-          <a class="pr-source-link" href="https://github.com/evemcgivern/app-governance-kit/blob/main/practicum/01-program-setup.md">Printable exercise on GitHub</a> ·
+          <a class="pr-source-link" href="docs/practicum/01-program-setup.html">Printable exercise on GitHub</a> ·
           <a href="tools.html#program-setup">Matching tool card</a>
         </p>
       </section>
@@ -186,7 +187,7 @@
         </details>
 
         <p class="pr-source-links meta">
-          <a class="pr-source-link" href="https://github.com/evemcgivern/app-governance-kit/blob/main/practicum/02-itam-maturity.md">Printable exercise on GitHub</a> ·
+          <a class="pr-source-link" href="docs/practicum/02-itam-maturity.html">Printable exercise on GitHub</a> ·
           <a href="tools.html#itam-maturity">Matching tool card</a>
         </p>
       </section>
@@ -230,7 +231,7 @@
         </details>
 
         <p class="pr-source-links meta">
-          <a class="pr-source-link" href="https://github.com/evemcgivern/app-governance-kit/blob/main/practicum/03-crosswalk.md">Printable exercise on GitHub</a> ·
+          <a class="pr-source-link" href="docs/practicum/03-crosswalk.html">Printable exercise on GitHub</a> ·
           <a href="tools.html#crosswalk">Matching tool card</a>
         </p>
       </section>
@@ -274,7 +275,7 @@
         </details>
 
         <p class="pr-source-links meta">
-          <a class="pr-source-link" href="https://github.com/evemcgivern/app-governance-kit/blob/main/practicum/04-rationalization.md">Printable exercise on GitHub</a> ·
+          <a class="pr-source-link" href="docs/practicum/04-rationalization.html">Printable exercise on GitHub</a> ·
           <a href="tools.html#rationalization">Matching tool card</a>
         </p>
       </section>
@@ -318,7 +319,7 @@
         </details>
 
         <p class="pr-source-links meta">
-          <a class="pr-source-link" href="https://github.com/evemcgivern/app-governance-kit/blob/main/practicum/05-access-review.md">Printable exercise on GitHub</a> ·
+          <a class="pr-source-link" href="docs/practicum/05-access-review.html">Printable exercise on GitHub</a> ·
           <a href="tools.html#access-review">Matching tool card</a>
         </p>
       </section>
@@ -362,7 +363,7 @@
         </details>
 
         <p class="pr-source-links meta">
-          <a class="pr-source-link" href="https://github.com/evemcgivern/app-governance-kit/blob/main/practicum/06-ai-intake.md">Printable exercise on GitHub</a> ·
+          <a class="pr-source-link" href="docs/practicum/06-ai-intake.html">Printable exercise on GitHub</a> ·
           <a href="tools.html#ai-intake">Matching tool card</a>
         </p>
       </section>
@@ -406,7 +407,7 @@
         </details>
 
         <p class="pr-source-links meta">
-          <a class="pr-source-link" href="https://github.com/evemcgivern/app-governance-kit/blob/main/practicum/07-hardware-lifecycle.md">Printable exercise on GitHub</a> ·
+          <a class="pr-source-link" href="docs/practicum/07-hardware-lifecycle.html">Printable exercise on GitHub</a> ·
           <a href="tools.html#hardware-lifecycle">Matching tool card</a>
         </p>
       </section>

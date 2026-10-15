@@ -86,15 +86,15 @@
     },
     {
      "@type": "DataDownload",
-     "name": "tier-self-assessment.md",
-     "contentUrl": "https://evemcgivern.github.io/app-governance-kit/downloads/sam-toolkit/tier-self-assessment.md",
-     "encodingFormat": "text/markdown"
+     "name": "tier-self-assessment.docx",
+     "contentUrl": "https://evemcgivern.github.io/app-governance-kit/docs/sam-toolkit/tier-self-assessment.docx",
+     "encodingFormat": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
     },
     {
      "@type": "DataDownload",
-     "name": "audit-and-review-checklist.md",
-     "contentUrl": "https://evemcgivern.github.io/app-governance-kit/downloads/sam-toolkit/audit-and-review-checklist.md",
-     "encodingFormat": "text/markdown"
+     "name": "audit-and-review-checklist.docx",
+     "contentUrl": "https://evemcgivern.github.io/app-governance-kit/docs/sam-toolkit/audit-and-review-checklist.docx",
+     "encodingFormat": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
     },
     {
      "@type": "DataDownload",
@@ -110,6 +110,7 @@
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="stylesheet" href="style.css">
+<script src="nav.js" defer></script>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -119,15 +120,15 @@
     <a class="brand" href="https://evemcgivern.github.io/">Eve McGivern</a>
     <nav class="site-nav" aria-label="Main">
       <ul>
-        <li><a href="tools.html">Tools</a></li>
-        <li><a href="sam-toolkit.html" aria-current="page">SAM toolkit</a></li>
-        <li><a href="practicum.html">Practicum</a></li>
-        <li><a href="lifecycle.html">Lifecycle</a></li>
-        <li><a href="crosswalk.html">Crosswalk explorer</a></li>
-        <li><a href="impact-map.html">Impact map</a></li>
-        <li><a href="field-guide.html">Field guide</a></li>
-        <li><a href="case-studies.html">Case studies</a></li>
-        <li><a href="about.html">About</a></li>
+        <li><a href="tools.html" aria-describedby="tip-tools">Tools</a><span class="nav-tip" role="tooltip" id="tip-tools">The seven governance methods, packaged as skills for Claude, Codex, and Copilot.</span></li>
+        <li><a href="sam-toolkit.html" aria-current="page" aria-describedby="tip-sam-toolkit">SAM toolkit</a><span class="nav-tip" role="tooltip" id="tip-sam-toolkit">Templates and checklists for running software asset management by hand.</span></li>
+        <li><a href="practicum.html" aria-describedby="tip-practicum">Practicum</a><span class="nav-tip" role="tooltip" id="tip-practicum">Hands-on exercises on a fictional company, with answers you can check.</span></li>
+        <li><a href="lifecycle.html" aria-describedby="tip-lifecycle">Lifecycle</a><span class="nav-tip" role="tooltip" id="tip-lifecycle">Six stages from request to retirement, with the questions to ask at each.</span></li>
+        <li><a href="crosswalk.html" aria-describedby="tip-crosswalk">Crosswalk explorer</a><span class="nav-tip" role="tooltip" id="tip-crosswalk">See how each control maps to ISO/IEC 19770, COBIT, 27001, and 42001.</span></li>
+        <li><a href="impact-map.html" aria-describedby="tip-impact-map">Impact map</a><span class="nav-tip" role="tooltip" id="tip-impact-map">One grid showing every control theme against every lifecycle stage.</span></li>
+        <li><a href="field-guide.html" aria-describedby="tip-field-guide">Field guide</a><span class="nav-tip" role="tooltip" id="tip-field-guide">Plain-language guides to the standards, certifications, and key terms.</span></li>
+        <li><a href="case-studies.html" aria-describedby="tip-case-studies">Case studies</a><span class="nav-tip" role="tooltip" id="tip-case-studies">What is coming next: worked examples of the kit in use.</span></li>
+        <li><a href="about.html" aria-describedby="tip-about">About</a><span class="nav-tip" role="tooltip" id="tip-about">Who built the kit, and how to get in touch.</span></li>
       </ul>
     </nav>
   </div>
@@ -139,20 +140,20 @@
     <p class="positioning">Eight templates and checklists for running a software asset management practice by hand. They open in Excel, Google Sheets, or any text editor. Each one traces to a clause in ISO/IEC 19770-1:2017. All example data is fictional.</p>
     <div class="visual-actions">
       <a class="visual-actions__link" href="downloads/sam-toolkit.zip">All eight files and the guide (ZIP)</a>
-      <a class="visual-actions__link" href="downloads/sam-toolkit/guide.md">Read the guide (Markdown)</a>
+      <a class="visual-actions__link" href="docs/sam-toolkit/guide.html">Read the guide</a>
     </div>
   </section>
 
   <section class="prose prose-wide" id="start">
     <h2>Where to start</h2>
     <ol>
-      <li>Run the <a href="downloads/sam-toolkit/tier-self-assessment.md">tier self-assessment</a> to see which tier you are at.</li>
-      <li>Fill in the <a href="downloads/sam-toolkit/statement-of-applicability.csv">statement of applicability</a> to decide which processes are in scope.</li>
+      <li>Run the <a href="docs/sam-toolkit/tier-self-assessment.html">tier self-assessment</a> to see which tier you are at.</li>
+      <li>Fill in the <a href="docs/sam-toolkit/statement-of-applicability.html">statement of applicability</a> to decide which processes are in scope.</li>
       <li>Get the data right first: the asset record and the license position.</li>
       <li>Add the records that keep it right: renewals, authorizations, vendors.</li>
       <li>Check the system on a schedule with the audit and review checklist.</li>
     </ol>
-    <p>The <a href="downloads/sam-toolkit/guide.md">guide</a> explains every column. These are templates, not a platform: they do not find installs or read license terms, and a person still makes each decision.</p>
+    <p>The <a href="docs/sam-toolkit/guide.html">guide</a> explains every column. These are templates, not a platform: they do not find installs or read license terms, and a person still makes each decision.</p>
   </section>
 
   <div class="card-grid">
@@ -161,7 +162,7 @@
       <h2>License position workbook</h2>
       <p>Compare what you own with what is in use, product by product, and flag shortfalls and surplus. Clause 8.4.</p>
       <ul class="link-list">
-        <li>Download: <a href="downloads/sam-toolkit/license-position.csv">Blank template (CSV)<span class="visually-hidden"> for the license position workbook</span></a> · <a href="downloads/sam-toolkit/examples/license-position-example.csv">Halden example (CSV)<span class="visually-hidden"> for the license position workbook</span></a></li>
+        <li>Open: <a href="docs/sam-toolkit/license-position.html">Blank template<span class="visually-hidden"> for the license position workbook</span></a> · <a href="docs/sam-toolkit/license-position-example.html">Halden example<span class="visually-hidden"> for the license position workbook</span></a></li>
       </ul>
     </article>
 
@@ -169,7 +170,7 @@
       <h2>Renewal calendar</h2>
       <p>Track contract end dates and the notice deadline that actually matters, check recent usage, and record a renew, reduce, or cancel decision. Clause 8.4; crosswalk XW-008.</p>
       <ul class="link-list">
-        <li>Download: <a href="downloads/sam-toolkit/renewal-calendar.csv">Blank template (CSV)<span class="visually-hidden"> for the renewal calendar</span></a></li>
+        <li>Open: <a href="docs/sam-toolkit/renewal-calendar.html">Blank template<span class="visually-hidden"> for the renewal calendar</span></a></li>
       </ul>
     </article>
 
@@ -177,7 +178,7 @@
       <h2>Core data record</h2>
       <p>The fields to keep for every software, hardware, and service asset, including an owner and an authorized-or-not flag. Clauses 8.3 and 7.6.2.</p>
       <ul class="link-list">
-        <li>Download: <a href="downloads/sam-toolkit/asset-record.csv">Blank template (CSV)<span class="visually-hidden"> for the core data record</span></a></li>
+        <li>Open: <a href="docs/sam-toolkit/asset-record.html">Blank template<span class="visually-hidden"> for the core data record</span></a></li>
       </ul>
     </article>
 
@@ -185,7 +186,7 @@
       <h2>Authorization log</h2>
       <p>Record who authorized something, when and why, and who carried it out against which authorization. Clause 7.6.3.</p>
       <ul class="link-list">
-        <li>Download: <a href="downloads/sam-toolkit/authorization-log.csv">Blank template (CSV)<span class="visually-hidden"> for the authorization log</span></a></li>
+        <li>Open: <a href="docs/sam-toolkit/authorization-log.html">Blank template<span class="visually-hidden"> for the authorization log</span></a></li>
       </ul>
     </article>
 
@@ -193,7 +194,7 @@
       <h2>Statement of applicability</h2>
       <p>The 15 processes from the standard's Annex A, pre-filled, with columns for in or out of scope, the reason, the owner, and the evidence. Clause 6.2.2.</p>
       <ul class="link-list">
-        <li>Download: <a href="downloads/sam-toolkit/statement-of-applicability.csv">Template (CSV)<span class="visually-hidden"> for the statement of applicability</span></a></li>
+        <li>Open: <a href="docs/sam-toolkit/statement-of-applicability.html">Template<span class="visually-hidden"> for the statement of applicability</span></a></li>
       </ul>
     </article>
 
@@ -201,7 +202,7 @@
       <h2>Tier self-assessment</h2>
       <p>A yes, partly, or no check across the three tiers in Annex B: trustworthy data, life cycle integration, and optimization.</p>
       <ul class="link-list">
-        <li>Download: <a href="downloads/sam-toolkit/tier-self-assessment.md">Checklist (Markdown)<span class="visually-hidden"> for the tier self-assessment</span></a></li>
+        <li>Open: <a href="docs/sam-toolkit/tier-self-assessment.html">Checklist<span class="visually-hidden"> for the tier self-assessment</span></a></li>
       </ul>
     </article>
 
@@ -209,7 +210,7 @@
       <h2>Internal audit and management review</h2>
       <p>Plan and record an internal audit, and assemble the pack for top management's review. Clauses 9.2, 9.3, and 10.1.</p>
       <ul class="link-list">
-        <li>Download: <a href="downloads/sam-toolkit/audit-and-review-checklist.md">Checklist (Markdown)<span class="visually-hidden"> for the internal audit and management review</span></a></li>
+        <li>Open: <a href="docs/sam-toolkit/audit-and-review-checklist.html">Checklist<span class="visually-hidden"> for the internal audit and management review</span></a></li>
       </ul>
     </article>
 
@@ -217,7 +218,7 @@
       <h2>Vendor and contract register</h2>
       <p>One row per supplier: what they do for you, where responsibility is shared, the risk rating, and when you last checked performance and contract terms. Clause 8.7; crosswalk XW-013.</p>
       <ul class="link-list">
-        <li>Download: <a href="downloads/sam-toolkit/vendor-contract-register.csv">Blank template (CSV)<span class="visually-hidden"> for the vendor and contract register</span></a></li>
+        <li>Open: <a href="docs/sam-toolkit/vendor-contract-register.html">Blank template<span class="visually-hidden"> for the vendor and contract register</span></a></li>
       </ul>
     </article>
 
