@@ -206,6 +206,42 @@ class PageShapeTests(unittest.TestCase):
         self.assertEqual(html.count('class="print-icon"'), 2)
 
 
+class SeoFileTests(unittest.TestCase):
+    BASE = "https://evemcgivern.github.io/app-governance-kit/"
+
+    def local(self, url):
+        rel = url[len(self.BASE):].split("#")[0] or "index.html"
+        return ROOT / "site" / rel
+
+    def test_every_llms_txt_link_to_the_site_resolves(self):
+        text = (ROOT / "site" / "llms.txt").read_text(encoding="utf-8")
+        urls = [u for u in re.findall(r"\((https://evemcgivern\.github\.io/app-governance-kit/[^)]*)\)", text)]
+        self.assertGreater(len(urls), 40)
+        for url in urls:
+            self.assertTrue(self.local(url).is_file(), url)
+
+    def test_llms_txt_counts_match_the_crosswalk(self):
+        import csv
+        rows = list(csv.DictReader(open(ROOT / "methods" / "crosswalk" / "crosswalk.csv", encoding="utf-8")))
+        text = (ROOT / "site" / "llms.txt").read_text(encoding="utf-8")
+        self.assertIn(f"{len(rows)}-row", text)
+        self.assertIn(f"{len(rows)} governance themes", text)
+
+    def test_sitemap_lists_every_page_and_only_real_pages(self):
+        text = (ROOT / "site" / "sitemap.xml").read_text(encoding="utf-8")
+        urls = re.findall(r"<loc>([^<]+)</loc>", text)
+        for url in urls:
+            self.assertTrue(self.local(url).is_file(), url)
+        pages = [p for p in (ROOT / "site").rglob("*.html") if not p.name.startswith("google") and "downloads" not in p.parts]
+        self.assertEqual(len(urls), len(pages))
+
+    def test_doc_pages_have_canonical_and_structured_data(self):
+        html = (ROOT / "site" / "docs" / "sam-toolkit" / "guide.html").read_text(encoding="utf-8")
+        self.assertIn('rel="canonical" href="https://evemcgivern.github.io/app-governance-kit/docs/sam-toolkit/guide.html"', html)
+        self.assertIn("BreadcrumbList", html)
+        self.assertIn('property="og:title"', html)
+
+
 class VersionTests(unittest.TestCase):
     def test_every_page_has_the_footer_version_link(self):
         for page in list((ROOT / "site").glob("*.html")) + [ROOT / "site" / "docs" / "sam-toolkit" / "guide.html"]:
