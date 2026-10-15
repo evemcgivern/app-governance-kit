@@ -7,4 +7,4 @@
 5. Any second area noticed and offered, not run without asking [[XW-027]]
 6. Answer given first, then reasoning, then open decisions [[XW-025]]
 7. Every decision marked **Decision needed:** and left to a person [[XW-027]]
-8. Routing recorded in the log [[XW-020]]
+8. Routing log row handed to the requester to record, since the router is read-only [[XW-020]]

@@ -26,7 +26,7 @@ Run on demand, whenever a governance question arrives without a chosen tool.
 4. Load the chosen skill and follow its steps and output rules [[XW-025]]
 5. Offer any second skill the result points to; run it only if the requester agrees [[XW-027]]
 6. Report the answer first, then the reasoning, then the open decisions [[XW-025]]
-7. Record the routing in the log [[XW-020]]
+7. Hand the requester the routing log row to record, since the router is read-only [[XW-020]]
 
 ## Evidence to retain
 
