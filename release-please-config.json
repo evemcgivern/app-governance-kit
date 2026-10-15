@@ -9,7 +9,14 @@
       "release-type": "simple",
       "package-name": "app-governance-kit",
       "changelog-path": "CHANGELOG.md",
-      "extra-files": ["README.md"]
+      "extra-files": [
+        "README.md",
+        {
+          "type": "json",
+          "path": "site/version.json",
+          "jsonpath": "$.version"
+        }
+      ]
     }
   }
 }

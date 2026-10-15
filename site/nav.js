@@ -13,3 +13,20 @@
   nav.addEventListener("mouseout", clear);
   nav.addEventListener("focusout", clear);
 })();
+
+// Footer version: the number comes from version.json, which release-please updates. Without JavaScript
+// the link just says "Version" and still leads to the release notes.
+(function () {
+  "use strict";
+  var el = document.getElementById("site-version");
+  var script = document.currentScript;
+  if (!el || !script || !window.fetch) { return; }
+  var base = script.src.replace(/nav\.js.*$/, "");
+  fetch(base + "version.json")
+    .then(function (r) { return r.json(); })
+    .then(function (v) {
+      el.textContent = "v" + v.version;
+      el.setAttribute("aria-label", "Release notes, version " + v.version);
+    })
+    .catch(function () { /* keep the plain link */ });
+})();
