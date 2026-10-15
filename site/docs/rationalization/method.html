@@ -33,7 +33,10 @@
   </div>
 </header>
 <main id="main" class="doc-page">
-  <p class="doc-back"><a href="../../tools.html">&larr; Tools</a></p>
+  <div class="doc-top">
+    <p class="doc-back"><a href="../../tools.html">&larr; Tools</a></p>
+    <button type="button" class="print-icon" onclick="window.print()" aria-label="Print this page" title="Print"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="M7 9V3.5h10V9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M7 17H4.5A1.5 1.5 0 0 1 3 15.5v-5A1.5 1.5 0 0 1 4.5 9h15a1.5 1.5 0 0 1 1.5 1.5v5a1.5 1.5 0 0 1-1.5 1.5H17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><rect x="7" y="14" width="10" height="6.5" rx="0.8" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17.5" cy="12" r="0.9" fill="currentColor"/></svg></button>
+  </div>
   <h1>Application rationalization</h1>
   <div class="visual-actions doc-actions">
     <a class="visual-actions__link" href="method.docx">Download Word (.docx)</a>
@@ -49,6 +52,7 @@
 <h2 id="output-rules">Output rules</h2>
 <ul><li>Show the reasoning behind each conclusion.</li><li>Mark every point where a person must decide with <strong>Decision needed:</strong> and stop short of deciding.</li><li>Flag any figure you could not verify from the input with <strong>Unverified:</strong>.</li><li>Cite framework clauses by number from <a href="../../downloads/crosswalk.csv">crosswalk.csv</a>. Paraphrase; never quote standards text.</li><li>End your answer with a fenced block labeled <code>findings</code> containing a JSON list of <code>{&quot;type&quot;: ..., &quot;id&quot;: ...}</code> objects, as the task describes. Use <code>[]</code> when there are none.</li></ul>
   </div>
+  <div class="doc-bottom"><button type="button" class="print-icon" onclick="window.print()" aria-label="Print this page" title="Print"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="M7 9V3.5h10V9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M7 17H4.5A1.5 1.5 0 0 1 3 15.5v-5A1.5 1.5 0 0 1 4.5 9h15a1.5 1.5 0 0 1 1.5 1.5v5a1.5 1.5 0 0 1-1.5 1.5H17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><rect x="7" y="14" width="10" height="6.5" rx="0.8" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17.5" cy="12" r="0.9" fill="currentColor"/></svg></button></div>
 </main>
 <footer class="site-footer">
   <p>Eve McGivern · <a href="https://evemcgivern.github.io/">evemcgivern.github.io</a></p>

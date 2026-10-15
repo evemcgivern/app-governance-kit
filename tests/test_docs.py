@@ -8,7 +8,7 @@ import xml.dom.minidom
 import zipfile
 from pathlib import Path
 
-from agk.docs import (DocsError, gap_rows_of, body_html, csv_blocks, docx_bytes, front_title, inline_tokens, parse_markdown,
+from agk.docs import (DocsError, form_blocks, gap_rows_of, template_blocks, body_html, csv_blocks, docx_bytes, front_title, inline_tokens, parse_markdown,
                       summary_of, tier_rule, title_of, unmark, write_docs, xlsx_bytes)
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -164,6 +164,46 @@ class GapReportTests(unittest.TestCase):
         html = (ROOT / "site" / "docs" / "sam-toolkit" / "tier-self-assessment.html").read_text(encoding="utf-8")
         self.assertIn("table[data-gap]", html)
         self.assertIn("data-gap", html)
+
+
+class PageShapeTests(unittest.TestCase):
+    def read(self, name):
+        return (ROOT / "site" / "docs" / "sam-toolkit" / name).read_text(encoding="utf-8")
+
+    def test_blank_template_lists_columns_not_a_table(self):
+        html = self.read("renewal-calendar.html")
+        self.assertIn("column-list", html)
+        self.assertNotIn("<table", html)
+
+    def test_header_only_csv_gets_template_blocks(self):
+        blocks = template_blocks("T", ["a", "b"], [], "x")
+        self.assertEqual(blocks[3]["class"], "column-list")
+        self.assertEqual(len(blocks[3]["items"]), 2)
+
+    def test_prefilled_csv_with_blank_columns_becomes_a_form(self):
+        rows = [["name", "in_scope", "note"], ["A", "", ""], ["B", "", ""]]
+        blocks = form_blocks("T", rows, [], "x")
+        form = next(b for b in blocks if b["type"] == "form")
+        self.assertEqual(form["blank_cols"], [1, 2])
+        self.assertIsNone(form_blocks("T", [["a", "b"]], [], "x"))
+        self.assertIsNone(form_blocks("T", [["a", "b"], ["1", "2"]], [], "x"))
+
+    def test_statement_of_applicability_is_a_fillable_form(self):
+        html = self.read("statement-of-applicability.html")
+        self.assertEqual(html.count('class="record"'), 15)
+        self.assertIn("form-export", html)
+        self.assertIn('id="record-data"', html)
+
+    def test_checklist_has_tick_boxes_notes_and_answer_download(self):
+        html = self.read("audit-and-review-checklist.html")
+        self.assertIn('class="checklist-tick"', html)
+        self.assertIn("<textarea", html)
+        self.assertIn("answers-doc", html)
+        self.assertIn("stays in this browser", html)
+
+    def test_every_doc_page_has_top_and_bottom_print_icons(self):
+        html = self.read("guide.html")
+        self.assertEqual(html.count('class="print-icon"'), 2)
 
 
 class SiteTests(unittest.TestCase):
