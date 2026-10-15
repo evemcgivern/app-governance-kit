@@ -1880,3 +1880,12 @@ button.visual-actions__link {
     display: none !important;
   }
 }
+
+.site-version {
+  margin: 0.5rem 0 0;
+  font-size: 0.8rem;
+}
+
+.site-version a {
+  color: var(--muted);
+}

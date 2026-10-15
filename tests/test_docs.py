@@ -206,6 +206,24 @@ class PageShapeTests(unittest.TestCase):
         self.assertEqual(html.count('class="print-icon"'), 2)
 
 
+class VersionTests(unittest.TestCase):
+    def test_every_page_has_the_footer_version_link(self):
+        for page in list((ROOT / "site").glob("*.html")) + [ROOT / "site" / "docs" / "sam-toolkit" / "guide.html"]:
+            self.assertIn('id="site-version"', page.read_text(encoding="utf-8"), page.name)
+
+    def test_version_file_matches_the_release_version(self):
+        import json
+        shown = json.loads((ROOT / "site" / "version.json").read_text(encoding="utf-8"))["version"]
+        manifest = json.loads((ROOT / ".release-please-manifest.json").read_text(encoding="utf-8"))["."]
+        self.assertEqual(shown, (ROOT / "version.txt").read_text(encoding="utf-8").strip())
+        self.assertEqual(shown, manifest)
+
+    def test_release_please_updates_the_version_file(self):
+        import json
+        extra = json.loads((ROOT / "release-please-config.json").read_text(encoding="utf-8"))["packages"]["."]["extra-files"]
+        self.assertIn({"type": "json", "path": "site/version.json", "jsonpath": "$.version"}, extra)
+
+
 class SiteTests(unittest.TestCase):
     def test_real_repo_pages_exist_and_link_no_markdown(self):
         site = ROOT / "site"
