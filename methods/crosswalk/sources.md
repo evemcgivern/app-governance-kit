@@ -80,7 +80,7 @@ row's iso27001 clause is a main-body clause (not an Annex A control, e.g.
 | XW-010 | cobit2019 | BAI09.03 | Manage the asset life cycle (acquisition to disposal) | https://www.itsm-docs.com/blogs/cobit-framework/cobit-bai09-03-manage-the-asset-life-cycle ; https://www.researchgate.net/publication/378036399 (BAI09 practice breakdown, covers .01–.05) | Secondary (2 sources) | kept — replaced "as XW-009" with the actual URLs |
 | XW-010 | iso27001 | A.8.10 | Information deletion | https://hightable.io/iso-27001-annex-a-controls-reference-guide/ ; https://cdn.standards.iteh.ai/samples/75652/f9b90f856c0d4c3dbef74cf67374d1c5/ISO-IEC-27002-2022.pdf (clause 8.10, see Annex A note above) | Primary | kept — upgraded to Primary |
 | XW-010 | iso42001 | — | — | — | — | left blank |
-| XW-011 | iso19770_1 | — | — | — | — | left blank — no rationalization/optimization clause found |
+| XW-011 | iso19770_1 | TS 19770-13 §6.1 Table 1; §4.4.3 | Sustainability adoption in ITAM operation processes (Rightsize consumption); Compatibility and interoperability | ISO/IEC TS 19770-13:2026 full text | Primary | filled 2026-10-14 — guidance, not a requirement: the Rightsize consumption objective covers timely deactivation and disposal of unused and obsolete assets, and §4.4.3 advises standard applications to limit and rationalize the portfolio. It does not cover the keep/merge/retire scoring method |
 | XW-011 | cobit2019 | BAI09.04 | Optimize asset value | https://www.itsm-docs.com/blogs/cobit-framework/cobit-bai09-04-optimize-asset-value ; https://4matt.com.br/en/cobit-2019-asset-management-bai09/ | Secondary (2 sources) | kept — added the 4matt.com.br source; the line previously cited only itsm-docs.com |
 | XW-011 | iso27001 | (empty) | — | — | — | left blank — cell was empty; out of scope to fill (only iso19770_1/iso42001 fills are in scope) |
 | XW-011 | iso42001 | — | — | — | — | left blank |
@@ -223,8 +223,8 @@ Amd 1:2024), 19770-2, -3, -4 and ISO/IEC 27001:2022 (with Amd 1:2024).
 - Every iso27001 cell matches a main-body clause or Annex A control in
   27001:2022. Annex A titles now rest on 27001 itself, not the 27002 sample.
 - Filled XW-009, XW-010, XW-012 and extended XW-013 from 19770-1 Annex A.
-  Left XW-011 and XW-014 blank: Annex A has no clear match for portfolio
-  rationalization. For XW-014, 2017 clause 8.5 covers access only in a
+  Filled XW-011 from TS 19770-13:2026 (§6.1 Table 1, §4.4.3), since Part 1
+  Annex A has no rationalization process. Left XW-014 blank. For XW-014, 2017 clause 8.5 covers access only in a
   note, and 19770-8:2020 Annex A (the 2017 mapping) is an empty template
   with no sub-requirements under 8.5. The access-control practices in
   19770-8 appear only in Annex B, which maps to the 2012 edition.

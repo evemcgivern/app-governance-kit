@@ -9,7 +9,7 @@ XW-007,License compliance position,"8.4; 19770-3 §8.6.3 (Ent); 19770-4 §8.4.1/
 XW-008,License renewal and expiry tracking,"8.4; 19770-3 §8.6.3 (Ent)",BAI09.05,A.5.32,,Track license renewal and expiry dates so contracts do not lapse or overrun unnoticed.,2026-09-24
 XW-009,"Lifecycle, request to retirement","Annex A, Table A.1 (IT asset life cycle management processes)",BAI09.03,A.5.9,,"Manage each application through its full lifecycle, from initial request to eventual retirement.",2026-10-14
 XW-010,Retirement and decommissioning,"Annex A, Table A.1 (Retirement)",BAI09.03,A.8.10,,Formally decommission applications and remove their data and access when they are retired.,2026-10-14
-XW-011,Portfolio value optimization (rationalization),,BAI09.04,,,"Periodically assess the application portfolio to decide what to keep, consolidate, or eliminate.",2026-09-24
+XW-011,Portfolio value optimization (rationalization),"TS 19770-13 §6.1 Table 1 (Rightsize consumption); §4.4.3",BAI09.04,,,"Periodically assess the application portfolio to decide what to keep, consolidate, or eliminate.",2026-10-14
 XW-012,Cost and budget tracking,"Annex A, Table A.1 (Financial management)",APO06,,,Track software costs against budget and attribute spend to the right owners.,2026-10-14
 XW-013,Vendor and contract management,"8.7; Annex A, Table A.1 (Relationship and contract management)",APO10,"A.5.19, A.5.20",,"Manage vendor relationships and contract terms, including the risks a supplier introduces.",2026-10-14
 XW-014,Access control policy,,DSS05.04,A.5.15,,Define and approve a policy setting the rules for granting and controlling system access.,2026-09-24
