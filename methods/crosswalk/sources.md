@@ -224,7 +224,10 @@ Amd 1:2024), 19770-2, -3, -4 and ISO/IEC 27001:2022 (with Amd 1:2024).
   27001:2022. Annex A titles now rest on 27001 itself, not the 27002 sample.
 - Filled XW-009, XW-010, XW-012 and extended XW-013 from 19770-1 Annex A.
   Left XW-011 and XW-014 blank: Annex A has no clear match for portfolio
-  rationalization, and clause 8.5 covers access only in a note.
+  rationalization. For XW-014, 2017 clause 8.5 covers access only in a
+  note, and 19770-8:2020 Annex A (the 2017 mapping) is an empty template
+  with no sub-requirements under 8.5. The access-control practices in
+  19770-8 appear only in Annex B, which maps to the 2012 edition.
 - Extended XW-024 iso27001 to 6.1.2 and 6.1.3.
 - Not rechecked: cobit2019 and iso42001 cells, and the XW-028 note that
   19770-1 excludes information as an asset.
