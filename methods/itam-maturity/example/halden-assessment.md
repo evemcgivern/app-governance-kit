@@ -9,7 +9,7 @@
 | governance | 3 | 3 **Unverified:** | XW-003 (4.3, 5.2 · APO01 · A.5.1), XW-004 (5.3 · APO01 · A.5.2) | No policy was supplied. `council-draft.md` has a scope but no decision rights, quorum or sponsor, which fits 3 at best. |
 | inventory | 3 | 3 **Unverified:** | XW-001, XW-005 (8.3 · BAI09.01 · A.5.9) | 60 apps are recorded with every field filled in. No discovery or reconcile date is given. |
 | entitlement | 1 | **1** | XW-006/007/008 (8.4 · BAI09.05 · A.5.32) | The data supports this score. Two licences have expired but the apps are still in use (details below). For 41 of 60 apps, recorded users exceed entitlements. |
-| lifecycle | 2 | **2** | XW-009 (BAI09.03 · A.5.9), XW-010 (BAI09.03 · A.8.10). No 19770-1 clause is mapped. | The data doesn't contradict this. Apps keep running after their licences lapse, and there's no retirement trail. |
+| lifecycle | 2 | **2** | XW-009 (19770-1 Annex A · BAI09.03 · A.5.9), XW-010 (19770-1 Annex A Retirement · BAI09.03 · A.8.10). | The data doesn't contradict this. Apps keep running after their licences lapse, and there's no retirement trail. |
 | vendor | 4 | 4 **Unverified:** | XW-013 (8.7 · APO10 · A.5.19, A.5.20) | Renewal dates are on file. No vendor risk ratings are supplied, so I can't confirm the "Measured" level. |
 | data-quality | 1 | **1** | XW-026 (8.3 · BAI09.01 · A.5.9) | The data supports this score. Account ACC-104 belongs to EMP-099, who isn't in the employee records. Five categories each have two overlapping products that nobody has reconciled. |
 | security | 3 | 3 **Unverified:** | XW-014 (DSS05.04 · A.5.15) | Held at 3, with a serious related finding (see below). |
