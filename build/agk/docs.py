@@ -16,6 +16,7 @@ GITHUB = "https://github.com/evemcgivern/app-governance-kit/blob/main/"
 FIXED_DATE = (2020, 1, 1, 0, 0, 0)
 CHOICE_HEADER = "yes / partly / no"
 TALLY_CAPTION = "Work out your tier"
+GAP_CAPTION = "Gap report"
 CHOICES = ("Yes", "Partly", "No")
 TEXT_WIDTH = 10080  # twips: US Letter with 0.75 inch margins
 
@@ -250,6 +251,8 @@ def _table_html(rows: list[list[str]], resolve, files, caption: str = "", index:
         attrs = f" data-tier=\"{tm.group(1)}\""
     elif caption == TALLY_CAPTION:
         attrs = " data-tally"
+    elif caption == GAP_CAPTION:
+        attrs = " data-gap"
     head = "".join(f"<th scope=\"col\">{escape(h)}</th>" for h in header)
     body = []
     for row in data:
@@ -516,7 +519,50 @@ def tier_rule(yes: int, partly: int, no: int, total: int) -> str:
     return "Met" if no == 0 and partly <= 1 else "Not met"
 
 
-def _tier_summary_xml(tiers: list[tuple[str, str, int]]) -> str:
+def gap_rows_of(blocks: list[dict]) -> dict[str, list[str]]:
+    """The Gap report table in the tier document, keyed by question number."""
+    heading = ""
+    for b in blocks:
+        if b["type"] == "heading":
+            heading = b["text"]
+        elif b["type"] == "table" and heading == GAP_CAPTION:
+            return {r[0]: r for r in b["rows"][1:]}
+    return {}
+
+
+def _gap_sheet_xml(tiers: list[tuple[str, str, list[list[str]]]], gaps: dict[str, list[str]]) -> str:
+    """One row per question: the answer pulled from its tier sheet, a status, and the step that closes the gap.
+    Filter the Status column to see only the gaps."""
+    def inline(ref, text, style=0):
+        return f"<c r=\"{ref}\" t=\"inlineStr\" s=\"{style}\"><is><t xml:space=\"preserve\">{_x(text)}</t></is></c>"
+
+    def formula(ref, f):
+        return f"<c r=\"{ref}\" t=\"str\"><f>{escape(f, quote=False)}</f><v></v></c>"
+    head = ("#", "Tier", "Question", "Your answer", "Status", "What closes the gap", "Owner", "Due date")
+    rows = ["<row r=\"1\">" + "".join(inline(f"{_col_letter(i)}1", h, 1) for i, h in enumerate(head)) + "</row>"]
+    n = 1
+    for name, col, data in tiers:
+        for r, row in enumerate(data[1:], 2):
+            n += 1
+            key = row[0]
+            if key not in gaps:
+                raise DocsError(f"no gap report row for question {key}")
+            ans = f"D{n}"
+            rows.append(
+                f"<row r=\"{n}\">" + inline(f"A{n}", key) + inline(f"B{n}", name) + inline(f"C{n}", _plain(row[1]))
+                + formula(f"D{n}", f"'{name}'!{col}{r}&\"\"")
+                + formula(f"E{n}", f"IF({ans}=\"No\",\"Gap\",IF({ans}=\"Partly\",\"Partial gap\",IF({ans}=\"Yes\",\"Closed\",\"Not answered\")))")
+                + inline(f"F{n}", gaps[key][3]) + inline(f"G{n}", "") + inline(f"H{n}", "") + "</row>")
+    widths = (6, 8, 48, 14, 14, 60, 16, 12)
+    cols = "".join(f"<col min=\"{i + 1}\" max=\"{i + 1}\" width=\"{w}\" customWidth=\"1\"/>" for i, w in enumerate(widths))
+    return ("<worksheet xmlns=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\">"
+            "<sheetViews><sheetView workbookViewId=\"0\"><pane ySplit=\"1\" topLeftCell=\"A2\" "
+            "activePane=\"bottomLeft\" state=\"frozen\"/></sheetView></sheetViews>"
+            f"<cols>{cols}</cols><sheetData>{''.join(rows)}</sheetData>"
+            f"<autoFilter ref=\"A1:H{n}\"/></worksheet>")
+
+
+def _tier_summary_xml(tiers: list[tuple[str, str, int]], gap_rows: int = 0) -> str:
     """Summary sheet for the tier self-assessment: counts and status per tier sheet, then the assumed
     tier. `tiers` holds (sheet name, answer column letter, number of questions)."""
     def cell(ref, text=None, formula=None, style=0):
@@ -548,9 +594,13 @@ def _tier_summary_xml(tiers: list[tuple[str, str, int]]) -> str:
                        style=1) + "</row>")
     rows.append(f"<row r=\"{r2}\">" + cell(f"A{r2}", "Next piece of work", style=1)
                 + cell(f"B{r2}", formula=f"IF(COUNTIF({g},\"Incomplete\")>0,\"\",{nest_next})") + "</row>")
-    rows.append(f"<row r=\"{r2 + 2}\">" + cell(
-        f"A{r2 + 2}", "A tier is met when no answer is No and at most one is Partly. Your assumed tier is the highest "
-        "tier you meet, with every tier below it also met.") + "</row>")
+    rows.append(f"<row r=\"{r2 + 1}\">" + cell(f"A{r2 + 1}", "Gaps to close", style=1) + (
+        cell(f"B{r2 + 1}", formula=f"COUNTIF('Gap report'!E2:E{gap_rows + 1},\"Gap\")+COUNTIF('Gap report'!E2:E{gap_rows + 1},\"Partial gap\")")
+        if gap_rows else "") + "</row>")
+    rows.append(f"<row r=\"{r2 + 3}\">" + cell(
+        f"A{r2 + 3}", "A tier is met when no answer is No and at most one is Partly. Your assumed tier is the highest "
+        "tier you meet, with every tier below it also met. The Gap report sheet lists the step that closes each gap; "
+        "filter its Status column to see only the gaps.") + "</row>")
     return ("<worksheet xmlns=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\">"
             "<cols><col min=\"1\" max=\"1\" width=\"22\" customWidth=\"1\"/><col min=\"2\" max=\"7\" width=\"16\" "
             f"customWidth=\"1\"/></cols><sheetData>{''.join(rows)}</sheetData></worksheet>")
@@ -583,8 +633,8 @@ def _data_sheet_xml(rows: list[list[str]]) -> str:
 
 def xlsx_bytes(blocks: list[dict], tier_summary: bool = False) -> bytes:
     sheets = _sheet_names(blocks)
-    if tier_summary:  # the Summary sheet replaces the by-hand tally
-        sheets = [(n, r) for n, r in sheets if n != TALLY_CAPTION]
+    if tier_summary:  # the Summary and Gap report sheets replace the by-hand tally and gap table
+        sheets = [(n, r) for n, r in sheets if n not in (TALLY_CAPTION, GAP_CAPTION)]
     if not sheets:
         raise DocsError("no table to put in a workbook")
     xml_sheets = [(name, XML_HEAD + _data_sheet_xml(rows)) for name, rows in sheets]
@@ -593,7 +643,13 @@ def xlsx_bytes(blocks: list[dict], tier_summary: bool = False) -> bytes:
                  if re.fullmatch(r"Tier \d", name) and _choice_col(rows[0]) is not None]
         if not tiers:
             raise DocsError("no tier sheets found for the summary")
-        xml_sheets.insert(0, ("Summary", XML_HEAD + _tier_summary_xml(tiers)))
+        gaps = gap_rows_of(blocks)
+        tier_data = [(n, _col_letter(_choice_col(r[0])), r) for n, r in sheets
+                     if re.fullmatch(r"Tier \d", n) and _choice_col(r[0]) is not None]
+        gap_count = sum(len(r) - 1 for _, _, r in tier_data)
+        last_tier = max(i for i, (n, _) in enumerate(xml_sheets) if re.fullmatch(r"Tier \d", n))
+        xml_sheets.insert(last_tier + 1, ("Gap report", XML_HEAD + _gap_sheet_xml(tier_data, gaps)))
+        xml_sheets.insert(0, ("Summary", XML_HEAD + _tier_summary_xml(tiers, gap_count)))
     n = len(xml_sheets)
     parts = [("[Content_Types].xml", (
         XML_HEAD + "<Types xmlns=\"http://schemas.openxmlformats.org/package/2006/content-types\">"
@@ -725,6 +781,41 @@ document.addEventListener("DOMContentLoaded", function () {
   var tiers = [].slice.call(document.querySelectorAll("table[data-tier]"));
   var tally = document.querySelector("table[data-tally]");
   var out = document.getElementById("tier-result");
+  var gap = document.querySelector("table[data-gap]");
+  var gapNote = null;
+  if (gap) {
+    gapNote = document.createElement("p");
+    gapNote.id = "gap-note";
+    gapNote.setAttribute("role", "status");
+    gap.parentNode.parentNode.insertBefore(gapNote, gap.parentNode);
+  }
+  function answers() {
+    var map = {};
+    tiers.forEach(function (t) {
+      t.querySelectorAll("tbody tr").forEach(function (r) {
+        var x = r.querySelector("input:checked");
+        map[r.cells[0].textContent.trim()] = x ? x.value : "";
+      });
+    });
+    return map;
+  }
+  // The gap report lists every question answered No or Partly.
+  function updateGaps() {
+    if (!gap) { return; }
+    var map = answers(), shown = 0, answered = 0;
+    gap.querySelectorAll("tbody tr").forEach(function (r) {
+      var a = map[r.cells[0].textContent.trim()] || "";
+      if (a) { answered += 1; }
+      r.cells[2].textContent = a;
+      var isGap = a === "No" || a === "Partly";
+      r.hidden = !isGap;
+      if (isGap) { shown += 1; }
+    });
+    gap.parentNode.hidden = shown === 0;
+    gapNote.textContent = !answered ? "Answer the questions above to build your gap report."
+      : shown === 0 ? "No gaps so far: every question you have answered is Yes."
+      : shown + (shown === 1 ? " gap" : " gaps") + " to close, from your No and Partly answers.";
+  }
   function count(table) {
     var rows = table.querySelectorAll("tbody tr"), c = {Yes: 0, Partly: 0, No: 0, total: rows.length};
     rows.forEach(function (r) { var x = r.querySelector("input:checked"); if (x) { c[x.value] += 1; } });
@@ -736,6 +827,7 @@ document.addEventListener("DOMContentLoaded", function () {
     return c.No === 0 && c.Partly <= 1 ? "Met" : "Not met";
   }
   function update() {
+    updateGaps();
     var st = [], answered = 0, total = 0;
     tiers.forEach(function (t, i) {
       var c = count(t), s = status(c);

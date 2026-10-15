@@ -1,12 +1,14 @@
 import io
 import re
+import shutil
+import subprocess
 import tempfile
 import unittest
 import xml.dom.minidom
 import zipfile
 from pathlib import Path
 
-from agk.docs import (DocsError, body_html, csv_blocks, docx_bytes, front_title, inline_tokens, parse_markdown,
+from agk.docs import (DocsError, gap_rows_of, body_html, csv_blocks, docx_bytes, front_title, inline_tokens, parse_markdown,
                       summary_of, tier_rule, title_of, unmark, write_docs, xlsx_bytes)
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -122,6 +124,46 @@ class TierTests(unittest.TestCase):
         self.assertIn("COUNTIF('Tier 1'!C2:C9,&quot;No&quot;)", summary.replace('"', "&quot;"))
         self.assertIn("Below tier 1", summary)
         self.assertNotIn("Work out your tier", workbook)
+
+
+class GapReportTests(unittest.TestCase):
+    def setUp(self):
+        self.md = (ROOT / "sam-toolkit" / "tier-self-assessment.md").read_text(encoding="utf-8")
+        self.blocks = parse_markdown(self.md)
+
+    def test_every_question_has_a_gap_row_with_an_action(self):
+        gaps = gap_rows_of(self.blocks)
+        questions = [row[0] for b in self.blocks if b["type"] == "table" and b["rows"][0][0] == "#"
+                     and b["rows"][0][2].lower() == "yes / partly / no" for row in b["rows"][1:]]
+        self.assertEqual(sorted(gaps), sorted(questions))
+        self.assertEqual(len(questions), 19)
+        for key, row in gaps.items():
+            self.assertTrue(row[3].strip(), key)
+
+    def test_workbook_gap_sheet_has_status_formulas_and_filter(self):
+        files = parts(xlsx_bytes(self.blocks, tier_summary=True))
+        for name, xml_text in files.items():
+            xml.dom.minidom.parseString(xml_text)
+        sheet = files["xl/worksheets/sheet5.xml"]
+        self.assertIn("Partial gap", sheet)
+        self.assertIn("&amp;", sheet)
+        self.assertIn('<autoFilter ref="A1:H20"/>', sheet)
+        self.assertIn("Gaps to close", files["xl/worksheets/sheet1.xml"])
+        self.assertIn("'Gap report'!E2:E20", files["xl/worksheets/sheet1.xml"])
+
+    @unittest.skipUnless(shutil.which("node"), "node is not installed")
+    def test_page_script_is_valid_javascript(self):
+        html = (ROOT / "site" / "docs" / "sam-toolkit" / "tier-self-assessment.html").read_text(encoding="utf-8")
+        script = re.findall(r"<script>(.*?)</script>", html, re.S)[-1]
+        path = Path(tempfile.mkdtemp()) / "tier.js"
+        path.write_text(script, encoding="utf-8")
+        result = subprocess.run(["node", "--check", str(path)], capture_output=True, text=True)
+        self.assertEqual(result.returncode, 0, result.stderr)
+
+    def test_page_has_live_gap_table(self):
+        html = (ROOT / "site" / "docs" / "sam-toolkit" / "tier-self-assessment.html").read_text(encoding="utf-8")
+        self.assertIn("table[data-gap]", html)
+        self.assertIn("data-gap", html)
 
 
 class SiteTests(unittest.TestCase):
