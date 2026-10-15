@@ -15,12 +15,13 @@ q-deploy-ai-register,deploy,"For AI systems: is the inventory record complete an
 q-operate-entitlements,operate,"Do installs and users stay within entitlements?",rationalization,XW-007
 q-operate-access-review,operate,"Is access reviewed on schedule, and are leavers removed?",access-review,XW-016
 q-operate-asset-records,operate,"Are asset records accurate and reconciled?",itam-maturity,XW-026
+q-operate-change,operate,"Are changes assessed and approved before they are made?",itam-maturity,XW-029
 q-operate-ai-change,operate,"Has the AI system's use changed since intake?",ai-intake,XW-021
 q-optimize-cost,optimize,"Is it still worth its cost: tolerate, invest, migrate, or eliminate?",rationalization,XW-011
 q-optimize-expiring,optimize,"Is anything expiring or due for renewal in the next 90 days?",rationalization,XW-008
 q-optimize-process-weak,optimize,"Where is our asset management process weakest this year?",itam-maturity,XW-025
 q-optimize-decision-log,optimize,"Does the council's decision log show bottlenecks or rubber-stamping?",program-setup,XW-025
-q-retire-data,retire,"What data does it hold, and will we archive, migrate, or delete it?",rationalization,XW-028
+q-retire-data,retire,"What data does it hold, and will we archive, migrate, or delete it?",rationalization,XW-010
 q-retire-accounts,retire,"Are all accounts removed and licenses canceled or reclaimed?",access-review,XW-017
 q-retire-contract-end,retire,"Is the contract ended on time, without auto-renewal?",rationalization,XW-013
 q-retire-inventory-closed,retire,"Is the inventory record closed, with evidence kept?",itam-maturity,XW-020

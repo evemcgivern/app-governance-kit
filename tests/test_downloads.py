@@ -283,10 +283,10 @@ class RealRepoTests(unittest.TestCase):
         self.assertEqual(len(r), 10)  # header + 9 tasks
         self.assertEqual(r[0][1:], ["CAMP", "CSAM", "CHAMP", "AIGP", "ITIL 4 Foundation", "IAM Certificate"])
 
-    def test_crosswalk_and_impact_copies_have_28_data_rows(self):
+    def test_crosswalk_and_impact_copies_have_29_data_rows(self):
         for name in ("crosswalk.csv", "lifecycle-impact.csv"):
             r = rows((self.out / "site" / "downloads" / name).read_text())
-            self.assertEqual(len(r) - 1, 28, name)
+            self.assertEqual(len(r) - 1, 29, name)
 
     def test_wheel_svg_is_well_formed_with_all_segments(self):
         text = (self.out / "site" / "downloads" / "lifecycle-wheel.svg").read_text()

@@ -104,6 +104,7 @@ Rules that apply:
   - Refers to: Retire — Are all accounts removed and licenses canceled or reclaimed?
 - Asset records are reconciled against what is actually installed. [[XW-026]]
   - Referenced by: Review and optimize — Where is our asset management process weakest this year?
+- Changes are assessed for risk and approved before they are made. [[XW-029]]
 - A changed AI system's use is reassessed, not assumed unchanged. [[XW-021]]
 
 Gate to move on: Installs stay within entitlements and access reviews happen on schedule.
@@ -119,6 +120,7 @@ Questions to ask:
   - May be impacted by: Deploy — Access roles are defined, and new access only granted through an approved path.
   - May be impacted by: Deploy — Privileged and administrative accounts are limited and named individually.
 - [ ] Are asset records accurate and reconciled? [[XW-026]] (tool: `itam-maturity`)
+- [ ] Are changes assessed and approved before they are made? [[XW-029]] (tool: `itam-maturity`)
 - [ ] Has the AI system's use changed since intake? [[XW-021]] (tool: `ai-intake`)
   - Refers to: Deploy — An AI system's inventory record and risk entry are complete before go-live.
 
@@ -155,7 +157,7 @@ The application is decommissioned: data archived, migrated, or deleted; access a
 
 Rules that apply:
 
-- What happens to the application's data is decided and recorded, not left implicit. [[XW-028]]
+- What happens to the application's data is decided and recorded, not left implicit. [[XW-010]]
 - All accounts tied to the application are removed and licenses reclaimed. [[XW-017]]
 - The contract is ended on schedule, with any auto-renewal canceled in time. [[XW-013]]
 - The inventory record is formally closed, with evidence retained for audit. [[XW-020]]
@@ -168,7 +170,7 @@ Who decides: The application owner executes; the council confirms closure above 
 
 Questions to ask:
 
-- [ ] What data does it hold, and will we archive, migrate, or delete it? [[XW-028]] (tool: `rationalization`)
+- [ ] What data does it hold, and will we archive, migrate, or delete it? [[XW-010]] (tool: `rationalization`)
   - Refers to: Plan and request — What data will it hold, and how sensitive is that data?
   - Blocks: Retire — The inventory record is formally closed, with evidence retained for audit.
 - [ ] Are all accounts removed and licenses canceled or reclaimed? [[XW-017]] (tool: `access-review`)

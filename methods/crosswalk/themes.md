@@ -1,6 +1,6 @@
 # Key work by crosswalk theme
 
-Each of the 28 crosswalk themes below sets out what it means in practice, the concrete work it takes to run it, what evidence that work leaves behind, and which role usually carries it.
+Each of the 29 crosswalk themes below sets out what it means in practice, the concrete work it takes to run it, what evidence that work leaves behind, and which role usually carries it.
 
 ## XW-001 Application and software inventory
 
@@ -197,3 +197,11 @@ Each of the 28 crosswalk themes below sets out what it means in practice, the co
 - **Key work:** Define the classification levels and what each requires; classify data at creation or intake; apply the matching handling controls, such as encryption or access limits; audit a sample of data against its assigned classification; reclassify data when its sensitivity changes.
 - **Evidence it produces:** A classification scheme, labeled data samples, and an audit record of handling checks.
 - **Usually owned by:** The data owner, with the data governance team maintaining the classification scheme.
+
+## XW-029 Change management
+
+- **What it means:** Changes to an application, its configuration, or an AI system's use are assessed for risk and approved before they happen, and reviewed afterward.
+- **Key work:** Define what counts as a change and which kinds need approval; assess the risk and the impact on assets, access, and data before approving; schedule and communicate approved changes; record who approved each one; review the outcome and any unplanned changes after the fact; feed repeat problems into the risk register.
+- **Evidence it produces:** A change log with risk assessments, approvals, and post-change reviews.
+- **Usually owned by:** The application owner, with a change approver or change board for higher-risk changes.
+

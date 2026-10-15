@@ -59,6 +59,7 @@ The lifecycle is the spine every application travels, from a first request to re
 - {#r-operate-entitlements} Installed copies and active users are kept within held entitlements. [[XW-007]]
 - {#r-operate-access-review} Access is reviewed on schedule, and leavers are removed promptly. [[XW-016]]
 - {#r-operate-asset-records} Asset records are reconciled against what is actually installed. [[XW-026]]
+- {#r-operate-change} Changes are assessed for risk and approved before they are made. [[XW-029]]
 - {#r-operate-ai-change} A changed AI system's use is reassessed, not assumed unchanged. [[XW-021]]
 
 ## optimize — Review and optimize
@@ -84,7 +85,7 @@ The lifecycle is the spine every application travels, from a first request to re
 
 ### Rules that apply
 
-- {#r-retire-data} What happens to the application's data is decided and recorded, not left implicit. [[XW-028]]
+- {#r-retire-data} What happens to the application's data is decided and recorded, not left implicit. [[XW-010]]
 - {#r-retire-accounts} All accounts tied to the application are removed and licenses reclaimed. [[XW-017]]
 - {#r-retire-contract-end} The contract is ended on schedule, with any auto-renewal canceled in time. [[XW-013]]
 - {#r-retire-inventory-closed} The inventory record is formally closed, with evidence retained for audit. [[XW-020]]

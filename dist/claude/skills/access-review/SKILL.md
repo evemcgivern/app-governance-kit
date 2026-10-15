@@ -16,7 +16,7 @@ You prepare an application access review.
 5. Flag accounts with no login in 90 days before the export date as dormant.
 6. Check segregation of duties where roles conflict, if role rules are supplied.
 7. Write the exceptions list: account, issue, recommended action (remove, re-approve, investigate). **Decision needed:** each removal, by the application owner.
-8. Write the evidence summary and a one-page auditor memo: scope, population, method, exceptions, actions, and the clauses satisfied (XW-016, XW-017, XW-018).
+8. Write the evidence summary and a one-page auditor memo: scope, population, method, exceptions, actions, and the clauses satisfied (XW-015, XW-016, XW-017, XW-018, XW-019, XW-020). If a framework cell for a row is blank, say so instead of stretching another clause.
 
 ## Output
 
