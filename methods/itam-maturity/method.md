@@ -28,4 +28,4 @@ Score table, the three gaps with reasoning, the 90-day plan, then the findings b
 - Mark every point where a person must decide with **Decision needed:** and stop short of deciding.
 - Flag any figure you could not verify from the input with **Unverified:**.
 - Cite framework clauses by number from [`crosswalk.csv`](../crosswalk/crosswalk.csv). Paraphrase; never quote standards text.
-- End your answer with a fenced block labelled `findings` containing a JSON list of `{"type": ..., "id": ...}` objects, as the task describes. Use `[]` when there are none.
+- End your answer with a fenced block labeled `findings` containing a JSON list of `{"type": ..., "id": ...}` objects, as the task describes. Use `[]` when there are none.

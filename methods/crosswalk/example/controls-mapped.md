@@ -42,7 +42,7 @@ This control contains two obligations, so I split it:
 | ISO/IEC 42001 | No direct equivalent | — |
 
 **Gaps**
-- **ISO/IEC 19770-1:** This standard doesn't frame access as a security control. Its auditor would instead ask whether removed access leads to licences being reclaimed and entitlement records being updated (8.4, via XW-006 and XW-007).
+- **ISO/IEC 19770-1:** This standard doesn't frame access as a security control. Its auditor would instead ask whether removed access leads to licenses being reclaimed and entitlement records being updated (8.4, via XW-006 and XW-007).
 - **ISO/IEC 42001:** No row in the crosswalk links access review to 42001. An auditor would probably ask who can use, change or retrain AI systems, but the crosswalk has no clause for that, so I can't cite one.
 
 **Decision needed:** Should C2 set a review frequency? "On a schedule" is not specific, and ISO 27001 and COBIT auditors will ask to see the defined interval.

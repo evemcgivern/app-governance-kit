@@ -1,5 +1,6 @@
 import csv
 import io
+import shutil
 import tempfile
 import unittest
 import zipfile
@@ -323,3 +324,70 @@ def write_downloads_into_copy(out: Path) -> list:
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class SamToolkitTests(unittest.TestCase):
+    TOOLKIT = ROOT / "sam-toolkit"
+    CSV_HEADERS = {
+        "license-position.csv": ["app_id", "entitlements_owned", "in_use_count", "position", "status"],
+        "renewal-calendar.csv": ["license_id", "contract_end", "notice_days", "notice_deadline", "decision"],
+        "asset-record.csv": ["asset_id", "owner", "authorized", "authorization_ref", "last_verified_on"],
+        "authorization-log.csv": ["authorization_id", "authorized_by", "authorized_on", "reason", "executed_by"],
+        "statement-of-applicability.csv": ["process", "always_included", "in_scope", "justification"],
+        "vendor-contract-register.csv": ["vendor_id", "mixed_responsibilities", "risk_rating", "risk_owner"],
+    }
+
+    def test_csv_templates_have_required_columns(self):
+        for name, required in self.CSV_HEADERS.items():
+            with open(self.TOOLKIT / name, encoding="utf-8", newline="") as f:
+                header = next(csv.reader(f))
+            for col in required:
+                self.assertIn(col, header, f"{name} is missing {col}")
+
+    def test_statement_of_applicability_lists_all_annex_a_processes(self):
+        with open(self.TOOLKIT / "statement-of-applicability.csv", encoding="utf-8", newline="") as f:
+            rows = list(csv.DictReader(f))
+        self.assertEqual(len(rows), 15)
+        always = {r["process"] for r in rows if r["always_included"] == "Yes"}
+        self.assertEqual(always, {"Management of change", "Core data management",
+                                  "License management", "Security management"})
+        for r in rows:
+            if r["always_included"] == "Yes":
+                self.assertEqual(r["in_scope"], "yes")
+
+    def test_license_example_positions_add_up(self):
+        with open(self.TOOLKIT / "examples" / "license-position-example.csv", encoding="utf-8", newline="") as f:
+            rows = list(csv.DictReader(f))
+        self.assertTrue(rows)
+        for r in rows:
+            pos = int(r["entitlements_owned"]) - int(r["in_use_count"])
+            self.assertEqual(int(r["position"]), pos, r["app_id"])
+            self.assertEqual(r["status"], "shortfall" if pos < 0 else "surplus" if pos > 0 else "balanced")
+
+    def test_build_publishes_files_and_zip(self):
+        root = make_repo(Path(tempfile.mkdtemp()))
+        (root / "site").mkdir()
+        shutil.copytree(self.TOOLKIT, root / "sam-toolkit")
+        write_downloads(root)
+        out = root / "site" / "downloads"
+        self.assertTrue((out / "sam-toolkit" / "guide.md").is_file())
+        self.assertTrue((out / "sam-toolkit" / "examples" / "license-position-example.csv").is_file())
+        with zipfile.ZipFile(out / "sam-toolkit.zip") as z:
+            names = z.namelist()
+        self.assertIn("sam-toolkit/guide.md", names)
+        self.assertIn("sam-toolkit/license-position.csv", names)
+
+    def test_page_links_every_published_file(self):
+        page = (ROOT / "site" / "sam-toolkit.html").read_text(encoding="utf-8")
+        for f in sorted(self.TOOLKIT.rglob("*")):
+            if f.is_file() and f.suffix in (".csv", ".md"):
+                rel = f.relative_to(self.TOOLKIT).as_posix()
+                self.assertIn(f"downloads/sam-toolkit/{rel}", page, rel)
+
+
+class AgentDownloadTests(unittest.TestCase):
+    def test_agent_files_are_published(self):
+        root = make_repo(Path(tempfile.mkdtemp()))
+        (root / "site").mkdir()
+        write_downloads(root)
+        self.assertTrue((root / "site" / "downloads" / "agents" / "governance-reviewer.md").is_file())

@@ -72,23 +72,23 @@ row's iso27001 clause is a main-body clause (not an Annex A control, e.g.
 | XW-008 | cobit2019 | BAI09.05 | Manage licenses | https://www.researchgate.net/publication/378036399 (BAI09 practice breakdown) ; https://www.itsm-docs.com/blogs/cobit-framework/cobit-bai09-05-manage-licenses | Secondary (2 sources) | kept — replaced "as XW-006" with the actual URLs |
 | XW-008 | iso27001 | A.5.32 | Intellectual property rights | https://hightable.io/iso-27001-annex-a-controls-reference-guide/ ; https://cdn.standards.iteh.ai/samples/75652/f9b90f856c0d4c3dbef74cf67374d1c5/ISO-IEC-27002-2022.pdf (clause 5.32, see Annex A note above) | Primary | kept — upgraded to Primary |
 | XW-008 | iso42001 | — | — | — | — | left blank |
-| XW-009 | iso19770_1 | — | — | — | — | left blank — no clause title in the ISO ToC specifically names request-to-retirement lifecycle |
+| XW-009 | iso19770_1 | Annex A, Table A.1 | IT asset life cycle management processes (Specification through Retirement) | ISO/IEC 19770-1:2017 full text (Annex A, Table A.1) | Primary | filled 2026-10-14 — the normative annex lists the life cycle processes; no numbered clause covers them |
 | XW-009 | cobit2019 | BAI09.03 | Manage the asset life cycle | https://www.itsm-docs.com/blogs/cobit-framework/cobit-bai09-03-manage-the-asset-life-cycle ; https://www.researchgate.net/publication/378036399 (BAI09 practice breakdown, covers .01–.05) | Secondary (2 sources) | kept — replaced the unlinked "researchgate BAI09 breakdown" mention with its actual URL |
 | XW-009 | iso27001 | A.5.9 | Inventory of information and other associated assets | https://hightable.io/iso-27001-annex-a-controls-reference-guide/ ; https://cdn.standards.iteh.ai/samples/75652/f9b90f856c0d4c3dbef74cf67374d1c5/ISO-IEC-27002-2022.pdf (clause 5.9, see Annex A note above) | Primary | kept — upgraded to Primary |
 | XW-009 | iso42001 | — | — | — | — | left blank |
-| XW-010 | iso19770_1 | — | — | — | — | left blank — no disposal/retirement-titled clause in the ToC |
+| XW-010 | iso19770_1 | Annex A, Table A.1 | Retirement | ISO/IEC 19770-1:2017 full text (Annex A, Table A.1) | Primary | filled 2026-10-14 — the Retirement objective covers removal from use, repurposing, recycling, disposal and record keeping |
 | XW-010 | cobit2019 | BAI09.03 | Manage the asset life cycle (acquisition to disposal) | https://www.itsm-docs.com/blogs/cobit-framework/cobit-bai09-03-manage-the-asset-life-cycle ; https://www.researchgate.net/publication/378036399 (BAI09 practice breakdown, covers .01–.05) | Secondary (2 sources) | kept — replaced "as XW-009" with the actual URLs |
 | XW-010 | iso27001 | A.8.10 | Information deletion | https://hightable.io/iso-27001-annex-a-controls-reference-guide/ ; https://cdn.standards.iteh.ai/samples/75652/f9b90f856c0d4c3dbef74cf67374d1c5/ISO-IEC-27002-2022.pdf (clause 8.10, see Annex A note above) | Primary | kept — upgraded to Primary |
 | XW-010 | iso42001 | — | — | — | — | left blank |
-| XW-011 | iso19770_1 | — | — | — | — | left blank — no rationalization/optimization clause found |
+| XW-011 | iso19770_1 | TS 19770-13 §6.1 Table 1; §4.4.3 | Sustainability adoption in ITAM operation processes (Rightsize consumption); Compatibility and interoperability | ISO/IEC TS 19770-13:2026 full text | Primary | filled 2026-10-14 — guidance, not a requirement: the Rightsize consumption objective covers timely deactivation and disposal of unused and obsolete assets, and §4.4.3 advises standard applications to limit and rationalize the portfolio. It does not cover the keep/merge/retire scoring method |
 | XW-011 | cobit2019 | BAI09.04 | Optimize asset value | https://www.itsm-docs.com/blogs/cobit-framework/cobit-bai09-04-optimize-asset-value ; https://4matt.com.br/en/cobit-2019-asset-management-bai09/ | Secondary (2 sources) | kept — added the 4matt.com.br source; the line previously cited only itsm-docs.com |
 | XW-011 | iso27001 | (empty) | — | — | — | left blank — cell was empty; out of scope to fill (only iso19770_1/iso42001 fills are in scope) |
 | XW-011 | iso42001 | — | — | — | — | left blank |
-| XW-012 | iso19770_1 | — | — | — | — | left blank — no budget/cost clause in the ToC |
+| XW-012 | iso19770_1 | Annex A, Table A.1 | Financial management | ISO/IEC 19770-1:2017 full text (Annex A, Table A.1) | Primary | filled 2026-10-14 — the objective covers monitoring and managing the costs and values of IT assets, including cost-effectiveness |
 | XW-012 | cobit2019 | APO06 | Managed Budget and Costs | https://sfia-online.org/en/sfia-7/sfia-views/cobit-2019-governance-and-management-objectives/apo06-managed-budget-and-costs ; https://wiki.process-symphony.com.au/framework/lifecycle/align-plan-and-organise-cobit/ | Secondary (2 sources) | kept — replaced the bare domain mention with the actual page URL; both sources independently confirmed against ISACA's own COBIT 2019/SFIA mapping PDF |
 | XW-012 | iso27001 | (empty) | — | — | — | left blank — out of scope to fill |
 | XW-012 | iso42001 | — | — | — | — | left blank |
-| XW-013 | iso19770_1 | 8.7 | Outsourcing and services | https://cdn.standards.iteh.ai/samples/68531/9744652940bf4a739bc8c2823d7daf98/ISO-IEC-19770-1-2017.pdf | Primary | filled |
+| XW-013 | iso19770_1 | 8.7; Annex A, Table A.1 | Outsourcing and services; Relationship and contract management | ISO/IEC 19770-1:2017 full text (Annex A, Table A.1) | Primary | extended 2026-10-14 — added the Annex A process that covers contracts and supplier relationships |
 | XW-013 | cobit2019 | APO10 | Managed Vendors | https://sfia-online.org/en/legacy-sfia/sfia-7/sfia-views/cobit-2019-governance-and-management-objectives/apo10-managed-vendors ; https://www.itsm-docs.com/blogs/cobit-framework/cobit-apo10-01-identify-and-evaluate-vendor-relationships-and-contracts | Secondary (2 sources) | kept — replaced the bare domain mention with the actual page URL |
 | XW-013 | iso27001 | A.5.19, A.5.20 | Information security in supplier relationships; Addressing information security within supplier agreements | https://hightable.io/iso-27001-annex-a-controls-reference-guide/ ; https://cdn.standards.iteh.ai/samples/75652/f9b90f856c0d4c3dbef74cf67374d1c5/ISO-IEC-27002-2022.pdf (clauses 5.19/5.20, see Annex A note above) | Primary | kept — upgraded to Primary |
 | XW-013 | iso42001 | — | — | — | — | left blank |
@@ -134,7 +134,7 @@ row's iso27001 clause is a main-body clause (not an Annex A control, e.g.
 | XW-023 | iso42001 | A.10 | Third-party and customer relationships | https://www.isms.online/iso-42001/annex-a-controls/a-10-third-party-and-customer-relationships/ ; https://www.konfirmity.com/blog/iso-42001-controls (table entry: "A.10 / Third-party and customer relationships") | Secondary (2 sources) | **CORRECTED sourcing** — the bare "konfirmity.com" citation was carried over unverified; that specific page (`iso-42001-requirements`) does not mention A.10 at all, so the line was effectively single-sourced (isms.online only). Replaced with `konfirmity.com/blog/iso-42001-controls`, a different page on a different organization's site that was fetched and does state "A.10 / Third-party and customer relationships" verbatim |
 | XW-024 | iso19770_1 | 6.1.2, 6.1.3 | IT asset risk assessment; IT asset risk treatment | https://cdn.standards.iteh.ai/samples/68531/9744652940bf4a739bc8c2823d7daf98/ISO-IEC-19770-1-2017.pdf | Primary | corrected from 6.1 (prior pass) — replaced parent clause with the two specific subclauses it comprises |
 | XW-024 | cobit2019 | APO12 | Managed Risk | https://wiki.process-symphony.com.au/framework/lifecycle/process/risk-management-apo12-cobit2019/ ; https://www.itsm-docs.com/blogs/cobit-framework/cobit-apo12-02-analyze-risk | Secondary (2 sources) | kept — replaced "as XW-021" with the actual URLs |
-| XW-024 | iso27001 | 6.1.3 | Information security risk treatment | https://hightable.io/iso-27001-clause-6-1-3-information-security-risk-treatment/ ; https://cdn.standards.iteh.ai/samples/82875/726bcf58250e43d9a666b4d929c8fbdb/ISO-IEC-27001-2022.pdf (main-body clause 6.1.3, confirmed directly, no 27002 cross-reference needed) | Primary | kept — upgraded to Primary, confirmed directly against the 27001:2022 sample PDF's own table of contents |
+| XW-024 | iso27001 | 6.1.2, 6.1.3 | Information security risk assessment; Information security risk treatment | ISO/IEC 27001:2022 full text (contents and clause 6.1); ISO/IEC 19770-1:2017 6.1.3 note | Primary | extended 2026-10-14 — 19770-1 says its risk assessment and treatment clauses follow 27001 6.1.2 and 6.1.3 together |
 | XW-024 | iso42001 | 6.1.2, 6.1.3 | AI risk assessment process; AI risk treatment | https://cyberzoni.com/standards/iso-42001/clause-6/ ; https://www.novelvista.com/blogs/quality-management/iso-42001-ai-risk-treatment-clause-6-1-3 | Secondary (2 sources) | kept — already two independent sources; not re-researched (the 42001:2023 sample PDF's free preview stops at clause 4.4 and does not reach 6.1) |
 | XW-025 | iso19770_1 | 9.1, 9.2, 9.3, 10.3 | Monitoring, measurement, analysis and evaluation; Internal audit; Management review; Continual improvement | https://cdn.standards.iteh.ai/samples/68531/9744652940bf4a739bc8c2823d7daf98/ISO-IEC-19770-1-2017.pdf | Primary | corrected from "9.1, 9.3, 10" (prior pass) — added 9.2 and replaced parent clause 10 with its continual-improvement subclause 10.3 |
 | XW-025 | cobit2019 | MEA01 | Managed Performance and Conformance Monitoring | https://www.isaca.org/resources/news-and-trends/industry-news/2019/governing-digital-transformation-using-cobit-2019 (quotes "MEA01 — Managed performance and conformance monitoring") | Primary | **CORRECTED sourcing** — the previous two citations (`cobit-mea01-02-set-performance-and-conformance-targets` and "itsm-docs.com MEA01.03 page") are BOTH itsm-docs.com pages, i.e. one organization, not two independent sources as labeled; replaced with a genuine isaca.org Primary source. Clause code and title were already correct — this is a sourcing-methodology fix, not a data correction, so crosswalk.csv is unaffected |
@@ -150,7 +150,7 @@ row's iso27001 clause is a main-body clause (not an Annex A control, e.g.
 | XW-027 | iso42001 | 5.1, 5.3 | Leadership and commitment; **Roles, responsibilities and authorities** | https://cdn.standards.iteh.ai/samples/81230/4c1911ebc9a641fcb6ee21aa09c28ad3/ISO-IEC-42001-2023.pdf (main-body clauses 5.1/5.3, confirmed directly) | Primary | **CORRECTED title** — same 5.3 wording fix as XW-004 ("Roles, responsibilities and authorities," no "Organizational" prefix in 42001); 5.1 was already correct; clause numbers unchanged, no crosswalk.csv change needed |
 | XW-028 | iso19770_1 | — | — | — | — | left blank — 19770-1 explicitly excludes managing information as an asset independent of hardware/software |
 | XW-028 | cobit2019 | APO14 | Managed Data | https://www.isaca.org/resources/news-and-trends/industry-news/2019/employing-cobit-2019-for-enterprise-governance-strategy (quotes "APO14 — Managed data") | Primary | kept — upgraded from two secondary sources (researchgate.net, estim-software.com) to a Primary isaca.org source |
-| XW-028 | iso27001 | A.5.12, A.5.13 | Classification of information; Labelling of information | https://hightable.io/iso-27001-annex-a-controls-reference-guide/ ; https://cdn.standards.iteh.ai/samples/75652/f9b90f856c0d4c3dbef74cf67374d1c5/ISO-IEC-27002-2022.pdf (clauses 5.12/5.13, see Annex A note above) | Primary | kept — upgraded to Primary |
+| XW-028 | iso27001 | A.5.12, A.5.13 | Classification of information; Labeling of information | https://hightable.io/iso-27001-annex-a-controls-reference-guide/ ; https://cdn.standards.iteh.ai/samples/75652/f9b90f856c0d4c3dbef74cf67374d1c5/ISO-IEC-27002-2022.pdf (clauses 5.12/5.13, see Annex A note above) | Primary | kept — upgraded to Primary |
 | XW-028 | iso42001 | A.7 | Data for AI systems | https://www.isms.online/iso-42001/annex-a-controls/a-7-data-for-ai-systems/ ; https://www.schellman.com/blog/iso-certifications/ai-data-considerations-iso-42001-and-iso-9001 (quotes "A.7 Data for AI Systems") | Secondary (2 sources) | kept — added the schellman.com source; the line previously cited only isms.online |
 
 ## Pairs that could not be upgraded past a single secondary source
@@ -195,6 +195,8 @@ either a Primary source or two independent secondary sources.
   sources above for EDM01, APO01, MEA01, and APO14. Objectives not named in
   either article (APO06, APO10, APO12, BAI09.01/.03/.04/.05, DSS05.04,
   DSS06.03, MEA02) remain backed by two independent secondary sources.
+- (Superseded 2026-10-14: the full ISO/IEC 27001:2022 text is now in hand and
+  was used for the pass below. This bullet describes the earlier preview.)
 - ISO/IEC 27001:2022's own free preview does not reach Annex A (it cuts off
   partway through the main body). Annex A control titles above are
   therefore sourced to the ISO/IEC 27002:2022 official sample PDF instead,
@@ -209,3 +211,25 @@ either a Primary source or two independent secondary sources.
   cyberzoni.com, novelvista.com, iso-docs.com, schellman.com) was fetched
   directly on 2026-09-24 and checked to confirm it states the specific
   clause/control number and title claimed, not merely discusses the topic.
+
+## Full-text pass on 2026-10-14
+
+Checked against the licensed full text of ISO/IEC 19770-1:2017 (with
+Amd 1:2024), 19770-2, -3, -4 and ISO/IEC 27001:2022 (with Amd 1:2024).
+
+- Every iso19770_1 clause number and title in `crosswalk.csv` matches Part 1.
+  The 19770-2 §8.5.1, 19770-3 §8.6.3 and 19770-4 §8.4.1/§8.4.3 headings
+  match too.
+- Every iso27001 cell matches a main-body clause or Annex A control in
+  27001:2022. Annex A titles now rest on 27001 itself, not the 27002 sample.
+- Filled XW-009, XW-010, XW-012 and extended XW-013 from 19770-1 Annex A.
+  Filled XW-011 from TS 19770-13:2026 (§6.1 Table 1, §4.4.3), since Part 1
+  Annex A has no rationalization process. Left XW-014 blank. For XW-014, 2017 clause 8.5 covers access only in a
+  note, and 19770-8:2020 Annex A (the 2017 mapping) is an empty template
+  with no sub-requirements under 8.5. The access-control practices in
+  19770-8 appear only in Annex B, which maps to the 2012 edition.
+- Extended XW-024 iso27001 to 6.1.2 and 6.1.3.
+- Not rechecked: cobit2019 and iso42001 cells, and the XW-028 note that
+  19770-1 excludes information as an asset.
+- Amd 1:2024 to both standards adds climate-change wording to 4.1 and 4.2
+  only. No cell changes.

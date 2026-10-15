@@ -21,6 +21,6 @@ q-optimize-expiring,optimize,"Is anything expiring or due for renewal in the nex
 q-optimize-process-weak,optimize,"Where is our asset management process weakest this year?",itam-maturity,XW-025
 q-optimize-decision-log,optimize,"Does the council's decision log show bottlenecks or rubber-stamping?",program-setup,XW-025
 q-retire-data,retire,"What data does it hold, and will we archive, migrate, or delete it?",rationalization,XW-028
-q-retire-accounts,retire,"Are all accounts removed and licenses cancelled or reclaimed?",access-review,XW-017
+q-retire-accounts,retire,"Are all accounts removed and licenses canceled or reclaimed?",access-review,XW-017
 q-retire-contract-end,retire,"Is the contract ended on time, without auto-renewal?",rationalization,XW-013
 q-retire-inventory-closed,retire,"Is the inventory record closed, with evidence kept?",itam-maturity,XW-020
