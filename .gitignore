@@ -17,5 +17,4 @@ venv/
 .idea/
 *.log
 *.pyc
-docs/software-eol-check-spec.md
-docs/lifecycle-check-spec.md
+docs/

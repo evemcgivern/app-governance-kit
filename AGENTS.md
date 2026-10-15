@@ -21,7 +21,7 @@ From `Makefile` (Python 3, run from the repo root; CI uses 3.12):
 - `methods/crosswalk/`: `crosswalk.csv` is the shared source for every skill's `crosswalk.csv` copy. `sources.md` records the evidence for each cell.
 - `demo-estate/`: fictional company data used by the practicum. `practicum/`: the seven exercises. `field-guide/`: reference material (Markdown only; `site/field-guide.html` is hand-kept).
 - `build/agk/`: Python build system. `tests/`: its tests.
-- `lifecycle/`: input data for the lifecycle checklist; the build reads it. `evals/`: skill grading. `docs/`: `design.md` and `plan.md`.
+- `lifecycle/`: input data for the lifecycle checklist; the build reads it. `evals/`: skill grading.
 - `agents/`: Claude agent files, copied to `dist/claude/agents` by the build. Currently `app-governance-agent.md`, a thin wrapper that loads the `app-governance` skill (`methods/app-governance/`), which holds the routing table. `case-studies/` is empty; the scan still covers it, and the case studies page is hand-kept in `site/`.
 - `dist/`, `site/`: generated output (plus some hand-kept pages in `site/`). Published via `.github/workflows/pages.yml` on pushes to `main`.
 
@@ -32,4 +32,4 @@ From `Makefile` (Python 3, run from the repo root; CI uses 3.12):
 - Crosswalk edits: each row needs a `verified` date and at least one framework cell. Record the evidence in `methods/crosswalk/sources.md`. Cite clause numbers and titles only; paraphrase standards text.
 - Spelling: American English everywhere (license, organization, color, program). See `.claude/guidances/spelling.md`; exact wording in URLs and quoted outside titles stays as is.
 - Commit subjects: conventional-commit format, 50 characters or fewer.
-- `.gitignore` excludes tool and editor files (`.claude/`, `.superpowers/`, `*.code-workspace`), `dist/office/`, `evals/results/*.md`, and the draft specs `docs/lifecycle-check-spec.md` and `docs/software-eol-check-spec.md`. Check it before assuming a new file is tracked.
+- `.gitignore` excludes tool and editor files (`.claude/`, `.superpowers/`, `*.code-workspace`), `dist/office/`, `evals/results/*.md`, and `docs/` (local design notes and plans, not published). Check it before assuming a new file is tracked.
