@@ -28,7 +28,7 @@ Checked against `checked_on` (2026-09-01):
 - **LIC-017** (APP-017, Meetrix Video conferencing) expired 2026-03-31 — 5 months lapsed. 649 users.
 - **LIC-044** (APP-044, Payflow Accounts payable automation) expired 2025-12-31 — 8 months lapsed. 748 users, confidential data.
 
-No license expires within 90 days of `checked_on` beyond these two. **Unverified:** on paper, entitlements are far below `users` for most apps and far above `users` for a smaller group (e.g. APP-025 Pulseboard: 350 entitlements against 45 users). `users` in this file isn't documented as licensed seats or installs, so I'm treating this pattern as a licence-position question to investigate, not as a proven over- or under-buy [[XW-007]].
+No license expires within 90 days of `checked_on` beyond these two. **Unverified:** on paper, entitlements are far below `users` for most apps and far above `users` for a smaller group (e.g. APP-025 Pulseboard: 350 entitlements against 45 users). `users` in this file isn't documented as licensed seats or installs, so I'm treating this pattern as a license-position question to investigate, not as a proven over- or under-buy [[XW-007]].
 
 Both expired licenses sit on high-usage apps, not duplicates, so the fix is renewal, not elimination — see the TIME table.
 

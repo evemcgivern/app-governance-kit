@@ -23,6 +23,7 @@ Key facts:
 ## Reference pages
 
 - [Home](https://evemcgivern.github.io/app-governance-kit/): overview of the three areas (portfolio, AI, access) and how they map to the four frameworks.
+- [SAM toolkit](https://evemcgivern.github.io/app-governance-kit/sam-toolkit.html): eight free templates and checklists for a software asset management practice (license position, renewal calendar, asset record, authorization log, statement of applicability, tier self-assessment, audit and review checklist, vendor register), each traced to ISO/IEC 19770-1 clauses, with a ZIP download.
 - [Practicum](https://evemcgivern.github.io/app-governance-kit/practicum.html): seven hands-on exercises, one per tool, worked by hand against the Halden Logistics demo estate and self-checked in the browser.
 - [Lifecycle](https://evemcgivern.github.io/app-governance-kit/lifecycle.html): six application lifecycle stages, from request to retirement, with the governance questions to ask at each and the tool that handles them.
 - [Crosswalk explorer](https://evemcgivern.github.io/app-governance-kit/crosswalk.html): 28 governance themes mapped across ISO/IEC 19770, COBIT 2019, ISO/IEC 27001, and ISO/IEC 42001.

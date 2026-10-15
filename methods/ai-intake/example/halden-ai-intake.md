@@ -161,7 +161,7 @@ In NIST AI RMF terms: **Govern** covers ownership and approval, **Map** covers t
 - **Data:** CVs and application data. **This is personal data**, and it may include special-category data (health, ethnicity) or stand-ins for protected characteristics (age, gender, address).
 - **Where the data comes from:** applicants. **Unverified:** what data the model was trained on.
 
-**Prohibited practices:** none apply on this description. The ban on emotion recognition in the workplace would apply if the tool analysed video or voice interviews for emotion, and the ban on biometric categorisation would apply if it inferred protected traits from photos.
+**Prohibited practices:** none apply on this description. The ban on emotion recognition in the workplace would apply if the tool analyzed video or voice interviews for emotion, and the ban on biometric categorization would apply if it inferred protected traits from photos.
 
 **Decision needed:** Legal must confirm that neither of these features exists in the product.
 

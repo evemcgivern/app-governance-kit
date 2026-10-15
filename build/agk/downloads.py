@@ -272,6 +272,29 @@ def write_skill_zips(root: Path, out: Path) -> None:
             _zip_files([tool], zips / f"{tool.name}-{_platform}.zip")
 
 
+def write_sam_toolkit(root: Path, out: Path) -> list[str]:
+    """Copy sam-toolkit/ into site/downloads/sam-toolkit/ and bundle it as sam-toolkit.zip.
+    The zip uses a fixed date_time so its bytes only change when a source file does."""
+    src = root / "sam-toolkit"
+    if not src.is_dir():
+        return []
+    dest = out / "sam-toolkit"
+    if dest.exists():
+        shutil.rmtree(dest)
+    files = sorted(p for p in src.rglob("*") if p.is_file() and p.suffix in (".csv", ".md"))
+    for f in files:
+        target = dest / f.relative_to(src)
+        target.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copyfile(f, target)
+    with zipfile.ZipFile(out / "sam-toolkit.zip", "w", zipfile.ZIP_DEFLATED) as z:
+        for f in files:
+            info = zipfile.ZipInfo(filename=f"sam-toolkit/{f.relative_to(src).as_posix()}",
+                                   date_time=(2020, 1, 1, 0, 0, 0))
+            info.compress_type = zipfile.ZIP_DEFLATED
+            z.writestr(info, f.read_bytes())
+    return []
+
+
 def write_downloads(root: Path) -> list[str]:
     """Generate site/downloads/* from the repo's single sources of truth. Best-effort:
     a missing or unparsable source produces a warning, not a build error, since these
@@ -340,4 +363,5 @@ def write_downloads(root: Path) -> list[str]:
                 z.writestr(info, (out / name).read_bytes())
 
     write_skill_zips(root, out)
+    warnings += write_sam_toolkit(root, out)
     return warnings

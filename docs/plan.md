@@ -1470,7 +1470,7 @@ Every `methods/<tool>/method.md` body ends with this output contract, verbatim:
 - Mark every point where a person must decide with **Decision needed:** and stop short of deciding.
 - Flag any figure you could not verify from the input with **Unverified:**.
 - Cite framework clauses by number from `crosswalk.csv`. Paraphrase; never quote standards text.
-- End your answer with a fenced block labelled `findings` containing a JSON list of `{"type": ..., "id": ...}` objects, as the task describes. Use `[]` when there are none.
+- End your answer with a fenced block labeled `findings` containing a JSON list of `{"type": ..., "id": ...}` objects, as the task describes. Use `[]` when there are none.
 ````
 
 Each tool is done when:
@@ -2589,7 +2589,7 @@ optimize,"Is anything expiring or due for renewal in the next 90 days?",rational
 optimize,"Where is our asset management process weakest this year?",itam-maturity,XW-025
 optimize,"Does the council's decision log show bottlenecks or rubber-stamping?",program-setup,XW-025
 retire,"What data does it hold, and will we archive, migrate, or delete it?",rationalization,XW-028
-retire,"Are all accounts removed and licenses cancelled or reclaimed?",access-review,XW-017
+retire,"Are all accounts removed and licenses canceled or reclaimed?",access-review,XW-017
 retire,"Is the contract ended on time, without auto-renewal?",rationalization,XW-013
 retire,"Is the inventory record closed, with evidence kept?",itam-maturity,XW-020
 ```
@@ -2599,7 +2599,7 @@ Expected: `build ok`; `dist/lifecycle-questions.md` has six stage headings and 2
 
 - [ ] **Step 7: Build the wheel on the home page** (ui-engineer agent; load the `html` skill first)
 
-In `site/index.html`, add `<!--LC-DATA--><!--/LC-DATA-->` and an inline SVG wheel: six equal ring segments in stage order, clockwise from the top, each labelled with the stage name, with an arrow showing the cycle from Retire back to Plan. Each segment is a `<button>`-equivalent (`role="button"`, `tabindex="0"`, Enter/Space activate, visible focus ring, `aria-pressed` on the selected one). Selecting a stage fills a panel beside the wheel (below it at phone width) with that stage's questions from `#lc-data`; each question shows its crosswalk row (linking to `crosswalk.html`) and a link to `tools.html#<tool>`. Plan is selected on load. Colors from the `:root` tokens; works in both themes; no external scripts. Also add a "Lifecycle questions" download link to `dist/lifecycle-questions.md` in the GitHub repo.
+In `site/index.html`, add `<!--LC-DATA--><!--/LC-DATA-->` and an inline SVG wheel: six equal ring segments in stage order, clockwise from the top, each labeled with the stage name, with an arrow showing the cycle from Retire back to Plan. Each segment is a `<button>`-equivalent (`role="button"`, `tabindex="0"`, Enter/Space activate, visible focus ring, `aria-pressed` on the selected one). Selecting a stage fills a panel beside the wheel (below it at phone width) with that stage's questions from `#lc-data`; each question shows its crosswalk row (linking to `crosswalk.html`) and a link to `tools.html#<tool>`. Plan is selected on load. Colors from the `:root` tokens; works in both themes; no external scripts. Also add a "Lifecycle questions" download link to `dist/lifecycle-questions.md` in the GitHub repo.
 
 - [ ] **Step 8: Office export**
 
@@ -3023,7 +3023,7 @@ Run `make build && make scan` → `build ok`, `scan clean`. Hand `links.csv` (re
 - Every rule and question has an element id equal to its item id and a heading-level focus target (`tabindex="-1"`). Address format: `#<stage>/<item-id>` (a stage alone: `#<stage>`).
 - Following a link: `history.pushState` the new address; select the target stage; scroll the target into view; move focus to it; flash a highlight for about 600ms (none when `prefers-reduced-motion` is set); announce "Now viewing `<Stage>`: `<text>`" in an `aria-live="polite"` region; show a one-step "← Back to `<Stage>`: `<source text>`" link above the panel content (only when reached through a link).
 - The browser back and forward buttons restore the previous stage and item (`popstate`). Loading the page with an address opens that stage and item with no back link.
-- The wheel draws only the stage order plus the three `leads_to` loops, labelled.
+- The wheel draws only the stage order plus the three `leads_to` loops, labeled.
 - **"Show what this affects" toggle** in the panel (a real button with `aria-pressed`, off by default, not remembered): when on, dims the wheel's other segments and lights up every stage linked to or from the current stage's rules and questions, with a small legend counting links by type (e.g. "Blocks 1 · May impact 2 · Refers to 3"). Turning it off or changing stage resets it. It must work at 360px and with keyboard only; the linked-stage list is also given as text next to the legend.
 - Tap targets at least 44px on phones.
 
@@ -3076,7 +3076,7 @@ End with: "Names are used for reference only. No affiliation with or endorsement
 
 - [ ] **Step 4: Write `field-guide/standards.md` and `field-guide/glossary.md`**
 
-`standards.md`: what each ISO/IEC 19770 part is for, and how COBIT 2019, ISO/IEC 27001, and ISO/IEC 42001 relate, in our own words; link to the crosswalk explorer. Part numbers and purposes are checked against ISO's public catalogue pages, with links.
+`standards.md`: what each ISO/IEC 19770 part is for, and how COBIT 2019, ISO/IEC 27001, and ISO/IEC 42001 relate, in our own words; link to the crosswalk explorer. Part numbers and purposes are checked against ISO's public catalog pages, with links.
 
 `glossary.md`: 25–40 terms (ITAM, SAM, HAM, APM, CMDB, entitlement, effective license position, true-up, reconciliation, normalization, SWID tag, shelfware, TIME model, orphaned account, access certification, segregation of duties, risk tier, and so on). Each: one-sentence definition plus a one-line Halden Logistics example.
 

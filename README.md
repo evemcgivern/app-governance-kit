@@ -54,6 +54,7 @@ Pick your platform. Skills come as ZIPs on the [Tools page](https://evemcgivern.
 ## Try it
 
 - **Read a method directly**: `methods/<tool>/method.md` for the full workflow, `checklist.md` for the a la carte version, `platform-guide.md` for where each field lives in ServiceNow/Flexera/etc.
+- **Run a SAM practice by hand**: the templates and checklists in `sam-toolkit/` (license position, renewals, asset record, authorizations, scope, tiers, audit, vendors), with a guide in `sam-toolkit/guide.md`.
 - **Work an exercise by hand**: `practicum/01-program-setup.md` through `practicum/07-hardware-lifecycle.md`, then self-check on the site's interactive practicum page — no installs, no AI shortcuts.
 - **Use it with an agent**: point Claude, Codex, or Copilot at the relevant `dist/<platform>/...` skill and a real dataset (or the demo one under `demo-estate/`).
 
@@ -61,6 +62,7 @@ Pick your platform. Skills come as ZIPs on the [Tools page](https://evemcgivern.
 
 ```
 methods/       One folder per tool: method.md, checklist.md, sop.md, template.csv, platform-guide.md, example/
+sam-toolkit/   Eight templates and checklists for a software asset management practice, downloadable from the site
 demo-estate/   A fictional company (Halden Logistics) with planted, findable problems, used by every practicum exercise
 practicum/     Seven hands-on exercises, worked by hand against demo-estate before checking the answer key
 field-guide/   Certifications, standards, glossary — the reference material behind the tools
