@@ -9,6 +9,9 @@ Key facts:
 - Demo data: every tool is exercised against Halden Logistics, a fictional company with planted, findable problems. It is not real client data.
 - Scope: the kit gives methods and reasoning support. It is not a governance platform, a certification, or legal advice.
 - Framework names (ISO, COBIT, NIST, IAITAM, IAPP, PeopleCert) are used for reference only; no affiliation or endorsement.
+- Documents: every checklist, SOP, template, and platform guide has its own HTML page, with Word, Excel, CSV, or print-to-PDF options. No Markdown is published for reading.
+- Tier self-assessment: the web page and the Excel workbook work out an assumed ITAM tier from the answers and list a gap report with the step that closes each gap.
+- Version: see the footer of any page or the GitHub releases page.
 
 ## The seven tools
 
@@ -38,9 +41,28 @@ Key facts:
 - [Impact map](https://evemcgivern.github.io/app-governance-kit/impact-map.html): every crosswalk theme plotted against every lifecycle stage, by impact.
 - [Field guide](https://evemcgivern.github.io/app-governance-kit/field-guide.html): certifications (CAMP, CSAM, CHAMP, AIGP), standards, glossary, and data governance, in plain terms.
 
+## SAM toolkit documents
+
+- [SAM toolkit guide](https://evemcgivern.github.io/app-governance-kit/docs/sam-toolkit/guide.html): what every file is for and how to fill it in.
+- [Tier self-assessment](https://evemcgivern.github.io/app-governance-kit/docs/sam-toolkit/tier-self-assessment.html): 19 yes, partly, or no questions across the three ISO/IEC 19770-1 tiers. It calculates an assumed tier and a gap report; also available as Word and Excel.
+- [Audit and review checklist](https://evemcgivern.github.io/app-governance-kit/docs/sam-toolkit/audit-and-review-checklist.html): internal audit (clause 9.2) and management review (clause 9.3), with tick boxes and notes.
+- [Statement of applicability](https://evemcgivern.github.io/app-governance-kit/docs/sam-toolkit/statement-of-applicability.html): a fillable form for the 15 Annex A processes, with a CSV download of the answers.
+
+## Method documents
+
+- Stand up a governance program: [method](https://evemcgivern.github.io/app-governance-kit/docs/program-setup/method.html), [checklist](https://evemcgivern.github.io/app-governance-kit/docs/program-setup/checklist.html), [SOP](https://evemcgivern.github.io/app-governance-kit/docs/program-setup/sop.html), [template](https://evemcgivern.github.io/app-governance-kit/docs/program-setup/template.html), [platform guide](https://evemcgivern.github.io/app-governance-kit/docs/program-setup/platform-guide.html).
+- ITAM maturity check: [method](https://evemcgivern.github.io/app-governance-kit/docs/itam-maturity/method.html), [checklist](https://evemcgivern.github.io/app-governance-kit/docs/itam-maturity/checklist.html), [SOP](https://evemcgivern.github.io/app-governance-kit/docs/itam-maturity/sop.html), [template](https://evemcgivern.github.io/app-governance-kit/docs/itam-maturity/template.html), [platform guide](https://evemcgivern.github.io/app-governance-kit/docs/itam-maturity/platform-guide.html).
+- Governance framework crosswalk: [method](https://evemcgivern.github.io/app-governance-kit/docs/crosswalk/method.html), [checklist](https://evemcgivern.github.io/app-governance-kit/docs/crosswalk/checklist.html), [SOP](https://evemcgivern.github.io/app-governance-kit/docs/crosswalk/sop.html), [template](https://evemcgivern.github.io/app-governance-kit/docs/crosswalk/template.html), [platform guide](https://evemcgivern.github.io/app-governance-kit/docs/crosswalk/platform-guide.html).
+- Application rationalization: [method](https://evemcgivern.github.io/app-governance-kit/docs/rationalization/method.html), [checklist](https://evemcgivern.github.io/app-governance-kit/docs/rationalization/checklist.html), [SOP](https://evemcgivern.github.io/app-governance-kit/docs/rationalization/sop.html), [template](https://evemcgivern.github.io/app-governance-kit/docs/rationalization/template.html), [platform guide](https://evemcgivern.github.io/app-governance-kit/docs/rationalization/platform-guide.html).
+- Access review pack: [method](https://evemcgivern.github.io/app-governance-kit/docs/access-review/method.html), [checklist](https://evemcgivern.github.io/app-governance-kit/docs/access-review/checklist.html), [SOP](https://evemcgivern.github.io/app-governance-kit/docs/access-review/sop.html), [template](https://evemcgivern.github.io/app-governance-kit/docs/access-review/template.html), [platform guide](https://evemcgivern.github.io/app-governance-kit/docs/access-review/platform-guide.html).
+- AI system intake and risk tiering: [method](https://evemcgivern.github.io/app-governance-kit/docs/ai-intake/method.html), [checklist](https://evemcgivern.github.io/app-governance-kit/docs/ai-intake/checklist.html), [SOP](https://evemcgivern.github.io/app-governance-kit/docs/ai-intake/sop.html), [template](https://evemcgivern.github.io/app-governance-kit/docs/ai-intake/template.html), [platform guide](https://evemcgivern.github.io/app-governance-kit/docs/ai-intake/platform-guide.html).
+- Hardware lifecycle check: [method](https://evemcgivern.github.io/app-governance-kit/docs/hardware-lifecycle/method.html), [checklist](https://evemcgivern.github.io/app-governance-kit/docs/hardware-lifecycle/checklist.html), [SOP](https://evemcgivern.github.io/app-governance-kit/docs/hardware-lifecycle/sop.html), [template](https://evemcgivern.github.io/app-governance-kit/docs/hardware-lifecycle/template.html), [platform guide](https://evemcgivern.github.io/app-governance-kit/docs/hardware-lifecycle/platform-guide.html).
+- Certification study coach: [method](https://evemcgivern.github.io/app-governance-kit/docs/cert-prep/method.html), [checklist](https://evemcgivern.github.io/app-governance-kit/docs/cert-prep/checklist.html), [SOP](https://evemcgivern.github.io/app-governance-kit/docs/cert-prep/sop.html), [template](https://evemcgivern.github.io/app-governance-kit/docs/cert-prep/template.html), [platform guide](https://evemcgivern.github.io/app-governance-kit/docs/cert-prep/platform-guide.html).
+- Application governance router: [method](https://evemcgivern.github.io/app-governance-kit/docs/app-governance/method.html), [checklist](https://evemcgivern.github.io/app-governance-kit/docs/app-governance/checklist.html), [SOP](https://evemcgivern.github.io/app-governance-kit/docs/app-governance/sop.html), [template](https://evemcgivern.github.io/app-governance-kit/docs/app-governance/template.html), [platform guide](https://evemcgivern.github.io/app-governance-kit/docs/app-governance/platform-guide.html).
+
 ## Downloads
 
-- [SAM toolkit (ZIP)](https://evemcgivern.github.io/app-governance-kit/downloads/sam-toolkit.zip): eight templates and checklists with a guide.
+- [SAM toolkit (ZIP)](https://evemcgivern.github.io/app-governance-kit/downloads/sam-toolkit.zip): the CSV templates, plus the guide and checklists as Word files.
 - [Crosswalk (CSV)](https://evemcgivern.github.io/app-governance-kit/downloads/crosswalk.csv): the 29-row mapping as plain text.
 - [Lifecycle impact (CSV)](https://evemcgivern.github.io/app-governance-kit/downloads/lifecycle-impact.csv): every theme against every lifecycle stage.
 - [Claude skills (ZIP)](https://evemcgivern.github.io/app-governance-kit/downloads/skills/claude-skills.zip), [Codex skills (ZIP)](https://evemcgivern.github.io/app-governance-kit/downloads/skills/codex-skills.zip), [Copilot agents (ZIP)](https://evemcgivern.github.io/app-governance-kit/downloads/skills/copilot-agents.zip).
@@ -50,3 +72,4 @@ Key facts:
 - [Case studies](https://evemcgivern.github.io/app-governance-kit/case-studies.html): anonymized case studies, in preparation; nothing is published yet.
 - [About](https://evemcgivern.github.io/app-governance-kit/about.html): Eve McGivern, application governance manager.
 - [Source code](https://github.com/evemcgivern/app-governance-kit): the full repository, including methods, practicum, demo estate, and build system.
+- [Releases](https://github.com/evemcgivern/app-governance-kit/releases): version history and release notes.

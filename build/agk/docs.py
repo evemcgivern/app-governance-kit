@@ -6,6 +6,7 @@ sense for it: Word (.docx) for documents, Excel (.xlsx) and CSV for anything wit
 No Markdown file is linked from the site."""
 import csv
 import io
+import json
 import os
 import re
 import zipfile
@@ -13,6 +14,7 @@ from html import escape
 from pathlib import Path
 
 GITHUB = "https://github.com/evemcgivern/app-governance-kit/blob/main/"
+BASE = "https://evemcgivern.github.io/app-governance-kit/"
 FIXED_DATE = (2020, 1, 1, 0, 0, 0)
 CHOICE_HEADER = "yes / partly / no"
 TICK_HEADERS = {"done", "prepared"}
@@ -325,7 +327,6 @@ def _form_field(col: str, row_key: str, row_index: int, value: str = "") -> str:
 def form_html(header: list[str], rows: list[list[str]], blank_cols: list[int], resolve, files) -> str:
     """Pre-filled rows with some blank columns, as one card per row: the known values are shown and the
     blank columns become fields. The page can download the finished form as CSV."""
-    import json
     cards, statics = [], []
     for n, row in enumerate(rows, 1):
         row = row + [""] * (len(header) - len(row))
@@ -814,6 +815,20 @@ PAGE = """<!DOCTYPE html>
 <title>{title} — Eve McGivern</title>
 <meta name="description" content="{description}">
 <meta name="author" content="Eve McGivern">
+<link rel="canonical" href="{canonical}">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Eve McGivern — Application Governance">
+<meta property="og:title" content="{title}">
+<meta property="og:description" content="{description}">
+<meta property="og:url" content="{canonical}">
+<meta property="og:image" content="{base}og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{title}">
+<meta name="twitter:description" content="{description}">
+<meta name="twitter:image" content="{base}og-image.png">
+<script type="application/ld+json">
+{jsonld}
+</script>
 <link rel="icon" href="{up}favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="{up}apple-touch-icon.png">
 <link rel="stylesheet" href="{up}style.css">
@@ -1300,9 +1315,38 @@ def write_docs(root: Path) -> list[str]:
             actions.insert(0, f"    <button type=\"button\" class=\"visual-actions__link\" id=\"form-export\" "
                               f"data-file=\"{stem}-filled.csv\">Download my answers (CSV)</button>")
         body = body_html(d.blocks, resolve, files, fillable)
+        description = summary_of(d.blocks) or d.title
+        canonical = BASE + d.page
+        jsonld = json.dumps({
+            "@context": "https://schema.org",
+            "@graph": [
+                {"@type": "BreadcrumbList", "itemListElement": [
+                    {"@type": "ListItem", "position": 1, "name": "Home", "item": BASE},
+                    {"@type": "ListItem", "position": 2, "name": d.back[1], "item": BASE + d.back[0]},
+                    {"@type": "ListItem", "position": 3, "name": d.title, "item": canonical}]},
+                {"@type": "WebPage", "name": d.title, "description": description, "url": canonical,
+                 "isPartOf": {"@type": "WebSite", "url": BASE},
+                 "author": {"@type": "Person", "name": "Eve McGivern", "url": "https://evemcgivern.github.io/"},
+                 "license": "https://opensource.org/licenses/MIT", "isAccessibleForFree": True}]}, indent=1)
         (out_dir / f"{stem}.html").write_text(PAGE.format(
-            title=escape(d.title), description=escape(summary_of(d.blocks) or d.title, quote=True), up=up,
+            title=escape(d.title), description=escape(description, quote=True), up=up,
+            canonical=canonical, base=BASE, jsonld=jsonld.replace("</", "<\\/"),
             header=header, footer=footer, back_href=up + d.back[0], back_label=escape(d.back[1]),
             actions="\n".join(actions), extra=extra, body=body,
             print_button=PRINT_BUTTON), encoding="utf-8")
+    write_sitemap(site)
     return warnings
+
+
+def write_sitemap(site: Path) -> None:
+    """site/sitemap.xml lists every page that is built or hand-kept, in a fixed order."""
+    top = sorted(p.name for p in site.glob("*.html") if not p.name.startswith("google"))
+    order = ["index.html", "tools.html", "sam-toolkit.html", "practicum.html", "lifecycle.html", "crosswalk.html",
+             "impact-map.html", "field-guide.html", "case-studies.html", "about.html"]
+    top = [n for n in order if n in top] + [n for n in top if n not in order]
+    docs = sorted(p.relative_to(site).as_posix() for p in (site / "docs").rglob("*.html"))
+    urls = [BASE if n == "index.html" else BASE + n for n in top] + [BASE + d for d in docs]
+    body = "\n".join(f"  <url><loc>{u}</loc></url>" for u in urls)
+    (site / "sitemap.xml").write_text(
+        f"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">\n{body}\n</urlset>\n",
+        encoding="utf-8")
