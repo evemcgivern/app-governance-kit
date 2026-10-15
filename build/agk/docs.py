@@ -15,6 +15,8 @@ from pathlib import Path
 GITHUB = "https://github.com/evemcgivern/app-governance-kit/blob/main/"
 FIXED_DATE = (2020, 1, 1, 0, 0, 0)
 CHOICE_HEADER = "yes / partly / no"
+TICK_HEADERS = {"done", "prepared"}
+LONG_FIELD_RE = re.compile(r"note|evidence|finding|gap|step|reason|decision", re.I)
 TALLY_CAPTION = "Work out your tier"
 GAP_CAPTION = "Gap report"
 CHOICES = ("Yes", "Partly", "No")
@@ -238,10 +240,27 @@ def _list_html(block: dict, resolve, files) -> str:
             parts.append(f"<li>{box}{inline_html(it['text'], resolve, files)}{kids}</li>")
         return "".join(parts)
     cls = " class=\"checklist-items\"" if any(i["checked"] is not None for i in block["items"]) else ""
+    if block.get("class"):
+        cls = f" class=\"{block['class']}\""
     return f"<{tag}{cls}>{items(block['items'])}</{tag}>"
 
 
-def _table_html(rows: list[list[str]], resolve, files, caption: str = "", index: int = 0) -> str:
+def _field_html(name: str, label: str, header: str, readonly_js: bool) -> str:
+    """A blank table cell the reader can type or tick in on the web page."""
+    if header.strip().lower() in TICK_HEADERS:
+        return (f"<td class=\"checklist-tick\"><label><input type=\"checkbox\" name=\"{name}\" "
+                f"aria-label=\"{escape(label, quote=True)}\"></label></td>")
+    if readonly_js:
+        return "<td class=\"checklist-write\"></td>"
+    if LONG_FIELD_RE.search(header):
+        return (f"<td class=\"checklist-write\"><textarea name=\"{name}\" rows=\"2\" "
+                f"aria-label=\"{escape(label, quote=True)}\"></textarea></td>")
+    return (f"<td class=\"checklist-write\"><input type=\"text\" name=\"{name}\" "
+            f"aria-label=\"{escape(label, quote=True)}\"></td>")
+
+
+def _table_html(rows: list[list[str]], resolve, files, caption: str = "", index: int = 0,
+                fillable: bool = False) -> str:
     header, *data = rows
     choice = _choice_col(header)
     cap = f"<caption>{escape(caption)}</caption>" if caption else ""
@@ -253,7 +272,9 @@ def _table_html(rows: list[list[str]], resolve, files, caption: str = "", index:
         attrs = " data-tally"
     elif caption == GAP_CAPTION:
         attrs = " data-gap"
+    fillable = fillable and caption != TALLY_CAPTION
     head = "".join(f"<th scope=\"col\">{escape(h)}</th>" for h in header)
+    long_cols = {i for i in range(len(header)) if max((len(r[i]) for r in data if i < len(r)), default=0) > 40}
     body = []
     for row in data:
         cells = []
@@ -266,15 +287,68 @@ def _table_html(rows: list[list[str]], resolve, files, caption: str = "", index:
                     f"value=\"{c}\"> {c}</label>" for c in CHOICES)
                 cells.append(f"<td class=\"checklist-choices\">{boxes}</td>")
             elif cell:
-                cells.append(f"<td>{inline_html(cell, resolve, files)}</td>")
+                cls = " class=\"long-text\"" if i in long_cols else ""
+                cells.append(f"<td{cls}>{inline_html(cell, resolve, files)}</td>")
+            elif fillable:
+                label = f"{header[i]} for {row[0]}" if row and row[0] else header[i]
+                js_filled = caption == GAP_CAPTION and header[i].strip().lower() == "your answer"
+                cells.append(_field_html(f"t{index}-{key}-{slug(header[i])}", label, header[i], js_filled))
             else:
                 cells.append("<td class=\"checklist-write\"></td>")
         body.append("<tr>" + "".join(cells) + "</tr>")
-    return (f"<div class=\"table-scroll\"><table class=\"checklist\"{attrs}>{cap}<thead><tr>{head}</tr></thead>"
+    wide = " wide" if len(header) >= 6 else ""
+    return (f"<div class=\"table-scroll\"><table class=\"checklist{wide}\"{attrs}>{cap}<thead><tr>{head}</tr></thead>"
             f"<tbody>{''.join(body)}</tbody></table></div>")
 
 
-def body_html(blocks: list[dict], resolve, files=lambda name: None) -> str:
+SELECT_COLS = {"in_scope": ("Yes", "No"), "tier": ("1", "2", "3")}
+
+
+def _form_field(col: str, row_key: str, row_index: int, value: str = "") -> str:
+    name = f"f{row_index}-{col}"
+    label = humanize(col)
+    ident = f"{name}-field"
+    if col in SELECT_COLS:
+        options = "<option value=\"\"></option>" + "".join(
+            f"<option value=\"{o}\"{' selected' if o == value else ''}>{o}</option>" for o in SELECT_COLS[col])
+        control = f"<select id=\"{ident}\" name=\"{name}\" data-col=\"{col}\">{options}</select>"
+    elif "date" in col:
+        control = f"<input id=\"{ident}\" type=\"date\" name=\"{name}\" data-col=\"{col}\">"
+    elif LONG_FIELD_RE.search(col):
+        control = f"<textarea id=\"{ident}\" name=\"{name}\" rows=\"3\" data-col=\"{col}\"></textarea>"
+    else:
+        control = f"<input id=\"{ident}\" type=\"text\" name=\"{name}\" data-col=\"{col}\">"
+    wide = " record-wide" if LONG_FIELD_RE.search(col) else ""
+    return f"<div class=\"record-field{wide}\"><label for=\"{ident}\">{escape(label)}</label>{control}</div>"
+
+
+def form_html(header: list[str], rows: list[list[str]], blank_cols: list[int], resolve, files) -> str:
+    """Pre-filled rows with some blank columns, as one card per row: the known values are shown and the
+    blank columns become fields. The page can download the finished form as CSV."""
+    import json
+    cards, statics = [], []
+    for n, row in enumerate(rows, 1):
+        row = row + [""] * (len(header) - len(row))
+        static = {h: v for i, (h, v) in enumerate(zip(header, row)) if i not in blank_cols}
+        statics.append(static)
+        facts = "".join(
+            f"<div><dt>{escape(humanize(h))}</dt><dd>{inline_html(v, resolve, files)}</dd></div>"
+            for i, (h, v) in enumerate(zip(header, row)) if i not in blank_cols and i != 0 and v)
+        always = static.get("always_included", "").lower() == "yes"
+        fields = "".join(
+            _form_field(header[i], row[0], n, "Yes" if always and header[i] == "in_scope" else "")
+            for i in blank_cols)
+        cards.append(
+            "<section class=\"record\">"
+            f"<h3>{escape(row[0])}</h3><dl class=\"record-facts\">{facts}</dl>"
+            f"<div class=\"record-fields\">{fields}</div></section>")
+    data = json.dumps({"columns": header, "rows": statics}).replace("</", "<\\/")
+    return ("<div class=\"record-form\">"
+            "<p class=\"record-summary\" id=\"record-summary\" role=\"status\"></p>"
+            f"{''.join(cards)}<script type=\"application/json\" id=\"record-data\">{data}</script></div>")
+
+
+def body_html(blocks: list[dict], resolve, files=lambda name: None, fillable: bool = False) -> str:
     parts = []
     last_heading = ""
     tables = 0
@@ -286,13 +360,15 @@ def body_html(blocks: list[dict], resolve, files=lambda name: None) -> str:
             last_heading = unmark(b["text"], files)
             lvl = b["level"]
             parts.append(f"<h{lvl} id=\"{slug(last_heading)}\">{escape(last_heading)}</h{lvl}>")
+        elif t == "form":
+            parts.append(form_html(b["header"], b["rows"], b["blank_cols"], resolve, files))
         elif t == "p":
             parts.append(f"<p>{inline_html(b['text'], resolve, files)}</p>")
         elif t == "list":
             parts.append(_list_html(b, resolve, files))
         else:
             tables += 1
-            parts.append(_table_html(b["rows"], resolve, files, last_heading, tables))
+            parts.append(_table_html(b["rows"], resolve, files, last_heading, tables, fillable))
     return "\n".join(parts)
 
 
@@ -452,6 +528,8 @@ def _table_xml(rows: list[list[str]], plain_link, files) -> str:
             cell = row[i] if i < len(row) else ""
             if i == choice:
                 inner = "".join(_para(_checkbox() + _run(" " + c), after=40) for c in CHOICES)
+            elif header[i].strip().lower() in TICK_HEADERS and not cell:
+                inner = _para(_checkbox(), after=0)
             else:
                 inner = _para(_runs(cell, plain_link, files), after=0)
             cells.append(_cell(w, inner))
@@ -619,12 +697,17 @@ def _data_sheet_xml(rows: list[list[str]]) -> str:
             f"<c r=\"{_col_letter(c)}{r}\" t=\"inlineStr\" s=\"{1 if r == 1 else 0}\">"
             f"<is><t xml:space=\"preserve\">{_x(_plain(v))}</t></is></c>" for c, v in enumerate(row))
         sheet_rows.append(f"<row r=\"{r}\">{cells}</row>")
+    checks = []
+    if choice is not None:
+        checks.append((choice, CHOICES))
+    checks += [(i, ("Yes", "No")) for i, h in enumerate(header) if h.strip().lower() in TICK_HEADERS]
     validation = ""
-    if choice is not None and len(rows) > 1:
-        col = _col_letter(choice)
-        validation = (f"<dataValidations count=\"1\"><dataValidation type=\"list\" allowBlank=\"1\" "
-                      f"showErrorMessage=\"1\" sqref=\"{col}2:{col}{len(rows)}\">"
-                      f"<formula1>\"{','.join(CHOICES)}\"</formula1></dataValidation></dataValidations>")
+    if checks and len(rows) > 1:
+        items = "".join(
+            f"<dataValidation type=\"list\" allowBlank=\"1\" showErrorMessage=\"1\" "
+            f"sqref=\"{_col_letter(c)}2:{_col_letter(c)}{len(rows)}\"><formula1>\"{','.join(opts)}\"</formula1>"
+            "</dataValidation>" for c, opts in checks)
+        validation = f"<dataValidations count=\"{len(checks)}\">{items}</dataValidations>"
     return ("<worksheet xmlns=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\">"
             "<sheetViews><sheetView workbookViewId=\"0\"><pane ySplit=\"1\" topLeftCell=\"A2\" "
             "activePane=\"bottomLeft\" state=\"frozen\"/></sheetView></sheetViews>"
@@ -740,7 +823,10 @@ PAGE = """<!DOCTYPE html>
 <a class="skip-link" href="#main">Skip to content</a>
 {header}
 <main id="main" class="doc-page">
-  <p class="doc-back"><a href="{back_href}">&larr; {back_label}</a></p>
+  <div class="doc-top">
+    <p class="doc-back"><a href="{back_href}">&larr; {back_label}</a></p>
+    {print_button}
+  </div>
   <h1>{title}</h1>
   <div class="visual-actions doc-actions">
 {actions}
@@ -749,11 +835,21 @@ PAGE = """<!DOCTYPE html>
   <div class="doc-body prose prose-wide">
 {body}
   </div>
+  <div class="doc-bottom">{print_button}</div>
 </main>
 {footer}
 </body>
 </html>
 """
+
+PRINT_BUTTON = (
+    "<button type=\"button\" class=\"print-icon\" onclick=\"window.print()\" aria-label=\"Print this page\" "
+    "title=\"Print\"><svg viewBox=\"0 0 24 24\" width=\"22\" height=\"22\" aria-hidden=\"true\" focusable=\"false\">"
+    "<path d=\"M7 9V3.5h10V9\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linejoin=\"round\"/>"
+    "<path d=\"M7 17H4.5A1.5 1.5 0 0 1 3 15.5v-5A1.5 1.5 0 0 1 4.5 9h15a1.5 1.5 0 0 1 1.5 1.5v5a1.5 1.5 0 0 1-1.5 1.5H17\" "
+    "fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linejoin=\"round\"/>"
+    "<rect x=\"7\" y=\"14\" width=\"10\" height=\"6.5\" rx=\"0.8\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\"/>"
+    "<circle cx=\"17.5\" cy=\"12\" r=\"0.9\" fill=\"currentColor\"/></svg></button>")
 
 HREF_RE = re.compile(r"""(href|src)="(?!https?:|mailto:|#|data:|tel:)([^"]+)\"""")
 
@@ -852,8 +948,129 @@ document.addEventListener("DOMContentLoaded", function () {
   document.getElementById("tier-clear").addEventListener("click", function () {
     document.querySelectorAll("table[data-tier] input:checked").forEach(function (i) { i.checked = false; });
     update();
+    document.dispatchEvent(new Event("change"));
   });
   update();
+});
+  </script>"""
+
+
+FILL_SCRIPT = """  <script>
+document.addEventListener("DOMContentLoaded", function () {
+  "use strict";
+  // Keep what the reader types or ticks in this browser, so a reload does not lose it.
+  var key = "agk:" + location.pathname, fields = [].slice.call(document.querySelectorAll(
+    ".doc-body input[name], .doc-body textarea[name], .doc-body select[name]"));
+  if (!fields.length) { return; }
+  var saved = {};
+  try { saved = JSON.parse(localStorage.getItem(key) || "{}"); } catch (e) { saved = {}; }
+  fields.forEach(function (f) {
+    var v = saved[f.type === "radio" ? f.name : f.name];
+    if (f.type === "radio") { f.checked = v === f.value; }
+    else if (f.type === "checkbox") { f.checked = v === true; }
+    else if (typeof v === "string") { f.value = v; }
+  });
+  function save() {
+    var data = {};
+    fields.forEach(function (f) {
+      if (f.type === "radio") { if (f.checked) { data[f.name] = f.value; } }
+      else if (f.type === "checkbox") { if (f.checked) { data[f.name] = true; } }
+      else if (f.value) { data[f.name] = f.value; }
+    });
+    try { localStorage.setItem(key, JSON.stringify(data)); } catch (e) { /* storage unavailable */ }
+  }
+  document.addEventListener("change", save);
+  document.addEventListener("input", save);
+  document.dispatchEvent(new Event("change"));
+});
+  </script>"""
+
+
+FORM_SCRIPT = """  <script>
+document.addEventListener("DOMContentLoaded", function () {
+  "use strict";
+  var form = document.querySelector(".record-form");
+  if (!form) { return; }
+  var data = JSON.parse(document.getElementById("record-data").textContent);
+  var columns = data.columns;
+  var summary = document.getElementById("record-summary");
+  var cards = [].slice.call(form.querySelectorAll(".record"));
+  function value(card, col) {
+    var field = card.querySelector('[data-col="' + col + '"]');
+    return field ? field.value : (data.rows[cards.indexOf(card)][col] || "");
+  }
+  function update() {
+    if (columns.indexOf("in_scope") === -1) { return; }
+    var yes = cards.filter(function (c) { return value(c, "in_scope") === "Yes"; }).length;
+    var no = cards.filter(function (c) { return value(c, "in_scope") === "No"; }).length;
+    summary.textContent = yes + " in scope, " + no + " out of scope, " + (cards.length - yes - no) + " not decided yet.";
+  }
+  var Q = String.fromCharCode(34);
+  function quote(v) { return Q + String(v).split(Q).join(Q + Q) + Q; }
+  document.addEventListener("change", update);
+  document.addEventListener("input", update);
+  var button = document.getElementById("form-export");
+  if (button) {
+    button.addEventListener("click", function () {
+      var lines = [columns.map(quote).join(",")];
+      cards.forEach(function (c) { lines.push(columns.map(function (col) { return quote(value(c, col)); }).join(",")); });
+      var blob = new Blob(["\\ufeff" + lines.join("\\r\\n") + "\\r\\n"], {type: "text/csv;charset=utf-8"});
+      var a = document.createElement("a");
+      a.href = URL.createObjectURL(blob);
+      a.download = button.getAttribute("data-file");
+      document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(function () { URL.revokeObjectURL(a.href); }, 1000);
+    });
+  }
+  update();
+});
+  </script>"""
+
+
+ANSWERS_SCRIPT = """  <script>
+document.addEventListener('DOMContentLoaded', function () {
+  'use strict';
+  var button = document.getElementById('answers-doc');
+  if (!button) { return; }
+  function fieldsOf(root) {
+    return [].slice.call(root.querySelectorAll('input[name], textarea[name], select[name]'));
+  }
+  function esc(t) { return String(t).replace(/&/g, '&amp;').replace(/</g, '&lt;'); }
+  // Builds a Word-readable copy of the page with the reader's answers written into it.
+  button.addEventListener('click', function () {
+    var body = document.querySelector('.doc-body');
+    var copy = body.cloneNode(true);
+    var live = fieldsOf(body), flat = fieldsOf(copy);
+    live.forEach(function (f, i) {
+      var c = flat[i], out = document.createElement('span');
+      if (f.type === 'radio') {
+        var label = c.closest('label');
+        if (f.checked) { out.textContent = '\\u2612 ' + f.value; label.replaceWith(out); } else { label.remove(); }
+        return;
+      }
+      if (f.type === 'checkbox') {
+        out.textContent = f.checked ? '\\u2612' : '\\u2610';
+        (c.closest('label') || c).replaceWith(out);
+        return;
+      }
+      out.textContent = f.tagName === 'SELECT' ? ((f.options[f.selectedIndex] || {}).text || '') : f.value;
+      c.replaceWith(out);
+    });
+    copy.querySelectorAll('[hidden], script').forEach(function (n) { n.remove(); });
+    var tier = document.getElementById('tier-result');
+    var head = tier ? '<p><strong>Your assumed tier:</strong> ' + esc(tier.textContent) + '</p>' : '';
+    var style = 'body{font-family:Calibri,Arial,sans-serif}table{border-collapse:collapse}' +
+      'td,th{border:1px solid #777;padding:4px;vertical-align:top}';
+    var html = '<html><head><meta charset=utf-8><title>' + esc(document.title) + '</title><style>' + style +
+      '</style></head><body><h1>' + esc(document.querySelector('h1').textContent) + '</h1>' + head +
+      copy.innerHTML + '</body></html>';
+    var blob = new Blob(['\\ufeff', html], {type: 'application/msword'});
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = button.getAttribute('data-file');
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(function () { URL.revokeObjectURL(a.href); }, 1000);
+  });
 });
   </script>"""
 
@@ -866,11 +1083,68 @@ class Doc:
     def __init__(self, src: Path, kind: str, group: str, name: str, back: tuple[str, str], title: str | None = None):
         self.src, self.kind, self.group, self.name, self.back, self._title = src, kind, group, name, back, title
         self.blocks: list[dict] = []
+        self.form = False
+        self.export: list[dict] | None = None  # what the Excel file holds, when it differs from the page
         self.title = ""
 
     @property
     def page(self) -> str:
         return f"docs/{self.group}/{self.name}.html"
+
+
+def guide_section(guide_blocks: list[dict], stem: str) -> list[dict]:
+    """The blocks under the guide heading for `<stem>.csv`, up to the next heading of the same or higher level."""
+    out, inside, level = [], False, 0
+    for b in guide_blocks:
+        if b["type"] == "heading":
+            if inside and b["level"] <= level:
+                break
+            if b["level"] >= 2 and f"{stem}.csv" in b["text"]:
+                inside, level = True, b["level"]
+                continue
+        elif inside:
+            out.append(b)
+    return out
+
+
+def form_blocks(title: str, rows: list[list[str]], guide_blocks: list[dict], stem: str) -> list[dict] | None:
+    """Display blocks when a CSV has rows but some columns are blank in every row (a form to fill in)."""
+    header, data = rows[0], rows[1:]
+    if not data:
+        return None
+    padded = [r + [""] * (len(header) - len(r)) for r in data]
+    blank = [i for i in range(len(header)) if not any(r[i] for r in padded)]
+    if not blank or len(blank) == len(header):
+        return None
+    blocks = [
+        {"type": "heading", "level": 1, "text": title},
+        {"type": "p", "text": f"Fill in the {len(blank)} blank fields for each of the {len(data)} rows. "
+                              "What you type stays in this browser. When you finish, download your answers as a "
+                              "CSV file that opens in Excel."},
+        {"type": "form", "header": header, "rows": data, "blank_cols": blank},
+    ]
+    notes = guide_section(guide_blocks, stem)
+    if notes:
+        blocks.append({"type": "heading", "level": 2, "text": "Notes"})
+        blocks += notes
+    return blocks
+
+
+def template_blocks(title: str, header: list[str], guide_blocks: list[dict], stem: str) -> list[dict]:
+    """Display blocks for a blank CSV template: its columns as a list, plus the guide's notes when there are any."""
+    blocks = [
+        {"type": "heading", "level": 1, "text": title},
+        {"type": "p", "text": f"A blank template with {len(header)} columns. Download it and open it in Excel "
+                              "or Google Sheets, then add one row per record."},
+        {"type": "heading", "level": 2, "text": "Columns"},
+        {"type": "list", "ordered": False, "class": "column-list",
+         "items": [{"text": f"`{c}`", "checked": None, "children": []} for c in header]},
+    ]
+    notes = guide_section(guide_blocks, stem)
+    if notes:
+        blocks.append({"type": "heading", "level": 2, "text": "How to fill it in"})
+        blocks += notes
+    return blocks
 
 
 def collect(root: Path) -> list[Doc]:
@@ -935,6 +1209,8 @@ def write_docs(root: Path) -> list[str]:
     by_path = {d.src.resolve(): d for d in docs}
     methods_dir = root / "methods"
 
+    guide = root / "sam-toolkit" / "guide.md"
+    guide_blocks = parse_markdown(guide.read_text(encoding="utf-8")) if guide.is_file() else []
     for d in docs:
         text = d.src.read_text(encoding="utf-8")
         d.blocks = parse_markdown(text) if d.kind == "md" else None
@@ -944,7 +1220,15 @@ def write_docs(root: Path) -> list[str]:
             d.title = title_of(d.blocks)
         else:
             d.title = d._title or humanize(d.name)
-            d.blocks = csv_blocks(text, d.title)
+            d.export = csv_blocks(text, d.title)
+            rows = d.export[1]["rows"]
+            if len(rows) == 1:
+                d.blocks = template_blocks(d.title, rows[0], guide_blocks, d.name)
+            else:
+                form = (form_blocks(d.title, rows, guide_blocks, d.name)
+                        if d.group == "sam-toolkit" and d.src.parent.name != "examples" else None)
+                d.blocks = form or d.export
+                d.form = form is not None
 
     header_cache: dict[str, tuple[str, str]] = {}
     index_html = index.read_text(encoding="utf-8")
@@ -987,20 +1271,38 @@ def write_docs(root: Path) -> list[str]:
         if d.kind == "md":
             (out_dir / f"{stem}.docx").write_bytes(docx_bytes(d.blocks, plain_link, files))
             actions.append(f"    <a class=\"visual-actions__link\" href=\"{stem}.docx\">Download Word (.docx)</a>")
-        has_table = any(b["type"] == "table" for b in d.blocks)
+        sheet_blocks = d.export or d.blocks
+        has_table = any(b["type"] == "table" for b in sheet_blocks)
         if has_table:
             (out_dir / f"{stem}.xlsx").write_bytes(
-                xlsx_bytes(d.blocks, tier_summary=(d.group, d.name) == ("sam-toolkit", "tier-self-assessment")))
+                xlsx_bytes(sheet_blocks, tier_summary=(d.group, d.name) == ("sam-toolkit", "tier-self-assessment")))
             actions.append(f"    <a class=\"visual-actions__link\" href=\"{stem}.xlsx\">Download Excel (.xlsx)</a>")
         if d.kind == "csv":
             (out_dir / f"{stem}.csv").write_text(d.src.read_text(encoding="utf-8"), encoding="utf-8")
             actions.append(f"    <a class=\"visual-actions__link\" href=\"{stem}.csv\">Download CSV</a>")
         actions.append("    <button type=\"button\" class=\"visual-actions__link doc-print\" "
                        "onclick=\"window.print()\">Print or save as PDF</button>")
+        fillable = d.kind == "md" and d.group == "sam-toolkit"
         extra = TIER_EXTRA if (d.group, d.name) == ("sam-toolkit", "tier-self-assessment") else ""
-        body = body_html(d.blocks, resolve, files)
+        if fillable or d.form:
+            note = ("What you tick or type stays in this browser. The Excel and CSV downloads are blank templates. "
+                    "To keep your answers, use Download my answers (CSV), or print this page." if d.form else
+                    "What you tick or type stays in this browser. The Word and Excel downloads are blank copies. "
+                    "To keep your answers, use Download my answers (Word), or print this page or save it as PDF.")
+            extra = f"  <p class=\"meta doc-note\">{note}</p>\n" + extra
+            extra += "\n" + FILL_SCRIPT
+        if fillable:
+            extra += "\n" + ANSWERS_SCRIPT
+            actions.insert(0, f"    <button type=\"button\" class=\"visual-actions__link\" id=\"answers-doc\" "
+                              f"data-file=\"{stem}-my-answers.doc\">Download my answers (Word)</button>")
+        if d.form:
+            extra += "\n" + FORM_SCRIPT
+            actions.insert(0, f"    <button type=\"button\" class=\"visual-actions__link\" id=\"form-export\" "
+                              f"data-file=\"{stem}-filled.csv\">Download my answers (CSV)</button>")
+        body = body_html(d.blocks, resolve, files, fillable)
         (out_dir / f"{stem}.html").write_text(PAGE.format(
             title=escape(d.title), description=escape(summary_of(d.blocks) or d.title, quote=True), up=up,
             header=header, footer=footer, back_href=up + d.back[0], back_label=escape(d.back[1]),
-            actions="\n".join(actions), extra=extra, body=body), encoding="utf-8")
+            actions="\n".join(actions), extra=extra, body=body,
+            print_button=PRINT_BUTTON), encoding="utf-8")
     return warnings
