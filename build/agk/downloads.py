@@ -363,5 +363,11 @@ def write_downloads(root: Path) -> list[str]:
                 z.writestr(info, (out / name).read_bytes())
 
     write_skill_zips(root, out)
+    agents_src = root / "agents"
+    if agents_src.is_dir():
+        agents_out = out / "agents"
+        agents_out.mkdir(parents=True, exist_ok=True)
+        for agent in sorted(agents_src.glob("*.md")):
+            shutil.copyfile(agent, agents_out / agent.name)
     warnings += write_sam_toolkit(root, out)
     return warnings

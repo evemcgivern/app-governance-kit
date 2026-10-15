@@ -383,3 +383,11 @@ class SamToolkitTests(unittest.TestCase):
             if f.is_file() and f.suffix in (".csv", ".md"):
                 rel = f.relative_to(self.TOOLKIT).as_posix()
                 self.assertIn(f"downloads/sam-toolkit/{rel}", page, rel)
+
+
+class AgentDownloadTests(unittest.TestCase):
+    def test_agent_files_are_published(self):
+        root = make_repo(Path(tempfile.mkdtemp()))
+        (root / "site").mkdir()
+        write_downloads(root)
+        self.assertTrue((root / "site" / "downloads" / "agents" / "governance-reviewer.md").is_file())

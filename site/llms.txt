@@ -20,6 +20,14 @@ Key facts:
 - [AI system intake and risk tiering](https://evemcgivern.github.io/app-governance-kit/tools.html): assign a risk tier to a proposed AI use case under the EU AI Act, with NIST AI RMF and ISO/IEC 42001 controls, and produce an AI inventory record.
 - [Hardware lifecycle check](https://evemcgivern.github.io/app-governance-kit/tools.html): check a device fleet for hardware overdue for refresh and retired devices missing a confirmed data wipe, estimate replacement cost, and summarize disposal readiness.
 
+## Router
+
+- [Application governance router](https://evemcgivern.github.io/app-governance-kit/tools.html#app-governance): a skill for Claude, Codex, and Copilot that picks the right governance skill for a plain request, runs it, and hands every decision back to a person. A Claude agent file loads it.
+
+## Study coach
+
+- [Certification study coach](https://evemcgivern.github.io/app-governance-kit/tools.html#cert-prep): scenario drills on the Halden demo estate for CAMP, CSAM, CHAMP, AIGP, ITIL 4 Foundation, and the IAM Certificate, with a gap log. Practice only; not exam content and not a pass guarantee.
+
 ## Reference pages
 
 - [Home](https://evemcgivern.github.io/app-governance-kit/): overview of the three areas (portfolio, AI, access) and how they map to the four frameworks.
