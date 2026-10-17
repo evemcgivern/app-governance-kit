@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.1](https://github.com/evemcgivern/app-governance-kit/compare/app-governance-kit-v0.3.0...app-governance-kit-v0.3.1) (2026-10-17)
+
+
+### Bug Fixes
+
+* **site:** hide the contact email from spambots ([#27](https://github.com/evemcgivern/app-governance-kit/issues/27)) ([1928bf4](https://github.com/evemcgivern/app-governance-kit/commit/1928bf4c38278845cacc8b393a9b28fea7738354)), closes [#26](https://github.com/evemcgivern/app-governance-kit/issues/26)
+
 ## [0.3.0](https://github.com/evemcgivern/app-governance-kit/compare/app-governance-kit-v0.2.0...app-governance-kit-v0.3.0) (2026-10-15)
 
 
