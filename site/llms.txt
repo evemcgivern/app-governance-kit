@@ -66,6 +66,7 @@ Key facts:
 - [Crosswalk (CSV)](https://evemcgivern.github.io/app-governance-kit/downloads/crosswalk.csv): the 29-row mapping as plain text.
 - [Lifecycle impact (CSV)](https://evemcgivern.github.io/app-governance-kit/downloads/lifecycle-impact.csv): every theme against every lifecycle stage.
 - [Claude skills (ZIP)](https://evemcgivern.github.io/app-governance-kit/downloads/skills/claude-skills.zip), [Codex skills (ZIP)](https://evemcgivern.github.io/app-governance-kit/downloads/skills/codex-skills.zip), [Copilot agents (ZIP)](https://evemcgivern.github.io/app-governance-kit/downloads/skills/copilot-agents.zip).
+- Claude Code plugin: run `claude plugin marketplace add evemcgivern/agent-skills`, then `claude plugin install app-governance-kit@evemcgivern-skills`. It installs every skill and the agent as one plugin.
 
 ## Optional
 

@@ -35,6 +35,7 @@ Pick your platform. Skills come as ZIPs on the [Tools page](https://evemcgivern.
 
 1. Install it: `curl -fsSL https://claude.ai/install.sh | bash` on macOS, Linux, or WSL; `irm https://claude.ai/install.ps1 | iex` in Windows PowerShell; or `brew install --cask claude-code`. Run `claude` once to sign in (needs a Pro, Max, Team, Enterprise, or Console account). [Docs](https://code.claude.com/docs/en/setup).
 2. Add the skills: `cp -R dist/claude/skills/* ~/.claude/skills/` (for one project only, use that project's `.claude/skills/`).
+   Or install the kit as a plugin from the author's marketplace: `claude plugin marketplace add evemcgivern/agent-skills`, then `claude plugin install app-governance-kit@evemcgivern-skills` (inside a session: `/plugin marketplace add evemcgivern/agent-skills`, then `/plugin install app-governance-kit@evemcgivern-skills`). The plugin holds every skill and the agent; skills appear as `/app-governance-kit:<skill>`. Update it with `claude plugin update app-governance-kit@evemcgivern-skills`.
 3. Ask for a tool by name, or type `/access-review`.
 
 **Claude app (claude.ai or Desktop)** — go to Settings, then Capabilities, then Skills, and choose Upload skill. Upload one tool's Claude ZIP at a time; the app accepts a single skill per ZIP, and code execution must be on.

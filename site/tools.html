@@ -196,6 +196,7 @@
     <ol>
       <li>Install it: <code>curl -fsSL https://claude.ai/install.sh | bash</code> on macOS, Linux, or WSL; <code>irm https://claude.ai/install.ps1 | iex</code> in Windows PowerShell; or <code>brew install --cask claude-code</code>. Run <code>claude</code> once to sign in (needs a Pro, Max, Team, Enterprise, or Console account). <a href="https://code.claude.com/docs/en/setup">Claude Code setup docs</a>.</li>
       <li>Add the skills: <code>unzip claude-skills.zip -d ~/.claude/skills</code>. For one project only, use that project's <code>.claude/skills</code> folder.</li>
+      <li>Or install the kit as a plugin from the author's marketplace instead of the ZIP: <code>claude plugin marketplace add evemcgivern/agent-skills</code>, then <code>claude plugin install app-governance-kit@evemcgivern-skills</code>. Inside a session the same steps are <code>/plugin marketplace add evemcgivern/agent-skills</code> and <code>/plugin install app-governance-kit@evemcgivern-skills</code>. The plugin holds every skill and the agent; skills appear as <code>/app-governance-kit:&lt;skill&gt;</code>. Update it with <code>claude plugin update app-governance-kit@evemcgivern-skills</code>. <a href="https://code.claude.com/docs/en/discover-plugins">Plugin docs</a>.</li>
       <li>Ask for a tool by name, or type <code>/access-review</code>.</li>
       <li>Optional: add the <a href="downloads/agents/app-governance-agent.md">app governance agent</a> by saving it to <code>~/.claude/agents</code>. It loads the router skill, so install the skills first.</li>
     </ol>
