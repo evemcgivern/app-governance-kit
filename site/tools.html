@@ -192,34 +192,172 @@
       <a class="visual-actions__link" href="downloads/skills/copilot-agents.zip">Copilot agents (ZIP)</a>
     </div>
 
-    <h3>Claude Code (the <code>claude</code> command)</h3>
-    <ol>
-      <li>Install it: <code>curl -fsSL https://claude.ai/install.sh | bash</code> on macOS, Linux, or WSL; <code>irm https://claude.ai/install.ps1 | iex</code> in Windows PowerShell; or <code>brew install --cask claude-code</code>. Run <code>claude</code> once to sign in (needs a Pro, Max, Team, Enterprise, or Console account). <a href="https://code.claude.com/docs/en/setup">Claude Code setup docs</a>.</li>
-      <li>Add the skills: <code>unzip claude-skills.zip -d ~/.claude/skills</code>. For one project only, use that project's <code>.claude/skills</code> folder.</li>
-      <li>Ask for a tool by name, or type <code>/access-review</code>.</li>
-      <li>Optional: add the <a href="downloads/agents/app-governance-agent.md">app governance agent</a> by saving it to <code>~/.claude/agents</code>. It loads the router skill, so install the skills first.</li>
-    </ol>
+    <table>
+      <thead><tr><th>Platform</th><th>How</th><th>Format</th></tr></thead>
+      <tbody>
+        <tr><td>Claude Code, terminal</td><td>Plugin, or copy skills</td><td>Plugin, or <code>claude-skills.zip</code></td></tr>
+        <tr><td>Claude Code, desktop app</td><td>Plugin</td><td>Same plugin as the terminal</td></tr>
+        <tr><td>Claude app (claude.ai, Desktop chat, Cowork)</td><td>Upload a skill</td><td>One <code>&lt;tool&gt;-claude.zip</code> per tool</td></tr>
+        <tr><td>Codex (CLI, IDE extension, desktop app)</td><td>Copy skills</td><td><code>codex-skills.zip</code></td></tr>
+        <tr><td>ChatGPT</td><td>Upload a skill (work plans), or a project</td><td><code>&lt;tool&gt;-codex.zip</code>, or Copilot agent files</td></tr>
+        <tr><td>Microsoft 365 Copilot, Copilot Studio</td><td>Build an agent</td><td><code>copilot-agents.zip</code></td></tr>
+        <tr><td>Other assistants</td><td>Paste a prompt</td><td>A tool's <code>chat-prompt.md</code> from <code>copilot-agents.zip</code></td></tr>
+      </tbody>
+    </table>
 
-    <h3>Claude app (claude.ai or Desktop)</h3>
-    <p>Go to Settings, then Capabilities, then Skills, and choose Upload skill. Upload one tool's Claude ZIP at a time (from its card below). The app accepts a single skill per ZIP, and code execution must be on.</p>
+    <details class="pr-more">
+      <summary>Claude Code, terminal</summary>
+      <ol>
+        <li>Install it: <code>curl -fsSL https://claude.ai/install.sh | bash</code> on macOS, Linux, or WSL; <code>irm https://claude.ai/install.ps1 | iex</code> in Windows PowerShell; or <code>brew install --cask claude-code</code>. Run <code>claude</code> once to sign in (needs a Pro, Max, Team, Enterprise, or Console account). <a href="https://code.claude.com/docs/en/setup">Claude Code setup docs</a>.</li>
+        <li>Add the marketplace: <code>claude plugin marketplace add evemcgivern/agent-skills</code>.</li>
+        <li>Install the plugin: <code>claude plugin install app-governance-kit@evemcgivern-skills</code>. Inside a session, the same steps are <code>/plugin marketplace add evemcgivern/agent-skills</code> and <code>/plugin install app-governance-kit@evemcgivern-skills</code>.</li>
+        <li>Type <code>/app-governance-kit:access-review</code>, or ask for a tool by name.</li>
+      </ol>
+      <details class="pr-more">
+        <summary>More</summary>
+        <ul>
+          <li><strong>What you get:</strong> the seven tools, the router, the study coach, and the app governance agent. Plugin skills appear as <code>/app-governance-kit:&lt;skill&gt;</code>.</li>
+          <li><strong>Without the plugin:</strong> <code>unzip claude-skills.zip -d ~/.claude/skills</code>. For one project only, use that project's <code>.claude/skills</code> folder. Skills then appear as <code>/access-review</code>. For the agent, save the <a href="downloads/agents/app-governance-agent.md">app governance agent</a> to <code>~/.claude/agents</code>; it loads the router skill, so install the skills first.</li>
+          <li><strong>Update:</strong> <code>claude plugin update app-governance-kit@evemcgivern-skills</code>. Auto-update is off by default for marketplaces other than Anthropic's, so run it after each release. For unzipped skills, unzip the new ZIP over them.</li>
+          <li><strong>Check it worked:</strong> <code>claude plugin list</code> shows <code>app-governance-kit@evemcgivern-skills</code>, and typing <code>/</code> lists its skills.</li>
+          <li><strong>Safe trial:</strong> ask for an access review of <code>accounts.csv</code>, <code>employees.csv</code>, and <code>apps.csv</code> from the <a href="https://github.com/evemcgivern/app-governance-kit/tree/main/demo-estate">demo estate</a>. It should flag ACC-019, ACC-063, and ACC-104 as orphaned.</li>
+          <li><a href="https://code.claude.com/docs/en/discover-plugins">Plugin docs</a>.</li>
+        </ul>
+      </details>
+    </details>
 
-    <h3>Codex</h3>
-    <ol>
-      <li>Install it: <code>curl -fsSL https://chatgpt.com/codex/install.sh | sh</code>, then run <code>codex</code> and sign in with ChatGPT. <a href="https://developers.openai.com/codex/cli">Codex CLI docs</a>.</li>
-      <li>Add the skills: <code>unzip codex-skills.zip -d ~/.agents/skills</code>. For one repo only, use that repo's <code>.agents/skills</code> folder.</li>
-      <li>Type <code>$access-review</code>, or describe the task and let Codex pick the skill.</li>
-    </ol>
+    <details class="pr-more">
+      <summary>Claude Code, desktop app</summary>
+      <ol>
+        <li>Install the <a href="https://code.claude.com/docs/en/desktop">Claude desktop app</a> for macOS, Windows, or Linux, sign in, and open the <strong>Code</strong> tab.</li>
+        <li>Start a <strong>Local</strong> session (not Cloud).</li>
+        <li>Click <strong>+</strong> next to the prompt box, then <strong>Plugins</strong>, then <strong>Add plugin</strong>. The browser lists plugins from marketplaces you have added, so add <code>evemcgivern/agent-skills</code> first from the terminal (<code>claude plugin marketplace add evemcgivern/agent-skills</code>).</li>
+        <li>Select <code>app-governance-kit</code> and choose your user account as the scope.</li>
+      </ol>
+      <details class="pr-more">
+        <summary>More</summary>
+        <ul>
+          <li><strong>What you get:</strong> the same plugin as the terminal. The terminal, the desktop app's local sessions, and the VS Code extension read the same settings, so a user-scope install in one shows up in the others. Local sessions also load skills in <code>~/.claude/skills</code>.</li>
+          <li><strong>Cloud sessions:</strong> they don't load plugins installed on your computer.</li>
+          <li><strong>Update:</strong> <code>claude plugin update app-governance-kit@evemcgivern-skills</code> in a terminal. <strong>+</strong>, then <strong>Plugins</strong>, then <strong>Manage plugins</strong> enables, disables, or uninstalls it.</li>
+          <li><strong>Check it worked:</strong> type <code>/</code> in a local session and look for <code>/app-governance-kit:access-review</code>.</li>
+          <li><strong>Safe trial:</strong> run the access review on the three <a href="https://github.com/evemcgivern/app-governance-kit/tree/main/demo-estate">demo estate</a> files listed under the terminal steps.</li>
+        </ul>
+      </details>
+    </details>
 
-    <h3>Microsoft 365 Copilot and Copilot Studio</h3>
-    <p>Create an agent in <a href="https://learn.microsoft.com/en-us/microsoft-365-copilot/extensibility/agent-builder-build-agents">agent builder</a> or Copilot Studio. Unzip <code>copilot-agents.zip</code>; each tool is a folder.</p>
-    <ol>
-      <li>Paste <code>agent-instructions.md</code> into the agent's instructions. The limit is 8,000 characters; these are under 3,000.</li>
-      <li>Upload the files in <code>knowledge/</code> as knowledge sources. If an upload rejects <code>.md</code> files, rename them to <code>.txt</code>.</li>
-      <li>Run <code>test-script.md</code> against the demo estate to check it works.</li>
-    </ol>
+    <details class="pr-more">
+      <summary>Claude app (claude.ai, Desktop chat, Cowork)</summary>
+      <ol>
+        <li>Turn on <strong>Code execution and file creation</strong> in Settings, then Capabilities. On Enterprise, an owner first turns on code execution and skills in Organization settings, then Plugins &amp; skills.</li>
+        <li>Download one tool's Claude ZIP from its card below. The app takes one skill per ZIP.</li>
+        <li>Go to <strong>Customize</strong>, then <strong>Skills</strong>. Click <strong>+</strong>, then <strong>Create skill</strong>, then <strong>Upload a skill</strong>, and choose the ZIP.</li>
+        <li>In a chat, ask for the tool by name: "Use the access review skill on these files."</li>
+      </ol>
+      <details class="pr-more">
+        <summary>More</summary>
+        <ul>
+          <li><strong>What you get:</strong> one tool per upload. Repeat for each tool you want.</li>
+          <li><strong>Cowork:</strong> the Desktop app's Cowork tab loads the skills turned on for your claude.ai account, so an upload here covers it.</li>
+          <li><strong>Update:</strong> delete the skill (open it, turn it off, then <strong>...</strong>, <strong>Delete</strong>) and upload the new ZIP.</li>
+          <li><strong>Check it worked:</strong> the skill shows in <strong>Customize</strong>, then <strong>Skills</strong>, with its toggle on.</li>
+          <li><strong>Safe trial:</strong> attach <code>accounts.csv</code>, <code>employees.csv</code>, and <code>apps.csv</code> from the <a href="https://github.com/evemcgivern/app-governance-kit/tree/main/demo-estate">demo estate</a> and ask for an access review. It should flag ACC-019, ACC-063, and ACC-104 as orphaned.</li>
+          <li><a href="https://support.claude.com/en/articles/12512180-using-skills-in-claude">Help article</a>.</li>
+        </ul>
+      </details>
+    </details>
 
-    <h3>Microsoft Copilot chat (no agent)</h3>
-    <p>Paste a tool's <code>chat-prompt.md</code> into a chat, then attach your data files.</p>
+    <details class="pr-more">
+      <summary>Codex (CLI, IDE extension, desktop app)</summary>
+      <ol>
+        <li>Install it: <code>curl -fsSL https://chatgpt.com/codex/install.sh | sh</code>, then run <code>codex</code> and sign in with ChatGPT. <a href="https://developers.openai.com/codex/cli">Codex CLI docs</a>. For VS Code, Cursor, or Windsurf, install the <a href="https://developers.openai.com/codex/ide">Codex extension</a>.</li>
+        <li>Add the skills: <code>unzip codex-skills.zip -d ~/.agents/skills</code>. For one repo only, use that repo's <code>.agents/skills</code> folder.</li>
+        <li>Type <code>$access-review</code>, or describe the task and let Codex pick the skill.</li>
+      </ol>
+      <details class="pr-more">
+        <summary>More</summary>
+        <ul>
+          <li><strong>What you get:</strong> the seven tools, the router, and the study coach.</li>
+          <li><strong>Where they work:</strong> standalone skills work in the Codex CLI, the IDE extension, and the ChatGPT desktop app, where Codex runs. In the desktop app, open <strong>Skills</strong> in the sidebar to see them. <a href="https://developers.openai.com/codex/skills">Skills docs</a>.</li>
+          <li><strong>Update:</strong> unzip the new ZIP over the old folders. Codex picks up changes; if one doesn't appear, restart Codex.</li>
+          <li><strong>Check it worked:</strong> run <code>/skills</code> in the CLI or IDE extension and look for <code>access-review</code>.</li>
+          <li><strong>Safe trial:</strong> ask for an access review of the three <a href="https://github.com/evemcgivern/app-governance-kit/tree/main/demo-estate">demo estate</a> files. It should flag ACC-019, ACC-063, and ACC-104 as orphaned.</li>
+        </ul>
+      </details>
+    </details>
+
+    <details class="pr-more">
+      <summary>ChatGPT</summary>
+      <p>Skills upload only on ChatGPT Business, Enterprise, Healthcare, and Edu, when the workspace allows it. On Free, Go, Plus, and Pro, use a project (steps under More).</p>
+      <ol>
+        <li>In the sidebar, select <strong>Plugins</strong>, then the <strong>Skills</strong> tab in the Plugin Directory.</li>
+        <li>Select <strong>Create</strong>, then <strong>Upload from your computer</strong>, and choose one tool's Codex ZIP from its card below.</li>
+        <li>Wait for ChatGPT's scan. A skill marked <strong>Needs Review</strong> asks you to check it first.</li>
+        <li>In a chat, type <code>@</code> to pick the skill, or ask for the tool by name.</li>
+      </ol>
+      <details class="pr-more">
+        <summary>More</summary>
+        <ul>
+          <li><strong>What you get:</strong> one tool per upload. ChatGPT and Codex use the same skill format, but OpenAI doesn't list which upload file types it accepts, and this kit hasn't been tested there. If the upload is refused, use a project.</li>
+          <li><strong>Admins:</strong> Enterprise and Edu admins control <strong>Enable skills</strong> and <strong>Enable skill uploading</strong> in Permissions &amp; roles.</li>
+          <li><strong>Project instead (any plan):</strong> select <strong>New project</strong> in the sidebar. In <strong>...</strong>, then <strong>Project settings</strong>, paste the tool's <code>agent-instructions.md</code> from <code>copilot-agents.zip</code>. Add the files from its <code>knowledge</code> folder, plus your data. Free plans allow 5 project files, so add the data and <code>checklist.md</code> first.</li>
+          <li><strong>Not supported:</strong> skill folders on your computer work only in the ChatGPT desktop app's Codex, not in ChatGPT chat on the web. Personal plans can't create new custom GPTs.</li>
+          <li><strong>Update:</strong> upload the new ZIP, or replace the project's instructions and files.</li>
+          <li><strong>Check it worked:</strong> the skill shows on the Skills page, and <code>@</code> lists it in a chat.</li>
+          <li><strong>Safe trial:</strong> attach <code>accounts.csv</code>, <code>employees.csv</code>, and <code>apps.csv</code> from the <a href="https://github.com/evemcgivern/app-governance-kit/tree/main/demo-estate">demo estate</a>. It should flag ACC-019, ACC-063, and ACC-104 as orphaned.</li>
+          <li>Sources: <a href="https://help.openai.com/en/articles/20001066-skills-in-chatgpt">Skills in ChatGPT</a>, <a href="https://help.openai.com/en/articles/10169521-projects-in-chatgpt">Projects</a>, <a href="https://help.openai.com/en/articles/8554397-creating-a-gpt">GPTs</a>.</li>
+        </ul>
+      </details>
+    </details>
+
+    <details class="pr-more">
+      <summary>Microsoft 365 Copilot and Copilot Studio</summary>
+      <p>Create an agent in <a href="https://learn.microsoft.com/en-us/microsoft-365-copilot/extensibility/agent-builder-build-agents">Agent Builder</a> or Copilot Studio. Unzip <code>copilot-agents.zip</code>; each tool is a folder.</p>
+      <ol>
+        <li>Paste <code>agent-instructions.md</code> into the agent's instructions. The limit is 8,000 characters; these are under 3,000.</li>
+        <li>Upload the files in <code>knowledge/</code> as knowledge sources. If an upload rejects <code>.md</code> files, rename them to <code>.txt</code>.</li>
+        <li>Run <code>test-script.md</code> against the demo estate to check it works.</li>
+      </ol>
+      <details class="pr-more">
+        <summary>More</summary>
+        <ul>
+          <li><strong>What you get:</strong> one agent per tool. Build one for each tool you need, including the router.</li>
+          <li><strong>Copilot chat (no agent):</strong> paste a tool's <code>chat-prompt.md</code> into a chat, then attach your data files.</li>
+          <li><strong>Skills (preview):</strong> organizations in Microsoft's Frontier Program can add a skill package on the agent's <strong>Configure</strong> tab, under <strong>Skills</strong>. Microsoft's example ZIP has <code>SKILL.md</code> at the top, while our ZIPs hold a folder, so zip the folder's contents. Not tested with this kit. <a href="https://learn.microsoft.com/en-us/microsoft-365-copilot/extensibility/agent-builder-add-skills">Docs</a>.</li>
+          <li><strong>Update:</strong> replace the instructions and knowledge files with the new release's.</li>
+          <li><strong>Check it worked:</strong> <code>test-script.md</code> lists the pass checks. For access review, it should flag ACC-019, ACC-063, and ACC-104 as orphaned.</li>
+          <li><strong>Safe trial:</strong> the test scripts use the <a href="https://github.com/evemcgivern/app-governance-kit/tree/main/demo-estate">demo estate</a> files.</li>
+        </ul>
+      </details>
+    </details>
+
+    <details class="pr-more">
+      <summary>Other assistants</summary>
+      <ol>
+        <li>Open a tool's <code>chat-prompt.md</code> from <code>copilot-agents.zip</code>.</li>
+        <li>Paste it into a new chat.</li>
+        <li>Attach your data files, or the <a href="https://github.com/evemcgivern/app-governance-kit/tree/main/demo-estate">demo estate</a> files for a trial.</li>
+      </ol>
+      <details class="pr-more">
+        <summary>More</summary>
+        <ul>
+          <li><strong>Agent Skills support:</strong> if your assistant reads <code>SKILL.md</code> folders, use the Codex or Claude ZIP. Check its docs for the folder it reads.</li>
+          <li><strong>Update:</strong> paste the prompt from the new release.</li>
+          <li><strong>Check it worked:</strong> the access review on the demo estate should flag ACC-019, ACC-063, and ACC-104 as orphaned.</li>
+        </ul>
+      </details>
+    </details>
+
+    <details class="pr-more">
+      <summary>Troubleshooting</summary>
+      <ul>
+        <li><strong>Plugin skill not found in Claude Code:</strong> check <code>claude plugin list</code>. If you installed from your shell during a session, run <code>/reload-plugins</code>. Plugin skills carry a prefix: <code>/app-governance-kit:access-review</code>.</li>
+        <li><strong>Unzipped skill not found in Claude Code:</strong> each skill needs its own folder with <code>SKILL.md</code>, such as <code>~/.claude/skills/access-review/SKILL.md</code>. If you created <code>~/.claude/skills</code> during the session, run <code>/reload-skills</code>.</li>
+        <li><strong>Skill not found in Codex:</strong> check the folder is <code>~/.agents/skills/access-review/SKILL.md</code>, then restart Codex.</li>
+        <li><strong>ZIP rejected by the Claude app:</strong> upload one tool's ZIP, not <code>claude-skills.zip</code>, and check code execution is on.</li>
+        <li><strong>Old version still running:</strong> run <code>claude plugin update app-governance-kit@evemcgivern-skills</code>, then run <code>/reload-plugins</code> or start a new session. For uploaded skills, delete and upload again.</li>
+      </ul>
+    </details>
   </section>
 
   <div class="card-grid">
