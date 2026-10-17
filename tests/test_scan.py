@@ -5,7 +5,7 @@ import zipfile
 from pathlib import Path
 from unittest import mock
 
-from agk.scan import docx_text, load_words, long_quotes, main, private_hits, scan, zip_member_hits
+from agk.scan import docx_text, email_hits, load_words, long_quotes, main, private_hits, scan, zip_member_hits
 
 
 def make_zip(path: Path, members: dict) -> None:
@@ -61,7 +61,7 @@ class ScanTests(unittest.TestCase):
             "if (initialRow) {\n"
             "  selectRow(initialRow, false);\n"
             "}\n"
-            'var user = "evemcgivern", domain = "gmail.com";\n'
+            'var r = el.getAttribute("data-r"), s = "";\n'
         )
         self.assertEqual(long_quotes(text, "f"), [])
 
@@ -261,3 +261,27 @@ class ScanTests(unittest.TestCase):
         (self.tmp / "practicum").mkdir()
         (self.tmp / "practicum" / "01-x.md").write_text("Worked at AcmeCorp\n")
         self.assertTrue(any("practicum" in h for h in scan(self.tmp, ["AcmeCorp"])))
+
+    # Built from parts so no plain address ever sits in the repository.
+    PLAIN = "someone" + "@" + "mail" + "host.com"
+
+    def test_email_hits_flags_plain_address(self):
+        self.assertEqual(email_hits(f"Write to {self.PLAIN} today\n", "f"), ["f:1: plain email address"])
+
+    def test_email_hits_flags_spelled_out_address(self):
+        self.assertEqual(email_hits("someone at mailhost dot com\n", "f"), ["f:1: spelled-out email address"])
+        self.assertEqual(email_hits("someone [at] mailhost (dot) org\n", "f"), ["f:1: spelled-out email address"])
+
+    def test_email_hits_allows_noreply_example_and_reversed(self):
+        text = ("noreply@anthropic.com 1+u@users.noreply.github.com a@example.com "
+                f'data-r="{self.PLAIN[::-1]}" look at this dot point\n')
+        self.assertEqual(email_hits(text, "f"), [])
+
+    def test_scan_flags_plain_address_in_security_policy(self):
+        (self.tmp / "SECURITY.md").write_text(f"Email {self.PLAIN}\n")
+        self.assertEqual(scan(self.tmp, []), ["SECURITY.md:1: plain email address"])
+
+    def test_scan_flags_spelled_address_in_site(self):
+        (self.tmp / "site").mkdir()
+        (self.tmp / "site" / "p.html").write_text("<p>Email: someone at mailhost dot com</p>\n")
+        self.assertEqual(scan(self.tmp, []), ["site/p.html:1: spelled-out email address"])
