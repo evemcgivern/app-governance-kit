@@ -3,9 +3,8 @@
 ## Reporting a problem
 
 Please report a security problem privately, not in a public issue. Use GitHub's
-"Report a vulnerability" button on the repository's Security tab. If that is not
-available, email evemcgivern@gmail.com with "app-governance-kit security" in the
-subject line.
+private vulnerability reporting: on the repository, open Security, then
+Report a vulnerability.
 
 Include what you found, where, and how to reproduce it. You can expect a first
 reply within a week.

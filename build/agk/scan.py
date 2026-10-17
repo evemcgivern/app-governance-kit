@@ -14,6 +14,14 @@ QUOTE_RE = re.compile(r"[\"“]([^\"”]*)[\"”]")
 TAG_STRIP_RE = re.compile(r"<[^>]+>")
 JSON_DATA_BLOCK_RE = re.compile(r'<script type="application/json"[^>]*>.*?</script>', re.S)
 SVG_PATH_D_RE = re.compile(r'\bd="[^"]*"')
+# Plain contact addresses invite spam harvesters. The site footer keeps the owner's
+# address reversed in a data-r attribute, so neither form below should ever appear.
+EMAIL_SCAN = SCAN_DIRS + ("SECURITY.md", "CODE_OF_CONDUCT.md")
+EMAIL_RE = re.compile(r"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[a-z]{2,}")
+SPELLED_EMAIL_RE = re.compile(
+    r"\b[\w.+-]+\s*[\[(]?\s*\bat\b\s*[\])]?\s*[\w-]+\s*[\[(]?\s*\bdot\b\s*[\])]?\s*"
+    r"(com|org|net|io|dev|co|edu|gov|me|info|uk|us)\b", re.I)
+ALLOWED_EMAIL_RE = re.compile(r"noreply|@example\.(com|org|net)$|\.example$", re.I)
 
 
 def _blank_json_data_blocks(text: str) -> str:
@@ -42,6 +50,16 @@ def private_hits(text: str, words: list[str], label: str) -> list[str]:
         for w in words:
             if re.search(rf"(?<!\w){re.escape(w)}(?!\w)", line, re.IGNORECASE):
                 hits.append(f"{label}:{n}: private term {w!r}")
+    return hits
+
+
+def email_hits(text: str, label: str) -> list[str]:
+    hits = []
+    for n, line in enumerate(text.splitlines(), start=1):
+        if any(not ALLOWED_EMAIL_RE.search(m.group(0)) for m in EMAIL_RE.finditer(line)):
+            hits.append(f"{label}:{n}: plain email address")
+        if SPELLED_EMAIL_RE.search(line):
+            hits.append(f"{label}:{n}: spelled-out email address")
     return hits
 
 
@@ -172,6 +190,9 @@ def scan(root: Path, words: list[str]) -> list[str]:
             # Flag files that cannot be scanned
             suffix = f.suffix or "files without an extension"
             hits.append(f"{label}: cannot scan {suffix} files; remove it or teach the scan to read it")
+    for f in _files(root, EMAIL_SCAN):
+        if f.suffix in TEXT_SUFFIXES:
+            hits += email_hits(f.read_text(encoding="utf-8", errors="replace"), str(f.relative_to(root)))
     for f in _files(root, QUOTE_DIRS):
         # Skip .gitkeep files
         if f.name == ".gitkeep":

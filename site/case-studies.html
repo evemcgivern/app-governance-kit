@@ -86,21 +86,21 @@
 
 <footer class="site-footer">
   <p>Eve McGivern · <a href="https://evemcgivern.github.io/">evemcgivern.github.io</a></p>
-  <p>Questions? Comments? <span id="contact-email">email me</span>.</p>
+  <p>Questions? Comments? <a href="https://github.com/evemcgivern/app-governance-kit/issues" id="contact-email" data-r="moc.liamg|nrevigcmeve">email me</a>.</p>
   <p><a href="https://buymeacoffee.com/a8w5iiqszp" rel="noopener">Buy me a coffee</a> if these tools help.</p>
   <p class="site-version"><a href="https://github.com/evemcgivern/app-governance-kit/releases" rel="noopener" id="site-version">Version</a></p>
-  <noscript><p>Email: evemcgivern at gmail dot com</p></noscript>
 </footer>
 <script>
 (function () {
   "use strict";
-  var user = "evemcgivern", domain = "gmail.com";
   var el = document.getElementById("contact-email");
-  if (!el) { return; }
-  var a = document.createElement("a");
-  a.href = "mailto:" + user + "@" + domain;
-  a.textContent = "Email me";
-  el.replaceWith(a);
+  if (!el || !el.getAttribute("data-r")) { return; }
+  function arm() {
+    el.href = "mailto:" + el.getAttribute("data-r").split("").reverse().join("").replace("|", "@");
+  }
+  ["pointerenter", "focus", "touchstart"].forEach(function (type) {
+    el.addEventListener(type, arm, { once: true, passive: true });
+  });
 })();
 </script>
 </body>
