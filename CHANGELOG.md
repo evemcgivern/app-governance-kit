@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.0](https://github.com/evemcgivern/app-governance-kit/compare/app-governance-kit-v0.3.1...app-governance-kit-v0.4.0) (2026-10-31)
+
+
+### Features
+
+* add purchase, audit and contract checks ([#31](https://github.com/evemcgivern/app-governance-kit/issues/31)) ([18b38b3](https://github.com/evemcgivern/app-governance-kit/commit/18b38b3e4337de12229a5bf1692509bc35a28a96))
+
 ## [0.3.1](https://github.com/evemcgivern/app-governance-kit/compare/app-governance-kit-v0.3.0...app-governance-kit-v0.3.1) (2026-10-17)
 
 
