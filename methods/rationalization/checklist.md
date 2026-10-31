@@ -10,4 +10,7 @@
 8. Vendor contract terms checked before any eliminate decision [[XW-013]]
 9. Retirement plan raised for each eliminate decision [[XW-009]] [[XW-010]]
 10. Data held by each retiring app identified; archive, migrate, or delete agreed with the data owner [[XW-010]] [[XW-028]]
-11. Decisions and approvers recorded [[XW-020]]
+11. Run every new purchase request through the acquisition gate: already owned, redeployable, or a duplicate of an app on the inventory. Use `sam-toolkit/acquisition-gate-checklist.md` [[XW-009]] [[XW-011]]
+12. Verify each invoice against the contract and purchase order before it is paid, and log every mismatch in `sam-toolkit/invoice-verification.csv` [[XW-012]] [[XW-013]]
+13. Report savings with the evidence behind each figure, and include adverse trends such as rising invoice errors or reclaimed licenses requested again, in `sam-toolkit/savings-report.csv` [[XW-012]]
+14. Decisions and approvers recorded [[XW-020]]

@@ -1,0 +1,1 @@
+invoice_number,line_ref,vendor,purchasing_entity,customer_account,ship_to,governing_agreement,po_number,payment_terms,payment_terms_match_contract,quantity_invoiced,quantity_agreed,description,unit_price,negotiated_unit_price,line_amount,line_math_ok,subtotal_ok,tax,shipping,total,payee,matched,discrepancy,amount_at_issue,resolved_on,reviewer

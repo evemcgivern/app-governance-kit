@@ -32,6 +32,12 @@
   <url><loc>https://evemcgivern.github.io/app-governance-kit/docs/app-governance/platform-guide.html</loc></url>
   <url><loc>https://evemcgivern.github.io/app-governance-kit/docs/app-governance/sop.html</loc></url>
   <url><loc>https://evemcgivern.github.io/app-governance-kit/docs/app-governance/template.html</loc></url>
+  <url><loc>https://evemcgivern.github.io/app-governance-kit/docs/audit-response/checklist.html</loc></url>
+  <url><loc>https://evemcgivern.github.io/app-governance-kit/docs/audit-response/example-halden-audit-response.html</loc></url>
+  <url><loc>https://evemcgivern.github.io/app-governance-kit/docs/audit-response/method.html</loc></url>
+  <url><loc>https://evemcgivern.github.io/app-governance-kit/docs/audit-response/platform-guide.html</loc></url>
+  <url><loc>https://evemcgivern.github.io/app-governance-kit/docs/audit-response/sop.html</loc></url>
+  <url><loc>https://evemcgivern.github.io/app-governance-kit/docs/audit-response/template.html</loc></url>
   <url><loc>https://evemcgivern.github.io/app-governance-kit/docs/cert-prep/checklist.html</loc></url>
   <url><loc>https://evemcgivern.github.io/app-governance-kit/docs/cert-prep/example-halden-cert-prep.html</loc></url>
   <url><loc>https://evemcgivern.github.io/app-governance-kit/docs/cert-prep/method.html</loc></url>
@@ -66,6 +72,7 @@
   <url><loc>https://evemcgivern.github.io/app-governance-kit/docs/practicum/05-access-review.html</loc></url>
   <url><loc>https://evemcgivern.github.io/app-governance-kit/docs/practicum/06-ai-intake.html</loc></url>
   <url><loc>https://evemcgivern.github.io/app-governance-kit/docs/practicum/07-hardware-lifecycle.html</loc></url>
+  <url><loc>https://evemcgivern.github.io/app-governance-kit/docs/practicum/08-audit-response.html</loc></url>
   <url><loc>https://evemcgivern.github.io/app-governance-kit/docs/practicum/overview.html</loc></url>
   <url><loc>https://evemcgivern.github.io/app-governance-kit/docs/program-setup/checklist.html</loc></url>
   <url><loc>https://evemcgivern.github.io/app-governance-kit/docs/program-setup/example-council-draft.html</loc></url>
@@ -82,13 +89,22 @@
   <url><loc>https://evemcgivern.github.io/app-governance-kit/docs/rationalization/platform-guide.html</loc></url>
   <url><loc>https://evemcgivern.github.io/app-governance-kit/docs/rationalization/sop.html</loc></url>
   <url><loc>https://evemcgivern.github.io/app-governance-kit/docs/rationalization/template.html</loc></url>
+  <url><loc>https://evemcgivern.github.io/app-governance-kit/docs/sam-toolkit/acquisition-gate-checklist.html</loc></url>
   <url><loc>https://evemcgivern.github.io/app-governance-kit/docs/sam-toolkit/asset-record.html</loc></url>
   <url><loc>https://evemcgivern.github.io/app-governance-kit/docs/sam-toolkit/audit-and-review-checklist.html</loc></url>
   <url><loc>https://evemcgivern.github.io/app-governance-kit/docs/sam-toolkit/authorization-log.html</loc></url>
+  <url><loc>https://evemcgivern.github.io/app-governance-kit/docs/sam-toolkit/contract-terms-check-example.html</loc></url>
+  <url><loc>https://evemcgivern.github.io/app-governance-kit/docs/sam-toolkit/contract-terms-check.html</loc></url>
   <url><loc>https://evemcgivern.github.io/app-governance-kit/docs/sam-toolkit/guide.html</loc></url>
+  <url><loc>https://evemcgivern.github.io/app-governance-kit/docs/sam-toolkit/invoice-verification-example.html</loc></url>
+  <url><loc>https://evemcgivern.github.io/app-governance-kit/docs/sam-toolkit/invoice-verification.html</loc></url>
   <url><loc>https://evemcgivern.github.io/app-governance-kit/docs/sam-toolkit/license-position-example.html</loc></url>
   <url><loc>https://evemcgivern.github.io/app-governance-kit/docs/sam-toolkit/license-position.html</loc></url>
+  <url><loc>https://evemcgivern.github.io/app-governance-kit/docs/sam-toolkit/proof-of-purchase-check-example.html</loc></url>
+  <url><loc>https://evemcgivern.github.io/app-governance-kit/docs/sam-toolkit/proof-of-purchase-check.html</loc></url>
   <url><loc>https://evemcgivern.github.io/app-governance-kit/docs/sam-toolkit/renewal-calendar.html</loc></url>
+  <url><loc>https://evemcgivern.github.io/app-governance-kit/docs/sam-toolkit/savings-report-example.html</loc></url>
+  <url><loc>https://evemcgivern.github.io/app-governance-kit/docs/sam-toolkit/savings-report.html</loc></url>
   <url><loc>https://evemcgivern.github.io/app-governance-kit/docs/sam-toolkit/statement-of-applicability.html</loc></url>
   <url><loc>https://evemcgivern.github.io/app-governance-kit/docs/sam-toolkit/tier-self-assessment.html</loc></url>
   <url><loc>https://evemcgivern.github.io/app-governance-kit/docs/sam-toolkit/vendor-contract-register.html</loc></url>

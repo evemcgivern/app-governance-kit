@@ -13,7 +13,7 @@ If given a draft charter, review it against the steps below and report gaps. Oth
 3. Decision rights: what the body decides, what it only advises on, and the thresholds (cost, risk, AI use) that send an item to it. Everything below threshold is decided by a named role, not the council.
 4. Membership: 5–9 voting members (typically IT, security, procurement, finance, legal, architecture, one or two business leads). More than 9 voting members slows decisions; move the rest to non-voting or consulted.
 5. Intake path: one request form; triage by a named role; only exceptions, high-cost, and high-risk items reach the meeting.
-6. Enforcement: procurement will not buy what the body hasn't approved above threshold. Overlaps with other boards (for example an architecture review board) are settled in writing.
+6. Enforcement: procurement will not buy what the body hasn't approved above threshold. Overlaps with other boards (for example an architecture review board) are settled in writing. Also confirm the council has the acquisition gate (`sam-toolkit/acquisition-gate-checklist.md`) and a named owner and plan for answering a publisher audit letter (the `audit-response` skill); flag either one missing.
 7. Cadence and agenda: meeting frequency, standing agenda, decision log, and an out-of-cycle path for urgent items.
 8. Escalation: where disputes go and who breaks ties.
 9. Success measures: time from request to decision, share of software bought through the intake path, savings, and exceptions granted.

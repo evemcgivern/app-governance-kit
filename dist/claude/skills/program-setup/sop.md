@@ -27,12 +27,13 @@ Monthly meetings. The charter, membership, and decision rights are reviewed year
 3. Write down decision rights and the thresholds that route an item to the body versus a named role [[XW-027]]
 4. Name 5 to 9 voting members, drawn from the functions the charter's scope requires [[XW-004]]
 5. Put an intake form and a named triage owner live, so only exceptions and above-threshold items reach the meeting [[XW-027]]
-6. Agree procurement enforcement, and settle any overlap with adjacent bodies (for example an architecture or change board) in writing [[XW-027]]
+6. Agree procurement enforcement, including that every purchase goes through the acquisition gate (`sam-toolkit/acquisition-gate-checklist.md`), and settle any overlap with adjacent bodies (for example an architecture or change board) in writing [[XW-027]]
 7. Set the cadence, standing agenda, and decision log [[XW-025]]
 8. Write down the escalation and tie-break path [[XW-027]]
 9. Define success measures and a baseline to measure them from [[XW-025]]
 10. Get the charter approved by the sponsor and publish it [[XW-020]]
-11. Hold the first metrics review at day 90 [[XW-025]]
+11. Confirm the body holds an audit response plan, has named the response team, and has made Legal responsible for all contact with publishers; see the [audit response](../audit-response/) method. **Decision needed: sponsor** to approve the plan and the team list [[XW-004]] [[XW-027]]
+12. Hold the first metrics review at day 90 [[XW-025]]
 
 ## Evidence to retain
 
@@ -40,6 +41,7 @@ Monthly meetings. The charter, membership, and decision rights are reviewed year
 - The intake log and triage decisions.
 - The meeting decision log, dated and tied to the standing agenda.
 - The success-measure baseline and each subsequent metrics review.
+- The audit response plan, the response team roster, and the named function for outside contact with publishers.
 - The sponsor's charter approval and any later re-approval.
 
 Design the intake log, decision log, and metrics review so each is a direct by-product of running the body, not something rebuilt after the fact when an auditor or a new sponsor asks what it decided and why.

@@ -1,6 +1,6 @@
 # App Governance Kit
 
-> A free, MIT-licensed toolkit of seven application governance methods covering application portfolio management, IT asset management, AI governance, and access controls. Each method is packaged as a Claude skill, a Codex skill, and a Microsoft Copilot agent, and also ships as a checklist, SOP, template, and platform guide for use by hand. Every method traces to clauses in ISO/IEC 19770, COBIT 2019, ISO/IEC 27001, and ISO/IEC 42001 through a 29-row crosswalk. Built by Eve McGivern. It also includes an application governance router, a certification study coach, and an eight-file SAM toolkit.
+> A free, MIT-licensed toolkit of eight application governance methods covering application portfolio management, IT asset management, AI governance, and access controls. Each method is packaged as a Claude skill, a Codex skill, and a Microsoft Copilot agent, and also ships as a checklist, SOP, template, and platform guide for use by hand. Every method traces to clauses in ISO/IEC 19770, COBIT 2019, ISO/IEC 27001, and ISO/IEC 42001 through a 29-row crosswalk. Built by Eve McGivern. It also includes an application governance router, a certification study coach, and a thirteen-file SAM toolkit.
 
 Key facts:
 
@@ -13,7 +13,7 @@ Key facts:
 - Tier self-assessment: the web page and the Excel workbook work out an assumed ITAM tier from the answers and list a gap report with the step that closes each gap.
 - Version: see the footer of any page or the GitHub releases page.
 
-## The seven tools
+## The eight tools
 
 - [Stand up a governance program](https://evemcgivern.github.io/app-governance-kit/tools.html#program-setup): design or review a software, ITAM, or AI governance body: charter, decision rights, membership, intake path, cadence, and a 90-day launch plan.
 - [ITAM maturity check](https://evemcgivern.github.io/app-governance-kit/tools.html#itam-maturity): score IT asset management maturity across nine process areas, name the three biggest gaps, and produce a 90-day plan tied to ISO/IEC 19770-1 and COBIT BAI09.
@@ -22,6 +22,7 @@ Key facts:
 - [Access review pack](https://evemcgivern.github.io/app-governance-kit/tools.html#access-review): review user and role exports against HR records, find orphaned, excessive, and privileged access, and produce an auditor-ready memo mapped to ISO/IEC 27001 and COBIT DSS05.
 - [AI system intake and risk tiering](https://evemcgivern.github.io/app-governance-kit/tools.html#ai-intake): assign a risk tier to a proposed AI use case under the EU AI Act, with NIST AI RMF and ISO/IEC 42001 controls, and produce an AI inventory record.
 - [Hardware lifecycle check](https://evemcgivern.github.io/app-governance-kit/tools.html#hardware-lifecycle): check a device fleet for hardware overdue for refresh and retired devices missing a confirmed data wipe, estimate replacement cost, and summarize disposal readiness.
+- [Software audit response check](https://evemcgivern.github.io/app-governance-kit/tools.html#audit-response): check a publisher audit letter and the records behind it, reconcile installs against proofs of purchase per product, find weak proofs, and prepare a briefing for counsel. Gives no legal advice.
 
 ## Router
 
@@ -34,8 +35,8 @@ Key facts:
 ## Reference pages
 
 - [Home](https://evemcgivern.github.io/app-governance-kit/): overview of the three areas (portfolio, AI, access) and how they map to the four frameworks.
-- [SAM toolkit](https://evemcgivern.github.io/app-governance-kit/sam-toolkit.html): eight free templates and checklists for a software asset management practice (license position, renewal calendar, asset record, authorization log, statement of applicability, tier self-assessment, audit and review checklist, vendor register), each traced to ISO/IEC 19770-1 clauses, with a ZIP download.
-- [Practicum](https://evemcgivern.github.io/app-governance-kit/practicum.html): seven hands-on exercises, one per tool, worked by hand against the Halden Logistics demo estate and self-checked in the browser.
+- [SAM toolkit](https://evemcgivern.github.io/app-governance-kit/sam-toolkit.html): thirteen free templates and checklists for a software asset management practice (license position, proof-of-purchase check, renewal calendar, asset record, authorization log, statement of applicability, tier self-assessment, audit and review checklist, vendor register, acquisition gate, invoice verification, savings report, contract-terms check), each traced to ISO/IEC 19770-1 clauses, with a ZIP download.
+- [Practicum](https://evemcgivern.github.io/app-governance-kit/practicum.html): eight hands-on exercises, one per tool, worked by hand against the Halden Logistics demo estate and self-checked in the browser.
 - [Lifecycle](https://evemcgivern.github.io/app-governance-kit/lifecycle.html): six application lifecycle stages, from request to retirement, with the governance questions to ask at each and the tool that handles them.
 - [Crosswalk explorer](https://evemcgivern.github.io/app-governance-kit/crosswalk.html): 29 governance themes mapped across ISO/IEC 19770, COBIT 2019, ISO/IEC 27001, and ISO/IEC 42001.
 - [Impact map](https://evemcgivern.github.io/app-governance-kit/impact-map.html): every crosswalk theme plotted against every lifecycle stage, by impact.
@@ -57,6 +58,7 @@ Key facts:
 - Access review pack: [method](https://evemcgivern.github.io/app-governance-kit/docs/access-review/method.html), [checklist](https://evemcgivern.github.io/app-governance-kit/docs/access-review/checklist.html), [SOP](https://evemcgivern.github.io/app-governance-kit/docs/access-review/sop.html), [template](https://evemcgivern.github.io/app-governance-kit/docs/access-review/template.html), [platform guide](https://evemcgivern.github.io/app-governance-kit/docs/access-review/platform-guide.html).
 - AI system intake and risk tiering: [method](https://evemcgivern.github.io/app-governance-kit/docs/ai-intake/method.html), [checklist](https://evemcgivern.github.io/app-governance-kit/docs/ai-intake/checklist.html), [SOP](https://evemcgivern.github.io/app-governance-kit/docs/ai-intake/sop.html), [template](https://evemcgivern.github.io/app-governance-kit/docs/ai-intake/template.html), [platform guide](https://evemcgivern.github.io/app-governance-kit/docs/ai-intake/platform-guide.html).
 - Hardware lifecycle check: [method](https://evemcgivern.github.io/app-governance-kit/docs/hardware-lifecycle/method.html), [checklist](https://evemcgivern.github.io/app-governance-kit/docs/hardware-lifecycle/checklist.html), [SOP](https://evemcgivern.github.io/app-governance-kit/docs/hardware-lifecycle/sop.html), [template](https://evemcgivern.github.io/app-governance-kit/docs/hardware-lifecycle/template.html), [platform guide](https://evemcgivern.github.io/app-governance-kit/docs/hardware-lifecycle/platform-guide.html).
+- Software audit response check: [method](https://evemcgivern.github.io/app-governance-kit/docs/audit-response/method.html), [checklist](https://evemcgivern.github.io/app-governance-kit/docs/audit-response/checklist.html), [SOP](https://evemcgivern.github.io/app-governance-kit/docs/audit-response/sop.html), [template](https://evemcgivern.github.io/app-governance-kit/docs/audit-response/template.html), [platform guide](https://evemcgivern.github.io/app-governance-kit/docs/audit-response/platform-guide.html).
 - Certification study coach: [method](https://evemcgivern.github.io/app-governance-kit/docs/cert-prep/method.html), [checklist](https://evemcgivern.github.io/app-governance-kit/docs/cert-prep/checklist.html), [SOP](https://evemcgivern.github.io/app-governance-kit/docs/cert-prep/sop.html), [template](https://evemcgivern.github.io/app-governance-kit/docs/cert-prep/template.html), [platform guide](https://evemcgivern.github.io/app-governance-kit/docs/cert-prep/platform-guide.html).
 - Application governance router: [method](https://evemcgivern.github.io/app-governance-kit/docs/app-governance/method.html), [checklist](https://evemcgivern.github.io/app-governance-kit/docs/app-governance/checklist.html), [SOP](https://evemcgivern.github.io/app-governance-kit/docs/app-governance/sop.html), [template](https://evemcgivern.github.io/app-governance-kit/docs/app-governance/template.html), [platform guide](https://evemcgivern.github.io/app-governance-kit/docs/app-governance/platform-guide.html).
 
@@ -70,7 +72,7 @@ Key facts:
 
 ## Optional
 
-- [Case studies](https://evemcgivern.github.io/app-governance-kit/case-studies.html): anonymized case studies, in preparation; nothing is published yet.
+- [Case studies](https://evemcgivern.github.io/app-governance-kit/case-studies.html): three worked examples on Halden Logistics, a fictional company (audit response, AI risk tiering, rationalization); not real client work.
 - [About](https://evemcgivern.github.io/app-governance-kit/about.html): Eve McGivern, application governance manager.
 - [Source code](https://github.com/evemcgivern/app-governance-kit): the full repository, including methods, practicum, demo estate, and build system.
 - [Releases](https://github.com/evemcgivern/app-governance-kit/releases): version history and release notes.

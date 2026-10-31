@@ -3,6 +3,7 @@ q-plan-duplicate,plan,"What problem does this solve, and do we own an app that d
 q-plan-owner,plan,"Who will own it, and who is the executive sponsor?",program-setup,XW-002
 q-plan-intake,plan,"Does the request meet the council's threshold and come through the intake path?",program-setup,XW-027
 q-plan-ai-tier,plan,"Does it use AI? If so, what risk tier is it?",ai-intake,XW-021
+q-plan-gate,plan,"Has it passed the acquisition gate: already owned, redeployable, or a duplicate?",rationalization,XW-009
 q-plan-data,plan,"What data will it hold, and how sensitive is that data?",access-review,XW-028
 q-acquire-entitlements,acquire,"What license model applies, and how many entitlements do we need?",rationalization,XW-006
 q-acquire-contract-terms,acquire,"Does the contract give audit, renewal, and exit terms we can live with?",rationalization,XW-013
@@ -14,14 +15,17 @@ q-deploy-privileged,deploy,"Are privileged accounts limited and named?",access-r
 q-deploy-ai-register,deploy,"For AI systems: is the inventory record complete and the risk in the register?",ai-intake,XW-022
 q-operate-entitlements,operate,"Do installs and users stay within entitlements?",rationalization,XW-007
 q-operate-access-review,operate,"Is access reviewed on schedule, and are leavers removed?",access-review,XW-016
+q-operate-proofs,operate,"Is a proof of purchase on file for each license?",audit-response,XW-006
 q-operate-asset-records,operate,"Are asset records accurate and reconciled?",itam-maturity,XW-026
 q-operate-change,operate,"Are changes assessed and approved before they are made?",itam-maturity,XW-029
 q-operate-ai-change,operate,"Has the AI system's use changed since intake?",ai-intake,XW-021
 q-optimize-cost,optimize,"Is it still worth its cost: tolerate, invest, migrate, or eliminate?",rationalization,XW-011
 q-optimize-expiring,optimize,"Is anything expiring or due for renewal in the next 90 days?",rationalization,XW-008
+q-optimize-renewal-savings,optimize,"Has the contract-terms check been done before renewal, and have savings been reported?",rationalization,XW-013
 q-optimize-process-weak,optimize,"Where is our asset management process weakest this year?",itam-maturity,XW-025
 q-optimize-decision-log,optimize,"Does the council's decision log show bottlenecks or rubber-stamping?",program-setup,XW-025
 q-retire-data,retire,"What data does it hold, and will we archive, migrate, or delete it?",rationalization,XW-010
 q-retire-accounts,retire,"Are all accounts removed and licenses canceled or reclaimed?",access-review,XW-017
 q-retire-contract-end,retire,"Is the contract ended on time, without auto-renewal?",rationalization,XW-013
+q-retire-destruction-evidence,retire,"Are wipe or destruction certificates on file and kept as long as the records schedule requires?",hardware-lifecycle,XW-010
 q-retire-inventory-closed,retire,"Is the inventory record closed, with evidence kept?",itam-maturity,XW-020

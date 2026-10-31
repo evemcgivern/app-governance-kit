@@ -15,7 +15,7 @@ Aim: know what you have so you can manage it, with reasonable assurance of licen
 | 1.1 | Is there a record for every software and hardware asset in scope, with an owner? (8.3, 7.6.2) **NOTE:** if owner is missing for any, choose Partly | | |
 | 1.2 | Does each record say whether the asset is authorized? (8.3) | | |
 | 1.3 | Are records verified against what is actually installed or in use, on a schedule? (8.3) | | |
-| 1.4 | Do you hold entitlement records for the licenses you own? (8.4) | | |
+| 1.4 | Do you hold entitlement records for the licenses you own, each backed by a proof of purchase kept as long as the records schedule requires? (8.4) | | |
 | 1.5 | Do you compare entitlements with usage on a schedule, and act on the gaps? (8.4) | | |
 | 1.6 | Is there a measurable target for data accuracy? (6.2.3) | | |
 | 1.7 | Are changes to the asset record controlled? (8.2) | | |

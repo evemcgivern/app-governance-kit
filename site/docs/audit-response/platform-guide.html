@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Platform guide: Software audit response check — Eve McGivern</title>
+<meta name="description" content="Where the records this tool uses live in ServiceNow Software Asset Management Professional (SAM…">
+<meta name="author" content="Eve McGivern">
+<link rel="canonical" href="https://evemcgivern.github.io/app-governance-kit/docs/audit-response/platform-guide.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Eve McGivern — Application Governance">
+<meta property="og:title" content="Platform guide: Software audit response check">
+<meta property="og:description" content="Where the records this tool uses live in ServiceNow Software Asset Management Professional (SAM…">
+<meta property="og:url" content="https://evemcgivern.github.io/app-governance-kit/docs/audit-response/platform-guide.html">
+<meta property="og:image" content="https://evemcgivern.github.io/app-governance-kit/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Platform guide: Software audit response check">
+<meta name="twitter:description" content="Where the records this tool uses live in ServiceNow Software Asset Management Professional (SAM…">
+<meta name="twitter:image" content="https://evemcgivern.github.io/app-governance-kit/og-image.png">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Home",
+     "item": "https://evemcgivern.github.io/app-governance-kit/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "Tools",
+     "item": "https://evemcgivern.github.io/app-governance-kit/tools.html"
+    },
+    {
+     "@type": "ListItem",
+     "position": 3,
+     "name": "Platform guide: Software audit response check",
+     "item": "https://evemcgivern.github.io/app-governance-kit/docs/audit-response/platform-guide.html"
+    }
+   ]
+  },
+  {
+   "@type": "WebPage",
+   "name": "Platform guide: Software audit response check",
+   "description": "Where the records this tool uses live in ServiceNow Software Asset Management Professional (SAM\u2026",
+   "url": "https://evemcgivern.github.io/app-governance-kit/docs/audit-response/platform-guide.html",
+   "isPartOf": {
+    "@type": "WebSite",
+    "url": "https://evemcgivern.github.io/app-governance-kit/"
+   },
+   "author": {
+    "@type": "Person",
+    "name": "Eve McGivern",
+    "url": "https://evemcgivern.github.io/"
+   },
+   "license": "https://opensource.org/licenses/MIT",
+   "isAccessibleForFree": true
+  }
+ ]
+}
+</script>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../apple-touch-icon.png">
+<link rel="stylesheet" href="../../style.css">
+<script src="../../nav.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="support-bar"><a class="coffee-link" href="https://buymeacoffee.com/a8w5iiqszp" rel="noopener"><svg class="coffee-icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M5 9h11v5a5 5 0 0 1-5 5h-1a5 5 0 0 1-5-5V9z" fill="#2f9e6e"/><path d="M16 10.5h1.2a2.4 2.4 0 0 1 0 4.8H16" fill="none" stroke="#2f9e6e" stroke-width="1.8" stroke-linecap="round"/><path d="M8.5 3.5c0 1.3 1 1.3 1 2.6M12 3.5c0 1.3 1 1.3 1 2.6" fill="none" stroke="#2f9e6e" stroke-width="1.6" stroke-linecap="round"/></svg><span>Buy me a coffee</span></a></div>
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="https://evemcgivern.github.io/">Eve McGivern</a>
+    <nav class="site-nav" aria-label="Main">
+      <ul>
+        <li><a href="../../tools.html" aria-describedby="tip-tools">Tools</a><span class="nav-tip" role="tooltip" id="tip-tools">The eight governance methods, packaged as skills for Claude, Codex, and Copilot.</span></li>
+        <li><a href="../../sam-toolkit.html" aria-describedby="tip-sam-toolkit">SAM toolkit</a><span class="nav-tip" role="tooltip" id="tip-sam-toolkit">Templates and checklists for running software asset management by hand.</span></li>
+        <li><a href="../../practicum.html" aria-describedby="tip-practicum">Practicum</a><span class="nav-tip" role="tooltip" id="tip-practicum">Hands-on exercises on a fictional company, with answers you can check.</span></li>
+        <li><a href="../../lifecycle.html" aria-describedby="tip-lifecycle">Lifecycle</a><span class="nav-tip" role="tooltip" id="tip-lifecycle">Six stages from request to retirement, with the questions to ask at each.</span></li>
+        <li><a href="../../crosswalk.html" aria-describedby="tip-crosswalk">Crosswalk explorer</a><span class="nav-tip" role="tooltip" id="tip-crosswalk">See how each control maps to ISO/IEC 19770, COBIT, 27001, and 42001.</span></li>
+        <li><a href="../../impact-map.html" aria-describedby="tip-impact-map">Impact map</a><span class="nav-tip" role="tooltip" id="tip-impact-map">One grid showing every control theme against every lifecycle stage.</span></li>
+        <li><a href="../../field-guide.html" aria-describedby="tip-field-guide">Field guide</a><span class="nav-tip" role="tooltip" id="tip-field-guide">Plain-language guides to the standards, certifications, and key terms.</span></li>
+        <li><a href="../../case-studies.html" aria-describedby="tip-case-studies">Case studies</a><span class="nav-tip" role="tooltip" id="tip-case-studies">Worked examples of the kit in use, on a fictional company.</span></li>
+        <li><a href="../../about.html" aria-describedby="tip-about">About</a><span class="nav-tip" role="tooltip" id="tip-about">Who built the kit, and how to get in touch.</span></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<main id="main" class="doc-page">
+  <div class="doc-top">
+    <p class="doc-back"><a href="../../tools.html">&larr; Tools</a></p>
+    <button type="button" class="print-icon" onclick="window.print()" aria-label="Print this page" title="Print"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="M7 9V3.5h10V9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M7 17H4.5A1.5 1.5 0 0 1 3 15.5v-5A1.5 1.5 0 0 1 4.5 9h15a1.5 1.5 0 0 1 1.5 1.5v5a1.5 1.5 0 0 1-1.5 1.5H17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><rect x="7" y="14" width="10" height="6.5" rx="0.8" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17.5" cy="12" r="0.9" fill="currentColor"/></svg></button>
+  </div>
+  <h1>Platform guide: Software audit response check</h1>
+  <div class="visual-actions doc-actions">
+    <a class="visual-actions__link" href="platform-guide.docx">Download Word (.docx)</a>
+    <button type="button" class="visual-actions__link doc-print" onclick="window.print()">Print or save as PDF</button>
+  </div>
+
+  <div class="doc-body prose prose-wide">
+<p>Where the records this tool uses live in ServiceNow Software Asset Management Professional (SAM Pro) and in Flexera One. Every table or field named below was confirmed on a source in the Sources list as of 2026-09-25 and has not been checked since; where no source names one, that is stated as a gap rather than guessed. Neither platform documents an audit-response workflow of its own, so what follows maps this method&#x27;s inputs onto the records each platform holds.</p>
+<h2 id="servicenow-sam-pro-entitlements-installs-and-reconciliation">ServiceNow SAM Pro: entitlements, installs, and reconciliation</h2>
+<p>As of 2026-09-25: Purchase records are held as <strong>Software Entitlements</strong> (table <code>alm_license</code>). This is where the quantity bought for a product sits, the counterpart of the proof-of-purchase quantity in this method. SAM Pro&#x27;s <strong>Reconciliation</strong> step matches entitlements against discovered installations with its licensing rules and produces a <strong>License Compliance Position</strong>, the counterpart of this method&#x27;s short, even, or over label. The entitlement carries effective and expiry dates; the linked contract record (<code>ast_contract</code>) carries an end date.</p>
+<p>No source reviewed names a field on the entitlement for the buyer&#x27;s legal name, for proof of payment, or for the qualifying base license behind an upgrade. Treat those as attributes to keep in the governance record, with the invoice, order, and payment record stored together as attachments or in a linked repository. The platform will not check them for you.</p>
+<p>SAM Pro&#x27;s reconciliation works on installs the platform has discovered. Install counts narrowed to an agreed audit scope (entities, products, years) are a filtered view the team builds from that data; no source describes a built-in scope filter for an audit.</p>
+<h2 id="flexera-one-discovery-and-license-position">Flexera One: discovery and license position</h2>
+<p>As of 2026-09-25: Flexera One&#x27;s hybrid IT discovery feeds the install side of the reconciliation, and each discovered title is normalized against <strong>Technopedia</strong>, which matters when a publisher has renamed or acquired product lines. Its license position work compares what was found with what was bought, and reports unused and unassigned licenses.</p>
+<p>Flexera&#x27;s published pages reviewed do not name a field or record for proof of purchase, upgrade chains, or an audit case. That gap is stated here rather than guessed. Keep the proof register in the governance record and link each row to the entitlement it supports.</p>
+<h2 id="what-the-platforms-do-not-replace">What the platforms do not replace</h2>
+<p>Neither platform decides who speaks to a publisher, what is released, or whether a claim is valid. Those are counsel&#x27;s calls. The platform supplies counts; the response team and Legal supply judgment.</p>
+<h2 id="sources-checked">Sources checked</h2>
+<p>The platform facts above were fetched for the rationalization platform guide on 2026-09-25 and carried over here. They were not fetched again.</p>
+<ul><li><a href="https://www.servicenow.com/community/sam-blog/review-software-entitlements/ba-p/3304445">Review Software Entitlements — ServiceNow Community</a> — Software Entitlements, Reconciliation, License Compliance Position.</li><li>[Software Asset Management - Software Entitlement [alm_license] — ServiceNow Community](https://www.servicenow.com/community/sam-forum/software-asset-management-software-entitlement-alm-license-gt-br/m-p/3083406) — confirms the <code>alm_license</code> table name.</li><li><a href="https://www.servicenow.com/community/sam-forum/guidance-on-sam-pro-license-renewal-process/m-p/3510712">Guidance on SAM Pro license renewal process — ServiceNow Community</a> — entitlement effective and expiry dates, and the contract end date.</li><li><a href="https://www.flexera.com/flexera-one/it-visibility/application-rationalization">Application Rationalization &amp; Management — Flexera</a> — hybrid IT discovery and Technopedia normalization.</li><li><a href="https://www.flexera.com/solutions/saas-spend/application-rationalization">Streamline Your SaaS Portfolio with Application Rationalization — Flexera</a> — unused and unassigned license reporting.</li></ul>
+<p>Pages that do not return readable content to an automated fetch: Flexera&#x27;s documentation site (<code>docs.flexera.com/...</code>, 403). Nothing above cites it.</p>
+  </div>
+  <div class="doc-bottom"><button type="button" class="print-icon" onclick="window.print()" aria-label="Print this page" title="Print"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="M7 9V3.5h10V9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M7 17H4.5A1.5 1.5 0 0 1 3 15.5v-5A1.5 1.5 0 0 1 4.5 9h15a1.5 1.5 0 0 1 1.5 1.5v5a1.5 1.5 0 0 1-1.5 1.5H17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><rect x="7" y="14" width="10" height="6.5" rx="0.8" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17.5" cy="12" r="0.9" fill="currentColor"/></svg></button></div>
+</main>
+<footer class="site-footer">
+  <p>Eve McGivern · <a href="https://evemcgivern.github.io/">evemcgivern.github.io</a></p>
+  <p>Questions? Comments? <a href="https://github.com/evemcgivern/app-governance-kit/issues" id="contact-email" data-r="moc.liamg|nrevigcmeve">email me</a>.</p>
+  <p><a href="https://buymeacoffee.com/a8w5iiqszp" rel="noopener">Buy me a coffee</a> if these tools help.</p>
+  <p class="site-version"><a href="https://github.com/evemcgivern/app-governance-kit/releases" rel="noopener" id="site-version">Version</a></p>
+</footer>
+<script>
+(function () {
+  "use strict";
+  var el = document.getElementById("contact-email");
+  if (!el || !el.getAttribute("data-r")) { return; }
+  function arm() {
+    el.href = "mailto:" + el.getAttribute("data-r").split("").reverse().join("").replace("|", "@");
+  }
+  ["pointerenter", "focus", "touchstart"].forEach(function (type) {
+    el.addEventListener(type, arm, { once: true, passive: true });
+  });
+})();
+</script>
+
+</body>
+</html>

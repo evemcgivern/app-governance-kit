@@ -30,6 +30,10 @@ Flexera merged its own and Snow's SaaS management products into a single **Flexe
 
 Flexera's own SaaS Management page describes this as helping an organization take control of AI usage by discovering where AI is used, assessing risk and cost, and checking usage against company policy — which is the discovery-and-risk-flagging step this method's supplier-and-provider identification step (checklist item 6) would draw on before intake proceeds. Separately, Flexera's current (2026) product line — Flexera One AI Cost Management (covering AI Apps & Agents, AI Models & Tokenomics, AI Data Cloud Management, AI Compute Management), SaaS Management, and Technopedia — provides AI discovery, spend tracking, and usage-policy-alignment features. Its AI Cost Management plan-comparison table lists a generic feature row, "Policy and governance," described as enforcing guardrails, approvals, and compliance — a feature category, not a named field or record. A generic, non-AI-specific approval-workflow engine exists separately in Flexera One's Commander module (for IT service and change requests); nothing in Flexera's documentation or marketing names an AI-specific use of that engine for AI intake. No Flexera product names a specific table, field, or record for an AI intake decision, an approval, or a risk-tier classification; Flexera's own public-sector guidance describes intake and risk-review processes as something an organization must build, not a feature Flexera ships. This method's inventory record ([`template.md`](template.md)) has no confirmed Flexera equivalent.
 
+## Acquisition gate and approved-tools register
+
+No source checked names a field for the acquisition gate result or an approved-AI-tools register in either product. Run the gate with `sam-toolkit/acquisition-gate-checklist.md` and keep the register as a filtered view of the AI inventory.
+
 ## What remains unconfirmed
 
 - The specific field/column name that stores risk tier inside `sn_ai_governance_asset_governance_details` (only the table name is confirmed), and any named field for "required controls."

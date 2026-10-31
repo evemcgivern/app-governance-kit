@@ -8,6 +8,7 @@
 - Scores all nine areas from the file.
 - Names the three gaps as **entitlement**, **data-quality**, and **lifecycle**.
 - Includes a 90-day plan with an owner role and evidence for each gap.
+- Lowers any score that has no evidence, and checks for proof-of-purchase records.
 - Ends with a fenced `findings` block.
 
 Record the result (date, pass/fail, notes; no work data) in `copilot-results.md`.

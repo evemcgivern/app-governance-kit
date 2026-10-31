@@ -4,22 +4,22 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Case studies — Eve McGivern</title>
-<meta name="description" content="Anonymized application governance case studies, in preparation: rationalization, access review, and AI decisions.">
+<meta name="description" content="Three worked examples on a fictional company: audit response, AI tiering, rationalization.">
 <meta name="author" content="Eve McGivern">
 <link rel="canonical" href="https://evemcgivern.github.io/app-governance-kit/case-studies.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Eve McGivern — Application Governance">
 <meta property="og:title" content="Case studies — Eve McGivern">
-<meta property="og:description" content="Anonymized application governance case studies, in preparation: rationalization, access review, and AI decisions.">
+<meta property="og:description" content="Three worked examples on a fictional company: audit response, AI tiering, rationalization.">
 <meta property="og:url" content="https://evemcgivern.github.io/app-governance-kit/case-studies.html">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://evemcgivern.github.io/app-governance-kit/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Application governance kit — seven governance methods for portfolio, AI, and access.">
+<meta property="og:image:alt" content="Application governance kit — eight governance methods for portfolio, AI, and access.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Case studies — Eve McGivern">
-<meta name="twitter:description" content="Anonymized application governance case studies, in preparation: rationalization, access review, and AI decisions.">
+<meta name="twitter:description" content="Three worked examples on a fictional company: audit response, AI tiering, rationalization.">
 <meta name="twitter:image" content="https://evemcgivern.github.io/app-governance-kit/og-image.png">
 <script type="application/ld+json">
 {
@@ -58,14 +58,14 @@
     <a class="brand" href="https://evemcgivern.github.io/">Eve McGivern</a>
     <nav class="site-nav" aria-label="Main">
       <ul>
-        <li><a href="tools.html" aria-describedby="tip-tools">Tools</a><span class="nav-tip" role="tooltip" id="tip-tools">The seven governance methods, packaged as skills for Claude, Codex, and Copilot.</span></li>
+        <li><a href="tools.html" aria-describedby="tip-tools">Tools</a><span class="nav-tip" role="tooltip" id="tip-tools">The eight governance methods, packaged as skills for Claude, Codex, and Copilot.</span></li>
         <li><a href="sam-toolkit.html" aria-describedby="tip-sam-toolkit">SAM toolkit</a><span class="nav-tip" role="tooltip" id="tip-sam-toolkit">Templates and checklists for running software asset management by hand.</span></li>
         <li><a href="practicum.html" aria-describedby="tip-practicum">Practicum</a><span class="nav-tip" role="tooltip" id="tip-practicum">Hands-on exercises on a fictional company, with answers you can check.</span></li>
         <li><a href="lifecycle.html" aria-describedby="tip-lifecycle">Lifecycle</a><span class="nav-tip" role="tooltip" id="tip-lifecycle">Six stages from request to retirement, with the questions to ask at each.</span></li>
         <li><a href="crosswalk.html" aria-describedby="tip-crosswalk">Crosswalk explorer</a><span class="nav-tip" role="tooltip" id="tip-crosswalk">See how each control maps to ISO/IEC 19770, COBIT, 27001, and 42001.</span></li>
         <li><a href="impact-map.html" aria-describedby="tip-impact-map">Impact map</a><span class="nav-tip" role="tooltip" id="tip-impact-map">One grid showing every control theme against every lifecycle stage.</span></li>
         <li><a href="field-guide.html" aria-describedby="tip-field-guide">Field guide</a><span class="nav-tip" role="tooltip" id="tip-field-guide">Plain-language guides to the standards, certifications, and key terms.</span></li>
-        <li><a href="case-studies.html" aria-current="page" aria-describedby="tip-case-studies">Case studies</a><span class="nav-tip" role="tooltip" id="tip-case-studies">What is coming next: worked examples of the kit in use.</span></li>
+        <li><a href="case-studies.html" aria-current="page" aria-describedby="tip-case-studies">Case studies</a><span class="nav-tip" role="tooltip" id="tip-case-studies">Worked examples of the kit in use, on a fictional company.</span></li>
         <li><a href="about.html" aria-describedby="tip-about">About</a><span class="nav-tip" role="tooltip" id="tip-about">Who built the kit, and how to get in touch.</span></li>
       </ul>
     </nav>
@@ -75,12 +75,104 @@
 <main id="main">
   <section class="hero">
     <h1>Case studies</h1>
-    <p class="positioning">Case studies are in preparation.</p>
+    <p class="positioning prose-wide">Three worked examples, all on Halden Logistics, a fictional company. Nobody here is a real client, and none of these outcomes happened. Each one runs the kit's own demo data through a tool, so you can check every number against the files.</p>
   </section>
 
-  <section aria-labelledby="case-studies-heading">
-    <h2 id="case-studies-heading">What's coming</h2>
-    <p class="prose">I'm building these out of real governance decisions from portfolio and access work (why an application got rationalized instead of renewed; what an access review actually turned up, and what happened next), plus AI governance calls (how a use case got risk-tiered and what changed after review) drawn from this kit's own worked examples rather than my own casework. Each one will be anonymized, no company names or identifying details, and will walk through the decision itself, not just the process behind it. Nothing is published yet.</p>
+  <section aria-labelledby="how-to-read-heading">
+    <h2 id="how-to-read-heading">How to read these</h2>
+    <p class="prose">These are worked examples, not client case studies. Halden is a fictional company, and its data lives in this repo's <a href="https://github.com/evemcgivern/app-governance-kit/tree/main/demo-estate">demo estate</a>, with problems planted on purpose. Each case covers what the records showed, what the kit's tool did with them, which decisions stayed with people, and what a real team would still have to check before trusting the result.</p>
+    <p class="prose">Every point where a person decides is marked <strong>Decision needed:</strong>, the same way the tools mark it. Nothing here is legal advice; contract and audit questions go to counsel. Each case links to its tool card, the full Halden example the tool produced, and the matching practicum exercise. Work the exercise by hand first if you want an honest test of yourself, then compare.</p>
+    <ul class="link-list">
+      <li><a href="#case-audit-response">Audit response: a publisher letter and what the records could prove</a></li>
+      <li><a href="#case-ai-intake">Tiering an AI use case: the CV ranking tool</a></li>
+      <li><a href="#case-rationalization">Rationalization: two transport systems, one job</a></li>
+    </ul>
+  </section>
+
+  <section id="case-audit-response" aria-labelledby="case-audit-response-heading">
+    <h2 id="case-audit-response-heading">Audit response: a publisher letter and what the records could prove</h2>
+    <p class="prose">The short answer, before anyone replied: even counts on paper for Shapewise and both Cellmate versions, 17 named users short on Taskmoor, three proofs needing repair and one needing an explanation. The records could not settle whether the publisher holds an audit right at all; that belongs to counsel.</p>
+
+    <h3>The situation</h3>
+    <p class="prose">Brightvale Software Group wrote to Halden on 2026-08-24 about three product lines it bought from Mosswood Software in 2025: Taskmoor, Shapewise, and Cellmate. It asks for installs at every Halden group company in any country, records back to 2019, proof of purchase, a device-level list with user names, and a reply within 30 days. General counsel asks the asset manager what the records can prove before anyone replies.</p>
+
+    <h3>What the records showed</h3>
+    <p class="prose">Six proofs of purchase, four install counts, and Halden's own notes on its 2022 agreement (HAL-MSW-2022). The notes license Taskmoor and Shapewise per named user and Cellmate per device, and that changes the math. Count raw installs and Shapewise looks 12 short (297 against 285 proofs); count assigned users and it is even. Taskmoor is the real gap: P-001 and P-002 cover 272 named users against 289 assigned. As for the proofs, P-003 has no buyer name, P-004 has no payment proof, and P-006 upgrades from a Cellmate version 1 that Halden holds no proof of. P-005 was first ordered on 2022-05-04, after the first version 2 install on 2022-03-01. A true-up, or a later purchase?</p>
+
+    <h3>What the tool did</h3>
+    <p class="prose">The audit response check reconciled each product and version in its own license metric, read every proof for the details it must show, checked the upgrade's base, and compared proof dates with first installs. It then set the letter beside Halden's unverified notes, which limit the review to Halden Logistics Inc, three products, use in the 36 months before the notice, and counts per product and version. The letter asks for more on all four. Output: a briefing for Legal and the executive sponsor, and a list of don'ts. No contact with the publisher, no removing Taskmoor installs, no device list unless counsel releases one.</p>
+
+    <h3>The decisions that stayed with people</h3>
+    <ul class="prose">
+      <li><strong>Decision needed:</strong> counsel. Was the Mosswood agreement assigned to Brightvale, and does it give Brightvale an audit right?</li>
+      <li><strong>Decision needed:</strong> counsel. Whether to push back on the letter's scope, what to release, and when.</li>
+      <li><strong>Decision needed:</strong> counsel. Whether downgrade rights let a version 3 license cover version 2 installs.</li>
+      <li><strong>Decision needed:</strong> the executive sponsor, with counsel, on any purchase to close the Taskmoor gap.</li>
+    </ul>
+
+    <h3>What a real team would still check</h3>
+    <p class="prose">The audit clause, the license metrics, and the accepted forms of proof came from Halden's notes, not the signed contract; the tool marked them unverified. A real team pulls the signed text first, then chases P-003's buyer name, P-004's payment record, and a version 1 purchase behind P-006. If those don't turn up, Shapewise and Cellmate version 3 both move from even to short. And nobody uninstalls Taskmoor from 17 users to make the count look clean unless counsel agrees.</p>
+
+    <p class="meta">Tool: <a href="tools.html#audit-response">Software audit response check</a> · <a href="docs/audit-response/example-halden-audit-response.html">Full Halden example</a> · Practicum: <a href="practicum.html#audit-response">Exercise 8, interactive</a> · <a href="docs/practicum/08-audit-response.html">printable</a></p>
+  </section>
+
+  <section id="case-ai-intake" aria-labelledby="case-ai-intake-heading">
+    <h2 id="case-ai-intake-heading">Tiering an AI use case: the CV ranking tool</h2>
+    <p class="prose">AI-004, an HR tool that ranks job applicants' CVs, was the only one of Halden's six AI systems tiered high-risk. Review changed the legal detail around it, not the tier.</p>
+
+    <h3>The situation</h3>
+    <p class="prose">Halden has six AI systems with six different owners, and nobody has ever tiered any of them for risk. The AI governance board is about to meet for the first time, and someone has to say which system, if any, must stop for legal review first. The inventory gives each system an id, an owner, and one line of description. That's all.</p>
+
+    <h3>What the records showed</h3>
+    <p class="prose">Most of the list is routine: a spam filter, invoice extraction that a person reviews, route suggestions a dispatcher approves, a shipment-status chatbot, and a volume forecast. AI-004 is different. HR uses it to rank applicants' CVs and shortlist candidates for interview. The record doesn't say whether a person reviews every ranking, who supplies the tool, or what data trained it.</p>
+
+    <h3>What the tool did</h3>
+    <p class="prose">The AI intake tool restated each use case, checked prohibited practices first, then the high-risk areas. Ranking job applicants is an employment use, and employment is one of those areas. The tool weighed the exception for narrow procedural tasks and rejected it, because ranking applicants is profiling people. Result: high-risk, legal review before approval. On top of the baseline every system gets, it required recruiters who can override rankings and see who wasn't shortlisted, notice to applicants, bias and accuracy monitoring, kept logs, supplier conformity evidence, a data protection impact assessment, and a risk register entry owned by the Head of HR. The chatbot came out limited-risk because it talks to the public; the other four came out minimal.</p>
+
+    <h3>The decisions that stayed with people</h3>
+    <p class="prose">A reviewer read the output on 2026-09-24 and corrected three things. The tool had treated a change to the high-risk deadline as a pending proposal when it had already been adopted. It named the wrong party as bound by the chatbot disclosure duty. And it cited a whole article where one paragraph applied. None of that moved the tier, which came from what the system does. All of it is legal detail, which is why legal review is on the list.</p>
+    <ul class="prose">
+      <li><strong>Decision needed:</strong> legal review. Confirm the tier, whether Halden is a deployer or a provider, that no emotion-recognition or biometric feature exists, and when the obligations apply.</li>
+      <li><strong>Decision needed:</strong> approval with a named approver. Nothing deploys before both legal review and approval.</li>
+      <li><strong>Decision needed:</strong> the review cycle. The tool suggested every six months; at minimum yearly, and on any change of model or use.</li>
+    </ul>
+
+    <h3>What a real team would still check</h3>
+    <p class="prose">Whether a person actually reviews every ranking, since the description doesn't say. Which product this is: the tool's guess, Hirewell Recruiting (APP-004), is marked unverified and should stay that way until HR confirms it. What the vendor's model was trained on. And the current official timeline for high-risk obligations, which had already moved before this example ran.</p>
+
+    <p class="meta">Tool: <a href="tools.html#ai-intake">AI system intake and risk tiering</a> · <a href="docs/ai-intake/example-halden-ai-intake.html">Full Halden example</a> · Practicum: <a href="practicum.html#ai-intake">Exercise 6, interactive</a> · <a href="docs/practicum/06-ai-intake.html">printable</a></p>
+  </section>
+
+  <section id="case-rationalization" aria-labelledby="case-rationalization-heading">
+    <h2 id="case-rationalization-heading">Rationalization: two transport systems, one job</h2>
+    <p class="prose">Halden runs two transport management systems. The tool recommended keeping Routesmith and retiring Routewise, and put the savings across all five duplicate pairs at $250,000 to $355,400 a year. That range is a forecast, not money in the bank.</p>
+
+    <h3>The situation</h3>
+    <p class="prose">Finance wants a savings estimate for next year's budget cycle. The CIO wants to know which applications duplicate each other before that number goes anywhere. The inputs are an inventory of 60 applications (category, annual cost, users, data sensitivity) and a license file with one license per application, its entitlements, its expiry, and the date it was checked, 2026-09-01.</p>
+
+    <h3>What the records showed</h3>
+    <p class="prose">Grouping by category instead of by name turns up five pairs doing the same job. The transport pair is the starkest: Routewise (APP-029) costs $54,700 a year for 193 users, $283.42 per user; Routesmith (APP-058) costs $14,300 for 366 users, $39.07 per user. Two licenses had expired before their own checked-on date: LIC-017 for Meetrix video conferencing (2026-03-31, 649 users) and LIC-044 for Payflow accounts payable (2025-12-31, 748 users, confidential data). Neither belongs to a duplicate. The inventory also has no owner column, so none of the 60 apps has a confirmed owner.</p>
+
+    <h3>What the tool did</h3>
+    <p class="prose">The rationalization tool gave every app a TIME call: tolerate, invest, migrate, or eliminate. With technical fit poor on both sides of every pair, it broke the tie on cost per user and marked the pricier side Eliminate: APP-008, APP-022, APP-029, APP-033, and APP-052, $355,400 a year combined. It marked both expired-license apps Invest, meaning renew; the tool treats a lapsed contract on a busy app as a renewal, not a retirement; how many seats to renew, and any use since the expiry, go to the contract owner. It gave savings as a range. The high end assumes clean, immediate exits. The low end is a judgment about notice periods and wind-down eating into year one, not a calculation from the files, and no contract terms were supplied to test either end.</p>
+
+    <h3>The decisions that stayed with people</h3>
+    <ul class="prose">
+      <li><strong>Decision needed:</strong> app owners and architecture confirm Routewise has no dependency Routesmith can't cover. The same goes for the other four pairs.</li>
+      <li><strong>Decision needed:</strong> an owner named for each app before any Eliminate call is carried out.</li>
+      <li><strong>Decision needed:</strong> the data owner sets disposition and retention for each retiring app, such as moving Routewise's open routes to Routesmith.</li>
+      <li><strong>Decision needed:</strong> renewing LIC-017 and LIC-044. The tool recommends it; someone with the budget approves it.</li>
+    </ul>
+
+    <h3>What a real team would still check</h3>
+    <p class="prose">Whether cost per user is a fair tie-break at all. The users column isn't documented as licensed seats or installs, so the per-user figures are rough. Routesmith's license shows 279 entitlements against 366 users today; moving Routewise's 193 users onto it is a license question before it is a saving. Notice periods and penalties on the five retiring contracts decide where in the range the real number lands. One more thread: the AI intake record lists Routewise and Routesmith, unverified, among possible suppliers for Halden's route suggestion system (AI-003). If Routewise turns out to be that supplier, retiring it changes an AI system too. Worth one phone call before anyone signs.</p>
+
+    <p class="meta">Tool: <a href="tools.html#rationalization">Application rationalization</a> · <a href="docs/rationalization/example-halden-rationalization.html">Full Halden example</a> · Practicum: <a href="practicum.html#rationalization">Exercise 4, interactive</a> · <a href="docs/practicum/04-rationalization.html">printable</a></p>
+  </section>
+
+  <section aria-labelledby="try-heading">
+    <h2 id="try-heading">Try them yourself</h2>
+    <p class="prose">Each practicum exercise checks your answer against the public answer key, so you can work a case by hand and see how close you got before reading the tool's version. If your call and the tool's disagree, look at the files and decide who's right. The company is fictional. The checks are not.</p>
   </section>
 </main>
 

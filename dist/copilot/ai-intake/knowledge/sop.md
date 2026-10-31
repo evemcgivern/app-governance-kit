@@ -33,6 +33,9 @@ Every new system at proposal; every material change of use; a full re-review eve
 9. Enter any identified risk in the risk register with an owner [[XW-024]]
 10. Record the approval decision and the approver, with legal review for any high-risk or prohibited result [[XW-020]]
 11. Set a re-review date, and re-run intake on any change of use [[XW-021]]
+12. Confirm any AI tool subscription or purchase came through the acquisition gate (`sam-toolkit/acquisition-gate-checklist.md`), and send it to intake if it did not [[XW-009]] [[XW-021]]
+13. Check spend outside procurement, such as expense cards and department purchases, for AI-enabled tools, and run intake on each one found [[XW-012]] [[XW-022]]
+14. Keep an approved-AI-tools register of tools that passed intake, so staff can check it before buying [[XW-022]]
 
 ## Evidence to retain
 
@@ -43,6 +46,7 @@ Every new system at proposal; every material change of use; a full re-review eve
 - The AI inventory record.
 - The approval decision, the approver, and any legal review carried out.
 - The re-review date set.
+- The acquisition gate result, the spend-outside-procurement check, and the approved-AI-tools register.
 
 ## Related
 

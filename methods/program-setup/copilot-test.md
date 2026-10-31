@@ -7,6 +7,7 @@
 **Pass** if the response:
 - Reviews the draft as a charter (review mode, not draft mode).
 - Flags gaps including decision rights, sponsor, and membership size.
+- Asks whether an acquisition gate and an audit response plan exist.
 - Ends with a fenced `findings` block.
 
 Record the result (date, pass/fail, notes; no work data) in `copilot-results.md`.

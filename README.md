@@ -2,7 +2,7 @@
 
 Version 0.3.1 <!-- x-release-please-version -->
 
-Seven governance methods — portfolio, AI, and access — packaged as skills for
+Eight governance methods — portfolio, AI, and access — packaged as skills for
 Claude, Codex, and Microsoft Copilot, plus a public reference site and a set
 of hands-on practicum exercises for learning the underlying certifications
 (CAMP, CSAM, CHAMP, AIGP) by hand before using the tools.
@@ -11,7 +11,7 @@ Each method maps to real standards (ISO/IEC 19770, COBIT 2019, ISO/IEC 27001,
 ISO/IEC 42001) via a 29-row crosswalk, so every recommendation traces back to
 a clause, not just a rule of thumb.
 
-## The seven tools
+## The eight tools
 
 | Tool | Does |
 |---|---|
@@ -22,6 +22,7 @@ a clause, not just a rule of thumb.
 | `access-review` | Review user access against HR records; find orphaned, excessive, and privileged accounts. |
 | `ai-intake` | Tier a new AI use case for risk (EU AI Act, NIST AI RMF, ISO/IEC 42001) and produce an inventory record. |
 | `hardware-lifecycle` | Check a device fleet for overdue refreshes and retired devices missing a confirmed data wipe. |
+| `audit-response` | Answer a publisher audit letter: reconcile installs against proofs of purchase, find weak proofs, and brief counsel. |
 
 Each ships to `dist/claude/skills/`, `dist/codex/skills/`, and
 `dist/copilot/` in the platform-native shape those tools expect, built from
@@ -52,7 +53,7 @@ Pick your platform, then open its section. Downloads are on the [Tools page](htt
 <details>
 <summary>More</summary>
 
-- **What you get:** the seven tools, the `app-governance` router, the `cert-prep` study coach, and `app-governance-agent`. Plugin skills appear as `/app-governance-kit:<skill>`.
+- **What you get:** the eight tools, the `app-governance` router, the `cert-prep` study coach, and `app-governance-agent`. Plugin skills appear as `/app-governance-kit:<skill>`.
 - **Without the plugin:** `cp -R dist/claude/skills/* ~/.claude/skills/`, or unzip `claude-skills.zip` into `~/.claude/skills`. For one project only, use that project's `.claude/skills/`. Skills then appear as `/access-review`. For the agent, save [`app-governance-agent.md`](agents/app-governance-agent.md) to `~/.claude/agents`.
 - **Update:** `claude plugin update app-governance-kit@evemcgivern-skills`. Auto-update is off by default for marketplaces other than Anthropic's, so run it after each release. For copied skills, copy them again.
 - **Check it worked:** `claude plugin list` shows `app-governance-kit@evemcgivern-skills`, and typing `/` lists its skills.
@@ -114,7 +115,7 @@ Pick your platform, then open its section. Downloads are on the [Tools page](htt
 <details>
 <summary>More</summary>
 
-- **What you get:** the seven tools, the `app-governance` router, and the `cert-prep` study coach.
+- **What you get:** the eight tools, the `app-governance` router, and the `cert-prep` study coach.
 - **Where they work:** standalone skills work in the Codex CLI, the IDE extension, and the ChatGPT desktop app, where Codex runs. In the desktop app, open **Skills** in the sidebar to see them. [Skills docs](https://developers.openai.com/codex/skills).
 - **Update:** copy the new folders over the old ones. Codex picks up changes; if one doesn't appear, restart Codex.
 - **Check it worked:** run `/skills` in the CLI or IDE extension and look for `access-review`.
@@ -203,17 +204,17 @@ Create an agent in [Agent Builder](https://learn.microsoft.com/en-us/microsoft-3
 - **Read a method directly**: `methods/<tool>/method.md` for the full workflow, `checklist.md` for the a la carte version, `platform-guide.md` for where each field lives in ServiceNow/Flexera/etc.
 - **Let an agent pick the tool**: the `app-governance` skill routes a plain request ("review our software estate") to the right skill and hands every decision back to you. In Claude Code, `app-governance-agent` loads it for you.
 - **Practice for a certification**: ask the `cert-prep` study coach for scenario drills on the demo estate (CAMP, CSAM, CHAMP, AIGP, ITIL 4 Foundation, IAM Certificate). Practice only, not exam content.
-- **Run a SAM practice by hand**: the templates and checklists in `sam-toolkit/` (license position, renewals, asset record, authorizations, scope, tiers, audit, vendors), with a guide in `sam-toolkit/guide.md`.
-- **Work an exercise by hand**: `practicum/01-program-setup.md` through `practicum/07-hardware-lifecycle.md`, then self-check on the site's interactive practicum page — no installs, no AI shortcuts.
+- **Run a SAM practice by hand**: the templates and checklists in `sam-toolkit/` (license position, proof of purchase, renewals, asset record, authorizations, scope, tiers, audit, vendors, contract terms, acquisition gate, invoice verification, savings report), with a guide in `sam-toolkit/guide.md`.
+- **Work an exercise by hand**: `practicum/01-program-setup.md` through `practicum/08-audit-response.md`, then self-check on the site's interactive practicum page — no installs, no AI shortcuts.
 - **Use it with an agent**: point Claude, Codex, or Copilot at the relevant `dist/<platform>/...` skill and a real dataset (or the demo one under `demo-estate/`).
 
 ## Repo layout
 
 ```
 methods/       One folder per tool: method.md, checklist.md, sop.md, template.csv, platform-guide.md, example/
-sam-toolkit/   Eight templates and checklists for a software asset management practice, downloadable from the site
+sam-toolkit/   Thirteen templates and checklists for a software asset management practice, downloadable from the site
 demo-estate/   A fictional company (Halden Logistics) with planted, findable problems, used by every practicum exercise
-practicum/     Seven hands-on exercises, worked by hand against demo-estate before checking the answer key
+practicum/     Eight hands-on exercises, worked by hand against demo-estate before checking the answer key
 field-guide/   Certifications, standards, glossary — the reference material behind the tools
 site/          The public site (built, not hand-maintained — see below)
 dist/          Generated per-platform skill packages (do not hand-edit; regenerated by `make build`)

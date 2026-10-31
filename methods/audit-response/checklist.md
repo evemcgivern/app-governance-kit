@@ -1,0 +1,17 @@
+# Audit response checklist
+
+1. Plan in place before any letter: who receives letters, the communication rule, the team roster, and the roles-by-timeline chart [[XW-003]] [[XW-004]]
+2. Letter passed straight to Legal, and the asset manager and response team told [[XW-004]] [[XW-020]]
+3. Executive leadership told and a sponsor named [[XW-027]]
+4. Team assembled: asset manager, Legal, Procurement, IT security, a finance contact, and department managers as needed [[XW-004]]
+5. Proofs of purchase gathered, with invoice, order, and payment record kept together [[XW-006]]
+6. Discovery run and kept as it stood on the day it ran [[XW-005]] [[XW-020]]
+7. Claim, the publisher's audit right (including whether the agreement was assigned to it), scope, period reviewed, and limits on system changes settled by Legal [[XW-013]] [[XW-007]]
+8. Hardware audit run and compared with the discovery data [[XW-005]] [[XW-026]]
+9. Discovery data narrowed to the agreed scope; proofs older than the period kept in [[XW-005]] [[XW-026]]
+10. Use reconciled against proofs per product and version in the agreement's license metric (named users, devices), not raw installs: short, even, or over; downgrade rights listed for counsel [[XW-007]]
+11. Each proof checked against what the agreement accepts (portal and reseller records included): buyer, vendor, product, version, metric, quantity, date, current term for a subscription, price and payment where required, and the qualifying base each upgrade uses up [[XW-006]] [[XW-026]]
+12. No software removed and no configuration changed unless counsel agreed [[XW-029]]
+13. Legal and executives briefed on gaps and open decisions [[XW-024]] [[XW-027]]
+14. Everything handed to Legal as reconciliation exhibits, releasing no more than counsel decides [[XW-013]] [[XW-020]]
+15. Post-audit review held and the documentation, configuration, and reconciliation habits kept going [[XW-025]]

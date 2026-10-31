@@ -69,8 +69,9 @@ class PayloadTests(unittest.TestCase):
         cls.tmp = Path(tempfile.mkdtemp())
         gen.generate(cls.tmp / "demo")
 
-    def test_order_has_seven_tools_matching_graded_tools(self):
-        self.assertEqual(len(ORDER), 7)
+    def test_order_has_eight_tools_matching_graded_tools(self):
+        self.assertEqual(len(ORDER), 8)
+        self.assertIn("audit-response", ORDER)
         self.assertIn("hardware-lifecycle", ORDER)
         payload = practicum_payload(self.tmp / "demo", write_exercises(self.tmp / "ex1"), XW)
         self.assertEqual([e["tool"] for e in payload["exercises"]], list(ORDER))

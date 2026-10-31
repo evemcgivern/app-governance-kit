@@ -31,7 +31,10 @@ A full rationalization every year, plus a lighter pass before each budget cycle.
 8. Check vendor contract terms with architecture before any eliminate decision is acted on [[XW-013]]
 9. Raise a retirement plan for each eliminate decision [[XW-009]] [[XW-010]]
 10. Identify the data held by each retiring or migrating app and agree its disposition — archive, migrate, or delete, with a retention period — with the data owner [[XW-010]] [[XW-028]]
-11. Record the decisions and approvers before the rationalization is filed [[XW-020]]
+11. Run every new purchase request through the acquisition gate: already owned, redeployable, or a duplicate of an app on the inventory. Use `sam-toolkit/acquisition-gate-checklist.md` [[XW-009]] [[XW-011]]
+12. Verify each invoice against the contract and purchase order before it is paid, and log every mismatch in `sam-toolkit/invoice-verification.csv` [[XW-012]] [[XW-013]]
+13. Report savings with the evidence behind each figure, and include adverse trends such as rising invoice errors or reclaimed licenses requested again, in `sam-toolkit/savings-report.csv` [[XW-012]]
+14. Record the decisions and approvers before the rationalization is filed [[XW-020]]
 
 ## Evidence to retain
 
@@ -40,6 +43,7 @@ A full rationalization every year, plus a lighter pass before each budget cycle.
 - The license check results, including expired and over-entitled licenses.
 - The TIME table with the scoring and reasoning behind each decision.
 - The data disposition agreed for each retiring or migrating app, and who agreed it.
+- The acquisition gate result for each new purchase request, the invoice checks with their mismatches, and the savings report with its evidence and adverse trends.
 - The finance partner's confirmation of the savings range and architecture's review of duplicate and Migrate decisions.
 
 ## Related

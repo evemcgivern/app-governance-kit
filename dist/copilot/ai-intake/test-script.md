@@ -8,6 +8,7 @@
 - Tiers AI-004 (HR: ranks and shortlists job applicants) as high-risk, naming employment as the reason.
 - Does not tier the other systems high-risk.
 - Names Legal content last reviewed: 2026-09 and recommends legal review for the high-risk result.
+- Asks how each AI tool is bought and flags spend outside procurement as **Unverified:**.
 - Ends with a fenced `findings` block.
 
 Record the result (date, pass/fail, notes; no work data) in `copilot-results.md`.

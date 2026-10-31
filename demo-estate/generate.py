@@ -61,6 +61,78 @@ DEVICE_BASE_COST = {"laptop": 1200, "desktop": 900, "mobile": 600, "server": 600
 DEVICE_RETIRED = {5, 11, 18, 24, 29, 35, 42, 48, 53, 59}
 DEVICE_OVERDUE = {8, 27, 45}
 DEVICE_UNWIPED = {11, 42}
+# Audit scenario: a publisher group writes to Halden about three product lines it bought in 2025.
+# Each row is (proof_id, license_id, product, version, quantity, license_metric, license_model, vendor,
+# buyer_entity, purchase_date, term_start, term_end, price_usd, payment_proof, license_type, upgrade_base,
+# upgrade_chain_complete, evidence_location). Taskmoor and Shapewise are subscriptions counted per named
+# user; the term is the current subscription term. Cellmate is a perpetual license counted per device;
+# the term is its current support term. Both terms end on the expiry shown in licenses.csv.
+# An upgrade uses up its qualifying base license; P-006 names a v1 base that Halden holds no proof of.
+HALDEN_ENTITY = "Halden Logistics Inc"
+TERM = ("2026-07-01", "2027-06-30")
+PROOFS = [
+    ("P-001", "LIC-019", "Taskmoor Project management", "5", 200, "named user", "subscription", "Taskmoor",
+     HALDEN_ENTITY, "2024-03-12", *TERM, 31000, "yes", "full", "", "n/a",
+     "AP/2026/invoice-6012 line 1 (current term); AP/2024/invoice-4471 (first order)"),
+    ("P-002", "LIC-019", "Taskmoor Project management", "5", 72, "named user", "subscription", "Taskmoor",
+     HALDEN_ENTITY, "2025-06-20", *TERM, 11160, "yes", "full", "", "n/a",
+     "AP/2026/invoice-6012 line 2 (current term); AP/2025/invoice-5208 (first order)"),
+    ("P-003", "LIC-020", "Shapewise Diagramming", "3", 150, "named user", "subscription", "Shapewise",
+     "", "2023-02-14", *TERM, 21000, "yes", "full", "", "n/a",
+     "AP/2026/invoice-6030 line 1 (current term); AP/2023/invoice-3390 (first order)"),
+    ("P-004", "LIC-020", "Shapewise Diagramming", "3", 135, "named user", "subscription", "Shapewise",
+     HALDEN_ENTITY, "2025-02-10", *TERM, 20250, "no", "full", "", "n/a",
+     "AP/2026/invoice-6031 (current term); AP/2025/invoice-4982 (first order)"),
+    ("P-005", "LIC-043", "Cellmate Spreadsheet add-in", "2", 50, "device", "perpetual", "Cellmate",
+     HALDEN_ENTITY, "2022-05-04", *TERM, 4000, "yes", "full", "", "n/a",
+     "AP/2022/invoice-2874 (license); AP/2026/invoice-6044 line 1 (support term)"),
+    ("P-006", "LIC-043", "Cellmate Spreadsheet add-in", "3", 34, "device", "perpetual", "Cellmate",
+     HALDEN_ENTITY, "2024-11-05", *TERM, 2380, "yes", "upgrade", "Cellmate Spreadsheet add-in 1", "no",
+     "AP/2024/invoice-4640 (upgrade from version 1); AP/2026/invoice-6044 line 2 (support term)"),
+]
+# Halden's own discovery per license and version: the metric the contract counts, raw installs, the count
+# in that metric (assigned users for named-user products, devices for device products), and the earliest
+# install seen. Some named users have the product on two devices, so installs exceed users.
+INSTALLS = [
+    ("LIC-019", "Taskmoor Project management", "5", "named user", 301, 289, "2024-04-02"),
+    ("LIC-020", "Shapewise Diagramming", "3", "named user", 297, 285, "2023-03-01"),
+    ("LIC-043", "Cellmate Spreadsheet add-in", "2", "device", 50, 50, "2022-03-01"),
+    ("LIC-043", "Cellmate Spreadsheet add-in", "3", "device", 34, 34, "2025-01-20"),
+]
+AUDIT_FINDINGS = [("install_shortfall", "LIC-019"), ("proof_missing_buyer", "P-003"),
+                  ("payment_proof_missing", "P-004"), ("proof_after_install", "P-005"),
+                  ("upgrade_without_original", "P-006"), ("letter_scope_overreach", "letter-scope")]
+AUDIT_LETTER = """# Software license audit notice
+
+**From:** Brightvale Software Group, Compliance Programs
+**To:** Halden Logistics Inc, Office of the General Counsel
+**Date:** 2026-08-24
+**Reference:** BSG-AUD-2026-0417
+
+Brightvale Software Group acquired the Taskmoor, Shapewise, and Cellmate product lines from Mosswood
+Software in 2025. We are reviewing license compliance for these products and ask Halden to take part.
+
+## What we ask for
+
+- A list of every installation of any Brightvale, Taskmoor, Shapewise, or Cellmate product at Halden
+  Logistics Inc and every other Halden group company, in any country.
+- Installation records for every year back to 2019.
+- Proof of purchase for each product.
+- A device-level list: device name, user, and install date for every installation.
+- A written reply within 30 days of the date above.
+
+## Halden's own notes on its agreement (ref HAL-MSW-2022)
+
+- Signed with Mosswood Software in 2022, before Brightvale bought the product lines. Halden holds no
+  record of the agreement being assigned to Brightvale.
+- Contracting party: Halden Logistics Inc only. Other group companies are not parties.
+- Products covered: Taskmoor Project management, Shapewise Diagramming, Cellmate Spreadsheet add-in.
+- License metric: Taskmoor and Shapewise per named user; Cellmate per device.
+- Audit clause: one review in any 12 months, on 30 days' notice, covering use in the 36 months before
+  the notice, with results released to the publisher as counts per product and version.
+- Proof of purchase: invoices, order confirmations, or records from the publisher's licensing portal or
+  an authorized reseller.
+"""
 CHARTER_DRAFT = """# Halden Software Governance Council — draft charter
 
 ## Purpose
@@ -183,6 +255,18 @@ def generate(out: Path) -> None:
             for i in sorted(DEVICE_OVERDUE)]
     key += [{"tool": "hardware-lifecycle", "type": "unwiped_retired_device", "id": f"DEV-{i:03d}"}
             for i in sorted(DEVICE_UNWIPED)]
+
+    _write(out / "proofs-of-purchase.csv",
+           ["proof_id", "license_id", "product", "version", "quantity", "license_metric", "license_model",
+            "vendor", "buyer_entity", "purchase_date", "term_start", "term_end", "price_usd", "payment_proof",
+            "license_type", "upgrade_base", "upgrade_chain_complete", "evidence_location"],
+           [list(p) for p in PROOFS])
+    _write(out / "audit-installs.csv",
+           ["license_id", "product", "version", "license_metric", "installs_counted", "count_in_metric",
+            "first_install_date", "checked_on"],
+           [list(i) + [CHECKED_ON] for i in INSTALLS])
+    (out / "audit-letter.md").write_text(AUDIT_LETTER, encoding="utf-8")
+    key += [{"tool": "audit-response", "type": t, "id": i} for t, i in AUDIT_FINDINGS]
 
     key.sort(key=lambda k: (k["tool"], k["type"], k["id"]))
     (out / "answer-key.json").write_text(json.dumps(key, indent=2) + "\n", encoding="utf-8")
