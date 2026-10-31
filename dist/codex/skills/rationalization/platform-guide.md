@@ -24,6 +24,10 @@ License position work uses **verified usage metering** (login-depth usage data, 
 
 No confirmed Flexera One field or table name exists for storing a rationalization decision itself (TIME or 4 R's); its documented capabilities support the inventory and usage evidence the decision is based on, not a decision record. Flexera's documentation site (`docs.flexera.com/...`) does not return readable content to automated fetches, so nothing above cites it directly.
 
+## Acquisition gate, invoice checks, and savings reporting
+
+No source checked names a ServiceNow or Flexera One field for the acquisition gate, invoice verification, or a savings report; treat these as gaps. Run them with `sam-toolkit/acquisition-gate-checklist.md`, `sam-toolkit/invoice-verification.csv`, and `sam-toolkit/savings-report.csv`, and keep the results next to the TIME table.
+
 ## Sources checked
 
 - [Application assessment — ServiceNow Docs (Yokohama, Application Portfolio Management)](https://www.servicenow.com/docs/bundle/yokohama-application-portfolio-management/page/product/application-portfolio-management/concept/application-assessment.html) — Assessment Indicators, Scoring Profiles, Application Scores, Application 360, bubble-chart visualization, assessment dimensions.

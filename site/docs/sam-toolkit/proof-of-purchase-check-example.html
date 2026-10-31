@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Proof of purchase check example — Eve McGivern</title>
+<meta name="description" content="Proof of purchase check example">
+<meta name="author" content="Eve McGivern">
+<link rel="canonical" href="https://evemcgivern.github.io/app-governance-kit/docs/sam-toolkit/proof-of-purchase-check-example.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Eve McGivern — Application Governance">
+<meta property="og:title" content="Proof of purchase check example">
+<meta property="og:description" content="Proof of purchase check example">
+<meta property="og:url" content="https://evemcgivern.github.io/app-governance-kit/docs/sam-toolkit/proof-of-purchase-check-example.html">
+<meta property="og:image" content="https://evemcgivern.github.io/app-governance-kit/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Proof of purchase check example">
+<meta name="twitter:description" content="Proof of purchase check example">
+<meta name="twitter:image" content="https://evemcgivern.github.io/app-governance-kit/og-image.png">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Home",
+     "item": "https://evemcgivern.github.io/app-governance-kit/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "SAM toolkit",
+     "item": "https://evemcgivern.github.io/app-governance-kit/sam-toolkit.html"
+    },
+    {
+     "@type": "ListItem",
+     "position": 3,
+     "name": "Proof of purchase check example",
+     "item": "https://evemcgivern.github.io/app-governance-kit/docs/sam-toolkit/proof-of-purchase-check-example.html"
+    }
+   ]
+  },
+  {
+   "@type": "WebPage",
+   "name": "Proof of purchase check example",
+   "description": "Proof of purchase check example",
+   "url": "https://evemcgivern.github.io/app-governance-kit/docs/sam-toolkit/proof-of-purchase-check-example.html",
+   "isPartOf": {
+    "@type": "WebSite",
+    "url": "https://evemcgivern.github.io/app-governance-kit/"
+   },
+   "author": {
+    "@type": "Person",
+    "name": "Eve McGivern",
+    "url": "https://evemcgivern.github.io/"
+   },
+   "license": "https://opensource.org/licenses/MIT",
+   "isAccessibleForFree": true
+  }
+ ]
+}
+</script>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../apple-touch-icon.png">
+<link rel="stylesheet" href="../../style.css">
+<script src="../../nav.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="support-bar"><a class="coffee-link" href="https://buymeacoffee.com/a8w5iiqszp" rel="noopener"><svg class="coffee-icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M5 9h11v5a5 5 0 0 1-5 5h-1a5 5 0 0 1-5-5V9z" fill="#2f9e6e"/><path d="M16 10.5h1.2a2.4 2.4 0 0 1 0 4.8H16" fill="none" stroke="#2f9e6e" stroke-width="1.8" stroke-linecap="round"/><path d="M8.5 3.5c0 1.3 1 1.3 1 2.6M12 3.5c0 1.3 1 1.3 1 2.6" fill="none" stroke="#2f9e6e" stroke-width="1.6" stroke-linecap="round"/></svg><span>Buy me a coffee</span></a></div>
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="https://evemcgivern.github.io/">Eve McGivern</a>
+    <nav class="site-nav" aria-label="Main">
+      <ul>
+        <li><a href="../../tools.html" aria-describedby="tip-tools">Tools</a><span class="nav-tip" role="tooltip" id="tip-tools">The eight governance methods, packaged as skills for Claude, Codex, and Copilot.</span></li>
+        <li><a href="../../sam-toolkit.html" aria-describedby="tip-sam-toolkit">SAM toolkit</a><span class="nav-tip" role="tooltip" id="tip-sam-toolkit">Templates and checklists for running software asset management by hand.</span></li>
+        <li><a href="../../practicum.html" aria-describedby="tip-practicum">Practicum</a><span class="nav-tip" role="tooltip" id="tip-practicum">Hands-on exercises on a fictional company, with answers you can check.</span></li>
+        <li><a href="../../lifecycle.html" aria-describedby="tip-lifecycle">Lifecycle</a><span class="nav-tip" role="tooltip" id="tip-lifecycle">Six stages from request to retirement, with the questions to ask at each.</span></li>
+        <li><a href="../../crosswalk.html" aria-describedby="tip-crosswalk">Crosswalk explorer</a><span class="nav-tip" role="tooltip" id="tip-crosswalk">See how each control maps to ISO/IEC 19770, COBIT, 27001, and 42001.</span></li>
+        <li><a href="../../impact-map.html" aria-describedby="tip-impact-map">Impact map</a><span class="nav-tip" role="tooltip" id="tip-impact-map">One grid showing every control theme against every lifecycle stage.</span></li>
+        <li><a href="../../field-guide.html" aria-describedby="tip-field-guide">Field guide</a><span class="nav-tip" role="tooltip" id="tip-field-guide">Plain-language guides to the standards, certifications, and key terms.</span></li>
+        <li><a href="../../case-studies.html" aria-describedby="tip-case-studies">Case studies</a><span class="nav-tip" role="tooltip" id="tip-case-studies">Worked examples of the kit in use, on a fictional company.</span></li>
+        <li><a href="../../about.html" aria-describedby="tip-about">About</a><span class="nav-tip" role="tooltip" id="tip-about">Who built the kit, and how to get in touch.</span></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<main id="main" class="doc-page">
+  <div class="doc-top">
+    <p class="doc-back"><a href="../../sam-toolkit.html">&larr; SAM toolkit</a></p>
+    <button type="button" class="print-icon" onclick="window.print()" aria-label="Print this page" title="Print"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="M7 9V3.5h10V9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M7 17H4.5A1.5 1.5 0 0 1 3 15.5v-5A1.5 1.5 0 0 1 4.5 9h15a1.5 1.5 0 0 1 1.5 1.5v5a1.5 1.5 0 0 1-1.5 1.5H17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><rect x="7" y="14" width="10" height="6.5" rx="0.8" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17.5" cy="12" r="0.9" fill="currentColor"/></svg></button>
+  </div>
+  <h1>Proof of purchase check example</h1>
+  <div class="visual-actions doc-actions">
+    <a class="visual-actions__link" href="proof-of-purchase-check-example.xlsx">Download Excel (.xlsx)</a>
+    <a class="visual-actions__link" href="proof-of-purchase-check-example.csv">Download CSV</a>
+    <button type="button" class="visual-actions__link doc-print" onclick="window.print()">Print or save as PDF</button>
+  </div>
+
+  <div class="doc-body prose prose-wide">
+<div class="table-scroll"><table class="checklist wide"><thead><tr><th scope="col">app_id</th><th scope="col">publisher</th><th scope="col">product</th><th scope="col">version</th><th scope="col">license_type</th><th scope="col">license_metric</th><th scope="col">term_start</th><th scope="col">term_end</th><th scope="col">installs_found</th><th scope="col">count_in_metric</th><th scope="col">proofs_located</th><th scope="col">quantity_proven</th><th scope="col">proof_ref</th><th scope="col">result</th><th scope="col">shows_purchase_date</th><th scope="col">shows_full_product_description</th><th scope="col">shows_version</th><th scope="col">shows_quantity</th><th scope="col">shows_vendor</th><th scope="col">shows_buyer_entity</th><th scope="col">shows_price</th><th scope="col">payment_proof_on_file</th><th scope="col">upgrade_chain_complete</th><th scope="col">evidence_location</th><th scope="col">checked_on</th><th scope="col">reviewer</th><th scope="col">notes</th></tr></thead><tbody><tr><td>APP-001</td><td>Northbeam</td><td>Northbeam ERP</td><td>2024</td><td>full</td><td>named user</td><td>2026-07-01</td><td>2027-06-30</td><td>61</td><td>57</td><td>1</td><td>38</td><td class="long-text">INV-NB-2026-0117 (current term)</td><td>short</td><td>yes</td><td>yes</td><td>yes</td><td>yes</td><td>yes</td><td>yes</td><td>yes</td><td>yes</td><td>not applicable</td><td>Procurement share / Northbeam / 2026</td><td>2026-09-01</td><td class="checklist-write"></td><td class="long-text">Subscription. Current-term invoice and payment both on file. Reconciled on 57 assigned users, not 61 installs: 19 users have no proof of purchase.</td></tr><tr><td>APP-025</td><td>Pulseboard</td><td>Pulseboard Monitoring</td><td>5.2</td><td>full</td><td>device</td><td>2026-07-01</td><td>2027-06-30</td><td>45</td><td>45</td><td>3</td><td>350</td><td class="long-text">INV-PB-2023-0442; INV-PB-2025-0090; INV-PB-2026-0301 (support term)</td><td>over</td><td>yes</td><td>yes</td><td>yes</td><td>yes</td><td>yes</td><td>yes</td><td>yes</td><td>yes</td><td>not applicable</td><td>Procurement share / Pulseboard</td><td>2026-09-01</td><td class="checklist-write"></td><td class="long-text">Perpetual; the term is the current support term. Surplus of 305. Check the renewal calendar before the next true-up.</td></tr><tr><td>APP-037</td><td>Linkup</td><td>Linkup Endpoint management</td><td>3.0</td><td>upgrade</td><td>device</td><td>2026-07-01</td><td>2027-06-30</td><td>489</td><td>489</td><td>3</td><td>386</td><td class="long-text">INV-LK-2025-0210; INV-LK-2025-0388; INV-LK-2026-0031</td><td>short</td><td>yes</td><td>yes</td><td>yes</td><td>yes</td><td>yes</td><td>yes</td><td>yes</td><td>yes</td><td>no</td><td>Procurement share / Linkup</td><td>2026-09-01</td><td class="checklist-write"></td><td class="long-text">120 of 506 recorded seats are upgrades whose qualifying base license is not on file. They do not count until it is found. An upgrade uses up its base, so a found base cannot also count for installs of its own version. Ask counsel whether downgrade rights apply.</td></tr><tr><td>APP-054</td><td>Roomly</td><td>Roomly Facilities booking</td><td>2.1</td><td>full</td><td>named user</td><td class="checklist-write"></td><td class="checklist-write"></td><td>226</td><td>218</td><td>1</td><td>0</td><td class="long-text">PO-HL-2024-0733</td><td>short</td><td>yes</td><td>yes</td><td>yes</td><td>yes</td><td>yes</td><td>yes</td><td>no</td><td>no</td><td>not applicable</td><td>Facilities contract folder</td><td>2026-09-01</td><td class="checklist-write"></td><td class="long-text">Unproven. A purchase order shows an order was placed, not that it was invoiced, paid, or renewed, and there is no current-term invoice for this subscription. Look for the invoice, a licensing-portal record, or a reseller record, and check what the agreement accepts as proof.</td></tr></tbody></table></div>
+  </div>
+  <div class="doc-bottom"><button type="button" class="print-icon" onclick="window.print()" aria-label="Print this page" title="Print"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="M7 9V3.5h10V9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M7 17H4.5A1.5 1.5 0 0 1 3 15.5v-5A1.5 1.5 0 0 1 4.5 9h15a1.5 1.5 0 0 1 1.5 1.5v5a1.5 1.5 0 0 1-1.5 1.5H17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><rect x="7" y="14" width="10" height="6.5" rx="0.8" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17.5" cy="12" r="0.9" fill="currentColor"/></svg></button></div>
+</main>
+<footer class="site-footer">
+  <p>Eve McGivern · <a href="https://evemcgivern.github.io/">evemcgivern.github.io</a></p>
+  <p>Questions? Comments? <a href="https://github.com/evemcgivern/app-governance-kit/issues" id="contact-email" data-r="moc.liamg|nrevigcmeve">email me</a>.</p>
+  <p><a href="https://buymeacoffee.com/a8w5iiqszp" rel="noopener">Buy me a coffee</a> if these tools help.</p>
+  <p class="site-version"><a href="https://github.com/evemcgivern/app-governance-kit/releases" rel="noopener" id="site-version">Version</a></p>
+</footer>
+<script>
+(function () {
+  "use strict";
+  var el = document.getElementById("contact-email");
+  if (!el || !el.getAttribute("data-r")) { return; }
+  function arm() {
+    el.href = "mailto:" + el.getAttribute("data-r").split("").reverse().join("").replace("|", "@");
+  }
+  ["pointerenter", "focus", "touchstart"].forEach(function (type) {
+    el.addEventListener(type, arm, { once: true, passive: true });
+  });
+})();
+</script>
+
+</body>
+</html>

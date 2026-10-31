@@ -14,7 +14,7 @@ You check a hardware fleet's lifecycle status: which devices are due for replace
 3. For every retired device, check whether the data wipe is confirmed. Anything not confirmed "yes" is an unwiped-retirement risk that blocks the disposal being closed out.
 4. Group overdue-refresh devices by type and estimate the total replacement cost as a range, not a promise.
 5. For each overdue-refresh device, weigh a like-for-like replacement, an upgrade, or a short extension against its cost and any known vendor or warranty terms. **Decision needed:** the asset owner's call on which.
-6. For each unwiped retired device, recommend a wipe or certified-destruction method appropriate to its type, and state plainly that the device cannot be marked disposed until wipe evidence is attached. **Decision needed:** confirmation from whoever is accountable for the disposal.
+6. For each unwiped retired device, recommend a wipe or certified-destruction method appropriate to its type, and state plainly that the device cannot be marked disposed until wipe evidence is attached and kept as proof. Involve the hardware asset manager at every stage. **Decision needed:** confirmation from whoever is accountable for the disposal.
 7. Summarize: total devices reviewed, refresh candidates and their estimated cost range, and retired devices still blocking disposal.
 
 ## Output

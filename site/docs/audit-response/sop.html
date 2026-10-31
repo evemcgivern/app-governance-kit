@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Audit response SOP — Eve McGivern</title>
+<meta name="description" content="This SOP describes a practice. It gives no legal advice. Decision needed: counsel marks…">
+<meta name="author" content="Eve McGivern">
+<link rel="canonical" href="https://evemcgivern.github.io/app-governance-kit/docs/audit-response/sop.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Eve McGivern — Application Governance">
+<meta property="og:title" content="Audit response SOP">
+<meta property="og:description" content="This SOP describes a practice. It gives no legal advice. Decision needed: counsel marks…">
+<meta property="og:url" content="https://evemcgivern.github.io/app-governance-kit/docs/audit-response/sop.html">
+<meta property="og:image" content="https://evemcgivern.github.io/app-governance-kit/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Audit response SOP">
+<meta name="twitter:description" content="This SOP describes a practice. It gives no legal advice. Decision needed: counsel marks…">
+<meta name="twitter:image" content="https://evemcgivern.github.io/app-governance-kit/og-image.png">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Home",
+     "item": "https://evemcgivern.github.io/app-governance-kit/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "Tools",
+     "item": "https://evemcgivern.github.io/app-governance-kit/tools.html"
+    },
+    {
+     "@type": "ListItem",
+     "position": 3,
+     "name": "Audit response SOP",
+     "item": "https://evemcgivern.github.io/app-governance-kit/docs/audit-response/sop.html"
+    }
+   ]
+  },
+  {
+   "@type": "WebPage",
+   "name": "Audit response SOP",
+   "description": "This SOP describes a practice. It gives no legal advice. Decision needed: counsel marks\u2026",
+   "url": "https://evemcgivern.github.io/app-governance-kit/docs/audit-response/sop.html",
+   "isPartOf": {
+    "@type": "WebSite",
+    "url": "https://evemcgivern.github.io/app-governance-kit/"
+   },
+   "author": {
+    "@type": "Person",
+    "name": "Eve McGivern",
+    "url": "https://evemcgivern.github.io/"
+   },
+   "license": "https://opensource.org/licenses/MIT",
+   "isAccessibleForFree": true
+  }
+ ]
+}
+</script>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../apple-touch-icon.png">
+<link rel="stylesheet" href="../../style.css">
+<script src="../../nav.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="support-bar"><a class="coffee-link" href="https://buymeacoffee.com/a8w5iiqszp" rel="noopener"><svg class="coffee-icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M5 9h11v5a5 5 0 0 1-5 5h-1a5 5 0 0 1-5-5V9z" fill="#2f9e6e"/><path d="M16 10.5h1.2a2.4 2.4 0 0 1 0 4.8H16" fill="none" stroke="#2f9e6e" stroke-width="1.8" stroke-linecap="round"/><path d="M8.5 3.5c0 1.3 1 1.3 1 2.6M12 3.5c0 1.3 1 1.3 1 2.6" fill="none" stroke="#2f9e6e" stroke-width="1.6" stroke-linecap="round"/></svg><span>Buy me a coffee</span></a></div>
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="https://evemcgivern.github.io/">Eve McGivern</a>
+    <nav class="site-nav" aria-label="Main">
+      <ul>
+        <li><a href="../../tools.html" aria-describedby="tip-tools">Tools</a><span class="nav-tip" role="tooltip" id="tip-tools">The eight governance methods, packaged as skills for Claude, Codex, and Copilot.</span></li>
+        <li><a href="../../sam-toolkit.html" aria-describedby="tip-sam-toolkit">SAM toolkit</a><span class="nav-tip" role="tooltip" id="tip-sam-toolkit">Templates and checklists for running software asset management by hand.</span></li>
+        <li><a href="../../practicum.html" aria-describedby="tip-practicum">Practicum</a><span class="nav-tip" role="tooltip" id="tip-practicum">Hands-on exercises on a fictional company, with answers you can check.</span></li>
+        <li><a href="../../lifecycle.html" aria-describedby="tip-lifecycle">Lifecycle</a><span class="nav-tip" role="tooltip" id="tip-lifecycle">Six stages from request to retirement, with the questions to ask at each.</span></li>
+        <li><a href="../../crosswalk.html" aria-describedby="tip-crosswalk">Crosswalk explorer</a><span class="nav-tip" role="tooltip" id="tip-crosswalk">See how each control maps to ISO/IEC 19770, COBIT, 27001, and 42001.</span></li>
+        <li><a href="../../impact-map.html" aria-describedby="tip-impact-map">Impact map</a><span class="nav-tip" role="tooltip" id="tip-impact-map">One grid showing every control theme against every lifecycle stage.</span></li>
+        <li><a href="../../field-guide.html" aria-describedby="tip-field-guide">Field guide</a><span class="nav-tip" role="tooltip" id="tip-field-guide">Plain-language guides to the standards, certifications, and key terms.</span></li>
+        <li><a href="../../case-studies.html" aria-describedby="tip-case-studies">Case studies</a><span class="nav-tip" role="tooltip" id="tip-case-studies">Worked examples of the kit in use, on a fictional company.</span></li>
+        <li><a href="../../about.html" aria-describedby="tip-about">About</a><span class="nav-tip" role="tooltip" id="tip-about">Who built the kit, and how to get in touch.</span></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<main id="main" class="doc-page">
+  <div class="doc-top">
+    <p class="doc-back"><a href="../../tools.html">&larr; Tools</a></p>
+    <button type="button" class="print-icon" onclick="window.print()" aria-label="Print this page" title="Print"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="M7 9V3.5h10V9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M7 17H4.5A1.5 1.5 0 0 1 3 15.5v-5A1.5 1.5 0 0 1 4.5 9h15a1.5 1.5 0 0 1 1.5 1.5v5a1.5 1.5 0 0 1-1.5 1.5H17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><rect x="7" y="14" width="10" height="6.5" rx="0.8" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17.5" cy="12" r="0.9" fill="currentColor"/></svg></button>
+  </div>
+  <h1>Audit response SOP</h1>
+  <div class="visual-actions doc-actions">
+    <a class="visual-actions__link" href="sop.docx">Download Word (.docx)</a>
+    <button type="button" class="visual-actions__link doc-print" onclick="window.print()">Print or save as PDF</button>
+  </div>
+
+  <div class="doc-body prose prose-wide">
+<p>This SOP describes a practice. It gives no legal advice. <strong>Decision needed: counsel</strong> marks every point where Legal decides.</p>
+<h2 id="purpose">Purpose</h2>
+<p>Let the organization answer a software publisher&#x27;s audit or compliance letter calmly, with one voice and prepared evidence, instead of ignoring the letter or accepting every claim in it.</p>
+<h2 id="scope">Scope</h2>
+<p>Applies to any audit, compliance review, or license verification request from a software publisher or its agent, whether or not the contract gives the publisher an audit right. It covers software only. Hardware is reviewed here only to the extent it helps explain the install counts.</p>
+<h2 id="roles">Roles</h2>
+<ul><li><strong>IT or software asset manager</strong> — leads the technical work: proofs, discovery, hardware audit, and reconciliation.</li><li><strong>Legal</strong> — owns every contact with the publisher and every legal call: validity of the claim, scope, time frame, limits on system changes, and settlement.</li><li><strong>Procurement</strong> — finds purchase records, contracts, and the vendor&#x27;s contacts of record.</li><li><strong>Executive sponsor</strong> — receives the briefings, backs the team, and decides on spend and settlement with counsel.</li><li><strong>IT security</strong> — advises on what may be released and on any change to systems during the audit.</li><li><strong>Finance contact</strong> — finds payment records to go with each invoice.</li><li><strong>Department managers</strong> — answer questions about the software their teams use, as needed.</li></ul>
+<h2 id="frequency">Frequency</h2>
+<p>Prepare once, review the plan and roster every year and after any leadership change. Run the response sequence each time a letter arrives. Run a readiness check against the proofs and install counts every year.</p>
+<h2 id="prepare-ahead">Prepare ahead</h2>
+<ul><li><strong>Audit response plan.</strong> Who receives letters (mail room, support desk, and executives know to pass them to Legal at once), the communication rule, the team roster, and a roles-by-timeline chart.</li><li><strong>Roles-by-timeline chart, two versions.</strong> One lists roles only and lasts through staff changes. One adds names and phone numbers and is the one used in a hurry. Keep both.</li><li><strong>Repository status brief for counsel.</strong> One page on where proofs, contracts, discovery data, and inventory records live, who keeps each, and how current each is.</li></ul>
+<h2 id="steps">Steps</h2>
+<ol><li>The letter goes straight to Legal. Nobody replies, calls, or forwards it outside the team <a class="xw-tag" href="../../crosswalk.html">XW-004</a> <a class="xw-tag" href="../../crosswalk.html">XW-020</a></li><li>Legal tells the asset manager and the response team, and the asset manager opens a dated case file <a class="xw-tag" href="../../crosswalk.html">XW-004</a> <a class="xw-tag" href="../../crosswalk.html">XW-020</a></li><li>Legal and the asset manager tell executive leadership and name the sponsor <a class="xw-tag" href="../../crosswalk.html">XW-027</a></li><li>Assemble the team from the roster and walk it through the communication rule <a class="xw-tag" href="../../crosswalk.html">XW-004</a></li><li>Gather proofs of purchase: invoice, order, and payment record for each product, with contracts and upgrade history <a class="xw-tag" href="../../crosswalk.html">XW-006</a></li><li>Run discovery and keep the output as it stood on the day it ran <a class="xw-tag" href="../../crosswalk.html">XW-005</a> <a class="xw-tag" href="../../crosswalk.html">XW-020</a></li><li>Legal tests whether the claim is valid, including whether the agreement passed to the current publisher with an audit right, then settles the scope, the period of use reviewed, and any limit on changing systems while the audit runs <strong>Decision needed: counsel</strong> <a class="xw-tag" href="../../crosswalk.html">XW-013</a> <a class="xw-tag" href="../../crosswalk.html">XW-007</a></li><li>Run a hardware audit and compare it with the discovery data, so missing or extra devices are explained <a class="xw-tag" href="../../crosswalk.html">XW-005</a> <a class="xw-tag" href="../../crosswalk.html">XW-026</a></li><li>Narrow the discovery data to the agreed scope: products, entities, and period of use. Do not narrow the proofs: a proof older than the period still backs today&#x27;s use <a class="xw-tag" href="../../crosswalk.html">XW-005</a> <a class="xw-tag" href="../../crosswalk.html">XW-026</a></li><li>Reconcile use against proofs per product and version in the license metric the agreement counts, with <a href="../sam-toolkit/proof-of-purchase-check.html">Proof of purchase check template</a>: assigned users for a named-user product, devices for a device product, not raw installs. Label each short, even, or over, and list any downgrade rights to confirm with counsel <a class="xw-tag" href="../../crosswalk.html">XW-007</a></li><li>Check each proof against what the agreement and license terms accept as proof: typically buyer, vendor, product, version, metric, quantity, and date, often price and payment, the current term for a subscription, and the qualifying base behind each upgrade. Licensing-portal and reseller records can count <a class="xw-tag" href="../../crosswalk.html">XW-006</a> <a class="xw-tag" href="../../crosswalk.html">XW-026</a></li><li>Hold every software removal and configuration change unless counsel agrees <strong>Decision needed: counsel</strong> <a class="xw-tag" href="../../crosswalk.html">XW-029</a></li><li>Brief Legal and the executive sponsor on gaps, risks, and open decisions <a class="xw-tag" href="../../crosswalk.html">XW-024</a> <a class="xw-tag" href="../../crosswalk.html">XW-027</a></li><li>Hand everything to Legal as reconciliation exhibits, releasing no more than counsel decides <strong>Decision needed: counsel</strong> <a class="xw-tag" href="../../crosswalk.html">XW-013</a> <a class="xw-tag" href="../../crosswalk.html">XW-020</a></li><li>Hold a post-audit review, then keep the documentation, configuration, and reconciliation habits going <a class="xw-tag" href="../../crosswalk.html">XW-025</a></li></ol>
+<h2 id="rules">Rules</h2>
+<ul><li>Only counsel talks to the publisher. Everyone else sends questions to Legal.</li><li>Stay accurate and cooperative, but non-committal. Do not guess, speculate, or admit anything outside what counsel approves.</li><li>Do not delete software or change configuration during a formal audit unless counsel agrees.</li><li>Whether scope, the period reviewed, or settlement can be negotiated is for counsel to decide. <strong>Decision needed: counsel.</strong></li><li>Never hand over device-level detail beyond what counsel releases.</li><li>A forced audit can be answered three ways: ignore it, accept every claim, or respond with prepared evidence. The prepared response is the aim.</li></ul>
+<h2 id="questions-to-ask">Questions to ask</h2>
+<ul><li>Does the letter cite a contract clause, and does the contract give the publisher an audit right?</li><li>Was the agreement assigned to the current publisher, and does it give an audit right? <strong>Decision needed: counsel.</strong></li><li>Which entities, products, and period of use does the letter cover, and which does the agreement cover?</li><li>Which license metric does the agreement count for each product, and what does it accept as proof?</li><li>What level of detail does the agreement say may be released: counts, or device lists?</li><li>Which proof stands behind each installed product and version?</li><li>Which installs have no proof, and is there an explanation (a lapsed record, an acquisition, a vendor name change, a true-up)?</li><li>Who else outside the team might have received this letter?</li></ul>
+<h2 id="mistakes-to-avoid">Mistakes to avoid</h2>
+<ul><li>Replying to the publisher before Legal has read the letter.</li><li>Uninstalling software to look compliant. It can look like destroying evidence.</li><li>Reconciling the whole estate when the agreed scope is three products.</li><li>Counting a proof that lacks a detail the agreement requires, such as the buyer&#x27;s legal name, or an upgrade whose qualifying base has no proof.</li><li>Counting an upgrade and its qualifying base license both: the upgrade uses up the base.</li><li>Reconciling raw installs when the agreement counts named users or devices.</li><li>Treating a subscription&#x27;s first order as proof without the current term.</li><li>Leaving out proofs older than the audit period. They still back current use.</li><li>Relying on a proof dated after the install without confirming whether it is a true-up or a later purchase.</li><li>Keeping the readiness material in one person&#x27;s mailbox.</li></ul>
+<h2 id="who-decides">Who decides</h2>
+<p>People decide. The asset manager reports. Legal decides every legal point: the claim, the scope, the reply, and what is released. The executive sponsor decides, with counsel, on spend, true-up, and settlement. IT security decides what may be exposed. No tool or agent makes any of these calls.</p>
+<h2 id="evidence-to-retain">Evidence to retain</h2>
+<ul><li>The letter, with the date and time it arrived and who passed it to Legal.</li><li>The case file: who was told, and when.</li><li>The proofs of purchase gathered, and the checklist result for each. Keep proofs for as long as the license and any upgrade rights depend on them, and as long as the records schedule requires. <strong>Decision needed: records owner or counsel</strong> for the exact period.</li><li>The discovery output and the hardware audit output, dated.</li><li>The reconciliation per product and version, and the list of gaps.</li><li>Counsel&#x27;s decisions on scope, time frame, changes, and release, and the approvers.</li><li>What was handed over, to whom, and when.</li><li>The post-audit review notes and the changes that followed.</li></ul>
+<h2 id="related">Related</h2>
+<ul><li><a href="../../tools.html#crosswalk">Governance framework crosswalk</a> (<code>crosswalk</code>)</li><li><a href="../../tools.html#itam-maturity">ITAM maturity check</a> (<code>itam-maturity</code>)</li><li><a href="../../tools.html#rationalization">Application rationalization</a> (<code>rationalization</code>)</li><li><a href="../../tools.html#hardware-lifecycle">Hardware lifecycle check</a> (<code>hardware-lifecycle</code>)</li><li><a href="../../tools.html#program-setup">Stand up a governance program</a> (<code>program-setup</code>)</li></ul>
+  </div>
+  <div class="doc-bottom"><button type="button" class="print-icon" onclick="window.print()" aria-label="Print this page" title="Print"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="M7 9V3.5h10V9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M7 17H4.5A1.5 1.5 0 0 1 3 15.5v-5A1.5 1.5 0 0 1 4.5 9h15a1.5 1.5 0 0 1 1.5 1.5v5a1.5 1.5 0 0 1-1.5 1.5H17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><rect x="7" y="14" width="10" height="6.5" rx="0.8" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17.5" cy="12" r="0.9" fill="currentColor"/></svg></button></div>
+</main>
+<footer class="site-footer">
+  <p>Eve McGivern · <a href="https://evemcgivern.github.io/">evemcgivern.github.io</a></p>
+  <p>Questions? Comments? <a href="https://github.com/evemcgivern/app-governance-kit/issues" id="contact-email" data-r="moc.liamg|nrevigcmeve">email me</a>.</p>
+  <p><a href="https://buymeacoffee.com/a8w5iiqszp" rel="noopener">Buy me a coffee</a> if these tools help.</p>
+  <p class="site-version"><a href="https://github.com/evemcgivern/app-governance-kit/releases" rel="noopener" id="site-version">Version</a></p>
+</footer>
+<script>
+(function () {
+  "use strict";
+  var el = document.getElementById("contact-email");
+  if (!el || !el.getAttribute("data-r")) { return; }
+  function arm() {
+    el.href = "mailto:" + el.getAttribute("data-r").split("").reverse().join("").replace("|", "@");
+  }
+  ["pointerenter", "focus", "touchstart"].forEach(function (type) {
+    el.addEventListener(type, arm, { once: true, passive: true });
+  });
+})();
+</script>
+
+</body>
+</html>

@@ -93,6 +93,39 @@ class DemoEstateTests(unittest.TestCase):
         self.assertEqual(unwiped, self.expected("unwiped_retired_device"))
         self.assertEqual(len(unwiped), 2)
 
+    def test_audit_scenario_has_planted_problems_only(self):
+        proofs = rows(self.out / "proofs-of-purchase.csv")
+        installs = rows(self.out / "audit-installs.csv")
+        self.assertEqual(len(proofs), 6)
+        license_ids = {l["id"] for l in rows(self.out / "licenses.csv")}
+        self.assertTrue({p["license_id"] for p in proofs} <= license_ids)
+        no_buyer = {p["proof_id"] for p in proofs if not p["buyer_entity"]}
+        self.assertEqual(no_buyer, self.expected("proof_missing_buyer"))
+        no_payment = {p["proof_id"] for p in proofs if p["payment_proof"] != "yes"}
+        self.assertEqual(no_payment, self.expected("payment_proof_missing"))
+        no_original = {p["proof_id"] for p in proofs
+                       if p["license_type"] == "upgrade" and p["upgrade_chain_complete"] != "yes"}
+        self.assertEqual(no_original, self.expected("upgrade_without_original"))
+        short, late = set(), set()
+        for i in installs:
+            match = [p for p in proofs if p["license_id"] == i["license_id"] and p["version"] == i["version"]]
+            self.assertTrue(all(p["license_metric"] == i["license_metric"] for p in match))
+            if sum(int(p["quantity"]) for p in match) < int(i["count_in_metric"]):
+                short.add(i["license_id"])
+            earliest = min(match, key=lambda p: p["purchase_date"])
+            if earliest["purchase_date"] > i["first_install_date"]:
+                late.add(earliest["proof_id"])
+        self.assertEqual(short, self.expected("install_shortfall"))
+        self.assertEqual(late, self.expected("proof_after_install"))
+        self.assertEqual(self.expected("letter_scope_overreach"), {"letter-scope"})
+        expiry = {l["id"]: l["expiry"] for l in rows(self.out / "licenses.csv")}
+        for p in proofs:
+            self.assertEqual(p["term_end"], expiry[p["license_id"]])
+        for p in proofs:
+            if p["license_type"] == "upgrade":
+                self.assertFalse(any(q["product"] + " " + q["version"] == p["upgrade_base"] for q in proofs))
+        self.assertIn("Brightvale", (self.out / "audit-letter.md").read_text())
+
     def test_generation_is_deterministic(self):
         other = Path(tempfile.mkdtemp())
         gen.generate(other)

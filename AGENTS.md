@@ -4,7 +4,7 @@ Workspace-wide rules (commits, security, plan-before-code, approval gates) live 
 
 ## Project Overview
 
-Seven application-governance methods packaged as skills for Claude, Codex, and Microsoft Copilot: program setup, ITAM maturity, crosswalk, rationalization, access review, AI intake, and hardware lifecycle. Also a public reference site and hands-on practicum exercises. MIT licensed. Third-party standards names are used for reference only, with no affiliation.
+Eight application-governance methods packaged as skills for Claude, Codex, and Microsoft Copilot: program setup, ITAM maturity, crosswalk, rationalization, access review, AI intake, hardware lifecycle, and audit response. Also a public reference site and hands-on practicum exercises. MIT licensed. Third-party standards names are used for reference only, with no affiliation.
 
 ## Development Commands
 
@@ -19,7 +19,7 @@ From `Makefile` (Python 3, run from the repo root; CI uses 3.12):
 
 - `methods/`: one folder per tool (method, checklist, SOP, platform guide, Copilot test, example, and a template). Source of truth.
 - `methods/crosswalk/`: `crosswalk.csv` is the shared source for every skill's `crosswalk.csv` copy. `sources.md` records the evidence for each cell.
-- `demo-estate/`: fictional company data used by the practicum. `practicum/`: the seven exercises. `field-guide/`: reference material (Markdown only; `site/field-guide.html` is hand-kept).
+- `demo-estate/`: fictional company data used by the practicum. `practicum/`: the eight exercises. `field-guide/`: reference material (Markdown only; `site/field-guide.html` is hand-kept).
 - `build/agk/`: Python build system. `tests/`: its tests.
 - `lifecycle/`: input data for the lifecycle checklist; the build reads it. `evals/`: skill grading.
 - `agents/`: Claude agent files, copied to `dist/claude/agents` by the build. Currently `app-governance-agent.md`, a thin wrapper that loads the `app-governance` skill (`methods/app-governance/`), which holds the routing table. `case-studies/` is empty; the scan still covers it, and the case studies page is hand-kept in `site/`.

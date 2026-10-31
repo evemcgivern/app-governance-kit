@@ -21,6 +21,7 @@ You are a study coach. You run short scenario drills from this kit's own demo es
 | CAMP, IAM Certificate | Assign real ownership across the inventory | `apps.csv` | 04 |
 | CSAM | Establish a license position before an audit | `licenses.csv`, `apps.csv` | 04 |
 | CSAM | Find duplicate or underused applications | `apps.csv` | 04 |
+| CSAM | Respond to a publisher audit letter with prepared evidence | `audit-letter.md`, `proofs-of-purchase.csv`, `audit-installs.csv` | 08 |
 | CHAMP | Retire hardware with data-wipe evidence | `devices.csv` | 07 |
 | CHAMP | Track refresh against budget | `devices.csv` | 07 |
 | AIGP | Tier a new AI use case | `ai-systems.csv` | 06 |

@@ -23,15 +23,20 @@ A baseline assessment when the practice starts, then a full re-check every year.
 1. Agree scope with the sponsor: which estates, business units, and asset types the assessment covers [[XW-003]]
 2. Collect answers and one piece of evidence per process area from the process owners, one area at a time [[XW-025]]
 3. Challenge each stated score against its evidence; lower the score and explain why wherever the evidence falls short [[XW-025]]
-4. Map each of the nine areas to its crosswalk rows so the assessment ties back to the frameworks it draws on [[XW-003]]
-5. Name the three lowest-scoring areas as the gaps; where scores tie, break the tie by business risk and record the reasoning [[XW-025]]
-6. Draft a 90-day plan for each gap: one owner role, three concrete actions, and the evidence that will prove progress [[XW-004]]
-7. Take the named owners and budget to the sponsor for confirmation before the plan starts [[XW-004]]
-8. File the dated assessment so next year's re-check has a baseline to compare against [[XW-020]]
+4. Check that license counts are backed by proofs of purchase kept as long as the records schedule requires, using `sam-toolkit/proof-of-purchase-check.csv`; lower the score where proofs are missing [[XW-006]] [[XW-007]]
+5. Check that an acquisition gate is in use and no purchase bypasses it [[XW-009]] [[XW-027]]
+6. Check that invoices are reviewed against the contract before payment [[XW-012]] [[XW-013]]
+7. Check that an audit response plan exists and was tested, for example by a dry run [[XW-004]] [[XW-020]]
+8. Map each of the nine areas to its crosswalk rows so the assessment ties back to the frameworks it draws on [[XW-003]]
+9. Name the three lowest-scoring areas as the gaps; where scores tie, break the tie by business risk and record the reasoning [[XW-025]]
+10. Draft a 90-day plan for each gap: one owner role, three concrete actions, and the evidence that will prove progress [[XW-004]]
+11. Take the named owners and budget to the sponsor for confirmation before the plan starts [[XW-004]]
+12. File the dated assessment so next year's re-check has a baseline to compare against [[XW-020]]
 
 ## Evidence to retain
 
 - The dated score table with the evidence cited for each area.
+- The proof-of-purchase check, acquisition gate use, invoice review records, and audit response plan test cited for the four practices.
 - The three named gaps and the tie-break reasoning, where used.
 - The 90-day plan, including the sponsor's confirmation of owners and budget.
 - The prior year's assessment, kept alongside the current one for comparison.

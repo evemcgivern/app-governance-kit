@@ -20,6 +20,36 @@
     "id": "AI-004"
   },
   {
+    "tool": "audit-response",
+    "type": "install_shortfall",
+    "id": "LIC-019"
+  },
+  {
+    "tool": "audit-response",
+    "type": "letter_scope_overreach",
+    "id": "letter-scope"
+  },
+  {
+    "tool": "audit-response",
+    "type": "payment_proof_missing",
+    "id": "P-004"
+  },
+  {
+    "tool": "audit-response",
+    "type": "proof_after_install",
+    "id": "P-005"
+  },
+  {
+    "tool": "audit-response",
+    "type": "proof_missing_buyer",
+    "id": "P-003"
+  },
+  {
+    "tool": "audit-response",
+    "type": "upgrade_without_original",
+    "id": "P-006"
+  },
+  {
     "tool": "crosswalk",
     "type": "crosswalk_match",
     "id": "C1:XW-001"

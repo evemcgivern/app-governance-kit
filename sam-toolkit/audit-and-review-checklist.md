@@ -27,6 +27,7 @@ Ask these of each process in your Statement of Applicability. Record what you sa
 | Q6 | Can you trace an authorization to who, when and why, and to who carried it out? (7.6.3) | | | |
 | Q7 | Was the last license reconciliation done on schedule, and were gaps acted on? (8.4) | | | |
 | Q8 | Are outsourced activities controlled and their performance monitored? (8.7) | | | |
+| Q9 | Is there acceptable proof of purchase behind the entitlements for the products in scope? (8.4) | | | |
 
 ### Report
 

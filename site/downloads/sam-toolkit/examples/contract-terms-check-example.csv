@@ -1,0 +1,5 @@
+contract_id,vendor,term_or_definition,clause_ref,clear,what_is_unclear,which_document_governs,counsel_needed,owner,checked_on,renewal_notice_deadline,notes
+FD-EA-2025,Fleetdesk,Definition of "device",1.4,maybe,Unclear whether virtual machines and test devices count as devices,Master agreement (states it governs over order forms),yes,IT director,2026-09-12,2027-03-31,Treat VMs as counted until counsel or the vendor confirms
+FD-EA-2025,Fleetdesk,Right to transfer licenses to an acquired company,9.2,no,Not mentioned; only the purchasing entity is named as licensee,Master agreement,yes,IT director,2026-09-12,2027-03-31,Not permitted until confirmed
+NB-MSA-2024,Northbeam,Named user definition,2.1,yes,,Order form (states it overrides the master agreement for user counts),yes,ERP owner,2026-09-12,2027-04-30,Confirm with counsel that the override applies to user counts
+CP-SUB-2025,Clickpath,Auto-renewal and notice period,12.3,maybe,Notice period in the order form differs from the terms of service,Order form (states it governs),yes,Marketing operations lead,2026-09-12,2026-12-15,Calendar the earlier date until confirmed

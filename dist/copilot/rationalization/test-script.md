@@ -8,6 +8,7 @@
 - Reports all 5 duplicate pairs.
 - Reports both expired licenses, LIC-017 and LIC-044.
 - Assigns a TIME decision to every app with a one-line reason.
+- Checks any new purchase against the acquisition gate and gives savings as a range with evidence.
 - Ends with a fenced `findings` block.
 
 Record the result (date, pass/fail, notes; no work data) in `copilot-results.md`.

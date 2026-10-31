@@ -45,4 +45,5 @@ One session of 30 to 45 minutes a week until the exam, plus a final readiness se
 - [ITAM maturity check](../itam-maturity/) (`itam-maturity`)
 - [Application rationalization](../rationalization/) (`rationalization`)
 - [AI system intake and risk tiering](../ai-intake/) (`ai-intake`)
+- [Software audit response check](../audit-response/) (`audit-response`)
 - [Hardware lifecycle check](../hardware-lifecycle/) (`hardware-lifecycle`)

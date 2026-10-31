@@ -31,8 +31,11 @@ A full lifecycle check every quarter, plus an ad hoc check before any hardware b
 7. Recommend replacement, upgrade, or extension for each overdue device, and route it to the asset owner for a decision [[XW-012]] [[XW-013]]
 8. Recommend a wipe or certified-destruction method for each unwiped retired device, matched to its type [[XW-010]]
 9. Hold disposal open for any retired device without wipe evidence attached [[XW-010]]
-10. Have the budget owner check the cost estimate and vendor terms before a refresh order is placed [[XW-012]] [[XW-013]]
-11. Record the decisions and approvers before the check is filed [[XW-001]] [[XW-010]]
+10. Treat encryption as a safeguard, not a replacement for wiping or destruction; wipe or destroy before disposal even when the device was encrypted [[XW-010]]
+11. Keep each wipe or destruction certificate as long as the records schedule requires; **Decision needed: records owner or counsel** for the period [[XW-010]] [[XW-020]]
+12. Involve the hardware asset manager at every stage, including divestiture of a business unit or its devices **Decision needed: legal** on any transfer of devices or data [[XW-004]] [[XW-010]]
+13. Have the budget owner check the cost estimate and vendor terms before a refresh order is placed [[XW-012]] [[XW-013]]
+14. Record the decisions and approvers before the check is filed [[XW-001]] [[XW-010]]
 
 ## Evidence to retain
 
@@ -40,6 +43,7 @@ A full lifecycle check every quarter, plus an ad hoc check before any hardware b
 - The overdue-refresh list, grouped by type, with the estimated replacement cost range.
 - The unwiped-retired-device list and the wipe or certified-destruction method recommended for each.
 - The wipe or destruction evidence attached once each disposal is actually closed out.
+- Each wipe or destruction certificate, kept as long as the records schedule requires.
 - The budget owner's confirmation of the cost estimate and procurement's confirmation of vendor terms.
 - The decisions and approvers recorded for each replacement, upgrade, extension, and disposal.
 

@@ -1,0 +1,7 @@
+savings_type,period,baseline_cost,amount_saved,percent_saved,evidence_ref,adverse_trend_note,reported_to,reported_on
+invoice errors recovered,2026-Q3,0,1697.35,,invoice-verification.csv row INV-2026-33014 line 2 (resolved); 2431.00 on INV-2026-08821 is still open and not counted,Billing errors found per invoice reviewed rose from 8% to 14%,Finance director,2026-10-05
+purchases avoided by redeploying,2026-Q3,18200,18200,100,acquisition-gate-checklist G2 records,,IT director,2026-10-05
+contract terms,2026-Q3,89200,0,0,Fleetdesk agreement clause review,Price protection clause expired; renewal price may rise,IT director,2026-10-05
+negotiation,2026-Q3,84200,6300,7.5,Campaignly renewal notes,,Finance director,2026-10-05
+maintenance cancelled,2026-Q3,10000,0,0,renewal-calendar.csv Chattera row (10000 pending confirmation; not counted),Dropping maintenance can lose upgrade rights and support entitlements; confirm what the cancelled contract covered before counting the full amount,Finance director,2026-10-05
+unused licenses reclaimed,2026-Q3,81300,7500,9.2,license-position.csv Keyfort row,Reclaimed seats are being requested again by two teams,IT director,2026-10-05

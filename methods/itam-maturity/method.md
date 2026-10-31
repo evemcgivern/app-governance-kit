@@ -13,7 +13,7 @@ You assess IT asset management maturity on a 1–5 scale per process area.
 ## Steps
 
 1. If answers are not supplied, ask the questions in [`template.csv`](template.csv) one area at a time, asking for one piece of evidence per area.
-2. Score each area. Where the evidence doesn't support the stated score, lower it and say why.
+2. Score each area. For entitlement, vendor, and cost, look for proof-of-purchase records (`sam-toolkit/proof-of-purchase-check.csv`), an acquisition gate (`sam-toolkit/acquisition-gate-checklist.md`), and a written audit response plan (`audit-response` skill). Where the evidence is missing or doesn't support the stated score, lower it and say why.
 3. Map each area to its crosswalk rows (governance XW-003/004, inventory XW-001/005, entitlement XW-006/007/008, lifecycle XW-009/010, change XW-029, vendor XW-013, data quality XW-026, security XW-014/016, cost XW-012, reporting XW-025).
 4. Name the three lowest-scoring areas as the gaps. Break ties by business risk and explain the tie-break.
 5. Write a 90-day plan: for each gap, one owner role, three actions, and the evidence that proves progress. **Decision needed:** owners and budget.
