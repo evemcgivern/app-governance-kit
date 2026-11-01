@@ -1,6 +1,6 @@
 # app-governance-kit
 
-Version 0.4.0 <!-- x-release-please-version -->
+Version 0.5.0 <!-- x-release-please-version -->
 
 Nine governance methods — portfolio, AI, and access — packaged as skills for
 Claude, Codex, and Microsoft Copilot, plus a public reference site and a set

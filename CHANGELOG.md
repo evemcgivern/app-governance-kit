@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.5.0](https://github.com/evemcgivern/app-governance-kit/compare/app-governance-kit-v0.4.0...app-governance-kit-v0.5.0) (2026-11-01)
+
+
+### Features
+
+* add software-lifecycle method ([#34](https://github.com/evemcgivern/app-governance-kit/issues/34)) ([01d4787](https://github.com/evemcgivern/app-governance-kit/commit/01d4787e3bef530dc115b832a443694f3b6fa762))
+
 ## [0.4.0](https://github.com/evemcgivern/app-governance-kit/compare/app-governance-kit-v0.3.1...app-governance-kit-v0.4.0) (2026-10-31)
 
 
