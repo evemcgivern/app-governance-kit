@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Software lifecycle SOP — Eve McGivern</title>
+<meta name="description" content="This SOP describes a practice. It does not replace the tool&#x27;s own documents, which…">
+<meta name="author" content="Eve McGivern">
+<link rel="canonical" href="https://evemcgivern.github.io/app-governance-kit/docs/software-lifecycle/sop.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Eve McGivern — Application Governance">
+<meta property="og:title" content="Software lifecycle SOP">
+<meta property="og:description" content="This SOP describes a practice. It does not replace the tool&#x27;s own documents, which…">
+<meta property="og:url" content="https://evemcgivern.github.io/app-governance-kit/docs/software-lifecycle/sop.html">
+<meta property="og:image" content="https://evemcgivern.github.io/app-governance-kit/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Software lifecycle SOP">
+<meta name="twitter:description" content="This SOP describes a practice. It does not replace the tool&#x27;s own documents, which…">
+<meta name="twitter:image" content="https://evemcgivern.github.io/app-governance-kit/og-image.png">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Home",
+     "item": "https://evemcgivern.github.io/app-governance-kit/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "Tools",
+     "item": "https://evemcgivern.github.io/app-governance-kit/tools.html"
+    },
+    {
+     "@type": "ListItem",
+     "position": 3,
+     "name": "Software lifecycle SOP",
+     "item": "https://evemcgivern.github.io/app-governance-kit/docs/software-lifecycle/sop.html"
+    }
+   ]
+  },
+  {
+   "@type": "WebPage",
+   "name": "Software lifecycle SOP",
+   "description": "This SOP describes a practice. It does not replace the tool's own documents, which\u2026",
+   "url": "https://evemcgivern.github.io/app-governance-kit/docs/software-lifecycle/sop.html",
+   "isPartOf": {
+    "@type": "WebSite",
+    "url": "https://evemcgivern.github.io/app-governance-kit/"
+   },
+   "author": {
+    "@type": "Person",
+    "name": "Eve McGivern",
+    "url": "https://evemcgivern.github.io/"
+   },
+   "license": "https://opensource.org/licenses/MIT",
+   "isAccessibleForFree": true
+  }
+ ]
+}
+</script>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../apple-touch-icon.png">
+<link rel="stylesheet" href="../../style.css">
+<script src="../../nav.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="support-bar"><a class="coffee-link" href="https://buymeacoffee.com/a8w5iiqszp" rel="noopener"><svg class="coffee-icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M5 9h11v5a5 5 0 0 1-5 5h-1a5 5 0 0 1-5-5V9z" fill="#2f9e6e"/><path d="M16 10.5h1.2a2.4 2.4 0 0 1 0 4.8H16" fill="none" stroke="#2f9e6e" stroke-width="1.8" stroke-linecap="round"/><path d="M8.5 3.5c0 1.3 1 1.3 1 2.6M12 3.5c0 1.3 1 1.3 1 2.6" fill="none" stroke="#2f9e6e" stroke-width="1.6" stroke-linecap="round"/></svg><span>Buy me a coffee</span></a></div>
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="https://evemcgivern.github.io/">Eve McGivern</a>
+    <nav class="site-nav" aria-label="Main">
+      <ul>
+        <li><a href="../../tools.html" aria-describedby="tip-tools">Tools</a><span class="nav-tip" role="tooltip" id="tip-tools">The nine governance methods, packaged as skills for Claude, Codex, and Copilot.</span></li>
+        <li><a href="../../sam-toolkit.html" aria-describedby="tip-sam-toolkit">SAM toolkit</a><span class="nav-tip" role="tooltip" id="tip-sam-toolkit">Templates and checklists for running software asset management by hand.</span></li>
+        <li><a href="../../practicum.html" aria-describedby="tip-practicum">Practicum</a><span class="nav-tip" role="tooltip" id="tip-practicum">Hands-on exercises on a fictional company, with answers you can check.</span></li>
+        <li><a href="../../lifecycle.html" aria-describedby="tip-lifecycle">Lifecycle</a><span class="nav-tip" role="tooltip" id="tip-lifecycle">Six stages from request to retirement, with the questions to ask at each.</span></li>
+        <li><a href="../../crosswalk.html" aria-describedby="tip-crosswalk">Crosswalk explorer</a><span class="nav-tip" role="tooltip" id="tip-crosswalk">See how each control maps to ISO/IEC 19770, COBIT, 27001, and 42001.</span></li>
+        <li><a href="../../impact-map.html" aria-describedby="tip-impact-map">Impact map</a><span class="nav-tip" role="tooltip" id="tip-impact-map">One grid showing every control theme against every lifecycle stage.</span></li>
+        <li><a href="../../field-guide.html" aria-describedby="tip-field-guide">Field guide</a><span class="nav-tip" role="tooltip" id="tip-field-guide">Plain-language guides to the standards, certifications, and key terms.</span></li>
+        <li><a href="../../case-studies.html" aria-describedby="tip-case-studies">Case studies</a><span class="nav-tip" role="tooltip" id="tip-case-studies">Worked examples of the kit in use, on a fictional company.</span></li>
+        <li><a href="../../about.html" aria-describedby="tip-about">About</a><span class="nav-tip" role="tooltip" id="tip-about">Who built the kit, and how to get in touch.</span></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<main id="main" class="doc-page">
+  <div class="doc-top">
+    <p class="doc-back"><a href="../../tools.html">&larr; Tools</a></p>
+    <button type="button" class="print-icon" onclick="window.print()" aria-label="Print this page" title="Print"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="M7 9V3.5h10V9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M7 17H4.5A1.5 1.5 0 0 1 3 15.5v-5A1.5 1.5 0 0 1 4.5 9h15a1.5 1.5 0 0 1 1.5 1.5v5a1.5 1.5 0 0 1-1.5 1.5H17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><rect x="7" y="14" width="10" height="6.5" rx="0.8" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17.5" cy="12" r="0.9" fill="currentColor"/></svg></button>
+  </div>
+  <h1>Software lifecycle SOP</h1>
+  <div class="visual-actions doc-actions">
+    <a class="visual-actions__link" href="sop.docx">Download Word (.docx)</a>
+    <button type="button" class="visual-actions__link doc-print" onclick="window.print()">Print or save as PDF</button>
+  </div>
+
+  <div class="doc-body prose prose-wide">
+<p>This SOP describes a practice. It does not replace the tool&#x27;s own documents, which cover the quarterly review and its roles in full: see <strong>Where the details live</strong>.</p>
+<h2 id="purpose">Purpose</h2>
+<p>Find installed software that is past or near end of life, and flag the rows whose vendor and product appear in the CISA Known Exploited Vulnerabilities catalog, so that a person decides what to replace, upgrade, retire, or accept. Do it without showing an agent a single software name.</p>
+<h2 id="scope">Scope</h2>
+<p>Applies to any software inventory export that can be saved as a CSV with a name column and a version column. It reports state per item from the tool&#x27;s bundled data. It does not check licenses, duplicate apps, or device refresh dates, and it does not scan systems for vulnerabilities.</p>
+<h2 id="roles">Roles</h2>
+<ul><li><strong>IT or software asset manager</strong> — runs the check, reads the report, and keeps the dated counts.</li><li><strong>Asset owner</strong> — for each past-end-of-life or ends-soon item, chooses replace, upgrade, retire, or request risk acceptance.</li><li><strong>ITAM lead</strong> — settles each item where the dates disagree.</li><li><strong>A named person</strong> — checks each review-urgently item&#x27;s version against the KEV entries and sets the priority.</li><li><strong>Budget holder</strong> — takes the counts into an upgrade budget request.</li></ul>
+<h2 id="frequency">Frequency</h2>
+<p>Quarterly, and before an upgrade budget request. Check the data dates each run: a stale KEV snapshot or end-of-life snapshot is a decision, not a default.</p>
+<h2 id="steps">Steps</h2>
+<ol><li>Export the software inventory as a CSV and confirm its header row with the agent, without sharing any data row <a class="xw-tag" href="../../crosswalk.html">XW-001</a> <a class="xw-tag" href="../../crosswalk.html">XW-026</a></li><li>Name an owner for each row where one is known, so each finding has someone to decide <a class="xw-tag" href="../../crosswalk.html">XW-002</a></li><li>Keep the inventory and any golden-source, exception, tracking, or support-records files on the person&#x27;s machine, out of prompts, issues, and commits <a class="xw-tag" href="../../crosswalk.html">XW-028</a></li><li>Make the tool copy at the pinned commit, only after the person agrees, and confirm <code>git rev-parse HEAD</code> matches the pin, and record the commit <a class="xw-tag" href="../../crosswalk.html">XW-020</a></li><li>Run <code>verify-data</code>, then read the data dates from the manifest and decide whether to use a newer data release <strong>Decision needed:</strong> the person running the check <a class="xw-tag" href="../../crosswalk.html">XW-026</a></li><li>Run <code>preflight</code> and fix every item on its &quot;What to fix&quot; list in the export <a class="xw-tag" href="../../crosswalk.html">XW-026</a></li><li>Run the check in counts-only mode into a new or empty folder the person names, as of a stated date <a class="xw-tag" href="../../crosswalk.html">XW-009</a></li><li>Relay only the summary count lines; the person reads names and IDs in the report themselves <a class="xw-tag" href="../../crosswalk.html">XW-028</a></li><li>Report counts by state, names to review, classification, and the data currency, with every limit stated <a class="xw-tag" href="../../crosswalk.html">XW-009</a> <a class="xw-tag" href="../../crosswalk.html">XW-001</a></li><li>For each past-end-of-life or ends-soon item, the asset owner chooses replace, upgrade, retire, or request risk acceptance <strong>Decision needed:</strong> the asset owner <a class="xw-tag" href="../../crosswalk.html">XW-009</a> <a class="xw-tag" href="../../crosswalk.html">XW-010</a></li><li>For each accepted risk, record it in the risk register with an owner and a review date <strong>Decision needed:</strong> the asset owner <a class="xw-tag" href="../../crosswalk.html">XW-024</a></li><li>For each review-urgently item, check the version against the KEV entries and set the priority <strong>Decision needed:</strong> IT security <a class="xw-tag" href="../../crosswalk.html">XW-024</a></li><li>Settle each dates-disagree item <strong>Decision needed:</strong> the person running the check <a class="xw-tag" href="../../crosswalk.html">XW-026</a></li><li>Pass the counts and owner decisions to the budget holder as inputs to a budget request <a class="xw-tag" href="../../crosswalk.html">XW-012</a></li><li>Keep the dated count line, data dates, and decisions, then rerun next quarter with the earlier report passed by path <a class="xw-tag" href="../../crosswalk.html">XW-020</a> <a class="xw-tag" href="../../crosswalk.html">XW-025</a></li></ol>
+<h2 id="rules">Rules</h2>
+<ul><li>The agent never opens the inventory, the optional input files, the tool&#x27;s output folder, or any file in it.</li><li>Only summary count lines are relayed. A line that lists item IDs is never relayed.</li><li>A KEV match is a vendor and product match. It never means a version is affected.</li><li>Unmatched means no date is claimed. It does not mean safe.</li><li>The agent asks before it makes the tool copy and before it writes to the output folder the person names.</li><li>If <code>git rev-parse HEAD</code> does not print the pinned commit, stop.</li><li>Use only this line about security: &quot;Runs locally with no network by default; not independently assessed.&quot;</li></ul>
+<h2 id="questions-to-ask">Questions to ask</h2>
+<ul><li>Which column holds the software name and which holds the version?</li><li>Does the export carry an owner, a publisher, a parent, and an end-of-life date?</li><li>Which date should the check run as of, and how many months ahead counts as ends soon?</li><li>How old are the KEV and end-of-life snapshots in the data folder?</li><li>Who owns each item that is past end of life or ends soon?</li><li>Does the person hold support records, such as an extended-support contract, that belong beside the vendor&#x27;s dates?</li></ul>
+<h2 id="mistakes-to-avoid">Mistakes to avoid</h2>
+<ul><li>Pasting the inventory, or a report section the person did not choose to share, into a chat.</li><li>Relaying a line with item IDs. They are a hash of publisher, name, and version, and someone holding a guess can confirm it.</li><li>Reading Unmatched as safe, or a KEV match as exposure.</li><li>Running the check into a folder that already holds files.</li><li>Reporting a stale data snapshot as current.</li><li>Treating a support record as a license position or as audit preparation.</li><li>Reading the bundle-member count as the number of parts with a parent in the inventory. Those are different figures, and only the full report holds the second.</li></ul>
+<h2 id="who-decides">Who decides</h2>
+<p>People decide. The agent relays counts. The asset owner decides replace, upgrade, retire, or accept. IT security sets priority on KEV items. The ITAM lead settles dates that disagree. The budget holder decides spend. No tool or agent makes any of these calls.</p>
+<h2 id="evidence-to-retain">Evidence to retain</h2>
+<ul><li>The dated count line the agent relayed, with the data dates.</li><li>The tool release and commit used.</li><li>The owner&#x27;s decision for each past-end-of-life or ends-soon item, with the approver and date.</li><li>The risk-register entry for each accepted risk.</li><li>The report files, kept by the person outside the agent&#x27;s reach and for as long as the records schedule requires. <strong>Decision needed: records owner</strong> for the exact period.</li></ul>
+<h2 id="where-the-details-live">Where the details live</h2>
+<p>The tool&#x27;s own documents at the pinned commit hold the full usage, report schema, assistant setup, quarterly review, and checklist: Readme, Usage, Report schema, Assistant setup, Sop, and Checklist in the tool folder. They are not copied here.</p>
+<h2 id="related">Related</h2>
+<ul><li><a href="../../tools.html#crosswalk">Governance framework crosswalk</a> (<code>crosswalk</code>)</li><li><a href="../../tools.html#hardware-lifecycle">Hardware lifecycle check</a> (<code>hardware-lifecycle</code>)</li><li><a href="../../tools.html#rationalization">Application rationalization</a> (<code>rationalization</code>)</li><li><a href="../../tools.html#audit-response">Software audit response check</a> (<code>audit-response</code>)</li><li><a href="../../tools.html#itam-maturity">ITAM maturity check</a> (<code>itam-maturity</code>)</li></ul>
+  </div>
+  <div class="doc-bottom"><button type="button" class="print-icon" onclick="window.print()" aria-label="Print this page" title="Print"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="M7 9V3.5h10V9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M7 17H4.5A1.5 1.5 0 0 1 3 15.5v-5A1.5 1.5 0 0 1 4.5 9h15a1.5 1.5 0 0 1 1.5 1.5v5a1.5 1.5 0 0 1-1.5 1.5H17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><rect x="7" y="14" width="10" height="6.5" rx="0.8" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17.5" cy="12" r="0.9" fill="currentColor"/></svg></button></div>
+</main>
+<footer class="site-footer">
+  <p>Eve McGivern · <a href="https://evemcgivern.github.io/">evemcgivern.github.io</a></p>
+  <p>Questions? Comments? <a href="https://github.com/evemcgivern/app-governance-kit/issues" id="contact-email" data-r="moc.liamg|nrevigcmeve">email me</a>.</p>
+  <p><a href="https://buymeacoffee.com/a8w5iiqszp" rel="noopener">Buy me a coffee</a> if these tools help.</p>
+  <p class="site-version"><a href="https://github.com/evemcgivern/app-governance-kit/releases" rel="noopener" id="site-version">Version</a></p>
+</footer>
+<script>
+(function () {
+  "use strict";
+  var el = document.getElementById("contact-email");
+  if (!el || !el.getAttribute("data-r")) { return; }
+  function arm() {
+    el.href = "mailto:" + el.getAttribute("data-r").split("").reverse().join("").replace("|", "@");
+  }
+  ["pointerenter", "focus", "touchstart"].forEach(function (type) {
+    el.addEventListener(type, arm, { once: true, passive: true });
+  });
+})();
+</script>
+
+</body>
+</html>

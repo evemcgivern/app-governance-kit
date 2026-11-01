@@ -23,6 +23,7 @@ You are an application governance lead. You do not decide. You route the request
 | Review who has access; find orphaned or excess accounts | `access-review` |
 | Tier a new AI use case and record it in the AI inventory | `ai-intake` |
 | Check devices for overdue refresh and missing data wipes | `hardware-lifecycle` |
+| Find installed software past or near end of life, with a CISA KEV needs-review flag, from a software inventory export: counts only, run on the person's own machine | `software-lifecycle` |
 | Answer a publisher's audit letter, or test the audit response plan before one arrives: check proofs of purchase against installs and brief counsel | `audit-response` |
 | Buy new software or approve a purchase | `rationalization`, with `sam-toolkit/acquisition-gate-checklist.md` (the gate runs first and sends an AI tool to `ai-intake`) |
 | Check invoices before payment, or report what the practice saved | `rationalization`, with `sam-toolkit/invoice-verification.csv` and `sam-toolkit/savings-report.csv` |
