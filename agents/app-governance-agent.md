@@ -1,6 +1,6 @@
 ---
 name: app-governance-agent
-description: Application governance lead. Use when someone asks for a review of their software estate, a publisher audit letter, proofs of purchase, contracts and renewals, a planned purchase, AI systems, access, or devices and has not picked a tool. It loads the app-governance skill, which picks the right governance skill, asks for the data, runs it, and hands every decision back to a person.
+description: Application governance lead. Use when someone asks for a review of their software estate, a publisher audit letter, software end of life, proofs of purchase, contracts and renewals, a planned purchase, AI systems, access, or devices and has not picked a tool. It loads the app-governance skill, which picks the right governance skill, asks for the data, runs it, and hands every decision back to a person.
 tools: Read, Grep, Glob, Skill
 ---
 

@@ -2,7 +2,7 @@
 
 Version 0.4.0 <!-- x-release-please-version -->
 
-Eight governance methods — portfolio, AI, and access — packaged as skills for
+Nine governance methods — portfolio, AI, and access — packaged as skills for
 Claude, Codex, and Microsoft Copilot, plus a public reference site and a set
 of hands-on practicum exercises for learning the underlying certifications
 (CAMP, CSAM, CHAMP, AIGP) by hand before using the tools.
@@ -11,7 +11,7 @@ Each method maps to real standards (ISO/IEC 19770, COBIT 2019, ISO/IEC 27001,
 ISO/IEC 42001) via a 29-row crosswalk, so every recommendation traces back to
 a clause, not just a rule of thumb.
 
-## The eight tools
+## The nine tools
 
 | Tool | Does |
 |---|---|
@@ -23,6 +23,7 @@ a clause, not just a rule of thumb.
 | `ai-intake` | Tier a new AI use case for risk (EU AI Act, NIST AI RMF, ISO/IEC 42001) and produce an inventory record. |
 | `hardware-lifecycle` | Check a device fleet for overdue refreshes and retired devices missing a confirmed data wipe. |
 | `audit-response` | Answer a publisher audit letter: reconcile installs against proofs of purchase, find weak proofs, and brief counsel. |
+| `software-lifecycle` | Find installed software past or near end of life, with a CISA KEV needs-review flag, by running an offline tool on your own machine; counts only. |
 
 Each ships to `dist/claude/skills/`, `dist/codex/skills/`, and
 `dist/copilot/` in the platform-native shape those tools expect, built from
@@ -53,7 +54,7 @@ Pick your platform, then open its section. Downloads are on the [Tools page](htt
 <details>
 <summary>More</summary>
 
-- **What you get:** the eight tools, the `app-governance` router, the `cert-prep` study coach, and `app-governance-agent`. Plugin skills appear as `/app-governance-kit:<skill>`.
+- **What you get:** the nine tools, the `app-governance` router, the `cert-prep` study coach, and `app-governance-agent`. Plugin skills appear as `/app-governance-kit:<skill>`.
 - **Without the plugin:** `cp -R dist/claude/skills/* ~/.claude/skills/`, or unzip `claude-skills.zip` into `~/.claude/skills`. For one project only, use that project's `.claude/skills/`. Skills then appear as `/access-review`. For the agent, save [`app-governance-agent.md`](agents/app-governance-agent.md) to `~/.claude/agents`.
 - **Update:** `claude plugin update app-governance-kit@evemcgivern-skills`. Auto-update is off by default for marketplaces other than Anthropic's, so run it after each release. For copied skills, copy them again.
 - **Check it worked:** `claude plugin list` shows `app-governance-kit@evemcgivern-skills`, and typing `/` lists its skills.
@@ -115,7 +116,7 @@ Pick your platform, then open its section. Downloads are on the [Tools page](htt
 <details>
 <summary>More</summary>
 
-- **What you get:** the eight tools, the `app-governance` router, and the `cert-prep` study coach.
+- **What you get:** the nine tools, the `app-governance` router, and the `cert-prep` study coach.
 - **Where they work:** standalone skills work in the Codex CLI, the IDE extension, and the ChatGPT desktop app, where Codex runs. In the desktop app, open **Skills** in the sidebar to see them. [Skills docs](https://developers.openai.com/codex/skills).
 - **Update:** copy the new folders over the old ones. Codex picks up changes; if one doesn't appear, restart Codex.
 - **Check it worked:** run `/skills` in the CLI or IDE extension and look for `access-review`.
@@ -154,7 +155,7 @@ Skills upload only on ChatGPT Business, Enterprise, Healthcare, and Edu, when th
 
 Create an agent in [Agent Builder](https://learn.microsoft.com/en-us/microsoft-365-copilot/extensibility/agent-builder-build-agents) or Copilot Studio. Each tool is a folder under `dist/copilot/<tool>/`, or in `copilot-agents.zip`.
 
-1. Paste `agent-instructions.md` into the agent's instructions (the limit is 8,000 characters; ours are under 3,000).
+1. Paste `agent-instructions.md` into the agent's instructions (the limit is 8,000 characters; ours are all under it).
 2. Upload the files in `knowledge/` as knowledge sources. If an upload rejects `.md` files, rename them to `.txt`.
 3. Run `test-script.md` against the demo estate to check it works.
 
