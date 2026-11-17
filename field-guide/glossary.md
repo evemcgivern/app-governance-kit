@@ -44,13 +44,19 @@ Plain-English definitions for terms used across this kit's methods, tied to a Ha
 
 **Chargeback / showback.** Allocating (chargeback) or simply reporting (showback) IT cost to the business unit that incurs it. *Halden example: neither is possible with Halden's current data — no app in `apps.csv` carries a cost-center field yet.*
 
+**Key process area (KPA) vs. key performance indicator (KPI).** A key process area is a broad part of asset management work, such as acquisition or disposal; IAITAM names 12 of them. A key performance indicator is a number tracked over time to show how well some work is going, such as the share of retired devices with a wipe record. One names the work; the other measures it. *Halden example: disposal is a process area; the share of retired devices in `devices.csv` with a confirmed wipe is a measure of it.*
+
 **Vendor management.** Tracking supplier relationships, contract terms, and renewal or termination notice periods. *Halden example: the rationalization run can't finalize an eliminate decision for Clausebase because no vendor contract terms were supplied.*
 
 **Governance council (steering committee).** A standing body with named authority to approve, reject, or set policy for software or AI decisions. *Halden example: the draft Halden Software Governance Council, reviewed by `program-setup` and found to have no sponsor or written decision rights yet.*
 
+**Policy vs. procedure.** A policy states what the organization requires and who is accountable; a procedure says the steps someone follows to meet it. A policy changes rarely and needs approval at a senior level; a procedure changes whenever the work does. *Halden example: the rule that every retired device needs wipe evidence is policy; the checklist the service desk follows to wipe and record a laptop is procedure.*
+
 **Decision rights.** A written statement of who decides what, and at what threshold, so intake doesn't default to "everything goes to committee." *Halden example: the council's draft charter names a cost-or-risk threshold but never sets it, leaving the triage owner nothing to check requests against.*
 
 **Sponsor.** The executive who holds budget authority and gives a governance body the power to actually act. *Halden example: the council review's central finding — no sponsor is named anywhere in the draft charter.*
+
+**Role vs. job title.** A role is a set of duties and decision rights that someone holds in a process; a job title is the label on a person's position in the organization chart. Accountability is set by role, and each role has a current named holder, so the duty survives a change of staff. *Halden example: "software license manager" is a role someone holds; the holder's title in HR may be something else, and the name changes when the person moves on.*
 
 **Escalation path.** A named route, and person, for resolving disputes a governance body can't settle itself. *Halden example: the Halden council escalates disputes to the COO, who sits outside the council and breaks ties.*
 

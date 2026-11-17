@@ -36,3 +36,5 @@ Open the [interactive practicum page](../site/practicum.html#itam-maturity) and 
 ## Certification link
 
 This exercise practices the CAMP body of knowledge's process-maturity assessment work: scoring against defined criteria, naming gaps with reasoning rather than intuition, and turning a baseline into a funded 90-day plan instead of a filed report nobody acts on.
+
+For a follow-on, the `cert-prep` study coach has a drill on challenging a score that has no evidence.

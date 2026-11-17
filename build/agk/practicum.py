@@ -68,6 +68,8 @@ def practicum_payload(demo_dir: Path, exercises_dir: Path, crosswalk: dict) -> d
             tables[name] = list(csv.DictReader(f))
     texts = {name: (demo_dir / f"{name}.md").read_text(encoding="utf-8") for name in TEXTS}
     key = json.loads((demo_dir / "answer-key.json").read_text(encoding="utf-8"))
+    # cert-prep drills have no practicum page of their own; keep their key entries out of the grader.
+    key = [k for k in key if k["tool"] in ORDER]
     exercises = []
     for tool in ORDER:
         matches = sorted(exercises_dir.glob(f"[0-9][0-9]-{tool}.md"))

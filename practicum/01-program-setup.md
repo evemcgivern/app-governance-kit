@@ -36,3 +36,5 @@ Open the [interactive practicum page](../site/practicum.html#program-setup) and 
 ## Certification link
 
 This exercise practices the CAMP body of knowledge's program-management ground: standing up a governance body with a named sponsor, written decision rights, and a workable membership size, rather than treating "we held a meeting" as the same thing as "we have a functioning council."
+
+For a follow-on, the `cert-prep` study coach has a drill that reviews `demo-estate/policy-draft.md` the same way.

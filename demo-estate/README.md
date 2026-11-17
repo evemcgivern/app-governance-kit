@@ -1,6 +1,6 @@
 # Halden Logistics Demo Estate
 
-Halden Logistics is a fictional logistics and transportation company created for testing and demonstration purposes. The demo estate contains twelve generated data files representing a complete software and AI governance scenario with deliberately planted problems for tools to discover and correct.
+Halden Logistics is a fictional logistics and transportation company created for testing and demonstration purposes. The demo estate contains thirteen generated files representing a complete software and AI governance scenario with deliberately planted problems for tools to discover and correct.
 
 **Generated files:**
 - `apps.csv`: id, name, vendor, category, annual_cost_usd, users, data_sensitivity — 60 applications with confidential and internal sensitivity levels
@@ -15,5 +15,6 @@ Halden Logistics is a fictional logistics and transportation company created for
 - `audit-letter.md`: a fictional publisher audit letter with Halden's notes on its agreement
 - `controls.md`: 3 sample controls for mapping to external frameworks
 - `council-draft.md`: A draft software governance council charter with intentional gaps
+- `policy-draft.md`: A draft software governance policy with intentional gaps (accountable role, scope, defined terms, enforcement, review cycle, and one requirement nobody could meet)
 
-The `answer-key.json` file contains the authoritative list of planted problems (duplicates, expired licenses, orphaned accounts, high-risk AI systems, overdue devices, audit-response proof problems, maturity gaps, control mappings, and charter flaws) organized by tool and problem type. This file is for grading tool outputs only and must never be given to a tool under test.
+The `answer-key.json` file contains the authoritative list of planted problems (duplicates, expired licenses, orphaned accounts, high-risk AI systems, overdue devices, audit-response proof problems, maturity gaps, control mappings, charter flaws, and policy gaps) organized by tool and problem type. This file is for grading tool outputs only and must never be given to a tool under test.
