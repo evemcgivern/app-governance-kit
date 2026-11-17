@@ -46,7 +46,7 @@ The task matrix above says which certification(s) cover a task; this table compa
 
 **Who it's for:** People new to IT asset management who need the foundational program and process picture before they specialize.
 
-**What it covers:** CAMP is IAITAM's entry-level credential, organized around the association's 12 Key Process Areas — inventory and asset identification, acquisition, compliance, disposal, financial management, vendor management, policy, and program management, among others — plus how ITAM fits alongside IT service management. No prior ITAM experience is assumed. It's taught as an 8-hour live-online session plus 10-12 hours of self-study, or a 90-day self-paced course, ending in a 100-question, 3-hour exam with an 85% pass mark and two included attempts. The credential is renewed yearly; renewing within six months of expiry only requires the exam again, and after that the full course has to be retaken. (Source: [iaitam.org/camp](https://iaitam.org/camp/), fetched 2026-09-25.)
+**What it covers:** CAMP is IAITAM's entry-level credential, organized around the association's 12 Key Process Areas — inventory and asset identification, acquisition, compliance, disposal, financial management, vendor management, policy, and program management, among others — plus how ITAM fits alongside IT service management. No prior ITAM experience is assumed. It's taught as an 8-hour live-online session plus 10-12 hours of self-study, or a 90-day self-paced course, ending in an exam. The credential is renewed yearly; renewing within six months of expiry only requires the exam again, and after that the full course has to be retaken. (Source: [iaitam.org/camp](https://iaitam.org/camp/), fetched 2026-09-25.) Exam length, question count, pass mark and attempts are not restated here; check the certification body's own page before booking.
 
 **Practical application:**
 
@@ -60,7 +60,7 @@ The task matrix above says which certification(s) cover a task; this table compa
 
 **Who it's for:** People with little or no prior software asset management background who need to run licensing, compliance, and audit response day to day.
 
-**What it covers:** CSAM shares CAMP's exam format (100 questions, 3-hour limit, 85% pass mark, two attempts, live or self-paced delivery, annual renewal with a 6-month grace window) but turns the curriculum toward software specifically: discovery and harvesting tools, license types and negotiation, EULA interpretation, compliance enforcement, and audit procedures. (Source: [iaitam.org/csam](https://iaitam.org/csam/), fetched 2026-09-25.)
+**What it covers:** CSAM is offered live or self-paced, with annual renewal and a 6-month grace window, but turns the curriculum toward software specifically: discovery and harvesting tools, license types and negotiation, EULA interpretation, compliance enforcement, and audit procedures. (Source: [iaitam.org/csam](https://iaitam.org/csam/), fetched 2026-09-25.) Exam length, question count, pass mark and attempts are not restated here; check the certification body's own page before booking.
 
 **Practical application:**
 
@@ -75,7 +75,7 @@ The task matrix above says which certification(s) cover a task; this table compa
 
 **Who it's for:** People with little or no prior hardware asset management background who own the physical device lifecycle. (Released in 2004 — one of IAITAM's original certifications, not a recent addition.)
 
-**What it covers:** CHAMP is IAITAM's hardware-focused counterpart to CSAM — the same 12 Key Practice Areas framing and the same course/exam structure (8-hour live or 90-day self-paced, 100-question/85%-pass/3-hour exam, annual renewal with a 6-month grace period) — but the subject matter is the physical hardware lifecycle: acquisition, deployment, maintenance, refresh, and disposal. (Source: [iaitam.org/champ](https://iaitam.org/champ/), fetched 2026-09-25.)
+**What it covers:** CHAMP is IAITAM's hardware-focused counterpart to CSAM — the same 12 IAITAM KPAs framing and a similar course structure (8-hour live or 90-day self-paced, annual renewal with a 6-month grace period) — but the subject matter is the physical hardware lifecycle: acquisition, deployment, maintenance, refresh, and disposal. (Source: [iaitam.org/champ](https://iaitam.org/champ/), fetched 2026-09-25.) Exam length, question count, pass mark and attempts are not restated here; check the certification body's own page before booking.
 
 **Practical application:**
 
