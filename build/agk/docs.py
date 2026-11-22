@@ -296,17 +296,18 @@ def _table_html(rows: list[list[str]], resolve, files, caption: str = "", index:
         for i in range(len(header)):
             cell = row[i] if i < len(row) else ""
             if i == choice:
-                question = " ".join(re.sub(r"[`*]", "", unmark(c, files)) for c in row[:i] if c)
+                ids = " ".join(f"q{index}-{key}-c{j}" for j in range(i) if j < len(row) and row[j])
                 boxes = "".join(
                     f"<label class=\"checklist-choice\"><input type=\"radio\" name=\"q{index}-{key}\" "
                     f"value=\"{c}\"> {c}</label>" for c in CHOICES)
                 cells.append(f"<td class=\"checklist-choices\"><div class=\"checklist-choice-group\" "
-                             f"role=\"radiogroup\" aria-label=\"{escape(question, quote=True)}\">{boxes}</div></td>")
+                             f"role=\"radiogroup\" aria-labelledby=\"{ids}\">{boxes}</div></td>")
             elif cell and i == 0:
-                cells.append(f"<th scope=\"row\">{inline_html(cell, resolve, files)}</th>")
+                cells.append(f"<th scope=\"row\" id=\"q{index}-{key}-c0\">{inline_html(cell, resolve, files)}</th>")
             elif cell:
                 cls = " class=\"long-text\"" if i in long_cols else ""
-                cells.append(f"<td{cls}>{inline_html(cell, resolve, files)}</td>")
+                cid = f" id=\"q{index}-{key}-c{i}\"" if choice is not None and i < choice else ""
+                cells.append(f"<td{cls}{cid}>{inline_html(cell, resolve, files)}</td>")
             elif fillable:
                 label = f"{header[i]} for {row[0]}" if row and row[0] else header[i]
                 js_filled = caption == GAP_CAPTION and header[i].strip().lower() == "your answer"
@@ -315,7 +316,7 @@ def _table_html(rows: list[list[str]], resolve, files, caption: str = "", index:
                 cells.append("<td class=\"checklist-write\"></td>")
         body.append("<tr>" + "".join(cells) + "</tr>")
     wide = (" wide" if len(header) >= 6 else "") + (" sticky-first" if len(header) >= 3 else "")
-    name = escape(f"{caption or f'Table {index}'}{' table' if caption else ''}, scroll sideways to see more", quote=True)
+    name = escape(f"{caption} table" if caption else f"Table {index}", quote=True)
     return (f"<div class=\"table-scroll\" tabindex=\"0\" role=\"region\" aria-label=\"{name}\">"
             f"<table class=\"checklist{wide}\"{attrs}>{cap}<thead><tr>{head}</tr></thead>"
             f"<tbody>{''.join(body)}</tbody></table></div>")
