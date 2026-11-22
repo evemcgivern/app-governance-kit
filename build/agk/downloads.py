@@ -8,6 +8,7 @@ from html import escape
 from pathlib import Path
 
 from agk.docs import docx_bytes, parse_markdown
+from agk.org_chart import supervisor_chart_svg
 from agk.workbook import workbook_bytes
 
 LINK_RE = re.compile(r"\[([^\]]+)\]\([^)]*\)")
@@ -119,6 +120,12 @@ def generate_lifecycle_wheel_svg() -> str:
         "</svg>"
     )
     return f'<?xml version="1.0" encoding="UTF-8"?>\n{svg}\n'
+
+def generate_supervisor_chart_svg() -> str:
+    """The tools-page org chart as a standalone file: wide layout, colors inlined,
+    links pointing at the published site."""
+    return f'<?xml version="1.0" encoding="UTF-8"?>\n{supervisor_chart_svg("wide", standalone=True)}\n'
+
 
 PRINT_PAGE_TEMPLATE = """<!DOCTYPE html>
 <html lang="en">
@@ -236,6 +243,11 @@ def lifecycle_impact_print_html(csv_text: str) -> str:
 
 def lifecycle_wheel_print_html(svg: str) -> str:
     return print_page_html("Lifecycle wheel diagram", f'<div class="lc-wheel-print">{svg}</div>')
+
+def supervisor_chart_print_html(svg: str) -> str:
+    svg = re.sub(r"^<\?xml[^>]*\?>\s*", "", svg)
+    return print_page_html("Tools and supervisor diagram", f'<div class="org-chart-print">{svg}</div>')
+
 
 SKILL_PLATFORMS = (
     ("claude", "claude-skills", Path("claude") / "skills"),
@@ -373,6 +385,11 @@ def write_downloads(root: Path) -> list[str]:
     (out / "lifecycle-wheel.svg").write_text(svg, encoding="utf-8")
     (out / "lifecycle-wheel-print.html").write_text(lifecycle_wheel_print_html(svg), encoding="utf-8")
     written += ["lifecycle-wheel.svg", "lifecycle-wheel-print.html"]
+
+    chart = generate_supervisor_chart_svg()
+    (out / "supervisor-chart.svg").write_text(chart, encoding="utf-8")
+    (out / "supervisor-chart-print.html").write_text(supervisor_chart_print_html(chart), encoding="utf-8")
+    written += ["supervisor-chart.svg", "supervisor-chart-print.html"]
 
     if written:
         # A fixed date_time (not each file's real mtime, which changes on every

@@ -306,6 +306,188 @@ main section + section {
   padding-left: 1.1rem;
 }
 
+.case-list {
+  list-style: none;
+  padding: 0;
+}
+
+.case-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.case-card h3 {
+  margin: 0;
+  font-size: 1.05rem;
+}
+
+.case-card p {
+  margin: 0;
+}
+
+.case-card__summary {
+  flex: 1;
+}
+
+.tool-overview {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 24rem), 1fr));
+}
+
+.tool-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.tool-card h3,
+.tool-card h4 {
+  margin: 0;
+  font-size: 1.05rem;
+}
+
+.tool-card p {
+  margin: 0;
+}
+
+.tool-facts {
+  margin: 0;
+}
+
+.tool-facts > div {
+  border-top: 1px solid var(--border);
+  padding: 0.5rem 0;
+}
+
+.tool-facts dt {
+  color: var(--muted);
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+
+.tool-facts dd {
+  margin: 0;
+}
+
+@media (min-width: 46rem) {
+  .tool-facts > div {
+    display: grid;
+    grid-template-columns: 8.5rem 1fr;
+    gap: 0.75rem;
+  }
+}
+
+/* Supervisor band and org chart on tools.html */
+
+.supervisor-band {
+  background: var(--chip-bg);
+  border: 2px solid var(--accent);
+  border-radius: 12px;
+  padding: 1.25rem;
+  margin: 1.5rem 0;
+}
+
+.supervisor-band h3 {
+  margin: 0 0 0.25rem;
+}
+
+.supervisor-band p {
+  margin: 0.5rem 0;
+}
+
+.supervisor-band .supervisor-band__start {
+  font-weight: 600;
+}
+
+.supervisor-grid {
+  display: grid;
+  gap: 1.25rem;
+  margin-top: 1rem;
+}
+
+@media (min-width: 46rem) {
+  .supervisor-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.tool-overview + h3,
+.supervisor-band + h3 {
+  margin-top: 2rem;
+}
+
+.org-figure {
+  margin: 1.25rem 0 0;
+}
+
+.org-figure__chart {
+  display: flex;
+  justify-content: center;
+}
+
+.org-figure figcaption {
+  color: var(--muted);
+  font-size: 0.92rem;
+  margin-top: 0.5rem;
+  max-width: 46rem;
+}
+
+.org-chart {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.org-chart--narrow {
+  max-width: 26rem;
+}
+
+.org-chart--wide {
+  display: none;
+}
+
+@media (min-width: 64rem) {
+  .org-chart--narrow {
+    display: none;
+  }
+
+  .org-chart--wide {
+    display: block;
+  }
+}
+
+.org-chart-print .org-chart--wide {
+  display: block;
+}
+
+.org-box { fill: var(--surface); stroke: var(--control-border); stroke-width: 1.5; }
+.org-box--you { fill: var(--chip-bg); }
+.org-super { fill: var(--chip-bg); stroke: var(--accent); stroke-width: 2; }
+.org-super-box { fill: var(--surface); stroke: var(--control-border); stroke-width: 1.5; }
+.org-group { fill: none; stroke: var(--muted); stroke-width: 1.5; stroke-dasharray: 6 4; }
+.org-line { fill: none; stroke: var(--muted); stroke-width: 1.5; }
+.org-line--dashed { stroke-dasharray: 6 4; }
+.org-arrow { fill: var(--muted); }
+.org-text { fill: var(--fg); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; font-weight: 600; }
+.org-text--muted { fill: var(--muted); font-weight: 400; }
+.org-link .org-text { fill: var(--accent); }
+.org-link .org-text--muted { fill: var(--muted); }
+.org-link { cursor: pointer; }
+.org-link:hover .org-box, .org-link:hover .org-super-box { stroke: var(--accent); stroke-width: 2.5; }
+.org-link:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+
+.read-notes details {
+  border-top: 1px solid var(--border);
+  padding-top: 0.5rem;
+}
+
+.read-notes summary {
+  cursor: pointer;
+  font-weight: 600;
+  min-height: 24px;
+  padding: 0.4rem 0;
+}
+
 .button {
   display: inline-flex;
   align-items: center;
@@ -397,6 +579,146 @@ main section + section {
 .meta {
   color: var(--muted);
   font-size: 0.92rem;
+}
+
+/* Toolkit page: the ten-step overview and one card per playbook step. */
+.start-card p {
+  margin: 0.75rem 0 0;
+}
+
+.start-card .button {
+  margin: 0;
+}
+
+.stepper {
+  list-style: none;
+  margin: 1.25rem 0 1.5rem;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 9.5rem), 1fr));
+  gap: 0.6rem;
+}
+
+.stepper a {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  min-height: 44px;
+  height: 100%;
+  padding: 0.4rem 0.75rem 0.4rem 0.5rem;
+  background: var(--surface);
+  color: var(--fg);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  text-decoration: none;
+  font-size: 0.92rem;
+  line-height: 1.3;
+  transition-property: background-color, box-shadow;
+  transition-duration: 0.15s;
+  transition-timing-function: var(--ease);
+}
+
+.stepper a:hover {
+  background: var(--chip-bg);
+  box-shadow: var(--shadow-hover);
+}
+
+.step-badge {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 999px;
+  background: var(--accent);
+  color: var(--accent-fg);
+  font-size: 0.95rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.steps .step-card {
+  margin-top: 1rem;
+  scroll-margin-top: 1rem;
+}
+
+.step-card__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem 1rem;
+  flex-wrap: wrap;
+}
+
+.step-card__head h3 {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin: 0;
+  font-size: 1.15rem;
+}
+
+.step-card__count {
+  margin: 0;
+}
+
+.step-card__goal {
+  margin: 0.6rem 0 0;
+}
+
+.step-files {
+  list-style: none;
+  margin: 0.9rem 0 0;
+  padding: 0;
+  border-top: 1px solid var(--border);
+}
+
+.step-files li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.15rem 0.75rem;
+  margin: 0;
+  padding: 0.35rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.step-files li > a {
+  flex: 1 1 18rem;
+  display: inline-block;
+  padding: 0.2rem 0;
+}
+
+.file-type {
+  display: inline-block;
+  padding: 0.05rem 0.6rem;
+  border-radius: 999px;
+  background: var(--chip-bg);
+  color: var(--fg);
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.file-also {
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+.file-also a {
+  display: inline-block;
+  min-width: 24px;
+  min-height: 24px;
+  text-align: center;
+}
+
+.step-card__more {
+  margin: 0.75rem 0 0;
+}
+
+.step-card__more a {
+  display: inline-block;
+  padding: 0.2rem 0;
 }
 
 table {
@@ -717,17 +1039,21 @@ code {
 
 .lc-segment {
   fill: var(--chip-bg);
-  stroke: var(--bg);
-  stroke-width: 2;
+  stroke: var(--control-border);
+  stroke-width: 1.5;
   cursor: pointer;
+  transition: fill 0.15s var(--ease), stroke 0.15s var(--ease);
 }
 
 .lc-segment:hover {
   fill: var(--border);
+  stroke: var(--accent);
+  stroke-width: 3;
 }
 
 .lc-segment[aria-current="true"] {
   fill: var(--accent);
+  stroke: var(--accent);
 }
 
 .lc-segment:focus-visible {
@@ -740,6 +1066,18 @@ code {
 .lc-segment[aria-current="true"]:focus-visible {
   stroke: var(--accent-fg);
   filter: drop-shadow(0 0 3px var(--accent-fg));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lc-segment {
+    transition: none;
+  }
+}
+
+.lc-instruction {
+  margin: 1rem 0 0;
+  color: var(--fg);
+  font-weight: 600;
 }
 
 .lc-segment-label {
@@ -755,6 +1093,18 @@ code {
 
 .lc-segment--linked + .lc-segment-label {
   fill: var(--accent-fg);
+}
+
+.lc-segment-mark {
+  display: none;
+  fill: var(--accent-fg);
+  font-size: 0.95rem;
+  font-weight: 700;
+  pointer-events: none;
+}
+
+.lc-segment[aria-current="true"] + .lc-segment-label + .lc-segment-mark {
+  display: inline;
 }
 
 .lc-hub-label {
@@ -784,7 +1134,7 @@ code {
   font-size: 1.05rem;
   color: var(--muted);
   max-width: 46rem;
-  margin: 0 0 1.5rem;
+  margin: 0.75rem 0 0;
 }
 
 .lc-panel {
@@ -795,7 +1145,7 @@ code {
   min-height: 12rem;
 }
 
-.lc-panel h2 {
+.lc-panel h3 {
   margin-top: 0;
 }
 

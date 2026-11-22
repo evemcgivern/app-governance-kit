@@ -205,18 +205,18 @@ document.addEventListener('DOMContentLoaded', function () {
     var html = '<html><head><meta charset=utf-8><title>' + esc(document.title) + '</title><style>' + style +
       '</style></head><body><h1>' + esc(document.querySelector('h1').textContent) + '</h1>' + head +
       copy.innerHTML + '</body></html>';
-    var blob = new Blob(['\ufeff', html], {type: 'application/msword'});
+    var blob = new File(['\ufeff', html], button.getAttribute('data-file'), {type: 'application/msword'});
     var a = document.createElement('a');
     a.href = URL.createObjectURL(blob);
     a.download = button.getAttribute('data-file');
     document.body.appendChild(a); a.click(); a.remove();
-    setTimeout(function () { URL.revokeObjectURL(a.href); }, 1000);
+    setTimeout(function () { URL.revokeObjectURL(a.href); }, 60000);
   });
 });
   </script>
   <div class="doc-body prose prose-wide">
-<p>A small, regular test of how your program really works, so an external audit holds no surprises. Instead of one large audit a year, test two or three areas each quarter, fix what you find, and test again. The yearly internal audit and management review in <a href="audit-and-review-checklist.html">Internal audit and management review checklist</a> then becomes a summary of work already done.</p>
-<p>It is a check on the program, not on people. Findings are for fixing. Clause references are to the shared crosswalk (<code>XW-</code> rows).</p>
+<p>A small, regular test of how your program really works, so an external audit finds nothing you haven&#x27;t already fixed. Instead of one large audit a year, test two or three areas each quarter, fix what you find, and test again. The yearly internal audit and management review in <a href="audit-and-review-checklist.html">Internal audit and management review checklist</a> then becomes a summary of work already done.</p>
+<p>Findings are for fixing; they&#x27;re not a rating of anyone. Clause references are to the shared crosswalk (<code>XW-</code> rows).</p>
 <h2 id="the-five-steps">The five steps</h2>
 <ol><li>Choose this quarter&#x27;s areas. Pick two or three from the table below. Start with the one you worry about most. <a class="xw-tag" href="../../crosswalk.html">XW-025</a></li><li>Take a sample. Pull the records the test needs, not the ones you already know are good. Write the sample size down.</li><li>Test each record against the rule. A record either passes or fails. Do not average.</li><li>Log every failure in <a href="internal-check-log.html">Internal check log template</a>, with a severity, an owner, and a date. <a class="xw-tag" href="../../crosswalk.html">XW-020</a></li><li>Fix, then test again next quarter. A finding is closed only when a retest passes.</li></ol>
 <h2 id="areas-to-test-and-how">Areas to test, and how</h2>
@@ -226,7 +226,7 @@ document.addEventListener('DOMContentLoaded', function () {
 <p>A simple plan so every area is tested at least once a year. Change it to fit your risks.</p>
 <div class="table-scroll" tabindex="0" role="region" aria-label="A four-quarter rotation table"><table class="checklist"><caption>A four-quarter rotation</caption><thead><tr><th scope="col">Quarter</th><th scope="col">Areas</th></tr></thead><tbody><tr><th scope="row" id="q2-first-c0">First</th><td class="long-text">Retirement, renewals</td></tr><tr><th scope="row" id="q2-second-c0">Second</th><td class="long-text">Proof, intake gate</td></tr><tr><th scope="row" id="q2-third-c0">Third</th><td class="long-text">Ownership, leavers</td></tr><tr><th scope="row" id="q2-fourth-c0">Fourth</th><td class="long-text">Inventory accuracy, plus the areas that failed earlier</td></tr></tbody></table></div>
 <h2 id="keep-it-useful">Keep it useful</h2>
-<ul><li>Test what you can fix. A finding nobody can act on only adds noise.</li><li>Report the trend, not only the count. Fewer repeat findings is the sign of a healthy program.</li><li>Share the log with your sponsor each quarter. Use it in the leadership report.</li><li>Before an external audit, run the same tests on the products the publisher named.</li></ul>
+<ul><li>Test what you can fix.</li><li>Report the trend, not only the count. Fewer repeat findings means fixes are holding.</li><li>Share the log with your sponsor each quarter. Use it in the leadership report.</li><li>Before an external audit, run the same tests on the products the publisher named.</li></ul>
 <h2 id="decision">Decision</h2>
 <div class="table-scroll" tabindex="0" role="region" aria-label="Decision table"><table class="checklist sticky-first"><caption>Decision</caption><thead><tr><th scope="col">Decision</th><th scope="col">Owner</th><th scope="col">Approver</th><th scope="col">Date</th></tr></thead><tbody><tr><th scope="row" id="q3-this-quarter-s-areas-and-sample-sizes-agreed-c0">This quarter&#x27;s areas and sample sizes agreed</th><td class="checklist-write"><input type="text" name="t3-this-quarter-s-areas-and-sample-sizes-agreed-owner" autocomplete="off" enterkeyhint="next" aria-label="Owner for This quarter&#x27;s areas and sample sizes agreed"></td><td class="checklist-write"><input type="text" name="t3-this-quarter-s-areas-and-sample-sizes-agreed-approver" autocomplete="off" enterkeyhint="next" aria-label="Approver for This quarter&#x27;s areas and sample sizes agreed"></td><td class="checklist-write"><input type="text" name="t3-this-quarter-s-areas-and-sample-sizes-agreed-date" autocomplete="off" enterkeyhint="next" aria-label="Date for This quarter&#x27;s areas and sample sizes agreed"></td></tr></tbody></table></div>
   </div>

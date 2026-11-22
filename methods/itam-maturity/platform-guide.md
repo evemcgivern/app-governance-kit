@@ -1,16 +1,24 @@
 # Platform guide: ITAM maturity check
 
-For each of the nine process areas, the ServiceNow and Flexera One capability that supports it. Where no source names a capability for a platform in a given area, that is stated as a gap rather than guessed.
+For each of the nine process areas, the ServiceNow and Flexera One capability that supports it. Where no source names a capability for a platform in a given area, the guide says so.
 
 ## Governance and policy
 
 **ServiceNow.** Asset management policy lives in the same **Policy and Compliance Management** capability, inside ServiceNow's Integrated Risk Management (IRM) product, that the [crosswalk tool's platform guide](../crosswalk/platform-guide.md) describes: policies at the top, **Control Objectives** as the measurable targets, and **Controls** as the activities and evidence underneath them. There is no capability specific to SAM Pro, HAM Pro, or Enterprise Architecture (formerly Application Portfolio Management, APM) for holding the organization's own asset management policy document; it belongs in this shared IRM workspace.
 
-**Flexera One.** No Flexera One feature exists for authoring or holding an organization's own asset management policy document; its capabilities (below) act on the estate the policy describes rather than storing the policy itself.
+**Flexera One.** No Flexera One feature exists for authoring or holding an organization's own asset management policy document; its capabilities (below) act on the estate the policy describes, and none of them stores the policy.
 
 ## Inventory and discovery
 
-**ServiceNow.** SAM Pro gathers installation data automatically from integrations such as Discovery and normalizes what it finds through the **Content Library and Content Service**, then runs **Reconciliation** to compare discovered installs against records. HAM Pro's **Hardware Asset Manager Workspace** and **Asset Inventory Audit** capability do the equivalent for hardware, including barcode/QR scanning through the Agent Mobile app. **Enterprise Architecture (formerly Application Portfolio Management, APM)** builds its own application inventory from the **CMDB**, tracking the dependencies between applications and the technology they run on. Confirmed table names: **Business Application** (`cmdb_ci_business_app`), **Business Capability** (`cmdb_ci_business_capability`), and **Information Object** (`cmdb_ci_information_object`); Enterprise Architecture uses the Platform and Platform App fields on the Business Application table to link it to discovered application services (`cmdb_ci_service_discovered`), with `cmdb_ci_sdlc_component` and `cmdb_ci_appl` also referenced in that service-mapping context.
+**ServiceNow.** SAM Pro gathers installation data automatically from integrations such as Discovery and normalizes what it finds through the **Content Library and Content Service**, then runs **Reconciliation** to compare discovered installs against records. HAM Pro's **Hardware Asset Manager Workspace** and **Asset Inventory Audit** capability do the equivalent for hardware, including barcode/QR scanning through the Agent Mobile app. **Enterprise Architecture (formerly Application Portfolio Management, APM)** builds its own application inventory from the **CMDB**, tracking the dependencies between applications and the technology they run on.
+
+Confirmed table names:
+
+- **Business Application** (`cmdb_ci_business_app`)
+- **Business Capability** (`cmdb_ci_business_capability`)
+- **Information Object** (`cmdb_ci_information_object`)
+
+Enterprise Architecture uses the Platform and Platform App fields on the Business Application table to link it to discovered application services (`cmdb_ci_service_discovered`). `cmdb_ci_sdlc_component` and `cmdb_ci_appl` are also referenced in that service-mapping context.
 
 **Flexera One.** Flexera One's **asset discovery and inventory** capability builds a unified inventory across on-prem, cloud, SaaS, and containers, and normalizes what it finds against **Technopedia**, which Flexera states recognizes and normalizes titles at over 98%.
 
@@ -22,9 +30,13 @@ For each of the nine process areas, the ServiceNow and Flexera One capability th
 
 ## Lifecycle, request to retirement
 
-**ServiceNow.** HAM Pro automates the hardware lifecycle with Flow Designer flows covering the **Hardware Asset Order flow** (procurement through deployment), **Asset Onboarding and Offboarding flows**, and six asset task types (Deploy, Swap, Retire, Refresh, Loaner, and Leased Return) ending in **Hardware Disposal flows** with certificate tracking. **Enterprise Architecture (formerly Application Portfolio Management, APM)** runs **Application Portfolio Rationalization** through classify, measure, analyze, and plan phases to decide whether an application is migrated, sustained, or divested (Enterprise Architecture's own four-way decision, stored as **Planned Disposition** on the Business Application: invest, sustain, migrate, or retire). On the technology side, Enterprise Architecture separately names **Technology Lifecycle Management (TLM)**, which tracks technology life-cycle risks and exceptions, and the **Technology Reference Model**, which manages the software-product and hardware catalog and standards, both shown on Gantt-chart timelines, and together the named coverage for hardware/software standards lifecycle beyond HAM Pro's physical-asset lifecycle.
+**ServiceNow.** HAM Pro automates the hardware lifecycle with Flow Designer flows: the **Hardware Asset Order flow** (procurement through deployment), **Asset Onboarding and Offboarding flows**, and six asset task types (Deploy, Swap, Retire, Refresh, Loaner, and Leased Return) ending in **Hardware Disposal flows** with certificate tracking.
 
-**Flexera One.** Flexera One's **Hardware Lifecycle Management** tracks hardware from request to disposal, with **Lifecycle Automation** integrating vendors, procurement, and disposal systems, and **Lifecycle Alerts** for events such as end of life, warranty expiry, or lease termination. Flexera One also names a **Software Lifecycle Management (SLM)** capability, covering software from acquisition to retirement and centered on identifying end-of-life (EOL) and end-of-support (EOS) applications using Technopedia data, the software-side counterpart to Hardware Lifecycle Management.
+**Enterprise Architecture (formerly Application Portfolio Management, APM)** runs **Application Portfolio Rationalization** through classify, measure, analyze, and plan phases to decide whether an application is migrated, sustained, or divested. Its own four-way decision is stored as **Planned Disposition** on the Business Application: invest, sustain, migrate, or retire.
+
+On the technology side, Enterprise Architecture names **Technology Lifecycle Management (TLM)**, which tracks technology life-cycle risks and exceptions, and the **Technology Reference Model**, which manages the software-product and hardware catalog and standards. Both are shown on Gantt-chart timelines. Together they are the named coverage for hardware and software standards lifecycle beyond HAM Pro's physical-asset lifecycle.
+
+**Flexera One.** Flexera One's **Hardware Lifecycle Management** tracks hardware from request to disposal, with **Lifecycle Automation** integrating vendors, procurement, and disposal systems, and **Lifecycle Alerts** for events such as end of life, warranty expiry, or lease termination. Flexera One also names a **Software Lifecycle Management (SLM)** capability. It covers software from acquisition to retirement and centers on identifying end-of-life (EOL) and end-of-support (EOS) applications using Technopedia data. It's the software-side counterpart to Hardware Lifecycle Management.
 
 ## Vendor and contract management
 
@@ -40,7 +52,9 @@ For each of the nine process areas, the ServiceNow and Flexera One capability th
 
 ## Risk and security integration
 
-**ServiceNow.** ServiceNow's public documentation does not name a dedicated integration product linking SAM Pro, HAM Pro, or Enterprise Architecture to Vulnerability Response, IRM, or Security Incident Response for general application security. All of these capabilities read the same CMDB, and ServiceNow's own Enterprise Architecture documentation describes Technology Risk Management as an EA-internal capability that surfaces lifecycle-driven security and regulatory risk from EA's own portfolio data, rather than a link to a separate security product. The one confirmed named cross-capability link is **AI Control Tower**, which attaches AI risk and ownership data to a Business Application via table `sn_apm_ws_ba_product_model_map`, but it is scoped to AI assets specifically and requires its own license, so it does not close the gap for enforcing access control policy on new applications generally.
+**ServiceNow.** No confirmed capability closes the gap for enforcing access control policy on new applications. ServiceNow's public documentation does not name a dedicated integration product linking SAM Pro, HAM Pro, or Enterprise Architecture to Vulnerability Response, IRM, or Security Incident Response for general application security. All of these capabilities read the same CMDB. ServiceNow's Enterprise Architecture documentation describes Technology Risk Management as an EA-internal capability that surfaces lifecycle-driven security and regulatory risk from EA's own portfolio data, not a link to a separate security product.
+
+The one confirmed named cross-capability link is **AI Control Tower**, which attaches AI risk and ownership data to a Business Application via table `sn_apm_ws_ba_product_model_map`. It is scoped to AI assets and requires its own license.
 
 **Flexera One.** No Flexera One capability exists for enforcing or checking an access control policy against new applications; its confirmed capabilities are scoped to inventory, licensing, and cost rather than access security.
 
@@ -77,4 +91,4 @@ For each of the nine process areas, the ServiceNow and Flexera One capability th
 - [Vendor Management, Flexera](https://www.flexera.com/solutions/software-renewals-audits/vendor-management): confirms no standalone vendor-risk-management capability; outcome is framed as emerging from IT Asset Management and SaaS Management.
 - [Flexera Launches SBOM Management Functionality in Flexera One IT Visibility, Flexera press release](https://www.flexera.com/about-us/press-center/flexera-launches-sbom-management-functionality-in-flexera-one-it-visibility): the named SBOM Management capability.
 
-Pages that do not return readable content to an automated fetch: ServiceNow's own product pages (`servicenow.com/products/...`, `servicenow.com/uk/products/...`, both 403) and Flexera's documentation site (`docs.flexera.com/...`, also 403). Everything above comes from a page that loaded.
+ServiceNow's product pages (`servicenow.com/products/...`, `servicenow.com/uk/products/...`, both 403) and Flexera's documentation site (`docs.flexera.com/...`, also 403) did not return readable content to an automated fetch. Nothing above rests on them.

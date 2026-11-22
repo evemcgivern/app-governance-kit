@@ -1,8 +1,8 @@
 # Standard template
 
-A fill-in template for one software standard. A standard is a catalog, not a policy: it lists what is approved for a role or device class, in what version and setup, and how to ask for something else. The policy says people must use it; the standard says what is on it. Replace each prompt in brackets with your own text. Every example is fictional and comes from Halden Logistics, the demo estate.
+A fill-in template for one software standard. A standard is a catalog, not a policy: it lists what's approved for a role or device class, in what version and setup, and how to ask for something else. Replace each prompt in brackets with your own text. Every example is fictional and comes from Halden Logistics, the demo estate.
 
-Clause references are to ISO/IEC 19770-1:2017 (paraphrased) and to the shared crosswalk (`XW-` rows). Verify license terms against the contract; this template does not interpret them.
+Clause references are to ISO/IEC 19770-1:2017 (paraphrased) and to the shared crosswalk (`XW-` rows). Verify license terms against the contract; this template doesn't interpret them.
 
 ## Control block
 
@@ -33,7 +33,7 @@ State the role or device class this standard covers. Include software delivered 
 | Role or device class | [For example, dispatch coordinators] |
 | Installed software included | [Yes or no] |
 | Subscription and SaaS included | [Yes or no] |
-| Out of scope | [What is left out, with the reason] |
+| Out of scope | [What's left out, with the reason] |
 
 Example (fictional): Halden dispatch coordinators, on Halden-managed laptops, including the routing subscription they use in a browser.
 
@@ -54,7 +54,7 @@ A title joins the catalog when it meets the criteria below, and each decision ca
 | Criterion | Accept when | Reject code | Reason in words |
 | --- | --- | --- | --- |
 | Business need | [A named need that no catalog title meets] | [R1] | [No unmet need] |
-| License fit | [Metric and terms confirmed against the contract] | [R2] | [License terms cannot be met or confirmed] |
+| License fit | [Metric and terms confirmed against the contract] | [R2] | [License terms can't be met or confirmed] |
 | Security | [The security requirements below are met] | [R3] | [Fails a security requirement] |
 | Support | [Vendor supports the version in use] | [R4] | [Out of support or near end of support] |
 | Overlap | [Does not duplicate a catalog title; see the `rationalization` method] [[XW-011]] | [R5] | [Duplicates an existing title] |
@@ -74,7 +74,7 @@ List the requirements a standard title must meet, stated so each can be checked.
 
 ## 6. Non-standard path
 
-A request for something not on the catalog is allowed, not ignored. It follows the exception path in the parent policy: a written request with the reason and risk, an approver who is not the requester, escalation by cost and risk, an end date, and an entry in `authorization-log.csv`. [[XW-009]] [[XW-019]]
+A request for something not on the catalog is allowed. It follows the exception path in the parent policy: a written request with the reason and risk, an approver who's not the requester, escalation by cost and risk, an end date, and an entry in `authorization-log.csv`. [[XW-009]] [[XW-019]]
 
 | Question | Entry |
 | --- | --- |
@@ -85,13 +85,13 @@ A request for something not on the catalog is allowed, not ignored. It follows t
 
 ## 7. Rollout approach
 
-Start with a small pilot group before everyone. Say who is in it, how long it runs, and what result moves it to full rollout. Plan for support, training, and rollback.
+Start with a small pilot group before everyone. Say who's in it, how long it runs, and what result moves it to full rollout. Plan for support, training, and rollback.
 
 | Step | Detail |
 | --- | --- |
 | Pilot group | [Who, and how many] |
 | Pilot length | [Dates] |
-| Pass condition | [What you will check before going wider] |
+| Pass condition | [What you'll check before going wider] |
 | Full rollout | [Dates and method] |
 | Rollback | [How a title is withdrawn if it fails] |
 
@@ -115,13 +115,13 @@ Review at least yearly, and when a listed title reaches end of support, a vendor
 
 ## 10. Where published
 
-Publish the current version where staff and buyers look, and withdraw older versions so they cannot be found by mistake. [[XW-020]] (7.6.5)
+Publish the current version where staff and buyers look, and withdraw older versions so they can't be found by mistake. [[XW-020]] (7.6.5)
 
 | Item | Entry |
 | --- | --- |
 | Location | [Link] |
 | Versions kept | [Where older versions are archived] |
-| Told when it changes | [Who is notified, and how] |
+| Told when it changes | [Who's notified, and how] |
 
 ## Decision
 
@@ -129,4 +129,4 @@ Publish the current version where staff and buyers look, and withdraw older vers
 | --- | --- | --- | --- |
 | Approve this standard as written | [Owner role] | [Approver role] | |
 
-Source: ISO/IEC 19770-1:2017 clause 7.6.5, and the shared crosswalk. Paraphrased; this is not a substitute for the standard.
+Source: ISO/IEC 19770-1:2017 clause 7.6.5, and the shared crosswalk. Paraphrased; this isn't a substitute for the standard.

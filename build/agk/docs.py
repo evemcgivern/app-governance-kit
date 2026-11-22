@@ -1113,12 +1113,12 @@ document.addEventListener("DOMContentLoaded", function () {
     button.addEventListener("click", function () {
       var lines = [columns.map(quote).join(",")];
       cards.forEach(function (c) { lines.push(columns.map(function (col) { return quote(value(c, col)); }).join(",")); });
-      var blob = new Blob(["\\ufeff" + lines.join("\\r\\n") + "\\r\\n"], {type: "text/csv;charset=utf-8"});
+      var blob = new File(["\\ufeff" + lines.join("\\r\\n") + "\\r\\n"], button.getAttribute("data-file"), {type: "text/csv;charset=utf-8"});
       var a = document.createElement("a");
       a.href = URL.createObjectURL(blob);
       a.download = button.getAttribute("data-file");
       document.body.appendChild(a); a.click(); a.remove();
-      setTimeout(function () { URL.revokeObjectURL(a.href); }, 1000);
+      setTimeout(function () { URL.revokeObjectURL(a.href); }, 60000);
     });
   }
   update();
@@ -1163,12 +1163,12 @@ document.addEventListener('DOMContentLoaded', function () {
     var html = '<html><head><meta charset=utf-8><title>' + esc(document.title) + '</title><style>' + style +
       '</style></head><body><h1>' + esc(document.querySelector('h1').textContent) + '</h1>' + head +
       copy.innerHTML + '</body></html>';
-    var blob = new Blob(['\\ufeff', html], {type: 'application/msword'});
+    var blob = new File(['\\ufeff', html], button.getAttribute('data-file'), {type: 'application/msword'});
     var a = document.createElement('a');
     a.href = URL.createObjectURL(blob);
     a.download = button.getAttribute('data-file');
     document.body.appendChild(a); a.click(); a.remove();
-    setTimeout(function () { URL.revokeObjectURL(a.href); }, 1000);
+    setTimeout(function () { URL.revokeObjectURL(a.href); }, 60000);
   });
 });
   </script>"""
@@ -1353,6 +1353,8 @@ PLAYBOOK_STEM = "itam-program-playbook"
 STEP_RE = re.compile(r"^Step (\d+): (.+)$")
 BACKTICK_FILE_RE = re.compile(r"`([\w.-]+)\.(?:md|csv)`")
 LINK_FILE_RE = re.compile(r"\]\(([\w.-]+)\.(?:md|csv)(?:#[^)]*)?\)")
+WHY_RE = re.compile(r"\*\*Why:\*\*\s*(.+)", re.S)
+XW_TAG_RE = re.compile(r"\s*\[\[XW-\d{3}\]\]")
 
 
 def _block_text(block: dict) -> str:
@@ -1380,10 +1382,13 @@ def playbook_steps(blocks: list[dict]) -> list[dict]:
             if m:
                 level = b["level"]
                 current = {"n": int(m.group(1)), "title": m.group(2).strip(), "id": slug(unmark(b["text"])),
-                           "stems": []}
+                           "stems": [], "why": ""}
                 steps.append(current)
         elif current is not None:
             text = _block_text(b)
+            why = WHY_RE.match(text) if b["type"] == "p" else None
+            if why and not current["why"]:
+                current["why"] = XW_TAG_RE.sub("", why.group(1)).strip()
             for stem in BACKTICK_FILE_RE.findall(text) + LINK_FILE_RE.findall(text):
                 if stem not in current["stems"]:
                     current["stems"].append(stem)
@@ -1491,30 +1496,84 @@ def example_link(d) -> str | None:
 STEPS_RE = re.compile(r"<!--STEPS-->.*?<!--/STEPS-->", re.S)
 
 
-def toolkit_steps_html(rows: list[dict], steps: list[dict], titles: dict[str, str]) -> str:
-    """The "By playbook step" section of the toolkit page: each file once, under its main step, with a tag."""
+# What kind of file each toolkit file is, read from its own title first and then from the opening of its intro.
+TITLE_TYPES = [("self-assessment", "Self-assessment"), ("checklist", "Checklist"), ("sop", "SOP"),
+               ("procedure", "Procedure"), ("worksheet", "Worksheet"), ("decision tree", "Decision tree"),
+               ("prompts", "Prompts"), ("playbook", "Playbook"), ("guide", "Guide"), ("template", "Template"),
+               ("plan", "Plan"), ("report", "Report")]
+INTRO_TYPES = [("worksheet", "Worksheet"), ("schedule", "Schedule"), ("checklist", "Checklist"),
+               ("template", "Template")]
+
+
+def file_type(title: str, blocks: list[dict] | None, kind: str) -> str:
+    """The type label for a toolkit file: a word in its title, else a word in the opening of its intro, else the format."""
+    low = title.lower()
+    for word, label in TITLE_TYPES:
+        if re.search(rf"\b{re.escape(word)}\b", low):
+            return label
+    intro = next((b["text"] for b in (blocks or []) if b["type"] == "p"), "")
+    opening = " ".join(intro.lower().split()[:6])
+    for word, label in INTRO_TYPES:
+        if word in opening:
+            return label
+    return "Spreadsheet" if kind == "csv" else "Document"
+
+
+def toolkit_steps_html(rows: list[dict], steps: list[dict], titles: dict[str, str],
+                       types: dict[str, str] | None = None) -> str:
+    """The "By playbook step" section of the toolkit page: a ten-step overview, then one card per step.
+    Each file is listed once, under its main step, with its type and a note for any other step it serves."""
+    types = types or {}
     playbook_href = f"docs/sam-toolkit/{PLAYBOOK_STEM}.html"
-    groups = [(str(st["n"]), f"<a href=\"{playbook_href}#{escape(st['id'], quote=True)}\">"
-               f"Step {st['n']}: {escape(st['title'])}</a>") for st in steps] + [("beyond", "Not part of a step")]
     files = [r for r in rows if r["kind"] == "file"]
-    out = ["<!--STEPS-->", "<section class=\"prose prose-wide\" id=\"by-step\">", "  <h2>By playbook step</h2>",
-           "  <p>Each file is listed once, under the step it mainly serves. A file that also serves another step "
-           "says so in its tag. The step for each file comes from <code>steps/step-map.csv</code>.</p>"]
-    for n, label in groups:
+
+    def entry(r: dict) -> str:
+        stem = r["key"].rsplit(".", 1)[0]
+        title = escape(titles.get(r["key"], stem))
+        note = ""
+        if r["also_steps"]:
+            links = " ".join(f"<a href=\"#by-step-{a}\"><span class=\"visually-hidden\">Step </span>{a}</a>"
+                              for a in r["also_steps"])
+            word = "step" if len(r["also_steps"]) == 1 else "steps"
+            note = f"\n        <span class=\"file-also\">Also {word} {links}</span>"
+        label = escape(types.get(r["key"]) or ("Spreadsheet" if r["key"].endswith(".csv") else "Document"))
+        return (f"      <li data-stem=\"{escape(stem, quote=True)}\">\n"
+                f"        <a href=\"docs/sam-toolkit/{stem}.html\">{title}</a>\n"
+                f"        <span class=\"file-type\">{label}</span>{note}\n      </li>")
+
+    def card(n: str, st: dict | None) -> str:
         mine = [r for r in files if r["main_step"] == n]
         if not mine:
-            continue
-        out.append(f"  <h3 id=\"by-step-{n}\">{label}</h3>")
-        out.append("  <ul class=\"link-list\">")
-        for r in mine:
-            stem = r["key"].rsplit(".", 1)[0]
-            if n == "beyond":
-                tag = "Not part of a step"
-            else:
-                tag = f"Step {n}" + (f", also {stepmap.step_words(r['also_steps'])}" if r["also_steps"] else "")
-            out.append(f"    <li data-stem=\"{escape(stem, quote=True)}\"><a href=\"docs/sam-toolkit/{stem}.html\">"
-                       f"{escape(titles.get(r['key'], stem))}</a> <span class=\"step-tag\">{escape(tag)}</span></li>")
-        out.append("  </ul>")
+            return ""
+        count = f"{len(mine)} file" + ("" if len(mine) == 1 else "s")
+        if st:
+            head = (f"<h3 id=\"by-step-{n}-heading\"><span class=\"step-badge\" aria-hidden=\"true\">{n}</span>"
+                    f"<span class=\"visually-hidden\">Step {n}: </span>{escape(st['title'])}</h3>")
+            goal = f"\n    <p class=\"step-card__goal\">{escape(st['why'])}</p>" if st.get("why") else ""
+            more = (f"\n    <p class=\"meta step-card__more\"><a href=\"{playbook_href}#{escape(st['id'], quote=True)}\">"
+                    f"Read step {n} in the playbook</a></p>")
+            cls = "card step-card"
+        else:
+            head = "<h3 id=\"by-step-beyond-heading\">Not part of a step</h3>"
+            goal, more, cls = "", "", "card step-card step-card--loose"
+        items = "\n".join(entry(r) for r in mine)
+        return (f"  <section class=\"{cls}\" id=\"by-step-{n}\" aria-labelledby=\"by-step-{n}-heading\">\n"
+                f"    <div class=\"step-card__head\">{head}<span class=\"meta step-card__count\">{count}</span></div>"
+                f"{goal}\n    <ul class=\"step-files\">\n{items}\n    </ul>{more}\n  </section>")
+
+    out = ["<!--STEPS-->", "<section class=\"prose prose-wide steps\" id=\"by-step\" aria-labelledby=\"by-step-heading\">",
+           "  <h2 id=\"by-step-heading\">By playbook step</h2>",
+           "  <p>Each file is listed once, under the step it mainly serves. A file that also serves another step "
+           "says so in a note beside its name. The step for each file comes from <code>steps/step-map.csv</code>.</p>"]
+    if steps:
+        out += ["  <nav class=\"stepper-nav\" aria-label=\"The ten playbook steps\">", "    <ol class=\"stepper\">"]
+        out += [f"      <li><a href=\"#by-step-{st['n']}\"><span class=\"step-badge\" aria-hidden=\"true\">{st['n']}</span>"
+                f"<span><span class=\"visually-hidden\">Step {st['n']}: </span>{escape(st['title'])}</span></a></li>"
+                for st in steps]
+        out += ["    </ol>", "  </nav>"]
+    out += [card(str(st["n"]), st) for st in steps]
+    out.append(card("beyond", None))
+    out = [o for o in out if o]
     out += ["</section>", "<!--/STEPS-->"]
     return "\n".join(out)
 
@@ -1668,8 +1727,8 @@ def write_docs(root: Path) -> list[str]:
                               f"data-file=\"{stem}-filled.csv\">Download my answers (CSV)</button>")
         if "prompt-copy" in body:
             extra += "\n" + PROMPT_STATUS + "\n" + PROMPT_SCRIPT
-        extra = stepmap_notes_html(d) + extra
         jump = jump_html(d.blocks, files)
+        extra = stepmap_notes_html(d) + extra
         description = summary_of(d.blocks) or d.title
         canonical = BASE + d.page
         jsonld = json.dumps({
@@ -1697,8 +1756,11 @@ def write_docs(root: Path) -> list[str]:
     if step_rows and steps and toolkit_page.is_file():
         page_text = toolkit_page.read_text(encoding="utf-8")
         if STEPS_RE.search(page_text):
-            titles = {d.src.name: d.title for d in docs if d.group == "sam-toolkit" and d.src.parent.name == "sam-toolkit"}
-            toolkit_page.write_text(STEPS_RE.sub(lambda _: toolkit_steps_html(step_rows, steps, titles), page_text),
+            mine = [d for d in docs if d.group == "sam-toolkit" and d.src.parent.name == "sam-toolkit"]
+            titles = {d.src.name: d.title for d in mine}
+            types = {d.src.name: file_type(d.title, d.blocks, d.kind) for d in mine}
+            toolkit_page.write_text(STEPS_RE.sub(lambda _: toolkit_steps_html(step_rows, steps, titles, types),
+                                                 page_text),
                                     encoding="utf-8")
     write_sitemap(site)
     warnings += [f"docs: {src}: link {href} matches no site page; shown as plain text"

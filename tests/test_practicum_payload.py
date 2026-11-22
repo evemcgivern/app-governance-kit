@@ -69,8 +69,10 @@ class PayloadTests(unittest.TestCase):
         cls.tmp = Path(tempfile.mkdtemp())
         gen.generate(cls.tmp / "demo")
 
-    def test_order_has_eight_tools_matching_graded_tools(self):
-        self.assertEqual(len(ORDER), 8)
+    def test_order_has_nine_tools_matching_graded_tools(self):
+        self.assertEqual(len(ORDER), 9)
+        self.assertEqual(ORDER[:3], ("program-setup", "as-is-assessment", "itam-maturity"))
+        self.assertEqual(ORDER[-1], "audit-response")
         self.assertIn("audit-response", ORDER)
         self.assertIn("hardware-lifecycle", ORDER)
         payload = practicum_payload(self.tmp / "demo", write_exercises(self.tmp / "ex1"), XW)
@@ -81,6 +83,7 @@ class PayloadTests(unittest.TestCase):
         payload = practicum_payload(self.tmp / "demo", write_exercises(self.tmp / "ex2"), XW)
         self.assertEqual(len(payload["tables"]["apps"]), 60)
         self.assertEqual(len(payload["tables"]["devices"]), 60)
+        self.assertEqual(len(payload["tables"]["as-is-evidence"]), 10)
         self.assertIn("council-draft", payload["texts"])
         self.assertEqual(payload["max_extra"], MAX_EXTRA)
         self.assertEqual(payload["exercises"][0]["scenario"], "You are Halden's new lead.")

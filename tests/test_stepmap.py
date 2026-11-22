@@ -34,9 +34,11 @@ class StepMapTests(unittest.TestCase):
         self.assertEqual(by["file", "authorization-log.csv"]["also_steps"], ["9"])
         self.assertEqual(by["file", "policy-template.md"]["also_steps"], ["6"])
         self.assertEqual(by["file", "process-map-worksheet.md"]["also_steps"], ["9"])
-        self.assertEqual(by["practicum", "08-audit-response"]["main_step"], "3")
-        self.assertEqual(by["practicum", "08-audit-response"]["also_steps"], ["8"])
-        self.assertEqual(by["practicum", "03-crosswalk"]["main_step"], "beyond")
+        self.assertEqual(by["practicum", "09-audit-response"]["main_step"], "3")
+        self.assertEqual(by["practicum", "09-audit-response"]["also_steps"], ["8"])
+        self.assertEqual(by["practicum", "04-crosswalk"]["main_step"], "beyond")
+        self.assertEqual(by["practicum", "02-as-is-assessment"]["main_step"], "1")
+        self.assertEqual(by["practicum", "02-as-is-assessment"]["also_steps"], ["5"])
         self.assertEqual(by["case", "rationalization"]["main_step"], "beyond")
 
     def test_every_practicum_and_case_is_mapped(self):
@@ -125,17 +127,17 @@ class LineTests(unittest.TestCase):
     def test_related_line(self):
         rows = [row("practicum", "01-program-setup", "2", note="Program setup"),
                 row("case", "renewals", "3", note="Renewals"),
-                row("practicum", "08-audit-response", "3", ["8"], note="Audit response"),
+                row("practicum", "09-audit-response", "3", ["8"], note="Audit response"),
                 row("term", "Sponsor", "2"), row("term", "Notice deadline", "3")]
         self.assertEqual(related_line(rows, 2),
                          "- Related: [exercise 01: Program setup](../practicum/01-program-setup.md); "
                          "[glossary](../field-guide/glossary.md): Sponsor.")
         self.assertEqual(related_line(rows, 3),
-                         "- Related: [exercise 08: Audit response](../practicum/08-audit-response.md); "
+                         "- Related: [exercise 09: Audit response](../practicum/09-audit-response.md); "
                          "case study [Renewals](../site/case-studies.html#case-renewals); "
                          "[glossary](../field-guide/glossary.md): Notice deadline.")
         self.assertEqual(related_line(rows, 8),
-                         "- Related: [exercise 08: Audit response](../practicum/08-audit-response.md).")
+                         "- Related: [exercise 09: Audit response](../practicum/09-audit-response.md).")
         self.assertEqual(related_line(rows, 4), "")
 
 
@@ -173,7 +175,8 @@ class HandKeptPageTests(unittest.TestCase):
         html = (ROOT / "site" / "sam-toolkit.html").read_text(encoding="utf-8")
         block = html.split("<!--STEPS-->", 1)[1].split("<!--/STEPS-->", 1)[0]
         groups = {}
-        for m in re.finditer(r'<h3 id="by-step-([\w-]+)">.*?</h3>(.*?)(?=<h3 id="by-step-|\Z)', block, re.S):
+        for m in re.finditer(r'<section class="card step-card[^"]*" id="by-step-([\w-]+)"[^>]*>(.*?)</section>',
+                             block, re.S):
             groups[m.group(1)] = re.findall(r'data-stem="([^"]+)"', m.group(2))
         for r in (r for r in self.rows if r["kind"] == "file"):
             stem = r["key"].rsplit(".", 1)[0]
@@ -236,7 +239,7 @@ class PlaybookAndCalendarTests(unittest.TestCase):
 
     def test_practice_sentence(self):
         self.assertIn("do the matching practicum exercise on the Halden data before you do a step on real "
-                      "records, and do exercise 08 before any real audit letter arrives", self.play)
+                      "records, and do exercise 09 before any real audit letter arrives", self.play)
 
     def test_calendar_weeks_show_order_not_duration(self):
         self.assertNotIn("| Weeks |", self.cal)

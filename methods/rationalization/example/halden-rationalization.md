@@ -30,7 +30,7 @@ Checked against `checked_on` (2026-09-01):
 
 No license expires within 90 days of `checked_on` beyond these two. **Unverified:** on paper, entitlements are far below `users` for most apps and far above `users` for a smaller group (e.g. APP-025 Pulseboard: 350 entitlements against 45 users). `users` in this file isn't documented as licensed seats or installs, so I'm treating this pattern as a license-position question to investigate, not as a proven over- or under-buy [[XW-007]].
 
-Both expired licenses sit on high-usage apps, not duplicates, so the fix is renewal, not elimination; see the TIME table.
+Both expired licenses sit on high-usage apps, not duplicates, so the fix is renewal; see the TIME table.
 
 ## TIME table
 
@@ -101,7 +101,7 @@ Both expired licenses sit on high-usage apps, not duplicates, so the fix is rene
 
 - **Eliminate:** APP-008, APP-022, APP-029, APP-033, APP-052, combined annual cost **$355,400**.
 - **Migrate:** none. No app showed a technical-replatform need that stopped short of full elimination; every duplicate resolves by retiring one side outright.
-- **Potential savings:** **$250,000–$355,400 a year**, not a promise. The low end assumes vendor notice periods and a wind-down period eat into year-one savings; the high end assumes clean, immediate termination. **Unverified:** actual contract terms, since none were supplied [[XW-013]] [[XW-012]].
+- **Potential savings:** **$250,000–$355,400 a year**. The low end assumes vendor notice periods and a wind-down period eat into year-one savings; the high end assumes clean, immediate termination. **Unverified:** actual contract terms, since none were supplied [[XW-013]] [[XW-012]].
 
 **Top risks of acting:**
 1. Retiring the wrong side of a pair without checking for an undocumented dependency (no CMDB or integration data was supplied) [[XW-011]].

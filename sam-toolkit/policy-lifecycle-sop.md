@@ -10,7 +10,7 @@ Applies to the smallest useful ITAM policy set and the standards beneath it:
 
 - The IT asset management umbrella policy, owned by the ITAM manager and approved by the sponsor. It covers license compliance, acceptable use, and penalties.
 - The software acquisition and exceptions policy, with a standard path, a non-standard path, and approval that escalates with cost and risk.
-- The software standards, which are a catalog and not a policy: approved titles by role, versions, and SaaS. A selection committee owns them.
+- The software standards, which are a catalog of approved titles by role, versions, and SaaS, and not a policy. A selection committee owns them.
 - The vendor management policy, one policy with a section for each topic.
 - The records and evidence policy: proofs, authorizations, and retention. The company's own records schedule sets the retention rules. **Decision needed:** records owner or counsel.
 
@@ -29,7 +29,7 @@ Each policy is reviewed at least yearly, and sooner when a trigger occurs: a ven
 
 ## Steps
 
-1. Before drafting, find the company's records retention schedule. If you cannot find it, ask the records owner or legal where it is written. For each record type below, note the rule, where it is written, who owns it, and how a legal hold is applied. Also name where the backup copy of these records is kept and who can restore it. Do not choose a period yourself. [[XW-020]]
+1. Before drafting, find the company's records retention schedule. If you can't find it, ask the records owner or legal where it's written. For each record type below, note the rule, where it's written, who owns it, and how a legal hold is applied. Also name where the backup copy of these records is kept and who can restore it. Do not choose a period yourself. [[XW-020]]
    - Proofs of entitlement, with the contracts and terms that grant them.
    - Orders and invoices.
    - Audit correspondence and records gathered for an audit.
@@ -59,7 +59,7 @@ Each policy is reviewed at least yearly, and sooner when a trigger occurs: a ven
 - The exceptions in `authorization-log.csv`, each with its end date and review.
 - The review record and change history, including reviews that changed nothing.
 
-Design these records as a by-product of the steps, not something rebuilt when an auditor asks.
+Keep these records as you go.
 
 ## Questions to take to counsel and the contract owner
 
@@ -91,4 +91,4 @@ License reassignment
 - `acquisition-gate-checklist.md` and `retirement-signoff-checklist.md`, which carry the policies into daily work.
 - The `hardware-lifecycle` and `ai-intake` methods, which hold retirement and AI use rules.
 
-Source: ISO/IEC 19770-1:2017 clauses 5.2, 7.3, 7.4 and 7.6.5, and the shared crosswalk. Paraphrased; this is not a substitute for the standard.
+Source: ISO/IEC 19770-1:2017 clauses 5.2, 7.3, 7.4 and 7.6.5, and the shared crosswalk. Paraphrased; this isn't a substitute for the standard.

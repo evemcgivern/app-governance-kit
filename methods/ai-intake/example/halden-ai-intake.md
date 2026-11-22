@@ -1,14 +1,6 @@
-## Reviewer's notes (2026-09-24)
-
-- **AI-004, "Unverified" delay note (~line 165):** the model treated the push-back of the Annex III high-risk deadline as a pending "digital omnibus" proposal. It is not pending: Regulation (EU) 2026/1744 (the Digital Omnibus on AI), adopted 8 July 2026 and in force from 27 July 2026, amends Regulation (EU) 2024/1689 and confirmed on EUR-Lex (https://eur-lex.europa.eu/eli/reg/2026/1744/oj/eng) that the Annex III high-risk obligations now apply from 2 December 2027, not 2 August 2026 as originally set. Treat the date below as superseded by this confirmed, adopted change.
-- **AI-004, Art. 50(1) transparency duty (~lines 213, 237):** the model attributes this duty to whoever operates the chatbot. Article 50(1) of the AI Act binds the *provider* of the AI system, not the *deployer*. Halden, running a vendor chatbot in its own website chat, is the deployer here, not the provider. The disclosure duty still needs to be met, but the model named the wrong legally-bound party.
-- **AI-004, log retention citation (~line 173):** the model cites "Art. 26" for the six-month log-retention point. The specific paragraph is Art. 26(6), not Article 26 as a whole.
-
----
-
 I've run intake for all six systems in `ai-systems.csv`. The legal content behind this skill was last reviewed in 2026-09, so treat the EU AI Act points below as a starting point. **Legal review is required for AI-004**, which is tiered high-risk.
 
-**Summary**
+**Tiers by system**
 
 | id | Owner | Tier | Main driver |
 |---|---|---|---|
@@ -84,7 +76,7 @@ In NIST AI RMF terms: **Govern** covers ownership and approval, **Map** covers t
 **Tier: Minimal-risk.**
 - It pulls fields out of documents and a person checks them before anything happens.
 - It's not in any listed high-risk area, and it doesn't talk to people.
-- The risk is financial: a wrong figure or a duplicate payment. That belongs under finance controls, not AI Act controls.
+- The risk is financial: a wrong figure or a duplicate payment. That belongs under finance controls.
 
 **Controls beyond the baseline:**
 - **XW-028:** decide how financial data is classified and handled.
@@ -170,7 +162,7 @@ In NIST AI RMF terms: **Govern** covers ownership and approval, **Map** covers t
 - There's an exception for tools doing only a "narrow procedural task" (Art. 6(3)), but it doesn't apply. Ranking applicants is profiling of people, and profiling always stays high-risk.
 - It's also a hiring decision with a real effect on people, which brings in GDPR automated decision-making rules (Art. 22) and a data protection impact assessment (DPIA, Art. 35).
 
-**Unverified:** The Annex III high-risk obligations were due to apply from 2 August 2026, but EU "digital omnibus" proposals would push that date back. Legal should confirm the current date. Either way, implement the controls now.
+**Unverified:** The Annex III high-risk obligations were due to apply from 2 August 2026. The Digital Omnibus on AI moved them to 2 December 2027 (AI built into regulated products under Annex I: 2 August 2028), according to the European Commission's AI Act Service Desk timeline. The official journal text wasn't checked. Legal should confirm the current dates. Either way, implement the controls now.
 
 **Required controls (on top of the baseline):**
 - **Legal review before approval (XW-021):** confirm the tier, and whether Halden is only a *deployer* or also a *provider*. Halden becomes a provider if it built the system, substantially modified it, or put its own name on it.
@@ -178,7 +170,7 @@ In NIST AI RMF terms: **Govern** covers ownership and approval, **Map** covers t
 - **Informing people:** tell applicants that an AI system is used in assessing them. Tell workers' representatives and affected staff before it's put in use at work.
 - **Input data quality (Map / XW-028):** make sure the data fed in is relevant and representative for the purpose. Don't feed in special-category data.
 - **Bias and accuracy monitoring (Measure / XW-025):** compare selection rates across protected groups and track how accurate the rankings are.
-- **Logs:** keep the system's automatic logs for at least six months (per Art. 26), and link them to the XW-020 evidence records.
+- **Logs:** keep the system's automatic logs for at least six months (Art. 26(6)), and link them to the XW-020 evidence records.
 - **Supplier (XW-023, ISO/IEC 42001 A.10):**
   - Get the provider's EU declaration of conformity, CE marking, instructions for use, and registration in the EU database.
   - Get disclosure of training data sources and subprocessors.
@@ -218,7 +210,7 @@ In NIST AI RMF terms: **Govern** covers ownership and approval, **Map** covers t
 
 **Tier: Limited-risk.**
 - It's not prohibited and not in a listed area. Shipment tracking is not an "essential service" in the Act's sense.
-- It does talk directly to people, so the transparency duty for chatbots (Art. 50(1)) applies: customers must be told clearly that they are chatting with AI, unless that's obvious. That duty applies from 2 August 2026.
+- It does talk directly to people, so the chatbot transparency rule (Art. 50(1)) applies from 2 August 2026: customers must be told clearly that they are chatting with AI, unless that's obvious. The rule binds the provider, which here is the chatbot vendor. Halden is the deployer, so it should confirm in the vendor terms that the vendor meets it, and check whether any deployer duty in Art. 50(3) or 50(4) applies.
 - Other risks: it could share someone's shipment details with the wrong person if identity isn't checked, and it could give wrong answers.
 
 **Controls beyond the baseline:**
@@ -242,7 +234,7 @@ In NIST AI RMF terms: **Govern** covers ownership and approval, **Map** covers t
 | personal data (yes/no) | Yes (likely) |
 | data provenance | Halden shipment systems; customer-supplied |
 | risk tier | Limited-risk |
-| reasoning | Talks directly to people, so the Art. 50 disclosure applies; not in a listed high-risk area |
+| reasoning | Talks directly to people, so the Art. 50(1) disclosure rule applies (the vendor must meet it; Halden confirms); not in a listed high-risk area |
 | required controls | Baseline; AI disclosure; handover to a person; identity/tracking check; chat-log retention rules; XW-023 provider terms |
 | approval | **Decision needed:** approval to proceed |
 | approver | *(pending)* |
@@ -289,7 +281,7 @@ In NIST AI RMF terms: **Govern** covers ownership and approval, **Map** covers t
 
 ---
 
-**Decisions needed, in summary:**
+**Decisions needed:**
 1. **Legal review for AI-004** before anything else: confirm the tier, confirm whether Halden is a deployer or provider, confirm there's no emotion-recognition or biometric feature, and confirm when the obligations apply.
 2. **AI-003:** Operations to confirm routes aren't used to manage drivers.
 3. **All systems:** approve each one and name the approver.

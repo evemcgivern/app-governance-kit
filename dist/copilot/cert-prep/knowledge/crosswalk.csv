@@ -29,3 +29,5 @@ XW-027,"Governance body, sponsor, and decision rights","5.1, 5.3","EDM01, APO01"
 XW-028,Data classification and handling,,APO14,"A.5.12, A.5.13, A.5.10",A.7,Classify data by sensitivity and handle it according to that classification.,2026-10-15
 XW-029,Change management,8.2,BAI06,"6.3, A.8.32",6.3,Assess the risk of a planned change and approve it before it is made; review the outcome afterward.,2026-10-15
 XW-030,"Awareness, communication, and document control","7.3, 7.4, 7.6.5",APO01,"7.3, 7.4, 7.5.3","7.3, 7.4, 7.5.3","Make sure the people a policy binds know it, communicate it on a plan, and keep the document in one controlled, versioned place.",2026-11-22
+XW-031,Resources and competence,"7.1, 7.2",APO07,"7.1, 7.2","7.1, 7.2","Provide the people, skills, budget, and training the program needs, and keep evidence of competence.",2026-11-22
+XW-032,Objectives and statement of applicability,"6.2, 6.2.2, 6.2.3",APO01.01,6.2,6.2,"Set measurable ITAM objectives, and record which processes apply and why any are excluded.",2026-11-22

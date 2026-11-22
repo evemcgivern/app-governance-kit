@@ -1,10 +1,10 @@
 # Policy template
 
-A fill-in template for one ITAM policy. Use it for the umbrella policy first, then again for each policy in the set described in `policy-lifecycle-sop.md`. Replace each prompt in brackets with your own text, and delete any prompt that does not apply. Every example is fictional and comes from Halden Logistics, the demo estate; do not copy an example into your own policy as if it were your rule.
+A fill-in template for one ITAM policy. Use it for the umbrella policy first, then again for each policy in the set described in `policy-lifecycle-sop.md`. Replace each prompt in brackets with your own text, and delete any prompt that doesn't apply. Every example is fictional and comes from Halden Logistics, the demo estate; don't copy an example into your own policy as if it were your rule.
 
 A policy states what the organization requires and who answers for it. Detail that changes often, such as approved titles and versions, belongs in a standard (`policy-standard-template.md`) that the policy points to. Before you send the draft for approval, test it against `policy-checklist.md`. For a draft with known weaknesses to practice on, see `demo-estate/policy-draft.md`.
 
-Clause references are to ISO/IEC 19770-1:2017 (paraphrased) and to the shared crosswalk (`XW-` rows). This template does not give legal advice; the parts that touch discipline, retention, or contract duties need review by counsel.
+Clause references are to ISO/IEC 19770-1:2017 (paraphrased) and to the shared crosswalk (`XW-` rows). This template doesn't give legal advice; the parts that touch discipline, retention, or contract duties need review by counsel.
 
 ## Control block
 
@@ -23,11 +23,11 @@ Clause references are to ISO/IEC 19770-1:2017 (paraphrased) and to the shared cr
 
 [Two or three sentences: the problem this policy addresses and what it requires of people. Say what goes wrong without it.] (5.2)
 
-Example (fictional): Halden Logistics buys software through many hands. This policy sets one set of rules so that every license is owned, recorded, and used within its terms, and so that staff know what is expected of them.
+Example (fictional): Halden Logistics buys software through many hands. This policy sets one set of rules so that every license is owned, recorded, and used within its terms, and so that staff know what's expected of them.
 
 ## 2. Scope and exclusions
 
-State who and what is covered, and list what is left out, with the reason for each exclusion. A scope that says where appropriate does not bound anything. [[XW-003]]
+State who and what's covered, and list what's left out, with the reason for each exclusion. A scope that says where appropriate doesn't bound anything. [[XW-003]]
 
 | Item | In scope | Reason or limit |
 | --- | --- | --- |
@@ -52,7 +52,7 @@ Define each term a reader could argue about. Keep the list short and use each te
 
 ## 4. Policy statements
 
-Write each statement so a person can meet it and a reviewer can test it. If a statement cannot be tested, rewrite it or move it to the purpose.
+Write each statement so a person can meet it and a reviewer can test it. If a statement can't be tested, rewrite it or move it to the purpose.
 
 ### 4.1 Objectives
 
@@ -72,7 +72,7 @@ Example (fictional): Every purchased license has proof of purchase on file, revi
 
 [State what people may and may not do with covered software: install, copy, share accounts, move to personal devices, use free or trial versions for company work, and use outside tools with company data.]
 
-Example (fictional): Halden staff do not install software that is not on the Halden approved catalog. They request it through the acquisition and exceptions policy.
+Example (fictional): Halden staff don't install software that's not on the Halden approved catalog. They request it through the acquisition and exceptions policy.
 
 ### 4.5 Individual and organizational responsibility
 
@@ -95,7 +95,7 @@ Change the columns and the letters to match your own organization. The rows abov
 
 ## 6. Related standards and procedures
 
-List what sits under this policy. Each item has a name, an owner, and a place it is published.
+List what sits under this policy. Each item has a name, an owner, and a place it's published.
 
 | Document | Type | Owner | Location |
 | --- | --- | --- | --- |
@@ -106,7 +106,7 @@ List what sits under this policy. Each item has a name, an owner, and a place it
 
 ### Records and retention
 
-Find your company's records retention schedule, or ask the records owner or legal where it is written, and copy each rule with its source. [[XW-020]] (7.6.5)
+Find your company's records retention schedule, or ask the records owner or legal where it's written, and copy each rule with its source. [[XW-020]] (7.6.5)
 
 | Record type | Retention rule (from the company’s schedule) | Source | Rule owner | Confirmed by | Date |
 | --- | --- | --- | --- | --- | --- |
@@ -135,7 +135,7 @@ An exception is a permission to depart from this policy, granted for a reason an
 
 [State the consequences of breaking this policy, who decides them, and how a person can raise a concern or appeal. Keep the wording consistent with existing discipline rules.]
 
-**Decision needed: counsel.** Have counsel and HR review this section, including any named penalty, before it is approved. This template does not set a penalty.
+**Decision needed: counsel.** Have counsel and HR review this section, including any named penalty, before it's approved. This template doesn't set a penalty.
 
 ## 9. Communication and awareness
 
@@ -143,17 +143,17 @@ Say how people learn the policy and how you know they understood it. Awareness c
 
 | Question | Answer |
 | --- | --- |
-| What is communicated | [The policy, what changed, and what it means for the reader] |
+| What's communicated | [The policy, what changed, and what it means for the reader] |
 | When | [At hire, at each new version, and on a yearly refresher] |
 | To whom | [All covered people, and extra material for managers and buyers] |
 | How | [Channel and format] |
 | Acknowledgment | [How a person confirms they read it, and where the record is kept] |
 | Who checks | [Role that follows up on missing acknowledgments] |
-| Understood | [How the owner checks the policy was understood, for example a short quiz, a question in a team meeting, or a spot check of a few people, and where the result is recorded] |
+| Understood | [How the owner checks the policy was understood, for example a short quiz, and where the result is recorded] |
 
 ## 10. Measures
 
-Pick a few measures that show the policy is followed, not only that it exists. [[XW-025]]
+Pick a few measures that show the policy is followed. [[XW-025]]
 
 | Measure | Target | Source | Reviewed by | How often |
 | --- | --- | --- | --- | --- |
@@ -171,7 +171,7 @@ List each related policy, such as security, procurement, records, privacy, and a
 
 ## 12. Review and change history
 
-Review at least yearly, and sooner when a trigger occurs: a vendor audit, a merger, a move to cloud, a change of sponsor, or a finding from an internal check. [[XW-025]] Keep every version, and withdraw superseded ones so they cannot be found by mistake. [[XW-020]] (7.6.5)
+Review at least yearly, and sooner when a trigger occurs: a vendor audit, a merger, a move to cloud, a change of sponsor, or a finding from an internal check. [[XW-025]] Keep every version, and withdraw superseded ones so they can't be found by mistake. [[XW-020]] (7.6.5)
 
 | Version | Date | Change | Changed by | Approved by |
 | --- | --- | --- | --- | --- |
@@ -183,4 +183,4 @@ Review at least yearly, and sooner when a trigger occurs: a vendor audit, a merg
 | --- | --- | --- | --- |
 | Approve this policy as written | [Owner role] | [Approver role] | |
 
-Source: ISO/IEC 19770-1:2017 clauses 5.2, 5.3, 7.3, 7.4 and 7.6.5, and the shared crosswalk. Paraphrased; this is not a substitute for the standard.
+Source: ISO/IEC 19770-1:2017 clauses 5.2, 5.3, 7.3, 7.4 and 7.6.5, and the shared crosswalk. Paraphrased; this isn't a substitute for the standard.

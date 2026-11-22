@@ -11,13 +11,14 @@ from agk.downloads import (DownloadsError, cert_comparison_csv, cert_comparison_
                             cert_task_matrix_csv, cert_task_matrix_print_html, crosswalk_print_html,
                             csv_to_html_table, extract_md_table, generate_lifecycle_wheel_svg,
                             lifecycle_impact_print_html, lifecycle_wheel_print_html, print_page_html,
-                            write_downloads)
+                            generate_supervisor_chart_svg, supervisor_chart_print_html, write_downloads)
 from tests.helpers import make_method, make_repo
 
 ALL_DOWNLOAD_FILES = (
     "crosswalk.csv", "lifecycle-impact.csv", "cert-comparison.csv", "cert-task-matrix.csv",
     "lifecycle-wheel.svg", "crosswalk-print.html", "lifecycle-impact-print.html",
     "cert-comparison-print.html", "cert-task-matrix-print.html", "lifecycle-wheel-print.html",
+    "supervisor-chart.svg", "supervisor-chart-print.html",
 )
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -148,6 +149,23 @@ class PrintPageTests(unittest.TestCase):
         page = lifecycle_wheel_print_html(generate_lifecycle_wheel_svg())
         self.assertEqual(page.count("<svg"), 1)
         self.assertIn('class="lc-wheel"', page)
+        self.assertNotIn("<nav", page)
+        self.assertNotIn("site-header", page)
+
+
+class SupervisorChartDownloadTests(unittest.TestCase):
+    def test_svg_is_standalone_with_title_desc_and_absolute_links(self):
+        svg = generate_supervisor_chart_svg()
+        self.assertTrue(svg.startswith("<?xml"))
+        self.assertIn('xmlns="http://www.w3.org/2000/svg"', svg)
+        self.assertIn("<title", svg)
+        self.assertIn("<desc", svg)
+        self.assertNotIn("var(--", svg)
+        self.assertIn('href="https://evemcgivern.github.io/app-governance-kit/tools.html#access-review"', svg)
+
+    def test_print_page_has_one_svg_and_no_nav(self):
+        page = supervisor_chart_print_html(generate_supervisor_chart_svg())
+        self.assertEqual(page.count("<svg"), 1)
         self.assertNotIn("<nav", page)
         self.assertNotIn("site-header", page)
 
@@ -320,10 +338,10 @@ class RealRepoTests(unittest.TestCase):
         self.assertEqual(len(r), 10)  # header + 9 tasks
         self.assertEqual(r[0][1:], ["CAMP", "CSAM", "CHAMP", "AIGP", "ITIL 4 Foundation", "IAM Certificate"])
 
-    def test_crosswalk_and_impact_copies_have_30_data_rows(self):
+    def test_crosswalk_and_impact_copies_have_32_data_rows(self):
         for name in ("crosswalk.csv", "lifecycle-impact.csv"):
             r = rows((self.out / "site" / "downloads" / name).read_text())
-            self.assertEqual(len(r) - 1, 30, name)
+            self.assertEqual(len(r) - 1, 32, name)
 
     def test_wheel_svg_is_well_formed_with_all_segments(self):
         text = (self.out / "site" / "downloads" / "lifecycle-wheel.svg").read_text()

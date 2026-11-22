@@ -2,7 +2,7 @@
 
 A checklist for testing a draft ITAM policy before it goes for approval, and again at each review. Complete one copy per policy and keep it with the policy's change history. A policy that fails an item goes back to its owner, or a named person accepts the gap in writing.
 
-Clause references are to ISO/IEC 19770-1:2017 (paraphrased) and to the shared crosswalk (`XW-` rows). This checklist does not give legal advice; where an item says counsel, have counsel review it. For the fill-in structure see `policy-template.md`, and for a draft to practice on see `demo-estate/policy-draft.md`.
+Clause references are to ISO/IEC 19770-1:2017 (paraphrased) and to the shared crosswalk (`XW-` rows). This checklist doesn't give legal advice; where an item says counsel, have counsel review it. For the fill-in structure see `policy-template.md`, and for a draft to practice on see `demo-estate/policy-draft.md`.
 
 **Policy:** ______________________  **Owner:** ______________________  **Date:** ___________
 
@@ -49,4 +49,4 @@ Clause references are to ISO/IEC 19770-1:2017 (paraphrased) and to the shared cr
 | --- | --- | --- | --- |
 | Approve / return to owner / accept a gap | | | |
 
-Source: ISO/IEC 19770-1:2017 clauses 5.2, 5.3, 7.3, 7.4 and 7.6.5, and the shared crosswalk. Paraphrased; this is not a substitute for the standard.
+Source: ISO/IEC 19770-1:2017 clauses 5.2, 5.3, 7.3, 7.4 and 7.6.5, and the shared crosswalk. Paraphrased; this isn't a substitute for the standard.

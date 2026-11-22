@@ -1,6 +1,6 @@
 # Software lifecycle SOP
 
-This SOP describes a practice. It does not replace the tool's own documents, which cover the quarterly review and its roles in full: see **Where the details live**.
+This SOP describes a practice and doesn't replace the tool's own documents, which cover the quarterly review and its roles in full: see **Where the details live**.
 
 ## Purpose
 
@@ -20,7 +20,7 @@ Applies to any software inventory export that can be saved as a CSV with a name 
 
 ## Frequency
 
-Quarterly, and before an upgrade budget request. Check the data dates each run: a stale KEV snapshot or end-of-life snapshot is a decision, not a default.
+Quarterly, and before an upgrade budget request. Check the data dates each run: treat a stale KEV or end-of-life snapshot as a decision for the person running the check.
 
 ## Steps
 
@@ -44,8 +44,8 @@ Quarterly, and before an upgrade budget request. Check the data dates each run: 
 
 - The agent never opens the inventory, the optional input files, the tool's output folder, or any file in it.
 - Only summary count lines are relayed. A line that lists item IDs is never relayed.
-- A KEV match is a vendor and product match. It never means a version is affected.
-- Unmatched means no date is claimed. It does not mean safe.
+- A KEV match is a vendor and product match; it never means a version is affected.
+- Unmatched means no date is claimed; it does not mean safe.
 - The agent asks before it makes the tool copy and before it writes to the output folder the person names.
 - If `git rev-parse HEAD` does not print the pinned commit, stop.
 - Use only this line about security: "Runs locally with no network by default; not independently assessed."
@@ -71,7 +71,7 @@ Quarterly, and before an upgrade budget request. Check the data dates each run: 
 
 ## Who decides
 
-People decide. The agent relays counts. The asset owner decides replace, upgrade, retire, or accept. IT security sets priority on KEV items. The ITAM lead settles dates that disagree. The budget holder decides spend. No tool or agent makes any of these calls.
+People decide: the agent relays counts, and the asset owner decides replace, upgrade, retire, or accept. IT security sets priority on KEV items, the ITAM lead settles dates that disagree, and the budget holder decides spend. No tool or agent makes any of these calls.
 
 ## Evidence to retain
 

@@ -1,12 +1,12 @@
 # Setup prompts
 
-Thirteen prompts that walk you through setting up an application management practice with an AI assistant. The numbers are labels, not an order; the playbook gives the order. They are written to work in plain chat in Microsoft Copilot, ChatGPT, and Claude. Each one carries its own rules and scale, so the assistant does not need the kit installed. Copy one prompt at a time and replace each [BRACKET] with your own details.
+Thirteen prompts that walk you through setting up an application management practice with an AI assistant. The playbook gives the order. They're written to work in plain chat in Microsoft Copilot, ChatGPT, and Claude. Each one carries its own rules and scale, so the assistant doesn't need the kit installed. Copy one prompt at a time and replace each [BRACKET] with your own details.
 
 ## Pick your prompt
 
 Start with the playbook, then choose the prompt for your step. Read the safety notes under Before you start first. Each prompt opens with when to use it and why.
 
-Use each prompt at the step of `itam-program-playbook.md` shown here. The playbook sets the order; these prompts do not.
+Use each prompt at the step of `itam-program-playbook.md` shown here.
 
 | Playbook step | Prompts |
 | --- | --- |
@@ -28,7 +28,7 @@ After the first pass, repeat on a schedule:
 - **Every year, and after a big change:** prompt 2 again, after a merger or a change of sponsor.
 - **Before an event:** prompts 5 and 6 before a renewal or an audit. If an audit letter has already arrived, give it to Legal first, then use prompt 7.
 
-Pick the one that matches what is in front of you:
+Pick the one that matches what's in front of you:
 
 1. [Set the scene and plan the ten playbook steps (playbook step 1)](#prompt-1-set-the-scene)
 2. [Score my program as it is and as it should be](#prompt-2-baseline-your-program)
@@ -48,24 +48,24 @@ Pick the one that matches what is in front of you:
 
 - **Start a new chat for each prompt**, or paste the next prompt into the same chat. Each prompt repeats the short rules, so it works even in a fresh chat.
 - **Attach the named file, or paste it.** In ChatGPT and Claude, use the attach button. In Microsoft Copilot, attach where your version allows it; if your organization blocks uploads, paste the column headings or the text. Every prompt also works if you attach nothing: the assistant asks you for the facts instead.
-- **Replace the brackets.** Replace everything in [square brackets] and delete any option you do not use. On a phone, paste the prompt first, then edit the brackets inside the chat.
+- **Replace the brackets.** Replace everything in [square brackets] and delete any option you don't use. On a phone, paste the prompt first, then edit the brackets inside the chat.
 - **Ask for text you can copy.** The prompts ask for results as plain text, a table, or CSV. Copy that into the matching toolkit file. Do not rely on the assistant to hand back a finished file.
 - **If your tool has custom instructions or projects,** paste the rules from Prompt 1 there once.
-- **If the assistant drifts,** reply: Stay in the coach role, ask one question at a time, and do not invent figures.
+- **If the assistant drifts,** reply: Stay in the coach role, ask one question at a time, and don't invent figures.
 
 ## Before you start
 
 **Privacy rule for every prompt:** Use only an assistant your organization has approved for confidential data; otherwise use the Halden data, column headings only, or redacted rows; never paste passwords, license keys, or employee names and emails; and once an audit letter exists, nothing about it goes to any assistant unless Legal agrees.
 
-- **Practice on fictional data.** The Halden Logistics demo estate in `demo-estate/` is built for this. Start there if you are unsure.
+- **Practice on fictional data.** The Halden Logistics demo estate in `demo-estate/` is built for this. Start there if you're unsure.
 - **Keep real inventories safe.** Real inventories, contracts, and invoices are confidential. Use them only where your organization allows, and check your account's data settings first. When in doubt, share column headings, not rows, or redact names, prices, and account numbers.
 - **You decide.** Every prompt tells the assistant to mark the points that need a person's decision and to stop there.
-- **Check dates and sums yourself.** Assistants make arithmetic and date mistakes, and they do not reliably know today's date, so the date prompts ask you to state it. Treat every figure as unverified until you have checked it.
+- **Check dates and sums yourself.** Assistants make arithmetic and date mistakes, and they don't reliably know today's date, so the date prompts ask you to state it. Treat every figure as unverified until you've checked it.
 - **Different assistants answer differently.** Compare the result with the Good looks like line under each prompt, not with another assistant's wording.
 
 ## Prompt 1: Set the scene
 
-**When to use it:** At playbook step 1, when you do not know where to begin, or when you take over an existing program.
+**When to use it:** At playbook step 1, when you don't know where to begin, or when you take over an existing program.
 
 **Why:** It fits the plan to your time and your biggest worry, instead of handing you every template at once.
 
@@ -73,7 +73,7 @@ Pick the one that matches what is in front of you:
 
 **Attach (optional):** `operating-calendar.md`.
 
-**Good looks like:** a plan that follows the ten playbook steps and starts with a sponsor, fits your hours, and holds no invented facts about your organization.
+**Good looks like:** a plan that follows the ten playbook steps and starts with a sponsor. It fits your hours and invents nothing about your organization.
 
 ## Prompt 2: Baseline your program
 
@@ -85,7 +85,7 @@ Pick the one that matches what is in front of you:
 
 **Attach (optional):** `application-management-self-assessment.md` for the level descriptions, and `application-management-gap-plan.csv`. When the assistant gives you the rows, type them into the Assess sheet of `application-management-workbook.xlsx`. See `examples/application-management-gap-plan-example.csv` for a finished one.
 
-**Good looks like:** each score has evidence, targets differ by dimension, and owners are roles, not names.
+**Good looks like:** each score has evidence, and targets differ by dimension. Owners are roles, not names.
 
 ## Prompt 3: Map a process before you change it
 
@@ -97,13 +97,13 @@ Pick the one that matches what is in front of you:
 
 **Attach (optional):** `process-map-worksheet.md`.
 
-**Good looks like:** the first map shows what really happens, even where it is messy.
+**Good looks like:** the first map shows what really happens, even where it's messy.
 
 ## Prompt 4: Decide where each kind of data lives
 
 **When to use it:** When the same fact, such as an owner, a count, or a date, differs between systems, or before you consolidate data or buy a tool.
 
-**Why:** When two systems disagree, nobody knows which to trust. One authoritative system per kind of data ends the argument and the bad decisions that follow.
+**Why:** When two systems disagree, nobody knows which to trust, so name one authoritative system per kind of data.
 
 **Paste this:** Rules: read-only coach, one question at a time, never decide for me, mark Decision needed and Unverified, write Not found for missing figures, no web. I will name the systems we use and give you no data. For each of these kinds of data, help me choose one authoritative system, a data owner role, how the copies are kept in step, and how often to compare them: application inventory, hardware inventory, entitlements and license position, proofs of purchase, contracts and renewal dates, invoices and spend, discovery and usage data, configuration and service relationships, application owners, retirement records. Point out any row where I name two systems as the source or none. List the options and the cost of each; do not choose for me. Give the result as CSV with columns data_domain, authoritative_system, data_owner, other_systems_holding_copies, how_copies_are_kept_in_step, reconcile_every.
 
@@ -145,13 +145,13 @@ Pick the one that matches what is in front of you:
 
 **Attach (optional):** `audit-response-roles.csv`.
 
-**Good looks like:** every task has a role, a holder, and a ready backup, or a clear flag where it does not.
+**Good looks like:** every task has a role and a holder, and each holder has a ready backup, or the task carries a clear flag saying there isn't one.
 
 ## Prompt 8: Set up governance and a policy
 
 **When to use it:** At playbook step 2 for the charter and step 6 for the policy set, or when nobody is sure who decides.
 
-**Why:** Decisions need a sponsor, a scope, and written decision rights. Without them, requests stall and exceptions pile up.
+**Why:** Without a sponsor, a scope, and written decision rights, requests stall and exceptions pile up.
 
 **Paste this:** Rules: read-only coach, never decide for me, mark Decision needed and Unverified, write Not found for missing figures, no web. I will paste my draft governance charter and my draft policy. Check the charter for a named sponsor, decision rights with a threshold, an escalation path, and measures. Check the policy for a clear scope, an accountable role, defined terms, enforcement, a review cycle, and any rule nobody could actually meet. List what is missing in order of importance, tie each gap to the section it belongs in, and propose plain-language wording I can edit. Mark the points where leaders must decide. If I have no drafts yet, ask me five questions and then outline both.
 
@@ -169,7 +169,7 @@ Pick the one that matches what is in front of you:
 
 **Attach (optional):** `application-management-gap-plan.csv` and `renewal-calendar.csv`.
 
-**Good looks like:** every reminder has a date you have checked, and the calendar text imports without errors.
+**Good looks like:** every reminder has a date you've checked, and the calendar text imports without errors.
 
 ## Prompt 10: Report to leaders and plan the next round
 
@@ -193,36 +193,36 @@ Pick the one that matches what is in front of you:
 
 **Attach (optional):** `customer-expectations.csv`.
 
-**Good looks like:** each customer has a need you could check, a way to deliver it, and a measure, and you have chosen where to start.
+**Good looks like:** each customer has a need you could check, a way to deliver it, and a measure. You've chosen where to start.
 
 ## Prompt 12: Decide what good looks like
 
 **When to use it:** At playbook step 5, before you set To-Be targets in Prompt 2, and each year when you review them.
 
-**Why:** Full conformance to a standard is optional. Targets should match your risk, your size, and your time, and the sponsor settles them with you, so you fund what matters.
+**Why:** Full conformance to a standard is optional. Targets should match your risk, your size, and the time you have. The sponsor settles them with you, so you fund what matters.
 
 **Paste this:** Rules: read-only coach, one question at a time, never decide for me, mark Decision needed and Unverified, write Not found for missing figures, no web. Help me decide how far my asset management program needs to go. Ask me these eight questions one at a time and ask for a yes or no and one line of why: do laws or contracts require us to prove control of software or data; have publishers audited us in the last three years or do our contracts allow audits; is software spend large enough that savings matter to the budget; do teams buy subscriptions without IT; do mergers, sales of units, or fast growth keep changing our estate; do our applications hold sensitive or regulated data; can people give at least five hours a week; does a sponsor with budget back this. Scale: 0 not done, 1 ad hoc, 2 defined (written, owned, followed, with a recent example), 3 measured (a number shows it works and led to a change). Then suggest a target level for each of these dimensions: policy, roles, inventory, intake, lifecycle review, licenses and renewals, cost, risk, retirement, measures, communication. Use level 2 unless my answers justify 3, and do not set every target to 3. Give a reason for each target, three things I should deliberately not do yet, a one-line good-enough statement for the next 12 months, and up to five measures that cannot be met by paperwork alone. If I have no sponsor, tell me to get one before setting targets. Decision needed: the sponsor settles the targets.
 
 **Attach (optional):** `what-good-looks-like.md`.
 
-**Good looks like:** targets that differ by dimension, each with a reason, a short list of what you will not do yet, and a good-enough statement you could say to the sponsor.
+**Good looks like:** targets that differ by dimension, each with a reason. It also has a short list of what you won't do yet and a good-enough statement you could say to the sponsor.
 
 ## Prompt 13: Plan your rolling internal checks
 
 **When to use it:** Every quarter, to choose what to test next, and before an external audit.
 
-**Why:** Practicing the audit on your own records finds problems while you can still fix them quietly. Small regular checks also make the yearly review a summary of work already done.
+**Why:** Practicing the audit on your own records finds problems while you can still fix them quietly.
 
 **Paste this:** Rules: read-only coach, one question at a time, never decide for me, mark Decision needed and Unverified, write Not found for missing figures, no web. Help me plan rolling internal checks of my asset management program. Ask which areas worry me most. The areas are ownership, inventory accuracy, renewals, proof of purchase, retirement, the purchase gate, and leavers. Then propose a four-quarter rotation so every area is tested once a year, with the riskiest first. For the next quarter, give for each chosen area the test to run, a suggested sample size, what counts as a pass, and a row for a findings log with columns check_id, quarter, area, test, sample_size, records_failed, finding, severity, owner, due_on. Remind me that findings are for fixing and not for blame, and that a finding is closed only when a retest passes. Do not make up results.
 
 **Attach (optional):** `rolling-internal-check.md` and `internal-check-log.csv`.
 
-**Good looks like:** a rotation that fits your risks, a clear test for the next quarter, and a log you can start filling in.
+**Good looks like:** a rotation that fits your risks and a clear test for the next quarter, plus a log you can start filling in.
 
 ## Keep going
 
 Run Prompt 2 again each year, and after a merger or a change of sponsor. Run Prompts 5 and 7 each quarter and Prompt 6 each month. Keep the results with the files, and record what you decided and who approved it.
 
-If you have the kit's skills installed, you can instead ask Claude Code for the `app-governance` skill, or type `$app-governance` in Codex. The prompts above do not need them.
+If you have the kit's skills installed, you can instead ask Claude Code for the `app-governance` skill, or type `$app-governance` in Codex. The prompts above don't need them.
 
-The kit gives methods and reasoning support. It is not a governance platform, a certification, or legal advice. Ask counsel where a contract term or audit step is unclear.
+The kit gives methods and reasoning support. It's not a governance platform, a certification, or legal advice. Ask counsel where a contract term or audit step is unclear.

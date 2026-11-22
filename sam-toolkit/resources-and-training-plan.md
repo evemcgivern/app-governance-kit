@@ -2,7 +2,7 @@
 
 A plan for what the ITAM program needs in people, data, training, and tools, and for showing that the people doing the work are competent. Complete one copy a year, when you set the budget, and review it when scope changes.
 
-Clause references are to ISO/IEC 19770-1:2017 (paraphrased) and to the shared crosswalk (`XW-` rows). The standard's requirements on resources, competence, and awareness sit in clauses 7.1, 7.2, and 7.3. This plan sets no price and no head count; use your own figures, and write Not found where you do not have one.
+Clause references are to ISO/IEC 19770-1:2017 (paraphrased) and to the shared crosswalk (`XW-` rows). The standard's requirements on resources, competence, and awareness sit in clauses 7.1, 7.2, and 7.3. This plan sets no price and no head count; use your own figures, and write Not found where you don't have one.
 
 **Owner:** ______________________  **Sponsor:** ______________________  **Date:** ___________
 
@@ -31,7 +31,7 @@ Fill in the table from your own records. Do not copy a figure from elsewhere. Wh
 | Tools and record storage | | per year | | | | |
 | **Total** | | | | | | |
 
-Compare the total with the cost and risk you are managing: renewal spend from `renewal-calendar.csv`, open items in `risk-register.csv`, and any saving recorded in `savings-report.csv`. The sponsor decides whether the budget matches the risk. **Decision needed:** sponsor. [[XW-027]]
+Compare the total with the cost and risk you're managing: renewal spend from `renewal-calendar.csv`, open items in `risk-register.csv`, and any saving recorded in `savings-report.csv`. The sponsor decides whether the budget matches the risk. **Decision needed:** sponsor. [[XW-027]]
 
 ## Who needs what training
 
@@ -44,7 +44,7 @@ Match each group to what they need to do their part, and name who gives it. [[XW
 | Procurement | The acquisition gate, and why no purchase goes around it | A session each year and at onboarding | Gate results on file for each purchase |
 | Finance | Invoice checks and how to confirm a saving | A short session | Rows in `invoice-verification.csv` |
 | Managers and approvers | Their duties for authorizations, joiners, movers, and leavers | A briefing at the start of the role | Entries in `authorization-log.csv`, and a signed acknowledgment |
-| Everyone the policies bind | What the policies require and where to ask | An awareness message at onboarding and each year | Acknowledgments kept by date, and the result of a check that people understood it (a short quiz, a question in a team meeting, or a spot check of a few people) |
+| Everyone the policies bind | What the policies require and where to ask | An awareness message at onboarding and each year | Acknowledgments kept by date, and the result of a check that people understood it (see the policy lifecycle SOP) |
 | Legal | The audit-response contact role | A yearly run-through of `audit-response-roles.csv` | A roster with each backup marked ready |
 
 ## What shows competence
@@ -56,13 +56,13 @@ Keep two kinds of evidence of competence: a certificate, where the person holds 
 - A passed sample in `rolling-internal-check.md` for the records the person owns.
 - A backup who has done the task once with the primary watching, noted in `audit-response-roles.csv`.
 
-If there is no evidence for a person who needs it, plan the training, set a date, and record the gap in `documentation-gaps-log.csv` until it closes.
+If there's no evidence for a person who needs it, plan the training, set a date, and record the gap in `documentation-gaps-log.csv` until it closes.
 
 ## Keep the plan alive
 
 - Review it each year with the budget, and when a new policy, a merger, or a move to cloud changes the work.
 - Track acknowledgments and training dates in one place, and check them at each quarterly review. [[XW-030]]
-- An acknowledgment shows people read the policy. Also check that they understood it, for example with a short quiz, a question in a team meeting, or a spot check of a few people, and record the result.
+- An acknowledgment shows people read the policy. Also check that they understood it, as the policy lifecycle SOP describes, and record the result.
 - Record in the plan any person who leaves a role that holds knowledge no one else has.
 
 ## Decision
@@ -71,4 +71,4 @@ If there is no evidence for a person who needs it, plan the training, set a date
 | --- | --- | --- | --- |
 | Resources and training plan approved, with the figures above | | | |
 
-Source: ISO/IEC 19770-1:2017 clauses 7.1, 7.2 and 7.3, and the shared crosswalk. Paraphrased; this is not a substitute for the standard.
+Source: ISO/IEC 19770-1:2017 clauses 7.1, 7.2 and 7.3, and the shared crosswalk. Paraphrased; this isn't a substitute for the standard.

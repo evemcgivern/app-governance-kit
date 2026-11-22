@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Give the organization evidence-backed visibility into which devices are overdue for replacement and which retired devices still hold an unconfirmed data wipe, so refresh spend is planned ahead of failure and no device leaves the estate without its data accounted for.
+Give the organization evidence-backed visibility into which devices are overdue for replacement and which retired devices still hold an unconfirmed data wipe, so refresh spend is planned before devices fail, and no device is disposed of until its data wipe is confirmed.
 
 ## Scope
 
@@ -33,7 +33,7 @@ A full lifecycle check every quarter, plus an ad hoc check before any hardware b
 9. Hold disposal open for any retired device without wipe evidence attached [[XW-010]]
 10. Treat encryption as a safeguard, not a replacement for wiping or destruction; wipe or destroy before disposal even when the device was encrypted [[XW-010]]
 11. Keep each wipe or destruction certificate as long as the records schedule requires; **Decision needed: records owner or counsel** for the period [[XW-010]] [[XW-020]]
-12. Involve the hardware asset manager at every stage, including divestiture of a business unit or its devices **Decision needed: legal** on any transfer of devices or data [[XW-004]] [[XW-010]]
+12. Involve the hardware asset manager at every stage, including divestiture of a business unit or its devices; **Decision needed: legal** on any transfer of devices or data [[XW-004]] [[XW-010]]
 13. Have the budget owner check the cost estimate and vendor terms before a refresh order is placed [[XW-012]] [[XW-013]]
 14. Record the decisions and approvers before the check is filed [[XW-001]] [[XW-010]]
 

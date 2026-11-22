@@ -1,13 +1,14 @@
 # App Governance Kit
 
-> A free, MIT-licensed toolkit of nine application governance methods covering application portfolio management, IT asset management, AI governance, and access controls. Each method is packaged as a Claude skill, a Codex skill, and a Microsoft Copilot agent, and also ships as a checklist, SOP, template, and platform guide for use by hand. Every method traces to clauses in ISO/IEC 19770, COBIT 2019, ISO/IEC 27001, and ISO/IEC 42001 through a 30-row crosswalk. Built by Eve McGivern. It also includes an application governance router, a certification study coach, and a forty-one-file SAM toolkit.
+> A free, MIT-licensed toolkit of nine application governance methods covering application portfolio management, IT asset management, AI governance, and access controls. Each method is packaged as a Claude skill, a Codex skill, and a Microsoft Copilot agent, and also ships as a checklist, SOP, template, and platform guide for use by hand. Every method traces to clauses in ISO/IEC 19770, COBIT 2019, ISO/IEC 27001, and ISO/IEC 42001 through a 32-row crosswalk. Built by Eve McGivern. It also includes an application governance router, a certification study coach, and a forty-one-file SAM toolkit.
 
 Key facts:
 
 - Cost and license: free, MIT license. No account, sign-up, or paid tier.
 - Platforms: Claude (skills), Codex (skills), Microsoft Copilot (agents). The same source generates all three.
+- Supervisor and agents: the application governance router (a skill) picks one of the nine tools from a plain request, runs it, and decides nothing. A read-only app governance agent for Claude Code loads the router. Every decision stays with a person. Each governance tool also ships as a Copilot agent.
 - Demo data: every tool except the software lifecycle check is exercised against Halden Logistics, a fictional company with planted, findable problems. It is not real client data.
-- Scope: the kit gives methods and reasoning support. It is not a governance platform, a certification, or legal advice.
+- Scope: the kit gives methods and reasoning support. It isn't a governance platform, a certification, or legal advice.
 - Framework names (ISO, COBIT, NIST, IAITAM, IAPP, PeopleCert) are used for reference only; no affiliation or endorsement.
 - Documents: every checklist, SOP, template, and platform guide has its own HTML page, with Word, Excel, CSV, or print-to-PDF options. No Markdown is published for reading.
 - Tier self-assessment: the web page and the Excel workbook work out an assumed ITAM tier from the answers and list a gap report with the step that closes each gap.
@@ -41,7 +42,8 @@ Key facts:
 
 ## Router
 
-- [Application governance router](https://evemcgivern.github.io/app-governance-kit/tools.html#app-governance): a skill for Claude, Codex, and Copilot that picks the right governance skill for a plain request, runs it, and hands every decision back to a person. A Claude agent file loads it.
+- [Application governance router](https://evemcgivern.github.io/app-governance-kit/tools.html#app-governance): the supervisor. A skill for Claude, Codex, and Copilot that picks the right governance skill for a plain request, asks for the data, runs it, and hands every decision back to a person. It routes to all nine governance tools and the study coach, but the agent cannot run the software lifecycle check: you run that tool yourself. A read-only app governance agent for Claude Code loads the router.
+- [What each tool does](https://evemcgivern.github.io/app-governance-kit/tools.html#overview): an org chart and one card per tool: what it does, what you give it, what you get, when to use it, who keeps the decision, and where it runs.
 
 ## Study coach
 
@@ -50,10 +52,11 @@ Key facts:
 ## Reference pages
 
 - [Home](https://evemcgivern.github.io/app-governance-kit/): overview of the three areas (portfolio, AI, access) and how they map to the four frameworks.
-- [SAM toolkit](https://evemcgivern.github.io/app-governance-kit/sam-toolkit.html): forty-one free templates, checklists, and prompts for a software asset management practice (license position, proof-of-purchase check, renewal calendar, asset record, authorization log, statement of applicability, tier self-assessment, audit and review checklist, vendor register, acquisition gate, invoice verification, savings report, contract-terms check), each traced to ISO/IEC 19770-1 clauses, with a ZIP download.
-- [Practicum](https://evemcgivern.github.io/app-governance-kit/practicum.html): eight hands-on exercises, one per tool except the software lifecycle check, worked by hand against the Halden Logistics demo estate and self-checked in the browser.
-- [Application lifecycle](https://evemcgivern.github.io/app-governance-kit/lifecycle.html): six application lifecycle stages, from request to retirement, with the governance questions to ask at each and the tool that handles them.
-- [Crosswalk explorer](https://evemcgivern.github.io/app-governance-kit/crosswalk.html): 30 governance themes mapped across ISO/IEC 19770, COBIT 2019, ISO/IEC 27001, and ISO/IEC 42001.
+- [AI skills](https://evemcgivern.github.io/app-governance-kit/tools.html): what each tool does, with the supervisor org chart, install steps, and downloads.
+- [SAM toolkit](https://evemcgivern.github.io/app-governance-kit/sam-toolkit.html): forty-one free templates, checklists, and prompts for a software asset management practice, listed by the ten playbook steps with the file type and the other steps each file serves (license position, proof-of-purchase check, renewal calendar, asset record, authorization log, statement of applicability, tier self-assessment, audit and review checklist, vendor register, acquisition gate, invoice verification, savings report, contract-terms check), each traced to ISO/IEC 19770-1 clauses, with a ZIP download.
+- [Practicum](https://evemcgivern.github.io/app-governance-kit/practicum.html): nine hands-on exercises, one per tool except the software lifecycle check plus an as-is assessment of application management, worked by hand against the Halden Logistics demo estate and self-checked in the browser.
+- [Application lifecycle](https://evemcgivern.github.io/app-governance-kit/lifecycle.html): an interactive wheel of six application lifecycle stages, from request to retirement. Select a stage to see its questions, the crosswalk row and the tool for each.
+- [Crosswalk explorer](https://evemcgivern.github.io/app-governance-kit/crosswalk.html): 32 governance themes mapped across ISO/IEC 19770, COBIT 2019, ISO/IEC 27001, and ISO/IEC 42001.
 - [Themes by stage](https://evemcgivern.github.io/app-governance-kit/impact-map.html): every crosswalk theme plotted against every lifecycle stage, by impact.
 - [Field guide](https://evemcgivern.github.io/app-governance-kit/field-guide.html): certifications (CAMP, CSAM, CHAMP, AIGP), standards, glossary, and data governance, in plain terms.
 
@@ -88,14 +91,17 @@ Key facts:
 ## Downloads
 
 - [SAM toolkit (ZIP)](https://evemcgivern.github.io/app-governance-kit/downloads/sam-toolkit.zip): the CSV templates, plus the guide and checklists as Word files.
-- [Crosswalk (CSV)](https://evemcgivern.github.io/app-governance-kit/downloads/crosswalk.csv): the 30-row mapping as plain text.
+- [Crosswalk (CSV)](https://evemcgivern.github.io/app-governance-kit/downloads/crosswalk.csv): the 32-row mapping as plain text.
 - [Lifecycle impact (CSV)](https://evemcgivern.github.io/app-governance-kit/downloads/lifecycle-impact.csv): every theme against every lifecycle stage.
+- [IAITAM map (CSV)](https://evemcgivern.github.io/app-governance-kit/downloads/iaitam-map.csv): the crosswalk themes mapped to IAITAM CAMP process areas and CSAM topics, with how well each matches. It is our mapping from IAITAM's public topic lists, not an IAITAM mapping.
+- [Supervisor chart (SVG)](https://evemcgivern.github.io/app-governance-kit/downloads/supervisor-chart.svg) and [lifecycle wheel (SVG)](https://evemcgivern.github.io/app-governance-kit/downloads/lifecycle-wheel.svg): the org chart of the router, the agent and the tools, and the stage wheel.
 - [Claude skills (ZIP)](https://evemcgivern.github.io/app-governance-kit/downloads/skills/claude-skills.zip), [Codex skills (ZIP)](https://evemcgivern.github.io/app-governance-kit/downloads/skills/codex-skills.zip), [Copilot agents (ZIP)](https://evemcgivern.github.io/app-governance-kit/downloads/skills/copilot-agents.zip).
 - Claude Code plugin: run `claude plugin marketplace add evemcgivern/agent-skills`, then `claude plugin install app-governance-kit@evemcgivern-skills`. It installs every skill and the agent as one plugin.
 
 ## Optional
 
-- [Case studies](https://evemcgivern.github.io/app-governance-kit/case-studies.html): six worked examples on Halden Logistics, a fictional company (audit response, AI risk tiering, rationalization); not real client work.
-- [About](https://evemcgivern.github.io/app-governance-kit/about.html): Eve McGivern, application governance manager.
+- [Case studies](https://evemcgivern.github.io/app-governance-kit/case-studies.html): six worked examples on Halden Logistics, a fictional company (audit response, AI risk tiering, rationalization, renewals, retirement, and an as-is and to-be program plan), each with its tool and the playbook step it feeds; not real client work.
+- [About](https://evemcgivern.github.io/app-governance-kit/about.html): Eve McGivern, who built the kit, and how to reach her.
+- [Style guide](https://github.com/evemcgivern/app-governance-kit/blob/main/STYLE-GUIDE.md): design tokens, components, page patterns, accessibility rules and writing rules for the site, written for contributors and AI agents.
 - [Source code](https://github.com/evemcgivern/app-governance-kit): the full repository, including methods, practicum, demo estate, and build system.
 - [Releases](https://github.com/evemcgivern/app-governance-kit/releases): version history and release notes.

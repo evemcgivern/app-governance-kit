@@ -1,4 +1,4 @@
-# Exercise 08: Audit response, Halden's publisher letter
+# Exercise 09: Audit response, Halden's publisher letter
 
 **Level:** CSAM · **Time:** 45–60 minutes
 
@@ -18,9 +18,9 @@ A software publisher, Brightvale Software Group, has written to Halden Logistics
 Use `methods/audit-response/checklist.md` by hand, without AI.
 
 - Reconcile per product and version, not for the estate as a whole, and in the license metric the agreement counts: assigned users for a named-user product, devices for a device product, not raw installs. Add up the proof quantities for each license and version and compare them with `count_in_metric`. Exactly one is short.
-- Read every proof for the details it must show. Exactly one has no buyer name and exactly one has no evidence of payment.
+- Read every proof for the details it must show; exactly one has no buyer name and exactly one has no evidence of payment.
 - An upgrade uses up the qualifying base license it names, so the base cannot also count for its own version. Exactly one upgrade names a base Halden holds no proof of.
-- Compare each version's earliest proof date with its first install date. Exactly one proof is dated after the install; note it as a question to confirm (a true-up or a later purchase), not as a failure.
+- Compare each version's earliest proof date with its first install date. A single proof is dated after the install; note it as a question to confirm (a true-up or a later purchase), not as a failure.
 - Check that each proof shows the current term where `licenses.csv` shows an expiry date. Keep proofs older than the audit period: they still back current use.
 - Read the letter against Halden's notes on its agreement: entities, products, period of use, and level of detail. Decide whether the letter asks for more than the agreement allows. Also note who signed the agreement: was it assigned to the current publisher, and does it give an audit right? Both questions go to counsel; you only flag them.
 
@@ -30,7 +30,7 @@ A table per product and version (license metric, proof quantity, count in that m
 
 ## Check yourself
 
-Open the [interactive practicum page](../site/practicum.html#audit-response) and enter your findings there. No installs, no command line. "Passed" means every planted problem in the key showed up in your findings, with at most one extra finding the key doesn't recognize; "missed" lists anything real you didn't flag; "extra" lists anything you flagged that isn't in the key. The key is `demo-estate/answer-key.json` in this repo; it's public, so check your own answer before you look at it.
+Open the [interactive practicum page](../site/practicum.html#audit-response) and enter your findings there. "Passed" means every planted problem in the key showed up in your findings, with at most one extra finding the key doesn't recognize; "missed" lists anything real you didn't flag; "extra" lists anything you flagged that isn't in the key. The key is `demo-estate/answer-key.json` in this repo; it's public, so check your own answer before you look at it.
 
 ## Reflect
 

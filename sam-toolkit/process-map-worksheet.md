@@ -8,7 +8,7 @@ Use it at playbook step 7, when you build the inventory, and at step 9, before y
 
 ## Step 1: Describe the Is map
 
-Walk the process as it actually runs, with the people who do it, not as the policy says it should. One row per step, in order.
+Walk the process as it actually runs, with the people who do it. One row per step, in order.
 
 | # | Trigger or input | Who does it | What they do | Record or evidence produced | Where it is kept |
 | --- | --- | --- | --- | --- | --- |
@@ -22,7 +22,7 @@ Add rows as needed. Mark any step where nobody could say who does it, or where n
 
 ## Step 2: Describe the Should map
 
-The same process as you want it: who decides, what is recorded, and where each record lives. Use roles, not names. [[XW-004]]
+The same process as you want it: who decides, what's recorded, and where each record lives. Use roles, not names. [[XW-004]]
 
 | # | Trigger or input | Role | What they do | Record or evidence produced | Where it is kept |
 | --- | --- | --- | --- | --- | --- |
@@ -52,4 +52,4 @@ Gaps tend to grow once people see them. Before you commit, check that each fix b
 | --- | --- | --- | --- |
 | Fix these gaps first / defer / accept the risk | | | |
 
-Used with `program-setup` and `itam-maturity`: the maturity check says where a process is weak, and this worksheet says what to change.
+Used with `program-setup` and `itam-maturity`. Run the maturity check first to find the weak process, then use this worksheet to decide what to change.

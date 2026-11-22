@@ -1,6 +1,6 @@
 # Key work by crosswalk theme
 
-Each of the 30 crosswalk themes below sets out what it means in practice, the concrete work it takes to run it, what evidence that work leaves behind, and which role usually carries it.
+Each of the 32 crosswalk themes below lists its meaning, key work, evidence, and usual owner.
 
 ## XW-001 Application and software inventory
 
@@ -11,7 +11,7 @@ Each of the 30 crosswalk themes below sets out what it means in practice, the co
 
 ## XW-002 Asset ownership assigned
 
-- **What it means:** Every application or software asset has one named role accountable for it, not a shared or absent owner.
+- **What it means:** Every application or software asset has one named role accountable for it.
 - **Key work:** Match each inventory line to an owning team; chase down assets with no owner; confirm ownership at each inventory refresh; record the owner directly in the inventory record.
 - **Evidence it produces:** An inventory with its owner field fully populated and a log of ownership changes over time.
 - **Usually owned by:** Business unit leads, with the asset management team tracking completeness.
@@ -67,7 +67,7 @@ Each of the 30 crosswalk themes below sets out what it means in practice, the co
 
 ## XW-010 Retirement and decommissioning
 
-- **What it means:** When an application is retired, it is formally shut down and its data and access are removed, not just left running unused.
+- **What it means:** When an application is retired, it is formally shut down and its data and access are removed.
 - **Key work:** Confirm no remaining dependents before shutdown; export or archive the data the business must keep; revoke all access and integrations; decommission the infrastructure; record the retirement date and the disposition of the data.
 - **Evidence it produces:** A signed-off decommissioning checklist and a data-disposition record.
 - **Usually owned by:** The application owner, with IT operations executing the technical shutdown.
@@ -144,14 +144,14 @@ Each of the 30 crosswalk themes below sets out what it means in practice, the co
 
 ## XW-021 AI system risk and impact assessment before deployment
 
-- **What it means:** An AI system's likely risk and impact are assessed before it goes into production, not after.
+- **What it means:** An AI system's likely risk and impact are assessed before it goes into production.
 - **Key work:** Capture the AI system's intended use and data inputs at intake; score its risk against a fixed set of criteria; require a higher-level sign-off for higher-risk systems; document mitigations for risks found; block deployment until the assessment is signed off; use the `ai-intake` tool to capture the request and produce the risk score.
 - **Evidence it produces:** A completed risk assessment and its sign-off, tied to the deployment record.
 - **Usually owned by:** The AI system owner, with the AI governance reviewer approving the assessment.
 
 ## XW-022 AI system inventory
 
-- **What it means:** Every AI system in use is recorded alongside the general software inventory, not tracked separately or missed.
+- **What it means:** Every AI system in use is recorded alongside the general software inventory.
 - **Key work:** Add each AI system to the inventory at intake; record its purpose, model, and data sources; flag AI systems discovered outside the intake process; reconcile the AI inventory against the software inventory on the same schedule; use the `ai-intake` tool to feed new entries into the inventory automatically.
 - **Evidence it produces:** An AI system inventory cross-referenced to the software asset inventory.
 - **Usually owned by:** The AI governance reviewer, with the asset management team maintaining the combined record.
@@ -165,7 +165,7 @@ Each of the 30 crosswalk themes below sets out what it means in practice, the co
 
 ## XW-024 Risk register and treatment
 
-- **What it means:** Identified risks are logged in one register and tracked until they are treated, not just noted and forgotten.
+- **What it means:** Identified risks are logged in one register and tracked until they are treated.
 - **Key work:** Log each identified risk with its likelihood, impact, and owner; assign a treatment plan and target date; track treatment progress against that date; escalate overdue or worsening risks; close the risk only once the treatment is verified.
 - **Evidence it produces:** A risk register with current status and a closure record for each treated risk.
 - **Usually owned by:** The risk owner named on each entry, with the governance program tracking the register overall.
@@ -212,3 +212,17 @@ Each of the 30 crosswalk themes below sets out what it means in practice, the co
 - **Key work:** Name who must be aware of each policy and what they must know; write a communication plan that says what is sent, when, to whom, and how; track acknowledgments beyond onboarding; publish each approved version in one versioned location and withdraw older ones; keep the approval and change history; use `sam-toolkit/policy-lifecycle-sop.md` and `sam-toolkit/policy-checklist.md` to run and test the steps.
 - **Evidence it produces:** A communication plan, acknowledgment records, and a version history of each published policy.
 - **Usually owned by:** The policy owner, with HR or the training lead running acknowledgments.
+
+## XW-031 Resources and competence
+
+- **What it means:** The program has the people, skills, budget, and training it needs, and there is evidence that the people doing the work are competent.
+- **Key work:** List the roles, skills, tools, and budget the program needs; compare them with what is in place and record the gaps; fund and fill the gaps; set the competence each role needs and check it against education, training, or experience; provide training where people fall short; use `sam-toolkit/resources-and-training-plan.md` to size and track the plan.
+- **Evidence it produces:** A resource plan with budget, a competence record for each role, and training records.
+- **Usually owned by:** The program owner, with HR or the training lead keeping the competence and training records.
+
+## XW-032 Objectives and statement of applicability
+
+- **What it means:** The program has measurable objectives, and a written record shows which processes apply and why any are left out.
+- **Key work:** List the ITAM processes the organization runs; decide which objectives fit each one and compare them with the standard's reference list; set a few measurable program objectives at the levels that need them, with owners and dates; write a statement of applicability that lists each process or objective, whether it applies, and the reason for any exclusion; review the statement and the objectives on a fixed schedule.
+- **Evidence it produces:** A statement of applicability, a list of objectives with measures, and the review history of both.
+- **Usually owned by:** The program owner, with the governance sponsor approving the statement.

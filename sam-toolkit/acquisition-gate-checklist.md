@@ -2,7 +2,7 @@
 
 A short checklist a software request passes before anything is bought. Complete one copy per request and keep it with the purchase record. A request that fails a question waits until the answer is fixed or a named person accepts the exception in writing.
 
-Clause references are to ISO/IEC 19770-1:2017 (paraphrased) and to the shared crosswalk (`XW-` rows). Verify license terms against the contract; this checklist does not interpret them.
+Clause references are to ISO/IEC 19770-1:2017 (paraphrased) and to the shared crosswalk (`XW-` rows). Verify license terms against the contract; this checklist doesn't interpret them.
 
 **Request:** ______________________  **Requester:** ______________________  **Date:** ___________
 
@@ -24,7 +24,7 @@ Every software purchase goes through this gate, whatever the amount and whoever 
 | # | Question | Result | Evidence |
 | --- | --- | --- | --- |
 | G5 | Is it on the standard list, deployed through the standard image? A standard request follows the standard path. | | |
-| G6 | If it is not standard, has it gone to exception review, with the reason recorded? Non-standard requests do not skip review. [[XW-009]] | | |
+| G6 | If it's not standard, has it gone to exception review, with the reason recorded? Non-standard requests don't skip review. [[XW-009]] | | |
 | G7 | Does it use AI features, or will it handle organizational data? If yes, send it through the AI intake method before approval. [[XW-021]] [[XW-022]] [[XW-028]] | | |
 
 ## Part 3: Buy it well
@@ -54,4 +54,4 @@ Run this part on a schedule (monthly or quarterly), not per request.
 | --- | --- | --- | --- |
 | Buy / redeploy / use existing / decline / exception | | | |
 
-Source: ISO/IEC 19770-1:2017 clauses 7.6.3 and 8.4, and Annex A. Paraphrased; this is not a substitute for the standard.
+Source: ISO/IEC 19770-1:2017 clauses 7.6.3 and 8.4, and Annex A. Paraphrased; this isn't a substitute for the standard.
