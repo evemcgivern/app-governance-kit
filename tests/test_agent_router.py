@@ -66,7 +66,7 @@ class RouterTests(unittest.TestCase):
         self.assertEqual(len(rows), 1, rows)
         self.assertIn("`audit-response`", rows[0])
         self.assertNotIn("rationalization", rows[0])
-        self.assertIn("Which auditors", self.method)
+        self.assertIn("ask which auditors", self.method)
         self.assertIn("readiness mode", self.method)
         self.assertRegex(self.method, r"Decision needed: counsel and Finance")
 
