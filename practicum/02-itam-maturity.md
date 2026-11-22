@@ -16,7 +16,7 @@ Halden's ITAM lead has already scored the organization against nine process area
 Use the checklist by hand, without AI.
 
 - Sort the nine areas by score, lowest first. The three lowest are your gaps, but check for ties before you commit to which three.
-- The checklist calls for "tie-break reasoning," not just a sorted list. If two areas share the same low score, you need a reason to name both (or to break the tie) beyond "the CSV said so."
+- The checklist calls for "tie-break reasoning" on top of the sorted list. If two areas share the same low score, you need a reason to name both (or to break the tie) beyond "the CSV said so."
 - The area column gives you a slug already (for example `data-quality`, not "Data quality and reconciliation"). That's the exact id the findings block expects. Don't invent your own spelling of it.
 
 ## Hand in

@@ -16,7 +16,7 @@ Halden's internal auditor wrote three plain-English controls she wants tied back
 Use `methods/crosswalk/checklist.md` by hand, without AI.
 
 - Restate each control in one sentence before you go looking. C1 bundles two obligations together. Notice that before you pick a row, even though only one of the two obligations is what the exercise grades.
-- Skim the `theme` and `summary` columns in `crosswalk.csv` for words that echo the control's verb, not just its noun. "Review... on a schedule" and "Assess... before it is deployed" are both actions a theme name should mirror.
+- Skim the `theme` and `summary` columns in `crosswalk.csv` for words that echo the control's verb as well as its noun. "Review... on a schedule" and "Assess... before it is deployed" are both actions a theme name should mirror.
 - Don't stop at the first row that seems plausible for a given control; at least one control has a second row nearby that only covers part of it. Pick the best-fitting row.
 
 ## Hand in
