@@ -25,6 +25,7 @@ Each step gives the reason in one line, the files to use, the matching prompt in
   - [ ] You have read this playbook and the glossary.
   - [ ] You can say in two sentences what your biggest worry is: audit, renewals, duplicate spend, or ownership.
 - Time (expert judgment, not measured): 2 to 4 hours of effort, within 1 week.
+- Related: [glossary](../field-guide/glossary.md): ITAM.
 
 ### Step 2: Get a sponsor, a problem statement, and a light charter
 
@@ -37,6 +38,7 @@ Each step gives the reason in one line, the files to use, the matching prompt in
   - [ ] A one-page charter names the sponsor, the small group, what the group decides, and where disputes go. [[XW-004]]
   - [ ] Your customers and what they expect from you are listed in `customer-expectations.csv`.
 - Time (expert judgment, not measured): 6 to 12 hours of effort over 2 to 6 weeks. It runs long on the sponsor's calendar and on getting the written agreement.
+- Related: [exercise 01: Program setup](../practicum/01-program-setup.md); [glossary](../field-guide/glossary.md): Sponsor, Governance council, Decision rights.
 
 ### Step 3: Week 1, stop the bleeding
 
@@ -47,6 +49,7 @@ Each step gives the reason in one line, the files to use, the matching prompt in
   - [ ] Every renewal in the next 180 days is in `renewal-calendar.csv` with its notice deadline, an owner, and a decision date. [[XW-008]]
   - [ ] `audit-response-roles.csv` names a stop-gap holder and a backup for each task, with Legal named as the only contact for a publisher. [[XW-004]]
 - Time (expert judgment, not measured): 8 to 20 hours of effort over 1 to 3 weeks. Contracts sit with different teams, and notice terms are buried in them.
+- Related: [exercise 08: Audit response](../practicum/08-audit-response.md); case study [Renewals](../site/case-studies.html#case-renewals), [Audit response](../site/case-studies.html#case-audit-response); [glossary](../field-guide/glossary.md): Notice deadline.
 
 ### Stuck, or inherited a mess?
 
@@ -67,6 +70,7 @@ Read this before step 4 if any of these is true.
   - [ ] The sponsor has seen the scope.
   - [ ] Each risk inside the scope is in `risk-register.csv` with a rating, an owner, a treatment, and a review date. The owner has accepted what remains. [[XW-024]]
 - Time (expert judgment, not measured): 3 to 6 hours of effort over 1 to 3 weeks. Expect arguments over exclusions such as subsidiaries, cloud, and plant systems.
+- Related: [glossary](../field-guide/glossary.md): Statement of applicability, Risk register.
 
 ### Step 5: Baseline and targets
 
@@ -79,6 +83,7 @@ Read this before step 4 if any of these is true.
   - [ ] No more than three gaps are chosen to close first, each with an owner and a date. [[XW-027]]
   - [ ] `resources-and-training-plan.md` is filled in with your own figures, and the sponsor has seen it. Training for each group that needs it is planned. [[XW-004]]
 - Time (expert judgment, not measured): 10 to 20 hours of effort over 2 to 4 weeks. Other people hold the evidence.
+- Related: [exercise 02: ITAM maturity](../practicum/02-itam-maturity.md); case study [As-Is and To-Be](../site/case-studies.html#case-gap-plan); [glossary](../field-guide/glossary.md): Tier.
 
 **Stop here for now.** A small program that stops after step 5 is still worth having: it has a sponsor, a scope, a baseline, a renewal calendar, and an audit roster. Steps 1 to 5 are about 30 to 60 hours of effort over 2 to 3 months. Stop here if time or budget runs out, keep the routines in the run table running, and return to step 6 when you can.
 
@@ -93,6 +98,7 @@ Read this before step 4 if any of these is true.
   - [ ] The sponsor approved each policy, dated, and it is published in one versioned place. [[XW-020]]
   - [ ] Exceptions go to `authorization-log.csv` with an approver and an end date. [[XW-019]]
 - Time (expert judgment, not measured): 30 to 60 hours of effort over 2 to 4 months. Most of the wait is for counsel, consultation, and approval rounds.
+- Related: [exercise 06: AI intake](../practicum/06-ai-intake.md); case study [AI intake](../site/case-studies.html#case-ai-intake); [glossary](../field-guide/glossary.md): Policy vs. procedure, Role vs. job title.
 
 ### Step 7: Build one inventory
 
@@ -104,6 +110,7 @@ Read this before step 4 if any of these is true.
   - [ ] Each application in scope has a named owner and a last-verified date. [[XW-002]]
   - [ ] Discovery results are compared with the record, and each difference is logged. [[XW-005]]
 - Time (expert judgment, not measured): 40 to 120 hours of effort over 2 to 6 months. Discovery has coverage gaps, software names need cleaning, and hundreds of titles need a named owner.
+- Related: [glossary](../field-guide/glossary.md): Custodian, Normalization.
 
 ### Step 8: Proof first, then the position
 
@@ -116,6 +123,7 @@ Read this before step 4 if any of these is true.
   - [ ] Unclear contract terms are listed in `contract-terms-check.csv` and sent to counsel. [[XW-013]]
   - [ ] You know your company's record retention rule for contracts, invoices, proofs of entitlement, and records gathered for an audit, where it is written, and who owns it. [[XW-020]]
 - Time (expert judgment, not measured): 15 to 40 hours of effort per publisher, or 60 to 150 hours for the top three to five publishers, over 2 to 6 months. Proofs go missing, reseller records are thin, and core or virtualization licensing terms take time to work out.
+- Related: [exercise 08: Audit response](../practicum/08-audit-response.md); case study [Audit response](../site/case-studies.html#case-audit-response); [glossary](../field-guide/glossary.md): License metric, Proof of purchase, True-up.
 
 ### Step 9: Put controls in place
 
@@ -129,6 +137,7 @@ Read this before step 4 if any of these is true.
   - [ ] Strategic suppliers are in `vendor-contract-register.csv` and reviewed on `vendor-scorecard.csv`. [[XW-013]]
   - [ ] HR sends a notice for each joiner, mover, and leaver, and licenses are reclaimed only where the contract owner has confirmed they may be reused. [[XW-017]]
 - Time (expert judgment, not measured): 20 to 40 hours of effort to set up, then 2 to 6 months until procurement and payables enforce the controls.
+- Related: [exercise 05: Access review](../practicum/05-access-review.md), [exercise 06: AI intake](../practicum/06-ai-intake.md), [exercise 07: Hardware lifecycle](../practicum/07-hardware-lifecycle.md); case study [Retirement](../site/case-studies.html#case-retirement), [AI intake](../site/case-studies.html#case-ai-intake); [glossary](../field-guide/glossary.md): Vendor management, Orphaned account.
 
 ### Step 10: Measure and review
 
@@ -141,6 +150,7 @@ Read this before step 4 if any of these is true.
   - [ ] Two or three small internal checks have run, and each finding has an owner.
   - [ ] A yearly internal audit and management review is booked. [[XW-025]]
 - Time (expert judgment, not measured): 8 to 24 hours of effort a quarter, plus 8 to 16 hours for the first setup.
+- Related: [glossary](../field-guide/glossary.md): Key process area.
 
 ## What must exist first
 

@@ -39,20 +39,20 @@ file,internal-check-log.csv,10,,Monthly leaver check; quarterly internal checks,
 file,audit-and-review-checklist.md,10,,Yearly,
 file,operating-calendar.md,10,,Not on the calendar,The schedule itself
 file,savings-report.csv,beyond,,Not on the calendar,Not part of a step
-practicum,01-program-setup,2,,,
-practicum,02-itam-maturity,5,,,
-practicum,03-crosswalk,beyond,,,
-practicum,04-rationalization,beyond,,,
-practicum,05-access-review,9,,,
-practicum,06-ai-intake,6,9,,
-practicum,07-hardware-lifecycle,9,,,
-practicum,08-audit-response,3,8,,
-case,renewals,3,,,
-case,audit-response,3,8,,
-case,gap-plan,5,,,
-case,retirement,9,,,
-case,ai-intake,6,9,,
-case,rationalization,beyond,,,
+practicum,01-program-setup,2,,,Program setup
+practicum,02-itam-maturity,5,,,ITAM maturity
+practicum,03-crosswalk,beyond,,,Crosswalk
+practicum,04-rationalization,beyond,,,Rationalization
+practicum,05-access-review,9,,,Access review
+practicum,06-ai-intake,6,9,,AI intake
+practicum,07-hardware-lifecycle,9,,,Hardware lifecycle
+practicum,08-audit-response,3,8,,Audit response
+case,renewals,3,,,Renewals
+case,audit-response,3,8,,Audit response
+case,gap-plan,5,,,As-Is and To-Be
+case,retirement,9,,,Retirement
+case,ai-intake,6,9,,AI intake
+case,rationalization,beyond,,,Rationalization
 term,ITAM,1,,,
 term,Sponsor,2,,,
 term,Governance council,2,,,
