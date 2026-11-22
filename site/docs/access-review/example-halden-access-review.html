@@ -3,18 +3,18 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Access review: Halden Logistics, application accounts | Eve McGivern</title>
+<title>Access review: Halden Logistics, application accounts | App Governance Kit</title>
 <meta name="description" content="Inputs: accounts.csv (120 accounts, 72 distinct people, 60 apps), employees.csv (80 HR records), apps.csv…">
 <meta name="author" content="Eve McGivern">
 <link rel="canonical" href="https://evemcgivern.github.io/app-governance-kit/docs/access-review/example-halden-access-review.html">
 <meta property="og:type" content="article">
-<meta property="og:site_name" content="Eve McGivern | Application Governance">
-<meta property="og:title" content="Access review: Halden Logistics, application accounts">
+<meta property="og:site_name" content="App Governance Kit">
+<meta property="og:title" content="Access review: Halden Logistics, application accounts | App Governance Kit">
 <meta property="og:description" content="Inputs: accounts.csv (120 accounts, 72 distinct people, 60 apps), employees.csv (80 HR records), apps.csv…">
 <meta property="og:url" content="https://evemcgivern.github.io/app-governance-kit/docs/access-review/example-halden-access-review.html">
 <meta property="og:image" content="https://evemcgivern.github.io/app-governance-kit/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Access review: Halden Logistics, application accounts">
+<meta name="twitter:title" content="Access review: Halden Logistics, application accounts | App Governance Kit">
 <meta name="twitter:description" content="Inputs: accounts.csv (120 accounts, 72 distinct people, 60 apps), employees.csv (80 HR records), apps.csv…">
 <meta name="twitter:image" content="https://evemcgivern.github.io/app-governance-kit/og-image.png">
 <script type="application/ld+json">
@@ -68,6 +68,7 @@
 <link rel="apple-touch-icon" href="../../apple-touch-icon.png">
 <link rel="stylesheet" href="../../style.css">
 <script src="../../nav.js" defer></script>
+<script src="../../scroll-hint.js" defer></script>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -76,21 +77,50 @@
   <div class="site-header__inner">
     <a class="brand" href="https://evemcgivern.github.io/">Eve McGivern</a>
     <nav class="site-nav" aria-label="Main">
-      <ul>
-        <li><a href="../../tools.html" aria-describedby="tip-tools">AI skills</a><span class="nav-tip" role="tooltip" id="tip-tools">The nine governance methods, packaged as skills for Claude, Codex, and Copilot.</span></li>
-        <li><a href="../../sam-toolkit.html" aria-describedby="tip-sam-toolkit">SAM toolkit</a><span class="nav-tip" role="tooltip" id="tip-sam-toolkit">Templates and checklists for running software asset management by hand.</span></li>
-        <li><a href="../../practicum.html" aria-describedby="tip-practicum">Practicum</a><span class="nav-tip" role="tooltip" id="tip-practicum">Hands-on exercises on a fictional company, with answers you can check.</span></li>
-        <li><a href="../../lifecycle.html" aria-describedby="tip-lifecycle">Lifecycle</a><span class="nav-tip" role="tooltip" id="tip-lifecycle">Six stages from request to retirement, with the questions to ask at each.</span></li>
-        <li><a href="../../crosswalk.html" aria-describedby="tip-crosswalk">Crosswalk explorer</a><span class="nav-tip" role="tooltip" id="tip-crosswalk">See how each control maps to ISO/IEC 19770, COBIT, 27001, and 42001.</span></li>
-        <li><a href="../../impact-map.html" aria-describedby="tip-impact-map">Impact map</a><span class="nav-tip" role="tooltip" id="tip-impact-map">One grid showing every control theme against every lifecycle stage.</span></li>
-        <li><a href="../../field-guide.html" aria-describedby="tip-field-guide">Field guide</a><span class="nav-tip" role="tooltip" id="tip-field-guide">Plain-language guides to the standards, certifications, and key terms.</span></li>
-        <li><a href="../../case-studies.html" aria-describedby="tip-case-studies">Case studies</a><span class="nav-tip" role="tooltip" id="tip-case-studies">Worked examples of the kit in use, on a fictional company.</span></li>
-        <li><a href="../../about.html" aria-describedby="tip-about">About</a><span class="nav-tip" role="tooltip" id="tip-about">Who built the kit, and how to get in touch.</span></li>
-      </ul>
+      <details class="nav-menu">
+        <summary class="nav-menu__toggle">Menu</summary>
+        <div class="nav-groups">
+          <div class="nav-group">
+            <p class="nav-group__label" id="nav-group-start">Start</p>
+            <ul aria-labelledby="nav-group-start">
+              <li><a href="../../sam-toolkit.html#start" aria-describedby="tip-sam-toolkit">SAM toolkit <span class="nav-badge">Start here</span></a><span class="nav-tip" role="tooltip" id="tip-sam-toolkit">Start with the playbook, then the templates and checklists for running software asset management by hand.</span></li>
+            </ul>
+          </div>
+          <div class="nav-group">
+            <p class="nav-group__label" id="nav-group-do">Do</p>
+            <ul aria-labelledby="nav-group-do">
+              <li><a href="../../tools.html" aria-describedby="tip-tools">AI skills</a><span class="nav-tip" role="tooltip" id="tip-tools">The nine governance methods, packaged as skills for Claude, Codex, and Copilot.</span></li>
+            </ul>
+          </div>
+          <div class="nav-group">
+            <p class="nav-group__label" id="nav-group-learn">Learn</p>
+            <ul aria-labelledby="nav-group-learn">
+              <li><a href="../../practicum.html" aria-describedby="tip-practicum">Practicum</a><span class="nav-tip" role="tooltip" id="tip-practicum">Exercises on a fictional company, with answers you can check.</span></li>
+              <li><a href="../../case-studies.html" aria-describedby="tip-case-studies">Case studies</a><span class="nav-tip" role="tooltip" id="tip-case-studies">Worked examples of the kit in use, on a fictional company.</span></li>
+              <li><a href="../../field-guide.html" aria-describedby="tip-field-guide">Field guide</a><span class="nav-tip" role="tooltip" id="tip-field-guide">Plain-language guides to the standards, certifications, and key terms.</span></li>
+            </ul>
+          </div>
+          <div class="nav-group">
+            <p class="nav-group__label" id="nav-group-explore">Explore</p>
+            <ul aria-labelledby="nav-group-explore">
+              <li><a href="../../lifecycle.html" aria-describedby="tip-lifecycle">Application lifecycle</a><span class="nav-tip" role="tooltip" id="tip-lifecycle">Six stages from request to retirement, with the questions to ask at each.</span></li>
+              <li><a href="../../crosswalk.html" aria-describedby="tip-crosswalk">Crosswalk explorer</a><span class="nav-tip" role="tooltip" id="tip-crosswalk">See how each control maps to ISO/IEC 19770, COBIT, 27001, and 42001.</span></li>
+              <li><a href="../../impact-map.html" aria-describedby="tip-impact-map">Themes by stage</a><span class="nav-tip" role="tooltip" id="tip-impact-map">One grid showing every control theme against every lifecycle stage.</span></li>
+            </ul>
+          </div>
+        </div>
+      </details>
     </nav>
   </div>
 </header>
 <main id="main" class="doc-page">
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <ol>
+      <li><a href="../../index.html">Home</a></li>
+      <li><a href="../../tools.html">AI skills</a></li>
+      <li><span aria-current="page">Access review: Halden Logistics, application accounts</span></li>
+    </ol>
+  </nav>
   <div class="doc-top">
     <p class="doc-back"><a href="../../tools.html">&larr; AI skills</a></p>
     <button type="button" class="print-icon" onclick="window.print()" aria-label="Print this page" title="Print"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="M7 9V3.5h10V9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M7 17H4.5A1.5 1.5 0 0 1 3 15.5v-5A1.5 1.5 0 0 1 4.5 9h15a1.5 1.5 0 0 1 1.5 1.5v5a1.5 1.5 0 0 1-1.5 1.5H17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><rect x="7" y="14" width="10" height="6.5" rx="0.8" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17.5" cy="12" r="0.9" fill="currentColor"/></svg></button>
@@ -98,8 +128,8 @@
   <h1>Access review: Halden Logistics, application accounts</h1>
   <div class="visual-actions doc-actions">
     <a class="visual-actions__link" href="example-halden-access-review.docx">Download Word (.docx)</a>
-    <a class="visual-actions__link" href="example-halden-access-review.xlsx">Download Excel (.xlsx)</a>
-    <button type="button" class="visual-actions__link doc-print" onclick="window.print()">Print or save as PDF</button>
+    <a class="visual-actions__link doc-secondary" href="example-halden-access-review.xlsx">Download Excel (.xlsx)</a>
+    <button type="button" class="visual-actions__link doc-print doc-secondary" onclick="window.print()">Print or save as PDF</button>
   </div>
   <p class="meta doc-reading">About 6 minutes to read (an estimate at 200 words per minute).</p>
 
@@ -110,13 +140,13 @@
 <h2 id="sensitivity-order-step-2">Sensitivity order (step 2)</h2>
 <p>I reviewed the 10 <strong>confidential</strong> apps first: APP-002, 003, 004, 006, 009, 011, 027, 044, 045 and 047, which hold 20 accounts. The other 50 internal apps came after. Two of the three orphaned accounts are on confidential apps.</p>
 <h2 id="exceptions-table">Exceptions table</h2>
-<div class="table-scroll"><table class="checklist wide"><caption>Exceptions table</caption><thead><tr><th scope="col">Account</th><th scope="col">Person</th><th scope="col">App (sensitivity)</th><th scope="col">Role</th><th scope="col">Last login</th><th scope="col">Issue</th><th scope="col">Recommended action</th></tr></thead><tbody><tr><td><strong>ACC-063</strong></td><td>EMP-072</td><td class="long-text">APP-003 Staffhub HRIS (confidential)</td><td>user</td><td>2026-08-08</td><td class="long-text"><strong>Orphaned: leaver.</strong> Terminated 2026-07-02, and <strong>the account was used 37 days after leaving</strong></td><td class="long-text">Remove, and investigate the login after termination</td></tr><tr><td><strong>ACC-104</strong></td><td>EMP-099</td><td class="long-text">APP-044 Payflow AP automation (confidential)</td><td>user</td><td>2026-08-21</td><td class="long-text"><strong>Orphaned: no matching person.</strong> EMP-099 isn&#x27;t in HR (IDs stop at EMP-080)</td><td class="long-text">Investigate, then remove</td></tr><tr><td><strong>ACC-019</strong></td><td>EMP-071</td><td class="long-text">APP-019 Taskmoor Project mgmt (internal)</td><td>user</td><td>2026-08-20</td><td class="long-text"><strong>Orphaned: leaver.</strong> Terminated 2026-05-15, and <strong>the account was used 97 days after leaving</strong></td><td class="long-text">Remove, and investigate the login after termination</td></tr><tr><td>ACC-017</td><td>EMP-017</td><td class="long-text">APP-017 Meetrix (internal)</td><td>admin</td><td>2026-08-18</td><td class="long-text">Privileged role</td><td class="long-text">Owner to re-approve</td></tr><tr><td>ACC-034</td><td>EMP-034</td><td class="long-text">APP-034 Ratecheck (internal)</td><td>admin</td><td>2026-08-07</td><td class="long-text">Privileged role</td><td class="long-text">Owner to re-approve</td></tr><tr><td>ACC-051</td><td>EMP-051</td><td class="long-text">APP-051 Safeyard (internal)</td><td>admin</td><td>2026-08-24</td><td class="long-text">Privileged role</td><td class="long-text">Owner to re-approve</td></tr><tr><td>ACC-068</td><td>EMP-068</td><td class="long-text">APP-008 Clausebase (internal)</td><td>admin</td><td>2026-08-13</td><td class="long-text">Privileged role</td><td class="long-text">Owner to re-approve</td></tr><tr><td>ACC-085</td><td>EMP-015</td><td class="long-text">APP-025 Pulseboard (internal)</td><td>admin</td><td>2026-08-02</td><td class="long-text">Privileged role</td><td class="long-text">Owner to re-approve</td></tr><tr><td>ACC-102</td><td>EMP-032</td><td class="long-text">APP-042 Pipewright ETL (internal)</td><td>admin</td><td>2026-08-19</td><td class="long-text">Privileged role</td><td class="long-text">Owner to re-approve</td></tr><tr><td>ACC-119</td><td>EMP-049</td><td class="long-text">APP-059 Clickpath (internal)</td><td>admin</td><td>2026-08-08</td><td class="long-text">Privileged role</td><td class="long-text">Owner to re-approve</td></tr></tbody></table></div>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Exceptions table table"><table class="checklist wide sticky-first"><caption>Exceptions table</caption><thead><tr><th scope="col">Account</th><th scope="col">Person</th><th scope="col">App (sensitivity)</th><th scope="col">Role</th><th scope="col">Last login</th><th scope="col">Issue</th><th scope="col">Recommended action</th></tr></thead><tbody><tr><th scope="row" id="q1-acc-063-c0"><strong>ACC-063</strong></th><td>EMP-072</td><td class="long-text">APP-003 Staffhub HRIS (confidential)</td><td>user</td><td>2026-08-08</td><td class="long-text"><strong>Orphaned: leaver.</strong> Terminated 2026-07-02, and <strong>the account was used 37 days after leaving</strong></td><td class="long-text">Remove, and investigate the login after termination</td></tr><tr><th scope="row" id="q1-acc-104-c0"><strong>ACC-104</strong></th><td>EMP-099</td><td class="long-text">APP-044 Payflow AP automation (confidential)</td><td>user</td><td>2026-08-21</td><td class="long-text"><strong>Orphaned: no matching person.</strong> EMP-099 isn&#x27;t in HR (IDs stop at EMP-080)</td><td class="long-text">Investigate, then remove</td></tr><tr><th scope="row" id="q1-acc-019-c0"><strong>ACC-019</strong></th><td>EMP-071</td><td class="long-text">APP-019 Taskmoor Project mgmt (internal)</td><td>user</td><td>2026-08-20</td><td class="long-text"><strong>Orphaned: leaver.</strong> Terminated 2026-05-15, and <strong>the account was used 97 days after leaving</strong></td><td class="long-text">Remove, and investigate the login after termination</td></tr><tr><th scope="row" id="q1-acc-017-c0">ACC-017</th><td>EMP-017</td><td class="long-text">APP-017 Meetrix (internal)</td><td>admin</td><td>2026-08-18</td><td class="long-text">Privileged role</td><td class="long-text">Owner to re-approve</td></tr><tr><th scope="row" id="q1-acc-034-c0">ACC-034</th><td>EMP-034</td><td class="long-text">APP-034 Ratecheck (internal)</td><td>admin</td><td>2026-08-07</td><td class="long-text">Privileged role</td><td class="long-text">Owner to re-approve</td></tr><tr><th scope="row" id="q1-acc-051-c0">ACC-051</th><td>EMP-051</td><td class="long-text">APP-051 Safeyard (internal)</td><td>admin</td><td>2026-08-24</td><td class="long-text">Privileged role</td><td class="long-text">Owner to re-approve</td></tr><tr><th scope="row" id="q1-acc-068-c0">ACC-068</th><td>EMP-068</td><td class="long-text">APP-008 Clausebase (internal)</td><td>admin</td><td>2026-08-13</td><td class="long-text">Privileged role</td><td class="long-text">Owner to re-approve</td></tr><tr><th scope="row" id="q1-acc-085-c0">ACC-085</th><td>EMP-015</td><td class="long-text">APP-025 Pulseboard (internal)</td><td>admin</td><td>2026-08-02</td><td class="long-text">Privileged role</td><td class="long-text">Owner to re-approve</td></tr><tr><th scope="row" id="q1-acc-102-c0">ACC-102</th><td>EMP-032</td><td class="long-text">APP-042 Pipewright ETL (internal)</td><td>admin</td><td>2026-08-19</td><td class="long-text">Privileged role</td><td class="long-text">Owner to re-approve</td></tr><tr><th scope="row" id="q1-acc-119-c0">ACC-119</th><td>EMP-049</td><td class="long-text">APP-059 Clickpath (internal)</td><td>admin</td><td>2026-08-08</td><td class="long-text">Privileged role</td><td class="long-text">Owner to re-approve</td></tr></tbody></table></div>
 <p><strong>How each conclusion was reached</strong></p>
 <ul><li><strong>Orphaned accounts (3).</strong> I matched <code>employee_id</code> to the HR <code>id</code>. Two accounts belong to people HR marks as terminated (EMP-071 and EMP-072). One points to an ID that isn&#x27;t in HR at all (EMP-099). The other 117 accounts match active employees.</li><li><strong>Logins after termination.</strong> Both leaver accounts were used after the leave date. This is more serious than access that was left in place: someone, or a shared or stolen login, was using these accounts. Treat both as possible security incidents, not just clean-up.</li><li><strong>ACC-104.</strong> The ID could be a typo, a service account, or a contractor who isn&#x27;t in the HR feed. I can&#x27;t tell which from the data. It has live access (last login 2026-08-21) to accounts payable, a confidential payments system.</li><li><strong>Privileged roles (7).</strong> These are all accounts with role <code>admin</code>. None is on a confidential app, and none belongs to a leaver.</li><li><strong>Dormant accounts (0).</strong> The oldest login is 2026-08-01, well after the 2026-06-26 cutoff. This stays zero for any export date up to 2026-10-30, but the result is <strong>Unverified</strong> until the export date is confirmed.</li><li><strong>Segregation of duties: not tested.</strong> No rules were supplied. One person holds two admin roles: EMP-015 on Pulseboard (ACC-085) and EMP-032 on Pipewright ETL (ACC-102). Each person has only one admin role, so no conflict is visible.</li></ul>
 <p><strong>Decisions needed</strong></p>
 <ul><li><strong>Decision needed:</strong> The APP-003 Staffhub owner decides whether to remove ACC-063, and whether to open a security incident for the login on 2026-08-08.</li><li><strong>Decision needed:</strong> The APP-044 Payflow owner decides whether to remove ACC-104 once it&#x27;s clear who owns it. They should also decide whether to suspend it while that is investigated.</li><li><strong>Decision needed:</strong> The APP-019 Taskmoor owner decides whether to remove ACC-019, and whether to open a security incident for the login on 2026-08-20.</li><li><strong>Decision needed:</strong> Each owner of APP-017, 034, 051, 008, 025, 042 and 059 re-approves or revokes their admin account (ACC-017, 034, 051, 068, 085, 102 and 119).</li><li><strong>Decision needed:</strong> The review coordinator decides whether to supply SoD rules and re-run step 6, or record it as out of scope for this cycle.</li></ul>
 <h2 id="evidence-summary">Evidence summary</h2>
-<div class="table-scroll"><table class="checklist"><caption>Evidence summary</caption><thead><tr><th scope="col">Item</th><th scope="col">Result</th></tr></thead><tbody><tr><td>Accounts reviewed</td><td class="long-text">120 of 120 in the export (<strong>Unverified:</strong> whether the export is the full population)</td></tr><tr><td>People matched to HR</td><td class="long-text">71 of 72 distinct IDs match an HR record, and 69 of those are active</td></tr><tr><td>Confidential apps reviewed first</td><td class="long-text">10 apps, 20 accounts</td></tr><tr><td>Orphaned accounts</td><td class="long-text">3: two leavers (both used after termination) and one unknown person</td></tr><tr><td>Privileged accounts for re-approval</td><td class="long-text">7</td></tr><tr><td>Dormant accounts (90 days)</td><td class="long-text">0 (<strong>Unverified:</strong> export date)</td></tr><tr><td>SoD conflicts</td><td class="long-text">Not tested, because no rules were supplied</td></tr><tr><td>Owner decisions collected</td><td class="long-text">0 of 10, all pending</td></tr></tbody></table></div>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Evidence summary table"><table class="checklist"><caption>Evidence summary</caption><thead><tr><th scope="col">Item</th><th scope="col">Result</th></tr></thead><tbody><tr><th scope="row" id="q2-accounts-reviewed-c0">Accounts reviewed</th><td class="long-text">120 of 120 in the export (<strong>Unverified:</strong> whether the export is the full population)</td></tr><tr><th scope="row" id="q2-people-matched-to-hr-c0">People matched to HR</th><td class="long-text">71 of 72 distinct IDs match an HR record, and 69 of those are active</td></tr><tr><th scope="row" id="q2-confidential-apps-reviewed-first-c0">Confidential apps reviewed first</th><td class="long-text">10 apps, 20 accounts</td></tr><tr><th scope="row" id="q2-orphaned-accounts-c0">Orphaned accounts</th><td class="long-text">3: two leavers (both used after termination) and one unknown person</td></tr><tr><th scope="row" id="q2-privileged-accounts-for-re-approval-c0">Privileged accounts for re-approval</th><td class="long-text">7</td></tr><tr><th scope="row" id="q2-dormant-accounts-90-days-c0">Dormant accounts (90 days)</th><td class="long-text">0 (<strong>Unverified:</strong> export date)</td></tr><tr><th scope="row" id="q2-sod-conflicts-c0">SoD conflicts</th><td class="long-text">Not tested, because no rules were supplied</td></tr><tr><th scope="row" id="q2-owner-decisions-collected-c0">Owner decisions collected</th><td class="long-text">0 of 10, all pending</td></tr></tbody></table></div>
 <h2 id="auditor-memo">Auditor memo</h2>
 <p><strong>Scope.</strong> User accounts for Halden Logistics&#x27; 60 business applications, from <a href="example-accounts.html">Accounts (example data)</a>, checked against the HR list in <a href="example-employees.html">Employees (example data)</a>. The export date wasn&#x27;t supplied, and dormancy was measured against 2026-09-24 (<strong>Unverified</strong>).</p>
 <p><strong>Population.</strong> 120 accounts held by 72 person IDs, checked against 80 HR records. The per-app user counts in <a href="example-apps.html">Apps (example data)</a> are much higher than the export. Completeness of the export must be confirmed before this memo can support a statement that covers every user.</p>
@@ -134,6 +164,7 @@
 </main>
 <footer class="site-footer">
   <p>Eve McGivern · <a href="https://evemcgivern.github.io/">evemcgivern.github.io</a></p>
+  <p><a href="../../about.html">About</a></p>
   <p>Questions? Comments? <a href="https://github.com/evemcgivern/app-governance-kit/issues" id="contact-email" data-r="moc.liamg|nrevigcmeve">email me</a>.</p>
   <p><a href="https://buymeacoffee.com/a8w5iiqszp" rel="noopener">Buy me a coffee</a> if these tools help.</p>
   <p class="site-version"><a href="https://github.com/evemcgivern/app-governance-kit/releases" rel="noopener" id="site-version">Version</a></p>

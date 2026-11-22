@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Practicum | Eve McGivern</title>
-<meta name="description" content="Eight hands-on governance exercises with self-checking, right in the browser.">
+<title>Practicum | App Governance Kit</title>
+<meta name="description" content="Eight exercises for people learning software asset and application governance: work a problem by hand on fictional data, then check your answer in the browser.">
 <meta name="author" content="Eve McGivern">
 <link rel="canonical" href="https://evemcgivern.github.io/app-governance-kit/practicum.html">
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="Eve McGivern | Application Governance">
-<meta property="og:title" content="Practicum | Eve McGivern">
-<meta property="og:description" content="Eight hands-on governance exercises with self-checking, right in the browser.">
+<meta property="og:site_name" content="App Governance Kit">
+<meta property="og:title" content="Practicum | App Governance Kit">
+<meta property="og:description" content="Eight exercises for people learning software asset and application governance: work a problem by hand on fictional data, then check your answer in the browser.">
 <meta property="og:url" content="https://evemcgivern.github.io/app-governance-kit/practicum.html">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://evemcgivern.github.io/app-governance-kit/og-image.png">
@@ -18,8 +18,8 @@
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Application governance kit: nine governance methods for portfolio, AI, and access.">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Practicum | Eve McGivern">
-<meta name="twitter:description" content="Eight hands-on governance exercises with self-checking, right in the browser.">
+<meta name="twitter:title" content="Practicum | App Governance Kit">
+<meta name="twitter:description" content="Eight exercises for people learning software asset and application governance: work a problem by hand on fictional data, then check your answer in the browser.">
 <meta name="twitter:image" content="https://evemcgivern.github.io/app-governance-kit/og-image.png">
 <script type="application/ld+json">
 {
@@ -49,6 +49,7 @@
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="stylesheet" href="style.css">
 <script src="nav.js" defer></script>
+<script src="scroll-hint.js" defer></script>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -57,29 +58,63 @@
   <div class="site-header__inner">
     <a class="brand" href="https://evemcgivern.github.io/">Eve McGivern</a>
     <nav class="site-nav" aria-label="Main">
-      <ul>
-        <li><a href="tools.html" aria-describedby="tip-tools">AI skills</a><span class="nav-tip" role="tooltip" id="tip-tools">The nine governance methods, packaged as skills for Claude, Codex, and Copilot.</span></li>
-        <li><a href="sam-toolkit.html" aria-describedby="tip-sam-toolkit">SAM toolkit</a><span class="nav-tip" role="tooltip" id="tip-sam-toolkit">Templates and checklists for running software asset management by hand.</span></li>
-        <li><a href="practicum.html" aria-current="page" aria-describedby="tip-practicum">Practicum</a><span class="nav-tip" role="tooltip" id="tip-practicum">Hands-on exercises on a fictional company, with answers you can check.</span></li>
-        <li><a href="lifecycle.html" aria-describedby="tip-lifecycle">Lifecycle</a><span class="nav-tip" role="tooltip" id="tip-lifecycle">Six stages from request to retirement, with the questions to ask at each.</span></li>
-        <li><a href="crosswalk.html" aria-describedby="tip-crosswalk">Crosswalk explorer</a><span class="nav-tip" role="tooltip" id="tip-crosswalk">See how each control maps to ISO/IEC 19770, COBIT, 27001, and 42001.</span></li>
-        <li><a href="impact-map.html" aria-describedby="tip-impact-map">Impact map</a><span class="nav-tip" role="tooltip" id="tip-impact-map">One grid showing every control theme against every lifecycle stage.</span></li>
-        <li><a href="field-guide.html" aria-describedby="tip-field-guide">Field guide</a><span class="nav-tip" role="tooltip" id="tip-field-guide">Plain-language guides to the standards, certifications, and key terms.</span></li>
-        <li><a href="case-studies.html" aria-describedby="tip-case-studies">Case studies</a><span class="nav-tip" role="tooltip" id="tip-case-studies">Worked examples of the kit in use, on a fictional company.</span></li>
-        <li><a href="about.html" aria-describedby="tip-about">About</a><span class="nav-tip" role="tooltip" id="tip-about">Who built the kit, and how to get in touch.</span></li>
-      </ul>
+      <details class="nav-menu">
+        <summary class="nav-menu__toggle">Menu</summary>
+        <div class="nav-groups">
+          <div class="nav-group">
+            <p class="nav-group__label" id="nav-group-start">Start</p>
+            <ul aria-labelledby="nav-group-start">
+              <li><a href="sam-toolkit.html#start" aria-describedby="tip-sam-toolkit">SAM toolkit <span class="nav-badge">Start here</span></a><span class="nav-tip" role="tooltip" id="tip-sam-toolkit">Start with the playbook, then the templates and checklists for running software asset management by hand.</span></li>
+            </ul>
+          </div>
+          <div class="nav-group">
+            <p class="nav-group__label" id="nav-group-do">Do</p>
+            <ul aria-labelledby="nav-group-do">
+              <li><a href="tools.html" aria-describedby="tip-tools">AI skills</a><span class="nav-tip" role="tooltip" id="tip-tools">The nine governance methods, packaged as skills for Claude, Codex, and Copilot.</span></li>
+            </ul>
+          </div>
+          <div class="nav-group">
+            <p class="nav-group__label" id="nav-group-learn">Learn</p>
+            <ul aria-labelledby="nav-group-learn">
+              <li><a href="practicum.html" aria-current="page" aria-describedby="tip-practicum">Practicum</a><span class="nav-tip" role="tooltip" id="tip-practicum">Exercises on a fictional company, with answers you can check.</span></li>
+              <li><a href="case-studies.html" aria-describedby="tip-case-studies">Case studies</a><span class="nav-tip" role="tooltip" id="tip-case-studies">Worked examples of the kit in use, on a fictional company.</span></li>
+              <li><a href="field-guide.html" aria-describedby="tip-field-guide">Field guide</a><span class="nav-tip" role="tooltip" id="tip-field-guide">Plain-language guides to the standards, certifications, and key terms.</span></li>
+            </ul>
+          </div>
+          <div class="nav-group">
+            <p class="nav-group__label" id="nav-group-explore">Explore</p>
+            <ul aria-labelledby="nav-group-explore">
+              <li><a href="lifecycle.html" aria-describedby="tip-lifecycle">Application lifecycle</a><span class="nav-tip" role="tooltip" id="tip-lifecycle">Six stages from request to retirement, with the questions to ask at each.</span></li>
+              <li><a href="crosswalk.html" aria-describedby="tip-crosswalk">Crosswalk explorer</a><span class="nav-tip" role="tooltip" id="tip-crosswalk">See how each control maps to ISO/IEC 19770, COBIT, 27001, and 42001.</span></li>
+              <li><a href="impact-map.html" aria-describedby="tip-impact-map">Themes by stage</a><span class="nav-tip" role="tooltip" id="tip-impact-map">One grid showing every control theme against every lifecycle stage.</span></li>
+            </ul>
+          </div>
+        </div>
+      </details>
     </nav>
   </div>
 </header>
 
 <main id="main">
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <ol>
+      <li><a href="index.html">Home</a></li>
+      <li><span aria-current="page">Practicum</span></li>
+    </ol>
+  </nav>
   <section class="hero">
     <h1>Practicum</h1>
+    <p class="meta"><strong>Do it yourself on fictional data.</strong> Want to see it done first? Read the <a href="case-studies.html">case studies</a>.</p>
     <p class="positioning prose-wide">Eight hands-on exercises, all built around Halden Logistics and the demo data this kit's tools use. Work each one by hand with only a checklist, then enter what you found below and check it: no installs, no AI shortcuts, no one grading over your shoulder. Afterward, run a real practice with the <a href="sam-toolkit.html">SAM toolkit templates</a>.</p>
     <p class="pr-clear-all">
       <button type="button" class="button button--ghost" id="pr-clear-all">Clear all my answers</button>
     </p>
     <p class="pr-clear-all-message" id="pr-clear-all-message" role="status" aria-live="polite"></p>
+  </section>
+
+  <section class="prose prose-wide" id="about-the-demo-company" aria-labelledby="about-the-demo-company-heading">
+    <h2 id="about-the-demo-company-heading">About the demo company</h2>
+    <p>Halden Logistics is a fictional company. Its people, applications, contracts, accounts, and devices are made up for this kit, and the files live in the repo's <a href="https://github.com/evemcgivern/app-governance-kit/tree/main/demo-estate">demo estate</a>. The data contains planted errors on purpose, so each exercise has something to find. Nothing in it describes a real organization.</p>
   </section>
 
   <p class="prose prose-wide">Start with <a href="docs/practicum/overview.html">the practicum overview</a> if you haven't worked these exercises before; it explains how self-checking works and the order to take them in. The answer key behind this page, <code>demo-estate/answer-key.json</code>, is public in this repo; check your own answer before you look at it, or you're only checking whether you can copy one.</p>
@@ -128,7 +163,7 @@
           <button type="button" class="button button--ghost" data-action="reset">Reset</button>
         </p>
         <p class="pr-message" id="pr-message-program-setup" role="status" aria-live="polite"></p>
-        <div class="pr-result" id="pr-result-program-setup" role="status" aria-live="polite" hidden></div>
+        <div class="pr-result" id="pr-result-program-setup" role="status" aria-live="polite"></div>
         <textarea class="pr-copy-fallback" id="pr-copy-fallback-program-setup" readonly hidden aria-label="Findings block for program setup"></textarea>
 
         <details class="pr-more">
@@ -173,7 +208,7 @@
           <button type="button" class="button button--ghost" data-action="reset">Reset</button>
         </p>
         <p class="pr-message" id="pr-message-itam-maturity" role="status" aria-live="polite"></p>
-        <div class="pr-result" id="pr-result-itam-maturity" role="status" aria-live="polite" hidden></div>
+        <div class="pr-result" id="pr-result-itam-maturity" role="status" aria-live="polite"></div>
         <textarea class="pr-copy-fallback" id="pr-copy-fallback-itam-maturity" readonly hidden aria-label="Findings block for ITAM maturity"></textarea>
 
         <details class="pr-more">
@@ -218,7 +253,7 @@
           <button type="button" class="button button--ghost" data-action="reset">Reset</button>
         </p>
         <p class="pr-message" id="pr-message-crosswalk" role="status" aria-live="polite"></p>
-        <div class="pr-result" id="pr-result-crosswalk" role="status" aria-live="polite" hidden></div>
+        <div class="pr-result" id="pr-result-crosswalk" role="status" aria-live="polite"></div>
         <textarea class="pr-copy-fallback" id="pr-copy-fallback-crosswalk" readonly hidden aria-label="Findings block for crosswalk"></textarea>
 
         <details class="pr-more">
@@ -263,7 +298,7 @@
           <button type="button" class="button button--ghost" data-action="reset">Reset</button>
         </p>
         <p class="pr-message" id="pr-message-rationalization" role="status" aria-live="polite"></p>
-        <div class="pr-result" id="pr-result-rationalization" role="status" aria-live="polite" hidden></div>
+        <div class="pr-result" id="pr-result-rationalization" role="status" aria-live="polite"></div>
         <textarea class="pr-copy-fallback" id="pr-copy-fallback-rationalization" readonly hidden aria-label="Findings block for rationalization"></textarea>
 
         <details class="pr-more">
@@ -308,7 +343,7 @@
           <button type="button" class="button button--ghost" data-action="reset">Reset</button>
         </p>
         <p class="pr-message" id="pr-message-access-review" role="status" aria-live="polite"></p>
-        <div class="pr-result" id="pr-result-access-review" role="status" aria-live="polite" hidden></div>
+        <div class="pr-result" id="pr-result-access-review" role="status" aria-live="polite"></div>
         <textarea class="pr-copy-fallback" id="pr-copy-fallback-access-review" readonly hidden aria-label="Findings block for access review"></textarea>
 
         <details class="pr-more">
@@ -353,7 +388,7 @@
           <button type="button" class="button button--ghost" data-action="reset">Reset</button>
         </p>
         <p class="pr-message" id="pr-message-ai-intake" role="status" aria-live="polite"></p>
-        <div class="pr-result" id="pr-result-ai-intake" role="status" aria-live="polite" hidden></div>
+        <div class="pr-result" id="pr-result-ai-intake" role="status" aria-live="polite"></div>
         <textarea class="pr-copy-fallback" id="pr-copy-fallback-ai-intake" readonly hidden aria-label="Findings block for AI intake"></textarea>
 
         <details class="pr-more">
@@ -398,7 +433,7 @@
           <button type="button" class="button button--ghost" data-action="reset">Reset</button>
         </p>
         <p class="pr-message" id="pr-message-hardware-lifecycle" role="status" aria-live="polite"></p>
-        <div class="pr-result" id="pr-result-hardware-lifecycle" role="status" aria-live="polite" hidden></div>
+        <div class="pr-result" id="pr-result-hardware-lifecycle" role="status" aria-live="polite"></div>
         <textarea class="pr-copy-fallback" id="pr-copy-fallback-hardware-lifecycle" readonly hidden aria-label="Findings block for hardware lifecycle"></textarea>
 
         <details class="pr-more">
@@ -443,7 +478,7 @@
           <button type="button" class="button button--ghost" data-action="reset">Reset</button>
         </p>
         <p class="pr-message" id="pr-message-audit-response" role="status" aria-live="polite"></p>
-        <div class="pr-result" id="pr-result-audit-response" role="status" aria-live="polite" hidden></div>
+        <div class="pr-result" id="pr-result-audit-response" role="status" aria-live="polite"></div>
         <textarea class="pr-copy-fallback" id="pr-copy-fallback-audit-response" readonly hidden aria-label="Findings block for audit response"></textarea>
 
         <details class="pr-more">
@@ -473,6 +508,7 @@
 
 <footer class="site-footer">
   <p>Eve McGivern · <a href="https://evemcgivern.github.io/">evemcgivern.github.io</a></p>
+  <p><a href="about.html">About</a></p>
   <p>Questions? Comments? <a href="https://github.com/evemcgivern/app-governance-kit/issues" id="contact-email" data-r="moc.liamg|nrevigcmeve">email me</a>.</p>
   <p><a href="https://buymeacoffee.com/a8w5iiqszp" rel="noopener">Buy me a coffee</a> if these tools help.</p>
   <p class="site-version"><a href="https://github.com/evemcgivern/app-governance-kit/releases" rel="noopener" id="site-version">Version</a></p>
@@ -603,7 +639,12 @@
   function buildTable(columns, rows, extraHeaders, rowExtraBuilder) {
     var wrap = document.createElement("div");
     wrap.className = "table-scroll";
+    wrap.setAttribute("tabindex", "0");
+    wrap.setAttribute("role", "region");
+    wrap.setAttribute("aria-label", columns.map(function (c) { return c.label; }).join(", ") +
+      " table, scroll sideways to see more");
     var table = document.createElement("table");
+    if (columns.length >= 3) { table.className = "sticky-first"; }
     var thead = document.createElement("thead");
     var htr = document.createElement("tr");
     columns.forEach(function (c) {
@@ -624,10 +665,11 @@
     var tbody = document.createElement("tbody");
     rows.forEach(function (row) {
       var tr = document.createElement("tr");
-      columns.forEach(function (c) {
-        var td = document.createElement("td");
-        td.textContent = row[c.key] || "";
-        tr.appendChild(td);
+      columns.forEach(function (c, i) {
+        var cell = document.createElement(i === 0 ? "th" : "td");
+        if (i === 0) { cell.setAttribute("scope", "row"); }
+        cell.textContent = row[c.key] || "";
+        tr.appendChild(cell);
       });
       if (rowExtraBuilder) { rowExtraBuilder(tr, row); }
       tbody.appendChild(tr);
@@ -697,12 +739,12 @@
   function renderResult(tool, result) {
     var el = document.getElementById("pr-result-" + tool);
     if (!el) { return; }
-    el.hidden = false;
     el.textContent = "";
     el.className = "pr-result " + (result.passed ? "pr-result--pass" : "pr-result--fail");
 
     var heading = document.createElement("h4");
     heading.textContent = result.passed ? "Passed" : "Not passed yet";
+    heading.setAttribute("tabindex", "-1");
     el.appendChild(heading);
 
     var missedP = document.createElement("p");
@@ -730,6 +772,7 @@
       });
       el.appendChild(eul);
     }
+    heading.focus();
   }
 
   function wireActions(tool) {
@@ -763,7 +806,7 @@
     var controls = section.querySelector(".pr-controls");
     if (controls && BUILDERS[tool]) { BUILDERS[tool](controls); }
     var result = document.getElementById("pr-result-" + tool);
-    if (result) { result.hidden = true; result.textContent = ""; result.className = "pr-result"; }
+    if (result) { result.textContent = ""; result.className = "pr-result"; }
     var fallback = document.getElementById("pr-copy-fallback-" + tool);
     if (fallback) { fallback.hidden = true; fallback.value = ""; }
     setMessage(tool, "");
@@ -900,6 +943,7 @@
     };
   };
 
+  // visibleLabel is the text shown; pass [text, rowName] so each row's box has its own accessible name.
   function addCheckboxCellLike(parent, id, visibleLabel, checked, onChange) {
     var label = document.createElement("label");
     label.className = "pr-inline-label";
@@ -907,6 +951,10 @@
     var input = document.createElement("input");
     input.type = "checkbox";
     input.id = id;
+    if (Array.isArray(visibleLabel)) {
+      input.setAttribute("aria-label", visibleLabel[0] + ": " + visibleLabel[1]);
+      visibleLabel = visibleLabel[0];
+    }
     input.checked = !!checked;
     input.addEventListener("change", function () { onChange(input.checked); });
     label.appendChild(input);
@@ -937,7 +985,7 @@
       function (tr, row) {
         var td = document.createElement("td");
         var id = "pr-itam-maturity-" + row.area;
-        addCheckboxCellLike(td, id, "Weakest", !!state.checked[row.area], function (checked) {
+        addCheckboxCellLike(td, id, ["Weakest", row.area], !!state.checked[row.area], function (checked) {
           if (checked && checkedCount() >= 3) {
             var input = document.getElementById(id);
             if (input) { input.checked = false; }
@@ -1035,7 +1083,7 @@
       ["Duplicate?"],
       function (tr, row) {
         var td = document.createElement("td");
-        addCheckboxCellLike(td, "pr-rat-dup-" + row.id, "Select", !!state.dupChecked[row.id], function (checked) {
+        addCheckboxCellLike(td, "pr-rat-dup-" + row.id, ["Select", row.id + " " + row.name], !!state.dupChecked[row.id], function (checked) {
           state.dupChecked[row.id] = checked;
           saveState("rationalization", state);
         });
@@ -1067,6 +1115,7 @@
     container.appendChild(dupControls);
 
     var pairsHeading = document.createElement("h4");
+    pairsHeading.setAttribute("tabindex", "-1");
     pairsHeading.textContent = "Recorded duplicate pairs";
     container.appendChild(pairsHeading);
 
@@ -1087,10 +1136,18 @@
       removeBtn.type = "button";
       removeBtn.className = "pr-pair-remove";
       removeBtn.textContent = "Remove";
+      removeBtn.setAttribute("aria-label", "Remove duplicate pair " + pair[0] + " and " + pair[1]);
       removeBtn.addEventListener("click", function () {
         state.pairs.splice(idx, 1);
         saveState("rationalization", state);
         BUILDERS["rationalization"](container);
+        // The list was rebuilt, so put focus on the next Remove button, or the list heading when none is left.
+        var buttons = container.querySelectorAll(".pr-pair-remove");
+        var next = buttons[Math.min(idx, buttons.length - 1)];
+        var heading = Array.prototype.filter.call(container.querySelectorAll("h4"), function (h) {
+          return h.textContent === "Recorded duplicate pairs";
+        })[0];
+        (next || heading).focus();
       });
       li.appendChild(removeBtn);
       pairsList.appendChild(li);
@@ -1110,7 +1167,7 @@
       ["Expired?"],
       function (tr, row) {
         var td = document.createElement("td");
-        addCheckboxCellLike(td, "pr-rat-exp-" + row.id, "Expired", !!state.expired[row.id], function (checked) {
+        addCheckboxCellLike(td, "pr-rat-exp-" + row.id, ["Expired", row.id], !!state.expired[row.id], function (checked) {
           state.expired[row.id] = checked;
           saveState("rationalization", state);
         });
@@ -1149,7 +1206,7 @@
       ["Orphaned?"],
       function (tr, row) {
         var td = document.createElement("td");
-        addCheckboxCellLike(td, "pr-access-orphan-" + row.id, "Orphaned", !!state.orphaned[row.id], function (checked) {
+        addCheckboxCellLike(td, "pr-access-orphan-" + row.id, ["Orphaned", row.id], !!state.orphaned[row.id], function (checked) {
           state.orphaned[row.id] = checked;
           saveState("access-review", state);
         });
@@ -1226,14 +1283,14 @@
       ["Overdue refresh?", "Unwiped if retired?"],
       function (tr, row) {
         var td1 = document.createElement("td");
-        addCheckboxCellLike(td1, "pr-hw-overdue-" + row.device_id, "Overdue", !!state.overdue[row.device_id], function (checked) {
+        addCheckboxCellLike(td1, "pr-hw-overdue-" + row.device_id, ["Overdue", row.device_id], !!state.overdue[row.device_id], function (checked) {
           state.overdue[row.device_id] = checked;
           saveState("hardware-lifecycle", state);
         });
         tr.appendChild(td1);
 
         var td2 = document.createElement("td");
-        addCheckboxCellLike(td2, "pr-hw-unwiped-" + row.device_id, "Unwiped", !!state.unwiped[row.device_id], function (checked) {
+        addCheckboxCellLike(td2, "pr-hw-unwiped-" + row.device_id, ["Unwiped", row.device_id], !!state.unwiped[row.device_id], function (checked) {
           state.unwiped[row.device_id] = checked;
           saveState("hardware-lifecycle", state);
         });
@@ -1280,7 +1337,7 @@
       function (tr, row) {
         var td = document.createElement("td");
         var id = "pr-ar-short-" + row.license_id + "-" + row.version;
-        addCheckboxCellLike(td, id, "Short", !!state.short[row.license_id + "|" + row.version], function (checked) {
+        addCheckboxCellLike(td, id, ["Short", row.license_id + " version " + row.version], !!state.short[row.license_id + "|" + row.version], function (checked) {
           state.short[row.license_id + "|" + row.version] = checked;
           saveState("audit-response", state);
         });

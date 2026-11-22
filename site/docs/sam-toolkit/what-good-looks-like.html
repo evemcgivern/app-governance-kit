@@ -3,18 +3,18 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>What good looks like | Eve McGivern</title>
+<title>What good looks like | App Governance Kit</title>
 <meta name="description" content="A worksheet for deciding how far your program needs to go, so you aim…">
 <meta name="author" content="Eve McGivern">
 <link rel="canonical" href="https://evemcgivern.github.io/app-governance-kit/docs/sam-toolkit/what-good-looks-like.html">
 <meta property="og:type" content="article">
-<meta property="og:site_name" content="Eve McGivern | Application Governance">
-<meta property="og:title" content="What good looks like">
+<meta property="og:site_name" content="App Governance Kit">
+<meta property="og:title" content="What good looks like | App Governance Kit">
 <meta property="og:description" content="A worksheet for deciding how far your program needs to go, so you aim…">
 <meta property="og:url" content="https://evemcgivern.github.io/app-governance-kit/docs/sam-toolkit/what-good-looks-like.html">
 <meta property="og:image" content="https://evemcgivern.github.io/app-governance-kit/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="What good looks like">
+<meta name="twitter:title" content="What good looks like | App Governance Kit">
 <meta name="twitter:description" content="A worksheet for deciding how far your program needs to go, so you aim…">
 <meta name="twitter:image" content="https://evemcgivern.github.io/app-governance-kit/og-image.png">
 <script type="application/ld+json">
@@ -68,6 +68,7 @@
 <link rel="apple-touch-icon" href="../../apple-touch-icon.png">
 <link rel="stylesheet" href="../../style.css">
 <script src="../../nav.js" defer></script>
+<script src="../../scroll-hint.js" defer></script>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -76,33 +77,65 @@
   <div class="site-header__inner">
     <a class="brand" href="https://evemcgivern.github.io/">Eve McGivern</a>
     <nav class="site-nav" aria-label="Main">
-      <ul>
-        <li><a href="../../tools.html" aria-describedby="tip-tools">AI skills</a><span class="nav-tip" role="tooltip" id="tip-tools">The nine governance methods, packaged as skills for Claude, Codex, and Copilot.</span></li>
-        <li><a href="../../sam-toolkit.html" aria-describedby="tip-sam-toolkit">SAM toolkit</a><span class="nav-tip" role="tooltip" id="tip-sam-toolkit">Templates and checklists for running software asset management by hand.</span></li>
-        <li><a href="../../practicum.html" aria-describedby="tip-practicum">Practicum</a><span class="nav-tip" role="tooltip" id="tip-practicum">Hands-on exercises on a fictional company, with answers you can check.</span></li>
-        <li><a href="../../lifecycle.html" aria-describedby="tip-lifecycle">Lifecycle</a><span class="nav-tip" role="tooltip" id="tip-lifecycle">Six stages from request to retirement, with the questions to ask at each.</span></li>
-        <li><a href="../../crosswalk.html" aria-describedby="tip-crosswalk">Crosswalk explorer</a><span class="nav-tip" role="tooltip" id="tip-crosswalk">See how each control maps to ISO/IEC 19770, COBIT, 27001, and 42001.</span></li>
-        <li><a href="../../impact-map.html" aria-describedby="tip-impact-map">Impact map</a><span class="nav-tip" role="tooltip" id="tip-impact-map">One grid showing every control theme against every lifecycle stage.</span></li>
-        <li><a href="../../field-guide.html" aria-describedby="tip-field-guide">Field guide</a><span class="nav-tip" role="tooltip" id="tip-field-guide">Plain-language guides to the standards, certifications, and key terms.</span></li>
-        <li><a href="../../case-studies.html" aria-describedby="tip-case-studies">Case studies</a><span class="nav-tip" role="tooltip" id="tip-case-studies">Worked examples of the kit in use, on a fictional company.</span></li>
-        <li><a href="../../about.html" aria-describedby="tip-about">About</a><span class="nav-tip" role="tooltip" id="tip-about">Who built the kit, and how to get in touch.</span></li>
-      </ul>
+      <details class="nav-menu">
+        <summary class="nav-menu__toggle">Menu</summary>
+        <div class="nav-groups">
+          <div class="nav-group">
+            <p class="nav-group__label" id="nav-group-start">Start</p>
+            <ul aria-labelledby="nav-group-start">
+              <li><a href="../../sam-toolkit.html#start" aria-describedby="tip-sam-toolkit">SAM toolkit <span class="nav-badge">Start here</span></a><span class="nav-tip" role="tooltip" id="tip-sam-toolkit">Start with the playbook, then the templates and checklists for running software asset management by hand.</span></li>
+            </ul>
+          </div>
+          <div class="nav-group">
+            <p class="nav-group__label" id="nav-group-do">Do</p>
+            <ul aria-labelledby="nav-group-do">
+              <li><a href="../../tools.html" aria-describedby="tip-tools">AI skills</a><span class="nav-tip" role="tooltip" id="tip-tools">The nine governance methods, packaged as skills for Claude, Codex, and Copilot.</span></li>
+            </ul>
+          </div>
+          <div class="nav-group">
+            <p class="nav-group__label" id="nav-group-learn">Learn</p>
+            <ul aria-labelledby="nav-group-learn">
+              <li><a href="../../practicum.html" aria-describedby="tip-practicum">Practicum</a><span class="nav-tip" role="tooltip" id="tip-practicum">Exercises on a fictional company, with answers you can check.</span></li>
+              <li><a href="../../case-studies.html" aria-describedby="tip-case-studies">Case studies</a><span class="nav-tip" role="tooltip" id="tip-case-studies">Worked examples of the kit in use, on a fictional company.</span></li>
+              <li><a href="../../field-guide.html" aria-describedby="tip-field-guide">Field guide</a><span class="nav-tip" role="tooltip" id="tip-field-guide">Plain-language guides to the standards, certifications, and key terms.</span></li>
+            </ul>
+          </div>
+          <div class="nav-group">
+            <p class="nav-group__label" id="nav-group-explore">Explore</p>
+            <ul aria-labelledby="nav-group-explore">
+              <li><a href="../../lifecycle.html" aria-describedby="tip-lifecycle">Application lifecycle</a><span class="nav-tip" role="tooltip" id="tip-lifecycle">Six stages from request to retirement, with the questions to ask at each.</span></li>
+              <li><a href="../../crosswalk.html" aria-describedby="tip-crosswalk">Crosswalk explorer</a><span class="nav-tip" role="tooltip" id="tip-crosswalk">See how each control maps to ISO/IEC 19770, COBIT, 27001, and 42001.</span></li>
+              <li><a href="../../impact-map.html" aria-describedby="tip-impact-map">Themes by stage</a><span class="nav-tip" role="tooltip" id="tip-impact-map">One grid showing every control theme against every lifecycle stage.</span></li>
+            </ul>
+          </div>
+        </div>
+      </details>
     </nav>
   </div>
 </header>
 <main id="main" class="doc-page">
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <ol>
+      <li><a href="../../index.html">Home</a></li>
+      <li><a href="../../sam-toolkit.html">SAM toolkit</a></li>
+      <li><span aria-current="page">What good looks like</span></li>
+    </ol>
+  </nav>
   <div class="doc-top">
     <p class="doc-back"><a href="../../sam-toolkit.html">&larr; SAM toolkit</a></p>
     <button type="button" class="print-icon" onclick="window.print()" aria-label="Print this page" title="Print"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="M7 9V3.5h10V9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M7 17H4.5A1.5 1.5 0 0 1 3 15.5v-5A1.5 1.5 0 0 1 4.5 9h15a1.5 1.5 0 0 1 1.5 1.5v5a1.5 1.5 0 0 1-1.5 1.5H17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><rect x="7" y="14" width="10" height="6.5" rx="0.8" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17.5" cy="12" r="0.9" fill="currentColor"/></svg></button>
   </div>
-  <p class="meta doc-step">Used in playbook step 5 of 10: <a href="itam-program-playbook.html#step-5-baseline-and-targets">Baseline and targets</a>. Previous step: <a href="itam-program-playbook.html#step-4-set-the-scope">Set the scope</a>. Next step: <a href="itam-program-playbook.html#step-6-the-policy-set">The policy set</a>.</p>
+  <nav class="doc-step" aria-label="Playbook step">
+    <p class="doc-step__where"><span class="step-chip">Step 5 of 10</span> <a href="itam-program-playbook.html#step-5-baseline-and-targets">Baseline and targets</a></p>
+    <p class="doc-step__nav"><a class="step-nav" rel="prev" href="itam-program-playbook.html#step-4-set-the-scope" aria-label="Previous step: Set the scope">Previous</a> <a class="step-nav" rel="next" href="itam-program-playbook.html#step-6-the-policy-set" aria-label="Next step: The policy set">Next</a></p>
+  </nav>
   <p class="meta doc-feeds">Feeds step 5. Review: Not on the calendar. Keep it in the versioned place your records policy names, with access limited.</p>
   <h1>What good looks like</h1>
   <div class="visual-actions doc-actions">
     <button type="button" class="visual-actions__link" id="answers-doc" data-file="what-good-looks-like-my-answers.doc">Download my answers (Word)</button>
     <a class="visual-actions__link" href="what-good-looks-like.docx">Download Word (.docx)</a>
-    <a class="visual-actions__link" href="what-good-looks-like.xlsx">Download Excel (.xlsx)</a>
-    <button type="button" class="visual-actions__link doc-print" onclick="window.print()">Print or save as PDF</button>
+    <a class="visual-actions__link doc-secondary" href="what-good-looks-like.xlsx">Download Excel (.xlsx)</a>
+    <button type="button" class="visual-actions__link doc-print doc-secondary" onclick="window.print()">Print or save as PDF</button>
   </div>
   <p class="meta doc-note">What you tick or type stays in this browser. The Word and Excel downloads are blank copies. To keep your answers, use Download my answers (Word), or print this page or save it as PDF.</p>
 
@@ -186,7 +219,7 @@ document.addEventListener('DOMContentLoaded', function () {
 <p>Use it before you set the To-Be levels in the assessment. It takes about 20 minutes. Clause references are to the shared crosswalk (<code>XW-</code> rows).</p>
 <h2 id="step-1-answer-eight-questions">Step 1: Answer eight questions</h2>
 <p>Answer yes or no for your organization today. The last two columns tell you what the answer suggests.</p>
-<div class="table-scroll"><table class="checklist"><caption>Step 1: Answer eight questions</caption><thead><tr><th scope="col">Factor</th><th scope="col">Question</th><th scope="col">If yes, aim higher on</th><th scope="col">If no</th><th scope="col">Your answer (yes or no)</th></tr></thead><tbody><tr><td>Regulation</td><td class="long-text">Do laws or contracts require you to prove control of software or data?</td><td>Policy, inventory, retirement</td><td>Level 2 is enough for now</td><td class="checklist-write"><input type="text" name="t1-regulation-your-answer-yes-or-no" aria-label="Your answer (yes or no) for Regulation"></td></tr><tr><td>Audit exposure</td><td class="long-text">Have publishers audited you in the last three years, or do your contracts allow audits?</td><td>Licenses and renewals, proof</td><td>Keep proof for the largest publishers</td><td class="checklist-write"><input type="text" name="t1-audit-exposure-your-answer-yes-or-no" aria-label="Your answer (yes or no) for Audit exposure"></td></tr><tr><td>Spend</td><td class="long-text">Is software spend large enough that finding savings matters to the budget?</td><td>Cost and rationalization, renewals</td><td>Do the basics and revisit yearly</td><td class="checklist-write"><input type="text" name="t1-spend-your-answer-yes-or-no" aria-label="Your answer (yes or no) for Spend"></td></tr><tr><td>Subscriptions</td><td class="long-text">Do teams buy subscriptions without IT?</td><td>Intake, lifecycle review</td><td>Keep the gate light</td><td class="checklist-write"><input type="text" name="t1-subscriptions-your-answer-yes-or-no" aria-label="Your answer (yes or no) for Subscriptions"></td></tr><tr><td>Change</td><td class="long-text">Do mergers, sales of units, or fast growth keep changing the estate?</td><td>Inventory, retirement, roles</td><td>Review once a year</td><td class="checklist-write"><input type="text" name="t1-change-your-answer-yes-or-no" aria-label="Your answer (yes or no) for Change"></td></tr><tr><td>Data</td><td class="long-text">Do your applications hold sensitive or regulated data?</td><td>Risk, retirement, inventory</td><td>Level 2 on risk is enough for now</td><td class="checklist-write"><input type="text" name="t1-data-your-answer-yes-or-no" aria-label="Your answer (yes or no) for Data"></td></tr><tr><td>Capacity</td><td class="long-text">Can people give at least five hours a week to this?</td><td>Raise targets on up to five dimensions</td><td>Hold level 2 on five dimensions only</td><td class="checklist-write"><input type="text" name="t1-capacity-your-answer-yes-or-no" aria-label="Your answer (yes or no) for Capacity"></td></tr><tr><td>Sponsor</td><td class="long-text">Does a sponsor with budget back the program? <a class="xw-tag" href="../../crosswalk.html">XW-027</a></td><td>Raise targets as planned</td><td>Fix this first; do not set targets yet</td><td class="checklist-write"><input type="text" name="t1-sponsor-your-answer-yes-or-no" aria-label="Your answer (yes or no) for Sponsor"></td></tr></tbody></table></div>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Step 1: Answer eight questions table"><table class="checklist sticky-first"><caption>Step 1: Answer eight questions</caption><thead><tr><th scope="col">Factor</th><th scope="col">Question</th><th scope="col">If yes, aim higher on</th><th scope="col">If no</th><th scope="col">Your answer (yes or no)</th></tr></thead><tbody><tr><th scope="row" id="q1-regulation-c0">Regulation</th><td class="long-text">Do laws or contracts require you to prove control of software or data?</td><td>Policy, inventory, retirement</td><td>Level 2 is enough for now</td><td class="checklist-write"><input type="text" name="t1-regulation-your-answer-yes-or-no" autocomplete="off" enterkeyhint="next" aria-label="Your answer (yes or no) for Regulation"></td></tr><tr><th scope="row" id="q1-audit-exposure-c0">Audit exposure</th><td class="long-text">Have publishers audited you in the last three years, or do your contracts allow audits?</td><td>Licenses and renewals, proof</td><td>Keep proof for the largest publishers</td><td class="checklist-write"><input type="text" name="t1-audit-exposure-your-answer-yes-or-no" autocomplete="off" enterkeyhint="next" aria-label="Your answer (yes or no) for Audit exposure"></td></tr><tr><th scope="row" id="q1-spend-c0">Spend</th><td class="long-text">Is software spend large enough that finding savings matters to the budget?</td><td>Cost and rationalization, renewals</td><td>Do the basics and revisit yearly</td><td class="checklist-write"><input type="text" name="t1-spend-your-answer-yes-or-no" autocomplete="off" enterkeyhint="next" aria-label="Your answer (yes or no) for Spend"></td></tr><tr><th scope="row" id="q1-subscriptions-c0">Subscriptions</th><td class="long-text">Do teams buy subscriptions without IT?</td><td>Intake, lifecycle review</td><td>Keep the gate light</td><td class="checklist-write"><input type="text" name="t1-subscriptions-your-answer-yes-or-no" autocomplete="off" enterkeyhint="next" aria-label="Your answer (yes or no) for Subscriptions"></td></tr><tr><th scope="row" id="q1-change-c0">Change</th><td class="long-text">Do mergers, sales of units, or fast growth keep changing the estate?</td><td>Inventory, retirement, roles</td><td>Review once a year</td><td class="checklist-write"><input type="text" name="t1-change-your-answer-yes-or-no" autocomplete="off" enterkeyhint="next" aria-label="Your answer (yes or no) for Change"></td></tr><tr><th scope="row" id="q1-data-c0">Data</th><td class="long-text">Do your applications hold sensitive or regulated data?</td><td>Risk, retirement, inventory</td><td>Level 2 on risk is enough for now</td><td class="checklist-write"><input type="text" name="t1-data-your-answer-yes-or-no" autocomplete="off" enterkeyhint="next" aria-label="Your answer (yes or no) for Data"></td></tr><tr><th scope="row" id="q1-capacity-c0">Capacity</th><td class="long-text">Can people give at least five hours a week to this?</td><td>Raise targets on up to five dimensions</td><td>Hold level 2 on five dimensions only</td><td class="checklist-write"><input type="text" name="t1-capacity-your-answer-yes-or-no" autocomplete="off" enterkeyhint="next" aria-label="Your answer (yes or no) for Capacity"></td></tr><tr><th scope="row" id="q1-sponsor-c0">Sponsor</th><td class="long-text">Does a sponsor with budget back the program? <a class="xw-tag" href="../../crosswalk.html">XW-027</a></td><td>Raise targets as planned</td><td>Fix this first; do not set targets yet</td><td class="checklist-write"><input type="text" name="t1-sponsor-your-answer-yes-or-no" autocomplete="off" enterkeyhint="next" aria-label="Your answer (yes or no) for Sponsor"></td></tr></tbody></table></div>
 <h2 id="step-2-read-the-answers">Step 2: Read the answers</h2>
 <ul><li>Start with a target of level 2 for every dimension you will work on this year. Level 2 means written down, owned, followed, with a recent example. It is a strong result.</li><li>For each yes above, consider level 3 only on the dimensions it names, and only where a number could prove it works.</li><li>If the sponsor answer is no, stop. Get a sponsor first. Targets without one do not get funded.</li><li>This is a rule of thumb, not a standard. Write down why you chose each target.</li></ul>
 <h2 id="step-3-write-your-good-enough-statement">Step 3: Write your good-enough statement</h2>
@@ -195,14 +228,15 @@ document.addEventListener('DOMContentLoaded', function () {
 <p>Pick up to five measures. Prefer ones that cannot be met by paperwork alone. The Ideas sheet in <code>application-management-workbook.xlsx</code> lists credible ones. Record each in the Measures sheet or <a href="benefits-tracker.html">Benefits tracker template</a>, with a baseline and a date. <a class="xw-tag" href="../../crosswalk.html">XW-025</a></p>
 <h2 id="step-5-say-what-you-will-not-do-yet">Step 5: Say what you will not do yet</h2>
 <p>Naming what is out of scope protects the program from drifting. List up to three things you are deliberately leaving for later, and when you will look again.</p>
-<div class="table-scroll"><table class="checklist"><caption>Step 5: Say what you will not do yet</caption><thead><tr><th scope="col">What I will not do yet</th><th scope="col">Why</th><th scope="col">Look again on</th></tr></thead><tbody><tr><td class="checklist-write"><input type="text" name="t2--what-i-will-not-do-yet" aria-label="What I will not do yet"></td><td class="checklist-write"><input type="text" name="t2--why" aria-label="Why"></td><td class="checklist-write"><input type="text" name="t2--look-again-on" aria-label="Look again on"></td></tr><tr><td class="checklist-write"><input type="text" name="t2--what-i-will-not-do-yet" aria-label="What I will not do yet"></td><td class="checklist-write"><input type="text" name="t2--why" aria-label="Why"></td><td class="checklist-write"><input type="text" name="t2--look-again-on" aria-label="Look again on"></td></tr><tr><td class="checklist-write"><input type="text" name="t2--what-i-will-not-do-yet" aria-label="What I will not do yet"></td><td class="checklist-write"><input type="text" name="t2--why" aria-label="Why"></td><td class="checklist-write"><input type="text" name="t2--look-again-on" aria-label="Look again on"></td></tr></tbody></table></div>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Step 5: Say what you will not do yet table"><table class="checklist sticky-first"><caption>Step 5: Say what you will not do yet</caption><thead><tr><th scope="col">What I will not do yet</th><th scope="col">Why</th><th scope="col">Look again on</th></tr></thead><tbody><tr><td class="checklist-write"><input type="text" name="t2--what-i-will-not-do-yet" autocomplete="off" enterkeyhint="next" aria-label="What I will not do yet"></td><td class="checklist-write"><input type="text" name="t2--why" autocomplete="off" enterkeyhint="next" aria-label="Why"></td><td class="checklist-write"><input type="text" name="t2--look-again-on" autocomplete="off" enterkeyhint="next" aria-label="Look again on"></td></tr><tr><td class="checklist-write"><input type="text" name="t2--what-i-will-not-do-yet" autocomplete="off" enterkeyhint="next" aria-label="What I will not do yet"></td><td class="checklist-write"><input type="text" name="t2--why" autocomplete="off" enterkeyhint="next" aria-label="Why"></td><td class="checklist-write"><input type="text" name="t2--look-again-on" autocomplete="off" enterkeyhint="next" aria-label="Look again on"></td></tr><tr><td class="checklist-write"><input type="text" name="t2--what-i-will-not-do-yet" autocomplete="off" enterkeyhint="next" aria-label="What I will not do yet"></td><td class="checklist-write"><input type="text" name="t2--why" autocomplete="off" enterkeyhint="next" aria-label="Why"></td><td class="checklist-write"><input type="text" name="t2--look-again-on" autocomplete="off" enterkeyhint="next" aria-label="Look again on"></td></tr></tbody></table></div>
 <h2 id="decision">Decision</h2>
-<div class="table-scroll"><table class="checklist"><caption>Decision</caption><thead><tr><th scope="col">Decision</th><th scope="col">Owner</th><th scope="col">Approver</th><th scope="col">Date</th></tr></thead><tbody><tr><td class="long-text">Targets and measures agreed for the next 12 months</td><td class="checklist-write"><input type="text" name="t3-targets-and-measures-agreed-for-the-next-12-months-owner" aria-label="Owner for Targets and measures agreed for the next 12 months"></td><td class="checklist-write"><input type="text" name="t3-targets-and-measures-agreed-for-the-next-12-months-approver" aria-label="Approver for Targets and measures agreed for the next 12 months"></td><td class="checklist-write"><input type="text" name="t3-targets-and-measures-agreed-for-the-next-12-months-date" aria-label="Date for Targets and measures agreed for the next 12 months"></td></tr></tbody></table></div>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Decision table"><table class="checklist sticky-first"><caption>Decision</caption><thead><tr><th scope="col">Decision</th><th scope="col">Owner</th><th scope="col">Approver</th><th scope="col">Date</th></tr></thead><tbody><tr><th scope="row" id="q3-targets-and-measures-agreed-for-the-next-12-months-c0">Targets and measures agreed for the next 12 months</th><td class="checklist-write"><input type="text" name="t3-targets-and-measures-agreed-for-the-next-12-months-owner" autocomplete="off" enterkeyhint="next" aria-label="Owner for Targets and measures agreed for the next 12 months"></td><td class="checklist-write"><input type="text" name="t3-targets-and-measures-agreed-for-the-next-12-months-approver" autocomplete="off" enterkeyhint="next" aria-label="Approver for Targets and measures agreed for the next 12 months"></td><td class="checklist-write"><input type="text" name="t3-targets-and-measures-agreed-for-the-next-12-months-date" autocomplete="off" enterkeyhint="next" aria-label="Date for Targets and measures agreed for the next 12 months"></td></tr></tbody></table></div>
   </div>
   <div class="doc-bottom"><button type="button" class="print-icon" onclick="window.print()" aria-label="Print this page" title="Print"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="M7 9V3.5h10V9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M7 17H4.5A1.5 1.5 0 0 1 3 15.5v-5A1.5 1.5 0 0 1 4.5 9h15a1.5 1.5 0 0 1 1.5 1.5v5a1.5 1.5 0 0 1-1.5 1.5H17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><rect x="7" y="14" width="10" height="6.5" rx="0.8" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17.5" cy="12" r="0.9" fill="currentColor"/></svg></button></div>
 </main>
 <footer class="site-footer">
   <p>Eve McGivern · <a href="https://evemcgivern.github.io/">evemcgivern.github.io</a></p>
+  <p><a href="../../about.html">About</a></p>
   <p>Questions? Comments? <a href="https://github.com/evemcgivern/app-governance-kit/issues" id="contact-email" data-r="moc.liamg|nrevigcmeve">email me</a>.</p>
   <p><a href="https://buymeacoffee.com/a8w5iiqszp" rel="noopener">Buy me a coffee</a> if these tools help.</p>
   <p class="site-version"><a href="https://github.com/evemcgivern/app-governance-kit/releases" rel="noopener" id="site-version">Version</a></p>

@@ -3,18 +3,18 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>License position example | Eve McGivern</title>
+<title>License position example | App Governance Kit</title>
 <meta name="description" content="License position example">
 <meta name="author" content="Eve McGivern">
 <link rel="canonical" href="https://evemcgivern.github.io/app-governance-kit/docs/sam-toolkit/license-position-example.html">
 <meta property="og:type" content="article">
-<meta property="og:site_name" content="Eve McGivern | Application Governance">
-<meta property="og:title" content="License position example">
+<meta property="og:site_name" content="App Governance Kit">
+<meta property="og:title" content="License position example | App Governance Kit">
 <meta property="og:description" content="License position example">
 <meta property="og:url" content="https://evemcgivern.github.io/app-governance-kit/docs/sam-toolkit/license-position-example.html">
 <meta property="og:image" content="https://evemcgivern.github.io/app-governance-kit/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="License position example">
+<meta name="twitter:title" content="License position example | App Governance Kit">
 <meta name="twitter:description" content="License position example">
 <meta name="twitter:image" content="https://evemcgivern.github.io/app-governance-kit/og-image.png">
 <script type="application/ld+json">
@@ -68,6 +68,7 @@
 <link rel="apple-touch-icon" href="../../apple-touch-icon.png">
 <link rel="stylesheet" href="../../style.css">
 <script src="../../nav.js" defer></script>
+<script src="../../scroll-hint.js" defer></script>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -76,39 +77,69 @@
   <div class="site-header__inner">
     <a class="brand" href="https://evemcgivern.github.io/">Eve McGivern</a>
     <nav class="site-nav" aria-label="Main">
-      <ul>
-        <li><a href="../../tools.html" aria-describedby="tip-tools">AI skills</a><span class="nav-tip" role="tooltip" id="tip-tools">The nine governance methods, packaged as skills for Claude, Codex, and Copilot.</span></li>
-        <li><a href="../../sam-toolkit.html" aria-describedby="tip-sam-toolkit">SAM toolkit</a><span class="nav-tip" role="tooltip" id="tip-sam-toolkit">Templates and checklists for running software asset management by hand.</span></li>
-        <li><a href="../../practicum.html" aria-describedby="tip-practicum">Practicum</a><span class="nav-tip" role="tooltip" id="tip-practicum">Hands-on exercises on a fictional company, with answers you can check.</span></li>
-        <li><a href="../../lifecycle.html" aria-describedby="tip-lifecycle">Lifecycle</a><span class="nav-tip" role="tooltip" id="tip-lifecycle">Six stages from request to retirement, with the questions to ask at each.</span></li>
-        <li><a href="../../crosswalk.html" aria-describedby="tip-crosswalk">Crosswalk explorer</a><span class="nav-tip" role="tooltip" id="tip-crosswalk">See how each control maps to ISO/IEC 19770, COBIT, 27001, and 42001.</span></li>
-        <li><a href="../../impact-map.html" aria-describedby="tip-impact-map">Impact map</a><span class="nav-tip" role="tooltip" id="tip-impact-map">One grid showing every control theme against every lifecycle stage.</span></li>
-        <li><a href="../../field-guide.html" aria-describedby="tip-field-guide">Field guide</a><span class="nav-tip" role="tooltip" id="tip-field-guide">Plain-language guides to the standards, certifications, and key terms.</span></li>
-        <li><a href="../../case-studies.html" aria-describedby="tip-case-studies">Case studies</a><span class="nav-tip" role="tooltip" id="tip-case-studies">Worked examples of the kit in use, on a fictional company.</span></li>
-        <li><a href="../../about.html" aria-describedby="tip-about">About</a><span class="nav-tip" role="tooltip" id="tip-about">Who built the kit, and how to get in touch.</span></li>
-      </ul>
+      <details class="nav-menu">
+        <summary class="nav-menu__toggle">Menu</summary>
+        <div class="nav-groups">
+          <div class="nav-group">
+            <p class="nav-group__label" id="nav-group-start">Start</p>
+            <ul aria-labelledby="nav-group-start">
+              <li><a href="../../sam-toolkit.html#start" aria-describedby="tip-sam-toolkit">SAM toolkit <span class="nav-badge">Start here</span></a><span class="nav-tip" role="tooltip" id="tip-sam-toolkit">Start with the playbook, then the templates and checklists for running software asset management by hand.</span></li>
+            </ul>
+          </div>
+          <div class="nav-group">
+            <p class="nav-group__label" id="nav-group-do">Do</p>
+            <ul aria-labelledby="nav-group-do">
+              <li><a href="../../tools.html" aria-describedby="tip-tools">AI skills</a><span class="nav-tip" role="tooltip" id="tip-tools">The nine governance methods, packaged as skills for Claude, Codex, and Copilot.</span></li>
+            </ul>
+          </div>
+          <div class="nav-group">
+            <p class="nav-group__label" id="nav-group-learn">Learn</p>
+            <ul aria-labelledby="nav-group-learn">
+              <li><a href="../../practicum.html" aria-describedby="tip-practicum">Practicum</a><span class="nav-tip" role="tooltip" id="tip-practicum">Exercises on a fictional company, with answers you can check.</span></li>
+              <li><a href="../../case-studies.html" aria-describedby="tip-case-studies">Case studies</a><span class="nav-tip" role="tooltip" id="tip-case-studies">Worked examples of the kit in use, on a fictional company.</span></li>
+              <li><a href="../../field-guide.html" aria-describedby="tip-field-guide">Field guide</a><span class="nav-tip" role="tooltip" id="tip-field-guide">Plain-language guides to the standards, certifications, and key terms.</span></li>
+            </ul>
+          </div>
+          <div class="nav-group">
+            <p class="nav-group__label" id="nav-group-explore">Explore</p>
+            <ul aria-labelledby="nav-group-explore">
+              <li><a href="../../lifecycle.html" aria-describedby="tip-lifecycle">Application lifecycle</a><span class="nav-tip" role="tooltip" id="tip-lifecycle">Six stages from request to retirement, with the questions to ask at each.</span></li>
+              <li><a href="../../crosswalk.html" aria-describedby="tip-crosswalk">Crosswalk explorer</a><span class="nav-tip" role="tooltip" id="tip-crosswalk">See how each control maps to ISO/IEC 19770, COBIT, 27001, and 42001.</span></li>
+              <li><a href="../../impact-map.html" aria-describedby="tip-impact-map">Themes by stage</a><span class="nav-tip" role="tooltip" id="tip-impact-map">One grid showing every control theme against every lifecycle stage.</span></li>
+            </ul>
+          </div>
+        </div>
+      </details>
     </nav>
   </div>
 </header>
 <main id="main" class="doc-page">
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <ol>
+      <li><a href="../../index.html">Home</a></li>
+      <li><a href="../../sam-toolkit.html">SAM toolkit</a></li>
+      <li><span aria-current="page">License position example</span></li>
+    </ol>
+  </nav>
   <div class="doc-top">
     <p class="doc-back"><a href="../../sam-toolkit.html">&larr; SAM toolkit</a></p>
     <button type="button" class="print-icon" onclick="window.print()" aria-label="Print this page" title="Print"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="M7 9V3.5h10V9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M7 17H4.5A1.5 1.5 0 0 1 3 15.5v-5A1.5 1.5 0 0 1 4.5 9h15a1.5 1.5 0 0 1 1.5 1.5v5a1.5 1.5 0 0 1-1.5 1.5H17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><rect x="7" y="14" width="10" height="6.5" rx="0.8" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17.5" cy="12" r="0.9" fill="currentColor"/></svg></button>
   </div>
   <h1>License position example</h1>
   <div class="visual-actions doc-actions">
-    <a class="visual-actions__link" href="license-position-example.xlsx">Download Excel (.xlsx)</a>
+    <a class="visual-actions__link doc-secondary" href="license-position-example.xlsx">Download Excel (.xlsx)</a>
     <a class="visual-actions__link" href="license-position-example.csv">Download CSV</a>
-    <button type="button" class="visual-actions__link doc-print" onclick="window.print()">Print or save as PDF</button>
+    <button type="button" class="visual-actions__link doc-print doc-secondary" onclick="window.print()">Print or save as PDF</button>
   </div>
 
   <div class="doc-body prose prose-wide">
-<div class="table-scroll"><table class="checklist wide"><thead><tr><th scope="col">asset_id</th><th scope="col">product</th><th scope="col">vendor</th><th scope="col">license_metric</th><th scope="col">entitlements_owned</th><th scope="col">in_use_count</th><th scope="col">position</th><th scope="col">status</th><th scope="col">evidence_source</th><th scope="col">checked_on</th><th scope="col">reviewer</th><th scope="col">notes</th></tr></thead><tbody><tr><td>APP-001</td><td>Northbeam ERP</td><td>Northbeam</td><td>named user</td><td>38</td><td>57</td><td>-19</td><td>shortfall</td><td>demo-estate licenses.csv and apps.csv</td><td>2026-09-01</td><td class="checklist-write"></td><td class="long-text">User count stands in for licensed seats; confirm against the vendor&#x27;s metric.</td></tr><tr><td>APP-002</td><td>Paylane Payroll</td><td>Paylane</td><td>named user</td><td>51</td><td>94</td><td>-43</td><td>shortfall</td><td>demo-estate licenses.csv and apps.csv</td><td>2026-09-01</td><td class="checklist-write"></td><td class="long-text">User count stands in for licensed seats; confirm against the vendor&#x27;s metric.</td></tr><tr><td>APP-003</td><td>Staffhub HR information system</td><td>Staffhub</td><td>named user</td><td>64</td><td>131</td><td>-67</td><td>shortfall</td><td>demo-estate licenses.csv and apps.csv</td><td>2026-09-01</td><td class="checklist-write"></td><td class="long-text">User count stands in for licensed seats; confirm against the vendor&#x27;s metric.</td></tr><tr><td>APP-004</td><td>Hirewell Recruiting</td><td>Hirewell</td><td>named user</td><td>77</td><td>168</td><td>-91</td><td>shortfall</td><td>demo-estate licenses.csv and apps.csv</td><td>2026-09-01</td><td class="checklist-write"></td><td class="long-text">User count stands in for licensed seats; confirm against the vendor&#x27;s metric.</td></tr><tr><td>APP-005</td><td>Coursefield Learning management</td><td>Coursefield</td><td>named user</td><td>90</td><td>205</td><td>-115</td><td>shortfall</td><td>demo-estate licenses.csv and apps.csv</td><td>2026-09-01</td><td class="checklist-write"></td><td class="long-text">User count stands in for licensed seats; confirm against the vendor&#x27;s metric.</td></tr><tr><td>APP-006</td><td>Receiptly Expense management</td><td>Receiptly</td><td>named user</td><td>103</td><td>242</td><td>-139</td><td>shortfall</td><td>demo-estate licenses.csv and apps.csv</td><td>2026-09-01</td><td class="checklist-write"></td><td class="long-text">User count stands in for licensed seats; confirm against the vendor&#x27;s metric.</td></tr><tr><td>APP-007</td><td>Buyline Procurement</td><td>Buyline</td><td>named user</td><td>116</td><td>279</td><td>-163</td><td>shortfall</td><td>demo-estate licenses.csv and apps.csv</td><td>2026-09-01</td><td class="checklist-write"></td><td class="long-text">User count stands in for licensed seats; confirm against the vendor&#x27;s metric.</td></tr><tr><td>APP-008</td><td>Clausebase Contract management</td><td>Clausebase</td><td>named user</td><td>129</td><td>316</td><td>-187</td><td>shortfall</td><td>demo-estate licenses.csv and apps.csv</td><td>2026-09-01</td><td class="checklist-write"></td><td class="long-text">User count stands in for licensed seats; confirm against the vendor&#x27;s metric.</td></tr><tr><td>APP-009</td><td>Relato CRM</td><td>Relato</td><td>named user</td><td>142</td><td>353</td><td>-211</td><td>shortfall</td><td>demo-estate licenses.csv and apps.csv</td><td>2026-09-01</td><td class="checklist-write"></td><td class="long-text">User count stands in for licensed seats; confirm against the vendor&#x27;s metric.</td></tr><tr><td>APP-010</td><td>Campaignly Marketing automation</td><td>Campaignly</td><td>named user</td><td>155</td><td>390</td><td>-235</td><td>shortfall</td><td>demo-estate licenses.csv and apps.csv</td><td>2026-09-01</td><td class="checklist-write"></td><td class="long-text">User count stands in for licensed seats; confirm against the vendor&#x27;s metric.</td></tr><tr><td>APP-011</td><td>Helpwise Customer support desk</td><td>Helpwise</td><td>named user</td><td>168</td><td>427</td><td>-259</td><td>shortfall</td><td>demo-estate licenses.csv and apps.csv</td><td>2026-09-01</td><td class="checklist-write"></td><td class="long-text">User count stands in for licensed seats; confirm against the vendor&#x27;s metric.</td></tr><tr><td>APP-012</td><td>Chattera Live chat</td><td>Chattera</td><td>named user</td><td>181</td><td>464</td><td>-283</td><td>shortfall</td><td>demo-estate licenses.csv and apps.csv</td><td>2026-09-01</td><td class="checklist-write"></td><td class="long-text">User count stands in for licensed seats; confirm against the vendor&#x27;s metric.</td></tr></tbody></table></div>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Table 1"><table class="checklist wide sticky-first"><thead><tr><th scope="col">asset_id</th><th scope="col">product</th><th scope="col">vendor</th><th scope="col">license_metric</th><th scope="col">entitlements_owned</th><th scope="col">in_use_count</th><th scope="col">position</th><th scope="col">status</th><th scope="col">evidence_source</th><th scope="col">checked_on</th><th scope="col">reviewer</th><th scope="col">notes</th></tr></thead><tbody><tr><th scope="row" id="q1-app-001-c0">APP-001</th><td>Northbeam ERP</td><td>Northbeam</td><td>named user</td><td>38</td><td>57</td><td>-19</td><td>shortfall</td><td>demo-estate licenses.csv and apps.csv</td><td>2026-09-01</td><td class="checklist-write"></td><td class="long-text">User count stands in for licensed seats; confirm against the vendor&#x27;s metric.</td></tr><tr><th scope="row" id="q1-app-002-c0">APP-002</th><td>Paylane Payroll</td><td>Paylane</td><td>named user</td><td>51</td><td>94</td><td>-43</td><td>shortfall</td><td>demo-estate licenses.csv and apps.csv</td><td>2026-09-01</td><td class="checklist-write"></td><td class="long-text">User count stands in for licensed seats; confirm against the vendor&#x27;s metric.</td></tr><tr><th scope="row" id="q1-app-003-c0">APP-003</th><td>Staffhub HR information system</td><td>Staffhub</td><td>named user</td><td>64</td><td>131</td><td>-67</td><td>shortfall</td><td>demo-estate licenses.csv and apps.csv</td><td>2026-09-01</td><td class="checklist-write"></td><td class="long-text">User count stands in for licensed seats; confirm against the vendor&#x27;s metric.</td></tr><tr><th scope="row" id="q1-app-004-c0">APP-004</th><td>Hirewell Recruiting</td><td>Hirewell</td><td>named user</td><td>77</td><td>168</td><td>-91</td><td>shortfall</td><td>demo-estate licenses.csv and apps.csv</td><td>2026-09-01</td><td class="checklist-write"></td><td class="long-text">User count stands in for licensed seats; confirm against the vendor&#x27;s metric.</td></tr><tr><th scope="row" id="q1-app-005-c0">APP-005</th><td>Coursefield Learning management</td><td>Coursefield</td><td>named user</td><td>90</td><td>205</td><td>-115</td><td>shortfall</td><td>demo-estate licenses.csv and apps.csv</td><td>2026-09-01</td><td class="checklist-write"></td><td class="long-text">User count stands in for licensed seats; confirm against the vendor&#x27;s metric.</td></tr><tr><th scope="row" id="q1-app-006-c0">APP-006</th><td>Receiptly Expense management</td><td>Receiptly</td><td>named user</td><td>103</td><td>242</td><td>-139</td><td>shortfall</td><td>demo-estate licenses.csv and apps.csv</td><td>2026-09-01</td><td class="checklist-write"></td><td class="long-text">User count stands in for licensed seats; confirm against the vendor&#x27;s metric.</td></tr><tr><th scope="row" id="q1-app-007-c0">APP-007</th><td>Buyline Procurement</td><td>Buyline</td><td>named user</td><td>116</td><td>279</td><td>-163</td><td>shortfall</td><td>demo-estate licenses.csv and apps.csv</td><td>2026-09-01</td><td class="checklist-write"></td><td class="long-text">User count stands in for licensed seats; confirm against the vendor&#x27;s metric.</td></tr><tr><th scope="row" id="q1-app-008-c0">APP-008</th><td>Clausebase Contract management</td><td>Clausebase</td><td>named user</td><td>129</td><td>316</td><td>-187</td><td>shortfall</td><td>demo-estate licenses.csv and apps.csv</td><td>2026-09-01</td><td class="checklist-write"></td><td class="long-text">User count stands in for licensed seats; confirm against the vendor&#x27;s metric.</td></tr><tr><th scope="row" id="q1-app-009-c0">APP-009</th><td>Relato CRM</td><td>Relato</td><td>named user</td><td>142</td><td>353</td><td>-211</td><td>shortfall</td><td>demo-estate licenses.csv and apps.csv</td><td>2026-09-01</td><td class="checklist-write"></td><td class="long-text">User count stands in for licensed seats; confirm against the vendor&#x27;s metric.</td></tr><tr><th scope="row" id="q1-app-010-c0">APP-010</th><td>Campaignly Marketing automation</td><td>Campaignly</td><td>named user</td><td>155</td><td>390</td><td>-235</td><td>shortfall</td><td>demo-estate licenses.csv and apps.csv</td><td>2026-09-01</td><td class="checklist-write"></td><td class="long-text">User count stands in for licensed seats; confirm against the vendor&#x27;s metric.</td></tr><tr><th scope="row" id="q1-app-011-c0">APP-011</th><td>Helpwise Customer support desk</td><td>Helpwise</td><td>named user</td><td>168</td><td>427</td><td>-259</td><td>shortfall</td><td>demo-estate licenses.csv and apps.csv</td><td>2026-09-01</td><td class="checklist-write"></td><td class="long-text">User count stands in for licensed seats; confirm against the vendor&#x27;s metric.</td></tr><tr><th scope="row" id="q1-app-012-c0">APP-012</th><td>Chattera Live chat</td><td>Chattera</td><td>named user</td><td>181</td><td>464</td><td>-283</td><td>shortfall</td><td>demo-estate licenses.csv and apps.csv</td><td>2026-09-01</td><td class="checklist-write"></td><td class="long-text">User count stands in for licensed seats; confirm against the vendor&#x27;s metric.</td></tr></tbody></table></div>
   </div>
   <div class="doc-bottom"><button type="button" class="print-icon" onclick="window.print()" aria-label="Print this page" title="Print"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="M7 9V3.5h10V9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M7 17H4.5A1.5 1.5 0 0 1 3 15.5v-5A1.5 1.5 0 0 1 4.5 9h15a1.5 1.5 0 0 1 1.5 1.5v5a1.5 1.5 0 0 1-1.5 1.5H17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><rect x="7" y="14" width="10" height="6.5" rx="0.8" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17.5" cy="12" r="0.9" fill="currentColor"/></svg></button></div>
 </main>
 <footer class="site-footer">
   <p>Eve McGivern · <a href="https://evemcgivern.github.io/">evemcgivern.github.io</a></p>
+  <p><a href="../../about.html">About</a></p>
   <p>Questions? Comments? <a href="https://github.com/evemcgivern/app-governance-kit/issues" id="contact-email" data-r="moc.liamg|nrevigcmeve">email me</a>.</p>
   <p><a href="https://buymeacoffee.com/a8w5iiqszp" rel="noopener">Buy me a coffee</a> if these tools help.</p>
   <p class="site-version"><a href="https://github.com/evemcgivern/app-governance-kit/releases" rel="noopener" id="site-version">Version</a></p>

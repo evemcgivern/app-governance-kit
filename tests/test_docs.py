@@ -72,7 +72,9 @@ class HtmlTests(unittest.TestCase):
         self.assertNotIn(".md", html)
         self.assertEqual(html.count('type="radio"'), 3)
         self.assertIn('class="xw-tag"', html)
-        self.assertIn('type="checkbox" disabled checked', html)
+        self.assertNotIn("disabled", html)
+        self.assertIn("<li>open box</li>", html)
+        self.assertIn('<li class="task-done">done box</li>', html)
 
 
 class WordTests(unittest.TestCase):
@@ -275,12 +277,12 @@ class DownloadLinkTests(unittest.TestCase):
     def test_csv_links_to_the_csv_and_the_page(self):
         html = _download_link("renewal-calendar.csv", "renewal-calendar.html", "Renewal calendar")
         self.assertEqual(html, '<a href="renewal-calendar.csv">Renewal calendar (CSV)</a> '
-                               '(<a href="renewal-calendar.html">view</a>)')
+                               '(<a href="renewal-calendar.html">view the page for Renewal calendar</a>)')
 
     def test_markdown_links_to_the_word_file(self):
         html = _download_link("guide.md", "../sam-toolkit/guide.html", "Guide")
         self.assertIn('<a href="../sam-toolkit/guide.docx">Guide (Word)</a>', html)
-        self.assertIn('<a href="../sam-toolkit/guide.html">view</a>', html)
+        self.assertIn('<a href="../sam-toolkit/guide.html">view the page for Guide</a>', html)
 
     def test_other_file_types_and_non_page_hrefs_have_no_download(self):
         self.assertIsNone(_download_link("book.xlsx", "book.html", "Book"))
@@ -295,7 +297,7 @@ class DownloadLinkTests(unittest.TestCase):
         html = body_html(blocks, lambda h: h, files)
         first, second = html.split("\n")
         self.assertIn('<a href="renewal-calendar.csv">Renewal calendar (CSV)</a>', first)
-        self.assertIn('(<a href="renewal-calendar.html">view</a>)', first)
+        self.assertIn('(<a href="renewal-calendar.html">view the page for Renewal calendar</a>)', first)
         self.assertEqual(second, '<p>See <a href="renewal-calendar.html">Renewal calendar</a>.</p>')
 
 
@@ -517,7 +519,7 @@ class WayfindingTests(unittest.TestCase):
         write_docs(root)
         html = built(root, "operating-calendar.html")
         pb = "itam-program-playbook.html"
-        self.assertIn("Used in playbook step 2 of 4: ", html)
+        self.assertIn(">Step 2 of 4</span>", html)
         self.assertIn(f'href="{pb}#step-2-get-a-sponsor"', html)
         self.assertIn(f'href="{pb}#step-1-read-the-map"', html)
         self.assertIn(f'href="{pb}#step-3-stop-the-bleeding"', html)
@@ -530,10 +532,10 @@ class WayfindingTests(unittest.TestCase):
         root = tmp_repo()
         write_docs(root)
         html = built(root, "renewal-calendar.html")
-        self.assertIn("Used in playbook step 2 of 4: ", html)
+        self.assertIn(">Step 2 of 4</span>", html)
         self.assertRegex(html, r'Also used in <a href="[^"]*#step-3-stop-the-bleeding">step 3</a>')
         html3 = built(root, "audit-response-roles.html")
-        self.assertIn("Used in playbook step 3 of 4: ", html3)
+        self.assertIn(">Step 3 of 4</span>", html3)
         self.assertIn("Stop &lt;the&gt; bleeding", html3)
         self.assertNotIn("Stop <the>", html3)
 
@@ -541,24 +543,24 @@ class WayfindingTests(unittest.TestCase):
         root = tmp_repo()
         write_docs(root)
         first = built(root, "guide.html")
-        self.assertIn("step 1 of 4", first)
-        self.assertNotIn("Previous step", first)
-        self.assertIn("Next step", first)
+        self.assertIn(">Step 1 of 4</span>", first)
+        self.assertNotIn('rel="prev"', first)
+        self.assertIn('rel="next"', first)
         last = built(root, "policy-template.html")
-        self.assertIn("step 4 of 4", last)
-        self.assertNotIn("Next step", last)
+        self.assertIn(">Step 4 of 4</span>", last)
+        self.assertNotIn('rel="next"', last)
 
     def test_page_in_no_step_and_the_playbook_show_nothing(self):
         root = tmp_repo()
         write_docs(root)
-        self.assertNotIn("Used in playbook", built(root, "loose-file.html"))
-        self.assertNotIn("Used in playbook", built(root, "itam-program-playbook.html"))
+        self.assertNotIn('class="doc-step"', built(root, "loose-file.html"))
+        self.assertNotIn('class="doc-step"', built(root, "itam-program-playbook.html"))
 
     def test_step_count_comes_from_the_playbook(self):
         root = tmp_repo(playbook=PLAYBOOK + "\n### Step 5: One more\n\n- Files: `loose-file.md`.\n")
         write_docs(root)
-        self.assertIn("step 1 of 5", built(root, "guide.html"))
-        self.assertIn("step 5 of 5", built(root, "loose-file.html"))
+        self.assertIn(">Step 1 of 5</span>", built(root, "guide.html"))
+        self.assertIn(">Step 5 of 5</span>", built(root, "loose-file.html"))
 
     def test_output_is_deterministic(self):
         root = tmp_repo()
@@ -572,7 +574,7 @@ class WayfindingTests(unittest.TestCase):
         for playbook in (None, "# Playbook\n\n### Step x: nope\n\n- `guide.md`\n", ""):
             root = tmp_repo(playbook=playbook)
             warnings = write_docs(root)
-            self.assertNotIn("Used in playbook", built(root, "guide.html"))
+            self.assertNotIn('class="doc-step"', built(root, "guide.html"))
             self.assertEqual(len(warnings), 1, (playbook, warnings))
             self.assertIn("itam-program-playbook.md", warnings[0])
             self.assertIn("wayfinding", warnings[0])

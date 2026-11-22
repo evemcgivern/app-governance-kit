@@ -14,6 +14,7 @@ QUOTE_RE = re.compile(r"[\"“]([^\"”]*)[\"”]")
 TAG_STRIP_RE = re.compile(r"<[^>]+>")
 JSON_DATA_BLOCK_RE = re.compile(r'<script type="application/json"[^>]*>.*?</script>', re.S)
 SVG_PATH_D_RE = re.compile(r'\bd="[^"]*"')
+META_CONTENT_RE = re.compile(r'(<meta\s[^>]*?\bcontent=)"[^"]*"')
 # Plain contact addresses invite spam harvesters. The site footer keeps the owner's
 # address reversed in a data-r attribute, so neither form below should ever appear.
 EMAIL_SCAN = SCAN_DIRS + ("SECURITY.md", "CODE_OF_CONDUCT.md")
@@ -36,7 +37,9 @@ def _blank_json_data_blocks(text: str) -> str:
     # embed them): a single `d="M 200 50 A 150 150 0 0 1 ..."` attribute is a
     # long run of space-separated numeric tokens, not prose -- the word-count
     # check has no way to tell that apart from a 15+-word quoted sentence.
-    return SVG_PATH_D_RE.sub('d=""', text)
+    text = SVG_PATH_D_RE.sub('d=""', text)
+    # Page descriptions in <meta content="..."> tags are our own one-sentence summaries.
+    return META_CONTENT_RE.sub(r'\1""', text)
 
 
 def load_words(path: Path) -> list[str]:
