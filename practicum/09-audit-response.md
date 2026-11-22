@@ -1,4 +1,4 @@
-# Exercise 08: Audit response, Halden's publisher letter
+# Exercise 09: Audit response, Halden's publisher letter
 
 **Level:** CSAM · **Time:** 45–60 minutes
 

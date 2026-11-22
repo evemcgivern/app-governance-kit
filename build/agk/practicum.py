@@ -5,8 +5,8 @@ from pathlib import Path
 
 from agk.grade import MAX_EXTRA
 
-ORDER = ("program-setup", "itam-maturity", "crosswalk", "rationalization", "access-review",
-         "ai-intake", "hardware-lifecycle", "audit-response", "as-is-assessment")
+ORDER = ("program-setup", "as-is-assessment", "itam-maturity", "crosswalk", "rationalization",
+         "access-review", "ai-intake", "hardware-lifecycle", "audit-response")
 NO_PAGE_TOOLS = ("cert-prep",)
 TABLES = ("apps", "licenses", "employees", "accounts", "ai-systems", "maturity-answers", "devices",
           "proofs-of-purchase", "audit-installs", "as-is-evidence")

@@ -1,4 +1,4 @@
-# Exercise 09: As-is assessment, score Halden's application management
+# Exercise 02: As-is assessment, score Halden's application management
 
 **Level:** CAMP · **Time:** 30–45 minutes
 

@@ -1,4 +1,4 @@
-# Exercise 04: Rationalization, Halden's application portfolio
+# Exercise 05: Rationalization, Halden's application portfolio
 
 **Level:** CSAM · **Time:** 45–60 minutes
 

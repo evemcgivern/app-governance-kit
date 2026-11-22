@@ -606,7 +606,7 @@ MAP = ("kind,key,main_step,also_steps,frequency,note\n"
        "file,guide.md,1,,Not on the calendar,\n"
        "file,savings-report.csv,beyond,,Not on the calendar,\n"
        "practicum,01-program-setup,2,,,Program setup\n"
-       "practicum,03-crosswalk,beyond,,,Crosswalk\n")
+       "practicum,04-crosswalk,beyond,,,Crosswalk\n")
 
 
 def mapped_repo(extra: dict | None = None) -> Path:
@@ -619,7 +619,7 @@ def mapped_repo(extra: dict | None = None) -> Path:
                                                                                   encoding="utf-8")
     (root / "practicum").mkdir()
     (root / "practicum" / "01-program-setup.md").write_text("# Exercise 01\n\nBody.\n", encoding="utf-8")
-    (root / "practicum" / "03-crosswalk.md").write_text("# Exercise 03\n\nBody.\n", encoding="utf-8")
+    (root / "practicum" / "04-crosswalk.md").write_text("# Exercise 04\n\nBody.\n", encoding="utf-8")
     return root
 
 
@@ -675,7 +675,7 @@ class StepMapPageTests(unittest.TestCase):
         write_docs(root)
         html = (root / "site" / "docs" / "practicum" / "01-program-setup.html").read_text(encoding="utf-8")
         self.assertIn('<p class="meta doc-practice">Practice for playbook step 2.</p>', html)
-        beyond = (root / "site" / "docs" / "practicum" / "03-crosswalk.html").read_text(encoding="utf-8")
+        beyond = (root / "site" / "docs" / "practicum" / "04-crosswalk.html").read_text(encoding="utf-8")
         self.assertIn("Practice for work beyond the ten steps.", beyond)
 
     def test_long_pages_show_a_labeled_reading_time_and_short_pages_do_not(self):

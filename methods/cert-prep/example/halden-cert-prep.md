@@ -30,7 +30,7 @@ CHAMP, hardware lifecycle owner, 3 hours a week, no exam date. First drill: reti
 |---|---|---|---|
 | 1 | Retire hardware with wipe evidence | gap | Retired devices not checked for wipe confirmation |
 
-**Next drills:** repeat the retirement drill with a different device, then track refresh against budget (cost as a range, not a quote). Practicum exercise 07 works the same data by hand.
+**Next drills:** repeat the retirement drill with a different device, then track refresh against budget (cost as a range, not a quote). Practicum exercise 08 works the same data by hand.
 
 For exam content, use IAITAM's own CHAMP outline and training. This is practice only and does not predict the result.
 

@@ -15,14 +15,14 @@ Anyone studying toward CAMP, CSAM, or AIGP (see the [field guide](../site/field-
 | # | Exercise | Level |
 |---|---|---|
 | 1 | [01-program-setup.md](01-program-setup.md) | CAMP |
-| 2 | [02-itam-maturity.md](02-itam-maturity.md) | CAMP |
-| 3 | [03-crosswalk.md](03-crosswalk.md) | CSAM |
-| 4 | [04-rationalization.md](04-rationalization.md) | CSAM |
-| 5 | [05-access-review.md](05-access-review.md) | CSAM |
-| 6 | [06-ai-intake.md](06-ai-intake.md) | AIGP |
-| 7 | [07-hardware-lifecycle.md](07-hardware-lifecycle.md) | CHAMP |
-| 8 | [08-audit-response.md](08-audit-response.md) | CSAM |
-| 9 | [09-as-is-assessment.md](09-as-is-assessment.md) | CAMP |
+| 2 | [02-as-is-assessment.md](02-as-is-assessment.md) | CAMP |
+| 3 | [03-itam-maturity.md](03-itam-maturity.md) | CAMP |
+| 4 | [04-crosswalk.md](04-crosswalk.md) | CSAM |
+| 5 | [05-rationalization.md](05-rationalization.md) | CSAM |
+| 6 | [06-access-review.md](06-access-review.md) | CSAM |
+| 7 | [07-ai-intake.md](07-ai-intake.md) | AIGP |
+| 8 | [08-hardware-lifecycle.md](08-hardware-lifecycle.md) | CHAMP |
+| 9 | [09-audit-response.md](09-audit-response.md) | CSAM |
 
 Work them in order if you're new to these certifications; each one builds on ideas (crosswalk rows, the checklist habit) the earlier ones introduce. If you already hold one of them, jump straight to its section.
 

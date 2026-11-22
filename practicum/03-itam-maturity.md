@@ -1,4 +1,4 @@
-# Exercise 02: ITAM maturity, Halden's baseline scores
+# Exercise 03: ITAM maturity, Halden's baseline scores
 
 **Level:** CAMP · **Time:** 30–45 minutes
 

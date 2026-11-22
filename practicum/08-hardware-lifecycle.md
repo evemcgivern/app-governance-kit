@@ -1,4 +1,4 @@
-# Exercise 07: Hardware lifecycle, Halden's device fleet
+# Exercise 08: Hardware lifecycle, Halden's device fleet
 
 **Level:** CHAMP · **Time:** 30–45 minutes
 

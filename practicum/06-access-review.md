@@ -1,4 +1,4 @@
-# Exercise 05: Access review, Halden's account export
+# Exercise 06: Access review, Halden's account export
 
 **Level:** CSAM · **Time:** 45–60 minutes
 
