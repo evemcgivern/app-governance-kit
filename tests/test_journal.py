@@ -54,12 +54,12 @@ class PostTests(unittest.TestCase):
         self.assertEqual(STATUS_LABELS, {"field-note": "Field note", "essay": "Essay", "study-path": "Study path"})
 
     def test_parses_a_valid_post(self):
-        path = write_post(self.dir, "2026-12-01-governance-without-the-groan.md",
-                          title="Governance without the groan")
+        path = write_post(self.dir, "2026-12-01-sample-post.md",
+                          title="Sample post")
         post = parse_post(path)
         self.assertIsInstance(post, Post)
-        self.assertEqual(post.slug, "governance-without-the-groan")
-        self.assertEqual(post.title, "Governance without the groan")
+        self.assertEqual(post.slug, "sample-post")
+        self.assertEqual(post.title, "Sample post")
         self.assertEqual(post.date, "2026-12-01")
         self.assertEqual(post.status, "field-note")
         self.assertEqual(post.summary, "One sentence.")
@@ -157,7 +157,7 @@ class PostTests(unittest.TestCase):
         self.assertEqual(load_posts(self.dir / "nope"), [])
 
 
-def make_post(slug="governance-without-the-groan", title="Governance without the groan", date="2026-12-01",
+def make_post(slug="sample-post", title="Sample post", date="2026-12-01",
               updated=None, status="field-note", summary="One sentence.", spine=False,
               body="Hello **world**.\n\nSecond paragraph.\n") -> Post:
     return Post(slug=slug, title=title, date=date, updated=updated, status=status, summary=summary, spine=spine,
@@ -171,13 +171,13 @@ def json_ld(html: str) -> str:
 class RenderTests(unittest.TestCase):
     def test_post_page_has_the_expected_parts(self):
         html = render_post(make_post(), INDEX_HTML)
-        self.assertIn("<h1>Governance without the groan</h1>", html)
+        self.assertIn("<h1>Sample post</h1>", html)
         self.assertIn("Field note", html)
         self.assertIn("2026-12-01", html)
         self.assertIn("<strong>world</strong>", html)
         self.assertIn("MIT licensed, like the kit.", html)
         self.assertIn('<a href="../journal.html">&larr; Journal</a>', html)
-        self.assertIn('href="https://evemcgivern.github.io/app-governance-kit/journal/governance-without-the-groan.html"',
+        self.assertIn('href="https://evemcgivern.github.io/app-governance-kit/journal/sample-post.html"',
                       html)
         ld = json_ld(html)
         self.assertIn('"@type": "BlogPosting"', ld)
