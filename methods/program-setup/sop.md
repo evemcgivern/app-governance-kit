@@ -25,7 +25,7 @@ Monthly meetings. The charter, membership, and decision rights are reviewed year
 1. Agree the problem statement in one sentence: what goes wrong today without this body [[XW-003]]
 2. Name an executive sponsor with budget authority [[XW-027]]
 3. Write down decision rights and the thresholds that route an item to the body versus a named role [[XW-027]]
-4. Name 5 to 9 voting members, drawn from the functions the charter's scope requires [[XW-004]]
+4. Name 5 to 9 voting members, drawn from the functions the charter's scope requires. A solo manager can start with two to four people and a named sponsor [[XW-004]]
 5. Put an intake form and a named triage owner live, so only exceptions and above-threshold items reach the meeting [[XW-027]]
 6. Agree procurement enforcement, including that every purchase goes through the acquisition gate (`sam-toolkit/acquisition-gate-checklist.md`), and settle any overlap with adjacent bodies (for example an architecture or change board) in writing [[XW-027]]
 7. Set the cadence, standing agenda, and decision log [[XW-025]]
@@ -53,4 +53,4 @@ Design the intake log, decision log, and metrics review so each is a direct by-p
 - [**Application rationalization**](../rationalization/) (`rationalization`) — brings its consolidate/retain/retire recommendations to this body for decisions above threshold.
 - [**AI system intake and risk tiering**](../ai-intake/) (`ai-intake`) — routes high-risk and prohibited-practice findings to this body for the sponsor and legal decision it flags.
 - [**Access review pack**](../access-review/) (`access-review`) — reports its exceptions to the sponsor and owner roles this program names.
-- Policy drafting kit (`sam-toolkit/policy-template.md`, `policy-standard-template.md`, `policy-checklist.md`, `policy-lifecycle-sop.md`) — writes and tests the policy set that the body approves.
+- Policy drafting kit (`sam-toolkit/policy-template.md`, `policy-standard-template.md`, `policy-checklist.md`, `policy-lifecycle-sop.md`) writes and tests the policy set that the body approves.

@@ -2,7 +2,7 @@
 
 A worksheet for mapping how one governance process works today (the "Is" map) and how you want it to work (the "Should" map), so the gap between them becomes your list of work. Use one copy per process: for example application intake, renewals, audit response, or retirement.
 
-Do this before you buy a tool or write a policy. A tool or policy built on a process nobody has described writes down guesses. Clause references are to the shared crosswalk (`XW-` rows).
+Use it at playbook step 7, when you build the inventory, and at step 9, before you change a process. It also helps whenever a process keeps going wrong. Clause references are to the shared crosswalk (`XW-` rows).
 
 **Process:** ______________________  **Process owner:** ______________________  **Date:** ___________
 

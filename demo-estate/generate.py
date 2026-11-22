@@ -157,7 +157,7 @@ Disputes go to the Chief Operating Officer, who does not sit on the council and 
 ## Measures
 Time from request to outcome, the share of software bought through the intake form, savings, and exceptions granted. Reviewed quarterly, starting from a baseline set in the first quarter.
 """
-POLICY_DRAFT = """# Halden Software Governance Policy — draft
+POLICY_DRAFT = """# Halden Software Governance Policy: draft
 
 ## Purpose
 Halden Logistics uses software to run its warehouses, its fleet, its customer service, and its back office. This policy sets the rules for choosing, buying, using, and retiring that software. Good rules help the company spend its money well, keep its data safe, and avoid surprises when a vendor asks for proof of what Halden is entitled to use. The company wants a simple, practical approach that supports the people who do the work and does not slow them down.

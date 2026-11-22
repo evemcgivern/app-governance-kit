@@ -49,7 +49,7 @@ Match each group to what they need to do their part, and name who gives it. [[XW
 
 ## What shows competence
 
-A certificate shows that someone studied. It does not show that they can do the work in your organization. Keep both kinds of evidence. [[XW-025]]
+Keep two kinds of evidence of competence: a certificate, where the person holds one, and a record of work done in your organization. [[XW-025]]
 
 - A course or exam record, with the date and the provider's name.
 - A piece of real work that someone else reviewed, such as a license position or a retirement sign-off.

@@ -1,6 +1,6 @@
 # Leadership report
 
-A one-page report for the executive sponsor or governance council. Its job is to connect each control to a number, the number to a decision, and the decision to a result in money or risk, so leaders see why the practice earns its funding. Compliance creates urgency; savings and avoided risk keep the support.
+A one-page report for the executive sponsor or governance council. Its job is to connect each control to a number, the number to a decision, and the decision to a result in money or risk, so leaders see why the practice earns its funding.
 
 Complete one copy per reporting period. Clause references are to the shared crosswalk (`XW-` rows).
 
@@ -18,7 +18,7 @@ For each control you report on, fill one row: the control, the number that shows
 | 4 | | | | | | |
 | 5 | | | | | | |
 
-Keep the set short. Five or fewer KPIs, each with a definition, an owner, a data source, and a review date, beats a long list nobody reads. A KPI that has no target, or no action when it is missed, is not finished.
+Keep the set short. Use five or fewer KPIs, each with a definition, an owner, a data source, and a review date. Give each KPI a target and an action to take when it is missed.
 
 ## The questions leaders ask
 

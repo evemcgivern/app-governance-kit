@@ -1,13 +1,13 @@
 # Field guide: certifications
 
-Six certifications come up most often around this kit's three areas — portfolio, AI, and access. This page states what each one actually covers, in plain terms, and ties it to a task the kit's tools already do. It isn't a study guide, and it isn't a recommendation to sit any particular exam. To see which kit tools and exercises practice each CAMP and CSAM topic, use the [study map](study-map.md), and for terms learners often mix up, the [confusable pairs](confusable-pairs.md).
+Six certifications come up most often around this kit's three areas: portfolio, AI, and access. This page states what each one actually covers, in plain terms, and ties it to a task the kit's tools already do. It isn't a study guide, and it isn't a recommendation to sit any particular exam. To see which kit tools and exercises practice each CAMP and CSAM topic, use the [study map](study-map.md), and for terms learners often mix up, the [confusable pairs](confusable-pairs.md).
 
 ## Suggested order for someone new
 
-1. **CAMP** — start here: it's the foundational program-and-process view everything else builds on.
-2. **CSAM or CHAMP** — pick by which asset type you actually own (software versus hardware), not both by default.
-3. **IAM Certificate** — add it if your remit reaches beyond IT into physical or infrastructure assets generally.
-4. **ITIL 4 Foundation** — add it if your organization already runs formal IT service management and you need its vocabulary.
+1. **CAMP**: start here. It's the foundational program-and-process view everything else builds on.
+2. **CSAM or CHAMP**: pick by which asset type you actually own (software versus hardware), not both by default.
+3. **IAM Certificate**: add it if your remit reaches beyond IT into physical or infrastructure assets generally.
+4. **ITIL 4 Foundation**: add it if your organization already runs formal IT service management and you need its vocabulary.
 
 AIGP sits apart from this sequence — take it when AI governance specifically is the job, regardless of where you are on the ITAM path.
 

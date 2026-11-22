@@ -6,7 +6,7 @@ The files are informed by ISO/IEC 19770-1:2017. Most files trace to a clause of 
 
 ## Where to start
 
-Start with `itam-program-playbook.md`. It is the one order to follow: ten steps, each with the files to use, the matching setup prompt, and what done looks like. This guide is the reference for what each file is and how to fill it in; it does not set an order. Read the plain-language [glossary](../../field-guide.html#glossary-heading) for the terms, and the `program-setup` method (`methods/program-setup/method.md`) for the charter in step 2.
+Start with `itam-program-playbook.md`. It is the one order to follow: ten steps, each with the files to use, the matching setup prompt, and what done looks like. This guide is the reference for what each file is and how to fill it in; it does not set an order. Read the plain-language [glossary](../field-guide/glossary.md) for the terms, and the `program-setup` method (`methods/program-setup/method.md`) for the charter in step 2.
 
 Two files support the playbook rather than sit in it: `operating-calendar.md` lists the routines and maps its weeks to the playbook's steps, and `setup-prompts.md` holds the thirteen prompts for an AI assistant. For one place to assess, plan, and measure, use `application-management-workbook.xlsx`.
 
@@ -156,7 +156,7 @@ One workbook that carries a program from the As-Is assessment to measurement. It
 
 - **Start:** your program name, scope and sponsor, the six steps, the scale, the status words, and four settings you can change.
 - **Assess:** score each dimension 0 to 3 with evidence, then set the To-Be level. The gap and a check are calculated. Level and date cells reject anything invalid.
-- **Plan:** choose the gaps to fund (three at a time works best), with an owner, a first action, and a date.
+- **Plan:** choose the gaps to fund (no more than three at a time), with an owner, a first action, and a date.
 - **Measures:** the benefits tracker. Row one is the program's own gap-points measure, tied to Assess. A measure counts as achieved only with a latest value, a date, and evidence; forecasts are never added to achieved results.
 - **Scorecard:** headlines, a table by dimension, the six leadership questions, and checks. It is all calculated. Blank means not entered, never zero, and every status is a word.
 - **Re-score:** one column per later assessment, so history is kept and nothing is overwritten.
@@ -240,7 +240,7 @@ Thirteen copy-and-paste prompts that walk you through setting up with an AI assi
 
 ### operating-calendar.md (crosswalk XW-002, XW-004, XW-008, XW-025)
 
-A schedule and a starter plan. It lists the monthly, quarterly, and yearly routines for the other files, the events that start an extra task (a purchase request, an invoice, a retirement, an audit letter), and a 90-day order for starting from nothing. Give each routine a named owner and a calendar date. The frequencies are suggestions; adjust them to your size and risk.
+A schedule and a starter plan. It lists the monthly, quarterly, and yearly routines for the other files, the events that start an extra task (a purchase request, an invoice, a retirement, an audit letter), and a table that places the first 90 days against the playbook's steps. Give each routine a named owner and a calendar date. The frequencies are suggestions; adjust them to your size and risk.
 
 ### application-management-self-assessment.md and application-management-gap-plan.csv (crosswalk XW-003, XW-025)
 
@@ -263,11 +263,11 @@ One row per kind of data. Pre-filled with ten common kinds; add your own.
 - `other_systems_holding_copies` and `how_copies_are_kept_in_step`: where the same data also lives, and whether it is synced automatically, by import, or by hand.
 - `reconcile_every`, `last_reconciled_on`, `mismatches_found`, `mismatch_owner`: how often you compare the copies, when you last did, what differed, and who fixes it.
 
-Keep the register of record where the decisions are made, and link to specialist systems rather than copying everything into one place. A record that connects the systems is worth more than one that tries to replace them.
+Keep the register of record where the decisions are made, and link to specialist systems rather than copying their data into it.
 
 ### documentation-gaps-log.csv (crosswalk XW-006, XW-007, XW-020, XW-026)
 
-One row per missing or weak record. Compliance depends on what you can show, not on intent; missing proof of purchase is a common reason an audit goes badly.
+One row per missing or weak record. Compliance is judged on what you can show. A missing proof of purchase is a gap to log and close.
 
 - `record_type`: proof of purchase, contract, certificate, license agreement, retirement record, and so on.
 - `related_asset_or_contract`: the application, license id, or contract the record belongs to.

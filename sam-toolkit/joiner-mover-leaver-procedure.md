@@ -16,7 +16,7 @@ Clause references are to ISO/IEC 19770-1:2017 (paraphrased) and to the shared cr
 
 ## Triggers from HR
 
-Agree with HR, in writing, that each of these starts a notice to ITAM. Agree the lead time and the form (a ticket or a list). [[XW-017]]
+Agree with HR, in writing, that each of these starts a notice to ITAM. Settle the lead time and the form (a ticket or a list). [[XW-017]]
 
 | Event | HR sends | When |
 | --- | --- | --- |

@@ -1,4 +1,4 @@
-# Halden Software Governance Policy — draft
+# Halden Software Governance Policy: draft
 
 ## Purpose
 Halden Logistics uses software to run its warehouses, its fleet, its customer service, and its back office. This policy sets the rules for choosing, buying, using, and retiring that software. Good rules help the company spend its money well, keep its data safe, and avoid surprises when a vendor asks for proof of what Halden is entitled to use. The company wants a simple, practical approach that supports the people who do the work and does not slow them down.

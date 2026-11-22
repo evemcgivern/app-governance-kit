@@ -10,9 +10,15 @@ Clause references are to the shared crosswalk (`XW-` rows). Frequencies are prac
 
 | When | Routine | File | Owner role |
 | --- | --- | --- | --- |
+| Every day or week | Triage new requests at the gate [[XW-009]] | `acquisition-gate-checklist.md` | Asset manager |
+| Every day or week | Check each invoice against the contract and order before payment [[XW-012]] | `invoice-verification.csv` | Finance partner |
+| Every day or week | Reclaim licenses from leavers and movers once the contract owner confirms [[XW-017]] | `joiner-mover-leaver-procedure.md` | Asset manager |
+| Every day or week | Review discovery exceptions [[XW-005]] | `asset-record.csv` | Asset manager |
 | Monthly | Review open gaps; close or reschedule each [[XW-020]] | `documentation-gaps-log.csv` | Asset manager |
 | Monthly | List renewals due in 180 days; record decisions [[XW-008]] | `renewal-calendar.csv` | Application owner |
 | Monthly | Check spend made outside procurement [[XW-012]] | `acquisition-gate-checklist.md` | Finance partner |
+| Monthly | Compare the HR leaver list with sign-in logs; log each leaver who still has an account [[XW-017]] | `joiner-mover-leaver-procedure.md`, `internal-check-log.csv` | Asset manager |
+| Quarterly | Review the risk register; re-rate open risks and close only treated ones [[XW-024]] | `risk-register.csv` | Governance lead |
 | Quarterly | Refresh license positions against use [[XW-007]] | `license-position.csv` | Asset manager |
 | Quarterly | Compare copies of data across systems [[XW-026]] | `source-of-truth-map.csv` | Data owner |
 | Quarterly | Review strategic suppliers [[XW-013]] | `vendor-scorecard.csv` | Vendor manager |
@@ -43,8 +49,9 @@ This follows the playbook's steps. Each row names the step, so use the playbook 
 
 | Weeks | Playbook step | Goal | Files | Done when |
 | --- | --- | --- | --- | --- |
-| 1 | 1 Read the map, and 3 Stop the bleeding | Know the terms; catch renewals and name an audit contact | `itam-program-playbook.md`, `renewal-calendar.csv`, `audit-response-roles.csv` | Every renewal in 180 days has an owner and a notice date, and each audit task has a holder |
+| 1 | 1 Read the map | Know the terms and your biggest worry | `itam-program-playbook.md`, `guide.md` | You can say your biggest worry in two sentences |
 | 1 to 2 | 2 Sponsor, problem statement, light charter | Name a sponsor and a small group | `customer-expectations.csv`, the `program-setup` method | A sponsor with budget has agreed one line on the problem |
+| 1 to 3 | 3 Stop the bleeding | Catch renewals and name an audit contact | `renewal-calendar.csv`, `audit-response-roles.csv` | Every renewal in 180 days has an owner and a notice date, and each audit task has a holder |
 | 3 | 4 Set the scope | Bound assets and processes | `statement-of-applicability.csv`, `policy-template.md` section 2 | A written scope with exclusions, seen by the sponsor |
 | 4 to 5 | 5 Baseline and targets | Know where you stand and where you need to be | `what-good-looks-like.md`, `application-management-self-assessment.md`, `application-management-gap-plan.csv` | Every dimension has an As-Is score with evidence and a To-Be target; stop here if you must |
 | 6 to 8 | 6 The policy set | Draft the umbrella policy and the acquisition policy first | `policy-template.md`, `policy-checklist.md`, `policy-lifecycle-sop.md` | Two policies passed the checklist and have sponsor approval |

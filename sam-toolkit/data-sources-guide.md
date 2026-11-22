@@ -16,7 +16,7 @@ Write down the question first. A request for "all the data" gets nothing. A requ
 | Who signs in to a cloud app? | Sign-in or single sign-on logs | `license-position.csv` [[XW-007]] |
 | What do we pay for? | Expense and accounts-payable data | `renewal-calendar.csv`, `source-of-truth-map.csv` [[XW-012]] |
 | What did we buy, and on what terms? | Purchasing and contract records | `proof-of-purchase-check.csv`, `contract-terms-check.csv` [[XW-006]] |
-| Who joined, moved, or left? | HR joiner and leaver lists | `joiner-mover-leaver-procedure.md` [[XW-010]] |
+| Who joined, moved, or left? | HR joiner and leaver lists | `joiner-mover-leaver-procedure.md` [[XW-017]] |
 
 ## The five sources
 
@@ -38,7 +38,7 @@ Write down the question first. A request for "all the data" gets nothing. A requ
 
 ### 3. Expense and accounts-payable data
 
-- **How to get it:** Ask Finance for twelve months of payments to suppliers, with supplier name, amount, date, and cost center. Ask separately for expense-card spend. Software bought on a card never reaches the contract files.
+- **How to get it:** Ask Finance for twelve months of payments to suppliers, with supplier name, amount, date, and cost center. Ask separately for expense-card spend. Software bought on a card may not appear in the contract files.
 - **What it tells you:** What you pay for and to whom, including products no one in IT knows about. Which suppliers are your largest by spend.
 - **What it cannot tell you:** What you bought, how many licenses, or what term. A payment line often names only a supplier.
 - **Who to ask:** Finance or accounts payable.
@@ -58,7 +58,7 @@ Write down the question first. A request for "all the data" gets nothing. A requ
 - **What it tells you:** Who should have an account today, and who should not. It is how you find accounts that belong to people who left.
 - **What it cannot tell you:** Contractors, temporary staff, and service accounts, which are often not on an HR list. Which apps a person needs.
 - **Who to ask:** HR. Treat the list as personal data. Ask only for the fields you need, keep it in a restricted place, and agree with HR how long you may hold it. **Decision needed:** HR and counsel for the retention period.
-- **Check before you use it:** Does the list use the same person identifier as the sign-in logs, such as a work email address? If not, agree a way to match them before you start.
+- **Check before you use it:** Does the list use the same person identifier as the sign-in logs, such as a work email address? If not, settle on a way to match them before you start.
 
 ## Clean the names so the counts match
 
@@ -92,7 +92,7 @@ You are ready to build the inventory and a first license position when all of th
 - [ ] Every raw name you could not match is on a list with an owner.
 - [ ] You have written down what each source cannot tell you, so no one reads more into the numbers than they hold.
 
-If one source is out of reach, start without it, record the gap in `documentation-gaps-log.csv` with an owner and a date, and say in the position which numbers rest on it. A rough count that says how rough it is helps more than a precise count that hides a gap.
+If one source is out of reach, start without it, record the gap in `documentation-gaps-log.csv` with an owner and a date, and say in the position which numbers rest on it.
 
 ## Decision
 

@@ -2,9 +2,9 @@
 
 This is the one order to follow. It is for an asset manager who has to stand up, or take over, an IT asset management (ITAM) program and keep it running. Every other file in the kit is a tool you pick up at the step where this playbook names it. If another page seems to give a different order, follow this one.
 
-Three terms come up at once. A sponsor is the executive who holds the budget and backs the program in public. A charter is a short written agreement on why the program exists, who decides what, and who sits on the group that decides. An entitlement is the right to use software that you can show you bought. Plain-language definitions of these and other terms are in the [glossary](../../field-guide.html#glossary-heading).
+Three terms come up at once. A sponsor is the executive who holds the budget and backs the program in public. A charter is a short written agreement on why the program exists, who decides what, and who sits on the group that decides. An entitlement is the right to use software that you can show you bought. Plain-language definitions of these and other terms are in the [glossary](../field-guide/glossary.md).
 
-You do not need to do all ten steps. Steps 1 to 5 are a complete small program. A small program with a sponsor, a baseline, and a renewal calendar beats a large one nobody maintains.
+You do not need to do all ten steps. Steps 1 to 5 are a complete small program: a sponsor, a scope, a baseline, a renewal calendar, and an audit roster.
 
 All ten steps together take about 250 to 450 hours of effort over 9 to 18 months, part-time, and longer if an audit lands. Add a few hours a week for the routines in the run table below. This is expert judgment for one person with other duties at a mid-size organization. It is not measured.
 
@@ -20,7 +20,7 @@ Each step gives the reason in one line, the files to use, the matching prompt in
 
 **Why:** You need the same words as the people you will ask for help.
 
-- Files: this playbook, the [glossary](../../field-guide.html#glossary-heading), and `guide.md` for what each file is. Prompt 1 in `setup-prompts.md` fits a plan to your hours and your biggest worry.
+- Files: this playbook, the [glossary](../field-guide/glossary.md), and `guide.md` for what each file is. Prompt 1 in `setup-prompts.md` fits a plan to your hours and your biggest worry.
 - Done when:
   - [ ] You have read this playbook and the glossary.
   - [ ] You can say in two sentences what your biggest worry is: audit, renewals, duplicate spend, or ownership.
@@ -52,7 +52,7 @@ Each step gives the reason in one line, the files to use, the matching prompt in
 
 Read this before step 4 if any of these is true.
 
-- **No sponsor yet.** Write one sentence on the cost or risk, and use one figure from your own records, or write Not found. Take it to whoever signs your largest software invoices or carries the audit risk, and ask for 30 minutes. If you are refused, note who declined and when, and keep working on steps 3 and 4, which sit within your own authority. Prompt 8 helps you prepare the request.
+- **No sponsor yet.** Write one sentence on the cost or risk, and use one figure from your own records, or write Not found. Take it to whoever signs your largest software invoices or carries the audit risk, and ask for 30 minutes. If you are refused, note who declined and when, and keep working on steps 3 and 4, which sit within your own authority. Prompt 8 reviews a draft charter once you have one; it does not write the request.
 - **No inventory yet.** Do not try to count everything. List your five largest software publishers by spend from finance records, and do step 3 for them. The inventory comes in step 7.
 - **An audit or vendor letter has already arrived.** Do not reply and do not send data. Hand the letter to Legal the same day and note the deadline it states. Do not run new discovery or remove software without Legal's say. Open a dated case file, then use the `audit-response` method and `audit-response-roles.csv`. Use Prompt 7 once Legal is involved.
 
@@ -118,7 +118,7 @@ Read this before step 4 if any of these is true.
 
 ### Step 9: Put controls in place
 
-**Why:** A control that people can walk around measures nothing. [[XW-009]]
+**Why:** A control counts only when procurement and payables enforce it. [[XW-009]]
 
 - Files: `acquisition-gate-checklist.md`, `invoice-verification.csv`, `authorization-log.csv`, `retirement-signoff-checklist.md`, `vendor-contract-register.csv`, `vendor-scorecard.csv`, and `joiner-mover-leaver-procedure.md`. Prompt 3 maps a process before you change it.
 - Done when:
@@ -131,7 +131,7 @@ Read this before step 4 if any of these is true.
 
 ### Step 10: Measure and review
 
-**Why:** A program that never checks itself drifts. [[XW-025]]
+**Why:** Regular checks show which routines are running and which findings are still open. [[XW-025]]
 
 - Files: `benefits-tracker.csv`, `leadership-report.md`, `rolling-internal-check.md`, and `audit-and-review-checklist.md`, run on the schedule in `operating-calendar.md`. Prompt 10 writes the leaders' report, Prompt 13 plans the quarterly checks, and Prompt 9 turns the plan into reminders.
 - Done when:

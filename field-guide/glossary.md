@@ -84,4 +84,4 @@ Plain-English definitions for terms used across this kit's methods, tied to a Ha
 
 **SaaS (software as a service).** Software you use as a subscription that the vendor runs and you reach over the internet, with nothing to install. What you hold is a plan or a number of seats, so it needs an owner and a renewal date like any other license. *Halden example: a browser-based routing subscription is SaaS; it appears in the inventory even though no install exists.*
 
-**XW- tag.** The identifier of a row in the kit's shared crosswalk, from XW-001 to XW-029. A tag on a task shows which theme of governance work the task supports and which standards clauses it traces to. *Halden example: XW-008 is license renewal and expiry tracking, which `renewal-calendar.csv` supports.*
+**XW- tag.** The identifier of a row in the kit's shared crosswalk, from XW-001 to XW-030. A tag on a task shows which theme of governance work the task supports and which standards clauses it traces to. *Halden example: XW-008 is license renewal and expiry tracking, which `renewal-calendar.csv` supports.*

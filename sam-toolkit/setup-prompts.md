@@ -17,9 +17,10 @@ Use each prompt at the step of `itam-program-playbook.md` shown here. The playbo
 | 6 The policy set | 8 (policy) |
 | 7 Build one inventory | 4, 3 |
 | 8 Proof, then the position | 5 |
+| 9 Put controls in place | 3 |
 | 10 Measure and review | 10, 13, 9 |
 
-Steps 4 and 9 have no prompt of their own. After the first pass, repeat on a schedule:
+Step 4 has no prompt of its own. After the first pass, repeat on a schedule:
 
 - **Every month:** prompt 6, for renewals due in 180 days.
 - **Every quarter:** prompt 5 for your most important products, prompt 7 to confirm each audit role still has a ready backup, prompts 10 and 13, and prompt 9 when the plan changes.
@@ -28,7 +29,7 @@ Steps 4 and 9 have no prompt of their own. After the first pass, repeat on a sch
 
 Pick the one that matches what is in front of you:
 
-1. [Set the scene and get a 13-week plan (playbook step 1)](#prompt-1-set-the-scene)
+1. [Set the scene and plan the ten playbook steps (playbook step 1)](#prompt-1-set-the-scene)
 2. [Score my program as it is and as it should be](#prompt-2-baseline-your-program)
 3. [Map how a process really works](#prompt-3-map-a-process-before-you-change-it)
 4. [Decide where each kind of data lives](#prompt-4-decide-where-each-kind-of-data-lives)
@@ -65,11 +66,11 @@ Pick the one that matches what is in front of you:
 
 **Why:** It fits the plan to your time and your biggest worry, instead of handing you every template at once.
 
-**Paste this:** Rules: act as a read-only application governance coach, ask one question at a time, never decide for me, mark each point needing a person's decision as Decision needed, mark anything you cannot verify as Unverified, write Not found where I give no figure and never invent one, show the arithmetic for every date and sum, and do not browse the web. I work at [ORGANIZATION TYPE AND SIZE] as [YOUR ROLE]. We keep our inventory in [WHERE], our contracts in [WHERE], and our spend data in [WHERE]. My main worry is [AUDIT, RENEWALS, DUPLICATE SPEND, OWNERSHIP, OR OTHER]. I can give this [HOURS] hours a week. Ask me up to five questions you need. Then name the three starting steps I should take from this list, with a reason for each: score my program, map a process, set one trusted inventory, back licenses with proof, control renewals, prepare for an audit, set up governance and policy. Finish with a week-by-week plan for 13 weeks that fits my hours.
+**Paste this:** Rules: act as a read-only application governance coach, ask one question at a time, never decide for me, mark each point needing a person's decision as Decision needed, mark anything you cannot verify as Unverified, write Not found where I give no figure and never invent one, show the arithmetic for every date and sum, and do not browse the web. I work at [ORGANIZATION TYPE AND SIZE] as [YOUR ROLE]. We keep our inventory in [WHERE], our contracts in [WHERE], and our spend data in [WHERE]. My main worry is [AUDIT, RENEWALS, DUPLICATE SPEND, OWNERSHIP, OR OTHER]. I can give this [HOURS] hours a week. Ask me up to five questions you need. Then take me through the ten steps of the playbook in this order: 1 read the map; 2 get a sponsor, a problem statement, and a light charter; 3 stop the bleeding on renewals and the audit contact; 4 set the scope; 5 baseline and targets; 6 the policy set; 7 build one inventory; 8 proof first, then the position; 9 put controls in place; 10 measure and review. If I have no sponsor, say that comes first. For each step, say what I should do first given my worry and my hours, and which steps can wait. Finish with a plan that places the steps against my hours, and mark the point where a program with steps 1 to 5 done is complete enough to stop.
 
 **Attach (optional):** `operating-calendar.md`.
 
-**Good looks like:** three steps with reasons, a plan that fits your hours, and no invented facts about your organization.
+**Good looks like:** a plan that follows the ten playbook steps and starts with a sponsor, fits your hours, and holds no invented facts about your organization.
 
 ## Prompt 2: Baseline your program
 
@@ -111,7 +112,7 @@ Pick the one that matches what is in front of you:
 
 **When to use it:** At playbook step 8, before a renewal, a true-up, or an audit, and every quarter for your most important products.
 
-**Why:** Audits turn on what you can prove, not on what you believe. Missing proof costs far less to find now than to find during an audit.
+**Why:** An audit works from the proofs you can show. This prompt finds the missing ones now, while you can still chase them.
 
 **Paste this:** Rules: read-only coach, one question at a time, never decide for me, mark Decision needed and Unverified, write Not found for missing figures, never guess a quantity, show arithmetic, no web. I will give you, for [A FEW PRODUCTS], the quantity I report as owned, the quantity in use, the license metric the agreement counts, and the proofs of purchase I hold. For each product, compare the quantity I can prove with the quantity I report, in that metric. Label each product short, even, or over. Do not count a proof that lacks the buyer, vendor, product, version, metric, quantity, or date. List every missing record as a row for a documentation gaps log with columns gap, record type, related product, what is missing, why it matters, what it blocks, owner role, due date. Never tell me what the agreement permits; ask me to check the contract or counsel.
 
@@ -159,7 +160,7 @@ Pick the one that matches what is in front of you:
 
 **When to use it:** After you have a gap plan or a renewal list, to turn decisions into dates.
 
-**Why:** Plans without dates slip. Reminders keep notice deadlines and gap fixes from being forgotten.
+**Why:** Notice deadlines and gap fixes need dates in a calendar before anyone can be reminded of them.
 
 **Paste this:** Rules: read-only coach, never decide for me, mark Unverified, show the arithmetic for every date, no web. Today's date is [TODAY'S DATE, YYYY-MM-DD]. From the gap plan and renewal data I give you, list the dates I should be reminded of in a table with columns date, task, dimension, file to use, owner role. Label each task by its dimension name, never by a row number, and take file names only from what I give you, writing Not found if there is none. Ask me how many days ahead I want a reminder. Then give the same dates as the text of an iCalendar file, with an alarm that many days before each date, in one plain text block that I can copy, save with the ending .ics, and import. Do not say you have attached or created a file. I will check each date before I import it.
 
@@ -171,7 +172,7 @@ Pick the one that matches what is in front of you:
 
 **When to use it:** At playbook step 10, every quarter before leaders meet, and any time you need funding or a decision.
 
-**Why:** Leaders fund what they can see. The report ties your work to money saved or risk reduced, and asks for the decisions you need.
+**Why:** The report ties your work to money saved or risk reduced, and lists the decisions you need from leaders.
 
 **Paste this:** Rules: read-only coach, never decide for me, mark Decision needed and Unverified, write Not found where I give no figure and never invent one, no web. Draft a one-page leadership report from the gap plan and notes I give you. For each control, link a measure to a decision and the decision to an outcome in money or risk. Count only savings I can back with evidence, and put adverse trends beside the savings. Answer these six questions, writing Not found where you have no evidence: do applications have accountable owners; how much renewal spend is undecided; what spend could be reduced or retired; which license gaps could become audit exposure; which gaps need escalation; what did we save and what is the proof. End with the decisions leaders must make and the three gaps to close next quarter.
 
@@ -195,9 +196,9 @@ Pick the one that matches what is in front of you:
 
 **When to use it:** At playbook step 5, before you set To-Be targets in Prompt 2, and each year when you review them.
 
-**Why:** Full conformance to a standard is optional and expensive. Targets should match your risk, your size, and your time, and the sponsor should agree them, so you fund what matters.
+**Why:** Full conformance to a standard is optional. Targets should match your risk, your size, and your time, and the sponsor settles them with you, so you fund what matters.
 
-**Paste this:** Rules: read-only coach, one question at a time, never decide for me, mark Decision needed and Unverified, write Not found for missing figures, no web. Help me decide how far my asset management program needs to go. Ask me these eight questions one at a time and ask for a yes or no and one line of why: do laws or contracts require us to prove control of software or data; have publishers audited us in the last three years or do our contracts allow audits; is software spend large enough that savings matter to the budget; do teams buy subscriptions without IT; do mergers, sales of units, or fast growth keep changing our estate; do our applications hold sensitive or regulated data; can people give at least five hours a week; does a sponsor with budget back this. Scale: 0 not done, 1 ad hoc, 2 defined (written, owned, followed, with a recent example), 3 measured (a number shows it works and led to a change). Then suggest a target level for each of these dimensions: policy, roles, inventory, intake, lifecycle review, licenses and renewals, cost, risk, retirement, measures, communication. Use level 2 unless my answers justify 3, and do not set every target to 3. Give a reason for each target, three things I should deliberately not do yet, a one-line good-enough statement for the next 12 months, and up to five measures that cannot be met by paperwork alone. If I have no sponsor, tell me to get one before setting targets. Decision needed: the sponsor agrees the targets.
+**Paste this:** Rules: read-only coach, one question at a time, never decide for me, mark Decision needed and Unverified, write Not found for missing figures, no web. Help me decide how far my asset management program needs to go. Ask me these eight questions one at a time and ask for a yes or no and one line of why: do laws or contracts require us to prove control of software or data; have publishers audited us in the last three years or do our contracts allow audits; is software spend large enough that savings matter to the budget; do teams buy subscriptions without IT; do mergers, sales of units, or fast growth keep changing our estate; do our applications hold sensitive or regulated data; can people give at least five hours a week; does a sponsor with budget back this. Scale: 0 not done, 1 ad hoc, 2 defined (written, owned, followed, with a recent example), 3 measured (a number shows it works and led to a change). Then suggest a target level for each of these dimensions: policy, roles, inventory, intake, lifecycle review, licenses and renewals, cost, risk, retirement, measures, communication. Use level 2 unless my answers justify 3, and do not set every target to 3. Give a reason for each target, three things I should deliberately not do yet, a one-line good-enough statement for the next 12 months, and up to five measures that cannot be met by paperwork alone. If I have no sponsor, tell me to get one before setting targets. Decision needed: the sponsor settles the targets.
 
 **Attach (optional):** `what-good-looks-like.md`.
 
@@ -217,7 +218,7 @@ Pick the one that matches what is in front of you:
 
 ## Keep going
 
-Run Prompt 2 again each year, and after a merger or a change of sponsor. Run Prompts 5 to 7 each quarter. Keep the results with the files, and record what you decided and who approved it.
+Run Prompt 2 again each year, and after a merger or a change of sponsor. Run Prompts 5 and 7 each quarter and Prompt 6 each month. Keep the results with the files, and record what you decided and who approved it.
 
 If you have the kit's skills installed, you can instead ask Claude Code for the `app-governance` skill, or type `$app-governance` in Codex. The prompts above do not need them.
 

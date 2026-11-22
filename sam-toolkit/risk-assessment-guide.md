@@ -43,7 +43,7 @@ Pick one treatment for each risk. [[XW-024]]
 | transfer | Move part of the cost to another party, for example through a contract term. Have counsel review it. |
 | avoid | Stop the activity or retire the asset that causes the risk |
 
-Write the action in plain words, name who does it, and give a date. An action with no date is a wish.
+Write the action in plain words, name who does it, and give a date.
 
 ### 4. Record
 
