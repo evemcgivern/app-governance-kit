@@ -1,5 +1,5 @@
 kind,key,main_step,also_steps,frequency,note
-file,itam-program-playbook.md,1,,Not on the calendar,The order to follow; no feeds line on its own page
+file,itam-program-playbook.md,1,,Not on the calendar,The order to follow
 file,guide.md,1,,Not on the calendar,
 file,setup-prompts.md,1,2;3;5;6;7;8;9;10,Not on the calendar,Prompts for steps 1 to 3 and 5 to 10; step 4 has none
 file,customer-expectations.csv,2,,Not on the calendar,

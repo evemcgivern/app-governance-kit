@@ -4,7 +4,7 @@
 
 ## Scenario
 
-Halden has quietly accumulated six AI systems across different departments, and nobody has ever tiered any of them for risk. Before the AI governance board's first meeting, someone needs to go through the list and flag which system, if any, needs to stop and get legal review before anything else happens to it.
+Halden has six AI systems across different departments, and nobody has ever tiered any of them for risk. Before the AI governance board's first meeting, someone needs to go through the list and flag which system, if any, needs to stop and get legal review before anything else happens to it.
 
 ## Files
 
@@ -24,14 +24,14 @@ One short section per system: the use case restated, the risk tier with your rea
 
 ## Check yourself
 
-Open the [interactive practicum page](../site/practicum.html#ai-intake) and enter your findings there. No installs, no command line. "Passed" means the high-risk system(s) in the key are in your findings, with at most one extra; "missed" names any high-risk system you didn't tier that way; "extra" names any system you tiered high-risk that the key doesn't. The key is `demo-estate/answer-key.json` in this repo; it's public, so check yourself before you open it.
+Open the [interactive practicum page](../site/practicum.html#ai-intake) and enter your findings there. "Passed" means the high-risk system(s) in the key are in your findings, with at most one extra; "missed" names any high-risk system you didn't tier that way; "extra" names any system you tiered high-risk that the key doesn't. The key is `demo-estate/answer-key.json` in this repo; it's public, so check yourself before you open it.
 
 ## Reflect
 
-1. Two systems in this file involve a human reviewing the output before it affects anyone. Does that change the risk tier you'd assign, or only the controls you'd require at that tier?
+1. Two systems in this file involve a human reviewing the output before it affects anyone. Does that change the risk tier you'd assign, or the controls you'd require at that tier?
 2. The high-risk system here is a small internal tool, not a flagship product. What made you tier it that way regardless of its size or how routine it sounded to its owner?
 3. If Halden's forecasting system started being used to schedule individual warehouse shifts instead of just planning volume, would that change its tier, and what would trigger the re-review that catches a change like that?
 
 ## Certification link
 
-This exercise practices the AIGP body of knowledge's risk-tiering and lifecycle ground: recognizing a high-risk use case by its effect on real people rather than its size or department, checking for prohibited practices before tiering, and setting controls and a re-review trigger tied to the tier rather than to a calendar alone.
+This exercise practices the AIGP body of knowledge's risk-tiering and lifecycle ground: recognizing a high-risk use case by its effect on people, and setting controls and a re-review trigger tied to the tier.

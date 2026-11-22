@@ -12,7 +12,7 @@ Plain-English definitions for terms used across this kit's methods, tied to a Ha
 
 **CMDB (Configuration Management Database).** A system of record for configuration items, meaning the assets and services IT runs, and how they connect and depend on one another. A plain application list or license spreadsheet is not a CMDB, because it does not record those relationships. *Halden example: `apps.csv` and `licenses.csv` are an inventory extract for the demo estate, not a CMDB.*
 
-<a id="entitlement"></a>**Entitlement.** The specific usage right a license grants, not just the fact that software is installed. *Halden example: Payflow's license entitlements don't match its 748 users, an open license-position question the rationalization run flags as unverified.*
+<a id="entitlement"></a>**Entitlement.** The specific usage right a license grants. *Halden example: Payflow's license entitlements don't match its 748 users, an open license-position question the rationalization run flags as unverified.*
 
 <a id="effective-license-position"></a>**Effective license position (ELP).** The gap between what's licensed (entitlements) and what's actually deployed or used. *Halden example: comparing Payflow's licensed entitlements to its real user count before a vendor audit.*
 
@@ -20,7 +20,7 @@ Plain-English definitions for terms used across this kit's methods, tied to a Ha
 
 **Reconciliation.** Matching what's deployed or in use against what's licensed or recorded, to surface the gap. *Halden example: matching `accounts.csv` logins against `employees.csv` to find orphaned accounts is the same reconciliation logic applied to access instead of licenses.*
 
-**Normalization.** Cleaning inconsistent product or vendor names so the same thing isn't counted twice under different labels. *Halden example: Clausebase and Tallysheet are both normalized to "contract management," not left as two unrelated names.*
+**Normalization.** Cleaning inconsistent product or vendor names so the same thing isn't counted twice under different labels. *Halden example: Clausebase and Tallysheet are both normalized to "contract management."*
 
 <a id="swid-tag"></a>**SWID tag (software identification tag).** A machine-readable file that identifies an installed software product, defined in ISO/IEC 19770-2. *Halden example: none of Halden's demo apps ship SWID tags, so today's inventory work is manual.*
 
@@ -32,7 +32,7 @@ Plain-English definitions for terms used across this kit's methods, tied to a Ha
 
 **Access certification (access review).** A periodic check that every account's access is still valid, owned, and appropriately scoped. *Halden example: the review that surfaced ACC-063, ACC-104, and seven privileged admin accounts needing owner re-approval.*
 
-**Segregation of duties (SoD).** Making sure no one person holds two roles that together let them create and approve the same transaction unchecked. *Halden example: SoD wasn't tested in the sample review because no SoD rules had been supplied to check against, a named gap, not a clean result.*
+**Segregation of duties (SoD).** Making sure no one person holds two roles that together let them create and approve the same transaction unchecked. *Halden example: SoD wasn't tested in the sample review because no SoD rules had been supplied to check against, a named gap.*
 
 **Risk tier.** A category (such as minimal, limited, or high-risk) assigned to a system or use case that determines which controls apply. *Halden example: AI-004, the HR candidate-shortlisting tool, tiers as high-risk; the email spam filter (AI-001) tiers as minimal.*
 
@@ -44,7 +44,7 @@ Plain-English definitions for terms used across this kit's methods, tied to a Ha
 
 **Chargeback / showback.** Allocating (chargeback) or simply reporting (showback) IT cost to the business unit that incurs it. *Halden example: neither is possible with Halden's current data: no app in `apps.csv` carries a cost-center field yet.*
 
-**Key process area (KPA) vs. key performance indicator (KPI).** A key process area is a broad part of asset management work, such as acquisition or disposal; IAITAM names 12 of them. A key performance indicator is a number tracked over time to show how well some work is going, such as the share of retired devices with a wipe record. One names the work; the other measures it. *Halden example: disposal is a process area; the share of retired devices in `devices.csv` with a confirmed wipe is a measure of it.*
+**Key process area (KPA) vs. key performance indicator (KPI).** A key process area is a broad part of asset management work, such as acquisition or disposal; IAITAM names 12 of them. A key performance indicator is a number tracked over time to show how well some work is going, such as the share of retired devices with a wipe record. *Halden example: disposal is a process area; the share of retired devices in `devices.csv` with a confirmed wipe is a measure of it.*
 
 **Vendor management.** Tracking supplier relationships, contract terms, and renewal or termination notice periods. *Halden example: the rationalization run can't finalize an eliminate decision for Clausebase because no vendor contract terms were supplied.*
 
@@ -54,7 +54,7 @@ Plain-English definitions for terms used across this kit's methods, tied to a Ha
 
 **Decision rights.** A written statement of who decides what, and at what threshold, so intake doesn't default to "everything goes to committee." *Halden example: the council's draft charter names a cost-or-risk threshold but never sets it, leaving the triage owner nothing to check requests against.*
 
-**Sponsor.** The executive who holds budget authority and gives a governance body the power to actually act. *Halden example: the council review's central finding: no sponsor is named anywhere in the draft charter.*
+**Sponsor.** The executive who holds budget authority and gives a governance body the power to act. *Halden example: the council review's central finding: no sponsor is named anywhere in the draft charter.*
 
 **Role vs. job title.** A role is a set of duties and decision rights that someone holds in a process; a job title is the label on a person's position in the organization chart. Accountability is set by role, and each role has a current named holder, so the duty survives a change of staff. *Halden example: "software license manager" is a role someone holds; the holder's title in HR may be something else, and the name changes when the person moves on.*
 
@@ -64,9 +64,9 @@ Plain-English definitions for terms used across this kit's methods, tied to a Ha
 
 **Privileged access.** An account with elevated rights, typically admin, that can change configuration or data beyond an ordinary user's reach. *Halden example: seven `admin`-role accounts in the sample review, each routed back to its app owner for re-approval.*
 
-**Dormant account.** An account with no recent login activity, a distinct access-review finding from an orphaned one, which is about ownership rather than activity. *Halden example: zero were found in the most recent export, though the review flags that the export window is too short to call this conclusive.*
+**Dormant account.** An account with no recent login activity. It is a different access-review finding from an orphaned account, which is about ownership. *Halden example: zero were found in the most recent export, though the review flags that the export window is too short to call this conclusive.*
 
-**Data provenance.** Where a system's data actually came from, necessary to know before its privacy or quality risk can be judged. *Halden example: `ai-intake`'s step 2 records this for each of the six AI systems; several aren't stated by the source CSV alone and are marked unverified.*
+**Data provenance.** Where a system's data came from, necessary to know before its privacy or quality risk can be judged. *Halden example: `ai-intake`'s step 2 records this for each of the six AI systems; several aren't stated by the source CSV alone and are marked unverified.*
 
 **Risk register.** A running, owned log of identified risks and their treatment, rather than a one-time note. *Halden example: AI-004's high-risk tiering gets a risk-register entry with HR as the named owner.*
 
@@ -76,7 +76,7 @@ Plain-English definitions for terms used across this kit's methods, tied to a Ha
 
 **Statement of applicability.** Your written list of which ITAM processes are in scope, with the reason each one is in or out. *Halden example: `sam-toolkit/statement-of-applicability.csv` is the blank list a program fills in.*
 
-**Tier.** One of the levels of practice that the standard describes, from keeping accurate data to broader management. Tiers are informative and optional; they help you say how far you aim. *Halden example: `sam-toolkit/tier-self-assessment.md` shows which tier a program meets.*
+**Tier.** One of the levels of practice that the standard describes, from keeping accurate data to broader management. Tiers are optional and informative, and help you say how far you aim. *Halden example: `sam-toolkit/tier-self-assessment.md` shows which tier a program meets.*
 
 **Notice deadline.** The last date to tell a vendor you will cancel or change a contract before it renews. It is the contract end date minus the notice days, and it matters more than the end date. *Halden example: `sam-toolkit/renewal-calendar.csv` computes it for each contract.*
 
