@@ -26,6 +26,14 @@ From `Makefile` (Python 3, run from the repo root; CI uses 3.12):
 - `agents/`: Claude agent files, copied to `dist/claude/agents` by the build. Currently `app-governance-agent.md`, a thin wrapper that loads the `app-governance` skill (`methods/app-governance/`), which holds the routing table. `case-studies/` is empty; the scan still covers it, and the case studies page is hand-kept in `site/`.
 - `dist/`, `site/`: generated output (plus some hand-kept pages in `site/`). Published via `.github/workflows/pages.yml` on pushes to `main`.
 
+## Site Style
+
+- Before you create or change any page in `site/`, any site copy, any CSS, or any generated page template in `build/agk/`, read `STYLE-GUIDE.md` and follow it.
+- Reuse its tokens and components. Do not add one-off colors, spacing or new patterns.
+- If the guide and a page disagree, flag it in the PR. Do not diverge silently.
+- When a change adds or alters a token, component or pattern, update `STYLE-GUIDE.md` in the same PR. `tests/test_style_guide.py` fails if the token list drifts.
+- The guide is public and MIT licensed, like the rest of the repo.
+
 ## Releases
 
 `release-please` (`.github/workflows/release-please.yml`) keeps a release PR open on `main`. Merging it bumps `version.txt` and the version line in `README.md`, updates `CHANGELOG.md`, and tags the release. The version lives in `.release-please-manifest.json` and `version.txt`; never edit them by hand. The bump follows the conventional-commit types (`feat` is a minor bump, `fix` a patch, `!` or `BREAKING CHANGE` a major bump; minor while below 1.0).
