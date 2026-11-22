@@ -876,6 +876,13 @@ PAGE = """<!DOCTYPE html>
 <a class="skip-link" href="#main">Skip to content</a>
 {header}
 <main id="main" class="doc-page">
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <ol>
+      <li><a href="{up}index.html">Home</a></li>
+      <li><a href="{back_href}">{back_label}</a></li>
+      <li><span aria-current="page">{title}</span></li>
+    </ol>
+  </nav>
   <div class="doc-top">
     <p class="doc-back"><a href="{back_href}">&larr; {back_label}</a></p>
     {print_button}
@@ -1280,7 +1287,7 @@ def collect(root: Path) -> list[Doc]:
             docs.append(Doc(f, "md", "practicum", name, back))
     lq = root / "dist" / "lifecycle-questions.md"
     if lq.is_file():
-        docs.append(Doc(lq, "md", "lifecycle", "questions", ("lifecycle.html", "Lifecycle")))
+        docs.append(Doc(lq, "md", "lifecycle", "questions", ("lifecycle.html", "Application lifecycle")))
     return docs
 
 

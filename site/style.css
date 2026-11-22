@@ -1676,6 +1676,30 @@ code {
   }
 }
 
+/* Breadcrumb: Home / Page */
+
+.breadcrumb ol {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  margin: 0 0 0.75rem;
+  padding: 0;
+  list-style: none;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.breadcrumb li + li::before {
+  content: "/";
+  margin-right: 0.25rem;
+}
+
+@media print {
+  .breadcrumb {
+    display: none;
+  }
+}
+
 /* Document pages (generated from the Markdown and CSV sources) */
 
 .doc-page .doc-back {

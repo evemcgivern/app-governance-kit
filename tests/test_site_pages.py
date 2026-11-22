@@ -141,5 +141,33 @@ class NavTests(unittest.TestCase):
             self.assertIn(f'id="{i}"', nav)
 
 
+class BreadcrumbTests(unittest.TestCase):
+    def test_top_level_pages_have_a_home_and_page_breadcrumb(self):
+        for name in INNER_PAGES:
+            html = read(name)
+            m = re.search(r'<nav class="breadcrumb" aria-label="Breadcrumb">(.*?)</nav>', html, re.S)
+            self.assertTrue(m, name)
+            items = re.findall(r"<li>(.*?)</li>", m.group(1), re.S)
+            self.assertEqual(len(items), 2, name)
+            self.assertIn('<a href="index.html">Home</a>', items[0])
+            self.assertRegex(items[1], r'^<span aria-current="page">[^<]+</span>$')
+
+    def test_home_page_has_no_breadcrumb(self):
+        self.assertNotIn("Breadcrumb", read("index.html"))
+
+    def test_back_link_is_kept_on_docs_pages(self):
+        html = (SITE / "docs" / "sam-toolkit" / "guide.html").read_text(encoding="utf-8")
+        self.assertIn('class="doc-back"', html)
+
+    def test_docs_pages_have_home_group_and_file_breadcrumb(self):
+        html = (SITE / "docs" / "sam-toolkit" / "guide.html").read_text(encoding="utf-8")
+        m = re.search(r'<nav class="breadcrumb" aria-label="Breadcrumb">(.*?)</nav>', html, re.S)
+        items = re.findall(r"<li>(.*?)</li>", m.group(1), re.S)
+        self.assertEqual(len(items), 3)
+        self.assertIn('<a href="../../index.html">Home</a>', items[0])
+        self.assertIn('<a href="../../sam-toolkit.html">SAM toolkit</a>', items[1])
+        self.assertRegex(items[2], r'^<span aria-current="page">[^<]+</span>$')
+
+
 if __name__ == "__main__":
     unittest.main()
