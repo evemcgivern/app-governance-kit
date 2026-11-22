@@ -1,5 +1,22 @@
 # Changelog
 
+## [0.6.0](https://github.com/evemcgivern/app-governance-kit/compare/app-governance-kit-v0.5.0...app-governance-kit-v0.6.0) (2026-11-22)
+
+
+### Features
+
+* **app-governance:** sharpen the agent and router ([#47](https://github.com/evemcgivern/app-governance-kit/issues/47)) ([fb932ee](https://github.com/evemcgivern/app-governance-kit/commit/fb932eeef16a376269078ca3f0200816aa3ce86a))
+* **sam-toolkit:** add an audit decision tree ([#50](https://github.com/evemcgivern/app-governance-kit/issues/50)) ([a41e386](https://github.com/evemcgivern/app-governance-kit/commit/a41e3864b76b687a0e439c039fe4eee430e9fdf9))
+* **sam-toolkit:** add playbook and policy kit ([#39](https://github.com/evemcgivern/app-governance-kit/issues/39)) ([99ceef0](https://github.com/evemcgivern/app-governance-kit/commit/99ceef07f54288034d2a9b6603e1225607880da9)), closes [#36](https://github.com/evemcgivern/app-governance-kit/issues/36)
+* **sam-toolkit:** tie every file to a step ([#48](https://github.com/evemcgivern/app-governance-kit/issues/48)) ([e62ee91](https://github.com/evemcgivern/app-governance-kit/commit/e62ee9105e80d6d1bf128ad35e86abc14b6dcc95))
+* **site:** clearer nav, titles, search files ([#45](https://github.com/evemcgivern/app-governance-kit/issues/45)) ([3de5dc8](https://github.com/evemcgivern/app-governance-kit/commit/3de5dc84b9ac2fb151d89c7282b5df6b13c7a9ee))
+* **site:** redesign pages and add a style guide ([#61](https://github.com/evemcgivern/app-governance-kit/issues/61)) ([433ae0e](https://github.com/evemcgivern/app-governance-kit/commit/433ae0e2ea6f8d9b1c6c93522fe08e59a1dbbd5b))
+
+
+### Bug Fixes
+
+* **site:** accessibility and mobile fixes ([#46](https://github.com/evemcgivern/app-governance-kit/issues/46)) ([b61efc4](https://github.com/evemcgivern/app-governance-kit/commit/b61efc4228e7cd27db598dd0514d5f6043cce922))
+
 ## [0.5.0](https://github.com/evemcgivern/app-governance-kit/compare/app-governance-kit-v0.4.0...app-governance-kit-v0.5.0) (2026-11-01)
 
 
