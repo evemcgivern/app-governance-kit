@@ -29,6 +29,8 @@ Clause references are to the shared crosswalk (`XW-` rows). Frequencies are prac
 | Yearly | Check the tier you meet [[XW-025]] | `tier-self-assessment.md` | Asset manager |
 | Yearly | Run an internal audit and management review [[XW-025]] | `audit-and-review-checklist.md` | Sponsor |
 | Yearly | Review the policy and the scope [[XW-003]] | `statement-of-applicability.csv` | Governance lead |
+| Yearly, and when a new rule is announced | What changed outside the company (laws, regulations, vendor terms)? Record what applies and who acts on it [[XW-003]] | `policy-lifecycle-sop.md` | Program owner and Legal |
+| Yearly | Update the one-page road map of outside factors named in the charter | `program-setup` method (`template.md`) | Governance lead |
 
 ## Events that start a task
 
@@ -40,6 +42,7 @@ Clause references are to the shared crosswalk (`XW-` rows). Frequencies are prac
 | A publisher sends an audit letter | Hand it to Legal at once; follow the audit method [[XW-004]] | `audit-response-roles.csv` |
 | An owner changes | Reassign, then re-confirm the business need [[XW-002]] | `asset-record.csv` |
 | A contract or its terms change | Review the affected applications [[XW-013]] | `contract-terms-check.csv` |
+| A new or changed law, regulation, or contract rule that touches how software is bought, used, or kept | Ask Legal what applies, and bring forward the review of the affected policy [[XW-003]] | `policy-lifecycle-sop.md` |
 | A merger or restructure happens | Re-run the self-assessment and the process maps [[XW-025]] | `application-management-self-assessment.md` |
 | A record is found missing | Log it with an owner and a date [[XW-020]] | `documentation-gaps-log.csv` |
 

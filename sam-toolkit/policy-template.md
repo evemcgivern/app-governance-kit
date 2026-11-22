@@ -118,7 +118,7 @@ Find your company's records retention schedule, or ask the records owner or lega
 | Approval records | | | | | |
 | Renewal notices | | | | | |
 
-Contracts here mean the contracts and terms that grant each entitlement. Audit records are those gathered for an audit. Discovery and usage reports are recorded as they stood on the day they ran.
+Contracts here mean the contracts and terms that grant each entitlement. Audit records are those gathered for an audit. Discovery and usage reports are recorded as they stood on the day they ran. Name where the backup copy of these records is kept and who can restore it.
 
 **Decision needed: records owner or counsel.** Have counsel review. This template sets no period.
 
@@ -149,6 +149,7 @@ Say how people learn the policy and how you know they understood it. Awareness c
 | How | [Channel and format] |
 | Acknowledgment | [How a person confirms they read it, and where the record is kept] |
 | Who checks | [Role that follows up on missing acknowledgments] |
+| Understood | [How the owner checks the policy was understood, for example a short quiz, a question in a team meeting, or a spot check of a few people, and where the result is recorded] |
 
 ## 10. Measures
 

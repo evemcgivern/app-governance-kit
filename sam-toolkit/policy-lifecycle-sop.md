@@ -25,11 +25,11 @@ Retirement follows `retirement-signoff-checklist.md` and, for devices, the `hard
 
 ## Frequency
 
-Each policy is reviewed at least yearly, and sooner when a trigger occurs: a vendor audit, a merger, a move to cloud, a change of sponsor, or a finding from an internal check.
+Each policy is reviewed at least yearly, and sooner when a trigger occurs: a vendor audit, a merger, a move to cloud, a change of sponsor, a finding from an internal check, or a new or changed law, regulation, or contract rule that touches how software is bought, used, or kept.
 
 ## Steps
 
-1. Before drafting, find the company's records retention schedule. If you cannot find it, ask the records owner or legal where it is written. For each record type below, note the rule, where it is written, who owns it, and how a legal hold is applied. Do not choose a period yourself. [[XW-020]]
+1. Before drafting, find the company's records retention schedule. If you cannot find it, ask the records owner or legal where it is written. For each record type below, note the rule, where it is written, who owns it, and how a legal hold is applied. Also name where the backup copy of these records is kept and who can restore it. Do not choose a period yourself. [[XW-020]]
    - Proofs of entitlement, with the contracts and terms that grant them.
    - Orders and invoices.
    - Audit correspondence and records gathered for an audit.
@@ -44,7 +44,7 @@ Each policy is reviewed at least yearly, and sooner when a trigger occurs: a ven
 6. Counsel reviews the enforcement wording and any retention period. **Decision needed:** counsel [[XW-020]]
 7. The sponsor approves, and the approval is dated and filed. **Decision needed:** sponsor [[XW-027]]
 8. The owner publishes the approved version, with its version number, in one controlled location [[XW-020]] [[XW-030]]
-9. The owner communicates it, trains the people it binds, and records each acknowledgment [[XW-004]] [[XW-030]]
+9. The owner communicates it, trains the people it binds, records each acknowledgment, and checks that people understood it, for example with a short quiz, a question in a team meeting, or a spot check of a few people, and records the result [[XW-004]] [[XW-030]]
 10. Exceptions are logged in `authorization-log.csv` with an approver and an end date, and each is reviewed at expiry [[XW-009]] [[XW-019]]
 11. The owner reviews the policy yearly or on a trigger, and records the result even when nothing changes [[XW-025]]
 12. When a version is replaced, the owner withdraws the old one and keeps it in the archive with its dates [[XW-020]]

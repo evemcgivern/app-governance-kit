@@ -43,6 +43,7 @@ Each step gives the reason in one line, the files to use, the matching prompt in
 - Done when:
   - [ ] A named sponsor has agreed, in writing, one sentence on the problem you are solving.
   - [ ] A one-page charter names the sponsor, the small group, what the group decides, and where disputes go. [[XW-004]]
+  - [ ] The charter names the outside factors that will shape the next year, such as laws, vendor changes, mergers, and new platforms, and you update that one-page road map each year.
   - [ ] Your customers and what they expect from you are listed in `customer-expectations.csv`.
 - Time (expert judgment, not measured): 6 to 12 hours of effort over 2 to 6 weeks. It runs long on the sponsor's calendar and on getting the written agreement.
 - Related: [exercise 01: Program setup](../practicum/01-program-setup.md); [glossary](../field-guide/glossary.md): Sponsor, Governance council, Decision rights.
@@ -102,6 +103,7 @@ Read this before step 4 if any of these is true.
 - Done when:
   - [ ] Each policy in your set has an owner and an approver named by role. [[XW-004]]
   - [ ] Each draft passed `policy-checklist.md`, and counsel reviewed the penalty wording and any retention period.
+  - [ ] HR and Legal reviewed each draft before the executive approved it.
   - [ ] The sponsor approved each policy, dated, and it is published in one versioned place. [[XW-020]]
   - [ ] Exceptions go to `authorization-log.csv` with an approver and an end date. [[XW-019]]
 - Time (expert judgment, not measured): 30 to 60 hours of effort over 2 to 4 months. Most of the wait is for counsel, consultation, and approval rounds.
@@ -128,6 +130,7 @@ Read this before step 4 if any of these is true.
   - [ ] Each product of your largest publishers has proof, or a gap in `documentation-gaps-log.csv` with an owner and a date. [[XW-020]]
   - [ ] `license-position.csv` compares use with the proven entitlement in the contract's license metric.
   - [ ] Unclear contract terms are listed in `contract-terms-check.csv` and sent to counsel. [[XW-013]]
+  - [ ] Your proofs and contracts live in one controlled place with a named owner and a backup copy.
   - [ ] You know your company's record retention rule for contracts, invoices, proofs of entitlement, and records gathered for an audit, where it is written, and who owns it. [[XW-020]]
 - Time (expert judgment, not measured): 15 to 40 hours of effort per publisher, or 60 to 150 hours for the top three to five publishers, over 2 to 6 months. Proofs go missing, reseller records are thin, and core or virtualization licensing terms take time to work out.
 - Related: [exercise 08: Audit response](../practicum/08-audit-response.md); case study [Audit response](../site/case-studies.html#case-audit-response); [glossary](../field-guide/glossary.md): License metric, Proof of purchase, True-up.
@@ -198,6 +201,7 @@ Events that should start work even when nothing is due:
 - A price-increase notice.
 - A mass hire or a layoff.
 - A merger, a new sponsor, or a new owner for a large application.
+- A new or changed law, regulation, or contract rule that touches how software is bought, used, or kept.
 
 ## Is it working?
 

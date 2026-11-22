@@ -185,6 +185,40 @@ class HandKeptPageTests(unittest.TestCase):
                     self.assertNotIn(stem, files, r["key"])
 
 
+class OutsideFactorsTests(unittest.TestCase):
+    def read(self, name):
+        return (TOOLKIT / name).read_text(encoding="utf-8")
+
+    def test_outside_rule_changes_start_work_and_bring_a_review_forward(self):
+        trigger = "a new or changed law, regulation, or contract rule that touches how software is bought, used, or kept"
+        self.assertIn(trigger, self.read("policy-lifecycle-sop.md"))
+        self.assertIn(trigger[0].upper() + trigger[1:], self.read("itam-program-playbook.md"))
+        cal = self.read("operating-calendar.md")
+        self.assertIn("What changed outside the company (laws, regulations, vendor terms)?", cal)
+        self.assertIn("Update the one-page road map", cal)
+        self.assertIn(trigger[0].upper() + trigger[1:], cal)
+
+    def test_understanding_is_checked_in_all_four_places(self):
+        for name in ("policy-checklist.md", "policy-template.md", "policy-lifecycle-sop.md",
+                     "resources-and-training-plan.md"):
+            self.assertIn("understood", self.read(name), name)
+
+    def test_checklist_still_has_seventeen_items(self):
+        items = [l for l in self.read("policy-checklist.md").splitlines() if l.startswith("| P")]
+        self.assertEqual(len(items), 17)
+
+    def test_hr_and_legal_review_in_playbook_and_sop(self):
+        self.assertIn("HR and Legal reviewed each draft before the executive approved it",
+                      self.read("itam-program-playbook.md"))
+        self.assertIn("HR", self.read("policy-lifecycle-sop.md").split("2. The owner drafts")[1].split("\n")[1])
+
+    def test_backup_copy_is_named_for_proofs_and_contracts(self):
+        self.assertIn("Your proofs and contracts live in one controlled place with a named owner and a backup copy",
+                      self.read("itam-program-playbook.md"))
+        for name in ("policy-template.md", "policy-lifecycle-sop.md"):
+            self.assertIn("where the backup copy", self.read(name), name)
+
+
 class PlaybookAndCalendarTests(unittest.TestCase):
     def setUp(self):
         self.play = (TOOLKIT / "itam-program-playbook.md").read_text(encoding="utf-8")

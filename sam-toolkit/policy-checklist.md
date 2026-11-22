@@ -33,7 +33,7 @@ Clause references are to ISO/IEC 19770-1:2017 (paraphrased) and to the shared cr
 | --- | --- | --- | --- |
 | P12 | Is it published in a controlled, versioned location, with older versions withdrawn? [[XW-020]] [[XW-030]] (7.6.5) | | |
 | P13 | Does a communication plan say what, when, to whom, and how? [[XW-030]] (7.4) | | |
-| P14 | Does awareness go beyond onboarding, with acknowledgments tracked? [[XW-030]] (7.3) | | |
+| P14 | Does awareness go beyond onboarding, with acknowledgments tracked and a check that people understood the policy, recorded? [[XW-030]] (7.3) | | |
 
 ## Part 4: Review and approval
 
