@@ -62,9 +62,28 @@ class AuditTreeTests(unittest.TestCase):
 
     def test_flags_match_the_legend(self):
         for node, body in nodes().items():
+            one = r"(?:DN \([^)]+\)|FREEZE|ORIG)"
             for flag in re.findall(r"^- Flags?: (.+)$", body, re.M):
-                for part in flag.rstrip(".").split("; "):
-                    self.assertRegex(part, r"^(DN \([^)]+\)|FREEZE|ORIG)$", node)
+                self.assertRegex(flag, rf"^{one}(?:; {one})*\.$", node)
+
+    def test_counsel_nodes_carry_a_decision_flag(self):
+        body = nodes()
+        for node in ("C4", "C7", "C11", "D4", "D5"):
+            self.assertIn("DN (counsel", body[node], node)
+
+    def test_a_publisher_goes_to_c1_from_node_2(self):
+        self.assertRegex(nodes()["2"], r"publisher[^\n]*go to \[node C1\]")
+
+    def test_freeze_legend_names_the_exception_once(self):
+        text = TREE.read_text(encoding="utf-8")
+        legend = text.split("- **FREEZE**", 1)[1].split("- **ORIG**", 1)[0]
+        self.assertEqual(legend.count("for any exception"), 1)
+        self.assertNotIn("Counsel decides any exception", legend)
+        self.assertIn("until counsel closes it at D5", text)
+
+    def test_internal_auditors_path_stops_without_agreement(self):
+        self.assertIn("share nothing", nodes()["F1"])
+        self.assertIn("Do not go on to node B5", nodes()["B4"])
 
     def test_no_em_dash(self):
         self.assertNotIn("—", TREE.read_text(encoding="utf-8"))

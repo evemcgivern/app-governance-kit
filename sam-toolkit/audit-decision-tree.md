@@ -22,10 +22,10 @@ Each node carries one label.
 - **Judgment.** A person weighs the facts. The kit offers a default.
 - **Counsel decision.** Legal decides. The kit only asks the question.
 
-A node can also carry a flag.
+A node can also carry a flag. A notice is open from a Yes at node 1 until counsel closes it at D5.
 
 - **DN** means Decision needed. The names after it say who decides.
-- **FREEZE** means nothing in scope is deleted, reconfigured, or bought once a notice is open. Counsel decides any exception. Once a notice is open, keep every record as it stands: proofs, contracts, discovery output, emails and notes. Do not delete, edit or back-date any of them. Fix an error by adding a dated note, never by overwriting. **Decision needed: counsel**, for any exception.
+- **FREEZE** means nothing in scope is deleted, reconfigured, reassigned, or bought. Once a notice is open, keep every record as it stands: proofs, contracts, discovery output, emails and notes. Do not delete, edit or back-date any of them. Fix an error by adding a dated note, never by overwriting. **Decision needed: counsel**, for any exception.
 - **ORIG** means originals stay in house. The team works from copies.
 
 ## Jump to a node
@@ -53,10 +53,11 @@ A node can also carry a flag.
 
 **Is someone asking you for a license position?**
 
-- A publisher, with no letter: go to [node B1](#node-b1).
+- A publisher or its agent, even with no letter: go to [node C1](#node-c1).
+- Your own leaders, or a self-check you planned: go to [node B1](#node-b1).
 - Internal or financial auditors: go to [node F1](#node-f1).
 - No one: go to [node 3](#node-3).
-- If you cannot tell which kind of auditors are asking, ask them. If no answer comes, go to [node B1](#node-b1).
+- If you cannot tell which kind of auditors are asking, ask them. If no answer comes and no publisher has been in touch, go to [node B1](#node-b1).
 - Who acts: the asset manager asks; Legal hears the answer.
 - Open: no kit file yet.
 - Label: kit rule.
@@ -130,7 +131,8 @@ A node can also carry a flag.
 
 **Counted in the contract's own unit, is the position short, even, or over?**
 
-- Short: go to [node B5](#node-b5).
+- You came from [node F1](#node-f1) (internal or financial auditors asked): send the result back to counsel and Finance, whatever it is. Do not go on to node B5.
+- Otherwise, short: go to [node B5](#node-b5).
 - Even: go to [node A1](#node-a1).
 - Over: offer the `rationalization` method afterward for licenses nobody uses, then go to [node A1](#node-a1).
 - Who acts: the asset manager.
@@ -154,7 +156,7 @@ A node can also carry a flag.
 
 **Does Legal have it today?**
 
-- No: forward it to Legal now. Reply to no one. Then go to [node C2](#node-c2).
+- No: forward it to Legal now. Reply to no one. Note the reply deadline in the case file, then go to [node C2](#node-c2).
 - Yes: note the reply deadline in the case file and go to [node C2](#node-c2).
 - Who acts: whoever holds the letter; Legal receives it.
 - Open: `audit-response-roles.csv`.
@@ -189,6 +191,7 @@ Once a notice is open, keep every record as it stands: proofs, contracts, discov
 - Who acts: Legal, with the contract owner supplying the agreement.
 - Open: `contract-terms-check.csv`.
 - Label: counsel decision.
+- Flag: DN (counsel; the contract owner supplies the terms).
 
 ### Node C5
 
@@ -218,11 +221,11 @@ Once a notice is open, keep every record as it stands: proofs, contracts, discov
 - Who acts: IT security reviews; Legal decides.
 - Open: no kit file yet.
 - Label: counsel decision.
-- Flag: FREEZE.
+- Flags: FREEZE; DN (counsel).
 
 ### Node C8
 
-**Gather the evidence counsel scoped.** Collect proofs of any age (an old proof can still back current use), contracts, and payment records. Existing discovery reports are fine to use. Installing a new agent is a system change, and counsel must agree first. The team works from copies.
+**Gather the evidence counsel scoped.** Collect proofs of any age (an old proof can still back current use), contracts, and payment records. Existing discovery reports are fine to use, and scheduled scans may continue. New agents or a wider scope need counsel first. The team works from copies.
 
 - Go to [node C9](#node-c9).
 - Who acts: Procurement and the asset manager find proofs; the technical lead supplies discovery output; the finance contact finds payment records.
@@ -257,6 +260,7 @@ Once a notice is open, keep every record as it stands: proofs, contracts, discov
 - Who acts: Legal.
 - Open: no kit file yet.
 - Label: counsel decision.
+- Flag: DN (counsel).
 
 ## Findings and close
 
@@ -265,7 +269,7 @@ Once a notice is open, keep every record as it stands: proofs, contracts, discov
 **Have findings arrived?**
 
 - Yes: go to [node D2](#node-d2).
-- No: keep the freeze. All contact goes through counsel. Check again when counsel hears anything.
+- No: keep the freeze. All contact goes through counsel. Go back to [node D1](#node-d1) when counsel hears anything.
 - Who acts: Legal receives; the asset manager keeps the case file current.
 - Open: no kit file yet.
 - Label: kit rule.
@@ -281,7 +285,7 @@ Once a notice is open, keep every record as it stands: proofs, contracts, discov
 
 ### Node D3
 
-**True-up, purchase, or settlement?** Settling does not by itself end every claim. Counsel says what a settlement does and does not cover.
+**True-up, purchase, or settlement?** Ask counsel what a settlement or true-up covers and what it leaves open.
 
 - Counsel, the contract owner, and Finance decide. Go to [node D4](#node-d4).
 - Who acts: the executive sponsor with counsel.
@@ -297,6 +301,7 @@ Once a notice is open, keep every record as it stands: proofs, contracts, discov
 - Who acts: Legal names the duties; the asset manager calendars them.
 - Open: `renewal-calendar.csv`, which holds dated obligations for contracts.
 - Label: counsel decision.
+- Flag: DN (counsel).
 
 ### Node D5
 
@@ -307,10 +312,11 @@ Once a notice is open, keep every record as it stands: proofs, contracts, discov
 - Who acts: Legal.
 - Open: no kit file yet.
 - Label: counsel decision.
+- Flag: DN (counsel).
 
 ### Node E1
 
-**Learn from it.** Hold a lessons-learned review. Send fixes through change control. Update the roles, the renewal calendar, the gaps log, and the contract terms. Expect the auditor to return.
+**Learn from it.** Hold a lessons-learned review. Send fixes through change control. Update the roles, the renewal calendar, the gaps log, and the contract terms. Plan for a follow-up review.
 
 - Then go to [node A1](#node-a1).
 - Who acts: the asset manager, with the executive sponsor.
@@ -323,7 +329,8 @@ Once a notice is open, keep every record as it stands: proofs, contracts, discov
 
 **Internal or financial auditors have asked for a license position.** Ask which auditors they are and whether the request is part of the financial audit. Tell counsel and Finance before sharing anything. Build the position through nodes B2 to B4. Release only what they approve.
 
-- Counsel and Finance agree. Then go to [node B2](#node-b2).
+- Counsel and Finance agree: go to [node B2](#node-b2).
+- Counsel or Finance does not agree: stop and share nothing.
 - Who acts: the asset manager asks; Legal and Finance approve.
 - Open: `license-position.csv` and `audit-response-roles.csv`.
 - Label: counsel decision.
