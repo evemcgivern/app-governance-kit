@@ -295,7 +295,7 @@ class PracticumTests(unittest.TestCase):
 
     def test_result_regions_stay_in_the_page_and_empty(self):
         regions = re.findall(r'<div class="pr-result"[^>]*>', self.src)
-        self.assertEqual(len(regions), 8)
+        self.assertEqual(len(regions), 9)
         for tag in regions:
             self.assertIn('role="status"', tag)
             self.assertNotIn("hidden", tag)

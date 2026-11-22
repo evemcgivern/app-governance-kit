@@ -20,7 +20,7 @@ The site lists the rest in this order:
 1. [ITAM program playbook](https://evemcgivern.github.io/app-governance-kit/docs/sam-toolkit/itam-program-playbook.html): the ten steps.
 2. [SAM toolkit](https://evemcgivern.github.io/app-governance-kit/sam-toolkit.html): forty-one templates and checklists the playbook points to.
 3. [AI skills](https://evemcgivern.github.io/app-governance-kit/tools.html): the nine tools below, as skills for Claude, Codex, and Copilot.
-4. [Practicum](https://evemcgivern.github.io/app-governance-kit/practicum.html): eight exercises to work by hand on fictional data.
+4. [Practicum](https://evemcgivern.github.io/app-governance-kit/practicum.html): nine exercises to work by hand on fictional data.
 5. Then the [Field guide](https://evemcgivern.github.io/app-governance-kit/field-guide.html), the [case studies](https://evemcgivern.github.io/app-governance-kit/case-studies.html), the [application lifecycle](https://evemcgivern.github.io/app-governance-kit/lifecycle.html), the [crosswalk explorer](https://evemcgivern.github.io/app-governance-kit/crosswalk.html), and [themes by stage](https://evemcgivern.github.io/app-governance-kit/impact-map.html).
 
 ## The nine tools
