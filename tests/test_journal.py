@@ -2,7 +2,13 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from agk.journal import JournalError, Post, STATUS_LABELS, load_posts, parse_front_matter, parse_post
+import re
+
+from agk.journal import (JournalError, Post, STATUS_LABELS, load_posts, parse_front_matter, parse_post,
+                        render_index, render_post)
+
+ROOT = Path(__file__).resolve().parent.parent
+INDEX_HTML = (ROOT / "site" / "index.html").read_text(encoding="utf-8")
 
 DEFAULTS = {
     "title": "A post",
@@ -113,6 +119,76 @@ class PostTests(unittest.TestCase):
 
     def test_missing_directory_gives_no_posts(self):
         self.assertEqual(load_posts(self.dir / "nope"), [])
+
+
+def make_post(slug="governance-without-the-groan", title="Governance without the groan", date="2026-12-01",
+              updated=None, status="field-note", summary="One sentence.", spine=False,
+              body="Hello **world**.\n\nSecond paragraph.\n") -> Post:
+    return Post(slug=slug, title=title, date=date, updated=updated, status=status, summary=summary, spine=spine,
+                body=body, path=Path(f"{date}-{slug}.md"))
+
+
+def json_ld(html: str) -> str:
+    return re.search(r'<script type="application/ld\+json">\n(.*?)\n</script>', html, re.S).group(1)
+
+
+class RenderTests(unittest.TestCase):
+    def test_post_page_has_the_expected_parts(self):
+        html = render_post(make_post(), INDEX_HTML)
+        self.assertIn("<h1>Governance without the groan</h1>", html)
+        self.assertIn("Field note", html)
+        self.assertIn("2026-12-01", html)
+        self.assertIn("<strong>world</strong>", html)
+        self.assertIn("MIT licensed, like the kit.", html)
+        self.assertIn('<a href="../journal.html">&larr; Journal</a>', html)
+        self.assertIn('href="https://evemcgivern.github.io/app-governance-kit/journal/governance-without-the-groan.html"',
+                      html)
+        ld = json_ld(html)
+        self.assertIn('"@type": "BlogPosting"', ld)
+        self.assertIn('"datePublished": "2026-12-01"', ld)
+        self.assertIn('"dateModified": "2026-12-01"', ld)
+        self.assertIn('"license": "https://opensource.org/licenses/MIT"', ld)
+        self.assertNotIn("Updated", html)
+
+    def test_updated_date_is_shown_and_used(self):
+        html = render_post(make_post(updated="2026-12-15"), INDEX_HTML)
+        self.assertIn("Updated 2026-12-15", html)
+        self.assertIn('"dateModified": "2026-12-15"', json_ld(html))
+
+    def test_title_and_summary_are_escaped(self):
+        html = render_post(make_post(title='A <b> & "c" </script>', summary='Sum <i> & "d"'), INDEX_HTML)
+        self.assertIn("<h1>A &lt;b&gt; &amp; &quot;c&quot; &lt;/script&gt;</h1>", html)
+        self.assertIn('content="Sum &lt;i&gt; &amp; &quot;d&quot;"', html)
+        self.assertNotIn("</", json_ld(html))
+
+    def test_index_lists_spine_first_then_newest(self):
+        posts = [make_post(slug="p-one", title="P one", date="2026-12-15"),
+                 make_post(slug="p-two", title="P two", date="2026-12-01"),
+                 make_post(slug="study-path", title="The study path", date="2026-11-01", status="study-path",
+                           spine=True)]
+        html = render_index(posts, INDEX_HTML)
+        self.assertIn("Field notes on setting up asset management, as I learn it.", html)
+        self.assertLess(html.index("Start here"), html.index("The study path"))
+        self.assertLess(html.index("The study path"), html.index("Newest first"))
+        self.assertLess(html.index("P one"), html.index("P two"))
+        self.assertEqual(html.count("journal/study-path.html"), 1)  # listed once, not again under Newest first
+        self.assertIn('href="journal/p-one.html"', html)
+
+    def test_index_without_a_spine_post_has_no_start_here(self):
+        html = render_index([make_post(slug="p-one", title="P one")], INDEX_HTML)
+        self.assertNotIn("Start here", html)
+        self.assertIn("Newest first", html)
+        self.assertIn("P one", html)
+
+    def test_preview_adds_banner_and_noindex(self):
+        for render, args in ((render_post, (make_post(),)), (render_index, ([make_post()],))):
+            with self.subTest(render=render.__name__):
+                preview = render(*args, INDEX_HTML, preview=True)
+                self.assertIn("Draft, not published", preview)
+                self.assertIn('<meta name="robots" content="noindex">', preview)
+                normal = render(*args, INDEX_HTML)
+                self.assertNotIn("Draft, not published", normal)
+                self.assertNotIn('name="robots"', normal)
 
 
 if __name__ == "__main__":
