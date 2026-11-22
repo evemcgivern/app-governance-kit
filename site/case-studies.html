@@ -103,15 +103,15 @@
   </nav>
   <section class="hero">
     <h1>Case studies</h1>
-    <p class="meta"><strong>See it done.</strong> Want to do it yourself on fictional data? Work the <a href="practicum.html">practicum</a>. <a href="practicum.html#about-the-demo-company">About the demo company</a>.</p>
+    <p class="meta"><strong>See it done</strong> here, or work the <a href="practicum.html">practicum</a> yourself on fictional data. <a href="practicum.html#about-the-demo-company">About the demo company</a>.</p>
     <p class="positioning prose-wide">Six worked examples, all on Halden Logistics, a fictional company. Nobody here is a real client, and none of these outcomes happened. Each one runs the kit's own demo data through a tool or template, so you can check every number against the files, and each ends with how you would prove the benefit.</p>
   </section>
 
   <section aria-labelledby="how-to-read-heading">
     <h2 id="how-to-read-heading">How to read these</h2>
-    <p class="prose">These are worked examples, not client case studies. Halden is a fictional company, and its data lives in this repo's <a href="https://github.com/evemcgivern/app-governance-kit/tree/main/demo-estate">demo estate</a>, with problems planted on purpose. Each case covers what the records showed, what the kit's tool did with them, which decisions stayed with people, and what a real team would still have to check before trusting the result.</p>
+    <p class="prose">Halden is a fictional company, and its data lives in this repo's <a href="https://github.com/evemcgivern/app-governance-kit/tree/main/demo-estate">demo estate</a>, with problems planted on purpose. Each case covers what the records showed, what the kit's tool did with them, which decisions stayed with people, and what a real team would still have to check before trusting the result.</p>
     <p class="prose">Every point where a person decides is marked <strong>Decision needed:</strong>, the same way the tools mark it. Nothing here is legal advice; contract and audit questions go to counsel. Each case links to its tool card, the full Halden example the tool produced, and the matching practicum exercise. Work the exercise by hand first if you want an honest test of yourself, then compare.</p>
-    <p class="prose">Each case ends with how you would prove the benefit. The rules are the same every time. Measure a baseline from the files on a named date. Count a benefit only after you measure again and keep the evidence. Keep forecasts apart from achieved results, and net out any cost the change adds. Write Not found where the files hold no figure. Halden's outcomes are illustrative, because the company is fictional; the method is what carries over to your own estate.</p>
+    <p class="prose">Each case ends with how you would prove the benefit: measure a baseline from the files on a named date, measure again later and keep the evidence, and net out any cost the change adds. Forecasts stay apart from achieved results. Write Not found where the files hold no figure. Halden's outcomes are illustrative.</p>
     <ul class="link-list">
       <li><a href="#case-audit-response">Audit response: a publisher letter and what the records could prove</a></li>
       <li><a href="#case-ai-intake">Tiering an AI use case: the CV ranking tool</a></li>
@@ -125,7 +125,7 @@
   <section id="case-audit-response" aria-labelledby="case-audit-response-heading">
     <h2 id="case-audit-response-heading">Audit response: a publisher letter and what the records could prove</h2>
     <p class="case-step">This is what step 3 and step 8 output looks like.</p>
-    <p class="prose">The short answer, before anyone replied: even counts on paper for Shapewise and both Cellmate versions, 17 named users short on Taskmoor, three proofs needing repair and one needing an explanation. The records could not settle whether the publisher holds an audit right at all; that belongs to counsel.</p>
+    <p class="prose">Counts are even on paper for Shapewise and both Cellmate versions. Taskmoor is 17 named users short, three proofs needing repair and one needing an explanation. The records could not settle whether the publisher holds an audit right at all; that belongs to counsel.</p>
 
     <h3>The situation</h3>
     <p class="prose">Brightvale Software Group wrote to Halden on 2026-08-24 about three product lines it bought from Mosswood Software in 2025: Taskmoor, Shapewise, and Cellmate. It asks for installs at every Halden group company in any country, records back to 2019, proof of purchase, a device-level list with user names, and a reply within 30 days. General counsel asks the asset manager what the records can prove before anyone replies.</p>
@@ -153,7 +153,7 @@
       <li><strong>Baseline in the files:</strong> 2 of 6 proofs have no open issue (three need repair, one needs an explanation), and Taskmoor is 17 named users short.</li>
       <li><strong>Target:</strong> 6 of 6 proofs complete and accepted, and a Taskmoor position that is even or explained.</li>
       <li><strong>Evidence to keep:</strong> The located buyer name, payment record, and version 1 purchase; the reconciliation per product and version; and counsel's decisions on what was released.</li>
-      <li><strong>Forecast or achieved:</strong> Not yet proven. Any cost avoided by answering from prepared evidence is Not found in the files, so no money figure is claimed. The measure is the share of proofs that stand up.</li>
+      <li><strong>Forecast or achieved:</strong> Not yet proven. Any cost avoided by answering from prepared evidence is Not found in the files. The measure is the share of proofs that stand up.</li>
     </ul>
     <p class="prose">Record it in the <a href="docs/sam-toolkit/benefits-tracker.html">benefits tracker</a> and measure again after the change.</p>
 
@@ -171,7 +171,7 @@
   <section id="case-ai-intake" aria-labelledby="case-ai-intake-heading">
     <h2 id="case-ai-intake-heading">Tiering an AI use case: the CV ranking tool</h2>
     <p class="case-step">This is what step 6 and step 9 output looks like.</p>
-    <p class="prose">AI-004, an HR tool that ranks job applicants' CVs, was the only one of Halden's six AI systems tiered high-risk. Review changed the legal detail around it, not the tier.</p>
+    <p class="prose">AI-004, an HR tool that ranks job applicants' CVs, was the only one of Halden's six AI systems tiered high-risk. Review changed the legal detail; the tier stayed high-risk.</p>
 
     <h3>The situation</h3>
     <p class="prose">Halden has six AI systems with six different owners, and nobody has ever tiered any of them for risk. The AI governance board is about to meet for the first time, and someone has to say which system, if any, must stop for legal review first. The inventory gives each system an id, an owner, and one line of description. That's all.</p>
@@ -183,7 +183,7 @@
     <p class="prose">The AI intake tool restated each use case, checked prohibited practices first, then the high-risk areas. Ranking job applicants is an employment use, and employment is one of those areas. The tool weighed the exception for narrow procedural tasks and rejected it, because ranking applicants is profiling people. Result: high-risk, legal review before approval. On top of the baseline every system gets, it required recruiters who can override rankings and see who wasn't shortlisted, notice to applicants, bias and accuracy monitoring, kept logs, supplier conformity evidence, a data protection impact assessment, and a risk register entry owned by the Head of HR. The chatbot came out limited-risk because it talks to the public; the other four came out minimal.</p>
 
     <h3>The decisions that stayed with people</h3>
-    <p class="prose">A reviewer read the output on 2026-09-24 and corrected three things. The tool had treated a change to the high-risk deadline as a pending proposal when it had already been adopted. It named the wrong party as bound by the chatbot disclosure duty. And it cited a whole article where one paragraph applied. None of that moved the tier, which came from what the system does. All of it is legal detail, which is why legal review is on the list.</p>
+    <p class="prose">A reviewer read the output on 2026-09-24 and corrected three things. The tool had treated a change to the high-risk deadline as a pending proposal when it had already been adopted. It named the wrong party as bound by the chatbot disclosure duty. And it cited a whole article where one paragraph applied. None of that moved the tier, which came from what the system does. It is all legal detail, which is why legal review is on the list.</p>
     <ul class="prose">
       <li><strong>Decision needed:</strong> legal review. Confirm the tier, whether Halden is a deployer or a provider, that no emotion-recognition or biometric feature exists, and when the obligations apply.</li>
       <li><strong>Decision needed:</strong> approval with a named approver. Nothing deploys before both legal review and approval.</li>
@@ -199,7 +199,7 @@
       <li><strong>Baseline in the files:</strong> 6 of 6 systems have a named owner. 0 of 6 have a tier.</li>
       <li><strong>Target:</strong> 6 of 6 tiered, with legal review and a named approver recorded for AI-004 before it is approved.</li>
       <li><strong>Evidence to keep:</strong> The inventory rows with tier, date and reviewer; the legal review record; the approval; and the risk register entry for AI-004.</li>
-      <li><strong>Forecast or achieved:</strong> A risk benefit, not a money one. No cost figure is claimed, and none is Found in the files.</li>
+      <li><strong>Forecast or achieved:</strong> A risk benefit. The files hold no cost figure.</li>
     </ul>
     <p class="prose">Record it in the <a href="docs/sam-toolkit/benefits-tracker.html">benefits tracker</a> and measure again after the change.</p>
 
@@ -216,7 +216,7 @@
   <section id="case-rationalization" aria-labelledby="case-rationalization-heading">
     <h2 id="case-rationalization-heading">Rationalization: two transport systems, one job</h2>
     <p class="case-step">This case is beyond the ten steps.</p>
-    <p class="prose">Halden runs two transport management systems. The tool recommended keeping Routesmith and retiring Routewise, and put the savings across all five duplicate pairs at $250,000 to $355,400 a year. That range is a forecast, not money in the bank.</p>
+    <p class="prose">Halden runs two transport management systems. The tool recommended keeping Routesmith and retiring Routewise, and put the savings across all five duplicate pairs at $250,000 to $355,400 a year. That range is a forecast.</p>
 
     <h3>The situation</h3>
     <p class="prose">Finance wants a savings estimate for next year's budget cycle. The CIO wants to know which applications duplicate each other before that number goes anywhere. The inputs are an inventory of 60 applications (category, annual cost, users, data sensitivity) and a license file with one license per application, its entitlements, its expiry, and the date it was checked, 2026-09-01.</p>
@@ -332,7 +332,7 @@
       <li><strong>Baseline in the files:</strong> 8 of 10 (80%) on 2026-09-01.</li>
       <li><strong>Target:</strong> 10 of 10, with a certificate or wipe record filed for each, before any device is closed out.</li>
       <li><strong>Evidence to keep:</strong> The wipe or destruction certificate for each device, matched to its device ID, and the retirement sign-off checklist with each function's confirmation.</li>
-      <li><strong>Forecast or achieved:</strong> A risk benefit. No money figure is claimed. The benefit is that every retired device can be shown to be clean.</li>
+      <li><strong>Forecast or achieved:</strong> A risk benefit: every retired device can be shown to be clean.</li>
     </ul>
     <p class="prose">Record it in the <a href="docs/sam-toolkit/benefits-tracker.html">benefits tracker</a> and measure again after the change.</p>
 
@@ -355,7 +355,7 @@
     <p class="prose">A new governance lead has to give the sponsor a plan. Halden's own maturity answers claim scores of 3 for governance and inventory and 4 for vendor and cost management, with no evidence recorded beside any of them. The lead scores the program again, using the demo files as the evidence.</p>
 
     <h3>What the records showed</h3>
-    <p class="prose">The draft policy names no accountable role and sets no review cycle. The inventory has no owner column. The license file has no notice or auto-renew fields, and 2 of 60 licenses have expired. 2 of 10 retired devices have no wipe confirmation. The draft council charter names no sponsor. Each of these is a fact in the files, not a judgment.</p>
+    <p class="prose">The draft policy names no accountable role and sets no review cycle. The inventory has no owner column. The license file has no notice or auto-renew fields, and 2 of 60 licenses have expired. 2 of 10 retired devices have no wipe confirmation. The draft council charter names no sponsor.</p>
 
     <h3>What the tool did</h3>
     <p class="prose">The self-assessment applies one rule: if you cannot show the evidence for a level, score one level lower. Policy, owners, inventory, intake, licenses, cost, risk, retirement and communication score 1; lifecycle review and measures score 0. Setting the target at 2 for every dimension, with a reason, gives a gap of 13 points. The plan puts policy, renewals and retirement first, due 2026-12-31; owners, inventory, cost and AI risk next, due 2027-03-31; and intake, lifecycle, measures and communication last, due 2027-06-30.</p>
@@ -368,7 +368,7 @@
     </ul>
 
     <h3>What a real team would still check</h3>
-    <p class="prose">These scores come from reading files, not from talking to the people who do the work, so a real team would redo them together. The scale is this kit's own and is not the same as the maturity check's scale. And a target is a choice, not a fact.</p>
+    <p class="prose">These scores come from reading files, not from talking to the people who do the work, so a real team would redo them together. The scale is this kit's own and is not the same as the maturity check's scale.</p>
 
     <h3>The benefit, and how to prove it</h3>
     <ul class="prose">
@@ -376,7 +376,7 @@
       <li><strong>Baseline in the files:</strong> 13 points on 2026-09-01 (two dimensions at 0, nine at 1, all targeted at 2).</li>
       <li><strong>Target:</strong> 0 by 2027-06-30, re-scored with evidence for each level, not by self-rating.</li>
       <li><strong>Evidence to keep:</strong> The evidence for each level you claim: the approved policy, the owner field, the renewal calendar, the filed wipe records, the first leadership report.</li>
-      <li><strong>Forecast or achieved:</strong> A risk and effort measure. It shows movement, not money. Pair it with the renewal, retirement and savings measures above for money and risk figures.</li>
+      <li><strong>Forecast or achieved:</strong> A risk and effort measure. It measures movement against the target. Pair it with the renewal, retirement and savings measures above for money and risk figures.</li>
     </ul>
     <p class="prose">Record it in the <a href="docs/sam-toolkit/benefits-tracker.html">benefits tracker</a> and measure again after the change.</p>
 
@@ -393,7 +393,7 @@
 
   <section aria-labelledby="try-heading">
     <h2 id="try-heading">Try them yourself</h2>
-    <p class="prose">Each practicum exercise checks your answer against the public answer key, so you can work a case by hand and see how close you got before reading the tool's version. If your call and the tool's disagree, look at the files and decide who's right. The company is fictional. The checks are not.</p>
+    <p class="prose">Each practicum exercise checks your answer against the public answer key, so you can work a case by hand and see how close you got before reading the tool's version. If your call and the tool's disagree, look at the files and decide who's right.</p>
   </section>
 </main>
 

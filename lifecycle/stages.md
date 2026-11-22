@@ -2,7 +2,7 @@
 
 ## How it works together
 
-The lifecycle is the spine every application travels, from a first request to retirement. The governance council owns the gate between each pair of stages, and delegates routine calls below its threshold. Each stage's questions and rules are handled by a specific kit tool. Every rule below names the crosswalk row it satisfies, so each decision traces back to a control. Review and optimize is where the loop branches: most applications feed back into Plan to be reinvested in or replaced, while the rest move forward into Retire, which closes the loop by freeing licenses, data, and budget for the next Plan.
+Every application moves through six stages, from a first request to retirement. The governance council owns the gate between each pair of stages, and delegates routine calls below its threshold. Each stage's questions and rules are handled by a specific kit tool. Review and optimize is where the loop branches: most applications feed back into Plan to be reinvested in or replaced, while the rest move forward into Retire, which frees licenses, data, and budget for the next Plan.
 
 ## plan: Plan and request
 
