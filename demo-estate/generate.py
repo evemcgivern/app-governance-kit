@@ -50,6 +50,25 @@ MATURITY = [
     ("security", "Risk and security integration", 3), ("cost", "Cost and financial management", 4),
     ("reporting", "Reporting and improvement", 3),
 ]
+# As-is assessment: the eleven dimensions of sam-toolkit/application-management-self-assessment.md.
+AS_IS_DIMENSIONS = ["policy", "roles", "inventory", "intake", "lifecycle", "licenses", "cost", "risk",
+                    "retirement", "measures", "communication"]
+# Evidence quality -> score. Written but unused scores one level lower; a measure nobody acted on is not level 3.
+AS_IS_RULE = {"none": 0, "spoken": 1, "written-unused": 1, "written-used": 2, "measured-unused": 2,
+              "measured-used": 3}
+# A dimension with no row here has no evidence at all and scores 0 (roles).
+AS_IS_EVIDENCE = [
+    ("EV-01", "policy", "A draft software policy sits in the shared drive (demo-estate/policy-draft.md). No approval date, no named owner, nobody could say if it is followed.", "written-unused"),
+    ("EV-02", "inventory", "One application list (demo-estate/apps.csv) holds 60 applications, each with a cost, a user count, and a checked-on date of 2026-09-01. The IT team refreshes it every quarter.", "written-used"),
+    ("EV-03", "intake", "Asked procurement, finance, and two team leads for a request form or approval path. Nobody could produce one.", "none"),
+    ("EV-04", "lifecycle", "The IT manager says laptops are reviewed at refresh time. Nothing is written down, and no review dates appear in any file.", "spoken"),
+    ("EV-05", "licenses", "A license list (demo-estate/licenses.csv) records entitlements and expiry dates. A monthly count of licenses expiring in 90 days is kept, but no renewal has changed because of it.", "measured-unused"),
+    ("EV-06", "cost", "Annual cost and user count sit beside every application in demo-estate/apps.csv, and the finance partner reviews the list each quarter.", "written-used"),
+    ("EV-07", "risk", "Every application carries a data-sensitivity rating, and the six AI systems are listed with an owner (demo-estate/ai-systems.csv). A review is run before new tools are approved.", "written-used"),
+    ("EV-08", "retirement", "A retirement checklist was copied into the shared drive last year. No completed sign-off form can be found for any retirement.", "written-unused"),
+    ("EV-09", "measures", "A one-page report with four measures goes to the CIO each month, each with a target and a stated response. The last two reports led to a change in the renewal calendar.", "measured-used"),
+    ("EV-10", "communication", "Asked three application owners what they had been told about their duties. None could name one.", "none"),
+]
 CHARTER_FLAWS = ["decision-rights", "sponsor", "membership-size"]
 POLICY_FLAWS = ["accountable-role", "scope", "defined-terms", "enforcement", "review-cycle", "unrealistic-requirement"]
 DEVICE_TYPES = ["laptop", "desktop", "mobile", "server"]
@@ -248,6 +267,14 @@ def generate(out: Path) -> None:
     _write(out / "maturity-answers.csv", ["area", "label", "score"], [list(m) for m in MATURITY])
     lowest = sorted(MATURITY, key=lambda m: m[2])[:3]
     key += [{"tool": "itam-maturity", "type": "maturity_gap", "id": m[0]} for m in lowest]
+
+    _write(out / "as-is-evidence.csv", ["evidence_id", "dimension", "evidence_found", "evidence_quality"],
+           [list(e) for e in AS_IS_EVIDENCE])
+    quality = {dim: q for _, dim, _, q in AS_IS_EVIDENCE}
+    as_is = {dim: AS_IS_RULE[quality[dim]] if dim in quality else 0 for dim in AS_IS_DIMENSIONS}
+    key += [{"tool": "as-is-assessment", "type": "as_is_score", "id": f"{d}:{v}"} for d, v in as_is.items()]
+    weakest = sorted(as_is, key=lambda d: as_is[d])[:3]
+    key += [{"tool": "as-is-assessment", "type": "as_is_gap", "id": d} for d in weakest]
 
     (out / "controls.md").write_text(
         "# Controls to map\n\n" + "".join(f"- **{c}**: {text}\n" for c, text, _ in CONTROLS), encoding="utf-8")
