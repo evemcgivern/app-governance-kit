@@ -234,6 +234,45 @@ class PromptBlockTests(unittest.TestCase):
         self.assertIn("<p>Plain text.</p>", html)
 
 
+RULE = ("Use only an assistant your organization has approved for confidential data; otherwise use the Halden "
+        "data, column headings only, or redacted rows; never paste passwords, license keys, or employee names "
+        "and emails; and once an audit letter exists, nothing about it goes to any assistant unless Legal agrees.")
+PROMPT_MD = ("| Playbook step | Prompts |\n| --- | --- |\n| 2 Sponsor | 8 (charter), 11 |\n| 4 Scope | No prompt. |\n"
+             "| 6 Policy | 8 (policy) |\n\n"
+             f"**Privacy rule for every prompt:** {RULE}\n\n"
+             "## Prompt 8: Set up governance\n\n**Paste this:** Review [DRAFT].\n\n"
+             "## Prompt 11: Map customers\n\n**Paste this:** Map [CUSTOMERS].\n")
+
+
+class PromptPrivacyTests(unittest.TestCase):
+    def test_prompt_step_table_gives_each_prompts_steps_in_order(self):
+        from agk.docs import prompt_steps
+        self.assertEqual(prompt_steps(parse_markdown(PROMPT_MD)), {"8": ["2", "6"], "11": ["2"]})
+
+    def test_rule_and_step_link_render_above_each_copy_button_from_one_source_line(self):
+        steps = {"8": [("2", "Get a sponsor", "pb.html#step-2"), ("6", "The policy set", "pb.html#step-6")]}
+        html = _prompt_html("Text.", 1, "Prompt 8: Set up", lambda h: h, lambda n: None, rule=RULE, steps=steps["8"])
+        self.assertLess(html.index('class="prompt-rule"'), html.index("prompt-copy"))
+        self.assertIn(RULE, html)
+        self.assertIn('<a href="pb.html#step-2">Which step is this?</a> Playbook step 2, Get a sponsor.', html)
+        self.assertIn('Also <a href="pb.html#step-6">step 6</a>.', html)
+
+    def test_body_uses_the_marked_line_for_every_prompt(self):
+        html = body_html(parse_markdown(PROMPT_MD), lambda h: h,
+                         prompt_steps_by_label={"8": [("2", "S", "p.html#a")]})
+        self.assertEqual(html.count('class="prompt-rule"'), 2)
+        self.assertEqual(html.count("Which step is this?"), 1)
+
+    def test_real_prompts_each_have_a_rule_and_a_step_and_the_table_explains_step_four(self):
+        text = (ROOT / "sam-toolkit" / "setup-prompts.md").read_text(encoding="utf-8")
+        self.assertEqual(text.count("Use only an assistant your organization has approved"), 1)
+        from agk.docs import prompt_steps
+        got = prompt_steps(parse_markdown(text))
+        self.assertEqual(sorted(got, key=int), [str(n) for n in range(1, 14)])
+        self.assertRegex(text, r"\| 4 Set the scope \| No prompt")
+        self.assertNotIn("Step 4 has no prompt of its own.", text)
+
+
 class DownloadLinkTests(unittest.TestCase):
     def test_csv_links_to_the_csv_and_the_page(self):
         html = _download_link("renewal-calendar.csv", "renewal-calendar.html", "Renewal calendar")
@@ -550,6 +589,130 @@ class WayfindingTests(unittest.TestCase):
         m.mkdir(parents=True)
         (m / "method.md").write_text("# T\n\nBody.\n", encoding="utf-8")
         self.assertEqual(write_docs(root), [])
+
+
+MAP = ("kind,key,main_step,also_steps,frequency,note\n"
+       "file,renewal-calendar.csv,3,8,Monthly,\n"
+       "file,audit-response-roles.csv,3,,Quarterly,\n"
+       "file,policy-template.md,4,6;9,Yearly,\n"
+       "file,guide.md,1,,Not on the calendar,\n"
+       "file,savings-report.csv,beyond,,Not on the calendar,\n"
+       "practicum,01-program-setup,2,,,Program setup\n"
+       "practicum,03-crosswalk,beyond,,,Crosswalk\n")
+
+
+def mapped_repo(extra: dict | None = None) -> Path:
+    root = tmp_repo(extra=extra)
+    (root / "steps").mkdir()
+    (root / "steps" / "step-map.csv").write_text(MAP, encoding="utf-8")
+    (root / "sam-toolkit" / "savings-report.csv").write_text("period,amount\n", encoding="utf-8")
+    (root / "sam-toolkit" / "examples").mkdir()
+    (root / "sam-toolkit" / "examples" / "renewal-calendar-example.csv").write_text("app,date\nA,1\n",
+                                                                                  encoding="utf-8")
+    (root / "practicum").mkdir()
+    (root / "practicum" / "01-program-setup.md").write_text("# Exercise 01\n\nBody.\n", encoding="utf-8")
+    (root / "practicum" / "03-crosswalk.md").write_text("# Exercise 03\n\nBody.\n", encoding="utf-8")
+    return root
+
+
+class StepMapPageTests(unittest.TestCase):
+    def test_feeds_line_is_its_own_paragraph_with_frequency(self):
+        root = mapped_repo()
+        write_docs(root)
+        html = built(root, "renewal-calendar.html")
+        self.assertRegex(html, r'<p class="meta doc-feeds">Feeds step 3\. Also step 8\. Review: Monthly\. '
+                               r'Keep it in the versioned place your records policy names, with access limited\.</p>')
+        self.assertIn("Also steps 6 and 9.", built(root, "policy-template.html"))
+        self.assertIn("Not part of a step.", built(root, "savings-report.html"))
+
+    def test_no_feeds_line_on_playbook_unmapped_files_or_without_a_map(self):
+        root = mapped_repo()
+        write_docs(root)
+        self.assertNotIn("doc-feeds", built(root, "itam-program-playbook.html"))
+        self.assertNotIn("doc-feeds", built(root, "loose-file.html"))
+        plain = tmp_repo()
+        write_docs(plain)
+        self.assertNotIn("doc-feeds", built(plain, "guide.html"))
+
+    def test_feeds_line_has_no_retention_or_shared_place_wording(self):
+        root = mapped_repo()
+        write_docs(root)
+        html = built(root, "renewal-calendar.html")
+        line = html[html.index('class="meta doc-feeds"'):].split("</p>")[0].lower()
+        self.assertNotIn("retention", line)
+        self.assertNotIn("shared place", line)
+
+    def test_csv_pages_get_the_not_found_note_and_renewal_required_columns(self):
+        root = mapped_repo()
+        write_docs(root)
+        html = built(root, "renewal-calendar.html")
+        self.assertIn("Not found means no source record was located; never put an estimate there.", html)
+        self.assertIn("contract_end, notice_days, notice_deadline, decision_owner, and decided_on", html)
+        other = built(root, "audit-response-roles.html")
+        self.assertIn("Not found means", other)
+        self.assertNotIn("Required columns", other)
+        self.assertNotIn("Not found means", built(root, "guide.html"))
+        self.assertNotIn("Not found means", built(root, "renewal-calendar-example.html"))
+
+    def test_filled_example_link_only_where_an_example_exists(self):
+        root = mapped_repo()
+        write_docs(root)
+        self.assertIn('href="renewal-calendar-example.html">See a filled example</a>',
+                      built(root, "renewal-calendar.html"))
+        self.assertNotIn("See a filled example", built(root, "audit-response-roles.html"))
+        self.assertNotIn("See a filled example", built(root, "guide.html"))
+
+    def test_practice_line_on_practicum_pages(self):
+        root = mapped_repo()
+        write_docs(root)
+        html = (root / "site" / "docs" / "practicum" / "01-program-setup.html").read_text(encoding="utf-8")
+        self.assertIn('<p class="meta doc-practice">Practice for playbook step 2.</p>', html)
+        beyond = (root / "site" / "docs" / "practicum" / "03-crosswalk.html").read_text(encoding="utf-8")
+        self.assertIn("Practice for work beyond the ten steps.", beyond)
+
+    def test_long_pages_show_a_labeled_reading_time_and_short_pages_do_not(self):
+        long_text = "# Long\n\n" + ("word " * 2000) + "\n"
+        root = mapped_repo(extra={"loose-file.md": long_text})
+        write_docs(root)
+        self.assertIn('<p class="meta doc-reading">About 10 minutes to read (an estimate at 200 words per '
+                      'minute).</p>', built(root, "loose-file.html"))
+        self.assertNotIn("doc-reading", built(root, "guide.html"))
+
+
+class ToolkitByStepTests(unittest.TestCase):
+    def test_section_lists_each_file_once_under_its_main_step_with_a_tag(self):
+        from agk.docs import toolkit_steps_html
+        steps = [{"n": 3, "title": "Stop the bleeding", "id": "step-3-stop"},
+                 {"n": 8, "title": "Proof first", "id": "step-8-proof"}]
+        rows = [{"kind": "file", "key": "renewal-calendar.csv", "main_step": "3", "also_steps": ["8"],
+                 "frequency": "", "note": ""},
+                {"kind": "file", "key": "savings-report.csv", "main_step": "beyond", "also_steps": [],
+                 "frequency": "", "note": ""},
+                {"kind": "term", "key": "Sponsor", "main_step": "3", "also_steps": [], "frequency": "",
+                 "note": ""}]
+        html = toolkit_steps_html(rows, steps, {"renewal-calendar.csv": "Renewal calendar"})
+        self.assertEqual(html.count('data-stem="renewal-calendar"'), 1)
+        self.assertIn('<h3 id="by-step-3"><a href="docs/sam-toolkit/itam-program-playbook.html#step-3-stop">'
+                      'Step 3: Stop the bleeding</a></h3>', html)
+        self.assertIn('<a href="docs/sam-toolkit/renewal-calendar.html">Renewal calendar</a> '
+                      '<span class="step-tag">Step 3, also step 8</span>', html)
+        self.assertIn('<h3 id="by-step-beyond">Not part of a step</h3>', html)
+        self.assertIn('data-stem="savings-report"', html.split("by-step-beyond")[1])
+        self.assertNotIn("Sponsor", html)
+        self.assertNotIn("by-step-8", html)
+
+    def test_write_docs_fills_the_marked_region_of_the_toolkit_page(self):
+        root = mapped_repo()
+        page = root / "site" / "sam-toolkit.html"
+        page.write_text("<html><body><!--STEPS-->old<!--/STEPS--><p>keep</p></body></html>", encoding="utf-8")
+        write_docs(root)
+        html = page.read_text(encoding="utf-8")
+        self.assertNotIn("old", html)
+        self.assertIn('data-stem="renewal-calendar"', html)
+        self.assertIn("<p>keep</p>", html)
+        first = html
+        write_docs(root)
+        self.assertEqual(page.read_text(encoding="utf-8"), first)
 
 
 if __name__ == "__main__":

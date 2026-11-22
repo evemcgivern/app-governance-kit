@@ -104,6 +104,24 @@ List what sits under this policy. Each item has a name, an owner, and a place it
 | [Retirement procedure] | Procedure (`retirement-signoff-checklist.md`; the `hardware-lifecycle` method for devices) | [Role] | [Link] |
 | [AI tool intake] | Procedure (the `ai-intake` method) | [Role] | [Link] |
 
+### Records and retention
+
+Find your company's records retention schedule, or ask the records owner or legal where it is written, and copy each rule with its source. [[XW-020]] (7.6.5)
+
+| Record type | Retention rule (from the company’s schedule) | Source | Rule owner | Confirmed by | Date |
+| --- | --- | --- | --- | --- | --- |
+| Proofs of entitlement and contracts | | | | | |
+| Orders and invoices | | | | | |
+| Audit correspondence and audit records | | | | | |
+| Discovery and usage reports as run | | | | | |
+| Disposal and wipe certificates | | | | | |
+| Approval records | | | | | |
+| Renewal notices | | | | | |
+
+Contracts here mean the contracts and terms that grant each entitlement. Audit records are those gathered for an audit. Discovery and usage reports are recorded as they stood on the day they ran. Name where the backup copy of these records is kept and who can restore it.
+
+**Decision needed: records owner or counsel.** Have counsel review. This template sets no period.
+
 ## 7. Exceptions
 
 An exception is a permission to depart from this policy, granted for a reason and for a limited time. Anyone may ask. [[XW-009]]
@@ -131,6 +149,7 @@ Say how people learn the policy and how you know they understood it. Awareness c
 | How | [Channel and format] |
 | Acknowledgment | [How a person confirms they read it, and where the record is kept] |
 | Who checks | [Role that follows up on missing acknowledgments] |
+| Understood | [How the owner checks the policy was understood, for example a short quiz, a question in a team meeting, or a spot check of a few people, and where the result is recorded] |
 
 ## 10. Measures
 
