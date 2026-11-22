@@ -6,10 +6,10 @@ Where an AI inventory and AI risk assessments live in ServiceNow, and how Flexer
 
 ServiceNow's risk and compliance work sits in **Integrated Risk Management (IRM)**, its platform for unifying governance, risk, and compliance processes. On top of that, ServiceNow has named a governance layer for AI: **AI Control Tower** (also called the "AI Inventory and Control Tower," AICT, in a ServiceNow-employee community post). ServiceNow's community documentation describes it as the place that holds the policies, roles, and approvals AI use cases pass through. That flow is the closest confirmed analog to this method's intake-to-inventory steps:
 
-- A use case is registered, which matches this method's restatement and inventory record.
-- It's classified and assessed, which matches the tiering.
-- It's approved, which matches the approval decision.
-- It's then monitored, which matches the re-review date.
+- A use case is registered. That lines up with this method's restatement and inventory record.
+- It's classified and assessed, the same work as the tiering.
+- It's approved, as in this method's approval decision.
+- It's then monitored, which this method covers with the re-review date.
 
 ServiceNow's community writeup maps AI Control Tower's stages onto the four NIST AI RMF functions this method also cites:
 
@@ -18,11 +18,11 @@ ServiceNow's community writeup maps AI Control Tower's stages onto the four NIST
 - Centralizing policy, roles, and approvals: **Govern**.
 - Linking identified risks to owners and remediation workflows in a closed loop: **Manage**.
 
-AI Control Tower has a documented three-layer data model. The table names below come from ServiceNow Community posts, not an official field-level reference:
+AI Control Tower has a documented three-layer data model. The table names below come from ServiceNow Community posts, not an official field-level reference. They were confirmed by downloading the raw page HTML and checking it for literal table-name strings, which is stronger than reading the rendered page:
 
 - **AI Product Model**: the catalog-level record for what type of AI something is. Agent/skill class hierarchy: `cmdb_model` → `cmdb_sw_component_product_model` → `cmdb_ai_system_component_product_model`; a parallel branch covers models, datasets, prompts, and MCP servers (`cmdb_ai_model_product_model`, `cmdb_ai_dataset_product_model`, `cmdb_ai_prompt_product_model`, `cmdb_mcp_product_model`).
 - **AI Digital Asset**: the ownership-and-lifecycle-management record created at intake, and the closest confirmed analog to this method's inventory record. For an AI system or use case, the table is **`alm_ai_system_digital_asset`** (siblings: `alm_ai_model_digital_asset`, `alm_ai_prompt_digital_asset`, `alm_ai_dataset_digital_asset`, `alm_mcp_digital_asset`).
-- **Risk tier / governance attributes**: carried on the related table **`sn_ai_governance_asset_governance_details`**, anchored to the Digital Asset. No field (column) name inside that table is confirmed; only the table name.
+- **Risk tier / governance attributes**: carried on the related table **`sn_ai_governance_asset_governance_details`**, anchored to the Digital Asset. No field (column) name inside that table is confirmed anywhere fetched; only the table name.
 - **Required controls**: no named field or table is confirmed; governance-detail and risk records are described only as generically linked to the Digital Asset, implying GRC control-objective records rather than a named field.
 - **AI Configuration Item (CI)**: the deployment record: `cmdb_ci_function_ai`, `cmdb_ci_appl_ai_application`, `cmdb_ci_function_mcp`, `cmdb_ci_ai_model_deployment`, linked to assets via `cmdb_rel_asset_ci`.
 - **Intake record/form**: the **"AI Use Case Intake Form,"** submitted via Employee Center → Technology Services → AI Assets (or the AICT Workspace, or REST API `POST /sn_ent/asset/ai_system`). Submitting it auto-creates the Digital Asset (and the Product Model, if new).
@@ -59,8 +59,8 @@ No source checked names a field for the acquisition gate result or an approved-A
 ## Sources checked
 
 - [Managing AI Risk Using NIST AI RMF and ServiceNow AI Control Tower, ServiceNow Community](https://www.servicenow.com/community/now-assist-articles/managing-ai-risk-using-nist-ai-rmf-and-servicenow-ai-control/ta-p/3466409): AI Control Tower, the register/classify/assess/approve/monitor flow, and its mapping to NIST AI RMF's Govern/Map/Measure/Manage.
-- [Understanding the AI Inventory Data Model in ServiceNow, ServiceNow Community](https://www.servicenow.com/community/cmdb-blog/understanding-the-ai-inventory-data-model-in-servicenow-product/ba-p/3546771): table names read from the page HTML; AI Product Model, AI Digital Asset (`alm_ai_system_digital_asset`), `sn_ai_governance_asset_governance_details`, AI Configuration Item tables.
-- [AI Inventory Data Model in ServiceNow, how can we utilize in EA, ServiceNow Community](https://www.servicenow.com/community/itom-forum/ai-inventory-data-model-in-servicenow-how-can-we-utilised-in/td-p/3572768): table names read from the page HTML; confirms "AI Use Case Intake Form" and that the Digital Asset carries steward and risk-tier data.
+- [Understanding the AI Inventory Data Model in ServiceNow, ServiceNow Community](https://www.servicenow.com/community/cmdb-blog/understanding-the-ai-inventory-data-model-in-servicenow-product/ba-p/3546771): fetched raw HTML directly; AI Product Model, AI Digital Asset (`alm_ai_system_digital_asset`), `sn_ai_governance_asset_governance_details`, AI Configuration Item tables.
+- [AI Inventory Data Model in ServiceNow, how can we utilize in EA, ServiceNow Community](https://www.servicenow.com/community/itom-forum/ai-inventory-data-model-in-servicenow-how-can-we-utilised-in/td-p/3572768): fetched raw HTML directly; confirms "AI Use Case Intake Form" and that the Digital Asset carries steward and risk-tier data.
 - [AI agents in Now Assist for IRM, ServiceNow Docs](https://www.servicenow.com/docs/r/governance-risk-compliance/grc-common-functions/standalone-ai-agents-in-risk-sustainability.html): confirms the current name ServiceNow Otto for IRM, and the "Report a GRC issue" and Control Objective Change agents.
 - [Risk and compliance tab in AI Control Tower, ServiceNow Docs](https://www.servicenow.com/docs/r/intelligent-experiences/ai-control-tower/risk-compliance-tab-aict.html): the Risk and compliance tab and its High/Medium/Low/Unacceptable classification.
 - [AI Control Tower Home page, ServiceNow Docs](https://www.servicenow.com/docs/r/intelligent-experiences/ai-control-tower/ai-control-tower-home-page.html): the "AI asset inventory" and "Risk and compliance" tabs.
@@ -71,3 +71,5 @@ No source checked names a field for the acquisition gate result or an approved-A
 - [Flexera One SaaS Management](https://www.flexera.com/products/flexera-one/saas-management): AI usage discovery and policy-alignment framing.
 - [Flexera Launches New Unified SaaS Management Solution to Improve Visibility for Shadow AI, Flexera press release](https://www.flexera.com/about-us/press-center/flexera-launches-new-saas-management-solution): the merged Flexera One SaaS Management product and its Comprehensive Discovery Engine.
 - [5 AI best practices for public sector organizations, Flexera blog](https://www.flexera.com/blog/ai/public-sector-ai-governance-visibility/): intake, risk-review, and inventory discipline framed as agency-built practice, not a Flexera feature.
+
+Apart from the two product pages (read through Wayback Machine snapshots) and the unretrieved solution-brief PDF, everything above comes from a page that loaded directly.
