@@ -203,7 +203,7 @@ class RenderTests(unittest.TestCase):
                  make_post(slug="study-path", title="The study path", date="2026-11-01", status="study-path",
                            spine=True)]
         html = render_index(posts, INDEX_HTML)
-        self.assertIn("Working notes from setting up asset management: what I try, what holds, and what doesn't.", html)
+        self.assertIn("Notes on setting up asset management governance.", html)
         self.assertLess(html.index("Start here"), html.index("The study path"))
         self.assertLess(html.index("The study path"), html.index("Newest first"))
         self.assertLess(html.index("P one"), html.index("P two"))
