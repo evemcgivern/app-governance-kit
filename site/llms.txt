@@ -1,6 +1,6 @@
 # App Governance Kit
 
-> A free, MIT-licensed toolkit of nine application governance methods covering application portfolio management, IT asset management, AI governance, and access controls. Each method is packaged as a Claude skill, a Codex skill, and a Microsoft Copilot agent, and also ships as a checklist, SOP, template, and platform guide for use by hand. Every method traces to clauses in ISO/IEC 19770, COBIT 2019, ISO/IEC 27001, and ISO/IEC 42001 through a 30-row crosswalk. Built by Eve McGivern. It also includes an application governance router, a certification study coach, and a forty-file SAM toolkit.
+> A free, MIT-licensed toolkit of nine application governance methods covering application portfolio management, IT asset management, AI governance, and access controls. Each method is packaged as a Claude skill, a Codex skill, and a Microsoft Copilot agent, and also ships as a checklist, SOP, template, and platform guide for use by hand. Every method traces to clauses in ISO/IEC 19770, COBIT 2019, ISO/IEC 27001, and ISO/IEC 42001 through a 30-row crosswalk. Built by Eve McGivern. It also includes an application governance router, a certification study coach, and a forty-one-file SAM toolkit.
 
 Key facts:
 

@@ -5,6 +5,7 @@ file,setup-prompts.md,1,2;3;5;6;7;8;9;10,Not on the calendar,Prompts for steps 1
 file,customer-expectations.csv,2,,Not on the calendar,
 file,renewal-calendar.csv,3,,Monthly,
 file,audit-response-roles.csv,3,,Quarterly,
+file,audit-decision-tree.md,3,8,Not on the calendar,Used when a publisher contact arrives (step 3) and to prepare ahead (step 8)
 file,policy-template.md,4,6,Yearly,Section 2 sets the scope in step 4; the rest drafts the policy in step 6
 file,statement-of-applicability.csv,4,,Yearly,
 file,risk-assessment-guide.md,4,,Not on the calendar,

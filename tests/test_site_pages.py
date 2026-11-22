@@ -179,8 +179,8 @@ class LlmsAndSitemapTests(unittest.TestCase):
 
     def test_toolkit_count_in_the_summary_is_the_repo_count(self):
         n = len([f for f in (ROOT / "sam-toolkit").iterdir() if f.suffix in (".md", ".csv")])
-        self.assertEqual(n, 40)
-        self.assertIn("forty-file SAM toolkit", self.llms)
+        self.assertEqual(n, 41)
+        self.assertIn("forty-one-file SAM toolkit", self.llms)
         self.assertNotIn("thirteen-file", self.llms)
 
     def test_playbook_is_listed_first_then_the_ten_steps(self):
