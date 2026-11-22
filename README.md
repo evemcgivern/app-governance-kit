@@ -9,11 +9,11 @@ of hands-on practicum exercises for learning the underlying certifications
 
 Each method maps to real standards (ISO/IEC 19770, COBIT 2019, ISO/IEC 27001,
 ISO/IEC 42001) via a 30-row crosswalk, so every recommendation traces back to
-a clause, not just a rule of thumb.
+a clause.
 
 ## New to ITAM? Start here
 
-Read the [ITAM program playbook](https://evemcgivern.github.io/app-governance-kit/docs/sam-toolkit/itam-program-playbook.html) on the site, or as a [file in this repo](sam-toolkit/itam-program-playbook.md). It is the one order to follow, in ten steps, with the file, the setup prompt, and a done-when check for each. New terms are in the [glossary](field-guide/glossary.md). Everything below is reference for the tools and files the playbook points to.
+Read the [ITAM program playbook](https://evemcgivern.github.io/app-governance-kit/docs/sam-toolkit/itam-program-playbook.html) on the site, or as a [file in this repo](sam-toolkit/itam-program-playbook.md). It is the one order to follow, in ten steps, with the file, the setup prompt, and a done-when check for each. New terms are in the [glossary](field-guide/glossary.md).
 
 The site lists the rest in this order:
 
@@ -218,7 +218,7 @@ Create an agent in [Agent Builder](https://learn.microsoft.com/en-us/microsoft-3
 - **Let an agent pick the tool**: the `app-governance` skill routes a plain request ("review our software estate") to the right skill and hands every decision back to you. In Claude Code, `app-governance-agent` loads it for you.
 - **Practice for a certification**: ask the `cert-prep` study coach for scenario drills on the demo estate (CAMP, CSAM, CHAMP, AIGP, ITIL 4 Foundation, IAM Certificate). Practice only, not exam content.
 - **Run a SAM practice by hand**: start with `sam-toolkit/itam-program-playbook.md`, then use the templates and checklists in `sam-toolkit/` as it names them (policy set, license position, proof of purchase, renewals, asset record, authorizations, scope, tiers, audit, audit decision tree, vendors, contract terms, acquisition gate, invoice verification, savings report), with a guide in `sam-toolkit/guide.md`.
-- **Work an exercise by hand**: `practicum/01-program-setup.md` through `practicum/08-audit-response.md`, then self-check on the site's interactive practicum page. No installs, no AI shortcuts.
+- **Work an exercise by hand**: `practicum/01-program-setup.md` through `practicum/08-audit-response.md`, then self-check on the site's interactive practicum page.
 - **Use it with an agent**: point Claude, Codex, or Copilot at the relevant `dist/<platform>/...` skill and a real dataset (or the demo one under `demo-estate/`).
 
 ## Repo layout
