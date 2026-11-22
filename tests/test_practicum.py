@@ -57,7 +57,7 @@ class PracticumTests(unittest.TestCase):
         self.assertIn('id="as-is-assessment"', html)
         self.assertIn('BUILDERS["as-is-assessment"]', html)
         self.assertIn('COLLECTORS["as-is-assessment"]', html)
-        self.assertIn("Nine hands-on", html)
+        self.assertIn("Nine exercises on Halden", html)
         self.assertNotIn("Eight hands-on", html)
 
     def test_no_place_still_says_eight_exercises(self):
