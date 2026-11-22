@@ -68,6 +68,39 @@ class DemoEstateTests(unittest.TestCase):
         self.assertEqual({r["area"] for r in answers[:3]}, self.expected("maturity_gap"))
         self.assertLess(int(answers[2]["score"]), int(answers[3]["score"]))
 
+    AS_IS_RULE = {"none": 0, "spoken": 1, "written-unused": 1, "written-used": 2,
+                  "measured-unused": 2, "measured-used": 3}
+
+    def test_as_is_evidence_table_shape(self):
+        ev = rows(self.out / "as-is-evidence.csv")
+        self.assertEqual(list(ev[0]), ["evidence_id", "dimension", "evidence_found", "evidence_quality"])
+        self.assertTrue(8 <= len(ev) <= 10)
+        self.assertEqual(len({r["evidence_id"] for r in ev}), len(ev))
+        self.assertEqual(len({r["dimension"] for r in ev}), len(ev))
+        self.assertLessEqual({r["evidence_quality"] for r in ev}, set(self.AS_IS_RULE))
+        self.assertIn("none", {r["evidence_quality"] for r in ev})
+
+    def test_as_is_scores_follow_by_rule_and_missing_dimension_scores_zero(self):
+        ev = {r["dimension"]: r["evidence_quality"] for r in rows(self.out / "as-is-evidence.csv")}
+        dims = gen.AS_IS_DIMENSIONS
+        self.assertEqual(len(dims), 11)
+        self.assertLess(len(ev), len(dims))
+        scores = {d: self.AS_IS_RULE[ev[d]] if d in ev else 0 for d in dims}
+        keyed = {k["id"].split(":")[0]: int(k["id"].split(":")[1])
+                 for k in self.key if k["type"] == "as_is_score"}
+        self.assertEqual(keyed, scores)
+        self.assertTrue(all(k["tool"] == "as-is-assessment" for k in self.key if k["type"].startswith("as_is_")))
+
+    def test_as_is_three_weakest_are_a_strict_set(self):
+        keyed = {k["id"].split(":")[0]: int(k["id"].split(":")[1])
+                 for k in self.key if k["type"] == "as_is_score"}
+        ordered = sorted(keyed.values())
+        self.assertLess(ordered[2], ordered[3])
+        weakest = {d for d, v in keyed.items() if v <= ordered[2]}
+        self.assertEqual(weakest, self.expected("as_is_gap"))
+        self.assertEqual(len(weakest), 3)
+        self.assertEqual(len(self.expected("as_is_gap")), 3)
+
     def test_council_draft_has_planted_flaws(self):
         text = (self.out / "council-draft.md").read_text()
         self.assertNotIn("sponsor", text.lower())

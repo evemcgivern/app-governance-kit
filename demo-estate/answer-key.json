@@ -20,6 +20,76 @@
     "id": "AI-004"
   },
   {
+    "tool": "as-is-assessment",
+    "type": "as_is_gap",
+    "id": "communication"
+  },
+  {
+    "tool": "as-is-assessment",
+    "type": "as_is_gap",
+    "id": "intake"
+  },
+  {
+    "tool": "as-is-assessment",
+    "type": "as_is_gap",
+    "id": "roles"
+  },
+  {
+    "tool": "as-is-assessment",
+    "type": "as_is_score",
+    "id": "communication:0"
+  },
+  {
+    "tool": "as-is-assessment",
+    "type": "as_is_score",
+    "id": "cost:2"
+  },
+  {
+    "tool": "as-is-assessment",
+    "type": "as_is_score",
+    "id": "intake:0"
+  },
+  {
+    "tool": "as-is-assessment",
+    "type": "as_is_score",
+    "id": "inventory:2"
+  },
+  {
+    "tool": "as-is-assessment",
+    "type": "as_is_score",
+    "id": "licenses:2"
+  },
+  {
+    "tool": "as-is-assessment",
+    "type": "as_is_score",
+    "id": "lifecycle:1"
+  },
+  {
+    "tool": "as-is-assessment",
+    "type": "as_is_score",
+    "id": "measures:3"
+  },
+  {
+    "tool": "as-is-assessment",
+    "type": "as_is_score",
+    "id": "policy:1"
+  },
+  {
+    "tool": "as-is-assessment",
+    "type": "as_is_score",
+    "id": "retirement:1"
+  },
+  {
+    "tool": "as-is-assessment",
+    "type": "as_is_score",
+    "id": "risk:2"
+  },
+  {
+    "tool": "as-is-assessment",
+    "type": "as_is_score",
+    "id": "roles:0"
+  },
+  {
     "tool": "audit-response",
     "type": "install_shortfall",
     "id": "LIC-019"
