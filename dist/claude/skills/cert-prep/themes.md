@@ -1,6 +1,6 @@
 # Key work by crosswalk theme
 
-Each of the 30 crosswalk themes below lists its meaning, key work, evidence, and usual owner.
+Each of the 32 crosswalk themes below lists its meaning, key work, evidence, and usual owner.
 
 ## XW-001 Application and software inventory
 
@@ -212,3 +212,17 @@ Each of the 30 crosswalk themes below lists its meaning, key work, evidence, and
 - **Key work:** Name who must be aware of each policy and what they must know; write a communication plan that says what is sent, when, to whom, and how; track acknowledgments beyond onboarding; publish each approved version in one versioned location and withdraw older ones; keep the approval and change history; use `sam-toolkit/policy-lifecycle-sop.md` and `sam-toolkit/policy-checklist.md` to run and test the steps.
 - **Evidence it produces:** A communication plan, acknowledgment records, and a version history of each published policy.
 - **Usually owned by:** The policy owner, with HR or the training lead running acknowledgments.
+
+## XW-031 Resources and competence
+
+- **What it means:** The program has the people, skills, budget, and training it needs, and there is evidence that the people doing the work are competent.
+- **Key work:** List the roles, skills, tools, and budget the program needs; compare them with what is in place and record the gaps; fund and fill the gaps; set the competence each role needs and check it against education, training, or experience; provide training where people fall short; use `sam-toolkit/resources-and-training-plan.md` to size and track the plan.
+- **Evidence it produces:** A resource plan with budget, a competence record for each role, and training records.
+- **Usually owned by:** The program owner, with HR or the training lead keeping the competence and training records.
+
+## XW-032 Objectives and statement of applicability
+
+- **What it means:** The program has measurable objectives, and a written record shows which processes apply and why any are left out.
+- **Key work:** List the ITAM processes the organization runs; decide which objectives fit each one and compare them with the standard's reference list; set a few measurable program objectives at the levels that need them, with owners and dates; write a statement of applicability that lists each process or objective, whether it applies, and the reason for any exclusion; review the statement and the objectives on a fixed schedule.
+- **Evidence it produces:** A statement of applicability, a list of objectives with measures, and the review history of both.
+- **Usually owned by:** The program owner, with the governance sponsor approving the statement.
