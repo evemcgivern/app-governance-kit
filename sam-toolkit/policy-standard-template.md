@@ -1,6 +1,6 @@
 # Standard template
 
-A fill-in template for one software standard. A standard is a catalog, not a policy: it lists what is approved for a role or device class, in what version and setup, and how to ask for something else. The policy says people must use it; the standard says what is on it. Replace each prompt in brackets with your own text. Every example is fictional and comes from Halden Logistics, the demo estate.
+A fill-in template for one software standard. A standard is a catalog, not a policy: it lists what is approved for a role or device class, in what version and setup, and how to ask for something else. Replace each prompt in brackets with your own text. Every example is fictional and comes from Halden Logistics, the demo estate.
 
 Clause references are to ISO/IEC 19770-1:2017 (paraphrased) and to the shared crosswalk (`XW-` rows). Verify license terms against the contract; this template does not interpret them.
 
@@ -74,7 +74,7 @@ List the requirements a standard title must meet, stated so each can be checked.
 
 ## 6. Non-standard path
 
-A request for something not on the catalog is allowed, not ignored. It follows the exception path in the parent policy: a written request with the reason and risk, an approver who is not the requester, escalation by cost and risk, an end date, and an entry in `authorization-log.csv`. [[XW-009]] [[XW-019]]
+A request for something not on the catalog is allowed. It follows the exception path in the parent policy: a written request with the reason and risk, an approver who is not the requester, escalation by cost and risk, an end date, and an entry in `authorization-log.csv`. [[XW-009]] [[XW-019]]
 
 | Question | Entry |
 | --- | --- |

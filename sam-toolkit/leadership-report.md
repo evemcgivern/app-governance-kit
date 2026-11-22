@@ -1,6 +1,6 @@
 # Leadership report
 
-A one-page report for the executive sponsor or governance council. Its job is to connect each control to a number, the number to a decision, and the decision to a result in money or risk, so leaders see why the practice earns its funding.
+A one-page report for the executive sponsor or governance council. It ties each control to a number and a decision, and shows the result in money or risk, so leaders see why the practice earns its funding.
 
 Complete one copy per reporting period. Clause references are to the shared crosswalk (`XW-` rows).
 

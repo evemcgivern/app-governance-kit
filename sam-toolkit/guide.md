@@ -31,7 +31,7 @@ A user count is not always the licensed quantity. Confirm the vendor's metric be
 
 One row per product (per publisher, product and version). This is the evidence behind `entitlements_owned` in `license-position.csv`.
 
-A count of installs is not a position. A license counts only when acceptable proof of purchase backs it. Keep proofs for as long as the license and any upgrade rights depend on them, and as long as your records schedule requires. **Decision needed: records owner or counsel** for the period. A later upgrade is only as good as the original purchase behind it. A certificate of authenticity or a license key alone shows a copy exists, not that you have the right to use it.
+A count of installs is not a position. A license counts only when acceptable proof of purchase backs it. Keep proofs for as long as the license and any upgrade rights depend on them, and as long as your records schedule requires. **Decision needed: records owner or counsel** for the period. An upgrade counts only when the original purchase is on file. A certificate of authenticity or a license key alone shows only that a copy exists.
 
 - `asset_id`: the asset the proofs cover, as in `asset-record.csv`.
 - `installs_found`, `count_in_metric`, `proofs_located`, `quantity_proven`: what discovery found, the count in the license metric (assigned users for named-user licenses, devices for device licenses), how many proofs you located, and the quantity those proofs add up to. `term_start`, `term_end`: the current subscription or support term the proof shows.
@@ -68,7 +68,7 @@ One row per invoice line check. Compare the invoice to the contract and purchase
 - `line_math_ok`, `subtotal_ok`, `tax`, `shipping`, `total`: check the arithmetic and the add-ons.
 - `matched`: yes or no. If no, say why in `discrepancy` and record `amount_at_issue` and `resolved_on`.
 
-Chart discrepancy categories over time. The pattern is what supports a change in practice to management.
+Chart discrepancy categories over time. A repeating pattern is the evidence for changing practice.
 
 ### savings-report.csv (crosswalk XW-012)
 
@@ -76,7 +76,7 @@ One row per savings type per period: invoice errors recovered, purchases avoided
 
 - `baseline_cost`, `amount_saved`, `percent_saved`: the cost before and what you saved. Leave `percent_saved` blank if there is no baseline.
 - `evidence_ref`: the record that supports the number, such as a row in `invoice-verification.csv`.
-- `adverse_trend_note`: report bad news too, such as rising error rates or reclaimed licenses being requested again. A report with only wins is not trusted.
+- `adverse_trend_note`: report bad news too, such as rising error rates or reclaimed licenses being requested again.
 - `reported_to`, `reported_on`: who saw it and when.
 
 ### renewal-calendar.csv (clause 8.4, crosswalk XW-008)
@@ -140,7 +140,7 @@ A plan-and-record checklist for the internal audit, and a pack list for the mana
 
 ### benefits-tracker.csv (crosswalk XW-012, XW-025)
 
-One row per benefit you expect from a practice. It is how you prove the practice paid off, instead of asserting it.
+One row per benefit you expect from a practice. It proves the practice paid off.
 
 - `metric`, `unit`, `baseline_value`, `baseline_date`: what you measure, and its value before the practice. Measure the baseline from your own records on a named date.
 - `target_value` and `target_date`: where you want it to be, and when.
@@ -172,7 +172,7 @@ Exceptions are logged in `authorization-log.csv`, with the end date in `valid_un
 
 ### policy-standard-template.md (clause 7.6.5, crosswalk XW-009, XW-020)
 
-A fill-in template for one software standard: a catalog of approved titles by role or device class, including software delivered as a service. It adds acceptance and rejection criteria with reason codes, security requirements, the non-standard path, a pilot-first rollout, a feedback channel, and where it is published. The standard says what is on the list; the policy says people must use it.
+A fill-in template for one software standard: a catalog of approved titles by role or device class, including software delivered as a service. It adds acceptance and rejection criteria with reason codes, security requirements, the non-standard path, a pilot-first rollout, a feedback channel, and where it is published. The policy is what requires people to use it.
 
 ### policy-checklist.md (clauses 5.2, 7.3, 7.4, 7.6.5, crosswalk XW-003, XW-004, XW-020, XW-025, XW-027, XW-030)
 
@@ -184,7 +184,7 @@ A short procedure for the life of a policy: draft, consult, counsel review, spon
 
 ### itam-program-playbook.md (crosswalk XW-003, XW-025, XW-027)
 
-The one order to follow. Ten steps from reading the map to measuring and reviewing, each with a one-line reason, the files to use, the matching setup prompt, tickable done-when boxes, and a rough planning time. A marker after step 5 says where a small program can stop. It also has a box for people with no sponsor, no inventory, or an audit letter already in hand, what must exist first, why programs stall in the first year, the routines that keep a program alive, and how to tell a healthy program from a busy one.
+The one order to follow. Ten steps from reading the map to measuring and reviewing, each with a one-line reason, the files to use, the matching setup prompt, tickable done-when boxes, and a rough planning time. A marker after step 5 says where a small program can stop. It also has a box for people with no sponsor, no inventory, or an audit letter already in hand, what must exist first, why programs stall in the first year, and the routines that keep a program alive.
 
 ### data-sources-guide.md (clauses 8.3, 8.4, crosswalk XW-005, XW-006, XW-012, XW-026)
 
@@ -275,11 +275,11 @@ One row per missing or weak record. Compliance is judged on what you can show. A
 - `blocks`: audit, renewal, retirement, or true-up. This sets the priority.
 - `owner`, `found_on`, `due_on`, `status`, `closed_on`, `evidence_ref`: who closes it, when it was found, the target date, its state, and where the closing evidence is filed.
 
-Review the log with the audit-readiness check. A gap with no owner and no date is a finding in itself.
+Review the log with the audit-readiness check. Treat a gap with no owner or date as a finding.
 
 ### vendor-scorecard.csv (crosswalk XW-013)
 
-One row per strategic supplier per review period. It sits beside `vendor-contract-register.csv`: the register says what the contract is; the scorecard says how the supplier is performing.
+One row per strategic supplier per review period. It sits beside `vendor-contract-register.csv`: the register holds the contract itself. The scorecard covers how the supplier is performing.
 
 - `vendor_id`: matches the same id in the contract register.
 - `issue_meetings_to_resolve`: how many meetings it took to settle problems this period.
@@ -300,7 +300,7 @@ A worksheet for one process at a time. Describe the Is map first, then the Shoul
 
 ### leadership-report.md (crosswalk XW-012, XW-025, XW-027)
 
-A one-page report that links each control to a KPI, the KPI to a decision, and the decision to an outcome in money or risk. It also answers six questions leaders ask. Keep the KPI set to five or fewer, each with a target and an action when it is missed.
+A one-page report that ties each control to a KPI and a decision, with the result in money or risk. It also answers six questions leaders ask. Keep the KPI set to five or fewer, each with a target and an action when it is missed.
 
 ### audit-response-roles.csv (crosswalk XW-004, XW-020)
 
@@ -318,4 +318,4 @@ A printable outline of the audit questions in the order to ask them, with a link
 
 ## Limits
 
-These are templates, not a platform. They do not discover installs, read vendor license terms, or tell you what a license permits. They do not interpret contracts or give legal advice; verify license terms against the contract and ask counsel where a term is unclear. A proof-of-purchase check shows what you can document, not what a vendor will accept in an audit. A governance decision still needs a person to make it.
+These are templates. They do not discover installs, read vendor license terms, or tell you what a license permits. They do not interpret contracts or give legal advice; verify license terms against the contract and ask counsel where a term is unclear. A proof-of-purchase check shows what you can document, not what a vendor will accept in an audit. A governance decision still needs a person to make it.

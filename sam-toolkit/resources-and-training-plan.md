@@ -44,7 +44,7 @@ Match each group to what they need to do their part, and name who gives it. [[XW
 | Procurement | The acquisition gate, and why no purchase goes around it | A session each year and at onboarding | Gate results on file for each purchase |
 | Finance | Invoice checks and how to confirm a saving | A short session | Rows in `invoice-verification.csv` |
 | Managers and approvers | Their duties for authorizations, joiners, movers, and leavers | A briefing at the start of the role | Entries in `authorization-log.csv`, and a signed acknowledgment |
-| Everyone the policies bind | What the policies require and where to ask | An awareness message at onboarding and each year | Acknowledgments kept by date, and the result of a check that people understood it (a short quiz, a question in a team meeting, or a spot check of a few people) |
+| Everyone the policies bind | What the policies require and where to ask | An awareness message at onboarding and each year | Acknowledgments kept by date, and the result of a check that people understood it (see the policy lifecycle SOP) |
 | Legal | The audit-response contact role | A yearly run-through of `audit-response-roles.csv` | A roster with each backup marked ready |
 
 ## What shows competence
@@ -62,7 +62,7 @@ If there is no evidence for a person who needs it, plan the training, set a date
 
 - Review it each year with the budget, and when a new policy, a merger, or a move to cloud changes the work.
 - Track acknowledgments and training dates in one place, and check them at each quarterly review. [[XW-030]]
-- An acknowledgment shows people read the policy. Also check that they understood it, for example with a short quiz, a question in a team meeting, or a spot check of a few people, and record the result.
+- An acknowledgment shows people read the policy. Also check that they understood it, as the policy lifecycle SOP describes, and record the result.
 - Record in the plan any person who leaves a role that holds knowledge no one else has.
 
 ## Decision

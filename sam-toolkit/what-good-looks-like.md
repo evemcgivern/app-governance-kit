@@ -1,6 +1,6 @@
 # What good looks like
 
-A worksheet for deciding how far your program needs to go, so you aim for what is right for your organization and not for every standard at once. Full conformance to a standard is optional. Choose it only when a customer, a regulator, or a contract asks for it. The standard's tiers are informative, not required.
+A worksheet for deciding how far your program needs to go, so you aim for what your organization needs. Full conformance to a standard is optional. Choose it only when a customer, a regulator, or a contract asks for it. The standard's tiers are informative, not required.
 
 Use it before you set the To-Be levels in the assessment. It takes about 20 minutes. Clause references are to the shared crosswalk (`XW-` rows).
 

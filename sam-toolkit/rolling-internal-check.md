@@ -1,8 +1,8 @@
 # Rolling internal check
 
-A small, regular test of how your program really works, so an external audit holds no surprises. Instead of one large audit a year, test two or three areas each quarter, fix what you find, and test again. The yearly internal audit and management review in `audit-and-review-checklist.md` then becomes a summary of work already done.
+A small, regular test of how your program really works, so an external audit finds nothing you have not already fixed. Instead of one large audit a year, test two or three areas each quarter, fix what you find, and test again. The yearly internal audit and management review in `audit-and-review-checklist.md` then becomes a summary of work already done.
 
-It is a check on the program, not on people. Findings are for fixing. Clause references are to the shared crosswalk (`XW-` rows).
+Findings are for fixing; they are not a rating of anyone. Clause references are to the shared crosswalk (`XW-` rows).
 
 ## The five steps
 
@@ -39,8 +39,8 @@ A simple plan so every area is tested at least once a year. Change it to fit you
 
 ## Keep it useful
 
-- Test what you can fix. A finding nobody can act on only adds noise.
-- Report the trend, not only the count. Fewer repeat findings is the sign of a healthy program.
+- Test what you can fix.
+- Report the trend, not only the count. Fewer repeat findings means fixes are holding.
 - Share the log with your sponsor each quarter. Use it in the leadership report.
 - Before an external audit, run the same tests on the products the publisher named.
 

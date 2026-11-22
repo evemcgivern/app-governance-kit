@@ -30,7 +30,7 @@ Rate each risk on two scales, using the three words below. These are your own sc
 | medium | Could happen in the next year | A cost, delay, or finding that needs a decision |
 | high | Likely, or has happened before | A serious cost, a legal exposure, or harm to confidential data |
 
-Rate on what you can show, not on a feeling. If you have no evidence either way, say so in the action and rate it medium until you do. Work first on the risks that are high on both scales.
+Rate on what you can show. If you have no evidence either way, say so in the action and rate it medium until you do. Work first on the risks that are high on both scales.
 
 ### 3. Treat
 

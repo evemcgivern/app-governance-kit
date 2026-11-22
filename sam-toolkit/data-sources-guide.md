@@ -1,6 +1,6 @@
 # Data sources guide
 
-How to get the data that playbook steps 7 and 8 need: a record of what you run, and a count of who uses it. You will pull from five places and then clean the names so the counts match. None of these sources is complete alone. Together they are good enough to start.
+How to get the data that playbook steps 7 and 8 need: a record of what you run, and a count of who uses it. You will pull from five places and then clean the names so the counts match. No single source is complete; use all five to start.
 
 Clause references are to ISO/IEC 19770-1:2017 (paraphrased) and to the shared crosswalk (`XW-` rows). This guide does not name or recommend any tool. Use whatever your organization already has.
 
@@ -8,7 +8,7 @@ Clause references are to ISO/IEC 19770-1:2017 (paraphrased) and to the shared cr
 
 ## Before you ask anyone
 
-Write down the question first. A request for "all the data" gets nothing. A request for "the list of installed software on laptops, as a spreadsheet, once" gets an answer.
+Write down the question first. A request for "the list of installed software on laptops, as a spreadsheet, once" gets an answer.
 
 | Question | Best first source | Feeds |
 | --- | --- | --- |

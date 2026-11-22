@@ -1,14 +1,14 @@
 # Joiner, mover, and leaver procedure
 
-A short procedure for what happens to software and licenses when a person joins, changes role, or leaves. It keeps access matched to the job, returns licenses to the pool where the contract allows, and leaves a record an auditor can follow.
+A short procedure for what happens to software and licenses when a person joins, changes role, or leaves. It matches access to the job, returns licenses to the pool where the contract allows, and leaves a record an auditor can follow.
 
-Clause references are to ISO/IEC 19770-1:2017 (paraphrased) and to the shared crosswalk (`XW-` rows). This procedure does not interpret contracts or give legal advice. Where it says have the contract owner confirm, a person who owns the contract decides, not this document.
+Clause references are to ISO/IEC 19770-1:2017 (paraphrased) and to the shared crosswalk (`XW-` rows). This procedure does not interpret contracts or give legal advice. Where it says have the contract owner confirm, the contract owner decides.
 
 **Owner:** ______________________  **Approver:** ______________________  **Date:** ___________
 
 ## Roles
 
-- **HR:** tells ITAM about each joiner, mover, and leaver, with the date it takes effect. HR sends the notice; ITAM does not look for it. [[XW-004]]
+- **HR:** tells ITAM about each joiner, mover, and leaver, with the date it takes effect. ITAM waits for the HR notice. [[XW-004]]
 - **Manager:** states what the person needs, and confirms each access a mover keeps.
 - **ITAM:** acts on the notice, records the result, and returns reclaimed licenses to the pool.
 - **Application owner:** removes or changes access in their application.

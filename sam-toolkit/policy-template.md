@@ -149,11 +149,11 @@ Say how people learn the policy and how you know they understood it. Awareness c
 | How | [Channel and format] |
 | Acknowledgment | [How a person confirms they read it, and where the record is kept] |
 | Who checks | [Role that follows up on missing acknowledgments] |
-| Understood | [How the owner checks the policy was understood, for example a short quiz, a question in a team meeting, or a spot check of a few people, and where the result is recorded] |
+| Understood | [How the owner checks the policy was understood, for example a short quiz, and where the result is recorded] |
 
 ## 10. Measures
 
-Pick a few measures that show the policy is followed, not only that it exists. [[XW-025]]
+Pick a few measures that show the policy is followed. [[XW-025]]
 
 | Measure | Target | Source | Reviewed by | How often |
 | --- | --- | --- | --- | --- |

@@ -1,8 +1,8 @@
 # Application management program self-assessment
 
-A self-assessment for an IT application management program: the work of deciding what applications the organization has, who is accountable for each, what to buy, renew, change, or retire, and how to prove it. It records two states for each part of the program: where you are now (the As-Is state) and where you need to be (the To-Be state). The gap between them is your plan.
+A self-assessment for an IT application management program: the work of deciding what applications the organization has, who is accountable for each, what to buy, renew, change, or retire, and how to prove it. It records two states for each part of the program: where you are now (the As-Is state) and where you need to be (the To-Be state).
 
-Use it before the full `itam-maturity` check, or alongside `tier-self-assessment.md`. The tier check asks whether your asset data meets a standard's tiers; the maturity check scores nine asset management areas with evidence; this one looks at the application management program as a whole and asks where you want it to go. Record your answers in `application-management-gap-plan.csv`.
+Use it before the full `itam-maturity` check, or alongside `tier-self-assessment.md`. The tier check tests your asset data against a standard's tiers, and the maturity check scores nine asset management areas with evidence. This one looks at the application management program as a whole and where you want it to go. Record your answers in `application-management-gap-plan.csv`.
 
 Clause references are to the shared crosswalk (`XW-` rows). Nothing here comes from a standard's text, and the scale is this kit's own.
 
@@ -47,7 +47,7 @@ Not every dimension needs to reach 3. Level 2 is a strong result for a small org
 ## Common mistakes
 
 - Scoring by intent. A written policy nobody follows is level 1, not level 2.
-- Setting every To-Be to 3. A target you cannot afford to reach is a wish, not a plan.
+- Setting every To-Be to 3. Set targets you can afford to reach.
 - Scoring without the people who do the work. A sponsor's view of the program often differs from the practitioner's.
 - Skipping the evidence column. Without evidence the score cannot be challenged later.
 - Treating the assessment as the end. Its output is a short plan with owners and dates.
