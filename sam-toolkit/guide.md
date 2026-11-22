@@ -1,6 +1,6 @@
 # SAM toolkit guide
 
-Forty working files, including this guide, to support a software and IT asset management (SAM/ITAM) practice. They are blank templates and checklists. Open the CSV files in Excel, Google Sheets, or any spreadsheet; they are plain text, so nothing is locked. The documents are Markdown in the repository and download as Word files from the site. All data in the examples is fictional (the Halden Logistics demo estate).
+Forty-one working files, including this guide, to support a software and IT asset management (SAM/ITAM) practice. They are blank templates and checklists. Open the CSV files in Excel, Google Sheets, or any spreadsheet; they are plain text, so nothing is locked. The documents are Markdown in the repository and download as Word files from the site. All data in the examples is fictional (the Halden Logistics demo estate).
 
 The files are informed by ISO/IEC 19770-1:2017. Most files trace to a clause of the standard; the purchasing, savings, and practice files trace to crosswalk rows instead. The text is paraphrased and does not replace the standard. No affiliation with or endorsement by ISO or IEC.
 
@@ -311,6 +311,10 @@ Pre-filled with twelve audit-response tasks that match the `audit-response` meth
 - `decision_authority` and `escalates_to`: who decides, and where a dispute goes.
 
 Keep two versions of the roster: one with roles only, which survives staff changes, and one with names and phone numbers, which is the one you use in a hurry.
+
+### audit-decision-tree.md (crosswalk XW-004, XW-007, XW-013, XW-020)
+
+A printable outline of the audit questions in the order to ask them, with a link from each answer to the next question. It covers the quiet case, readiness work, a letter in hand, findings, and the close. Each node names who acts, which kit file to open, whether the point is a kit rule, a judgment, or a counsel decision, and any flag: Decision needed, freeze, or originals stay in house. Start at node 1, and keep a dated note of the nodes you pass. The tree leaves penalty amounts, legal conclusions, and retention periods to counsel and the records owner.
 
 ## Limits
 
