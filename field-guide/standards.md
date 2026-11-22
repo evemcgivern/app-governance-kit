@@ -25,7 +25,7 @@ Parts 5, 6, 8, 10, 11, and 13 round out the family: vocabulary, a hardware equiv
 
 ## COBIT 2019
 
-COBIT is ISACA's framework for governing and managing enterprise IT. It organizes IT governance and management into objectives across five domains (evaluate-direct-monitor, align-plan-organize, build-acquire-implement, deliver-service-support, and monitor-evaluate-assess), each with its own goals and practices. Where ISO/IEC 19770-1 describes what an IT asset management system does, COBIT objectives like BAI09 (Managed Assets), APO01 (governance framework), APO10 (vendor management), APO12 (risk management), DSS05 (security services), and MEA02 (monitoring internal control) describe the broader governance and management structure that ITAM, AI governance, and access control all sit inside. The crosswalk cites specific COBIT objectives alongside the matching ISO clause for each control theme.
+COBIT is ISACA's framework for governing and managing enterprise IT, not an ISO standard. It organizes IT governance and management into objectives across five domains (evaluate-direct-monitor, align-plan-organize, build-acquire-implement, deliver-service-support, and monitor-evaluate-assess), each with its own goals and practices. Where ISO/IEC 19770-1 describes what an IT asset management system does, COBIT objectives like BAI09 (Managed Assets), APO01 (governance framework), APO10 (vendor management), APO12 (risk management), DSS05 (security services), and MEA02 (monitoring internal control) describe the broader governance and management structure that ITAM, AI governance, and access control all sit inside. The crosswalk cites specific COBIT objectives alongside the matching ISO clause for each control theme.
 
 ## ISO/IEC 27001
 

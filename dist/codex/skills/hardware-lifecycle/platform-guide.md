@@ -31,4 +31,4 @@ Flexera's own disposal-integration language describes coordinating with connecte
 - [IT Hardware Asset Management Solutions, Flexera](https://www.flexera.com/solutions/it-asset-lifecycle/hardware-asset-management): hardware lifecycle integration (vendors, asset registers, procurement, inventory, barcoding, disposal vendors), automated disposition, warranty/lease tracking, and software-license reclamation on retirement, fetched 2026-09-25.
 - [Strategic Hardware Lifecycle Management, Flexera](https://www.flexera.com/solutions/it-asset-lifecycle/hardware-lifecycle-management): the five-stage lifecycle (planning, acquisition, utilization, maintenance, renewal or disposal), Technopedia-sourced EOL/EOS lifecycle alerts, and Flexera One IT Visibility discovery, fetched 2026-09-25.
 
-Pages that did not load: ServiceNow's own Hardware Asset Management product page (`servicenow.com/products/hardware-asset-management.html`, 403). Nothing above rests on it.
+Pages that did not return readable content to an automated fetch: ServiceNow's own Hardware Asset Management product page (`servicenow.com/products/hardware-asset-management.html`, 403). Nothing above rests on it.

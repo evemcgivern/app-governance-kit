@@ -120,7 +120,7 @@ A node can also carry a flag. A notice is open from a Yes at node 1 until counse
 
 ### Node B3
 
-**Does each entitlement have proof the agreement accepts?** A certificate of authenticity or a product key alone is not proof. It shows only that a copy exists.
+**Does each entitlement have proof the agreement accepts?** A certificate of authenticity or a product key alone is not proof. It shows only that a copy exists, not a right to use it.
 
 - Log each gap with an owner, then go to [node B4](#node-b4).
 - Who acts: Procurement and the asset manager.

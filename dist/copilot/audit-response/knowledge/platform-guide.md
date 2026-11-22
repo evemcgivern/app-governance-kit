@@ -30,4 +30,4 @@ The platform facts above were fetched for the rationalization platform guide on 
 - [Application Rationalization & Management, Flexera](https://www.flexera.com/flexera-one/it-visibility/application-rationalization): hybrid IT discovery and Technopedia normalization.
 - [Streamline Your SaaS Portfolio with Application Rationalization, Flexera](https://www.flexera.com/solutions/saas-spend/application-rationalization): unused and unassigned license reporting.
 
-Pages that did not load: Flexera's documentation site (`docs.flexera.com/...`, 403). Nothing above cites it.
+Pages that did not return readable content to an automated fetch: Flexera's documentation site (`docs.flexera.com/...`, 403). Nothing above cites it.

@@ -91,4 +91,4 @@ The one confirmed named cross-capability link is **AI Control Tower**, which att
 - [Vendor Management, Flexera](https://www.flexera.com/solutions/software-renewals-audits/vendor-management): confirms no standalone vendor-risk-management capability; outcome is framed as emerging from IT Asset Management and SaaS Management.
 - [Flexera Launches SBOM Management Functionality in Flexera One IT Visibility, Flexera press release](https://www.flexera.com/about-us/press-center/flexera-launches-sbom-management-functionality-in-flexera-one-it-visibility): the named SBOM Management capability.
 
-ServiceNow's product pages (`servicenow.com/products/...`, `servicenow.com/uk/products/...`, both 403) and Flexera's documentation site (`docs.flexera.com/...`, also 403) did not load. Nothing above rests on them.
+ServiceNow's product pages (`servicenow.com/products/...`, `servicenow.com/uk/products/...`, both 403) and Flexera's documentation site (`docs.flexera.com/...`, also 403) did not return readable content to an automated fetch. Nothing above rests on them.

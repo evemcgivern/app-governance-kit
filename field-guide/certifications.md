@@ -42,6 +42,8 @@ Use this table once you've narrowed to two or three candidates and need a tie-br
 | ITIL 4 Foundation | PeopleCert | Anyone working in or around IT service delivery | Complex, service-heavy IT environments: banking, insurance, healthcare, telecommunications, government, and managed-service/IT-outsourcing providers | Broad recognition outside ITAM specifically | Not asset-management-specific; its ties to this kit's tools are real but indirect; renewal every 3 years |
 | IAM Certificate (Principles of Asset Management) | Institute of Asset Management (IAM) | People new to (or early in) formal asset management, beyond IT alone | Asset-intensive, infrastructure-heavy sectors: utilities (water, electricity, gas), transport and rail, oil and gas, mining, manufacturing, airports, government and public infrastructure | Built on general asset management beyond IT; its syllabus follows the logic of the ISO 55000 series, which traces back to PAS 55, a specification the IAM helped develop | UK-centered exam logistics (Pearson-approved IAM venues); no IT- or software-specific content of its own |
 
+The Typical domains column is the kit's own reading, and no source in this file backs it.
+
 ## Certified Asset Management Professional (CAMP)
 
 **Who it's for:** People new to IT asset management who need the foundational program and process picture before they specialize.

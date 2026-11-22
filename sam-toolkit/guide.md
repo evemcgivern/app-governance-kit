@@ -68,7 +68,7 @@ One row per invoice line check. Compare the invoice to the contract and purchase
 - `line_math_ok`, `subtotal_ok`, `tax`, `shipping`, `total`: check the arithmetic and the add-ons.
 - `matched`: yes or no. If no, say why in `discrepancy` and record `amount_at_issue` and `resolved_on`.
 
-Chart discrepancy categories over time. A repeating pattern is the evidence for changing practice.
+Chart discrepancy categories over time. A repeating pattern is the evidence to take to management for a change in practice.
 
 ### savings-report.csv (crosswalk XW-012)
 
@@ -300,7 +300,7 @@ A worksheet for one process at a time. Describe the Is map first, then the Shoul
 
 ### leadership-report.md (crosswalk XW-012, XW-025, XW-027)
 
-A one-page report that ties each control to a KPI and a decision, with the result in money or risk. It also answers six questions leaders ask. Keep the KPI set to five or fewer, each with a target and an action when it is missed.
+A one-page report that ties each control to a KPI, the KPI to the decision it drove, and that decision to a result in money or risk. It also answers six questions leaders ask. Keep the KPI set to five or fewer, each with a target and an action when it is missed.
 
 ### audit-response-roles.csv (crosswalk XW-004, XW-020)
 
