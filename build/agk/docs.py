@@ -856,18 +856,18 @@ PAGE = """<!DOCTYPE html>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{title} | Eve McGivern</title>
+<title>{title} | App Governance Kit</title>
 <meta name="description" content="{description}">
 <meta name="author" content="Eve McGivern">
 <link rel="canonical" href="{canonical}">
 <meta property="og:type" content="article">
-<meta property="og:site_name" content="Eve McGivern | Application Governance">
-<meta property="og:title" content="{title}">
+<meta property="og:site_name" content="App Governance Kit">
+<meta property="og:title" content="{title} | App Governance Kit">
 <meta property="og:description" content="{description}">
 <meta property="og:url" content="{canonical}">
 <meta property="og:image" content="{base}og-image.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="{title}">
+<meta name="twitter:title" content="{title} | App Governance Kit">
 <meta name="twitter:description" content="{description}">
 <meta name="twitter:image" content="{base}og-image.png">
 <script type="application/ld+json">
@@ -883,6 +883,13 @@ PAGE = """<!DOCTYPE html>
 <a class="skip-link" href="#main">Skip to content</a>
 {header}
 <main id="main" class="doc-page">
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <ol>
+      <li><a href="{up}index.html">Home</a></li>
+      <li><a href="{back_href}">{back_label}</a></li>
+      <li><span aria-current="page">{title}</span></li>
+    </ol>
+  </nav>
   <div class="doc-top">
     <p class="doc-back"><a href="{back_href}">&larr; {back_label}</a></p>
     {print_button}
@@ -1303,7 +1310,7 @@ def collect(root: Path) -> list[Doc]:
             docs.append(Doc(f, "md", "practicum", name, back))
     lq = root / "dist" / "lifecycle-questions.md"
     if lq.is_file():
-        docs.append(Doc(lq, "md", "lifecycle", "questions", ("lifecycle.html", "Lifecycle")))
+        docs.append(Doc(lq, "md", "lifecycle", "questions", ("lifecycle.html", "Application lifecycle")))
     return docs
 
 
