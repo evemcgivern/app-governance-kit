@@ -370,6 +370,7 @@ table {
 }
 
 .table-scroll {
+  position: relative;
   overflow-x: auto;
 }
 

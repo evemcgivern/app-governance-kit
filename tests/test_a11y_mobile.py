@@ -78,6 +78,10 @@ class TaskListTests(unittest.TestCase):
         self.assertIn('<ul class="task-list">', html)
         self.assertIn("<li>Done when the owner signs</li>", html)
 
+    def test_nested_task_items_get_the_print_hook_too(self):
+        html = html_of("- Done when:\n  - [ ] One\n  - [ ] Two\n")
+        self.assertIn('<ul><li>Done when:<ul class="task-list"><li>One</li>', html)
+
     def test_print_css_draws_an_empty_square_before_task_items(self):
         css = CSS.read_text(encoding="utf-8")
         self.assertRegex(css, r'@media print\s*\{[^@]*\.task-list li::before\s*\{[^}]*content: "\\2610')
@@ -202,6 +206,13 @@ class SidewaysScrollTests(unittest.TestCase):
         body = rule(CSS.read_text(encoding="utf-8"), ".visual-actions__link")
         self.assertNotIn("nowrap", body)
         self.assertIn("max-width: 100%", body)
+
+
+class ScrollContainTests(unittest.TestCase):
+    def test_scroll_wrapper_contains_absolutely_positioned_labels(self):
+        body = rule(CSS.read_text(encoding="utf-8"), ".table-scroll")
+        self.assertIn("position: relative", body)
+        self.assertIn("overflow-x: auto", body)
 
 
 class TouchTargetTests(unittest.TestCase):

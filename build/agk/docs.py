@@ -249,7 +249,8 @@ def _list_html(block: dict, resolve, files) -> str:
         for it in its:
             kids = ""
             if it["children"]:
-                kids = f"<{tag}>{items(it['children'])}</{tag}>"
+                kid_cls = " class=\"task-list\"" if any(c["checked"] is not None for c in it["children"]) else ""
+                kids = f"<{tag}{kid_cls}>{items(it['children'])}</{tag}>"
             done = " class=\"task-done\"" if it["checked"] else ""
             parts.append(f"<li{done}>{inline_html(it['text'], resolve, files)}{kids}</li>")
         return "".join(parts)
