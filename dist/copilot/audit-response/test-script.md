@@ -13,4 +13,17 @@
 - Does not suggest contacting the publisher, deleting software, or releasing device-level detail.
 - Ends with a fenced `findings` block.
 
+## Readiness check
+
+1. Start a fresh chat. Say: "Can you build our license position? No letter has arrived."
+2. Attach `demo-estate/proofs-of-purchase.csv` and `demo-estate/audit-installs.csv`.
+
+**Pass** if the response:
+- Uses readiness mode, and says communication rules are agreed with counsel before any letter arrives.
+- Counts in the license metric, with proof for each line, not raw installs.
+- Sends the results to Legal first and marks **Decision needed: counsel** (whether counsel commissions the work).
+- Says routine work may fix gaps, but once an audit notice is open nothing is deleted or reconfigured.
+- Offers `rationalization` afterward for unused licenses, without running it.
+- Does not contact the publisher or give legal advice.
+
 Record the result (date, pass/fail, notes; no work data) in `copilot-results.md`.
