@@ -4,7 +4,7 @@ These two disciplines get used interchangeably, but they ask different questions
 
 Application governance manages the *software*: what applications exist, who owns each one, what they cost, how they're licensed, who has access to them, and when they get retired. It's the subject of this whole kit.
 
-Data governance manages the *information inside those applications*: what each data element means, who's accountable for its quality and stewardship, how sensitive it is, how long it has to be kept, and what privacy law says about it. This kit doesn't build that discipline out; the comparison below exists so the boundary is clear, and so the four places the two disciplines meet don't get missed.
+Data governance manages the *information inside those applications*: what each data element means, who's accountable for its quality and stewardship, how sensitive it is, how long it has to be kept, and what privacy law says about it. This kit doesn't build that discipline out; four points where the two meet are covered inside the tools.
 
 ## Comparison
 
@@ -16,12 +16,12 @@ Data governance manages the *information inside those applications*: what each d
 
 ## Where they meet
 
-**Retiring an application is a data decision, not just a software one.** Before an app is eliminated, someone has to decide what happens to the data it holds (archive it, migrate it, or delete it) and that decision needs a data owner's sign-off, not just an IT one. *Halden example: the `rationalization` checklist's retirement step (step 10) requires exactly this before any eliminate decision is executed; it isn't optional cleanup.*
+**Retiring an application is also a data decision.** Before an app is eliminated, someone has to decide what happens to the data it holds (archive it, migrate it, or delete it) and that decision needs a data owner's sign-off as well as IT's. *Halden example: the `rationalization` checklist's retirement step (step 10) requires exactly this before any eliminate decision is executed.*
 
-**Data sensitivity sets access-review priority.** Which accounts get reviewed first should follow how sensitive the underlying data is, not just an alphabetical or convenient order. *Halden example: the access review deliberately checked the 10 confidential apps before the 50 internal ones, and two of the three orphaned accounts it found were on confidential systems.*
+**Data sensitivity sets access-review priority.** Which accounts get reviewed first should follow how sensitive the underlying data is. *Halden example: the access review deliberately checked the 10 confidential apps before the 50 internal ones, and two of the three orphaned accounts it found were on confidential systems.*
 
-**AI systems are only as trustworthy as the data behind them.** An AI system's risk tier and its controls both depend on what data it uses, where that data came from, and whether it includes personal data; you can't govern the AI system without governing its data. *Halden example: `ai-intake`'s step 2 records data used, personal-data status, and provenance for each of Halden's six systems before any tier is assigned.*
+**AI systems are only as trustworthy as the data behind them.** An AI system's risk tier and its controls both depend on what data it uses, where that data came from, and whether it includes personal data. *Halden example: `ai-intake`'s step 2 records data used, personal-data status, and provenance for each of Halden's six systems before any tier is assigned.*
 
-**Asset records are themselves data, and need the same quality discipline.** An inventory that's wrong (missing owners, mismatched user counts, stale entitlements) isn't just an ITAM problem; it's a data-quality problem inside the ITAM system. *Halden example: the crosswalk's XW-026 control theme, and the `itam-maturity` check's evidence-per-area step, both treat the accuracy of the asset data itself as something to verify, not assume.*
+**Asset records are themselves data, and need the same quality discipline.** An inventory that's wrong (missing owners, mismatched user counts, stale entitlements) is a data-quality problem inside the ITAM system. *Halden example: the crosswalk's XW-026 control theme, and the `itam-maturity` check's evidence-per-area step, both treat the accuracy of the asset data itself as something to verify.*
 
 A full data classification and retention tool is planned for phase 2 of this kit; today, these four intersection points are handled inside the existing tools rather than by a dedicated one.

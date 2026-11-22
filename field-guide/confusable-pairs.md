@@ -1,8 +1,8 @@
 # Field guide: confusable pairs
 
-Seven pairs of terms that learners mix up when they study for CAMP and CSAM. Each one has a short difference, a small Halden Logistics scenario, and an answer. Try the scenario before you read the answer.
+Seven pairs of terms that learners mix up when they study for CAMP and CSAM. Each pair has a Halden Logistics scenario and an answer. Try the scenario before you read the answer.
 
-This is practice on concepts, not exam questions, and it does not predict a result. Terms are explained in this kit's own words; for exam content use the certification body's materials ([certifications.md](certifications.md)). Halden is fictional, and its files are in `demo-estate/`.
+This is practice on concepts, not exam questions. Terms are explained in this kit's own words; for exam content use the certification body's materials ([certifications.md](certifications.md)). Halden is fictional, and its files are in `demo-estate/`.
 
 Pairs 1 to 5 and 7 come up in CAMP. Pair 6 comes up in CSAM.
 
@@ -16,7 +16,7 @@ Pairs 1 to 5 and 7 come up in CAMP. Pair 6 comes up in CSAM.
 
 ## 2. Key process area vs. key performance indicator
 
-**The difference.** A key process area names a broad kind of work. A key performance indicator is a number that shows how well that work is going. One names the work; the other measures it.
+**The difference.** A key process area names a broad kind of work. A key performance indicator is a number that shows how well that work is going.
 
 **Try it.** Halden's leadership asks how disposal is going. Name the process area, then give one number from `devices.csv` that would answer them.
 
@@ -24,7 +24,7 @@ Pairs 1 to 5 and 7 come up in CAMP. Pair 6 comes up in CSAM.
 
 ## 3. Policy vs. procedure
 
-**The difference.** A policy says what is required and who is accountable. A procedure says the steps someone follows to meet it. Policies change rarely and need senior approval. Procedures change whenever the work does.
+**The difference.** A policy says what is required and who is accountable. A procedure says the steps someone follows to meet it. Policies change rarely and need senior approval; procedures change with the work.
 
 **Try it.** Two statements. (a) Retired software must have its data and access removed, and the retirement must be recorded. (b) Open the retirement ticket, export the account list, revoke each account, then mark the application retired in the inventory. Which is policy and which is procedure?
 
@@ -36,11 +36,11 @@ Pairs 1 to 5 and 7 come up in CAMP. Pair 6 comes up in CSAM.
 
 **Try it.** Halden's draft council charter says the governance analyst keeps the register of decisions. The person who holds that job goes on leave for three months. What should the charter say so the register keeps being kept?
 
-**Check yourself.** The duty belongs to the role, not the person. The charter should name the current holder and a backup, so a change of staff or a leave does not leave the register without a keeper.
+**Check yourself.** The duty belongs to the role. The charter should name the current holder and a backup, so a change of staff or a leave does not leave the register without a keeper.
 
 ## 5. Compliance management vs. legislation management
 
-**The difference.** In IAITAM's course framing, compliance management looks inward: it checks your own estate against the rules and contracts you must follow, and acts on the result. Legislation management looks outward: it watches laws and standards set by others, works out what they mean, and tells the right people. One executes; the other interprets and communicates.
+**The difference.** In IAITAM's course framing, compliance management looks inward: it checks your own estate against the rules and contracts you must follow, and acts on the result. Legislation management looks outward: it watches laws and standards set by others, works out what they mean, and tells the right people.
 
 **Try it.** Two tasks at Halden. (a) Compare the installs in `audit-installs.csv` with the licenses its proofs of purchase cover, before a publisher's audit. (b) Suppose a new state privacy law could change how Halden stores customer data; someone reads it and briefs the owners of the affected systems. Which task is which?
 
@@ -48,7 +48,7 @@ Pairs 1 to 5 and 7 come up in CAMP. Pair 6 comes up in CSAM.
 
 ## 6. Entitlement vs. proof of purchase
 
-**The difference.** An entitlement is the usage right a license grants. A proof of purchase is the evidence that the organization actually bought it. A number in a system is a claim; the proof is what supports the claim.
+**The difference.** An entitlement is the usage right a license grants. A proof of purchase is the evidence that the organization bought it.
 
 **Try it.** Halden's records say it holds a certain number of seats for a product (`licenses.csv`). A publisher asks Halden to show it. Which record states the right, and which record would you hand over to support it?
 

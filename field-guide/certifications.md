@@ -1,11 +1,11 @@
 # Field guide: certifications
 
-Six certifications come up most often around this kit's three areas: portfolio, AI, and access. This page states what each one actually covers, in plain terms, and ties it to a task the kit's tools already do. It isn't a study guide, and it isn't a recommendation to sit any particular exam. To see which kit tools and exercises practice each CAMP and CSAM topic, use the [study map](study-map.md), and for terms learners often mix up, the [confusable pairs](confusable-pairs.md).
+Six certifications come up most often around this kit's three areas: portfolio, AI, and access. This page states what each one covers and ties it to a task the kit's tools already do. It isn't a study guide. To see which kit tools and exercises practice each CAMP and CSAM topic, use the [study map](study-map.md), and for terms learners often mix up, the [confusable pairs](confusable-pairs.md).
 
 ## Suggested order for someone new
 
 1. **CAMP**: start here. It's the foundational program-and-process view everything else builds on.
-2. **CSAM or CHAMP**: pick by which asset type you actually own (software versus hardware), not both by default.
+2. **CSAM or CHAMP**: pick by which asset type you own (software versus hardware), not both by default.
 3. **IAM Certificate**: add it if your remit reaches beyond IT into physical or infrastructure assets generally.
 4. **ITIL 4 Foundation**: add it if your organization already runs formal IT service management and you need its vocabulary.
 
@@ -13,7 +13,7 @@ AIGP sits apart from this sequence; take it when AI governance specifically is t
 
 ## Cross-certification task matrix
 
-Before comparing the certifications' own attributes, start from the job: which certification(s) actually teach the skill a given task needs, independent of which kit tool applies (the per-certification sections below already name those). Three tasks are taught by more than one certification; the rest are each one certification's specialty. Certification names below link to that certification's own section, where its practical-application table shows what depth actually looks like for that task; a shared ✓ here doesn't mean equal depth (see the CAMP/CSAM/CHAMP/IAM Certificate maturity row, for one example).
+This matrix starts from the job: which certifications teach the skill a task needs. Three tasks are taught by more than one certification; the rest are each one certification's specialty. Certification names link to that certification's own section. A shared ✓ doesn't mean equal depth; the maturity row, shared by CAMP, CSAM, CHAMP, and the IAM Certificate, is one example.
 
 | On-the-job task | [CAMP](#certified-asset-management-professional-camp) | [CSAM](#certified-software-asset-manager-csam) | [CHAMP](#certified-hardware-asset-management-professional-champ) | [AIGP](#artificial-intelligence-governance-professional-aigp) | [ITIL 4 Foundation](#itil-4-foundation) | [IAM Certificate](#iam-certificate-principles-of-asset-management) |
 |---|---|---|---|---|---|---|
@@ -31,16 +31,16 @@ Before comparing the certifications' own attributes, start from the job: which c
 
 ## Certification comparison
 
-The task matrix above says which certification(s) cover a task; this table compares the certifications themselves, useful once you've narrowed to two or three candidates and need a tie-breaker.
+Use this table once you've narrowed to two or three candidates and need a tie-breaker.
 
 | Certification | Governing body | Best for | Typical domains | Pros | Cons |
 |---|---|---|---|---|---|
-| CAMP | International Association of Information Technology Asset Managers (IAITAM) | Newcomers to ITAM overall | Cross-industry; strongest pull in regulated/compliance-heavy sectors (finance, government, healthcare) where audit-readiness matters most | Foundational, broad process view; the only one of the six that doesn't assume a specialization yet | Doesn't go deep on software or hardware specifics; annual renewal |
-| Certified Software Asset Manager (CSAM) | International Association of Information Technology Asset Managers (IAITAM) | Software-heavy licensing/compliance work | Large software estates facing vendor true-up risk: finance, healthcare, government, any enterprise running Microsoft/Oracle/SAP-scale license agreements | Ties directly to three of this kit's tools (`rationalization`, `itam-maturity`, `audit-response`); most audit-relevant of the four IAITAM credentials | Annual renewal; no hardware coverage |
-| Certified Hardware Asset Management Professional (CHAMP) | International Association of Information Technology Asset Managers (IAITAM) | Hardware lifecycle owners | Hardware-fleet-heavy sectors: manufacturing, healthcare (medical equipment), education (device fleets), retail/logistics (warehouse and POS hardware), government | The only one of the six covering physical assets; ties directly to this kit's `hardware-lifecycle` tool | Annual renewal |
+| CAMP | International Association of Information Technology Asset Managers (IAITAM) | Newcomers to ITAM overall | Cross-industry; any sector emphasis is unverified | Foundational, broad process view; assumes no specialization | Doesn't go deep on software or hardware specifics; annual renewal |
+| Certified Software Asset Manager (CSAM) | International Association of Information Technology Asset Managers (IAITAM) | Software-heavy licensing/compliance work | Large software estates facing vendor true-up risk: finance, healthcare, government, any enterprise running Microsoft/Oracle/SAP-scale license agreements | Ties directly to three of this kit's tools (`rationalization`, `itam-maturity`, `audit-response`); most audit-relevant of the three IAITAM credentials listed here | Annual renewal; no hardware coverage |
+| Certified Hardware Asset Management Professional (CHAMP) | International Association of Information Technology Asset Managers (IAITAM) | Hardware lifecycle owners | Hardware-fleet-heavy sectors: manufacturing, healthcare (medical equipment), education (device fleets), retail/logistics (warehouse and POS hardware), government | Covers IT hardware; ties directly to this kit's `hardware-lifecycle` tool | Annual renewal |
 | Artificial Intelligence Governance Professional (AIGP) | International Association of Privacy Professionals (IAPP) | AI governance specifically | Deliberately cross-industry by design: any sector deploying AI, in compliance/legal/risk/data-science roles rather than a particular vertical | The only AI-focused credential here; industry-agnostic; ties to `ai-intake` | Separate body/ecosystem from the IAITAM three; harder exam format (multi-select, no partial credit); one recertification detail is flagged below as unconfirmed |
-| ITIL 4 Foundation | PeopleCert | Anyone working in or around IT service delivery | Complex, service-heavy IT environments: banking, insurance, healthcare, telecommunications, government, and managed-service/IT-outsourcing providers | Broad recognition outside ITAM specifically; the practice most other frameworks assume as the operating layer underneath them | Not asset-management-specific; its ties to this kit's tools are real but indirect; renewal every 3 years |
-| IAM Certificate (Principles of Asset Management) | Institute of Asset Management (IAM) | People new to (or early in) formal asset management, beyond IT alone | Asset-intensive, infrastructure-heavy sectors: utilities (water, electricity, gas), transport and rail, oil and gas, mining, manufacturing, airports, government and public infrastructure | The only one of the six built on general (not just IT) asset management; the ISO 55000 series it's grounded in traces back to a standard the IAM itself helped originate | UK-centered exam logistics (Pearson-approved IAM venues); no IT- or software-specific content of its own |
+| ITIL 4 Foundation | PeopleCert | Anyone working in or around IT service delivery | Complex, service-heavy IT environments: banking, insurance, healthcare, telecommunications, government, and managed-service/IT-outsourcing providers | Broad recognition outside ITAM specifically | Not asset-management-specific; its ties to this kit's tools are real but indirect; renewal every 3 years |
+| IAM Certificate (Principles of Asset Management) | Institute of Asset Management (IAM) | People new to (or early in) formal asset management, beyond IT alone | Asset-intensive, infrastructure-heavy sectors: utilities (water, electricity, gas), transport and rail, oil and gas, mining, manufacturing, airports, government and public infrastructure | Built on general asset management beyond IT; its syllabus follows the logic of the ISO 55000 series, which traces back to PAS 55, a specification the IAM helped develop | UK-centered exam logistics (Pearson-approved IAM venues); no IT- or software-specific content of its own |
 
 ## Certified Asset Management Professional (CAMP)
 
@@ -52,28 +52,28 @@ The task matrix above says which certification(s) cover a task; this table compa
 
 | On-the-job task | What "good" looks like | Kit tool |
 |---|---|---|
-| Stand up an ITAM program and its governance council | A charter with a named sponsor, written decision rights and thresholds, and a 90-day launch plan, not just a meeting schedule | `program-setup` |
-| Baseline the program's process maturity | Every process area carries an evidence citation, not a self-rating alone, and named gaps | `itam-maturity` |
-| Get real ownership assigned across the inventory | Every application has a named owner, not "unassigned" | `rationalization` |
+| Stand up an ITAM program and its governance council | A charter with a named sponsor, written decision rights and thresholds, and a 90-day launch plan | `program-setup` |
+| Baseline the program's process maturity | Every process area carries an evidence citation, and gaps are named | `itam-maturity` |
+| Get real ownership assigned across the inventory | Every application has a named owner | `rationalization` |
 
 ## Certified Software Asset Manager (CSAM)
 
 **Who it's for:** People with little or no prior software asset management background who need to run licensing, compliance, and audit response day to day.
 
-**What it covers:** CSAM is offered live or self-paced, with annual renewal and a 6-month grace window, but turns the curriculum toward software specifically: discovery and harvesting tools, license types and negotiation, EULA interpretation, compliance enforcement, and audit procedures. (Source: [iaitam.org/csam](https://iaitam.org/csam/), fetched 2026-11-21.) The exam is 3 hours and 100 randomized questions, passed at 85% or higher, with two attempts inside a 14-day window. Check the page for current prices and attempt rules before booking.
+**What it covers:** CSAM is offered live or self-paced, with annual renewal and a 6-month grace window. It turns the curriculum toward software specifically: discovery and harvesting tools, license types and negotiation, EULA interpretation, compliance enforcement, and audit procedures. (Source: [iaitam.org/csam](https://iaitam.org/csam/), fetched 2026-11-21.) The exam is 3 hours and 100 randomized questions, passed at 85% or higher, with two attempts inside a 14-day window. Check the page for current prices and attempt rules before booking.
 
 **Practical application:**
 
 | On-the-job task | What "good" looks like | Kit tool |
 |---|---|---|
-| Establish an [effective license position](glossary.md#effective-license-position) before a vendor audit | The position compares [entitlements](glossary.md#entitlement) to actual deployment/usage, not just user counts, and states what's unverified | `rationalization` + `itam-maturity` |
+| Establish an [effective license position](glossary.md#effective-license-position) before a vendor audit | The position compares [entitlements](glossary.md#entitlement) to actual deployment and usage, and states what's unverified | `rationalization` + `itam-maturity` |
 | Find duplicate or underused applications to consolidate | Duplicates are matched by category and function, and a keep/retire call is made with a stated reason | `rationalization` |
-| Score software-process maturity ahead of a compliance review | Evidence is collected per process area and gaps are ranked, not just listed | `itam-maturity` |
+| Score software-process maturity ahead of a compliance review | Evidence is collected per process area and gaps are ranked | `itam-maturity` |
 | Respond to a publisher's audit letter | Counsel owns all outside contact, installs are reconciled against proofs of purchase per product, and every proof is checked for the details it must show | `audit-response` |
 
 ## Certified Hardware Asset Management Professional (CHAMP)
 
-**Who it's for:** People with little or no prior hardware asset management background who own the physical device lifecycle. (Released in 2004; one of IAITAM's original certifications, not a recent addition.)
+**Who it's for:** People with little or no prior hardware asset management background who own the physical device lifecycle. (Released in 2004; one of IAITAM's original certifications.)
 
 **What it covers:** CHAMP is IAITAM's hardware-focused counterpart to CSAM: the same 12 IAITAM KPAs framing and a similar course structure (8-hour live or 90-day self-paced, annual renewal with a 6-month grace period), but the subject matter is the physical hardware lifecycle: acquisition, deployment, maintenance, refresh, and disposal. (Source: [iaitam.org/champ](https://iaitam.org/champ/), fetched 2026-09-25.) Exam length, question count, pass mark and attempts are not restated here; check the certification body's own page before booking.
 
@@ -82,20 +82,20 @@ The task matrix above says which certification(s) cover a task; this table compa
 | On-the-job task | What "good" looks like | Kit tool |
 |---|---|---|
 | Retire hardware with disposal and data-wipe evidence | Every retired device has confirmed wipe or destruction evidence before disposal is closed out | `hardware-lifecycle` |
-| Track a hardware refresh cycle against budget | Overdue-refresh devices are flagged against their due date, with a cost range stated as an estimate, not a quote | `hardware-lifecycle` |
+| Track a hardware refresh cycle against budget | Overdue-refresh devices are flagged against their due date, with a cost range labeled as an estimate | `hardware-lifecycle` |
 | Name hardware alongside software when scoping a maturity baseline | The scope statement says explicitly which asset types (software, hardware, or both) are in view before scoring starts | `itam-maturity` (its scoping step is asset-type-agnostic even though this kit's own example dataset is software-only) |
 
 ## Artificial Intelligence Governance Professional (AIGP)
 
 **Who it's for:** Anyone who needs to understand and carry out responsible AI governance, across any industry, not only technical AI roles.
 
-**What it covers:** AIGP is IAPP's AI-governance credential; a different body and a different subject than the three above. Its body of knowledge covers how AI systems and their use cases work, AI's impacts and the responsible-AI principles meant to manage them, current and emerging AI law, the major governance frameworks, the AI lifecycle and its risk management, and open debates in the field. The exam runs 100 questions over 2 hours 45 minutes, with a 15-minute break, delivered at a Pearson VUE test center or via OnVUE remote proctoring; some questions are multi-select with no partial credit. (Source: [iapp.org/certify/aigp](https://iapp.org/certify/aigp/), fetched 2026-09-25.) Recertification runs on continuing-education credits plus a maintenance fee (a flat per-term fee, or covered by an IAPP membership) rather than a yearly retest (Source: [iapp.org/certify/faqs](https://iapp.org/certify/faqs), fetched 2026-09-25). Secondary sources describe the term as two years with 20 credits required (e.g. [archuz.com](https://www.archuz.com/blog/aigp-recertification-cpe-requirements-and-renewal-guide), checked 2026-09-25); IAPP's own CPE-policy PDF could not be read during this research pass, so treat that specific figure as reported by a secondary source, not confirmed directly against IAPP's document.
+**What it covers:** AIGP is IAPP's AI-governance credential; a different body and a different subject than the three above. Its body of knowledge covers how AI systems and their use cases work, AI's impacts and the responsible-AI principles meant to manage them, current and emerging AI law, the major governance frameworks, the AI lifecycle and its risk management, and open debates in the field. The exam runs 100 questions over 2 hours 45 minutes, with a 15-minute break, delivered at a Pearson VUE test center or via OnVUE remote proctoring; some questions are multi-select with no partial credit. (Source: [iapp.org/certify/aigp](https://iapp.org/certify/aigp/), fetched 2026-09-25.) Recertification runs on continuing-education credits plus a maintenance fee (a flat per-term fee, or covered by an IAPP membership) rather than a yearly retest (Source: [iapp.org/certify/faqs](https://iapp.org/certify/faqs), fetched 2026-09-25). Secondary sources describe the term as two years with 20 credits required (e.g. [archuz.com](https://www.archuz.com/blog/aigp-recertification-cpe-requirements-and-renewal-guide), checked 2026-09-25); IAPP's own CPE-policy PDF could not be read, so that figure is reported by a secondary source and unconfirmed against IAPP's document.
 
 **Practical application:**
 
 | On-the-job task | What "good" looks like | Kit tool |
 |---|---|---|
-| Tier a new AI use case for risk | The tier is stated with reasoning tied to the system's actual decisions and who it affects, not just its category | `ai-intake` |
+| Tier a new AI use case for risk | The tier is stated with reasoning tied to the system's actual decisions and who it affects | `ai-intake` |
 | Record data provenance and rule out prohibited practices | Data source and personal-data use are logged; a prohibited-practice check is done or explicitly escalated to legal | `ai-intake` |
 | Assign controls and a re-review date for the tier | Controls match the tier, and the re-review date is also triggered by any change of use, not only the calendar | `ai-intake` |
 
@@ -109,9 +109,9 @@ The task matrix above says which certification(s) cover a task; this table compa
 
 | On-the-job task | What "good" looks like | Kit tool |
 |---|---|---|
-| Feed an accurate asset inventory into a broader configuration-management practice | The same core inventory data this kit builds is what an ITIL configuration-management practice consumes, not a second, separate system | `itam-maturity` |
-| Manage supplier relationships as part of service delivery, not just cost | Contract terms, risk, and renewal dates are tracked the same way ITIL's supplier-management practice expects | `rationalization` (vendor and contract check) |
-| Govern the technical change or release itself | None | Out of this kit's scope; this kit governs whether and why an application exists or changes hands, not the operational mechanics of deploying a change |
+| Feed an accurate asset inventory into a broader configuration-management practice | The same core inventory data this kit builds is what an ITIL configuration-management practice consumes | `itam-maturity` |
+| Manage supplier relationships as part of service delivery | Contract terms, risk, and renewal dates are tracked the same way ITIL's supplier-management practice expects | `rationalization` (vendor and contract check) |
+| Govern the technical change or release itself | None | Out of this kit's scope; this kit governs whether and why an application exists or changes hands |
 
 ## IAM Certificate (Principles of Asset Management)
 
@@ -123,9 +123,9 @@ The task matrix above says which certification(s) cover a task; this table compa
 
 | On-the-job task | What "good" looks like | Kit tool |
 |---|---|---|
-| Treat the application portfolio as a managed asset base, not just an inventory | Every decision (retain, invest, retire) is tied to a stated value and risk case, not just a cost line | `rationalization` |
+| Treat the application portfolio as a managed asset base | Every decision (retain, invest, retire) is tied to a stated value and risk case | `rationalization` |
 | Set an asset management policy with real scope and rules | The policy states what counts as a managed asset and who owns the rules, matching this kit's own program-setup step | `program-setup` |
-| Score how well the organization's asset management system actually functions, not just its inventory accuracy | Evidence-backed process scoring, the same discipline ISO 55001's clauses 9-10 (performance evaluation, improvement) ask for | `itam-maturity` |
+| Score how well the organization's asset management system functions | Evidence-backed process scoring, the same discipline ISO 55001's clauses 9-10 (performance evaluation, improvement) ask for | `itam-maturity` |
 
 ---
 
