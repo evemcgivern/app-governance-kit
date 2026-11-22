@@ -13,7 +13,7 @@ TABLES = ("apps", "licenses", "employees", "accounts", "ai-systems", "maturity-a
 TEXTS = ("controls", "council-draft", "audit-letter")
 GITHUB_BLOB_BASE = "https://github.com/evemcgivern/app-governance-kit/blob/main/"
 
-_FILE_LINE_RE = re.compile(r"^-\s*\[`([^`]+)`\]\(([^)]+)\)\s*—\s*(.+)$")
+_FILE_LINE_RE = re.compile(r"^-\s*\[`([^`]+)`\]\(([^)]+)\)\s*(?:\u2014|[:;.,])\s*(.+)$")
 _NUMBERED_RE = re.compile(r"^\d+\.\s*(.+)$")
 
 

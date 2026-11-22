@@ -11,8 +11,8 @@ def stage(slug: str, handoff: str = "", rule: str | None = None, skip: str = "")
     nxt = handoff or {"plan": "acquire", "acquire": "deploy", "deploy": "operate",
                       "operate": "optimize", "optimize": "plan, retire", "retire": "plan"}[slug]
     parts = {"What happens": "Work happens.", "Gate to move on": "Owner approves.",
-             "Hands off to": f"{nxt} — the record moves on.", "Who decides": "The council."}
-    lines = [f"## {slug} — Stage", ""] + [f"- **{k}:** {v}" for k, v in parts.items() if k != skip]
+             "Hands off to": f"{nxt}: the record moves on.", "Who decides": "The council."}
+    lines = [f"## {slug}: Stage", ""] + [f"- **{k}:** {v}" for k, v in parts.items() if k != skip]
     if rule is None:
         rule = f"- {{#r-{slug}-1}} Nothing skips intake. [[XW-027]]"
     return "\n".join(lines) + f"\n\n### Rules that apply\n\n{rule}\n\n"
@@ -92,5 +92,5 @@ class StagesTests(unittest.TestCase):
         links = {"r-plan-1": [{"label": "Blocks", "type": "blocks", "target": "q-operate-1", "note": "n", "inverse": False}],
                  "q-operate-1": [{"label": "Blocked by", "type": "blocks", "target": "r-plan-1", "note": "n", "inverse": True}]}
         text = render_checklist(rows, data["stages"], links, items)
-        self.assertIn("  - Blocks: Operate — Ask operate?", text)
+        self.assertIn("  - Blocks: Operate: Ask operate?", text)
         self.assertIn("  - Blocked by:", text)

@@ -79,8 +79,8 @@ def _handoff_arrow_svg(tail_deg: float, tip_deg: float, radius: float,
 
 
 def generate_lifecycle_wheel_svg() -> str:
-    """A complete, standalone rendering of the lifecycle wheel — six stage
-    segments, their labels, and the three handoff arrows — matching what the
+    """A complete, standalone rendering of the lifecycle wheel: six stage
+    segments, their labels, and the three handoff arrows, matching what the
     live page's script draws at runtime, with colors inlined so it renders
     correctly with no external stylesheet."""
     step = 360 / len(WHEEL_STAGES)

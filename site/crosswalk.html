@@ -3,22 +3,22 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Crosswalk explorer — Eve McGivern</title>
+<title>Crosswalk explorer | Eve McGivern</title>
 <meta name="description" content="Browse 30 governance themes mapped across four frameworks.">
 <meta name="author" content="Eve McGivern">
 <link rel="canonical" href="https://evemcgivern.github.io/app-governance-kit/crosswalk.html">
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="Eve McGivern — Application Governance">
-<meta property="og:title" content="Crosswalk explorer — Eve McGivern">
+<meta property="og:site_name" content="Eve McGivern | Application Governance">
+<meta property="og:title" content="Crosswalk explorer | Eve McGivern">
 <meta property="og:description" content="Browse 30 governance themes mapped across four frameworks.">
 <meta property="og:url" content="https://evemcgivern.github.io/app-governance-kit/crosswalk.html">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://evemcgivern.github.io/app-governance-kit/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Application governance kit — nine governance methods for portfolio, AI, and access.">
+<meta property="og:image:alt" content="Application governance kit: nine governance methods for portfolio, AI, and access.">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Crosswalk explorer — Eve McGivern">
+<meta name="twitter:title" content="Crosswalk explorer | Eve McGivern">
 <meta name="twitter:description" content="Browse 30 governance themes mapped across four frameworks.">
 <meta name="twitter:image" content="https://evemcgivern.github.io/app-governance-kit/og-image.png">
 <script type="application/ld+json">
@@ -134,16 +134,16 @@
   ];
 
   var FRAMEWORK_TITLES = {
-    iso19770_1: 'ISO/IEC 19770-1 — Information technology — IT asset management — Part 1: IT asset management systems — Requirements. A bare clause number here (like 7.6.2) is from Part 1; a number written as 19770-2, 19770-3, or 19770-4 names a different part in the family.',
-    cobit2019: 'Control Objectives for Information and Related Technologies — an ISACA framework, not an ISO standard',
+    iso19770_1: 'ISO/IEC 19770-1: Information technology — IT asset management — Part 1: IT asset management systems — Requirements. A bare clause number here (like 7.6.2) is from Part 1; a number written as 19770-2, 19770-3, or 19770-4 names a different part in the family.',
+    cobit2019: 'Control Objectives for Information and Related Technologies, an ISACA framework, not an ISO standard',
     iso27001: 'Information security, cybersecurity and privacy protection — Information security management systems — Requirements',
     iso42001: 'Information technology — Artificial intelligence — Management system'
   };
 
   var PART_19770_TITLES = {
-    '19770-2': '19770-2 — Part 2: Software identification tag',
-    '19770-3': '19770-3 — Part 3: Entitlement schema',
-    '19770-4': '19770-4 — Part 4: Resource utilization measurement'
+    '19770-2': '19770-2, Part 2: Software identification tag',
+    '19770-3': '19770-3, Part 3: Entitlement schema',
+    '19770-4': '19770-4, Part 4: Resource utilization measurement'
   };
 
   function infoTextFor(key, row) {
@@ -183,7 +183,7 @@
 
   function cell(value) {
     var v = (value || "").trim();
-    return v === "" ? "—" : v;
+    return v === "" ? "None" : v;
   }
 
   function setClauseValue(dd, value) {
@@ -191,7 +191,7 @@
     if (v === "") {
       var dash = document.createElement("span");
       dash.setAttribute("aria-hidden", "true");
-      dash.textContent = "—";
+      dash.textContent = "None";
       var sr = document.createElement("span");
       sr.className = "visually-hidden";
       sr.textContent = "Not mapped";

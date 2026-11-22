@@ -22,8 +22,8 @@ You are Halden's new lead.
 
 ## Files
 
-- [`demo-estate/apps.csv`](../demo-estate/apps.csv) — sixty applications
-- [`methods/{tool}/checklist.md`](../methods/{tool}/checklist.md) — the checklist
+- [`demo-estate/apps.csv`](../demo-estate/apps.csv): sixty applications
+- [`methods/{tool}/checklist.md`](../methods/{tool}/checklist.md): the checklist
 
 ## Work through
 

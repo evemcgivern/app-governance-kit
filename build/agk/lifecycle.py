@@ -9,6 +9,8 @@ COLUMNS = ("id", "stage", "question", "tool", "xw")
 STAGE_PARTS = ("What happens", "Gate to move on", "Hands off to", "Who decides")
 _TAG_RE = re.compile(r"\[\[(XW-\d{3})\]\]")
 _QUESTION_ID_RE = re.compile(r"^q-[a-z0-9-]+$")
+# Stage slugs end at a colon, semicolon, period, or the legacy em dash (\u2014).
+_HANDOFF_SEP = re.compile(r"\s+\u2014\s+|[:;.]\s+")
 _RULE_ID_RE = re.compile(r"^- \{#(r-[a-z0-9-]+)\} ")
 
 
@@ -68,7 +70,8 @@ def load_stages(path: Path, known_xw: Collection[str]) -> dict:
             if not pm or not pm.group(1).strip():
                 raise LifecycleError(f"{slug}: missing '{label}'")
             info[label] = pm.group(1).strip()
-        targets, _, note = info["Hands off to"].partition(" — ")
+        handoff = _HANDOFF_SEP.split(info["Hands off to"], maxsplit=1)
+        targets, note = handoff[0], (handoff[1] if len(handoff) > 1 else "")
         info["Hands off to"] = [t.strip() for t in targets.split(",") if t.strip()]
         info["Hand-off note"] = note.strip()
         for t in info["Hands off to"]:
@@ -111,7 +114,7 @@ def render_checklist(rows: list[dict[str, str]], stages: dict | None = None,
         out = []
         for link in links[item_id]:
             target = items[link["target"]]
-            out.append(f"  - {link['label']}: {stage_label[target['stage']]} — {target['text']}")
+            out.append(f"  - {link['label']}: {stage_label[target['stage']]}: {target['text']}")
         return out
 
     out = ["# Application lifecycle questions", "",

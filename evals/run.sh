@@ -5,7 +5,7 @@ set -euo pipefail
 tool="$1"; runner="$2"
 root="$(cd "$(dirname "$0")/.." && pwd)"
 skill="$root/dist/$runner/skills/$tool/SKILL.md"
-[ -f "$skill" ] || { echo "missing $skill — run make build" >&2; exit 2; }
+[ -f "$skill" ] || { echo "missing $skill: run make build" >&2; exit 2; }
 out="$root/evals/results/$tool-$runner-$(date +%Y%m%d-%H%M%S).md"
 prompt="$(cat "$skill")
 

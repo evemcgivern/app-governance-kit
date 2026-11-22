@@ -1,4 +1,4 @@
-/* app-governance-kit portfolio site — shared styles */
+/* app-governance-kit portfolio site: shared styles */
 
 :root {
   --bg: #f6f7f9;
@@ -311,7 +311,7 @@ main section + section {
   margin: 0.75rem 0 0;
 }
 
-/* Visual actions — download / print for tables & diagrams */
+/* Visual actions: download / print for tables & diagrams */
 
 .visual-actions {
   display: flex;
@@ -1140,7 +1140,7 @@ code {
   text-align: center;
 }
 
-/* Field guide — certification jump nav */
+/* Field guide: certification jump nav */
 
 .fg-jumpnav {
   margin: 1.25rem 0 1.5rem;
