@@ -10,9 +10,9 @@ Applies to requests about the application portfolio, ITAM maturity, framework ma
 
 ## Roles
 
-- **Requester** — states the goal, supplies the data, and makes the decisions.
-- **Router** — the agent or person who picks the skill, runs it, and reports.
-- **Decision owner** — whoever the chosen skill names for each **Decision needed:** point.
+- **Requester**: states the goal, supplies the data, and makes the decisions.
+- **Router**: the agent or person who picks the skill, runs it, and reports.
+- **Decision owner**: whoever the chosen skill names for each **Decision needed:** point.
 
 ## Frequency
 

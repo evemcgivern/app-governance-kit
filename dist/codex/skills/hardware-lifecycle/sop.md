@@ -6,15 +6,15 @@ Give the organization evidence-backed visibility into which devices are overdue 
 
 ## Scope
 
-Applies to every device in the hardware inventory in scope for asset management — laptops, desktops, mobile devices, and servers — across every business unit and location covered by the asset management policy.
+Applies to every device in the hardware inventory in scope for asset management (laptops, desktops, mobile devices, and servers) across every business unit and location covered by the asset management policy.
 
 ## Roles
 
-- **Hardware asset manager** — runs the lifecycle check, pulls the device inventory, and drafts the refresh and disposal-blocking summaries.
-- **Device owners** — confirm their device's status and respond to refresh and wipe-confirmation requests.
-- **IT operations** — executes replacements, upgrades, wipes, and certified destruction, and attaches the resulting evidence.
-- **Budget owner** — checks the stated replacement cost range and confirms budget impact.
-- **Procurement** — confirms vendor and warranty or contract terms before a replacement order is placed.
+- **Hardware asset manager**: runs the lifecycle check, pulls the device inventory, and drafts the refresh and disposal-blocking summaries.
+- **Device owners**: confirm their device's status and respond to refresh and wipe-confirmation requests.
+- **IT operations**: executes replacements, upgrades, wipes, and certified destruction, and attaches the resulting evidence.
+- **Budget owner**: checks the stated replacement cost range and confirms budget impact.
+- **Procurement**: confirms vendor and warranty or contract terms before a replacement order is placed.
 
 ## Frequency
 

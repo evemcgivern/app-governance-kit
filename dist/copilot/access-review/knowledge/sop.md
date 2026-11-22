@@ -10,11 +10,11 @@ Applies to every application in scope for access governance, including all syste
 
 ## Roles
 
-- **Review coordinator** — sets the review scope, pulls the account export and HR list, runs the matching and exceptions analysis, and files the evidence pack.
-- **Application owners** — re-approve privileged roles for their application, decide each exception, and confirm removals are carried out.
-- **HR** — supplies the current employee status and leave-date list the review is matched against.
-- **IAM team** — provisions and removes access on the owners' decisions and confirms each removal in the system of record.
-- **Internal audit** — samples completed reviews and their evidence packs to confirm the process was followed.
+- **Review coordinator**: sets the review scope, pulls the account export and HR list, runs the matching and exceptions analysis, and files the evidence pack.
+- **Application owners**: re-approve privileged roles for their application, decide each exception, and confirm removals are carried out.
+- **HR**: supplies the current employee status and leave-date list the review is matched against.
+- **IAM team**: provisions and removes access on the owners' decisions and confirms each removal in the system of record.
+- **Internal audit**: samples completed reviews and their evidence packs to confirm the process was followed.
 
 ## Frequency
 
@@ -43,8 +43,8 @@ Quarterly for privileged accounts and other in-scope systems holding confidentia
 
 ## Related
 
-- [**Governance framework crosswalk**](../crosswalk/) (`crosswalk`) — supplies the framework rows this review's exceptions and evidence map to.
-- [**ITAM maturity check**](../itam-maturity/) (`itam-maturity`) — its security area score draws on how consistently this review runs.
-- [**Application rationalization**](../rationalization/) (`rationalization`) — takes over an application once this review flags it as a retirement or migration candidate for its data disposition.
-- [**AI system intake and risk tiering**](../ai-intake/) (`ai-intake`) — this review covers who can use or administer an AI system once intake has approved it.
-- [**Stand up a governance program**](../program-setup/) (`program-setup`) — stands up the sponsor and owner roles this review reports its exceptions to.
+- [**Governance framework crosswalk**](../crosswalk/) (`crosswalk`): supplies the framework rows this review's exceptions and evidence map to.
+- [**ITAM maturity check**](../itam-maturity/) (`itam-maturity`): its security area score draws on how consistently this review runs.
+- [**Application rationalization**](../rationalization/) (`rationalization`): takes over an application once this review flags it as a retirement or migration candidate for its data disposition.
+- [**AI system intake and risk tiering**](../ai-intake/) (`ai-intake`): this review covers who can use or administer an AI system once intake has approved it.
+- [**Stand up a governance program**](../program-setup/) (`program-setup`): stands up the sponsor and owner roles this review reports its exceptions to.

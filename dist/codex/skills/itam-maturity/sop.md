@@ -10,9 +10,9 @@ Applies to the full software and hardware estate in scope for IT asset managemen
 
 ## Roles
 
-- **ITAM manager** — runs the assessment, collects evidence, and drafts the score table and 90-day plan.
-- **Process owners** — answer the questions for their area and supply the evidence.
-- **Sponsor** — confirms the three named gaps, approves owners and budget for the 90-day plan, and signs off the filed assessment.
+- **ITAM manager**: runs the assessment, collects evidence, and drafts the score table and 90-day plan.
+- **Process owners**: answer the questions for their area and supply the evidence.
+- **Sponsor**: confirms the three named gaps, approves owners and budget for the 90-day plan, and signs off the filed assessment.
 
 ## Frequency
 
@@ -82,8 +82,8 @@ The security pairing is a weak fit: no KPA covers access control, so score secur
 
 ## Related
 
-- [**Governance framework crosswalk**](../crosswalk/) (`crosswalk`) — supplies the framework rows each maturity area maps to.
-- [**Application rationalization**](../rationalization/) (`rationalization`) — takes over an application flagged by a low lifecycle or entitlement score to decide keep, consolidate, or retire.
-- [**AI system intake and risk tiering**](../ai-intake/) (`ai-intake`) — extends this assessment's inventory and lifecycle questions to AI systems entering the estate.
-- [**Access review pack**](../access-review/) (`access-review`) — runs the access checks that back up the security area's score.
-- [**Stand up a governance program**](../program-setup/) (`program-setup`) — stands up the policy and sponsor role this assessment's governance area checks for.
+- [**Governance framework crosswalk**](../crosswalk/) (`crosswalk`): supplies the framework rows each maturity area maps to.
+- [**Application rationalization**](../rationalization/) (`rationalization`): takes over an application flagged by a low lifecycle or entitlement score to decide keep, consolidate, or retire.
+- [**AI system intake and risk tiering**](../ai-intake/) (`ai-intake`): extends this assessment's inventory and lifecycle questions to AI systems entering the estate.
+- [**Access review pack**](../access-review/) (`access-review`): runs the access checks that back up the security area's score.
+- [**Stand up a governance program**](../program-setup/) (`program-setup`): stands up the policy and sponsor role this assessment's governance area checks for.

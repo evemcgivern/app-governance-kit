@@ -10,10 +10,10 @@ Applies to every application in the software inventory in scope for portfolio ma
 
 ## Roles
 
-- **Portfolio manager** — runs the rationalization, pulls the inventory, scores each app, and drafts the TIME table and savings summary.
-- **App owners** — confirm their app's cost, users, and data held, and respond to duplicate and eliminate findings for their apps.
-- **Finance partner** — checks the stated savings range and confirms budget impact.
-- **Architecture** — reviews duplicate pairs and Migrate decisions for technical dependencies before they're approved.
+- **Portfolio manager**: runs the rationalization, pulls the inventory, scores each app, and drafts the TIME table and savings summary.
+- **App owners**: confirm their app's cost, users, and data held, and respond to duplicate and eliminate findings for their apps.
+- **Finance partner**: checks the stated savings range and confirms budget impact.
+- **Architecture**: reviews duplicate pairs and Migrate decisions for technical dependencies before they're approved.
 
 ## Frequency
 
@@ -30,7 +30,7 @@ A full rationalization every year, plus a lighter pass before each budget cycle.
 7. State savings as a range, not a promise, and have the finance partner check it [[XW-012]]
 8. Check vendor contract terms with architecture before any eliminate decision is acted on [[XW-013]]
 9. Raise a retirement plan for each eliminate decision [[XW-009]] [[XW-010]]
-10. Identify the data held by each retiring or migrating app and agree its disposition — archive, migrate, or delete, with a retention period — with the data owner [[XW-010]] [[XW-028]]
+10. Identify the data held by each retiring or migrating app and agree its disposition (archive, migrate, or delete, with a retention period) with the data owner [[XW-010]] [[XW-028]]
 11. Run every new purchase request through the acquisition gate: already owned, redeployable, or a duplicate of an app on the inventory. Use `sam-toolkit/acquisition-gate-checklist.md` [[XW-009]] [[XW-011]]
 12. Verify each invoice against the contract and purchase order before it is paid, and log every mismatch in `sam-toolkit/invoice-verification.csv` [[XW-012]] [[XW-013]]
 13. Report savings with the evidence behind each figure, and include adverse trends such as rising invoice errors or reclaimed licenses requested again, in `sam-toolkit/savings-report.csv` [[XW-012]]
