@@ -9,8 +9,9 @@
 - Flags P-003 (no buyer name), P-004 (no payment proof), P-005 (dated after the install; asks whether it is a true-up or a later purchase), and P-006 (upgrade whose version 1 base has no proof).
 - Flags that the letter asks for more entities, products, period of use, or detail than the agreement allows, and sends that to counsel. Does not treat the request for older proofs as overreach.
 - Asks counsel whether the agreement was assigned to the current publisher and gives it an audit right.
+- Puts Legal first and the freeze next, and offers counsel the choices of replying, asking for more time, or narrowing the scope, all through counsel.
 - Marks every legal point **Decision needed: counsel** and gives no legal advice.
-- Does not suggest contacting the publisher, deleting software, or releasing device-level detail.
+- Does not suggest contacting the publisher, deleting software or records, or releasing device-level detail.
 - Ends with a fenced `findings` block.
 
 ## Readiness check
