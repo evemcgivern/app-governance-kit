@@ -80,5 +80,66 @@ class TitleTests(unittest.TestCase):
             self.assertNotIn("—", d)
 
 
+class NavTests(unittest.TestCase):
+    def test_every_top_level_page_has_the_same_nav(self):
+        navs = {n: CURRENT_RE.sub("", nav_of(read(n))) for n in TOP_PAGES}
+        first = navs["index.html"]
+        for name, nav in navs.items():
+            self.assertEqual(nav, first, f"{name} has a different nav from index.html")
+
+    def test_every_top_level_page_has_the_same_footer_apart_from_current_page(self):
+        first = CURRENT_RE.sub("", footer_of(read("index.html")))
+        for name in TOP_PAGES:
+            self.assertEqual(CURRENT_RE.sub("", footer_of(read(name))), first, name)
+
+    def test_nav_is_grouped_start_do_learn_explore(self):
+        nav = nav_of(read("index.html"))
+        labels = re.findall(r'<p class="nav-group__label"[^>]*>([^<]+)</p>', nav)
+        self.assertEqual(labels, [g for g, _ in GROUPS])
+        groups = re.findall(r'<div class="nav-group".*?</ul>\s*</div>', nav, re.S)
+        self.assertEqual(len(groups), 4)
+        for (label, links), html in zip(GROUPS, groups):
+            found = re.findall(r'<li><a href="([^"#]+)(?:#[^"]*)?"[^>]*>([^<]+?)(?:\s*<span class="nav-badge">[^<]*</span>)?</a>', html)
+            self.assertEqual([(t, h) for h, t in found], links, label)
+
+    def test_sam_toolkit_is_first_and_opens_the_playbook_path(self):
+        nav = nav_of(read("index.html"))
+        first = re.search(r'<li><a href="([^"]+)"[^>]*>(.*?)</a>', nav, re.S)
+        self.assertEqual(first.group(1), "sam-toolkit.html#start")
+        self.assertIn('<span class="nav-badge">Start here</span>', first.group(2))
+        self.assertIn('id="start"', read("sam-toolkit.html"))
+
+    def test_about_is_in_the_footer_not_the_nav(self):
+        self.assertNotIn("about.html", nav_of(read("index.html")))
+        for name in TOP_PAGES:
+            self.assertIn('href="about.html"', footer_of(read(name)), name)
+
+    def test_renamed_labels_and_practicum_caption(self):
+        nav = nav_of(read("index.html"))
+        self.assertNotIn(">Lifecycle<", nav)
+        self.assertNotIn(">Impact map<", nav)
+        tip = re.search(r'id="tip-practicum">([^<]*)<', nav).group(1)
+        self.assertTrue(tip.startswith("Exercises"), tip)
+
+    def test_nav_collapses_behind_a_menu_disclosure(self):
+        nav = nav_of(read("index.html"))
+        self.assertRegex(nav, r'<details class="nav-menu">\s*<summary[^>]*>Menu</summary>')
+        self.assertEqual(nav.count("<details"), 1)
+
+    def test_aria_current_marks_the_page_you_are_on(self):
+        for name in INNER_PAGES:
+            nav, foot = nav_of(read(name)), footer_of(read(name))
+            marked = re.findall(r'<a href="([^"#]+)[^>]*aria-current="page"', nav + foot)
+            self.assertEqual(marked, [name], name)
+        self.assertEqual(len(CURRENT_RE.findall(nav_of(read("index.html")))), 0)
+
+    def test_every_nav_link_has_a_tip(self):
+        nav = nav_of(read("index.html"))
+        ids = re.findall(r'aria-describedby="([^"]+)"', nav)
+        self.assertEqual(len(ids), 8)
+        for i in ids:
+            self.assertIn(f'id="{i}"', nav)
+
+
 if __name__ == "__main__":
     unittest.main()
