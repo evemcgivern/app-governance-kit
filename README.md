@@ -8,7 +8,7 @@ of hands-on practicum exercises for learning the underlying certifications
 (CAMP, CSAM, CHAMP, AIGP) by hand before using the tools.
 
 Each method maps to real standards (ISO/IEC 19770, COBIT 2019, ISO/IEC 27001,
-ISO/IEC 42001) via a 30-row crosswalk, so every recommendation traces back to
+ISO/IEC 42001) via a 32-row crosswalk, so every recommendation traces back to
 a clause.
 
 ## New to ITAM? Start here

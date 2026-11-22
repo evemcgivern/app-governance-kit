@@ -1,6 +1,6 @@
 # Field guide: standards and frameworks
 
-This kit's [crosswalk explorer](../site/crosswalk.html) maps each of its 30 control themes to ISO/IEC 19770, COBIT 2019, ISO/IEC 27001, and ISO/IEC 42001. This page explains what each of those is and how they relate to one another, in our own words. A theme is usually backed by an ISO/IEC 19770 clause for the asset-management process, a COBIT objective for the governance context, and either ISO/IEC 27001 or ISO/IEC 42001 (sometimes both) for the security or AI-specific control. The explorer has the exact mapping, row by row, with the clause title and source for every cell.
+This kit's [crosswalk explorer](../site/crosswalk.html) maps each of its 32 control themes to ISO/IEC 19770, COBIT 2019, ISO/IEC 27001, and ISO/IEC 42001. This page explains what each of those is and how they relate to one another, in our own words. A theme is usually backed by an ISO/IEC 19770 clause for the asset-management process, a COBIT objective for the governance context, and either ISO/IEC 27001 or ISO/IEC 42001 (sometimes both) for the security or AI-specific control. The explorer has the exact mapping, row by row, with the clause title and source for every cell.
 
 ## ISO/IEC 19770: the IT asset management family
 

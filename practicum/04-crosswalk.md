@@ -9,7 +9,7 @@ Halden's internal auditor wrote three plain-English controls she wants tied back
 ## Files
 
 - [`demo-estate/controls.md`](../demo-estate/controls.md): the three controls to map
-- [`methods/crosswalk/crosswalk.csv`](../methods/crosswalk/crosswalk.csv): the 30-row crosswalk table
+- [`methods/crosswalk/crosswalk.csv`](../methods/crosswalk/crosswalk.csv): the 32-row crosswalk table
 
 ## Work through
 
@@ -31,7 +31,7 @@ Open the [interactive practicum page](../site/practicum.html#crosswalk) and ente
 
 1. C1 bundles inventory and ownership into one sentence. If Halden's auditor insists on a second row for the ownership half, what would that do to how the finding is scored versus how the control is actually satisfied in practice?
 2. Pick one control where a framework has no direct equivalent. Is that framework silent on the topic, or does it use different vocabulary?
-3. The crosswalk only has 30 rows. What's a control you can imagine Halden needing that wouldn't map cleanly to any of them, and what would you propose as the new row's one-sentence summary?
+3. The crosswalk only has 32 rows. What's a control you can imagine Halden needing that wouldn't map cleanly to any of them, and what would you propose as the new row's one-sentence summary?
 
 ## Certification link
 
