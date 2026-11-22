@@ -36,16 +36,22 @@ Key facts:
 ## Reference pages
 
 - [Home](https://evemcgivern.github.io/app-governance-kit/): overview of the three areas (portfolio, AI, access) and how they map to the four frameworks.
-- [SAM toolkit](https://evemcgivern.github.io/app-governance-kit/sam-toolkit.html): thirteen free templates and checklists for a software asset management practice (license position, proof-of-purchase check, renewal calendar, asset record, authorization log, statement of applicability, tier self-assessment, audit and review checklist, vendor register, acquisition gate, invoice verification, savings report, contract-terms check), each traced to ISO/IEC 19770-1 clauses, with a ZIP download.
+- [SAM toolkit](https://evemcgivern.github.io/app-governance-kit/sam-toolkit.html): thirty-one free templates, checklists, and prompts for a software asset management practice (license position, proof-of-purchase check, renewal calendar, asset record, authorization log, statement of applicability, tier self-assessment, audit and review checklist, vendor register, acquisition gate, invoice verification, savings report, contract-terms check), each traced to ISO/IEC 19770-1 clauses, with a ZIP download.
 - [Practicum](https://evemcgivern.github.io/app-governance-kit/practicum.html): eight hands-on exercises, one per tool except the software lifecycle check, worked by hand against the Halden Logistics demo estate and self-checked in the browser.
 - [Lifecycle](https://evemcgivern.github.io/app-governance-kit/lifecycle.html): six application lifecycle stages, from request to retirement, with the governance questions to ask at each and the tool that handles them.
-- [Crosswalk explorer](https://evemcgivern.github.io/app-governance-kit/crosswalk.html): 29 governance themes mapped across ISO/IEC 19770, COBIT 2019, ISO/IEC 27001, and ISO/IEC 42001.
+- [Crosswalk explorer](https://evemcgivern.github.io/app-governance-kit/crosswalk.html): 30 governance themes mapped across ISO/IEC 19770, COBIT 2019, ISO/IEC 27001, and ISO/IEC 42001.
 - [Impact map](https://evemcgivern.github.io/app-governance-kit/impact-map.html): every crosswalk theme plotted against every lifecycle stage, by impact.
 - [Field guide](https://evemcgivern.github.io/app-governance-kit/field-guide.html): certifications (CAMP, CSAM, CHAMP, AIGP), standards, glossary, and data governance, in plain terms.
 
 ## SAM toolkit documents
 
 - [SAM toolkit guide](https://evemcgivern.github.io/app-governance-kit/docs/sam-toolkit/guide.html): what every file is for and how to fill it in.
+- [Setup prompts](https://evemcgivern.github.io/app-governance-kit/docs/sam-toolkit/setup-prompts.html): thirteen copy-and-paste prompts that guide setup with an AI assistant, from baselining the program to reporting to leaders.
+- [Application management self-assessment](https://evemcgivern.github.io/app-governance-kit/docs/sam-toolkit/application-management-self-assessment.html): score eleven parts of an application management program as it is now and as it needs to be, then plan the gap.
+- [Operating calendar and first 90 days](https://evemcgivern.github.io/app-governance-kit/docs/sam-toolkit/operating-calendar.html): monthly, quarterly, and yearly routines for the toolkit files, and a 13-week plan to start.
+- [What good looks like](https://evemcgivern.github.io/app-governance-kit/docs/sam-toolkit/what-good-looks-like.html): eight questions to decide how far a program needs to go, a good-enough statement, and what to leave for later.
+- [Rolling internal check](https://evemcgivern.github.io/app-governance-kit/docs/sam-toolkit/rolling-internal-check.html): test two or three areas each quarter, log findings, fix and retest, so an external audit holds no surprises.
+- [Customers and expectations](https://evemcgivern.github.io/app-governance-kit/docs/sam-toolkit/customer-expectations.html): map who relies on asset data and what each needs.
 - [Tier self-assessment](https://evemcgivern.github.io/app-governance-kit/docs/sam-toolkit/tier-self-assessment.html): 19 yes, partly, or no questions across the three ISO/IEC 19770-1 tiers. It calculates an assumed tier and a gap report; also available as Word and Excel.
 - [Audit and review checklist](https://evemcgivern.github.io/app-governance-kit/docs/sam-toolkit/audit-and-review-checklist.html): internal audit (clause 9.2) and management review (clause 9.3), with tick boxes and notes.
 - [Statement of applicability](https://evemcgivern.github.io/app-governance-kit/docs/sam-toolkit/statement-of-applicability.html): a fillable form for the 15 Annex A processes, with a CSV download of the answers.
@@ -67,14 +73,14 @@ Key facts:
 ## Downloads
 
 - [SAM toolkit (ZIP)](https://evemcgivern.github.io/app-governance-kit/downloads/sam-toolkit.zip): the CSV templates, plus the guide and checklists as Word files.
-- [Crosswalk (CSV)](https://evemcgivern.github.io/app-governance-kit/downloads/crosswalk.csv): the 29-row mapping as plain text.
+- [Crosswalk (CSV)](https://evemcgivern.github.io/app-governance-kit/downloads/crosswalk.csv): the 30-row mapping as plain text.
 - [Lifecycle impact (CSV)](https://evemcgivern.github.io/app-governance-kit/downloads/lifecycle-impact.csv): every theme against every lifecycle stage.
 - [Claude skills (ZIP)](https://evemcgivern.github.io/app-governance-kit/downloads/skills/claude-skills.zip), [Codex skills (ZIP)](https://evemcgivern.github.io/app-governance-kit/downloads/skills/codex-skills.zip), [Copilot agents (ZIP)](https://evemcgivern.github.io/app-governance-kit/downloads/skills/copilot-agents.zip).
 - Claude Code plugin: run `claude plugin marketplace add evemcgivern/agent-skills`, then `claude plugin install app-governance-kit@evemcgivern-skills`. It installs every skill and the agent as one plugin.
 
 ## Optional
 
-- [Case studies](https://evemcgivern.github.io/app-governance-kit/case-studies.html): three worked examples on Halden Logistics, a fictional company (audit response, AI risk tiering, rationalization); not real client work.
+- [Case studies](https://evemcgivern.github.io/app-governance-kit/case-studies.html): six worked examples on Halden Logistics, a fictional company (audit response, AI risk tiering, rationalization); not real client work.
 - [About](https://evemcgivern.github.io/app-governance-kit/about.html): Eve McGivern, application governance manager.
 - [Source code](https://github.com/evemcgivern/app-governance-kit): the full repository, including methods, practicum, demo estate, and build system.
 - [Releases](https://github.com/evemcgivern/app-governance-kit/releases): version history and release notes.

@@ -281,5 +281,152 @@ class SiteTests(unittest.TestCase):
         self.assertEqual(write_docs(Path(tempfile.mkdtemp())), [])
 
 
+INDEX = ("<html><body><header><div class=\"support-bar\">s</div></header>"
+         "<footer class=\"site-footer\">f</footer></body></html>")
+
+PLAYBOOK = """# Playbook
+
+Intro.
+
+## The ten steps
+
+### Step 1: Read the map
+
+- Files: `guide.md`.
+
+### Step 2: Get a sponsor
+
+- Files: `renewal-calendar.csv` and [the calendar](operating-calendar.md).
+
+### Step 3: Stop <the> bleeding
+
+- Files: `audit-response-roles.csv`, `renewal-calendar.csv`.
+
+### Stuck, or inherited a mess?
+
+Text with `loose-file.md` that belongs to no step.
+
+### Step 4: Set the scope
+
+- Files: `policy-template.md`.
+"""
+
+
+def tmp_repo(playbook: str | None = PLAYBOOK, extra: dict | None = None) -> Path:
+    root = Path(tempfile.mkdtemp())
+    (root / "site").mkdir()
+    (root / "site" / "index.html").write_text(INDEX, encoding="utf-8")
+    (root / "site" / "field-guide.html").write_text("<html></html>", encoding="utf-8")
+    sam = root / "sam-toolkit"
+    sam.mkdir()
+    if playbook is not None:
+        (sam / "itam-program-playbook.md").write_text(playbook, encoding="utf-8")
+    files = {"guide.md": "# Guide\n\nSee the [glossary](../../field-guide.html#glossary-heading).\n",
+             "operating-calendar.md": "# Calendar\n\nBody.\n",
+             "policy-template.md": "# Policy\n\nBody.\n",
+             "loose-file.md": "# Loose\n\nBody.\n",
+             "audit-response-roles.csv": "task,holder\nA,\n",
+             "renewal-calendar.csv": "app,date\n"}
+    files.update(extra or {})
+    for name, text in files.items():
+        (sam / name).write_text(text, encoding="utf-8")
+    return root
+
+
+def built(root: Path, name: str) -> str:
+    return (root / "site" / "docs" / "sam-toolkit" / name).read_text(encoding="utf-8")
+
+
+class SiteLinkTests(unittest.TestCase):
+    def test_link_to_hand_kept_site_page_becomes_a_working_link(self):
+        root = tmp_repo()
+        write_docs(root)
+        html = built(root, "guide.html")
+        self.assertIn('<a href="../../field-guide.html#glossary-heading">glossary</a>', html)
+
+    def test_link_to_missing_site_page_stays_plain_text(self):
+        root = tmp_repo(extra={"guide.md": "# Guide\n\nSee the [gone](../../nope.html#x).\n"})
+        write_docs(root)
+        html = built(root, "guide.html")
+        self.assertNotIn("nope.html", html)
+        self.assertIn("gone", html)
+
+
+class BackLabelTests(unittest.TestCase):
+    def test_methods_pages_say_ai_skills(self):
+        root = tmp_repo()
+        m = root / "methods" / "t"
+        m.mkdir(parents=True)
+        (m / "method.md").write_text("# T\n\nBody.\n", encoding="utf-8")
+        write_docs(root)
+        html = (root / "site" / "docs" / "t" / "method.html").read_text(encoding="utf-8")
+        self.assertIn("&larr; AI skills</a>", html)
+        self.assertNotIn("&larr; Tools</a>", html)
+
+
+class WayfindingTests(unittest.TestCase):
+    def test_page_in_step_two_shows_position_and_neighbors(self):
+        root = tmp_repo()
+        write_docs(root)
+        html = built(root, "operating-calendar.html")
+        pb = "itam-program-playbook.html"
+        self.assertIn("Used in playbook step 2 of 4: ", html)
+        self.assertIn(f'href="{pb}#step-2-get-a-sponsor"', html)
+        self.assertIn(f'href="{pb}#step-1-read-the-map"', html)
+        self.assertIn(f'href="{pb}#step-3-stop-the-bleeding"', html)
+        # the ids exist on the playbook page
+        play = built(root, pb)
+        for anchor in ("step-1-read-the-map", "step-2-get-a-sponsor", "step-3-stop-the-bleeding"):
+            self.assertIn(f'id="{anchor}"', play)
+
+    def test_first_step_wins_and_title_is_escaped(self):
+        root = tmp_repo()
+        write_docs(root)
+        html = built(root, "renewal-calendar.html")
+        self.assertIn("Used in playbook step 2 of 4: ", html)
+        self.assertRegex(html, r'Also used in <a href="[^"]*#step-3-stop-the-bleeding">step 3</a>')
+        html3 = built(root, "audit-response-roles.html")
+        self.assertIn("Used in playbook step 3 of 4: ", html3)
+        self.assertIn("Stop &lt;the&gt; bleeding", html3)
+        self.assertNotIn("Stop <the>", html3)
+
+    def test_first_and_last_steps_omit_missing_neighbor(self):
+        root = tmp_repo()
+        write_docs(root)
+        first = built(root, "guide.html")
+        self.assertIn("step 1 of 4", first)
+        self.assertNotIn("Previous step", first)
+        self.assertIn("Next step", first)
+        last = built(root, "policy-template.html")
+        self.assertIn("step 4 of 4", last)
+        self.assertNotIn("Next step", last)
+
+    def test_page_in_no_step_and_the_playbook_show_nothing(self):
+        root = tmp_repo()
+        write_docs(root)
+        self.assertNotIn("Used in playbook", built(root, "loose-file.html"))
+        self.assertNotIn("Used in playbook", built(root, "itam-program-playbook.html"))
+
+    def test_step_count_comes_from_the_playbook(self):
+        root = tmp_repo(playbook=PLAYBOOK + "\n### Step 5: One more\n\n- Files: `loose-file.md`.\n")
+        write_docs(root)
+        self.assertIn("step 1 of 5", built(root, "guide.html"))
+        self.assertIn("step 5 of 5", built(root, "loose-file.html"))
+
+    def test_output_is_deterministic(self):
+        root = tmp_repo()
+        write_docs(root)
+        first = {p: p.read_bytes() for p in (root / "site" / "docs").rglob("*.html")}
+        write_docs(root)
+        second = {p: p.read_bytes() for p in (root / "site" / "docs").rglob("*.html")}
+        self.assertEqual(first, second)
+
+    def test_missing_or_malformed_playbook_builds_without_the_line(self):
+        for playbook in (None, "# Playbook\n\n### Step x: nope\n\n- `guide.md`\n", ""):
+            root = tmp_repo(playbook=playbook)
+            write_docs(root)
+            self.assertNotIn("Used in playbook", built(root, "guide.html"))
+
+
 if __name__ == "__main__":
     unittest.main()

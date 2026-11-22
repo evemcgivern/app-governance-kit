@@ -1889,3 +1889,66 @@ button.visual-actions__link {
 .site-version a {
   color: var(--muted);
 }
+
+/* Copy-and-paste prompts on document pages */
+
+.prompt-block {
+  margin: 0.9rem 0 1.5rem;
+  border: 1px solid var(--control-border);
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.prompt-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  border-bottom: 1px solid var(--control-border);
+}
+
+.prompt-label {
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.prompt-text {
+  padding: 0.75rem;
+  background: var(--code-bg);
+  line-height: 1.55;
+  overflow-wrap: anywhere;
+  user-select: text;
+}
+
+.prompt-ph {
+  padding: 0 0.15em;
+  border-radius: 0.2em;
+  background: #fff3b0;
+  color: #1a1a1a;
+  font-weight: 700;
+  text-decoration: underline dotted;
+}
+
+.prompt-copy {
+  cursor: pointer;
+  white-space: normal;
+}
+
+.prompt-copy[hidden] {
+  display: none;
+}
+
+@media (max-width: 46rem) {
+  .visual-actions__link {
+    min-height: 44px;
+  }
+}
+
+@media print {
+  .prompt-copy {
+    display: none !important;
+  }
+}

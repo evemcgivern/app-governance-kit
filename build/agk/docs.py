@@ -199,15 +199,29 @@ def slug(text: str) -> str:
 
 # ---------- HTML ----------
 
-def inline_html(text: str, resolve, files=lambda name: None) -> str:
-    """`resolve(href)` returns the href to use, or None to show the link text only."""
+def _download_link(name: str, page_href: str, title: str) -> str | None:
+    """A link to the downloadable file behind a document page, plus a link to its page.
+    CSV sources download as CSV and Markdown sources as Word; anything else has no download."""
+    ext = {".csv": ("csv", "CSV"), ".md": ("docx", "Word")}.get(os.path.splitext(name)[1])
+    if not ext or not page_href.endswith(".html"):
+        return None
+    file_href = page_href[:-5] + "." + ext[0]
+    return (f"<a href=\"{escape(file_href)}\">{escape(title)} ({ext[1]})</a> "
+            f"(<a href=\"{escape(page_href)}\">view</a>)")
+
+
+def inline_html(text: str, resolve, files=lambda name: None, download: bool = False) -> str:
+    """`resolve(href)` returns the href to use, or None to show the link text only.
+    With `download`, a file name in code is linked to its downloadable file, not its page."""
     out = []
     for tok in inline_tokens(text):
         if tok[0] == "t":
             s = escape(tok[1] if "code" in tok[2] else unmark(tok[1], files))
             if "code" in tok[2]:
                 named = files(tok[1]) if FILE_RE.match(tok[1]) else None
-                if named:
+                if named and download and _download_link(tok[1], named[0], named[1]):
+                    s = _download_link(tok[1], named[0], named[1])
+                elif named:
                     s = f"<a href=\"{escape(named[0])}\">{escape(named[1])}</a>"
                 elif tok[1].endswith(".md"):
                     s = escape(humanize(os.path.basename(tok[1])[:-3]))
@@ -349,10 +363,31 @@ def form_html(header: list[str], rows: list[list[str]], blank_cols: list[int], r
             f"{''.join(cards)}<script type=\"application/json\" id=\"record-data\">{data}</script></div>")
 
 
+PROMPT_MARK = "**Paste this:**"
+ATTACH_MARK = "**Attach"
+PLACEHOLDER_RE = re.compile(r"\[[^\[\]<>]+\]")
+
+
+def _prompt_html(text: str, n: int, heading: str, resolve, files) -> str:
+    """A copy-and-paste prompt: its own bordered block, with placeholders marked and a copy button.
+    The button starts hidden and the page script shows it, so a reader without scripts sees plain text."""
+    body = PLACEHOLDER_RE.sub(lambda m: f"<mark class=\"prompt-ph\">{m.group(0)}</mark>",
+                              inline_html(text, resolve, files))
+    number = re.match(r"Prompt (\d+)", heading)
+    label = number.group(1) if number else str(n)
+    return (f"<div class=\"prompt-block\">\n"
+            f"<div class=\"prompt-head\"><p class=\"prompt-label\">Prompt {label}: copy and paste</p>"
+            f"<button type=\"button\" class=\"visual-actions__link prompt-copy\" hidden "
+            f"data-target=\"prompt-{label}-text\" data-n=\"{label}\" aria-describedby=\"{slug(heading)}\">"
+            f"Copy prompt {label}</button></div>\n"
+            f"<div class=\"prompt-text\" id=\"prompt-{label}-text\">{body}</div>\n</div>")
+
+
 def body_html(blocks: list[dict], resolve, files=lambda name: None, fillable: bool = False) -> str:
     parts = []
     last_heading = ""
     tables = 0
+    prompts = 0
     for b in blocks:
         t = b["type"]
         if t == "heading":
@@ -363,8 +398,11 @@ def body_html(blocks: list[dict], resolve, files=lambda name: None, fillable: bo
             parts.append(f"<h{lvl} id=\"{slug(last_heading)}\">{escape(last_heading)}</h{lvl}>")
         elif t == "form":
             parts.append(form_html(b["header"], b["rows"], b["blank_cols"], resolve, files))
+        elif t == "p" and b["text"].startswith(PROMPT_MARK):
+            prompts += 1
+            parts.append(_prompt_html(b["text"][len(PROMPT_MARK):].strip(), prompts, last_heading, resolve, files))
         elif t == "p":
-            parts.append(f"<p>{inline_html(b['text'], resolve, files)}</p>")
+            parts.append(f"<p>{inline_html(b['text'], resolve, files, b['text'].startswith(ATTACH_MARK))}</p>")
         elif t == "list":
             parts.append(_list_html(b, resolve, files))
         else:
@@ -842,7 +880,7 @@ PAGE = """<!DOCTYPE html>
     <p class="doc-back"><a href="{back_href}">&larr; {back_label}</a></p>
     {print_button}
   </div>
-  <h1>{title}</h1>
+{wayfinding}  <h1>{title}</h1>
   <div class="visual-actions doc-actions">
 {actions}
   </div>
@@ -1090,6 +1128,49 @@ document.addEventListener('DOMContentLoaded', function () {
   </script>"""
 
 
+PROMPT_STATUS = "  <p class=\"visually-hidden\" id=\"prompt-status\" role=\"status\" aria-live=\"polite\"></p>"
+PROMPT_SCRIPT = """<script>
+document.addEventListener('DOMContentLoaded', function () {
+  var status = document.getElementById('prompt-status');
+  function say(msg) { status.textContent = ''; setTimeout(function () { status.textContent = msg; }, 50); }
+  function pick(el) {
+    var range = document.createRange();
+    range.selectNodeContents(el);
+    var sel = window.getSelection();
+    sel.removeAllRanges();
+    sel.addRange(range);
+  }
+  document.querySelectorAll('.prompt-copy').forEach(function (btn) {
+    btn.hidden = false;
+    var label = btn.textContent;
+    btn.addEventListener('click', function () {
+      var el = document.getElementById(btn.dataset.target);
+      var n = btn.dataset.n;
+      function done(ok) {
+        if (ok) {
+          btn.textContent = 'Copied prompt ' + n;
+          say('Prompt ' + n + ' copied.');
+          setTimeout(function () { btn.textContent = label; }, 3000);
+        } else {
+          pick(el);
+          say('Copy failed. Prompt ' + n + ' is selected; press Control C or Command C to copy it.');
+        }
+      }
+      var text = el.textContent.trim();
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(function () { done(true); }, function () { done(false); });
+      } else {
+        pick(el);
+        var ok = false;
+        try { ok = document.execCommand('copy'); } catch (e) { ok = false; }
+        done(ok);
+      }
+    });
+  });
+});
+</script>"""
+
+
 def humanize(stem: str) -> str:
     return stem.replace("-", " ").replace("_", " ").capitalize()
 
@@ -1175,7 +1256,7 @@ def collect(root: Path) -> list[Doc]:
             docs.append(Doc(f, "csv", "sam-toolkit", f.stem, back, humanize(f.stem)))
     methods = root / "methods"
     if methods.is_dir():
-        back = ("tools.html", "Tools")
+        back = ("tools.html", "AI skills")
         for tool in sorted(p for p in methods.iterdir() if p.is_dir()):
             for name in ("method", "checklist", "sop", "template", "platform-guide"):
                 f = tool / f"{name}.md"
@@ -1201,6 +1282,68 @@ def collect(root: Path) -> list[Doc]:
     if lq.is_file():
         docs.append(Doc(lq, "md", "lifecycle", "questions", ("lifecycle.html", "Lifecycle")))
     return docs
+
+
+PLAYBOOK_STEM = "itam-program-playbook"
+STEP_RE = re.compile(r"^Step (\d+): (.+)$")
+BACKTICK_FILE_RE = re.compile(r"`([\w.-]+)\.(?:md|csv)`")
+LINK_FILE_RE = re.compile(r"\]\(([\w.-]+)\.(?:md|csv)(?:#[^)]*)?\)")
+
+
+def _block_text(block: dict) -> str:
+    """All the raw text in a block, including nested list items."""
+    if block["type"] == "p":
+        return block["text"]
+    if block["type"] == "list":
+        def walk(items):
+            return " ".join(i["text"] + " " + walk(i.get("children", [])) for i in items)
+        return walk(block["items"])
+    return ""
+
+
+def playbook_steps(blocks: list[dict]) -> list[dict]:
+    """The steps of the playbook: number, title, heading id, and the file stems named in the step.
+    A step starts at a heading like "Step 3: Title" and ends at the next heading of its level or higher."""
+    steps: list[dict] = []
+    current = None
+    level = 0
+    for b in blocks:
+        if b["type"] == "heading":
+            if current is not None and b["level"] <= level:
+                current = None
+            m = STEP_RE.match(b["text"].strip()) if b["level"] >= 2 else None
+            if m:
+                level = b["level"]
+                current = {"n": int(m.group(1)), "title": m.group(2).strip(), "id": slug(unmark(b["text"])),
+                           "stems": []}
+                steps.append(current)
+        elif current is not None:
+            text = _block_text(b)
+            for stem in BACKTICK_FILE_RE.findall(text) + LINK_FILE_RE.findall(text):
+                if stem not in current["stems"]:
+                    current["stems"].append(stem)
+    return steps
+
+
+def wayfinding_html(steps: list[dict], stem: str, page: str, playbook_page: str) -> str:
+    """The "Used in playbook step N of M" line for a page, or an empty string."""
+    hits = [i for i, st in enumerate(steps) if stem in st["stems"]]
+    if not hits or stem == PLAYBOOK_STEM:
+        return ""
+    base = _relpath(page, playbook_page)
+
+    def link(st: dict, label: str | None = None) -> str:
+        return f"<a href=\"{escape(base)}#{escape(st['id'], quote=True)}\">{escape(label or st['title'])}</a>"
+    i = hits[0]
+    parts = [f"Used in playbook step {steps[i]['n']} of {len(steps)}: {link(steps[i])}."]
+    if i > 0:
+        parts.append(f"Previous step: {link(steps[i - 1])}.")
+    if i + 1 < len(steps):
+        parts.append(f"Next step: {link(steps[i + 1])}.")
+    if len(hits) > 1:
+        others = ", ".join(link(steps[j], f"step {steps[j]['n']}") for j in hits[1:])
+        parts.append(f"Also used in {others}.")
+    return f"  <p class=\"meta doc-step\">{' '.join(parts)}</p>\n"
 
 
 def _relpath(from_page: str, to: str) -> str:
@@ -1245,6 +1388,9 @@ def write_docs(root: Path) -> list[str]:
                 d.blocks = form or d.export
                 d.form = form is not None
 
+    playbook = next((d for d in docs if (d.group, d.name) == ("sam-toolkit", PLAYBOOK_STEM) and d.kind == "md"), None)
+    steps = playbook_steps(playbook.blocks) if playbook else []
+
     header_cache: dict[str, tuple[str, str]] = {}
     index_html = index.read_text(encoding="utf-8")
     for d in docs:
@@ -1265,6 +1411,9 @@ def write_docs(root: Path) -> list[str]:
                 return up + "downloads/crosswalk.csv"
             if target.is_dir() and methods_dir.resolve() in target.parents:
                 return up + f"tools.html#{target.name}"
+            built = (site / os.path.dirname(d.page) / target_name).resolve()
+            if target_name.endswith(".html") and built.parent == site.resolve() and built.is_file():
+                return up + built.name + frag
             return None
 
         def files(name: str, d=d, page_dir=page_dir):
@@ -1298,6 +1447,10 @@ def write_docs(root: Path) -> list[str]:
         actions.append("    <button type=\"button\" class=\"visual-actions__link doc-print\" "
                        "onclick=\"window.print()\">Print or save as PDF</button>")
         fillable = d.kind == "md" and d.group == "sam-toolkit"
+        body = body_html(d.blocks, resolve, files, fillable)
+        if fillable and not re.search(r"<input|<textarea|checklist-write", body):
+            fillable = False  # nothing to fill in: no answers button, no note
+            body = body_html(d.blocks, resolve, files, False)
         extra = TIER_EXTRA if (d.group, d.name) == ("sam-toolkit", "tier-self-assessment") else ""
         if fillable or d.form:
             note = ("What you tick or type stays in this browser. The Excel and CSV downloads are blank templates. "
@@ -1314,7 +1467,8 @@ def write_docs(root: Path) -> list[str]:
             extra += "\n" + FORM_SCRIPT
             actions.insert(0, f"    <button type=\"button\" class=\"visual-actions__link\" id=\"form-export\" "
                               f"data-file=\"{stem}-filled.csv\">Download my answers (CSV)</button>")
-        body = body_html(d.blocks, resolve, files, fillable)
+        if "prompt-copy" in body:
+            extra += "\n" + PROMPT_STATUS + "\n" + PROMPT_SCRIPT
         description = summary_of(d.blocks) or d.title
         canonical = BASE + d.page
         jsonld = json.dumps({
@@ -1333,7 +1487,10 @@ def write_docs(root: Path) -> list[str]:
             canonical=canonical, base=BASE, jsonld=jsonld.replace("</", "<\\/"),
             header=header, footer=footer, back_href=up + d.back[0], back_label=escape(d.back[1]),
             actions="\n".join(actions), extra=extra, body=body,
-            print_button=PRINT_BUTTON), encoding="utf-8")
+            print_button=PRINT_BUTTON,
+            wayfinding=(wayfinding_html(steps, d.name, d.page, playbook.page)
+                        if playbook and d.group == "sam-toolkit" and d.src.parent == playbook.src.parent else "")),
+            encoding="utf-8")
     write_sitemap(site)
     return warnings
 

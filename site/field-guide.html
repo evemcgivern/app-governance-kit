@@ -58,7 +58,7 @@
     <a class="brand" href="https://evemcgivern.github.io/">Eve McGivern</a>
     <nav class="site-nav" aria-label="Main">
       <ul>
-        <li><a href="tools.html" aria-describedby="tip-tools">Tools</a><span class="nav-tip" role="tooltip" id="tip-tools">The nine governance methods, packaged as skills for Claude, Codex, and Copilot.</span></li>
+        <li><a href="tools.html" aria-describedby="tip-tools">AI skills</a><span class="nav-tip" role="tooltip" id="tip-tools">The nine governance methods, packaged as skills for Claude, Codex, and Copilot.</span></li>
         <li><a href="sam-toolkit.html" aria-describedby="tip-sam-toolkit">SAM toolkit</a><span class="nav-tip" role="tooltip" id="tip-sam-toolkit">Templates and checklists for running software asset management by hand.</span></li>
         <li><a href="practicum.html" aria-describedby="tip-practicum">Practicum</a><span class="nav-tip" role="tooltip" id="tip-practicum">Hands-on exercises on a fictional company, with answers you can check.</span></li>
         <li><a href="lifecycle.html" aria-describedby="tip-lifecycle">Lifecycle</a><span class="nav-tip" role="tooltip" id="tip-lifecycle">Six stages from request to retirement, with the questions to ask at each.</span></li>
@@ -82,6 +82,7 @@
     <h2 id="cert-heading">Certifications</h2>
     <p class="prose prose-wide">Six certifications come up most often around this kit's three areas — portfolio, AI, and access. This states what each one actually covers and ties it to a task the kit's tools already do. It isn't a study guide, and it isn't a recommendation to sit any particular exam.</p>
     <p class="prose prose-wide">Or download everything as one package: <a href="downloads/all-visuals.zip">all visuals (ZIP)</a>.</p>
+    <p class="prose prose-wide">Studying for CAMP or CSAM? <a href="downloads/iaitam-map.csv">See which crosswalk theme supports which CAMP process area and CSAM topic (CSV)</a>. It is the kit's own mapping, not an IAITAM publication.</p>
 
     <div class="fg-layout">
       <nav class="fg-jumpnav" id="cert-nav" aria-label="Certifications quick navigation">
@@ -260,7 +261,7 @@
 
   <section aria-labelledby="standards-heading">
     <h2 id="standards-heading">Standards and frameworks</h2>
-    <p class="prose">This kit's <a href="crosswalk.html">crosswalk explorer</a> maps each of its 29 control themes to ISO/IEC 19770, COBIT 2019, ISO/IEC 27001, and ISO/IEC 42001. This section explains what each of those actually is, and how they relate to one another — the explorer is where you see the exact clause-by-clause mapping.</p>
+    <p class="prose">This kit's <a href="crosswalk.html">crosswalk explorer</a> maps each of its 30 control themes to ISO/IEC 19770, COBIT 2019, ISO/IEC 27001, and ISO/IEC 42001. This section explains what each of those actually is, and how they relate to one another — the explorer is where you see the exact clause-by-clause mapping.</p>
 
     <div class="fg-layout">
       <nav class="fg-jumpnav" id="standards-nav" aria-label="Standards and frameworks quick navigation">
@@ -330,7 +331,7 @@
       <dt><strong>SAM (Software Asset Management)</strong></dt><dd>The software-specific slice of ITAM: licensing, entitlements, and compliance. <em>Halden example: the license checks in rationalization against licenses.csv are SAM work.</em></dd>
       <dt><strong>HAM (Hardware Asset Management)</strong></dt><dd>The physical-device slice of ITAM: acquisition, deployment, maintenance, refresh, and retirement of hardware. <em>Halden example: Halden's laptop and device refresh cycle is tracked by the <a href="tools.html#hardware-lifecycle">hardware-lifecycle</a> tool — see the CHAMP section above.</em></dd>
       <dt><strong>APM (Application Portfolio Management)</strong></dt><dd>Deciding what to keep, replace, consolidate, or retire across an application estate. <em>Halden example: the rationalization tool's tolerate/invest/migrate/eliminate call between Clausebase and Tallysheet.</em></dd>
-      <dt><strong>CMDB (Configuration Management Database)</strong></dt><dd>A system of record for IT assets and how they relate to one another. <em>Halden example: apps.csv and licenses.csv function as a lightweight CMDB extract for the demo estate.</em></dd>
+      <dt><strong>CMDB (Configuration Management Database)</strong></dt><dd>A system of record for configuration items, meaning the assets and services IT runs, and how they connect and depend on one another. A plain application list or license spreadsheet is not a CMDB, because it does not record those relationships. <em>Halden example: apps.csv and licenses.csv are an inventory extract for the demo estate, not a CMDB.</em></dd>
       <dt id="entitlement"><strong>Entitlement</strong></dt><dd>The specific usage right a license grants — not just the fact that software is installed. <em>Halden example: Payflow's license entitlements don't match its 748 users, an open license-position question the rationalization run flags as unverified.</em></dd>
       <dt><strong>Effective license position (ELP)</strong></dt><dd>The gap between what's licensed (entitlements) and what's actually deployed or used. <em>Halden example: comparing Payflow's licensed entitlements to its real user count before a vendor audit.</em></dd>
       <dt><strong>True-up</strong></dt><dd>Paying for usage that exceeded licensed entitlement, usually settled at renewal or after an audit. <em>Halden example: if Payflow's usage is found to exceed its entitlement, Halden owes a true-up at the next renewal.</em></dd>
@@ -360,6 +361,14 @@
       <dt><strong>Dormant account</strong></dt><dd>An account with no recent login activity — a distinct access-review finding from an orphaned one, which is about ownership rather than activity. <em>Halden example: zero were found in the most recent export, though the review flags that the export window is too short to call this conclusive.</em></dd>
       <dt><strong>Data provenance</strong></dt><dd>Where a system's data actually came from — necessary to know before its privacy or quality risk can be judged. <em>Halden example: ai-intake's step 2 records this for each of the six AI systems; several aren't stated by the source CSV alone and are marked unverified.</em></dd>
       <dt><strong>Risk register</strong></dt><dd>A running, owned log of identified risks and their treatment, rather than a one-time note. <em>Halden example: AI-004's high-risk tiering gets a risk-register entry with HR as the named owner.</em></dd>
+      <dt><strong>License metric</strong></dt><dd>The unit a contract counts to decide how much you may use, such as named users, devices, or processor cores. A raw install count is not the licensed quantity until you convert it to the contract's metric. <em>Halden example: a contract that counts named users is not satisfied or breached by counting devices.</em></dd>
+      <dt><strong>Proof of purchase</strong></dt><dd>A record, such as an invoice or purchase order, that shows what was bought, when, how many, from whom, and by which entity. A license counts as held only when proof backs it. <em>Halden example: proofs-of-purchase.csv holds the invoices that back the demo estate's licenses.</em></dd>
+      <dt><strong>Statement of applicability</strong></dt><dd>Your written list of which ITAM processes are in scope, with the reason each one is in or out. <em>Halden example: sam-toolkit/statement-of-applicability.csv is the blank list a program fills in.</em></dd>
+      <dt><strong>Tier</strong></dt><dd>One of the levels of practice that the standard describes, from keeping accurate data to broader management. Tiers are informative and optional; they help you say how far you aim. <em>Halden example: sam-toolkit/tier-self-assessment.md shows which tier a program meets.</em></dd>
+      <dt><strong>Notice deadline</strong></dt><dd>The last date to tell a vendor you will cancel or change a contract before it renews. It is the contract end date minus the notice days, and it matters more than the end date. <em>Halden example: sam-toolkit/renewal-calendar.csv computes it for each contract.</em></dd>
+      <dt><strong>Custodian</strong></dt><dd>The person who looks after an asset day to day. The owner is the person accountable for it; the two can be different people. <em>Halden example: sam-toolkit/asset-record.csv has an owner column and a custodian column.</em></dd>
+      <dt><strong>SaaS (software as a service)</strong></dt><dd>Software you use as a subscription that the vendor runs and you reach over the internet, with nothing to install. What you hold is a plan or a number of seats, so it needs an owner and a renewal date like any other license. <em>Halden example: a browser-based routing subscription is SaaS; it appears in the inventory even though no install exists.</em></dd>
+      <dt><strong>XW- tag</strong></dt><dd>The identifier of a row in the kit's shared crosswalk, from XW-001 to XW-029. A tag on a task shows which theme of governance work the task supports and which standards clauses it traces to. <em>Halden example: XW-008 is license renewal and expiry tracking, which renewal-calendar.csv supports.</em></dd>
     </dl>
   </section>
 
