@@ -189,5 +189,64 @@ class PhoneActionTests(unittest.TestCase):
         self.assertRegex(css, r"@media \(max-width: 46rem\)\s*\{[^@]*\.doc-secondary\s*\{[^}]*border: 0")
 
 
+def rule(css: str, selector: str) -> str:
+    """The declarations of the first top-level rule whose selector list ends with `selector`."""
+    m = re.search(r"(?:^|\n)(?:[^{}@\n]*,\n)*" + re.escape(selector) + r"\s*\{([^}]*)\}", css)
+    return m.group(1) if m else ""
+
+
+class SidewaysScrollTests(unittest.TestCase):
+    def test_action_links_wrap_instead_of_forcing_the_page_wide(self):
+        body = rule(CSS.read_text(encoding="utf-8"), ".visual-actions__link")
+        self.assertNotIn("nowrap", body)
+        self.assertIn("max-width: 100%", body)
+
+
+class TouchTargetTests(unittest.TestCase):
+    def test_44px_applies_at_every_phone_width(self):
+        css = CSS.read_text(encoding="utf-8")
+        m = re.search(r"@media \(max-width: 46rem\)\s*\{\s*/\* touch targets \*/([^@]*?)\n\}", css)
+        self.assertIsNotNone(m)
+        block = m.group(1)
+        for sel in (".lc-link-anchor", ".checklist-choice", ".site-nav a", ".pr-pair-remove",
+                    ".visual-actions__link", ".lc-handoff-btn", ".pr-inline-label"):
+            self.assertIn(sel, block)
+        self.assertIn("min-height: 44px", block)
+
+
+class ScrollCueTests(unittest.TestCase):
+    def test_overflowing_tables_show_edge_shadows(self):
+        css = CSS.read_text(encoding="utf-8")
+        self.assertRegex(css, r"\.table-scroll,\s*\.im-table-wrap\s*\{[^}]*radial-gradient")
+        self.assertIn("local", rule(css, ".table-scroll,\n.im-table-wrap"))
+
+    def test_swipe_hint_is_added_by_script_only_when_a_table_overflows(self):
+        js = (CSS.parent / "scroll-hint.js").read_text(encoding="utf-8")
+        self.assertIn("Swipe for more", js)
+        self.assertIn("scrollWidth > ", js)
+        self.assertIn("hint.hidden = !over", js)
+
+    def test_hint_is_phone_only_and_hidden_in_print(self):
+        css = CSS.read_text(encoding="utf-8")
+        self.assertRegex(css, r"\.scroll-hint\s*\{[^}]*display: none")
+        self.assertRegex(css, r"@media \(max-width: 46rem\)\s*\{[^@]*\.scroll-hint:not\(\[hidden\]\)")
+
+    def test_pages_load_the_script(self):
+        root = tmp_repo()
+        write_docs(root)
+        self.assertIn('<script src="../../scroll-hint.js" defer></script>', built(root, "guide.html"))
+        site = CSS.parent
+        for page in ("practicum.html", "field-guide.html"):
+            self.assertIn('<script src="scroll-hint.js" defer></script>', (site / page).read_text(encoding="utf-8"))
+
+    def test_data_tables_get_a_sticky_first_column(self):
+        css = CSS.read_text(encoding="utf-8")
+        self.assertRegex(css, r'table\.sticky-first tbody th\[scope="row"\][^{]*\{[^}]*position: sticky')
+        wide = html_of("| A | B | C |\n| --- | --- | --- |\n| 1 | 2 | 3 |\n")
+        narrow = html_of("| A | B |\n| --- | --- |\n| 1 | 2 |\n")
+        self.assertIn("sticky-first", wide)
+        self.assertNotIn("sticky-first", narrow)
+
+
 if __name__ == "__main__":
     unittest.main()

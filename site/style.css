@@ -330,7 +330,7 @@ main section + section {
   text-decoration: none;
   font-size: 0.85rem;
   font-weight: 600;
-  white-space: nowrap;
+  max-width: 100%;
   display: inline-flex;
   align-items: center;
   min-height: 40px;
@@ -2103,4 +2103,94 @@ button.visual-actions__link {
 
 .prompt-fail {
   margin: 0.5rem 0;
+}
+
+/* Wide tables: edge shadows show there is more to scroll to, and the first column stays in view */
+
+.table-scroll,
+.im-table-wrap {
+  background:
+    linear-gradient(to right, var(--bg) 30%, rgba(0, 0, 0, 0)) left center / 2rem 100% no-repeat local,
+    linear-gradient(to left, var(--bg) 30%, rgba(0, 0, 0, 0)) right center / 2rem 100% no-repeat local,
+    radial-gradient(farthest-side at 0 50%, rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0)) left center / 0.7rem 100% no-repeat scroll,
+    radial-gradient(farthest-side at 100% 50%, rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0)) right center / 0.7rem 100% no-repeat scroll;
+}
+
+.scroll-hint {
+  display: none;
+  margin: 0.5rem 0 0;
+  font-size: 0.85rem;
+}
+
+table.sticky-first thead th:first-child,
+table.sticky-first tbody th[scope="row"] {
+  position: sticky;
+  left: 0;
+  z-index: 1;
+  background: var(--bg);
+}
+
+table.sticky-first tbody tr:nth-child(even) th[scope="row"] {
+  background: var(--chip-bg);
+}
+
+@media print {
+  .scroll-hint,
+  .prompt-fail,
+  .prompt-select {
+    display: none !important;
+  }
+
+  table.sticky-first thead th:first-child,
+  table.sticky-first tbody th[scope="row"] {
+    position: static;
+  }
+}
+
+/* Phone widths */
+
+@media (max-width: 46rem) {
+  /* touch targets */
+  .lc-handoff-btn,
+  .lc-rule-xw,
+  .lc-link-anchor,
+  .lc-overlay-toggle,
+  .lc-back-link-anchor,
+  .visual-actions__link,
+  .site-nav a,
+  .fg-jumpnav a,
+  .checklist-choice,
+  .pr-inline-label,
+  .pr-pair-remove,
+  .step-nav {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .checklist-choice {
+    display: flex;
+  }
+
+  .pr-pair-remove {
+    padding: 0 0.9rem;
+  }
+
+  .checklist td.checklist-tick label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  .scroll-hint:not([hidden]) {
+    display: block;
+  }
+
+  table.sticky-first tbody th[scope="row"] {
+    max-width: 8rem;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
 }

@@ -314,7 +314,7 @@ def _table_html(rows: list[list[str]], resolve, files, caption: str = "", index:
             else:
                 cells.append("<td class=\"checklist-write\"></td>")
         body.append("<tr>" + "".join(cells) + "</tr>")
-    wide = " wide" if len(header) >= 6 else ""
+    wide = (" wide" if len(header) >= 6 else "") + (" sticky-first" if len(header) >= 3 else "")
     name = escape(f"{caption or f'Table {index}'}{' table' if caption else ''}, scroll sideways to see more", quote=True)
     return (f"<div class=\"table-scroll\" tabindex=\"0\" role=\"region\" aria-label=\"{name}\">"
             f"<table class=\"checklist{wide}\"{attrs}>{cap}<thead><tr>{head}</tr></thead>"
@@ -875,6 +875,7 @@ PAGE = """<!DOCTYPE html>
 <link rel="apple-touch-icon" href="{up}apple-touch-icon.png">
 <link rel="stylesheet" href="{up}style.css">
 <script src="{up}nav.js" defer></script>
+<script src="{up}scroll-hint.js" defer></script>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
