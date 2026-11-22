@@ -35,7 +35,7 @@ class ToolkitCountTests(unittest.TestCase):
     PLACES = ("README.md", "sam-toolkit/guide.md", "site/sam-toolkit.html", "site/llms.txt")
 
     def test_count_is_computed_from_the_repo(self):
-        self.assertEqual(toolkit_file_count(), 40)
+        self.assertEqual(toolkit_file_count(), 41)
 
     def test_every_place_gives_the_true_count(self):
         want = number_word(toolkit_file_count())

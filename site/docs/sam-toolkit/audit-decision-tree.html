@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Audit decision tree | App Governance Kit</title>
+<meta name="description" content="A printable outline for deciding what to do about software audits, and in what…">
+<meta name="author" content="Eve McGivern">
+<link rel="canonical" href="https://evemcgivern.github.io/app-governance-kit/docs/sam-toolkit/audit-decision-tree.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="App Governance Kit">
+<meta property="og:title" content="Audit decision tree | App Governance Kit">
+<meta property="og:description" content="A printable outline for deciding what to do about software audits, and in what…">
+<meta property="og:url" content="https://evemcgivern.github.io/app-governance-kit/docs/sam-toolkit/audit-decision-tree.html">
+<meta property="og:image" content="https://evemcgivern.github.io/app-governance-kit/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Audit decision tree | App Governance Kit">
+<meta name="twitter:description" content="A printable outline for deciding what to do about software audits, and in what…">
+<meta name="twitter:image" content="https://evemcgivern.github.io/app-governance-kit/og-image.png">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Home",
+     "item": "https://evemcgivern.github.io/app-governance-kit/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "SAM toolkit",
+     "item": "https://evemcgivern.github.io/app-governance-kit/sam-toolkit.html"
+    },
+    {
+     "@type": "ListItem",
+     "position": 3,
+     "name": "Audit decision tree",
+     "item": "https://evemcgivern.github.io/app-governance-kit/docs/sam-toolkit/audit-decision-tree.html"
+    }
+   ]
+  },
+  {
+   "@type": "WebPage",
+   "name": "Audit decision tree",
+   "description": "A printable outline for deciding what to do about software audits, and in what\u2026",
+   "url": "https://evemcgivern.github.io/app-governance-kit/docs/sam-toolkit/audit-decision-tree.html",
+   "isPartOf": {
+    "@type": "WebSite",
+    "url": "https://evemcgivern.github.io/app-governance-kit/"
+   },
+   "author": {
+    "@type": "Person",
+    "name": "Eve McGivern",
+    "url": "https://evemcgivern.github.io/"
+   },
+   "license": "https://opensource.org/licenses/MIT",
+   "isAccessibleForFree": true
+  }
+ ]
+}
+</script>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../apple-touch-icon.png">
+<link rel="stylesheet" href="../../style.css">
+<script src="../../nav.js" defer></script>
+<script src="../../scroll-hint.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="support-bar"><a class="coffee-link" href="https://buymeacoffee.com/a8w5iiqszp" rel="noopener"><svg class="coffee-icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M5 9h11v5a5 5 0 0 1-5 5h-1a5 5 0 0 1-5-5V9z" fill="#2f9e6e"/><path d="M16 10.5h1.2a2.4 2.4 0 0 1 0 4.8H16" fill="none" stroke="#2f9e6e" stroke-width="1.8" stroke-linecap="round"/><path d="M8.5 3.5c0 1.3 1 1.3 1 2.6M12 3.5c0 1.3 1 1.3 1 2.6" fill="none" stroke="#2f9e6e" stroke-width="1.6" stroke-linecap="round"/></svg><span>Buy me a coffee</span></a></div>
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="https://evemcgivern.github.io/">Eve McGivern</a>
+    <nav class="site-nav" aria-label="Main">
+      <details class="nav-menu">
+        <summary class="nav-menu__toggle">Menu</summary>
+        <div class="nav-groups">
+          <div class="nav-group">
+            <p class="nav-group__label" id="nav-group-start">Start</p>
+            <ul aria-labelledby="nav-group-start">
+              <li><a href="../../sam-toolkit.html#start" aria-describedby="tip-sam-toolkit">SAM toolkit <span class="nav-badge">Start here</span></a><span class="nav-tip" role="tooltip" id="tip-sam-toolkit">Start with the playbook, then the templates and checklists for running software asset management by hand.</span></li>
+            </ul>
+          </div>
+          <div class="nav-group">
+            <p class="nav-group__label" id="nav-group-do">Do</p>
+            <ul aria-labelledby="nav-group-do">
+              <li><a href="../../tools.html" aria-describedby="tip-tools">AI skills</a><span class="nav-tip" role="tooltip" id="tip-tools">The nine governance methods, packaged as skills for Claude, Codex, and Copilot.</span></li>
+            </ul>
+          </div>
+          <div class="nav-group">
+            <p class="nav-group__label" id="nav-group-learn">Learn</p>
+            <ul aria-labelledby="nav-group-learn">
+              <li><a href="../../practicum.html" aria-describedby="tip-practicum">Practicum</a><span class="nav-tip" role="tooltip" id="tip-practicum">Exercises on a fictional company, with answers you can check.</span></li>
+              <li><a href="../../case-studies.html" aria-describedby="tip-case-studies">Case studies</a><span class="nav-tip" role="tooltip" id="tip-case-studies">Worked examples of the kit in use, on a fictional company.</span></li>
+              <li><a href="../../field-guide.html" aria-describedby="tip-field-guide">Field guide</a><span class="nav-tip" role="tooltip" id="tip-field-guide">Plain-language guides to the standards, certifications, and key terms.</span></li>
+            </ul>
+          </div>
+          <div class="nav-group">
+            <p class="nav-group__label" id="nav-group-explore">Explore</p>
+            <ul aria-labelledby="nav-group-explore">
+              <li><a href="../../lifecycle.html" aria-describedby="tip-lifecycle">Application lifecycle</a><span class="nav-tip" role="tooltip" id="tip-lifecycle">Six stages from request to retirement, with the questions to ask at each.</span></li>
+              <li><a href="../../crosswalk.html" aria-describedby="tip-crosswalk">Crosswalk explorer</a><span class="nav-tip" role="tooltip" id="tip-crosswalk">See how each control maps to ISO/IEC 19770, COBIT, 27001, and 42001.</span></li>
+              <li><a href="../../impact-map.html" aria-describedby="tip-impact-map">Themes by stage</a><span class="nav-tip" role="tooltip" id="tip-impact-map">One grid showing every control theme against every lifecycle stage.</span></li>
+            </ul>
+          </div>
+        </div>
+      </details>
+    </nav>
+  </div>
+</header>
+<main id="main" class="doc-page">
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <ol>
+      <li><a href="../../index.html">Home</a></li>
+      <li><a href="../../sam-toolkit.html">SAM toolkit</a></li>
+      <li><span aria-current="page">Audit decision tree</span></li>
+    </ol>
+  </nav>
+  <div class="doc-top">
+    <p class="doc-back"><a href="../../sam-toolkit.html">&larr; SAM toolkit</a></p>
+    <button type="button" class="print-icon" onclick="window.print()" aria-label="Print this page" title="Print"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="M7 9V3.5h10V9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M7 17H4.5A1.5 1.5 0 0 1 3 15.5v-5A1.5 1.5 0 0 1 4.5 9h15a1.5 1.5 0 0 1 1.5 1.5v5a1.5 1.5 0 0 1-1.5 1.5H17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><rect x="7" y="14" width="10" height="6.5" rx="0.8" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17.5" cy="12" r="0.9" fill="currentColor"/></svg></button>
+  </div>
+  <nav class="doc-step" aria-label="Playbook step">
+    <p class="doc-step__where"><span class="step-chip">Step 3 of 10</span> <a href="itam-program-playbook.html#step-3-week-1-stop-the-bleeding">Week 1, stop the bleeding</a></p>
+    <p class="doc-step__nav"><a class="step-nav" rel="prev" href="itam-program-playbook.html#step-2-get-a-sponsor-a-problem-statement-and-a-light-charter" aria-label="Previous step: Get a sponsor, a problem statement, and a light charter">Previous</a> <a class="step-nav" rel="next" href="itam-program-playbook.html#step-4-set-the-scope" aria-label="Next step: Set the scope">Next</a></p>
+  </nav>
+  <p class="meta doc-feeds">Feeds step 3. Also step 8. Review: Not on the calendar. Keep it in the versioned place your records policy names, with access limited.</p>
+  <h1>Audit decision tree</h1>
+  <div class="visual-actions doc-actions">
+    <a class="visual-actions__link" href="audit-decision-tree.docx">Download Word (.docx)</a>
+    <button type="button" class="visual-actions__link doc-print doc-secondary" onclick="window.print()">Print or save as PDF</button>
+  </div>
+  <p class="meta doc-reading">About 12 minutes to read (an estimate at 200 words per minute).</p>
+
+  <details class="doc-jump"><summary>Jump to</summary><ul><li><a href="#how-to-use-it">How to use it</a></li><li><a href="#legend">Legend</a></li><li><a href="#jump-to-a-node">Jump to a node</a></li><li><a href="#opening-questions">Opening questions</a></li><li><a href="#routine">Routine</a></li><li><a href="#readiness">Readiness</a></li><li><a href="#a-notice-is-open">A notice is open</a></li><li><a href="#findings-and-close">Findings and close</a></li><li><a href="#internal-or-financial-auditors">Internal or financial auditors</a></li><li><a href="#not-in-this-tree">Not in this tree</a></li><li><a href="#questions-for-counsel">Questions for counsel</a></li></ul></details>
+  <div class="doc-body prose prose-wide">
+<p>A printable outline for deciding what to do about software audits, and in what order. Each node asks one question, lists the answers, and says who acts, which kit file to open, and what to watch for. The answers link to the next node, so you can click through it on screen or follow the node ids on paper.</p>
+<p>The tree covers the quiet case (nothing has happened), readiness work (someone is asking for a license position), and the live case (a letter has arrived). It follows the roles and records habits in clause 5.3 and clause 7.6.3, the license position work in clause 8.4, and the contract habits in clause 8.7. <a class="xw-tag" href="../../crosswalk.html">XW-004</a> <a class="xw-tag" href="../../crosswalk.html">XW-007</a> <a class="xw-tag" href="../../crosswalk.html">XW-013</a> <a class="xw-tag" href="../../crosswalk.html">XW-020</a></p>
+<p>The tree flags legal and contract points and leaves them with counsel and the contract owner. It gives no legal advice.</p>
+<h2 id="how-to-use-it">How to use it</h2>
+<ol><li>Start at <a href="#node-1">node 1</a>.</li><li>Answer the question in plain terms. If you are not sure, take the answer that mentions not being sure.</li><li>Follow the link for your answer. Each answer names the next node by id, so the path survives a printout.</li><li>At each node, check four things: who acts, which kit file to open, the label, and any flag.</li><li>Keep a dated note of each node you passed and the answer you gave. In a live case, that note goes in the case file.</li></ol>
+<h2 id="legend">Legend</h2>
+<p>Each node carries one label.</p>
+<ul><li><strong>Kit rule.</strong> The kit takes a firm position and the position holds in every case.</li><li><strong>Judgment.</strong> A person weighs the facts. The kit offers a default.</li><li><strong>Counsel decision.</strong> Legal decides. The kit only asks the question.</li></ul>
+<p>A node can also carry a flag. A notice is open from a Yes at node 1 until counsel closes it at D5.</p>
+<ul><li><strong>DN</strong> means Decision needed. The names after it say who decides.</li><li><strong>FREEZE</strong> means nothing in scope is deleted, reconfigured, reassigned, or bought. Once a notice is open, keep every record as it stands: proofs, contracts, discovery output, emails and notes. Do not delete, edit or back-date any of them. Fix an error by adding a dated note, never by overwriting. <strong>Decision needed: counsel</strong>, for any exception.</li><li><strong>ORIG</strong> means originals stay in house. The team works from copies.</li></ul>
+<h2 id="jump-to-a-node">Jump to a node</h2>
+<ul><li>Opening questions: <a href="#node-1">1</a>, <a href="#node-2">2</a>, <a href="#node-3">3</a></li><li>Routine: <a href="#node-a1">A1</a>, <a href="#node-a2">A2</a></li><li>Readiness: <a href="#node-b1">B1</a>, <a href="#node-b2">B2</a>, <a href="#node-b3">B3</a>, <a href="#node-b4">B4</a>, <a href="#node-b5">B5</a></li><li>A notice is open: <a href="#node-c1">C1</a>, <a href="#node-c2">C2</a>, <a href="#node-c3">C3</a>, <a href="#node-c4">C4</a>, <a href="#node-c5">C5</a>, <a href="#node-c6">C6</a>, <a href="#node-c7">C7</a>, <a href="#node-c8">C8</a>, <a href="#node-c9">C9</a>, <a href="#node-c10">C10</a>, <a href="#node-c11">C11</a></li><li>Findings and close: <a href="#node-d1">D1</a>, <a href="#node-d2">D2</a>, <a href="#node-d3">D3</a>, <a href="#node-d4">D4</a>, <a href="#node-d5">D5</a>, <a href="#node-e1">E1</a></li><li>Internal or financial auditors: <a href="#node-f1">F1</a></li></ul>
+<h2 id="opening-questions">Opening questions</h2>
+<h3 id="node-1">Node 1</h3>
+<p><strong>Has a publisher, its agent, or a trade body sent anything about licenses?</strong> Count a letter, an email, a license review, or a request for a self-declaration or self-audit.</p>
+<ul><li>Yes, or not sure: go to <a href="#node-c1">node C1</a>.</li><li>No: go to <a href="#node-2">node 2</a>.</li><li>Who acts: anyone who receives mail or support requests passes it on; Legal takes it from there.</li><li>Open: <a href="audit-response-roles.html">Audit response roles template</a>, to see who receives letters.</li><li>Label: kit rule.</li></ul>
+<h3 id="node-2">Node 2</h3>
+<p><strong>Is someone asking you for a license position?</strong></p>
+<ul><li>A publisher or its agent, even with no letter: go to <a href="#node-c1">node C1</a>.</li><li>Your own leaders, or a self-check you planned: go to <a href="#node-b1">node B1</a>.</li><li>Internal or financial auditors: go to <a href="#node-f1">node F1</a>.</li><li>No one: go to <a href="#node-3">node 3</a>.</li><li>If you cannot tell which kind of auditors are asking, ask them. If no answer comes and no publisher has been in touch, go to <a href="#node-b1">node B1</a>.</li><li>Who acts: the asset manager asks; Legal hears the answer.</li><li>Open: no kit file yet.</li><li>Label: kit rule.</li></ul>
+<h3 id="node-3">Node 3</h3>
+<p><strong>Do you see any warning sign?</strong> Examples: a merger or acquisition, a large renewal coming up, a licensing or ownership change at a publisher, a move to cloud or virtual machines, or mass hiring or layoffs.</p>
+<ul><li>Yes: go to <a href="#node-b1">node B1</a>.</li><li>No: go to <a href="#node-a1">node A1</a>.</li><li>Who acts: the asset manager, with the executive sponsor.</li><li>Open: <a href="operating-calendar.html">Operating calendar and first 90 days</a>, which lists the events that start extra work.</li><li>Label: judgment.</li></ul>
+<h2 id="routine">Routine</h2>
+<h3 id="node-a1">Node A1</h3>
+<p><strong>Nothing is open. Keep the routine running.</strong> Refresh license positions each quarter. Keep the renewal calendar and the gaps log current. Review the audit roster each year. Give staff an internal channel for raising license concerns.</p>
+<ul><li>At a renewal: go to <a href="#node-a2">node A2</a>.</li><li>Anything else happens (a letter, a request, a warning sign): go back to <a href="#node-1">node 1</a>.</li><li>Who acts: the asset manager.</li><li>Open: <a href="license-position.html">License position template</a>, <a href="renewal-calendar.html">Renewal calendar template</a>, <a href="documentation-gaps-log.html">Documentation gaps log template</a>, <a href="audit-response-roles.html">Audit response roles template</a>, and <a href="operating-calendar.html">Operating calendar and first 90 days</a>.</li><li>Label: kit rule.</li></ul>
+<h3 id="node-a2">Node A2</h3>
+<p><strong>At renewal, what does the contract say about audits?</strong> Look at who may audit and how often, whether third-party auditors are allowed, whether reviews are scheduled, and whether a true-up window exists. Decide what to ask for in the next term.</p>
+<ul><li>Counsel and the contract owner settle what to ask for. Then go back to <a href="#node-a1">node A1</a>.</li><li>Who acts: the contract owner and Procurement bring the terms; Legal decides what to negotiate.</li><li>Open: <a href="contract-terms-check.html">Contract terms check template</a>.</li><li>Label: counsel decision.</li><li>Flag: DN (counsel, contract owner).</li></ul>
+<h2 id="readiness">Readiness</h2>
+<h3 id="node-b1">Node B1</h3>
+<p><strong>Has counsel agreed to readiness work, and to who speaks to the publisher?</strong></p>
+<ul><li>Yes: go to <a href="#node-b2">node B2</a>.</li><li>No: stop and ask counsel. Do not start the work until the answer is yes.</li><li>Who acts: the asset manager asks; Legal answers.</li><li>Open: <a href="audit-response-roles.html">Audit response roles template</a>, and the <code>audit-response</code> method for readiness mode.</li><li>Label: counsel decision.</li><li>Flag: DN (counsel).</li></ul>
+<h3 id="node-b2">Node B2</h3>
+<p><strong>Pick one publisher. What does its contract count?</strong> The unit might be named users, devices, cores, or something else.</p>
+<ul><li>The contract states it clearly: go to <a href="#node-b3">node B3</a>.</li><li>It is unclear: log it in the gaps log and send the question to counsel. Wait for the answer, then go to <a href="#node-b3">node B3</a>.</li><li>Who acts: the asset manager reads; the contract owner confirms.</li><li>Open: <a href="contract-terms-check.html">Contract terms check template</a>.</li><li>Label: judgment.</li><li>Flag: DN (contract owner, counsel).</li></ul>
+<h3 id="node-b3">Node B3</h3>
+<p><strong>Does each entitlement have proof the agreement accepts?</strong> A certificate of authenticity or a product key alone is not proof. It shows a copy exists, not a right to use it.</p>
+<ul><li>Log each gap with an owner, then go to <a href="#node-b4">node B4</a>.</li><li>Who acts: Procurement and the asset manager.</li><li>Open: <a href="proof-of-purchase-check.html">Proof of purchase check template</a> and <a href="documentation-gaps-log.html">Documentation gaps log template</a>.</li><li>Label: kit rule.</li></ul>
+<h3 id="node-b4">Node B4</h3>
+<p><strong>Counted in the contract&#x27;s own unit, is the position short, even, or over?</strong></p>
+<ul><li>You came from <a href="#node-f1">node F1</a> (internal or financial auditors asked): send the result back to counsel and Finance, whatever it is. Do not go on to node B5.</li><li>Otherwise, short: go to <a href="#node-b5">node B5</a>.</li><li>Even: go to <a href="#node-a1">node A1</a>.</li><li>Over: offer the <code>rationalization</code> method afterward for licenses nobody uses, then go to <a href="#node-a1">node A1</a>.</li><li>Who acts: the asset manager.</li><li>Open: <a href="license-position.html">License position template</a>.</li><li>Label: kit rule.</li></ul>
+<h3 id="node-b5">Node B5</h3>
+<p><strong>How will you close the gap?</strong> Buy, reclaim (only where the contract allows reassignment), or retire the installs. Use normal change control.</p>
+<ul><li>First answer <a href="#node-1">node 1</a> again. If a notice has arrived, stop here and follow node 1; the freeze applies.</li><li>If node 1 still says no: close the gap, then go to <a href="#node-a1">node A1</a>.</li><li>Who acts: the asset manager proposes; Finance and the contract owner approve.</li><li>Open: <a href="acquisition-gate-checklist.html">Acquisition gate checklist</a>, <a href="retirement-signoff-checklist.html">Retirement sign-off checklist</a>, and <a href="renewal-calendar.html">Renewal calendar template</a>.</li><li>Label: judgment.</li><li>Flag: DN (Finance, contract owner).</li></ul>
+<h2 id="a-notice-is-open">A notice is open</h2>
+<h3 id="node-c1">Node C1</h3>
+<p><strong>Does Legal have it today?</strong></p>
+<ul><li>No: forward it to Legal now. Reply to no one. Note the reply deadline in the case file, then go to <a href="#node-c2">node C2</a>.</li><li>Yes: note the reply deadline in the case file and go to <a href="#node-c2">node C2</a>.</li><li>Who acts: whoever holds the letter; Legal receives it.</li><li>Open: <a href="audit-response-roles.html">Audit response roles template</a>.</li><li>Label: kit rule.</li></ul>
+<h3 id="node-c2">Node C2</h3>
+<p><strong>Freeze.</strong> Do not uninstall, reconfigure, reassign, retire, or buy in-scope licenses. Pause cleanup scripts. Counsel decides any exception, including a routine renewal.</p>
+<p>Once a notice is open, keep every record as it stands: proofs, contracts, discovery output, emails and notes. Do not delete, edit or back-date any of them. Fix an error by adding a dated note, never by overwriting. <strong>Decision needed: counsel</strong>, for any exception.</p>
+<ul><li>Go to <a href="#node-c3">node C3</a>.</li><li>Who acts: the asset manager tells every team that touches the in-scope software; Legal sets any exception.</li><li>Open: no kit file yet.</li><li>Label: kit rule.</li><li>Flags: FREEZE; DN (counsel).</li></ul>
+<h3 id="node-c3">Node C3</h3>
+<p><strong>Name the single contact and open the case file.</strong> Counsel is the only voice to the publisher. The asset manager opens a dated case file. Tell the executives who need to know.</p>
+<ul><li>Go to <a href="#node-c4">node C4</a>.</li><li>Who acts: Legal names itself; the asset manager opens the file; Legal and the asset manager brief the sponsor.</li><li>Open: <a href="audit-response-roles.html">Audit response roles template</a>.</li><li>Label: kit rule.</li></ul>
+<h3 id="node-c4">Node C4</h3>
+<p><strong>Does this party hold an audit right, including by assignment? Is the letter&#x27;s scope wider than the agreement?</strong> Compare the entities, products, period reviewed, and level of detail the letter asks for with what the agreement allows.</p>
+<ul><li>Counsel decides both questions. Write the answers and any scope counsel sets in the case file, then go to <a href="#node-c5">node C5</a>.</li><li>Who acts: Legal, with the contract owner supplying the agreement.</li><li>Open: <a href="contract-terms-check.html">Contract terms check template</a>.</li><li>Label: counsel decision.</li><li>Flag: DN (counsel; the contract owner supplies the terms).</li></ul>
+<h3 id="node-c5">Node C5</h3>
+<p><strong>When is the reply due, and how will counsel answer?</strong> Counsel may reply by the date, ask for more time, or ask to narrow the scope. All three go through counsel.</p>
+<ul><li>Counsel picks one and records the date. Go to <a href="#node-c6">node C6</a>.</li><li>Who acts: Legal.</li><li>Open: no kit file yet.</li><li>Label: counsel decision.</li><li>Flag: DN (counsel).</li></ul>
+<h3 id="node-c6">Node C6</h3>
+<p><strong>Build a quick first position for counsel, before anyone discusses details with the publisher.</strong> A rough count in the contract&#x27;s unit is enough to tell counsel how exposed you are.</p>
+<ul><li>Go to <a href="#node-c7">node C7</a>.</li><li>Who acts: the asset manager.</li><li>Open: <a href="license-position.html">License position template</a>.</li><li>Label: judgment.</li></ul>
+<h3 id="node-c7">Node C7</h3>
+<p><strong>Does the auditor want to run its own tool or script in your environment?</strong></p>
+<ul><li>Yes: IT security reviews the request and counsel decides. Nothing runs until counsel says so. Then go to <a href="#node-c8">node C8</a>.</li><li>No: go to <a href="#node-c8">node C8</a>.</li><li>Who acts: IT security reviews; Legal decides.</li><li>Open: no kit file yet.</li><li>Label: counsel decision.</li><li>Flags: FREEZE; DN (counsel).</li></ul>
+<h3 id="node-c8">Node C8</h3>
+<p><strong>Gather the evidence counsel scoped.</strong> Collect proofs of any age (an old proof can still back current use), contracts, and payment records. Existing discovery reports are fine to use, and scheduled scans may continue. New agents or a wider scope need counsel first. The team works from copies.</p>
+<ul><li>Go to <a href="#node-c9">node C9</a>.</li><li>Who acts: Procurement and the asset manager find proofs; the technical lead supplies discovery output; the finance contact finds payment records.</li><li>Open: <a href="proof-of-purchase-check.html">Proof of purchase check template</a> and <a href="documentation-gaps-log.html">Documentation gaps log template</a>.</li><li>Label: kit rule.</li><li>Flag: ORIG.</li></ul>
+<h3 id="node-c9">Node C9</h3>
+<p><strong>Reconcile in the contract&#x27;s unit, then brief Legal and the sponsor.</strong> Say what is short, even, or over, which proofs have problems, and what is still open.</p>
+<ul><li>Go to <a href="#node-c10">node C10</a>.</li><li>Who acts: the asset manager reconciles; the asset manager and Legal brief the sponsor.</li><li>Open: <a href="license-position.html">License position template</a> and <a href="proof-of-purchase-check.html">Proof of purchase check template</a>.</li><li>Label: kit rule.</li></ul>
+<h3 id="node-c10">Node C10</h3>
+<p><strong>What is released, and what is held back?</strong> By default, hold back device lists, raw exports, and internal gap notes. Counsel decides what goes out.</p>
+<ul><li>Counsel decides each release and records it. Go to <a href="#node-c11">node C11</a>.</li><li>Who acts: Legal decides; IT security advises on what the data would expose.</li><li>Open: no kit file yet.</li><li>Label: counsel decision.</li><li>Flag: DN (counsel).</li></ul>
+<h3 id="node-c11">Node C11</h3>
+<p><strong>Meetings and site visits.</strong> Counsel attends. While a notice is open, nobody calls the publisher about license wording.</p>
+<ul><li>Go to <a href="#node-d1">node D1</a>.</li><li>Who acts: Legal.</li><li>Open: no kit file yet.</li><li>Label: counsel decision.</li><li>Flag: DN (counsel).</li></ul>
+<h2 id="findings-and-close">Findings and close</h2>
+<h3 id="node-d1">Node D1</h3>
+<p><strong>Have findings arrived?</strong></p>
+<ul><li>Yes: go to <a href="#node-d2">node D2</a>.</li><li>No: keep the freeze. All contact goes through counsel. Go back to <a href="#node-d1">node D1</a> when counsel hears anything.</li><li>Who acts: Legal receives; the asset manager keeps the case file current.</li><li>Open: no kit file yet.</li><li>Label: kit rule.</li></ul>
+<h3 id="node-d2">Node D2</h3>
+<p><strong>Test each claim.</strong> Ask for every claim itemized. Check the unit counted, downgrade rights, the proofs, and errors in the auditor&#x27;s data. Give rebuttal evidence to counsel.</p>
+<ul><li>Go to <a href="#node-d3">node D3</a>.</li><li>Who acts: the asset manager tests; Legal decides what to send.</li><li>Open: <a href="proof-of-purchase-check.html">Proof of purchase check template</a> and <a href="contract-terms-check.html">Contract terms check template</a>.</li><li>Label: judgment.</li></ul>
+<h3 id="node-d3">Node D3</h3>
+<p><strong>True-up, purchase, or settlement?</strong> Ask counsel what a settlement or true-up covers and what it leaves open.</p>
+<ul><li>Counsel, the contract owner, and Finance decide. Go to <a href="#node-d4">node D4</a>.</li><li>Who acts: the executive sponsor with counsel.</li><li>Open: no kit file yet.</li><li>Label: counsel decision.</li><li>Flag: DN (counsel, contract owner, Finance).</li></ul>
+<h3 id="node-d4">Node D4</h3>
+<p><strong>Put any duties that follow a settlement on the calendar.</strong> Examples: a later report to the publisher or a follow-up review. Counsel names them.</p>
+<ul><li>Go to <a href="#node-d5">node D5</a>.</li><li>Who acts: Legal names the duties; the asset manager calendars them.</li><li>Open: <a href="renewal-calendar.html">Renewal calendar template</a>, which holds dated obligations for contracts.</li><li>Label: counsel decision.</li><li>Flag: DN (counsel).</li></ul>
+<h3 id="node-d5">Node D5</h3>
+<p><strong>Has counsel closed the audit and lifted the freeze, in writing?</strong></p>
+<ul><li>Yes: go to <a href="#node-e1">node E1</a>.</li><li>No: go back to <a href="#node-d1">node D1</a>. The freeze stays.</li><li>Who acts: Legal.</li><li>Open: no kit file yet.</li><li>Label: counsel decision.</li><li>Flag: DN (counsel).</li></ul>
+<h3 id="node-e1">Node E1</h3>
+<p><strong>Learn from it.</strong> Hold a lessons-learned review. Send fixes through change control. Update the roles, the renewal calendar, the gaps log, and the contract terms. Plan for a follow-up review.</p>
+<ul><li>Then go to <a href="#node-a1">node A1</a>.</li><li>Who acts: the asset manager, with the executive sponsor.</li><li>Open: <a href="audit-response-roles.html">Audit response roles template</a>, <a href="renewal-calendar.html">Renewal calendar template</a>, <a href="documentation-gaps-log.html">Documentation gaps log template</a>, <a href="contract-terms-check.html">Contract terms check template</a>, and <a href="license-position.html">License position template</a>.</li><li>Label: kit rule.</li></ul>
+<h2 id="internal-or-financial-auditors">Internal or financial auditors</h2>
+<h3 id="node-f1">Node F1</h3>
+<p><strong>Internal or financial auditors have asked for a license position.</strong> Ask which auditors they are and whether the request is part of the financial audit. Tell counsel and Finance before sharing anything. Build the position through nodes B2 to B4. Release only what they approve.</p>
+<ul><li>Counsel and Finance agree: go to <a href="#node-b2">node B2</a>.</li><li>Counsel or Finance does not agree: stop and share nothing.</li><li>Who acts: the asset manager asks; Legal and Finance approve.</li><li>Open: <a href="license-position.html">License position template</a> and <a href="audit-response-roles.html">Audit response roles template</a>.</li><li>Label: counsel decision.</li><li>Flag: DN (counsel, Finance).</li></ul>
+<h2 id="not-in-this-tree">Not in this tree</h2>
+<p>Penalty amounts, legal conclusions, and how long records must be kept are for counsel and the records owner. The tree does not answer them.</p>
+<h2 id="questions-for-counsel">Questions for counsel</h2>
+<p>While this notice is open, should routine disposal under our retention schedule pause for records tied to the audit? If so, which records, and who tells the records owner? <strong>Decision needed: counsel.</strong></p>
+<p>Source: ISO/IEC 19770-1:2017 clauses 5.3, 7.6.3, 8.4 and 8.7, and the shared crosswalk. Paraphrased; this is not a substitute for the standard.</p>
+  </div>
+  <div class="doc-bottom"><a class="doc-to-top" href="#main">Back to top</a><button type="button" class="print-icon" onclick="window.print()" aria-label="Print this page" title="Print"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="M7 9V3.5h10V9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M7 17H4.5A1.5 1.5 0 0 1 3 15.5v-5A1.5 1.5 0 0 1 4.5 9h15a1.5 1.5 0 0 1 1.5 1.5v5a1.5 1.5 0 0 1-1.5 1.5H17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><rect x="7" y="14" width="10" height="6.5" rx="0.8" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17.5" cy="12" r="0.9" fill="currentColor"/></svg></button></div>
+</main>
+<footer class="site-footer">
+  <p>Eve McGivern · <a href="https://evemcgivern.github.io/">evemcgivern.github.io</a></p>
+  <p><a href="../../about.html">About</a></p>
+  <p>Questions? Comments? <a href="https://github.com/evemcgivern/app-governance-kit/issues" id="contact-email" data-r="moc.liamg|nrevigcmeve">email me</a>.</p>
+  <p><a href="https://buymeacoffee.com/a8w5iiqszp" rel="noopener">Buy me a coffee</a> if these tools help.</p>
+  <p class="site-version"><a href="https://github.com/evemcgivern/app-governance-kit/releases" rel="noopener" id="site-version">Version</a></p>
+</footer>
+<script>
+(function () {
+  "use strict";
+  var el = document.getElementById("contact-email");
+  if (!el || !el.getAttribute("data-r")) { return; }
+  function arm() {
+    el.href = "mailto:" + el.getAttribute("data-r").split("").reverse().join("").replace("|", "@");
+  }
+  ["pointerenter", "focus", "touchstart"].forEach(function (type) {
+    el.addEventListener(type, arm, { once: true, passive: true });
+  });
+})();
+</script>
+
+</body>
+</html>
