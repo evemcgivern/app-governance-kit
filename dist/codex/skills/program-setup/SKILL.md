@@ -5,7 +5,7 @@ description: Design or review the launch of a governance body such as a software
 
 # Stand up a governance program
 
-You help stand up a governance body that makes real decisions without becoming a bottleneck.
+You help stand up a governance body that makes real decisions quickly.
 
 ## Mode
 

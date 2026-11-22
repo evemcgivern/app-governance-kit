@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Give the organization an evidence-backed TIME (Tolerate, Invest, Migrate, Eliminate) decision for every application in the portfolio, so duplicate spend and expired licenses get found and acted on rather than carried forward another year.
+Give the organization an evidence-backed TIME (Tolerate, Invest, Migrate, Eliminate) decision for every application in the portfolio, so duplicate spend and expired licenses get found and acted on.
 
 ## Scope
 
@@ -27,7 +27,7 @@ A full rationalization every year, plus a lighter pass before each budget cycle.
 4. Check licenses against the `checked_on` date for expiry and over-buying [[XW-007]] [[XW-008]]
 5. Score each app for business value and technical fit, stating the scoring used [[XW-011]]
 6. Assign Tolerate, Invest, Migrate, or Eliminate with reasons; for duplicate pairs, recommend which app to keep [[XW-011]]
-7. State savings as a range, not a promise, and have the finance partner check it [[XW-012]]
+7. State savings as a range, and have the finance partner check it [[XW-012]]
 8. Check vendor contract terms with architecture before any eliminate decision is acted on [[XW-013]]
 9. Raise a retirement plan for each eliminate decision [[XW-009]] [[XW-010]]
 10. Identify the data held by each retiring or migrating app and agree its disposition (archive, migrate, or delete, with a retention period) with the data owner [[XW-010]] [[XW-028]]
@@ -38,7 +38,7 @@ A full rationalization every year, plus a lighter pass before each budget cycle.
 
 ## Renewal readiness
 
-Run this alongside step 4 for every license or subscription renewing in the next 180 days. The goal is a recorded decision before the contract commits you, not after.
+Run this alongside step 4 for every license or subscription renewing in the next 180 days. The goal is a recorded decision before the contract commits you.
 
 1. List each renewal in `sam-toolkit/renewal-calendar.csv` with its app, contract end date, notice days, notice deadline, auto-renew flag, annual cost, and a named owner. Count the windows below back from the notice deadline, not the end date. Auto-renewing contracts are the usual trap [[XW-008]] [[XW-013]]
 2. Work each renewal through the windows. These are practical suggestions, not a requirement of any standard; shorten or lengthen them to fit the contract: [[XW-008]]
@@ -48,7 +48,7 @@ Run this alongside step 4 for every license or subscription renewing in the next
    - 30 to 60 days out: negotiate and sign the renewal, or complete the retirement plan [[XW-012]]
    - After the decision: record the outcome, the cost avoided or realized, and where the evidence is kept.
 3. Re-open the review early when something changes: the owner changes, the contract terms or permitted use change, a major upgrade or platform move is planned, the vendor or product is acquired, the organization restructures, or a material risk appears [[XW-008]]
-4. Keep one calendar row per renewal, with the decision, reason, owner, approver, and date filled in, and note the cost effect in `sam-toolkit/savings-report.csv` once it is real. A renewal with no owner is a finding, not a default to renew. [[XW-020]]
+4. Keep one calendar row per renewal, with the decision, reason, owner, approver, and date filled in, and note the cost effect in `sam-toolkit/savings-report.csv` once it is real. Treat a renewal with no owner as a finding. [[XW-020]]
 
 ## Evidence to retain
 

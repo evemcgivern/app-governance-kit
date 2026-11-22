@@ -6,7 +6,7 @@ One sentence: what goes wrong today that this body fixes.
 
 ## Sponsor
 
-Name, title, and the budget this person controls. A charter with no sponsor has no enforcement.
+Name, title, and the budget this person controls. The sponsor signs the charter.
 
 ## Decision rights
 
@@ -51,7 +51,7 @@ Give each decision exactly one accountable party. Anything below its threshold i
 - Standing agenda: [items, in order]
 - Decision log: kept by [named role], published to [location]
 - Out-of-cycle path for urgent items: [description]
-- The first meeting is seeded with a real, live agenda item (an open exception, a gap report, a pending request), never convened empty.
+- Seed the first meeting with a real, live agenda item (an open exception, a gap report, a pending request).
 
 ## Escalation
 

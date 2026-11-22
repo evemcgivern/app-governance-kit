@@ -1,10 +1,10 @@
 # Audit response SOP
 
-This SOP describes a practice. It gives no legal advice. **Decision needed: counsel** marks every point where Legal decides. The order follows the kit's audit decision tree, `sam-toolkit/audit-decision-tree.md`; node ids such as C1 point into it.
+This SOP describes a practice and gives no legal advice. **Decision needed: counsel** marks every point where Legal decides. The order follows the kit's audit decision tree, `sam-toolkit/audit-decision-tree.md`; node ids such as C1 point into it.
 
 ## Purpose
 
-Let the organization answer a software publisher's audit or compliance letter with one voice, prepared evidence, and every decision made by counsel.
+Let the organization answer a software publisher's audit or compliance letter through counsel, with evidence ready.
 
 ## Scope
 
@@ -70,7 +70,7 @@ Group what a proof must show by the question it answers. The agreement and licen
 - **Who the buyer was.** The buyer's legal name, and the vendor or authorized seller.
 - **What was bought and how many.** The product, the version, and the quantity. For an upgrade, the base license it builds on; an upgrade uses up that base, so the base cannot also count for installs of its own version, and an upgrade whose base has no proof is not a proof on its own.
 - **The license terms and metric.** The unit the agreement counts (named user, device, core) and any term of use.
-- **When it applies.** The purchase date, and for a subscription the current term, not only the first order. A proof dated after the install is a question, not a failure: true-up agreements often date purchases after the use they cover. Confirm which it is.
+- **When it applies.** The purchase date, and for a subscription the current term, not only the first order. A proof dated after the install may be a true-up: true-up agreements often date purchases after the use they cover. Confirm which it is.
 - **Whether it can be shown today.** Price and evidence of payment where the agreement asks for them, and a record you can produce. Licensing-portal and authorized-reseller records can count. A certificate of authenticity or a product key alone shows that a copy exists, not a right to use it.
 
 ## Rules
@@ -108,7 +108,7 @@ Group what a proof must show by the question it answers. The agreement and licen
 
 ## Who decides
 
-People decide. The asset manager reports. Legal decides every legal point: the claim, the scope, the reply, and what is released. The executive sponsor decides, with counsel, on spend, true-up, and settlement. IT security decides what may be exposed. No tool or agent makes any of these calls.
+People decide: the asset manager reports, and Legal decides every legal point (the claim, the scope, the reply, and what is released). The executive sponsor decides, with counsel, on spend, true-up, and settlement, and IT security decides what may be exposed. No tool or agent makes any of these calls.
 
 ## Evidence to retain
 

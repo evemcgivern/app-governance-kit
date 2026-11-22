@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Give a learner repeated, low-stakes practice on the on-the-job tasks behind an ITAM or AI-governance certification, with an honest view of the gaps. It supports study. It does not replace the certification body's course, and it is not exam content.
+Give a learner repeated, low-stakes practice on the on-the-job tasks behind an ITAM or AI-governance certification, with a ranked list of gaps. It supports study alongside the certification body's course, and it isn't exam content.
 
 ## Scope
 

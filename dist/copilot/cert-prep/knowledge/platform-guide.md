@@ -1,6 +1,6 @@
 # Platform guide: Certification study coach
 
-This tool has no platform integration. It runs in a chat with the Halden demo files attached, and keeps its log in a spreadsheet you control. Nothing here names a vendor module or field, so there is nothing to confirm against a vendor source.
+This tool has no platform integration. It runs in a chat with the Halden demo files attached, and keeps its log in a spreadsheet you control. No vendor modules or fields are named, so there is nothing to check against a vendor source.
 
 ## Where to run it
 
@@ -14,9 +14,8 @@ Open `template.csv` in any spreadsheet and add one row per drill. Keep it with y
 
 ## What the tool does not do
 
-- It does not hold or reproduce any certification body's exam questions or course material.
-- It does not predict a result. A good run of drills shows you practiced the tasks, not that you will pass.
-- It does not know a certification's current exam format. The facts in the field guide were fetched on 2026-09-25; check the certification body's page before booking.
+- It doesn't hold or reproduce any certification body's exam questions or course material, and it can't predict a result. A good run of drills shows you practiced the tasks.
+- It doesn't know a certification's current exam format. The facts in the field guide were fetched on 2026-09-25; check the certification body's page before booking.
 
 ## Sources
 

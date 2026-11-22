@@ -24,7 +24,7 @@ On every new or changed control. A full review of all mapped controls runs yearl
 2. Search [`crosswalk.csv`](crosswalk.csv) by theme and summary and record the single best-matching row, adding a second row only if it covers a framework the first misses [[XW-003]]
 3. Record the clause number from that row for each of the four frameworks, or write "no direct equivalent" where none exists [[XW-003]]
 4. List each gap by framework and note what that framework's auditor would ask for in its place [[XW-025]]
-5. Where no existing row fits, propose a new theme and one-sentence summary and route it to the governance lead as a decision, rather than inventing a mapping [[XW-025]]
+5. Where no existing row fits, propose a new theme and one-sentence summary and route it to the governance lead as a decision [[XW-025]]
 6. Have the reviewer check the completed mapping against the control and sign off with today's date before it is filed [[XW-020]]
 
 ## Evidence to retain
