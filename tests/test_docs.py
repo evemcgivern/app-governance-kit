@@ -688,26 +688,42 @@ class StepMapPageTests(unittest.TestCase):
 
 
 class ToolkitByStepTests(unittest.TestCase):
-    def test_section_lists_each_file_once_under_its_main_step_with_a_tag(self):
+    def test_section_lists_each_file_once_under_its_main_step_with_a_type_and_an_also_note(self):
         from agk.docs import toolkit_steps_html
-        steps = [{"n": 3, "title": "Stop the bleeding", "id": "step-3-stop"},
-                 {"n": 8, "title": "Proof first", "id": "step-8-proof"}]
+        steps = [{"n": 3, "title": "Stop the bleeding", "id": "step-3-stop", "why": "Renewals cost money."},
+                 {"n": 8, "title": "Proof first", "id": "step-8-proof", "why": ""}]
         rows = [{"kind": "file", "key": "renewal-calendar.csv", "main_step": "3", "also_steps": ["8"],
                  "frequency": "", "note": ""},
                 {"kind": "file", "key": "savings-report.csv", "main_step": "beyond", "also_steps": [],
                  "frequency": "", "note": ""},
                 {"kind": "term", "key": "Sponsor", "main_step": "3", "also_steps": [], "frequency": "",
                  "note": ""}]
-        html = toolkit_steps_html(rows, steps, {"renewal-calendar.csv": "Renewal calendar"})
+        html = toolkit_steps_html(rows, steps, {"renewal-calendar.csv": "Renewal calendar"},
+                                  {"renewal-calendar.csv": "Template"})
         self.assertEqual(html.count('data-stem="renewal-calendar"'), 1)
-        self.assertIn('<h3 id="by-step-3"><a href="docs/sam-toolkit/itam-program-playbook.html#step-3-stop">'
-                      'Step 3: Stop the bleeding</a></h3>', html)
-        self.assertIn('<a href="docs/sam-toolkit/renewal-calendar.html">Renewal calendar</a> '
-                      '<span class="step-tag">Step 3, also step 8</span>', html)
-        self.assertIn('<h3 id="by-step-beyond">Not part of a step</h3>', html)
-        self.assertIn('data-stem="savings-report"', html.split("by-step-beyond")[1])
+        self.assertIn('<h3 id="by-step-3-heading">', html)
+        self.assertIn('Stop the bleeding</h3>', html)
+        self.assertIn('<a href="docs/sam-toolkit/itam-program-playbook.html#step-3-stop">Read step 3 in the playbook</a>',
+                      html)
+        self.assertIn('<p class="step-card__goal">Renewals cost money.</p>', html)
+        self.assertIn('<a href="docs/sam-toolkit/renewal-calendar.html">Renewal calendar</a>', html)
+        self.assertIn('<span class="file-type">Template</span>', html)
+        self.assertIn('<a href="#by-step-8"><span class="visually-hidden">Step </span>8</a>', html)
+        self.assertEqual(html.count('<li><a href="#by-step-'), 2)
+        self.assertIn('id="by-step-beyond"', html)
+        self.assertIn('data-stem="savings-report"', html.split('id="by-step-beyond"')[1])
         self.assertNotIn("Sponsor", html)
-        self.assertNotIn("by-step-8", html)
+        self.assertNotIn('id="by-step-8"', html)
+
+    def test_file_type_comes_from_the_title_then_the_intro_then_the_format(self):
+        from agk.docs import file_type
+        self.assertEqual(file_type("Policy checklist", None, "md"), "Checklist")
+        self.assertEqual(file_type("Tier self-assessment", None, "md"), "Self-assessment")
+        self.assertEqual(file_type("Renewal calendar template", None, "csv"), "Template")
+        self.assertEqual(file_type("What good looks like", [{"type": "p", "text": "A worksheet for deciding."}], "md"),
+                         "Worksheet")
+        self.assertEqual(file_type("Rolling internal check", [{"type": "p", "text": "A small test."}], "md"), "Document")
+        self.assertEqual(file_type("Odd", None, "csv"), "Spreadsheet")
 
     def test_write_docs_fills_the_marked_region_of_the_toolkit_page(self):
         root = mapped_repo()
