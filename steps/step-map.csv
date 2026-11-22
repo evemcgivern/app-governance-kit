@@ -40,14 +40,14 @@ file,audit-and-review-checklist.md,10,,Yearly,
 file,operating-calendar.md,10,,Not on the calendar,The schedule itself
 file,savings-report.csv,beyond,,Not on the calendar,Not part of a step
 practicum,01-program-setup,2,,,Program setup
-practicum,02-itam-maturity,5,,,ITAM maturity
-practicum,03-crosswalk,beyond,,,Crosswalk
-practicum,04-rationalization,beyond,,,Rationalization
-practicum,05-access-review,9,,,Access review
-practicum,06-ai-intake,6,9,,AI intake
-practicum,07-hardware-lifecycle,9,,,Hardware lifecycle
-practicum,08-audit-response,3,8,,Audit response
-practicum,09-as-is-assessment,1,5,,As-is assessment
+practicum,02-as-is-assessment,1,5,,As-is assessment
+practicum,03-itam-maturity,5,,,ITAM maturity
+practicum,04-crosswalk,beyond,,,Crosswalk
+practicum,05-rationalization,beyond,,,Rationalization
+practicum,06-access-review,9,,,Access review
+practicum,07-ai-intake,6,9,,AI intake
+practicum,08-hardware-lifecycle,9,,,Hardware lifecycle
+practicum,09-audit-response,3,8,,Audit response
 case,renewals,3,,,Renewals
 case,audit-response,3,8,,Audit response
 case,gap-plan,5,,,As-Is and To-Be

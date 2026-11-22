@@ -1,4 +1,4 @@
-# Exercise 06: AI intake, Halden's six AI systems
+# Exercise 07: AI intake, Halden's six AI systems
 
 **Level:** AIGP · **Time:** 30–45 minutes
 

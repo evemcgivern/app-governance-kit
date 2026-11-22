@@ -71,7 +71,8 @@ class PayloadTests(unittest.TestCase):
 
     def test_order_has_nine_tools_matching_graded_tools(self):
         self.assertEqual(len(ORDER), 9)
-        self.assertEqual(ORDER[-1], "as-is-assessment")
+        self.assertEqual(ORDER[:3], ("program-setup", "as-is-assessment", "itam-maturity"))
+        self.assertEqual(ORDER[-1], "audit-response")
         self.assertIn("audit-response", ORDER)
         self.assertIn("hardware-lifecycle", ORDER)
         payload = practicum_payload(self.tmp / "demo", write_exercises(self.tmp / "ex1"), XW)
