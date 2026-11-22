@@ -233,6 +233,127 @@
     <p class="positioning">Each tool ships as a Claude skill, a Codex skill, and a Copilot agent, plus a checklist, SOP, template, and platform guide you can run by hand. Eight are exercised against Halden Logistics, a fictional demo estate with planted problems, so you can see what they find; the software lifecycle check runs a separate offline tool on your own machine. Looking for working files instead? Get the <a href="sam-toolkit.html">free SAM toolkit templates</a>.</p>
   </section>
 
+  <section aria-labelledby="overview-heading" id="overview">
+    <h2 id="overview-heading">What each tool does</h2>
+    <p class="prose">What you give each tool, what you get back, and who keeps the decision. The nine governance tools follow the order of the practicum exercises, then the software lifecycle check, the router, and the study coach. Each name links to its card below, with downloads.</p>
+    <ul class="tool-overview case-list card-grid">
+      <li class="card tool-card">
+        <h3><a href="#program-setup">Stand up a governance program</a></h3>
+        <dl class="tool-facts">
+          <div><dt>What it does</dt><dd>Drafts a governance council's charter, decision rights, membership, intake path, cadence, and 90-day launch plan, or reviews a draft you already have.</dd></div>
+          <div><dt>You give it</dt><dd>The council's purpose, your organization's size, who would sponsor it, and what goes wrong without it. Or a draft charter to review (the Halden example uses <code>council-draft.md</code>).</dd></div>
+          <div><dt>You get</dt><dd>Draft mode: a charter, a decision-rights table, and a 90-day plan. Review mode: a table of gaps with what's missing, why it matters, and the fix.</dd></div>
+          <div><dt>Use it when</dt><dd>You are starting a council, or an existing one has become a bottleneck or a rubber stamp.</dd></div>
+          <div><dt>Decision stays with</dt><dd>The sponsor signs off on the 90-day launch plan.</dd></div>
+        </dl>
+      </li>
+      <li class="card tool-card">
+        <h3><a href="#itam-maturity">ITAM maturity check</a></h3>
+        <dl class="tool-facts">
+          <div><dt>What it does</dt><dd>Scores IT asset management maturity from 1 to 5 across nine process areas and names the three biggest gaps.</dd></div>
+          <div><dt>You give it</dt><dd>Your answers for each area with one piece of evidence each. If you have none, the tool asks the questions one area at a time (the Halden example uses <code>maturity-answers.csv</code>).</dd></div>
+          <div><dt>You get</dt><dd>A score table, the three gaps with reasoning, and a 90-day plan that gives each gap an owner role, three actions, and the proof of progress.</dd></div>
+          <div><dt>Use it when</dt><dd>You want a baseline assessment, or a yearly re-check.</dd></div>
+          <div><dt>Decision stays with</dt><dd>The sponsor confirms the owners and the budget for the plan.</dd></div>
+        </dl>
+      </li>
+      <li class="card tool-card">
+        <h3><a href="#crosswalk">Governance framework crosswalk</a></h3>
+        <dl class="tool-facts">
+          <div><dt>What it does</dt><dd>Maps a control or policy statement to clauses in ISO/IEC 19770-1, COBIT 2019, ISO/IEC 27001, and ISO/IEC 42001, and shows where a framework has no equivalent.</dd></div>
+          <div><dt>You give it</dt><dd>The control or policy statement in plain words (the Halden example uses a list of controls in <code>controls.md</code>).</dd></div>
+          <div><dt>You get</dt><dd>A table per control with the framework, the clause, and what it asks for in your own words, then the gaps.</dd></div>
+          <div><dt>Use it when</dt><dd>You are writing or auditing a control, or explaining how the frameworks overlap.</dd></div>
+          <div><dt>Decision stays with</dt><dd>Not found. The method marks one decision, whether to add a new crosswalk row when none fits, and names no role for it.</dd></div>
+        </dl>
+      </li>
+      <li class="card tool-card">
+        <h3><a href="#rationalization">Application rationalization</a></h3>
+        <dl class="tool-facts">
+          <div><dt>What it does</dt><dd>Recommends tolerate, invest, migrate, or eliminate for each application, and finds duplicates and license problems.</dd></div>
+          <div><dt>You give it</dt><dd>An application inventory with an ID, category, and owner or cost for each app, plus the license list (the Halden example uses <code>apps.csv</code> and <code>licenses.csv</code>).</dd></div>
+          <div><dt>You get</dt><dd>A table of apps with a recommendation and a one-line reason, a duplicates section, a license section, and a savings range with the top risks of acting.</dd></div>
+          <div><dt>Use it when</dt><dd>You are running a portfolio review or a budget cycle, or cleaning up after a merger.</dd></div>
+          <div><dt>Decision stays with</dt><dd>The data owner decides whether a retiring app's data is archived, migrated, or deleted, and the approver decides any new purchase. Not found: the method names no role for the final keep or retire calls or for each renewal.</dd></div>
+        </dl>
+      </li>
+      <li class="card tool-card">
+        <h3><a href="#access-review">Access review pack</a></h3>
+        <dl class="tool-facts">
+          <div><dt>What it does</dt><dd>Matches every account to a person and flags orphaned, privileged, and dormant accounts.</dd></div>
+          <div><dt>You give it</dt><dd>An account export (account, person, application, role, last login) and an HR list (person, status, leave date). An application list with data sensitivity is optional (the Halden example uses <code>accounts.csv</code>, <code>employees.csv</code>, and <code>apps.csv</code>).</dd></div>
+          <div><dt>You get</dt><dd>An exceptions table (account, issue, recommended action), an evidence summary, and a one-page auditor memo.</dd></div>
+          <div><dt>Use it when</dt><dd>You are running a quarterly or annual access review.</dd></div>
+          <div><dt>Decision stays with</dt><dd>The application owner decides each removal.</dd></div>
+        </dl>
+      </li>
+      <li class="card tool-card">
+        <h3><a href="#ai-intake">AI system intake and risk tiering</a></h3>
+        <p class="meta">Limit: Legal content last reviewed 2026-09. Any high-risk or prohibited result needs legal review.</p>
+        <dl class="tool-facts">
+          <div><dt>What it does</dt><dd>Assigns an AI use case a risk tier under the EU AI Act, lists the controls that tier needs, and fills in an inventory record.</dd></div>
+          <div><dt>You give it</dt><dd>A description of the use case: its purpose, who is affected, what it decides, whether a person reviews each output, and what data it uses and where that came from (the Halden example uses <code>ai-systems.csv</code>).</dd></div>
+          <div><dt>You get</dt><dd>For each system: a restatement of the use case, the tier with reasoning, the required controls, and the inventory record.</dd></div>
+          <div><dt>Use it when</dt><dd>A team proposes a new AI tool or changes how one is used.</dd></div>
+          <div><dt>Decision stays with</dt><dd>Legal review comes first if a prohibited practice might apply. Otherwise the approver decides whether the system goes ahead.</dd></div>
+        </dl>
+      </li>
+      <li class="card tool-card">
+        <h3><a href="#hardware-lifecycle">Hardware lifecycle check</a></h3>
+        <dl class="tool-facts">
+          <div><dt>What it does</dt><dd>Finds devices overdue for refresh and retired devices with no confirmed data wipe.</dd></div>
+          <div><dt>You give it</dt><dd>A device list with an ID, type, owner, and status, plus a refresh-due date for active devices and a retirement date and wipe confirmation for retired ones (the Halden example uses <code>devices.csv</code>).</dd></div>
+          <div><dt>You get</dt><dd>A table of devices that need action, a replacement-cost range, and the list of retired devices still blocking disposal.</dd></div>
+          <div><dt>Use it when</dt><dd>You are reviewing a refresh cycle, preparing a hardware budget request, or closing out a disposal.</dd></div>
+          <div><dt>Decision stays with</dt><dd>The asset owner chooses replace, upgrade, or extend, and whoever is accountable for the disposal confirms it. A device is not marked disposed until wipe evidence is attached.</dd></div>
+        </dl>
+      </li>
+      <li class="card tool-card">
+        <h3><a href="#audit-response">Software audit response check</a></h3>
+        <p class="meta">Limit: Gives no legal advice.</p>
+        <dl class="tool-facts">
+          <div><dt>What it does</dt><dd>Compares installs with proofs of purchase for each product, finds proofs that would not stand up, and prepares a briefing for counsel.</dd></div>
+          <div><dt>You give it</dt><dd>The audit letter, your proofs of purchase, and install counts (the Halden example uses <code>audit-letter.md</code>, <code>proofs-of-purchase.csv</code>, and <code>audit-installs.csv</code>). With no letter, one publisher's agreement, proofs, and counts.</dd></div>
+          <div><dt>You get</dt><dd>A table per product and version showing proof against use, a table of proofs with problems, the scope questions for counsel, and the briefing.</dd></div>
+          <div><dt>Use it when</dt><dd>A publisher's audit or compliance letter arrives, or you want to test readiness before one does.</dd></div>
+          <div><dt>Decision stays with</dt><dd>Counsel decides every legal point and what goes to the publisher. Counsel, the contract owner, and Finance decide any true-up, purchase, or settlement.</dd></div>
+        </dl>
+      </li>
+      <li class="card tool-card">
+        <h3><a href="#software-lifecycle">Software lifecycle check</a></h3>
+        <p class="meta">Limit: Needs Claude Code or Codex on your own machine. In Copilot you run the tool and paste back only the count lines. Not for the Claude app or ChatGPT.</p>
+        <dl class="tool-facts">
+          <div><dt>What it does</dt><dd>Runs an offline tool on your machine to count installed software past or near end of life, with a CISA KEV needs-review flag.</dd></div>
+          <div><dt>You give it</dt><dd>A software inventory export with a name column and a version column. Publisher, owner, end-of-life date, and parent are optional. The assistant sees only the header row.</dd></div>
+          <div><dt>You get</dt><dd>A data-currency line, summary counts by state, and the open decisions. Names and item IDs stay in <code>report.md</code>, which you read yourself.</dd></div>
+          <div><dt>Use it when</dt><dd>You are running a quarterly software lifecycle review, or preparing an upgrade budget request.</dd></div>
+          <div><dt>Decision stays with</dt><dd>The asset owner chooses replace, upgrade, retire, or risk acceptance for each item. A person checks each KEV-flagged version and sets its priority, and the ITAM lead settles each item where dates disagree.</dd></div>
+        </dl>
+      </li>
+      <li class="card tool-card">
+        <h3><a href="#app-governance">Application governance router</a></h3>
+        <dl class="tool-facts">
+          <div><dt>What it does</dt><dd>Picks the right governance tool for a plain request, asks for the data, runs that tool, and hands every decision back to you.</dd></div>
+          <div><dt>You give it</dt><dd>Your request in plain words, what you must decide and by when, and whether an audit or vendor letter is in hand. Then the data the chosen tool needs, or the Halden demo estate.</dd></div>
+          <div><dt>You get</dt><dd>A short routing note (request, tool, why), the chosen tool's output, the open decisions, and a row for your routing log.</dd></div>
+          <div><dt>Use it when</dt><dd>You have a governance question but have not chosen a tool.</dd></div>
+          <div><dt>Decision stays with</dt><dd>You do. The router decides nothing. If an audit letter is in hand, Legal comes first, the same day.</dd></div>
+        </dl>
+      </li>
+      <li class="card tool-card">
+        <h3><a href="#cert-prep">Certification study coach</a></h3>
+        <p class="meta">Limit: Practice only: not exam content, and no prediction of a pass.</p>
+        <dl class="tool-facts">
+          <div><dt>What it does</dt><dd>Coaches you through short scenario drills on the Halden demo estate, rates each answer, and logs your gaps.</dd></div>
+          <div><dt>You give it</dt><dd>Which certification (CAMP, CSAM, CHAMP, AIGP, ITIL 4 Foundation, or IAM Certificate), your experience, hours per week, and exam date. For each drill, the demo estate file the coach names.</dd></div>
+          <div><dt>You get</dt><dd>A session summary with a rating and reasoning for each drill, a ranked gap list, and a plan for the next drills and matching practicum exercises.</dd></div>
+          <div><dt>Use it when</dt><dd>You are studying week by week, or want a readiness check.</dd></div>
+          <div><dt>Decision stays with</dt><dd>You do: you pick which gap to work on first and whether to book the exam.</dd></div>
+        </dl>
+      </li>
+    </ul>
+  </section>
+
   <section class="install prose prose-wide" id="install">
     <h2>Install</h2>
     <p>Download all nine governance tools, the router, and the study coach for your platform, or one tool from its card below. Each ZIP holds one folder per tool. Prefer git? The <a href="https://github.com/evemcgivern/app-governance-kit#install">README</a> has the clone-and-copy steps.</p>
