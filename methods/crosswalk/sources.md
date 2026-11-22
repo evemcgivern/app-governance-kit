@@ -222,9 +222,9 @@ either a Primary source or two independent secondary sources.
 | XW-029 | iso27001 | 6.3, A.8.32 | Planning of changes; Change management | ISO/IEC 27001:2022 full text (main body and Annex A) | Primary | added 2026-10-15 |
 | XW-029 | iso42001 | 6.3 | Planning of changes | ISO/IEC 42001:2023 full text | Primary | added 2026-10-15 |
 | XW-030 | iso19770_1 | 7.3, 7.4, 7.6.5 | Awareness; Communication; Control of documented information | Clause 7.6.5 is already confirmed under XW-020. Clauses 7.3 and 7.4 are cited by number in this kit's `policy-checklist.md` and `policy-lifecycle-sop.md`. | ISO/IEC 19770-1:2017 full text, printed pp. 19 and 21 | added 2026-11-21; rechecked 2026-11-21: the 7.3 (Awareness) and 7.4 (Communication) titles match the standard, and 7.4 asks what, when, with whom, and how to communicate |
-| XW-030 | cobit2019 | Unverified | | Not checked against a source in this repo | None | left as Unverified on 2026-11-21 |
-| XW-030 | iso27001 | Unverified | | Not checked against a source in this repo | None | left as Unverified on 2026-11-21 |
-| XW-030 | iso42001 | Unverified | | Not checked against a source in this repo | None | left as Unverified on 2026-11-21 |
+| XW-030 | cobit2019 | APO01 | Managed I&T Management Framework (APO01.02 communicates management objectives, direction and decisions; APO01.09 defines and communicates policies and procedures) | COBIT 2019 Framework: Governance and Management Objectives, printed pp. 56 and 59 | Primary | verified 2026-11-22 against the licensed copy; COBIT has no practice for controlling documents, so the cell stays at objective level as XW-027 does |
+| XW-030 | iso27001 | 7.3, 7.4, 7.5.3 | Awareness; Communication; Control of documented information | ISO/IEC 27001:2022 full text, printed pp. 6 and 7 | Primary | verified 2026-11-22; the 2024 amendment was not read and is expected to leave clause 7 unchanged |
+| XW-030 | iso42001 | 7.3, 7.4, 7.5.3 | Awareness; Communication; Control of documented information | ISO/IEC 42001:2023 full text, printed pp. 12 and 13 | Primary | verified 2026-11-22 |
 
 ## Full-text pass on 2026-10-14
 
