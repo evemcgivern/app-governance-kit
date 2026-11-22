@@ -134,7 +134,7 @@ Software in 2025. We are reviewing license compliance for these products and ask
 - Proof of purchase: invoices, order confirmations, or records from the publisher's licensing portal or
   an authorized reseller.
 """
-CHARTER_DRAFT = """# Halden Software Governance Council — draft charter
+CHARTER_DRAFT = """# Halden Software Governance Council: draft charter
 
 ## Purpose
 The council oversees software and applications at Halden Logistics.
