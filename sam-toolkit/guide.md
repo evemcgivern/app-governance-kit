@@ -304,7 +304,7 @@ A one-page report that links each control to a KPI, the KPI to a decision, and t
 
 ### audit-response-roles.csv (crosswalk XW-004, XW-020)
 
-Pre-filled with twelve audit-response tasks that match the `audit-response` method. For each, name the role, the primary holder, and a backup.
+Pre-filled with fifteen audit-response tasks that match the `audit-response` method. For each, name the role, the primary holder, and a backup.
 
 - `backup_holder` and `backup_ready`: a backup who has not been briefed does not count. Fill `backup_ready` with yes, no, or the date they were last walked through the task.
 - `single_person_risk`: yes where there is no backup, or the backup is the same person. Aim for no.
