@@ -14,7 +14,7 @@ Halden has six AI systems across different departments, and nobody has ever tier
 
 Use `methods/ai-intake/checklist.md` by hand, without AI.
 
-- For each system, ask who it affects and what decision it makes or supports about a real person, not just what department owns it. A system that only ranks or scores things (routes, forecasts, spam) is a different case from one that ranks *people*.
+- For each system, ask who it affects and what decision it makes or supports about a real person. The owning department doesn't answer that. A system that only ranks or scores things (routes, forecasts, spam) is a different case from one that ranks *people*.
 - Check whether a person reviews the output before it takes effect on someone. Two systems in this file already have a human in the loop by description; the rest don't, and that absence matters more for some systems than others.
 - Employment-related uses (screening, ranking, or shortlisting people for a job) are treated as high-risk regardless of how small or well-intentioned the tool sounds. Look for that pattern specifically before you tier anything as merely limited or minimal.
 
