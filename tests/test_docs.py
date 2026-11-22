@@ -196,6 +196,14 @@ class PageShapeTests(unittest.TestCase):
         self.assertIn("form-export", html)
         self.assertIn('id="record-data"', html)
 
+    def test_downloads_are_named_files_and_kept_long_enough_to_save(self):
+        # A blob link released after one second can lose its filename (Chrome then saves a GUID with no
+        # extension, which Word cannot open). Name the file and keep the link for a minute.
+        html = self.read("audit-and-review-checklist.html")
+        self.assertIn("new File(", html)
+        self.assertNotIn("revokeObjectURL(a.href); }, 1000)", html)
+        self.assertIn("revokeObjectURL(a.href); }, 60000)", html)
+
     def test_checklist_has_tick_boxes_notes_and_answer_download(self):
         html = self.read("audit-and-review-checklist.html")
         self.assertIn('class="checklist-tick"', html)
