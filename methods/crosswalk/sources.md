@@ -225,6 +225,14 @@ either a Primary source or two independent secondary sources.
 | XW-030 | cobit2019 | APO01 | Managed I&T Management Framework (APO01.02 communicates management objectives, direction and decisions; APO01.09 defines and communicates policies and procedures) | COBIT 2019 Framework: Governance and Management Objectives, printed pp. 56 and 59 | Primary | verified 2026-11-22 against the licensed copy; COBIT has no practice for controlling documents, so the cell stays at objective level as XW-027 does |
 | XW-030 | iso27001 | 7.3, 7.4, 7.5.3 | Awareness; Communication; Control of documented information | ISO/IEC 27001:2022 full text, printed pp. 6 and 7 | Primary | verified 2026-11-22; Amendment 1:2024 read, and it changes only clauses 4.1 and 4.2 (climate change), so clause 7 is unchanged |
 | XW-030 | iso42001 | 7.3, 7.4, 7.5.3 | Awareness; Communication; Control of documented information | ISO/IEC 42001:2023 full text, printed pp. 12 and 13 | Primary | verified 2026-11-22 |
+| XW-031 | iso19770_1 | 7.1, 7.2 | Resources; Competence | ISO/IEC 19770-1:2017 full text, printed p. 18 | Primary | added 2026-11-22; verified 2026-11-22 |
+| XW-031 | cobit2019 | APO07 | Managed Human Resources (APO07.01 staffing; APO07.03 skills and competencies) | COBIT 2019 Framework: Governance and Management Objectives | Primary | verified 2026-11-22 against the licensed copy; objective level only. Budget sits under APO06, which is not cited here |
+| XW-031 | iso27001 | 7.1, 7.2 | Resources; Competence | ISO/IEC 27001:2022 full text, printed p. 6 | Primary | verified 2026-11-22; clause 7.3 (Awareness) is a separate theme, XW-030 |
+| XW-031 | iso42001 | 7.1, 7.2 | Resources; Competence | ISO/IEC 42001:2023 full text, printed p. 11 | Primary | verified 2026-11-22 |
+| XW-032 | iso19770_1 | 6.2, 6.2.2, 6.2.3 | IT asset management objectives and planning to achieve them; objectives for operation processes (includes the Statement of Applicability); Overall IT asset management objectives | ISO/IEC 19770-1:2017 full text, printed pp. 16 and 17 | Primary | added 2026-11-22; verified 2026-11-22 |
+| XW-032 | cobit2019 | APO01.01 | Design the management system for enterprise I&T | COBIT 2019 Framework: Governance and Management Objectives | Primary | verified 2026-11-22 against the licensed copy; the practice sets priorities among management objectives, which is the closest match to choosing which processes apply. COBIT has no statement of applicability |
+| XW-032 | iso27001 | 6.2 | Information security objectives and planning to achieve them | ISO/IEC 27001:2022 full text, printed p. 5 | Primary | verified 2026-11-22; 27001 keeps its statement of applicability under 6.1.3, which XW-024 already cites, so 6.1.3 is not repeated here |
+| XW-032 | iso42001 | 6.2 | AI objectives and planning to achieve them | ISO/IEC 42001:2023 full text, printed p. 10 | Primary | verified 2026-11-22 |
 
 ## Full-text pass on 2026-10-14
 
