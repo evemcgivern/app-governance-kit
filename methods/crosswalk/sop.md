@@ -10,9 +10,9 @@ Applies to any new or changed control, policy statement, or audit finding that n
 
 ## Roles
 
-- **Control owner** — drafts or changes the control and requests the mapping.
-- **Governance lead** — maintains [`crosswalk.csv`](crosswalk.csv), resolves ambiguous matches, and approves new rows.
-- **Reviewer** — a second person who checks the mapping and signs off with a date.
+- **Control owner**: drafts or changes the control and requests the mapping.
+- **Governance lead**: maintains [`crosswalk.csv`](crosswalk.csv), resolves ambiguous matches, and approves new rows.
+- **Reviewer**: a second person who checks the mapping and signs off with a date.
 
 ## Frequency
 

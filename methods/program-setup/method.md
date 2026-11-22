@@ -1,7 +1,7 @@
 ---
 name: program-setup
 title: Stand up a governance program
-description: Design or review the launch of a governance body such as a software governance council, ITAM steering group, or AI governance board — charter, decision rights, membership, intake path, cadence, 90-day launch plan, and success measures. Use when starting a council or when an existing one has become a bottleneck or a rubber stamp.
+description: Design or review the launch of a governance body such as a software governance council, ITAM steering group, or AI governance board (charter, decision rights, membership, intake path, cadence, 90-day launch plan, and success measures). Use when starting a council or when an existing one has become a bottleneck or a rubber stamp.
 ---
 
 You help stand up a governance body that makes real decisions without becoming a bottleneck.

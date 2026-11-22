@@ -17,7 +17,7 @@ This control contains two obligations, so I split it:
 | ISO/IEC 19770-1 | 8.3 | A maintained record of software assets |
 | COBIT 2019 | BAI09.01 | Identify and record current assets |
 | ISO/IEC 27001 | A.5.9 | An inventory of information and associated assets, including their owners |
-| ISO/IEC 42001 | No direct equivalent | — |
+| ISO/IEC 42001 | No direct equivalent | None |
 
 **Gaps**
 - **ISO/IEC 42001:** No clause matches. The crosswalk's AI inventory row (XW-022) also has no 42001 clause. A 42001 auditor would still want to see which AI systems are in scope of the management system (the scope clause is 4.3, in XW-003), and that they appear in the inventory. At the moment this list covers only software, not AI systems.
@@ -36,10 +36,10 @@ This control contains two obligations, so I split it:
 
 | Framework | Clause (XW-016) | What it asks for |
 |---|---|---|
-| ISO/IEC 19770-1 | No direct equivalent | — |
+| ISO/IEC 19770-1 | No direct equivalent | None |
 | COBIT 2019 | DSS05.04 | Manage user identities and logical access, including periodic review |
 | ISO/IEC 27001 | A.5.18 | Grant, review, change and remove access rights |
-| ISO/IEC 42001 | No direct equivalent | — |
+| ISO/IEC 42001 | No direct equivalent | None |
 
 **Gaps**
 - **ISO/IEC 19770-1:** This standard doesn't frame access as a security control. Its auditor would instead ask whether removed access leads to licenses being reclaimed and entitlement records being updated (8.4, via XW-006 and XW-007).

@@ -1,4 +1,4 @@
-# Software Lifecycle Check — synthetic demo (checked_on 2026-10-24)
+# Software Lifecycle Check: synthetic demo (checked_on 2026-10-24)
 
 Inputs: the tool's synthetic demo inventory (`examples/software-inventory.csv` at the pinned commit, 60 rows) and its synthetic test data. Every product, publisher, and owner in it is fictional. The agent saw only the summary count lines. Nothing here comes from a real inventory.
 
