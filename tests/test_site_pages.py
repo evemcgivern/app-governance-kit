@@ -169,5 +169,49 @@ class BreadcrumbTests(unittest.TestCase):
         self.assertRegex(items[2], r'^<span aria-current="page">[^<]+</span>$')
 
 
+class LlmsAndSitemapTests(unittest.TestCase):
+    llms = (SITE / "llms.txt").read_text(encoding="utf-8")
+
+    def test_crosswalk_row_count_matches_the_csv(self):
+        rows = list(csv.DictReader((ROOT / "methods" / "crosswalk" / "crosswalk.csv").open(encoding="utf-8")))
+        self.assertIn(f"a {len(rows)}-row crosswalk", self.llms)
+        self.assertNotRegex(self.llms, r"\b(?!%d\b)\d+-row crosswalk" % len(rows))
+
+    def test_toolkit_count_in_the_summary_is_the_repo_count(self):
+        n = len([f for f in (ROOT / "sam-toolkit").iterdir() if f.suffix in (".md", ".csv")])
+        self.assertEqual(n, 40)
+        self.assertIn("forty-file SAM toolkit", self.llms)
+        self.assertNotIn("thirteen-file", self.llms)
+
+    def test_playbook_is_listed_first_then_the_ten_steps(self):
+        md = (ROOT / "sam-toolkit" / "itam-program-playbook.md").read_text(encoding="utf-8")
+        steps = re.findall(r"^### (Step (\d+): .+)$", md, re.M)
+        self.assertEqual(len(steps), 10)
+        section = self.llms.split("## Start here: the playbook", 1)[1].split("\n## ", 1)[0]
+        self.assertIn("itam-program-playbook.html)", section.splitlines()[2])
+        step_lines = [l for l in section.splitlines() if re.match(r"- \[Step \d+", l)]
+        self.assertEqual(len(step_lines), 10)
+        for (heading, n), line in zip(steps, step_lines):
+            self.assertIn(heading, line)
+            self.assertIn("itam-program-playbook.html#step-", line)
+            self.assertGreater(len(line.split("): ", 1)[1]), 30, line)
+        self.assertLess(self.llms.index("## Start here: the playbook"), self.llms.index("## The nine tools"))
+
+    def test_the_two_lifecycle_checks_are_tagged(self):
+        self.assertIn("software-lifecycle (software end of life)", self.llms)
+        self.assertIn("hardware-lifecycle (devices, from purchase to wipe)", self.llms)
+
+    def test_sitemap_lists_every_page(self):
+        sitemap = (SITE / "sitemap.xml").read_text(encoding="utf-8")
+        locs = set(re.findall(r"<loc>([^<]+)</loc>", sitemap))
+        want = {BASE if p.name == "index.html" else BASE + p.name for p in SITE.glob("*.html")}
+        want |= {BASE + p.relative_to(SITE).as_posix() for p in (SITE / "docs").rglob("*.html")}
+        self.assertEqual(locs, want)
+        self.assertEqual(len(re.findall(r"<loc>", sitemap)), len(locs))
+
+    def test_sitemap_has_no_dates(self):
+        self.assertNotIn("lastmod", (SITE / "sitemap.xml").read_text(encoding="utf-8"))
+
+
 if __name__ == "__main__":
     unittest.main()
