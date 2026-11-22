@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Crosswalk explorer | Eve McGivern</title>
-<meta name="description" content="Browse 30 governance themes mapped across four frameworks.">
+<title>Crosswalk explorer | App Governance Kit</title>
+<meta name="description" content="Browse 30 governance themes mapped to ISO/IEC 19770, COBIT 2019, ISO/IEC 27001, and ISO/IEC 42001, so you can cite the clause behind a control.">
 <meta name="author" content="Eve McGivern">
 <link rel="canonical" href="https://evemcgivern.github.io/app-governance-kit/crosswalk.html">
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="Eve McGivern | Application Governance">
-<meta property="og:title" content="Crosswalk explorer | Eve McGivern">
-<meta property="og:description" content="Browse 30 governance themes mapped across four frameworks.">
+<meta property="og:site_name" content="App Governance Kit">
+<meta property="og:title" content="Crosswalk explorer | App Governance Kit">
+<meta property="og:description" content="Browse 30 governance themes mapped to ISO/IEC 19770, COBIT 2019, ISO/IEC 27001, and ISO/IEC 42001, so you can cite the clause behind a control.">
 <meta property="og:url" content="https://evemcgivern.github.io/app-governance-kit/crosswalk.html">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://evemcgivern.github.io/app-governance-kit/og-image.png">
@@ -18,8 +18,8 @@
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Application governance kit: nine governance methods for portfolio, AI, and access.">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Crosswalk explorer | Eve McGivern">
-<meta name="twitter:description" content="Browse 30 governance themes mapped across four frameworks.">
+<meta name="twitter:title" content="Crosswalk explorer | App Governance Kit">
+<meta name="twitter:description" content="Browse 30 governance themes mapped to ISO/IEC 19770, COBIT 2019, ISO/IEC 27001, and ISO/IEC 42001, so you can cite the clause behind a control.">
 <meta name="twitter:image" content="https://evemcgivern.github.io/app-governance-kit/og-image.png">
 <script type="application/ld+json">
 {
@@ -57,22 +57,50 @@
   <div class="site-header__inner">
     <a class="brand" href="https://evemcgivern.github.io/">Eve McGivern</a>
     <nav class="site-nav" aria-label="Main">
-      <ul>
-        <li><a href="tools.html" aria-describedby="tip-tools">AI skills</a><span class="nav-tip" role="tooltip" id="tip-tools">The nine governance methods, packaged as skills for Claude, Codex, and Copilot.</span></li>
-        <li><a href="sam-toolkit.html" aria-describedby="tip-sam-toolkit">SAM toolkit</a><span class="nav-tip" role="tooltip" id="tip-sam-toolkit">Templates and checklists for running software asset management by hand.</span></li>
-        <li><a href="practicum.html" aria-describedby="tip-practicum">Practicum</a><span class="nav-tip" role="tooltip" id="tip-practicum">Hands-on exercises on a fictional company, with answers you can check.</span></li>
-        <li><a href="lifecycle.html" aria-describedby="tip-lifecycle">Lifecycle</a><span class="nav-tip" role="tooltip" id="tip-lifecycle">Six stages from request to retirement, with the questions to ask at each.</span></li>
-        <li><a href="crosswalk.html" aria-current="page" aria-describedby="tip-crosswalk">Crosswalk explorer</a><span class="nav-tip" role="tooltip" id="tip-crosswalk">See how each control maps to ISO/IEC 19770, COBIT, 27001, and 42001.</span></li>
-        <li><a href="impact-map.html" aria-describedby="tip-impact-map">Impact map</a><span class="nav-tip" role="tooltip" id="tip-impact-map">One grid showing every control theme against every lifecycle stage.</span></li>
-        <li><a href="field-guide.html" aria-describedby="tip-field-guide">Field guide</a><span class="nav-tip" role="tooltip" id="tip-field-guide">Plain-language guides to the standards, certifications, and key terms.</span></li>
-        <li><a href="case-studies.html" aria-describedby="tip-case-studies">Case studies</a><span class="nav-tip" role="tooltip" id="tip-case-studies">Worked examples of the kit in use, on a fictional company.</span></li>
-        <li><a href="about.html" aria-describedby="tip-about">About</a><span class="nav-tip" role="tooltip" id="tip-about">Who built the kit, and how to get in touch.</span></li>
-      </ul>
+      <details class="nav-menu">
+        <summary class="nav-menu__toggle">Menu</summary>
+        <div class="nav-groups">
+          <div class="nav-group">
+            <p class="nav-group__label" id="nav-group-start">Start</p>
+            <ul aria-labelledby="nav-group-start">
+              <li><a href="sam-toolkit.html#start" aria-describedby="tip-sam-toolkit">SAM toolkit <span class="nav-badge">Start here</span></a><span class="nav-tip" role="tooltip" id="tip-sam-toolkit">Start with the playbook, then the templates and checklists for running software asset management by hand.</span></li>
+            </ul>
+          </div>
+          <div class="nav-group">
+            <p class="nav-group__label" id="nav-group-do">Do</p>
+            <ul aria-labelledby="nav-group-do">
+              <li><a href="tools.html" aria-describedby="tip-tools">AI skills</a><span class="nav-tip" role="tooltip" id="tip-tools">The nine governance methods, packaged as skills for Claude, Codex, and Copilot.</span></li>
+            </ul>
+          </div>
+          <div class="nav-group">
+            <p class="nav-group__label" id="nav-group-learn">Learn</p>
+            <ul aria-labelledby="nav-group-learn">
+              <li><a href="practicum.html" aria-describedby="tip-practicum">Practicum</a><span class="nav-tip" role="tooltip" id="tip-practicum">Exercises on a fictional company, with answers you can check.</span></li>
+              <li><a href="case-studies.html" aria-describedby="tip-case-studies">Case studies</a><span class="nav-tip" role="tooltip" id="tip-case-studies">Worked examples of the kit in use, on a fictional company.</span></li>
+              <li><a href="field-guide.html" aria-describedby="tip-field-guide">Field guide</a><span class="nav-tip" role="tooltip" id="tip-field-guide">Plain-language guides to the standards, certifications, and key terms.</span></li>
+            </ul>
+          </div>
+          <div class="nav-group">
+            <p class="nav-group__label" id="nav-group-explore">Explore</p>
+            <ul aria-labelledby="nav-group-explore">
+              <li><a href="lifecycle.html" aria-describedby="tip-lifecycle">Application lifecycle</a><span class="nav-tip" role="tooltip" id="tip-lifecycle">Six stages from request to retirement, with the questions to ask at each.</span></li>
+              <li><a href="crosswalk.html" aria-current="page" aria-describedby="tip-crosswalk">Crosswalk explorer</a><span class="nav-tip" role="tooltip" id="tip-crosswalk">See how each control maps to ISO/IEC 19770, COBIT, 27001, and 42001.</span></li>
+              <li><a href="impact-map.html" aria-describedby="tip-impact-map">Themes by stage</a><span class="nav-tip" role="tooltip" id="tip-impact-map">One grid showing every control theme against every lifecycle stage.</span></li>
+            </ul>
+          </div>
+        </div>
+      </details>
     </nav>
   </div>
 </header>
 
 <main id="main">
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <ol>
+      <li><a href="index.html">Home</a></li>
+      <li><span aria-current="page">Crosswalk explorer</span></li>
+    </ol>
+  </nav>
   <section class="hero">
     <h1>Crosswalk explorer</h1>
     <p class="positioning">30 governance themes, each mapped to ISO/IEC 19770 (parts 1–4 of its multi-part family), COBIT 2019, ISO/IEC 27001, and ISO/IEC 42001, with the work it actually takes to run it. Pick a theme to see the mapping and the key work behind it. To put the license and asset clauses to work, use the <a href="sam-toolkit.html">SAM toolkit templates</a>.</p>
@@ -108,6 +136,7 @@
 
 <footer class="site-footer">
   <p>Eve McGivern · <a href="https://evemcgivern.github.io/">evemcgivern.github.io</a></p>
+  <p><a href="about.html">About</a></p>
   <p>Questions? Comments? <a href="https://github.com/evemcgivern/app-governance-kit/issues" id="contact-email" data-r="moc.liamg|nrevigcmeve">email me</a>.</p>
   <p><a href="https://buymeacoffee.com/a8w5iiqszp" rel="noopener">Buy me a coffee</a> if these tools help.</p>
   <p class="site-version"><a href="https://github.com/evemcgivern/app-governance-kit/releases" rel="noopener" id="site-version">Version</a></p>

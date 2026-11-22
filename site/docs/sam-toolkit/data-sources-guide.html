@@ -3,18 +3,18 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Data sources guide | Eve McGivern</title>
+<title>Data sources guide | App Governance Kit</title>
 <meta name="description" content="How to get the data that playbook steps 7 and 8 need: a record…">
 <meta name="author" content="Eve McGivern">
 <link rel="canonical" href="https://evemcgivern.github.io/app-governance-kit/docs/sam-toolkit/data-sources-guide.html">
 <meta property="og:type" content="article">
-<meta property="og:site_name" content="Eve McGivern | Application Governance">
-<meta property="og:title" content="Data sources guide">
+<meta property="og:site_name" content="App Governance Kit">
+<meta property="og:title" content="Data sources guide | App Governance Kit">
 <meta property="og:description" content="How to get the data that playbook steps 7 and 8 need: a record…">
 <meta property="og:url" content="https://evemcgivern.github.io/app-governance-kit/docs/sam-toolkit/data-sources-guide.html">
 <meta property="og:image" content="https://evemcgivern.github.io/app-governance-kit/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Data sources guide">
+<meta name="twitter:title" content="Data sources guide | App Governance Kit">
 <meta name="twitter:description" content="How to get the data that playbook steps 7 and 8 need: a record…">
 <meta name="twitter:image" content="https://evemcgivern.github.io/app-governance-kit/og-image.png">
 <script type="application/ld+json">
@@ -68,6 +68,7 @@
 <link rel="apple-touch-icon" href="../../apple-touch-icon.png">
 <link rel="stylesheet" href="../../style.css">
 <script src="../../nav.js" defer></script>
+<script src="../../scroll-hint.js" defer></script>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -76,33 +77,67 @@
   <div class="site-header__inner">
     <a class="brand" href="https://evemcgivern.github.io/">Eve McGivern</a>
     <nav class="site-nav" aria-label="Main">
-      <ul>
-        <li><a href="../../tools.html" aria-describedby="tip-tools">AI skills</a><span class="nav-tip" role="tooltip" id="tip-tools">The nine governance methods, packaged as skills for Claude, Codex, and Copilot.</span></li>
-        <li><a href="../../sam-toolkit.html" aria-describedby="tip-sam-toolkit">SAM toolkit</a><span class="nav-tip" role="tooltip" id="tip-sam-toolkit">Templates and checklists for running software asset management by hand.</span></li>
-        <li><a href="../../practicum.html" aria-describedby="tip-practicum">Practicum</a><span class="nav-tip" role="tooltip" id="tip-practicum">Hands-on exercises on a fictional company, with answers you can check.</span></li>
-        <li><a href="../../lifecycle.html" aria-describedby="tip-lifecycle">Lifecycle</a><span class="nav-tip" role="tooltip" id="tip-lifecycle">Six stages from request to retirement, with the questions to ask at each.</span></li>
-        <li><a href="../../crosswalk.html" aria-describedby="tip-crosswalk">Crosswalk explorer</a><span class="nav-tip" role="tooltip" id="tip-crosswalk">See how each control maps to ISO/IEC 19770, COBIT, 27001, and 42001.</span></li>
-        <li><a href="../../impact-map.html" aria-describedby="tip-impact-map">Impact map</a><span class="nav-tip" role="tooltip" id="tip-impact-map">One grid showing every control theme against every lifecycle stage.</span></li>
-        <li><a href="../../field-guide.html" aria-describedby="tip-field-guide">Field guide</a><span class="nav-tip" role="tooltip" id="tip-field-guide">Plain-language guides to the standards, certifications, and key terms.</span></li>
-        <li><a href="../../case-studies.html" aria-describedby="tip-case-studies">Case studies</a><span class="nav-tip" role="tooltip" id="tip-case-studies">Worked examples of the kit in use, on a fictional company.</span></li>
-        <li><a href="../../about.html" aria-describedby="tip-about">About</a><span class="nav-tip" role="tooltip" id="tip-about">Who built the kit, and how to get in touch.</span></li>
-      </ul>
+      <details class="nav-menu">
+        <summary class="nav-menu__toggle">Menu</summary>
+        <div class="nav-groups">
+          <div class="nav-group">
+            <p class="nav-group__label" id="nav-group-start">Start</p>
+            <ul aria-labelledby="nav-group-start">
+              <li><a href="../../sam-toolkit.html#start" aria-describedby="tip-sam-toolkit">SAM toolkit <span class="nav-badge">Start here</span></a><span class="nav-tip" role="tooltip" id="tip-sam-toolkit">Start with the playbook, then the templates and checklists for running software asset management by hand.</span></li>
+            </ul>
+          </div>
+          <div class="nav-group">
+            <p class="nav-group__label" id="nav-group-do">Do</p>
+            <ul aria-labelledby="nav-group-do">
+              <li><a href="../../tools.html" aria-describedby="tip-tools">AI skills</a><span class="nav-tip" role="tooltip" id="tip-tools">The nine governance methods, packaged as skills for Claude, Codex, and Copilot.</span></li>
+            </ul>
+          </div>
+          <div class="nav-group">
+            <p class="nav-group__label" id="nav-group-learn">Learn</p>
+            <ul aria-labelledby="nav-group-learn">
+              <li><a href="../../practicum.html" aria-describedby="tip-practicum">Practicum</a><span class="nav-tip" role="tooltip" id="tip-practicum">Exercises on a fictional company, with answers you can check.</span></li>
+              <li><a href="../../case-studies.html" aria-describedby="tip-case-studies">Case studies</a><span class="nav-tip" role="tooltip" id="tip-case-studies">Worked examples of the kit in use, on a fictional company.</span></li>
+              <li><a href="../../field-guide.html" aria-describedby="tip-field-guide">Field guide</a><span class="nav-tip" role="tooltip" id="tip-field-guide">Plain-language guides to the standards, certifications, and key terms.</span></li>
+            </ul>
+          </div>
+          <div class="nav-group">
+            <p class="nav-group__label" id="nav-group-explore">Explore</p>
+            <ul aria-labelledby="nav-group-explore">
+              <li><a href="../../lifecycle.html" aria-describedby="tip-lifecycle">Application lifecycle</a><span class="nav-tip" role="tooltip" id="tip-lifecycle">Six stages from request to retirement, with the questions to ask at each.</span></li>
+              <li><a href="../../crosswalk.html" aria-describedby="tip-crosswalk">Crosswalk explorer</a><span class="nav-tip" role="tooltip" id="tip-crosswalk">See how each control maps to ISO/IEC 19770, COBIT, 27001, and 42001.</span></li>
+              <li><a href="../../impact-map.html" aria-describedby="tip-impact-map">Themes by stage</a><span class="nav-tip" role="tooltip" id="tip-impact-map">One grid showing every control theme against every lifecycle stage.</span></li>
+            </ul>
+          </div>
+        </div>
+      </details>
     </nav>
   </div>
 </header>
 <main id="main" class="doc-page">
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <ol>
+      <li><a href="../../index.html">Home</a></li>
+      <li><a href="../../sam-toolkit.html">SAM toolkit</a></li>
+      <li><span aria-current="page">Data sources guide</span></li>
+    </ol>
+  </nav>
   <div class="doc-top">
     <p class="doc-back"><a href="../../sam-toolkit.html">&larr; SAM toolkit</a></p>
     <button type="button" class="print-icon" onclick="window.print()" aria-label="Print this page" title="Print"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="M7 9V3.5h10V9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M7 17H4.5A1.5 1.5 0 0 1 3 15.5v-5A1.5 1.5 0 0 1 4.5 9h15a1.5 1.5 0 0 1 1.5 1.5v5a1.5 1.5 0 0 1-1.5 1.5H17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><rect x="7" y="14" width="10" height="6.5" rx="0.8" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17.5" cy="12" r="0.9" fill="currentColor"/></svg></button>
   </div>
-  <p class="meta doc-step">Used in playbook step 7 of 10: <a href="itam-program-playbook.html#step-7-build-one-inventory">Build one inventory</a>. Previous step: <a href="itam-program-playbook.html#step-6-the-policy-set">The policy set</a>. Next step: <a href="itam-program-playbook.html#step-8-proof-first-then-the-position">Proof first, then the position</a>.</p>
+  <nav class="doc-step" aria-label="Playbook step">
+    <p class="doc-step__where"><span class="step-chip">Step 7 of 10</span> <a href="itam-program-playbook.html#step-7-build-one-inventory">Build one inventory</a></p>
+    <p class="doc-step__nav"><a class="step-nav" rel="prev" href="itam-program-playbook.html#step-6-the-policy-set" aria-label="Previous step: The policy set">Previous</a> <a class="step-nav" rel="next" href="itam-program-playbook.html#step-8-proof-first-then-the-position" aria-label="Next step: Proof first, then the position">Next</a></p>
+  </nav>
+  <p class="meta doc-feeds">Feeds step 7. Review: Not on the calendar. Keep it in the versioned place your records policy names, with access limited.</p>
   <h1>Data sources guide</h1>
   <div class="visual-actions doc-actions">
     <button type="button" class="visual-actions__link" id="answers-doc" data-file="data-sources-guide-my-answers.doc">Download my answers (Word)</button>
     <a class="visual-actions__link" href="data-sources-guide.docx">Download Word (.docx)</a>
-    <a class="visual-actions__link" href="data-sources-guide.xlsx">Download Excel (.xlsx)</a>
-    <button type="button" class="visual-actions__link doc-print" onclick="window.print()">Print or save as PDF</button>
+    <a class="visual-actions__link doc-secondary" href="data-sources-guide.xlsx">Download Excel (.xlsx)</a>
+    <button type="button" class="visual-actions__link doc-print doc-secondary" onclick="window.print()">Print or save as PDF</button>
   </div>
+  <p class="meta doc-reading">About 7 minutes to read (an estimate at 200 words per minute).</p>
   <p class="meta doc-note">What you tick or type stays in this browser. The Word and Excel downloads are blank copies. To keep your answers, use Download my answers (Word), or print this page or save it as PDF.</p>
 
   <script>
@@ -186,7 +221,7 @@ document.addEventListener('DOMContentLoaded', function () {
 <p><strong>Owner:</strong> ______________________  <strong>Date:</strong> ___________</p>
 <h2 id="before-you-ask-anyone">Before you ask anyone</h2>
 <p>Write down the question first. A request for &quot;all the data&quot; gets nothing. A request for &quot;the list of installed software on laptops, as a spreadsheet, once&quot; gets an answer.</p>
-<div class="table-scroll"><table class="checklist"><caption>Before you ask anyone</caption><thead><tr><th scope="col">Question</th><th scope="col">Best first source</th><th scope="col">Feeds</th></tr></thead><tbody><tr><td>What is installed or running?</td><td>Discovery or inventory tool output</td><td class="long-text"><a href="asset-record.html">Asset record template</a>, <a href="proof-of-purchase-check.html">Proof of purchase check template</a> <a class="xw-tag" href="../../crosswalk.html">XW-005</a></td></tr><tr><td>Who signs in to a cloud app?</td><td>Sign-in or single sign-on logs</td><td class="long-text"><a href="license-position.html">License position template</a> <a class="xw-tag" href="../../crosswalk.html">XW-007</a></td></tr><tr><td>What do we pay for?</td><td>Expense and accounts-payable data</td><td class="long-text"><a href="renewal-calendar.html">Renewal calendar template</a>, <a href="source-of-truth-map.html">Source of truth map template</a> <a class="xw-tag" href="../../crosswalk.html">XW-012</a></td></tr><tr><td>What did we buy, and on what terms?</td><td>Purchasing and contract records</td><td class="long-text"><a href="proof-of-purchase-check.html">Proof of purchase check template</a>, <a href="contract-terms-check.html">Contract terms check template</a> <a class="xw-tag" href="../../crosswalk.html">XW-006</a></td></tr><tr><td>Who joined, moved, or left?</td><td>HR joiner and leaver lists</td><td class="long-text"><a href="joiner-mover-leaver-procedure.html">Joiner, mover, and leaver procedure</a> <a class="xw-tag" href="../../crosswalk.html">XW-017</a></td></tr></tbody></table></div>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Before you ask anyone table"><table class="checklist sticky-first"><caption>Before you ask anyone</caption><thead><tr><th scope="col">Question</th><th scope="col">Best first source</th><th scope="col">Feeds</th></tr></thead><tbody><tr><th scope="row" id="q1-what-is-installed-or-running-c0">What is installed or running?</th><td>Discovery or inventory tool output</td><td class="long-text"><a href="asset-record.html">Asset record template</a>, <a href="proof-of-purchase-check.html">Proof of purchase check template</a> <a class="xw-tag" href="../../crosswalk.html">XW-005</a></td></tr><tr><th scope="row" id="q1-who-signs-in-to-a-cloud-app-c0">Who signs in to a cloud app?</th><td>Sign-in or single sign-on logs</td><td class="long-text"><a href="license-position.html">License position template</a> <a class="xw-tag" href="../../crosswalk.html">XW-007</a></td></tr><tr><th scope="row" id="q1-what-do-we-pay-for-c0">What do we pay for?</th><td>Expense and accounts-payable data</td><td class="long-text"><a href="renewal-calendar.html">Renewal calendar template</a>, <a href="source-of-truth-map.html">Source of truth map template</a> <a class="xw-tag" href="../../crosswalk.html">XW-012</a></td></tr><tr><th scope="row" id="q1-what-did-we-buy-and-on-what-terms-c0">What did we buy, and on what terms?</th><td>Purchasing and contract records</td><td class="long-text"><a href="proof-of-purchase-check.html">Proof of purchase check template</a>, <a href="contract-terms-check.html">Contract terms check template</a> <a class="xw-tag" href="../../crosswalk.html">XW-006</a></td></tr><tr><th scope="row" id="q1-who-joined-moved-or-left-c0">Who joined, moved, or left?</th><td>HR joiner and leaver lists</td><td class="long-text"><a href="joiner-mover-leaver-procedure.html">Joiner, mover, and leaver procedure</a> <a class="xw-tag" href="../../crosswalk.html">XW-017</a></td></tr></tbody></table></div>
 <h2 id="the-five-sources">The five sources</h2>
 <h3 id="1-discovery-or-inventory-tool-output">1. Discovery or inventory tool output</h3>
 <ul><li><strong>How to get it:</strong> Ask the team that runs the tool for an export of installed software by device, as a CSV file. Ask for the date it was taken and the devices it covers.</li><li><strong>What it tells you:</strong> What is installed, on which device, and often the version and the last time it ran.</li><li><strong>What it cannot tell you:</strong> What you are licensed for. Devices that never checked in. Software that runs only in a browser or as a service. Whether an install is authorized.</li><li><strong>Who to ask:</strong> The endpoint or infrastructure team.</li><li><strong>Check before you use it:</strong> How many devices are in the export, and how many devices IT thinks exist. A gap means part of the estate is missing. Note the gap in <a href="documentation-gaps-log.html">Documentation gaps log template</a>.</li></ul>
@@ -202,20 +237,21 @@ document.addEventListener('DOMContentLoaded', function () {
 <p>The same product shows up under several names. Discovery may say <code>Northbeam ERP 2024</code>, the invoice may say <code>NORTHBEAM INC - ERP SUBSCRIPTION</code>, and the contract may say <code>Northbeam Enterprise Resource Planning</code>. Counts only match when all three resolve to one publisher and one product. <a class="xw-tag" href="../../crosswalk.html">XW-026</a></p>
 <ol><li>Export every source to a spreadsheet, one tab each, with the raw name as it came.</li><li>Make one new tab called the name map, with columns for raw name, clean publisher, clean product, version, and <code>asset_id</code>.</li><li>Start with your five largest publishers by spend from source 3. Do not try to clean everything. <a class="xw-tag" href="../../crosswalk.html">XW-005</a></li><li>Clean the publisher first. Ignore case and punctuation, and drop company-form words such as Inc or Ltd. Then clean the product: drop edition and marketing words that do not change the license, and keep the version.</li><li>For each raw name, find or create its clean publisher, clean product, and version, and write them in the name map. Give each clean product an <code>asset_id</code> from <a href="asset-record.html">Asset record template</a>. Use the same <code>asset_id</code> in <a href="license-position.html">License position template</a>, <a href="proof-of-purchase-check.html">Proof of purchase check template</a>, and <a href="renewal-calendar.html">Renewal calendar template</a>.</li><li>List every raw name you could not match. Leave them on the list; do not guess. Ask the owner of the source what the name refers to.</li><li>Keep the name map. Next quarter you add only the new names.</li></ol>
 <p>A worked line for Halden Logistics:</p>
-<div class="table-scroll"><table class="checklist wide"><caption>Clean the names so the counts match</caption><thead><tr><th scope="col">Raw name</th><th scope="col">Source</th><th scope="col">Clean publisher</th><th scope="col">Clean product</th><th scope="col">Version</th><th scope="col">asset_id</th></tr></thead><tbody><tr><td>Northbeam ERP 2024</td><td>Discovery</td><td>Northbeam</td><td>Northbeam ERP</td><td>2024</td><td>APP-001</td></tr><tr><td>NORTHBEAM INC - ERP SUBSCRIPTION</td><td>Accounts payable</td><td>Northbeam</td><td>Northbeam ERP</td><td>Not found</td><td>APP-001</td></tr></tbody></table></div>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Clean the names so the counts match table"><table class="checklist wide sticky-first"><caption>Clean the names so the counts match</caption><thead><tr><th scope="col">Raw name</th><th scope="col">Source</th><th scope="col">Clean publisher</th><th scope="col">Clean product</th><th scope="col">Version</th><th scope="col">asset_id</th></tr></thead><tbody><tr><th scope="row" id="q2-northbeam-erp-2024-c0">Northbeam ERP 2024</th><td>Discovery</td><td>Northbeam</td><td>Northbeam ERP</td><td>2024</td><td>APP-001</td></tr><tr><th scope="row" id="q2-northbeam-inc-erp-subscription-c0">NORTHBEAM INC - ERP SUBSCRIPTION</th><td>Accounts payable</td><td>Northbeam</td><td>Northbeam ERP</td><td>Not found</td><td>APP-001</td></tr></tbody></table></div>
 <p>A version number matters. Two versions of one product can fall under different license terms, so do not merge them until you have checked.</p>
 <h2 id="good-enough-to-start">Good enough to start</h2>
 <p>You are ready to build the inventory and a first license position when all of these are true:</p>
-<ul class="checklist-items"><li><input type="checkbox" disabled> You have at least one export from each of the five sources, each with a date on it.</li><li><input type="checkbox" disabled> The five largest publishers by spend each have a clean name and an <code>asset_id</code> for each product.</li><li><input type="checkbox" disabled> You know how many devices the discovery export covers and how many devices IT believes exist, and you have written the gap down.</li><li><input type="checkbox" disabled> Each leaver on the HR list has been compared with the sign-in logs, and the matches and misses are noted.</li><li><input type="checkbox" disabled> Every raw name you could not match is on a list with an owner.</li><li><input type="checkbox" disabled> You have written down what each source cannot tell you, so no one reads more into the numbers than they hold.</li></ul>
+<ul class="task-list"><li>You have at least one export from each of the five sources, each with a date on it.</li><li>The five largest publishers by spend each have a clean name and an <code>asset_id</code> for each product.</li><li>You know how many devices the discovery export covers and how many devices IT believes exist, and you have written the gap down.</li><li>Each leaver on the HR list has been compared with the sign-in logs, and the matches and misses are noted.</li><li>Every raw name you could not match is on a list with an owner.</li><li>You have written down what each source cannot tell you, so no one reads more into the numbers than they hold.</li></ul>
 <p>If one source is out of reach, start without it, record the gap in <a href="documentation-gaps-log.html">Documentation gaps log template</a> with an owner and a date, and say in the position which numbers rest on it.</p>
 <h2 id="decision">Decision</h2>
-<div class="table-scroll"><table class="checklist"><caption>Decision</caption><thead><tr><th scope="col">Decision</th><th scope="col">Owner</th><th scope="col">Approver</th><th scope="col">Date</th></tr></thead><tbody><tr><td class="long-text">Data accepted as good enough to build the first position</td><td class="checklist-write"><input type="text" name="t3-data-accepted-as-good-enough-to-build-the-first-position-owner" aria-label="Owner for Data accepted as good enough to build the first position"></td><td class="checklist-write"><input type="text" name="t3-data-accepted-as-good-enough-to-build-the-first-position-approver" aria-label="Approver for Data accepted as good enough to build the first position"></td><td class="checklist-write"><input type="text" name="t3-data-accepted-as-good-enough-to-build-the-first-position-date" aria-label="Date for Data accepted as good enough to build the first position"></td></tr></tbody></table></div>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Decision table"><table class="checklist sticky-first"><caption>Decision</caption><thead><tr><th scope="col">Decision</th><th scope="col">Owner</th><th scope="col">Approver</th><th scope="col">Date</th></tr></thead><tbody><tr><th scope="row" id="q3-data-accepted-as-good-enough-to-build-the-first-position-c0">Data accepted as good enough to build the first position</th><td class="checklist-write"><input type="text" name="t3-data-accepted-as-good-enough-to-build-the-first-position-owner" autocomplete="off" enterkeyhint="next" aria-label="Owner for Data accepted as good enough to build the first position"></td><td class="checklist-write"><input type="text" name="t3-data-accepted-as-good-enough-to-build-the-first-position-approver" autocomplete="off" enterkeyhint="next" aria-label="Approver for Data accepted as good enough to build the first position"></td><td class="checklist-write"><input type="text" name="t3-data-accepted-as-good-enough-to-build-the-first-position-date" autocomplete="off" enterkeyhint="next" aria-label="Date for Data accepted as good enough to build the first position"></td></tr></tbody></table></div>
 <p>Source: ISO/IEC 19770-1:2017 clauses 8.3 and 8.4, and the shared crosswalk. Paraphrased; this is not a substitute for the standard.</p>
   </div>
   <div class="doc-bottom"><button type="button" class="print-icon" onclick="window.print()" aria-label="Print this page" title="Print"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="M7 9V3.5h10V9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M7 17H4.5A1.5 1.5 0 0 1 3 15.5v-5A1.5 1.5 0 0 1 4.5 9h15a1.5 1.5 0 0 1 1.5 1.5v5a1.5 1.5 0 0 1-1.5 1.5H17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><rect x="7" y="14" width="10" height="6.5" rx="0.8" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17.5" cy="12" r="0.9" fill="currentColor"/></svg></button></div>
 </main>
 <footer class="site-footer">
   <p>Eve McGivern · <a href="https://evemcgivern.github.io/">evemcgivern.github.io</a></p>
+  <p><a href="../../about.html">About</a></p>
   <p>Questions? Comments? <a href="https://github.com/evemcgivern/app-governance-kit/issues" id="contact-email" data-r="moc.liamg|nrevigcmeve">email me</a>.</p>
   <p><a href="https://buymeacoffee.com/a8w5iiqszp" rel="noopener">Buy me a coffee</a> if these tools help.</p>
   <p class="site-version"><a href="https://github.com/evemcgivern/app-governance-kit/releases" rel="noopener" id="site-version">Version</a></p>

@@ -13,6 +13,7 @@ Use each prompt at the step of `itam-program-playbook.md` shown here. The playbo
 | 1 Read the map | 1 |
 | 2 Sponsor, problem statement, light charter | 8 (charter), 11 |
 | 3 Stop the bleeding | 6, 7 |
+| 4 Set the scope | No prompt. The scope is a decision for you and your sponsor, so write it from the files named in that step. |
 | 5 Baseline and targets | 12, then 2 |
 | 6 The policy set | 8 (policy) |
 | 7 Build one inventory | 4, 3 |
@@ -20,7 +21,7 @@ Use each prompt at the step of `itam-program-playbook.md` shown here. The playbo
 | 9 Put controls in place | 3 |
 | 10 Measure and review | 10, 13, 9 |
 
-Step 4 has no prompt of its own. After the first pass, repeat on a schedule:
+After the first pass, repeat on a schedule:
 
 - **Every month:** prompt 6, for renewals due in 180 days.
 - **Every quarter:** prompt 5 for your most important products, prompt 7 to confirm each audit role still has a ready backup, prompts 10 and 13, and prompt 9 when the plan changes.
@@ -53,6 +54,8 @@ Pick the one that matches what is in front of you:
 - **If the assistant drifts,** reply: Stay in the coach role, ask one question at a time, and do not invent figures.
 
 ## Before you start
+
+**Privacy rule for every prompt:** Use only an assistant your organization has approved for confidential data; otherwise use the Halden data, column headings only, or redacted rows; never paste passwords, license keys, or employee names and emails; and once an audit letter exists, nothing about it goes to any assistant unless Legal agrees.
 
 - **Practice on fictional data.** The Halden Logistics demo estate in `demo-estate/` is built for this. Start there if you are unsure.
 - **Keep real inventories safe.** Real inventories, contracts, and invoices are confidential. Use them only where your organization allows, and check your account's data settings first. When in doubt, share column headings, not rows, or redact names, prices, and account numbers.

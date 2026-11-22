@@ -3,18 +3,18 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Setup prompts | Eve McGivern</title>
+<title>Setup prompts | App Governance Kit</title>
 <meta name="description" content="Thirteen prompts that walk you through setting up an application management practice with an…">
 <meta name="author" content="Eve McGivern">
 <link rel="canonical" href="https://evemcgivern.github.io/app-governance-kit/docs/sam-toolkit/setup-prompts.html">
 <meta property="og:type" content="article">
-<meta property="og:site_name" content="Eve McGivern | Application Governance">
-<meta property="og:title" content="Setup prompts">
+<meta property="og:site_name" content="App Governance Kit">
+<meta property="og:title" content="Setup prompts | App Governance Kit">
 <meta property="og:description" content="Thirteen prompts that walk you through setting up an application management practice with an…">
 <meta property="og:url" content="https://evemcgivern.github.io/app-governance-kit/docs/sam-toolkit/setup-prompts.html">
 <meta property="og:image" content="https://evemcgivern.github.io/app-governance-kit/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Setup prompts">
+<meta name="twitter:title" content="Setup prompts | App Governance Kit">
 <meta name="twitter:description" content="Thirteen prompts that walk you through setting up an application management practice with an…">
 <meta name="twitter:image" content="https://evemcgivern.github.io/app-governance-kit/og-image.png">
 <script type="application/ld+json">
@@ -68,6 +68,7 @@
 <link rel="apple-touch-icon" href="../../apple-touch-icon.png">
 <link rel="stylesheet" href="../../style.css">
 <script src="../../nav.js" defer></script>
+<script src="../../scroll-hint.js" defer></script>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -76,32 +77,66 @@
   <div class="site-header__inner">
     <a class="brand" href="https://evemcgivern.github.io/">Eve McGivern</a>
     <nav class="site-nav" aria-label="Main">
-      <ul>
-        <li><a href="../../tools.html" aria-describedby="tip-tools">AI skills</a><span class="nav-tip" role="tooltip" id="tip-tools">The nine governance methods, packaged as skills for Claude, Codex, and Copilot.</span></li>
-        <li><a href="../../sam-toolkit.html" aria-describedby="tip-sam-toolkit">SAM toolkit</a><span class="nav-tip" role="tooltip" id="tip-sam-toolkit">Templates and checklists for running software asset management by hand.</span></li>
-        <li><a href="../../practicum.html" aria-describedby="tip-practicum">Practicum</a><span class="nav-tip" role="tooltip" id="tip-practicum">Hands-on exercises on a fictional company, with answers you can check.</span></li>
-        <li><a href="../../lifecycle.html" aria-describedby="tip-lifecycle">Lifecycle</a><span class="nav-tip" role="tooltip" id="tip-lifecycle">Six stages from request to retirement, with the questions to ask at each.</span></li>
-        <li><a href="../../crosswalk.html" aria-describedby="tip-crosswalk">Crosswalk explorer</a><span class="nav-tip" role="tooltip" id="tip-crosswalk">See how each control maps to ISO/IEC 19770, COBIT, 27001, and 42001.</span></li>
-        <li><a href="../../impact-map.html" aria-describedby="tip-impact-map">Impact map</a><span class="nav-tip" role="tooltip" id="tip-impact-map">One grid showing every control theme against every lifecycle stage.</span></li>
-        <li><a href="../../field-guide.html" aria-describedby="tip-field-guide">Field guide</a><span class="nav-tip" role="tooltip" id="tip-field-guide">Plain-language guides to the standards, certifications, and key terms.</span></li>
-        <li><a href="../../case-studies.html" aria-describedby="tip-case-studies">Case studies</a><span class="nav-tip" role="tooltip" id="tip-case-studies">Worked examples of the kit in use, on a fictional company.</span></li>
-        <li><a href="../../about.html" aria-describedby="tip-about">About</a><span class="nav-tip" role="tooltip" id="tip-about">Who built the kit, and how to get in touch.</span></li>
-      </ul>
+      <details class="nav-menu">
+        <summary class="nav-menu__toggle">Menu</summary>
+        <div class="nav-groups">
+          <div class="nav-group">
+            <p class="nav-group__label" id="nav-group-start">Start</p>
+            <ul aria-labelledby="nav-group-start">
+              <li><a href="../../sam-toolkit.html#start" aria-describedby="tip-sam-toolkit">SAM toolkit <span class="nav-badge">Start here</span></a><span class="nav-tip" role="tooltip" id="tip-sam-toolkit">Start with the playbook, then the templates and checklists for running software asset management by hand.</span></li>
+            </ul>
+          </div>
+          <div class="nav-group">
+            <p class="nav-group__label" id="nav-group-do">Do</p>
+            <ul aria-labelledby="nav-group-do">
+              <li><a href="../../tools.html" aria-describedby="tip-tools">AI skills</a><span class="nav-tip" role="tooltip" id="tip-tools">The nine governance methods, packaged as skills for Claude, Codex, and Copilot.</span></li>
+            </ul>
+          </div>
+          <div class="nav-group">
+            <p class="nav-group__label" id="nav-group-learn">Learn</p>
+            <ul aria-labelledby="nav-group-learn">
+              <li><a href="../../practicum.html" aria-describedby="tip-practicum">Practicum</a><span class="nav-tip" role="tooltip" id="tip-practicum">Exercises on a fictional company, with answers you can check.</span></li>
+              <li><a href="../../case-studies.html" aria-describedby="tip-case-studies">Case studies</a><span class="nav-tip" role="tooltip" id="tip-case-studies">Worked examples of the kit in use, on a fictional company.</span></li>
+              <li><a href="../../field-guide.html" aria-describedby="tip-field-guide">Field guide</a><span class="nav-tip" role="tooltip" id="tip-field-guide">Plain-language guides to the standards, certifications, and key terms.</span></li>
+            </ul>
+          </div>
+          <div class="nav-group">
+            <p class="nav-group__label" id="nav-group-explore">Explore</p>
+            <ul aria-labelledby="nav-group-explore">
+              <li><a href="../../lifecycle.html" aria-describedby="tip-lifecycle">Application lifecycle</a><span class="nav-tip" role="tooltip" id="tip-lifecycle">Six stages from request to retirement, with the questions to ask at each.</span></li>
+              <li><a href="../../crosswalk.html" aria-describedby="tip-crosswalk">Crosswalk explorer</a><span class="nav-tip" role="tooltip" id="tip-crosswalk">See how each control maps to ISO/IEC 19770, COBIT, 27001, and 42001.</span></li>
+              <li><a href="../../impact-map.html" aria-describedby="tip-impact-map">Themes by stage</a><span class="nav-tip" role="tooltip" id="tip-impact-map">One grid showing every control theme against every lifecycle stage.</span></li>
+            </ul>
+          </div>
+        </div>
+      </details>
     </nav>
   </div>
 </header>
 <main id="main" class="doc-page">
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <ol>
+      <li><a href="../../index.html">Home</a></li>
+      <li><a href="../../sam-toolkit.html">SAM toolkit</a></li>
+      <li><span aria-current="page">Setup prompts</span></li>
+    </ol>
+  </nav>
   <div class="doc-top">
     <p class="doc-back"><a href="../../sam-toolkit.html">&larr; SAM toolkit</a></p>
     <button type="button" class="print-icon" onclick="window.print()" aria-label="Print this page" title="Print"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="M7 9V3.5h10V9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M7 17H4.5A1.5 1.5 0 0 1 3 15.5v-5A1.5 1.5 0 0 1 4.5 9h15a1.5 1.5 0 0 1 1.5 1.5v5a1.5 1.5 0 0 1-1.5 1.5H17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><rect x="7" y="14" width="10" height="6.5" rx="0.8" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17.5" cy="12" r="0.9" fill="currentColor"/></svg></button>
   </div>
-  <p class="meta doc-step">Used in playbook step 1 of 10: <a href="itam-program-playbook.html#step-1-read-the-map">Read the map</a>. Next step: <a href="itam-program-playbook.html#step-2-get-a-sponsor-a-problem-statement-and-a-light-charter">Get a sponsor, a problem statement, and a light charter</a>.</p>
+  <nav class="doc-step" aria-label="Playbook step">
+    <p class="doc-step__where"><span class="step-chip">Step 1 of 10</span> <a href="itam-program-playbook.html#step-1-read-the-map">Read the map</a></p>
+    <p class="doc-step__nav"><a class="step-nav" rel="next" href="itam-program-playbook.html#step-2-get-a-sponsor-a-problem-statement-and-a-light-charter" aria-label="Next step: Get a sponsor, a problem statement, and a light charter">Next</a></p>
+  </nav>
+  <p class="meta doc-feeds">Feeds step 1. Also steps 2, 3, 5, 6, 7, 8, 9, and 10. Review: Not on the calendar. Keep it in the versioned place your records policy names, with access limited.</p>
   <h1>Setup prompts</h1>
   <div class="visual-actions doc-actions">
     <a class="visual-actions__link" href="setup-prompts.docx">Download Word (.docx)</a>
-    <a class="visual-actions__link" href="setup-prompts.xlsx">Download Excel (.xlsx)</a>
-    <button type="button" class="visual-actions__link doc-print" onclick="window.print()">Print or save as PDF</button>
+    <a class="visual-actions__link doc-secondary" href="setup-prompts.xlsx">Download Excel (.xlsx)</a>
+    <button type="button" class="visual-actions__link doc-print doc-secondary" onclick="window.print()">Print or save as PDF</button>
   </div>
+  <p class="meta doc-reading">About 21 minutes to read (an estimate at 200 words per minute).</p>
 
   <p class="visually-hidden" id="prompt-status" role="status" aria-live="polite"></p>
 <script>
@@ -121,6 +156,21 @@ document.addEventListener('DOMContentLoaded', function () {
     btn.addEventListener('click', function () {
       var el = document.getElementById(btn.dataset.target);
       var n = btn.dataset.n;
+      function showFail() {
+        var block = el.closest('.prompt-block'), note = block.querySelector('.prompt-fail');
+        if (!note) {
+          note = document.createElement('p');
+          note.className = 'prompt-fail meta';
+          var pickBtn = document.createElement('button');
+          pickBtn.type = 'button';
+          pickBtn.className = 'visual-actions__link prompt-select';
+          pickBtn.textContent = 'Select all of prompt ' + n;
+          pickBtn.addEventListener('click', function () { pick(el); });
+          block.insertBefore(note, el);
+          block.insertBefore(pickBtn, el);
+        }
+        note.textContent = 'Copy did not work here. The prompt text is selected: press Control C or Command C to copy it.';
+      }
       function done(ok) {
         if (ok) {
           btn.textContent = 'Copied prompt ' + n;
@@ -129,6 +179,7 @@ document.addEventListener('DOMContentLoaded', function () {
         } else {
           pick(el);
           say('Copy failed. Prompt ' + n + ' is selected; press Control C or Command C to copy it.');
+          showFail();
         }
       }
       var text = el.textContent.trim();
@@ -144,146 +195,175 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 </script>
+  <details class="doc-jump"><summary>Jump to</summary><ul><li><a href="#pick-your-prompt">Pick your prompt</a></li><li><a href="#how-to-use-them">How to use them</a></li><li><a href="#before-you-start">Before you start</a></li><li><a href="#prompt-1-set-the-scene">Prompt 1: Set the scene</a></li><li><a href="#prompt-2-baseline-your-program">Prompt 2: Baseline your program</a></li><li><a href="#prompt-3-map-a-process-before-you-change-it">Prompt 3: Map a process before you change it</a></li><li><a href="#prompt-4-decide-where-each-kind-of-data-lives">Prompt 4: Decide where each kind of data lives</a></li><li><a href="#prompt-5-back-your-licenses-with-proof">Prompt 5: Back your licenses with proof</a></li><li><a href="#prompt-6-get-your-renewals-under-control">Prompt 6: Get your renewals under control</a></li><li><a href="#prompt-7-prepare-for-an-audit-before-a-letter-arrives">Prompt 7: Prepare for an audit before a letter arrives</a></li><li><a href="#prompt-8-set-up-governance-and-a-policy">Prompt 8: Set up governance and a policy</a></li><li><a href="#prompt-9-turn-the-plan-into-reminders">Prompt 9: Turn the plan into reminders</a></li><li><a href="#prompt-10-report-to-leaders-and-plan-the-next-round">Prompt 10: Report to leaders and plan the next round</a></li><li><a href="#prompt-11-map-your-customers-and-what-they-expect">Prompt 11: Map your customers and what they expect</a></li><li><a href="#prompt-12-decide-what-good-looks-like">Prompt 12: Decide what good looks like</a></li><li><a href="#prompt-13-plan-your-rolling-internal-checks">Prompt 13: Plan your rolling internal checks</a></li><li><a href="#keep-going">Keep going</a></li></ul></details>
   <div class="doc-body prose prose-wide">
 <p>Thirteen prompts that walk you through setting up an application management practice with an AI assistant. The numbers are labels, not an order; the playbook gives the order. They are written to work in plain chat in Microsoft Copilot, ChatGPT, and Claude. Each one carries its own rules and scale, so the assistant does not need the kit installed. Copy one prompt at a time and replace each [BRACKET] with your own details.</p>
 <h2 id="pick-your-prompt">Pick your prompt</h2>
 <p>Start with the playbook, then choose the prompt for your step. Read the safety notes under Before you start first. Each prompt opens with when to use it and why.</p>
 <p>Use each prompt at the step of <a href="itam-program-playbook.html">Playbook: set up and run an ITAM program</a> shown here. The playbook sets the order; these prompts do not.</p>
-<div class="table-scroll"><table class="checklist"><caption>Pick your prompt</caption><thead><tr><th scope="col">Playbook step</th><th scope="col">Prompts</th></tr></thead><tbody><tr><td class="long-text">1 Read the map</td><td>1</td></tr><tr><td class="long-text">2 Sponsor, problem statement, light charter</td><td>8 (charter), 11</td></tr><tr><td class="long-text">3 Stop the bleeding</td><td>6, 7</td></tr><tr><td class="long-text">5 Baseline and targets</td><td>12, then 2</td></tr><tr><td class="long-text">6 The policy set</td><td>8 (policy)</td></tr><tr><td class="long-text">7 Build one inventory</td><td>4, 3</td></tr><tr><td class="long-text">8 Proof, then the position</td><td>5</td></tr><tr><td class="long-text">9 Put controls in place</td><td>3</td></tr><tr><td class="long-text">10 Measure and review</td><td>10, 13, 9</td></tr></tbody></table></div>
-<p>Step 4 has no prompt of its own. After the first pass, repeat on a schedule:</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Pick your prompt table"><table class="checklist"><caption>Pick your prompt</caption><thead><tr><th scope="col">Playbook step</th><th scope="col">Prompts</th></tr></thead><tbody><tr><th scope="row" id="q1-1-read-the-map-c0">1 Read the map</th><td class="long-text">1</td></tr><tr><th scope="row" id="q1-2-sponsor-problem-statement-light-charter-c0">2 Sponsor, problem statement, light charter</th><td class="long-text">8 (charter), 11</td></tr><tr><th scope="row" id="q1-3-stop-the-bleeding-c0">3 Stop the bleeding</th><td class="long-text">6, 7</td></tr><tr><th scope="row" id="q1-4-set-the-scope-c0">4 Set the scope</th><td class="long-text">No prompt. The scope is a decision for you and your sponsor, so write it from the files named in that step.</td></tr><tr><th scope="row" id="q1-5-baseline-and-targets-c0">5 Baseline and targets</th><td class="long-text">12, then 2</td></tr><tr><th scope="row" id="q1-6-the-policy-set-c0">6 The policy set</th><td class="long-text">8 (policy)</td></tr><tr><th scope="row" id="q1-7-build-one-inventory-c0">7 Build one inventory</th><td class="long-text">4, 3</td></tr><tr><th scope="row" id="q1-8-proof-then-the-position-c0">8 Proof, then the position</th><td class="long-text">5</td></tr><tr><th scope="row" id="q1-9-put-controls-in-place-c0">9 Put controls in place</th><td class="long-text">3</td></tr><tr><th scope="row" id="q1-10-measure-and-review-c0">10 Measure and review</th><td class="long-text">10, 13, 9</td></tr></tbody></table></div>
+<p>After the first pass, repeat on a schedule:</p>
 <ul><li><strong>Every month:</strong> prompt 6, for renewals due in 180 days.</li><li><strong>Every quarter:</strong> prompt 5 for your most important products, prompt 7 to confirm each audit role still has a ready backup, prompts 10 and 13, and prompt 9 when the plan changes.</li><li><strong>Every year, and after a big change:</strong> prompt 2 again, after a merger or a change of sponsor.</li><li><strong>Before an event:</strong> prompts 5 and 6 before a renewal or an audit. If an audit letter has already arrived, give it to Legal first, then use prompt 7.</li></ul>
 <p>Pick the one that matches what is in front of you:</p>
 <ol><li><a href="#prompt-1-set-the-scene">Set the scene and plan the ten playbook steps (playbook step 1)</a></li><li><a href="#prompt-2-baseline-your-program">Score my program as it is and as it should be</a></li><li><a href="#prompt-3-map-a-process-before-you-change-it">Map how a process really works</a></li><li><a href="#prompt-4-decide-where-each-kind-of-data-lives">Decide where each kind of data lives</a></li><li><a href="#prompt-5-back-your-licenses-with-proof">Check my licenses against proof of purchase</a></li><li><a href="#prompt-6-get-your-renewals-under-control">Find renewals and notice deadlines</a></li><li><a href="#prompt-7-prepare-for-an-audit-before-a-letter-arrives">Get ready for a publisher audit</a></li><li><a href="#prompt-8-set-up-governance-and-a-policy">Review my governance charter and policy</a></li><li><a href="#prompt-9-turn-the-plan-into-reminders">Turn my plan into calendar reminders</a></li><li><a href="#prompt-10-report-to-leaders-and-plan-the-next-round">Write a report for leaders</a></li><li><a href="#prompt-11-map-your-customers-and-what-they-expect">Map my customers and what they expect</a></li><li><a href="#prompt-12-decide-what-good-looks-like">Decide what good looks like for my organization</a></li><li><a href="#prompt-13-plan-your-rolling-internal-checks">Plan quarterly internal checks</a></li></ol>
 <h2 id="how-to-use-them">How to use them</h2>
 <ul><li><strong>Start a new chat for each prompt</strong>, or paste the next prompt into the same chat. Each prompt repeats the short rules, so it works even in a fresh chat.</li><li><strong>Attach the named file, or paste it.</strong> In ChatGPT and Claude, use the attach button. In Microsoft Copilot, attach where your version allows it; if your organization blocks uploads, paste the column headings or the text. Every prompt also works if you attach nothing: the assistant asks you for the facts instead.</li><li><strong>Replace the brackets.</strong> Replace everything in [square brackets] and delete any option you do not use. On a phone, paste the prompt first, then edit the brackets inside the chat.</li><li><strong>Ask for text you can copy.</strong> The prompts ask for results as plain text, a table, or CSV. Copy that into the matching toolkit file. Do not rely on the assistant to hand back a finished file.</li><li><strong>If your tool has custom instructions or projects,</strong> paste the rules from Prompt 1 there once.</li><li><strong>If the assistant drifts,</strong> reply: Stay in the coach role, ask one question at a time, and do not invent figures.</li></ul>
 <h2 id="before-you-start">Before you start</h2>
+<p><strong>Privacy rule for every prompt:</strong> Use only an assistant your organization has approved for confidential data; otherwise use the Halden data, column headings only, or redacted rows; never paste passwords, license keys, or employee names and emails; and once an audit letter exists, nothing about it goes to any assistant unless Legal agrees.</p>
 <ul><li><strong>Practice on fictional data.</strong> The Halden Logistics demo estate in <code>demo-estate/</code> is built for this. Start there if you are unsure.</li><li><strong>Keep real inventories safe.</strong> Real inventories, contracts, and invoices are confidential. Use them only where your organization allows, and check your account&#x27;s data settings first. When in doubt, share column headings, not rows, or redact names, prices, and account numbers.</li><li><strong>You decide.</strong> Every prompt tells the assistant to mark the points that need a person&#x27;s decision and to stop there.</li><li><strong>Check dates and sums yourself.</strong> Assistants make arithmetic and date mistakes, and they do not reliably know today&#x27;s date, so the date prompts ask you to state it. Treat every figure as unverified until you have checked it.</li><li><strong>Different assistants answer differently.</strong> Compare the result with the Good looks like line under each prompt, not with another assistant&#x27;s wording.</li></ul>
 <h2 id="prompt-1-set-the-scene">Prompt 1: Set the scene</h2>
 <p><strong>When to use it:</strong> At playbook step 1, when you do not know where to begin, or when you take over an existing program.</p>
 <p><strong>Why:</strong> It fits the plan to your time and your biggest worry, instead of handing you every template at once.</p>
 <div class="prompt-block">
+<p class="prompt-rule"><strong>Privacy rule:</strong> Use only an assistant your organization has approved for confidential data; otherwise use the Halden data, column headings only, or redacted rows; never paste passwords, license keys, or employee names and emails; and once an audit letter exists, nothing about it goes to any assistant unless Legal agrees.</p>
 <div class="prompt-head"><p class="prompt-label">Prompt 1: copy and paste</p><button type="button" class="visual-actions__link prompt-copy" hidden data-target="prompt-1-text" data-n="1" aria-describedby="prompt-1-set-the-scene">Copy prompt 1</button></div>
+<p class="prompt-step"><a href="itam-program-playbook.html#step-1-read-the-map">Which step is this?</a> Playbook step 1, Read the map.</p>
 <div class="prompt-text" id="prompt-1-text">Rules: act as a read-only application governance coach, ask one question at a time, never decide for me, mark each point needing a person&#x27;s decision as Decision needed, mark anything you cannot verify as Unverified, write Not found where I give no figure and never invent one, show the arithmetic for every date and sum, and do not browse the web. I work at <mark class="prompt-ph">[ORGANIZATION TYPE AND SIZE]</mark> as <mark class="prompt-ph">[YOUR ROLE]</mark>. We keep our inventory in <mark class="prompt-ph">[WHERE]</mark>, our contracts in <mark class="prompt-ph">[WHERE]</mark>, and our spend data in <mark class="prompt-ph">[WHERE]</mark>. My main worry is <mark class="prompt-ph">[AUDIT, RENEWALS, DUPLICATE SPEND, OWNERSHIP, OR OTHER]</mark>. I can give this <mark class="prompt-ph">[HOURS]</mark> hours a week. Ask me up to five questions you need. Then take me through the ten steps of the playbook in this order: 1 read the map; 2 get a sponsor, a problem statement, and a light charter; 3 stop the bleeding on renewals and the audit contact; 4 set the scope; 5 baseline and targets; 6 the policy set; 7 build one inventory; 8 proof first, then the position; 9 put controls in place; 10 measure and review. If I have no sponsor, say that comes first. For each step, say what I should do first given my worry and my hours, and which steps can wait. Finish with a plan that places the steps against my hours, and mark the point where a program with steps 1 to 5 done is complete enough to stop.</div>
 </div>
-<p><strong>Attach (optional):</strong> <a href="operating-calendar.docx">Operating calendar and first 90 days (Word)</a> (<a href="operating-calendar.html">view</a>).</p>
+<p><strong>Attach (optional):</strong> <a href="operating-calendar.docx">Operating calendar and first 90 days (Word)</a> (<a href="operating-calendar.html">view the page for Operating calendar and first 90 days</a>).</p>
 <p><strong>Good looks like:</strong> a plan that follows the ten playbook steps and starts with a sponsor, fits your hours, and holds no invented facts about your organization.</p>
 <h2 id="prompt-2-baseline-your-program">Prompt 2: Baseline your program</h2>
 <p><strong>When to use it:</strong> At playbook step 5, before you buy a tool or write a policy. Repeat it every year, and after a merger or a change of sponsor.</p>
 <p><strong>Why:</strong> It shows where you are and where you need to be, with evidence, so you fund the gaps that matter and can show progress later.</p>
 <div class="prompt-block">
+<p class="prompt-rule"><strong>Privacy rule:</strong> Use only an assistant your organization has approved for confidential data; otherwise use the Halden data, column headings only, or redacted rows; never paste passwords, license keys, or employee names and emails; and once an audit letter exists, nothing about it goes to any assistant unless Legal agrees.</p>
 <div class="prompt-head"><p class="prompt-label">Prompt 2: copy and paste</p><button type="button" class="visual-actions__link prompt-copy" hidden data-target="prompt-2-text" data-n="2" aria-describedby="prompt-2-baseline-your-program">Copy prompt 2</button></div>
+<p class="prompt-step"><a href="itam-program-playbook.html#step-5-baseline-and-targets">Which step is this?</a> Playbook step 5, Baseline and targets.</p>
 <div class="prompt-text" id="prompt-2-text">Rules: read-only coach, one question at a time, never decide for me, mark Decision needed and Unverified, write Not found for missing figures, show arithmetic, no web. Walk me through a self-assessment of my application management program, one dimension at a time. Dimensions: policy and decision rights; roles and ownership; inventory and data quality; intake and acquisition; lifecycle and periodic review; licenses, contracts, and renewals; cost, value, and rationalization; risk, security, and AI use; retirement and data disposition; measures and leadership reporting; communication and education. Scale: 0 not done; 1 ad hoc, done sometimes and not written down; 2 defined, written down, owned, followed, with a recent example; 3 measured, a number shows how well it works and has led to a change. For each dimension ask what we do today and what evidence I could show a leader or auditor. If I cannot show evidence, score it one level lower and say why. Then ask where we need to be, by when, and why; do not set every target to 3. At the end, give a CSV with these columns: dimension, as_is_level, as_is_evidence, to_be_level, to_be_reason_and_date, gap, priority, owner, first_action, due_on. Rank by gap and recommend the three gaps to fund first. Decision needed: the sponsor chooses.</div>
 </div>
-<p><strong>Attach (optional):</strong> <a href="application-management-self-assessment.docx">Application management program self-assessment (Word)</a> (<a href="application-management-self-assessment.html">view</a>) for the level descriptions, and <a href="application-management-gap-plan.csv">Application management gap plan template (CSV)</a> (<a href="application-management-gap-plan.html">view</a>). When the assistant gives you the rows, type them into the Assess sheet of <code>application-management-workbook.xlsx</code>. See <a href="application-management-gap-plan-example.csv">Application management gap plan example (CSV)</a> (<a href="application-management-gap-plan-example.html">view</a>) for a finished one.</p>
+<p><strong>Attach (optional):</strong> <a href="application-management-self-assessment.docx">Application management program self-assessment (Word)</a> (<a href="application-management-self-assessment.html">view the page for Application management program self-assessment</a>) for the level descriptions, and <a href="application-management-gap-plan.csv">Application management gap plan template (CSV)</a> (<a href="application-management-gap-plan.html">view the page for Application management gap plan template</a>). When the assistant gives you the rows, type them into the Assess sheet of <code>application-management-workbook.xlsx</code>. See <a href="application-management-gap-plan-example.csv">Application management gap plan example (CSV)</a> (<a href="application-management-gap-plan-example.html">view the page for Application management gap plan example</a>) for a finished one.</p>
 <p><strong>Good looks like:</strong> each score has evidence, targets differ by dimension, and owners are roles, not names.</p>
 <h2 id="prompt-3-map-a-process-before-you-change-it">Prompt 3: Map a process before you change it</h2>
 <p><strong>When to use it:</strong> At playbook steps 7 and 9, before you change a process such as intake, renewals, or retirement, or when a process keeps going wrong.</p>
 <p><strong>Why:</strong> A tool or policy built on a process nobody has described only writes down guesses. The gaps between the two maps become your work list.</p>
 <div class="prompt-block">
+<p class="prompt-rule"><strong>Privacy rule:</strong> Use only an assistant your organization has approved for confidential data; otherwise use the Halden data, column headings only, or redacted rows; never paste passwords, license keys, or employee names and emails; and once an audit letter exists, nothing about it goes to any assistant unless Legal agrees.</p>
 <div class="prompt-head"><p class="prompt-label">Prompt 3: copy and paste</p><button type="button" class="visual-actions__link prompt-copy" hidden data-target="prompt-3-text" data-n="3" aria-describedby="prompt-3-map-a-process-before-you-change-it">Copy prompt 3</button></div>
+<p class="prompt-step"><a href="itam-program-playbook.html#step-7-build-one-inventory">Which step is this?</a> Playbook step 7, Build one inventory. Also <a href="itam-program-playbook.html#step-9-put-controls-in-place">step 9</a>.</p>
 <div class="prompt-text" id="prompt-3-text">Rules: read-only coach, one question at a time, never decide for me, mark Decision needed and Unverified, write Not found for missing figures, no web. Help me map how <mark class="prompt-ph">[PROCESS, FOR EXAMPLE NEW SOFTWARE REQUESTS]</mark> works today. Ask me, one step at a time, what triggers the step, who does it, what they do, what record it produces, and where the record is kept. Then help me describe how it should work, using roles instead of names. List every gap between the two maps in a table with these columns: gap, type (missing step, no owner, no record, wrong order, or manual work that could be reliable), risk of leaving it, fix, owner role, due date. Rank by risk. Do not suggest a software tool yet.</div>
 </div>
-<p><strong>Attach (optional):</strong> <a href="process-map-worksheet.docx">Is and Should process-map worksheet (Word)</a> (<a href="process-map-worksheet.html">view</a>).</p>
+<p><strong>Attach (optional):</strong> <a href="process-map-worksheet.docx">Is and Should process-map worksheet (Word)</a> (<a href="process-map-worksheet.html">view the page for Is and Should process-map worksheet</a>).</p>
 <p><strong>Good looks like:</strong> the first map shows what really happens, even where it is messy.</p>
 <h2 id="prompt-4-decide-where-each-kind-of-data-lives">Prompt 4: Decide where each kind of data lives</h2>
 <p><strong>When to use it:</strong> When the same fact, such as an owner, a count, or a date, differs between systems, or before you consolidate data or buy a tool.</p>
 <p><strong>Why:</strong> When two systems disagree, nobody knows which to trust. One authoritative system per kind of data ends the argument and the bad decisions that follow.</p>
 <div class="prompt-block">
+<p class="prompt-rule"><strong>Privacy rule:</strong> Use only an assistant your organization has approved for confidential data; otherwise use the Halden data, column headings only, or redacted rows; never paste passwords, license keys, or employee names and emails; and once an audit letter exists, nothing about it goes to any assistant unless Legal agrees.</p>
 <div class="prompt-head"><p class="prompt-label">Prompt 4: copy and paste</p><button type="button" class="visual-actions__link prompt-copy" hidden data-target="prompt-4-text" data-n="4" aria-describedby="prompt-4-decide-where-each-kind-of-data-lives">Copy prompt 4</button></div>
+<p class="prompt-step"><a href="itam-program-playbook.html#step-7-build-one-inventory">Which step is this?</a> Playbook step 7, Build one inventory.</p>
 <div class="prompt-text" id="prompt-4-text">Rules: read-only coach, one question at a time, never decide for me, mark Decision needed and Unverified, write Not found for missing figures, no web. I will name the systems we use and give you no data. For each of these kinds of data, help me choose one authoritative system, a data owner role, how the copies are kept in step, and how often to compare them: application inventory, hardware inventory, entitlements and license position, proofs of purchase, contracts and renewal dates, invoices and spend, discovery and usage data, configuration and service relationships, application owners, retirement records. Point out any row where I name two systems as the source or none. List the options and the cost of each; do not choose for me. Give the result as CSV with columns data_domain, authoritative_system, data_owner, other_systems_holding_copies, how_copies_are_kept_in_step, reconcile_every.</div>
 </div>
-<p><strong>Attach (optional):</strong> <a href="source-of-truth-map.csv">Source of truth map template (CSV)</a> (<a href="source-of-truth-map.html">view</a>).</p>
+<p><strong>Attach (optional):</strong> <a href="source-of-truth-map.csv">Source of truth map template (CSV)</a> (<a href="source-of-truth-map.html">view the page for Source of truth map template</a>).</p>
 <p><strong>Good looks like:</strong> one authoritative system per row, and an owner for each.</p>
 <h2 id="prompt-5-back-your-licenses-with-proof">Prompt 5: Back your licenses with proof</h2>
 <p><strong>When to use it:</strong> At playbook step 8, before a renewal, a true-up, or an audit, and every quarter for your most important products.</p>
 <p><strong>Why:</strong> An audit works from the proofs you can show. This prompt finds the missing ones now, while you can still chase them.</p>
 <div class="prompt-block">
+<p class="prompt-rule"><strong>Privacy rule:</strong> Use only an assistant your organization has approved for confidential data; otherwise use the Halden data, column headings only, or redacted rows; never paste passwords, license keys, or employee names and emails; and once an audit letter exists, nothing about it goes to any assistant unless Legal agrees.</p>
 <div class="prompt-head"><p class="prompt-label">Prompt 5: copy and paste</p><button type="button" class="visual-actions__link prompt-copy" hidden data-target="prompt-5-text" data-n="5" aria-describedby="prompt-5-back-your-licenses-with-proof">Copy prompt 5</button></div>
+<p class="prompt-step"><a href="itam-program-playbook.html#step-8-proof-first-then-the-position">Which step is this?</a> Playbook step 8, Proof first, then the position.</p>
 <div class="prompt-text" id="prompt-5-text">Rules: read-only coach, one question at a time, never decide for me, mark Decision needed and Unverified, write Not found for missing figures, never guess a quantity, show arithmetic, no web. I will give you, for <mark class="prompt-ph">[A FEW PRODUCTS]</mark>, the quantity I report as owned, the quantity in use, the license metric the agreement counts, and the proofs of purchase I hold. For each product, compare the quantity I can prove with the quantity I report, in that metric. Label each product short, even, or over. Do not count a proof that lacks the buyer, vendor, product, version, metric, quantity, or date. List every missing record as a row for a documentation gaps log with columns gap, record type, related product, what is missing, why it matters, what it blocks, owner role, due date. Never tell me what the agreement permits; ask me to check the contract or counsel.</div>
 </div>
-<p><strong>Attach (optional):</strong> <a href="license-position.csv">License position template (CSV)</a> (<a href="license-position.html">view</a>), <a href="proof-of-purchase-check.csv">Proof of purchase check template (CSV)</a> (<a href="proof-of-purchase-check.html">view</a>), and <a href="documentation-gaps-log.csv">Documentation gaps log template (CSV)</a> (<a href="documentation-gaps-log.html">view</a>), filled in for a few products, or the Halden files in <code>demo-estate/</code> to practice.</p>
+<p><strong>Attach (optional):</strong> <a href="license-position.csv">License position template (CSV)</a> (<a href="license-position.html">view the page for License position template</a>), <a href="proof-of-purchase-check.csv">Proof of purchase check template (CSV)</a> (<a href="proof-of-purchase-check.html">view the page for Proof of purchase check template</a>), and <a href="documentation-gaps-log.csv">Documentation gaps log template (CSV)</a> (<a href="documentation-gaps-log.html">view the page for Documentation gaps log template</a>), filled in for a few products, or the Halden files in <code>demo-estate/</code> to practice.</p>
 <p><strong>Good looks like:</strong> each shortfall points to a missing proof or a real gap, with an owner and a date.</p>
 <h2 id="prompt-6-get-your-renewals-under-control">Prompt 6: Get your renewals under control</h2>
 <p><strong>When to use it:</strong> At playbook step 3, then every month, and at least 180 days before any large contract ends.</p>
 <p><strong>Why:</strong> The notice deadline comes before the end date. Miss it and the contract can renew without anyone deciding.</p>
 <div class="prompt-block">
+<p class="prompt-rule"><strong>Privacy rule:</strong> Use only an assistant your organization has approved for confidential data; otherwise use the Halden data, column headings only, or redacted rows; never paste passwords, license keys, or employee names and emails; and once an audit letter exists, nothing about it goes to any assistant unless Legal agrees.</p>
 <div class="prompt-head"><p class="prompt-label">Prompt 6: copy and paste</p><button type="button" class="visual-actions__link prompt-copy" hidden data-target="prompt-6-text" data-n="6" aria-describedby="prompt-6-get-your-renewals-under-control">Copy prompt 6</button></div>
+<p class="prompt-step"><a href="itam-program-playbook.html#step-3-week-1-stop-the-bleeding">Which step is this?</a> Playbook step 3, Week 1, stop the bleeding.</p>
 <div class="prompt-text" id="prompt-6-text">Rules: read-only coach, never decide for me, mark Decision needed and Unverified, write Not found for missing figures, show the arithmetic for every date, no web. Today&#x27;s date is <mark class="prompt-ph">[TODAY&#x27;S DATE, YYYY-MM-DD]</mark>. From the renewal data I give you, list every renewal in the next 180 days. Work out each notice deadline as the contract end date minus the notice days. If notice days are missing, say so and do not guess them. Group renewals by the window each is in: 120 to 180 days, 90 to 120, 60 to 90, 30 to 60, and past due. Flag every auto-renewing contract and every renewal with no named owner. Do not decide any renewal. For each, say which decision is needed from whom: renew, reduce, or cancel. Give the result as a table with columns product, contract end, notice days, notice deadline, days left, window, auto-renews, owner, decision needed.</div>
 </div>
-<p><strong>Attach (optional):</strong> <a href="renewal-calendar.csv">Renewal calendar template (CSV)</a> (<a href="renewal-calendar.html">view</a>) with redacted or fictional rows. To check your assistant, give it <code>demo-estate/licenses.csv</code> and a date of 2026-09-01: it should say notice days are missing and note that 2 licenses were already expired.</p>
+<p><strong>Attach (optional):</strong> <a href="renewal-calendar.csv">Renewal calendar template (CSV)</a> (<a href="renewal-calendar.html">view the page for Renewal calendar template</a>) with redacted or fictional rows. To check your assistant, give it <code>demo-estate/licenses.csv</code> and a date of 2026-09-01: it should say notice days are missing and note that 2 licenses were already expired.</p>
 <p><strong>Good looks like:</strong> every date has its arithmetic shown, and no renewal is left without an owner.</p>
 <h2 id="prompt-7-prepare-for-an-audit-before-a-letter-arrives">Prompt 7: Prepare for an audit before a letter arrives</h2>
 <p><strong>When to use it:</strong> At playbook step 3, before a publisher audit letter arrives, and every quarter to confirm each role has a ready backup. If a letter has already arrived, give it to Legal first and use this to organize the team.</p>
 <p><strong>Why:</strong> Under audit pressure people improvise. Knowing who does each task, and who covers for them, prevents single points of failure and missteps.</p>
 <div class="prompt-block">
+<p class="prompt-rule"><strong>Privacy rule:</strong> Use only an assistant your organization has approved for confidential data; otherwise use the Halden data, column headings only, or redacted rows; never paste passwords, license keys, or employee names and emails; and once an audit letter exists, nothing about it goes to any assistant unless Legal agrees.</p>
 <div class="prompt-head"><p class="prompt-label">Prompt 7: copy and paste</p><button type="button" class="visual-actions__link prompt-copy" hidden data-target="prompt-7-text" data-n="7" aria-describedby="prompt-7-prepare-for-an-audit-before-a-letter-arrives">Copy prompt 7</button></div>
+<p class="prompt-step"><a href="itam-program-playbook.html#step-3-week-1-stop-the-bleeding">Which step is this?</a> Playbook step 3, Week 1, stop the bleeding.</p>
 <div class="prompt-text" id="prompt-7-text">Rules: read-only coach, one question at a time, never decide for me, mark Decision needed and Unverified, write Not found for missing figures, no web. Help me fill in a roster of audit-response tasks. The tasks are: receive the letter and pass it to Legal; own all contact with the publisher; open and keep the dated case file; gather proofs of purchase; run discovery and keep the dated output; run the hardware audit; reconcile use against proofs; advise on what may be released; find payment records; brief the executive sponsor; decide spend and settlement; hold the post-audit review. For each task ask who would do it today and who the backup is. If there is no backup, or the backup has never been briefed, mark it a single-person risk. Give a CSV with columns task, role, primary_holder, backup_holder, backup_ready, single_person_risk. Then name the three roles to fix first and why. Remind me that only counsel talks to the publisher. Do not draft any message to a publisher.</div>
 </div>
-<p><strong>Attach (optional):</strong> <a href="audit-response-roles.csv">Audit response roles template (CSV)</a> (<a href="audit-response-roles.html">view</a>).</p>
+<p><strong>Attach (optional):</strong> <a href="audit-response-roles.csv">Audit response roles template (CSV)</a> (<a href="audit-response-roles.html">view the page for Audit response roles template</a>).</p>
 <p><strong>Good looks like:</strong> every task has a role, a holder, and a ready backup, or a clear flag where it does not.</p>
 <h2 id="prompt-8-set-up-governance-and-a-policy">Prompt 8: Set up governance and a policy</h2>
 <p><strong>When to use it:</strong> At playbook step 2 for the charter and step 6 for the policy set, or when nobody is sure who decides.</p>
 <p><strong>Why:</strong> Decisions need a sponsor, a scope, and written decision rights. Without them, requests stall and exceptions pile up.</p>
 <div class="prompt-block">
+<p class="prompt-rule"><strong>Privacy rule:</strong> Use only an assistant your organization has approved for confidential data; otherwise use the Halden data, column headings only, or redacted rows; never paste passwords, license keys, or employee names and emails; and once an audit letter exists, nothing about it goes to any assistant unless Legal agrees.</p>
 <div class="prompt-head"><p class="prompt-label">Prompt 8: copy and paste</p><button type="button" class="visual-actions__link prompt-copy" hidden data-target="prompt-8-text" data-n="8" aria-describedby="prompt-8-set-up-governance-and-a-policy">Copy prompt 8</button></div>
+<p class="prompt-step"><a href="itam-program-playbook.html#step-2-get-a-sponsor-a-problem-statement-and-a-light-charter">Which step is this?</a> Playbook step 2, Get a sponsor, a problem statement, and a light charter. Also <a href="itam-program-playbook.html#step-6-the-policy-set">step 6</a>.</p>
 <div class="prompt-text" id="prompt-8-text">Rules: read-only coach, never decide for me, mark Decision needed and Unverified, write Not found for missing figures, no web. I will paste my draft governance charter and my draft policy. Check the charter for a named sponsor, decision rights with a threshold, an escalation path, and measures. Check the policy for a clear scope, an accountable role, defined terms, enforcement, a review cycle, and any rule nobody could actually meet. List what is missing in order of importance, tie each gap to the section it belongs in, and propose plain-language wording I can edit. Mark the points where leaders must decide. If I have no drafts yet, ask me five questions and then outline both.</div>
 </div>
-<p><strong>Attach (optional):</strong> your drafts, or Council draft and Policy draft to practice. To draft from a blank page, use <a href="policy-template.docx">Policy template (Word)</a> (<a href="policy-template.html">view</a>) and <a href="policy-standard-template.docx">Standard template (Word)</a> (<a href="policy-standard-template.html">view</a>), then test the draft with <a href="policy-checklist.docx">Policy checklist (Word)</a> (<a href="policy-checklist.html">view</a>); <a href="policy-lifecycle-sop.docx">Policy lifecycle SOP (Word)</a> (<a href="policy-lifecycle-sop.html">view</a>) covers approval and review.</p>
+<p><strong>Attach (optional):</strong> your drafts, or Council draft and Policy draft to practice. To draft from a blank page, use <a href="policy-template.docx">Policy template (Word)</a> (<a href="policy-template.html">view the page for Policy template</a>) and <a href="policy-standard-template.docx">Standard template (Word)</a> (<a href="policy-standard-template.html">view the page for Standard template</a>), then test the draft with <a href="policy-checklist.docx">Policy checklist (Word)</a> (<a href="policy-checklist.html">view the page for Policy checklist</a>); <a href="policy-lifecycle-sop.docx">Policy lifecycle SOP (Word)</a> (<a href="policy-lifecycle-sop.html">view the page for Policy lifecycle SOP</a>) covers approval and review.</p>
 <p><strong>Good looks like:</strong> each gap is tied to a section of your draft, and the proposed wording is yours to edit.</p>
 <h2 id="prompt-9-turn-the-plan-into-reminders">Prompt 9: Turn the plan into reminders</h2>
 <p><strong>When to use it:</strong> After you have a gap plan or a renewal list, to turn decisions into dates.</p>
 <p><strong>Why:</strong> Notice deadlines and gap fixes need dates in a calendar before anyone can be reminded of them.</p>
 <div class="prompt-block">
+<p class="prompt-rule"><strong>Privacy rule:</strong> Use only an assistant your organization has approved for confidential data; otherwise use the Halden data, column headings only, or redacted rows; never paste passwords, license keys, or employee names and emails; and once an audit letter exists, nothing about it goes to any assistant unless Legal agrees.</p>
 <div class="prompt-head"><p class="prompt-label">Prompt 9: copy and paste</p><button type="button" class="visual-actions__link prompt-copy" hidden data-target="prompt-9-text" data-n="9" aria-describedby="prompt-9-turn-the-plan-into-reminders">Copy prompt 9</button></div>
+<p class="prompt-step"><a href="itam-program-playbook.html#step-10-measure-and-review">Which step is this?</a> Playbook step 10, Measure and review.</p>
 <div class="prompt-text" id="prompt-9-text">Rules: read-only coach, never decide for me, mark Unverified, show the arithmetic for every date, no web. Today&#x27;s date is <mark class="prompt-ph">[TODAY&#x27;S DATE, YYYY-MM-DD]</mark>. From the gap plan and renewal data I give you, list the dates I should be reminded of in a table with columns date, task, dimension, file to use, owner role. Label each task by its dimension name, never by a row number, and take file names only from what I give you, writing Not found if there is none. Ask me how many days ahead I want a reminder. Then give the same dates as the text of an iCalendar file, with an alarm that many days before each date, in one plain text block that I can copy, save with the ending .ics, and import. Do not say you have attached or created a file. I will check each date before I import it.</div>
 </div>
-<p><strong>Attach (optional):</strong> <a href="application-management-gap-plan.csv">Application management gap plan template (CSV)</a> (<a href="application-management-gap-plan.html">view</a>) and <a href="renewal-calendar.csv">Renewal calendar template (CSV)</a> (<a href="renewal-calendar.html">view</a>).</p>
+<p><strong>Attach (optional):</strong> <a href="application-management-gap-plan.csv">Application management gap plan template (CSV)</a> (<a href="application-management-gap-plan.html">view the page for Application management gap plan template</a>) and <a href="renewal-calendar.csv">Renewal calendar template (CSV)</a> (<a href="renewal-calendar.html">view the page for Renewal calendar template</a>).</p>
 <p><strong>Good looks like:</strong> every reminder has a date you have checked, and the calendar text imports without errors.</p>
 <h2 id="prompt-10-report-to-leaders-and-plan-the-next-round">Prompt 10: Report to leaders and plan the next round</h2>
 <p><strong>When to use it:</strong> At playbook step 10, every quarter before leaders meet, and any time you need funding or a decision.</p>
 <p><strong>Why:</strong> The report ties your work to money saved or risk reduced, and lists the decisions you need from leaders.</p>
 <div class="prompt-block">
+<p class="prompt-rule"><strong>Privacy rule:</strong> Use only an assistant your organization has approved for confidential data; otherwise use the Halden data, column headings only, or redacted rows; never paste passwords, license keys, or employee names and emails; and once an audit letter exists, nothing about it goes to any assistant unless Legal agrees.</p>
 <div class="prompt-head"><p class="prompt-label">Prompt 10: copy and paste</p><button type="button" class="visual-actions__link prompt-copy" hidden data-target="prompt-10-text" data-n="10" aria-describedby="prompt-10-report-to-leaders-and-plan-the-next-round">Copy prompt 10</button></div>
+<p class="prompt-step"><a href="itam-program-playbook.html#step-10-measure-and-review">Which step is this?</a> Playbook step 10, Measure and review.</p>
 <div class="prompt-text" id="prompt-10-text">Rules: read-only coach, never decide for me, mark Decision needed and Unverified, write Not found where I give no figure and never invent one, no web. Draft a one-page leadership report from the gap plan and notes I give you. For each control, link a measure to a decision and the decision to an outcome in money or risk. Count only savings I can back with evidence, and put adverse trends beside the savings. Answer these six questions, writing Not found where you have no evidence: do applications have accountable owners; how much renewal spend is undecided; what spend could be reduced or retired; which license gaps could become audit exposure; which gaps need escalation; what did we save and what is the proof. End with the decisions leaders must make and the three gaps to close next quarter.</div>
 </div>
-<p><strong>Attach (optional):</strong> <a href="leadership-report.docx">Leadership report (Word)</a> (<a href="leadership-report.html">view</a>) and <a href="application-management-gap-plan.csv">Application management gap plan template (CSV)</a> (<a href="application-management-gap-plan.html">view</a>).</p>
+<p><strong>Attach (optional):</strong> <a href="leadership-report.docx">Leadership report (Word)</a> (<a href="leadership-report.html">view the page for Leadership report</a>) and <a href="application-management-gap-plan.csv">Application management gap plan template (CSV)</a> (<a href="application-management-gap-plan.html">view the page for Application management gap plan template</a>).</p>
 <p><strong>Good looks like:</strong> no figure without a source, and the decisions are clear enough to approve or reject.</p>
 <h2 id="prompt-11-map-your-customers-and-what-they-expect">Prompt 11: Map your customers and what they expect</h2>
 <p><strong>When to use it:</strong> At playbook step 2, in the first month, and again when a new team starts to rely on your data.</p>
 <p><strong>Why:</strong> Asset data is only worth keeping if it answers someone&#x27;s question. Knowing who needs what, in how much detail, and how often tells you what to collect and what you can stop collecting.</p>
 <div class="prompt-block">
+<p class="prompt-rule"><strong>Privacy rule:</strong> Use only an assistant your organization has approved for confidential data; otherwise use the Halden data, column headings only, or redacted rows; never paste passwords, license keys, or employee names and emails; and once an audit letter exists, nothing about it goes to any assistant unless Legal agrees.</p>
 <div class="prompt-head"><p class="prompt-label">Prompt 11: copy and paste</p><button type="button" class="visual-actions__link prompt-copy" hidden data-target="prompt-11-text" data-n="11" aria-describedby="prompt-11-map-your-customers-and-what-they-expect">Copy prompt 11</button></div>
+<p class="prompt-step"><a href="itam-program-playbook.html#step-2-get-a-sponsor-a-problem-statement-and-a-light-charter">Which step is this?</a> Playbook step 2, Get a sponsor, a problem statement, and a light charter.</p>
 <div class="prompt-text" id="prompt-11-text">Rules: read-only coach, one question at a time, never decide for me, mark Decision needed and Unverified, write Not found for missing figures, never invent a need, no web. Help me map the people who rely on asset management information. For each of these customers, ask me one question at a time: IT security, service desk, procurement, finance, legal and compliance, HR, application owners, IT operations and change, executives and the sponsor, internal audit and risk. Ask what decision or task of theirs depends on asset data, what data and what level of detail they need, how often, what we need from them in return, and how we could tell we served them well. Skip any customer I say does not exist. Then give a CSV with columns customer, what_they_need, level_of_detail, how_often, what_we_need_from_them, how_we_deliver, measure_of_success. Finally name the two customers whose needs I can meet cheapest and fastest, and the one whose unmet need is the biggest risk.</div>
 </div>
-<p><strong>Attach (optional):</strong> <a href="customer-expectations.csv">Customer expectations template (CSV)</a> (<a href="customer-expectations.html">view</a>).</p>
+<p><strong>Attach (optional):</strong> <a href="customer-expectations.csv">Customer expectations template (CSV)</a> (<a href="customer-expectations.html">view the page for Customer expectations template</a>).</p>
 <p><strong>Good looks like:</strong> each customer has a need you could check, a way to deliver it, and a measure, and you have chosen where to start.</p>
 <h2 id="prompt-12-decide-what-good-looks-like">Prompt 12: Decide what good looks like</h2>
 <p><strong>When to use it:</strong> At playbook step 5, before you set To-Be targets in Prompt 2, and each year when you review them.</p>
 <p><strong>Why:</strong> Full conformance to a standard is optional. Targets should match your risk, your size, and your time, and the sponsor settles them with you, so you fund what matters.</p>
 <div class="prompt-block">
+<p class="prompt-rule"><strong>Privacy rule:</strong> Use only an assistant your organization has approved for confidential data; otherwise use the Halden data, column headings only, or redacted rows; never paste passwords, license keys, or employee names and emails; and once an audit letter exists, nothing about it goes to any assistant unless Legal agrees.</p>
 <div class="prompt-head"><p class="prompt-label">Prompt 12: copy and paste</p><button type="button" class="visual-actions__link prompt-copy" hidden data-target="prompt-12-text" data-n="12" aria-describedby="prompt-12-decide-what-good-looks-like">Copy prompt 12</button></div>
+<p class="prompt-step"><a href="itam-program-playbook.html#step-5-baseline-and-targets">Which step is this?</a> Playbook step 5, Baseline and targets.</p>
 <div class="prompt-text" id="prompt-12-text">Rules: read-only coach, one question at a time, never decide for me, mark Decision needed and Unverified, write Not found for missing figures, no web. Help me decide how far my asset management program needs to go. Ask me these eight questions one at a time and ask for a yes or no and one line of why: do laws or contracts require us to prove control of software or data; have publishers audited us in the last three years or do our contracts allow audits; is software spend large enough that savings matter to the budget; do teams buy subscriptions without IT; do mergers, sales of units, or fast growth keep changing our estate; do our applications hold sensitive or regulated data; can people give at least five hours a week; does a sponsor with budget back this. Scale: 0 not done, 1 ad hoc, 2 defined (written, owned, followed, with a recent example), 3 measured (a number shows it works and led to a change). Then suggest a target level for each of these dimensions: policy, roles, inventory, intake, lifecycle review, licenses and renewals, cost, risk, retirement, measures, communication. Use level 2 unless my answers justify 3, and do not set every target to 3. Give a reason for each target, three things I should deliberately not do yet, a one-line good-enough statement for the next 12 months, and up to five measures that cannot be met by paperwork alone. If I have no sponsor, tell me to get one before setting targets. Decision needed: the sponsor settles the targets.</div>
 </div>
-<p><strong>Attach (optional):</strong> <a href="what-good-looks-like.docx">What good looks like (Word)</a> (<a href="what-good-looks-like.html">view</a>).</p>
+<p><strong>Attach (optional):</strong> <a href="what-good-looks-like.docx">What good looks like (Word)</a> (<a href="what-good-looks-like.html">view the page for What good looks like</a>).</p>
 <p><strong>Good looks like:</strong> targets that differ by dimension, each with a reason, a short list of what you will not do yet, and a good-enough statement you could say to the sponsor.</p>
 <h2 id="prompt-13-plan-your-rolling-internal-checks">Prompt 13: Plan your rolling internal checks</h2>
 <p><strong>When to use it:</strong> Every quarter, to choose what to test next, and before an external audit.</p>
 <p><strong>Why:</strong> Practicing the audit on your own records finds problems while you can still fix them quietly. Small regular checks also make the yearly review a summary of work already done.</p>
 <div class="prompt-block">
+<p class="prompt-rule"><strong>Privacy rule:</strong> Use only an assistant your organization has approved for confidential data; otherwise use the Halden data, column headings only, or redacted rows; never paste passwords, license keys, or employee names and emails; and once an audit letter exists, nothing about it goes to any assistant unless Legal agrees.</p>
 <div class="prompt-head"><p class="prompt-label">Prompt 13: copy and paste</p><button type="button" class="visual-actions__link prompt-copy" hidden data-target="prompt-13-text" data-n="13" aria-describedby="prompt-13-plan-your-rolling-internal-checks">Copy prompt 13</button></div>
+<p class="prompt-step"><a href="itam-program-playbook.html#step-10-measure-and-review">Which step is this?</a> Playbook step 10, Measure and review.</p>
 <div class="prompt-text" id="prompt-13-text">Rules: read-only coach, one question at a time, never decide for me, mark Decision needed and Unverified, write Not found for missing figures, no web. Help me plan rolling internal checks of my asset management program. Ask which areas worry me most. The areas are ownership, inventory accuracy, renewals, proof of purchase, retirement, the purchase gate, and leavers. Then propose a four-quarter rotation so every area is tested once a year, with the riskiest first. For the next quarter, give for each chosen area the test to run, a suggested sample size, what counts as a pass, and a row for a findings log with columns check_id, quarter, area, test, sample_size, records_failed, finding, severity, owner, due_on. Remind me that findings are for fixing and not for blame, and that a finding is closed only when a retest passes. Do not make up results.</div>
 </div>
-<p><strong>Attach (optional):</strong> <a href="rolling-internal-check.docx">Rolling internal check (Word)</a> (<a href="rolling-internal-check.html">view</a>) and <a href="internal-check-log.csv">Internal check log template (CSV)</a> (<a href="internal-check-log.html">view</a>).</p>
+<p><strong>Attach (optional):</strong> <a href="rolling-internal-check.docx">Rolling internal check (Word)</a> (<a href="rolling-internal-check.html">view the page for Rolling internal check</a>) and <a href="internal-check-log.csv">Internal check log template (CSV)</a> (<a href="internal-check-log.html">view the page for Internal check log template</a>).</p>
 <p><strong>Good looks like:</strong> a rotation that fits your risks, a clear test for the next quarter, and a log you can start filling in.</p>
 <h2 id="keep-going">Keep going</h2>
 <p>Run Prompt 2 again each year, and after a merger or a change of sponsor. Run Prompts 5 and 7 each quarter and Prompt 6 each month. Keep the results with the files, and record what you decided and who approved it.</p>
 <p>If you have the kit&#x27;s skills installed, you can instead ask Claude Code for the <code>app-governance</code> skill, or type <code>$app-governance</code> in Codex. The prompts above do not need them.</p>
 <p>The kit gives methods and reasoning support. It is not a governance platform, a certification, or legal advice. Ask counsel where a contract term or audit step is unclear.</p>
   </div>
-  <div class="doc-bottom"><button type="button" class="print-icon" onclick="window.print()" aria-label="Print this page" title="Print"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="M7 9V3.5h10V9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M7 17H4.5A1.5 1.5 0 0 1 3 15.5v-5A1.5 1.5 0 0 1 4.5 9h15a1.5 1.5 0 0 1 1.5 1.5v5a1.5 1.5 0 0 1-1.5 1.5H17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><rect x="7" y="14" width="10" height="6.5" rx="0.8" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17.5" cy="12" r="0.9" fill="currentColor"/></svg></button></div>
+  <div class="doc-bottom"><a class="doc-to-top" href="#main">Back to top</a><button type="button" class="print-icon" onclick="window.print()" aria-label="Print this page" title="Print"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="M7 9V3.5h10V9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M7 17H4.5A1.5 1.5 0 0 1 3 15.5v-5A1.5 1.5 0 0 1 4.5 9h15a1.5 1.5 0 0 1 1.5 1.5v5a1.5 1.5 0 0 1-1.5 1.5H17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><rect x="7" y="14" width="10" height="6.5" rx="0.8" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17.5" cy="12" r="0.9" fill="currentColor"/></svg></button></div>
 </main>
 <footer class="site-footer">
   <p>Eve McGivern · <a href="https://evemcgivern.github.io/">evemcgivern.github.io</a></p>
+  <p><a href="../../about.html">About</a></p>
   <p>Questions? Comments? <a href="https://github.com/evemcgivern/app-governance-kit/issues" id="contact-email" data-r="moc.liamg|nrevigcmeve">email me</a>.</p>
   <p><a href="https://buymeacoffee.com/a8w5iiqszp" rel="noopener">Buy me a coffee</a> if these tools help.</p>
   <p class="site-version"><a href="https://github.com/evemcgivern/app-governance-kit/releases" rel="noopener" id="site-version">Version</a></p>

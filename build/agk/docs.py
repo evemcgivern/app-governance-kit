@@ -13,6 +13,8 @@ import zipfile
 from html import escape
 from pathlib import Path
 
+from agk import stepmap
+
 GITHUB = "https://github.com/evemcgivern/app-governance-kit/blob/main/"
 BASE = "https://evemcgivern.github.io/app-governance-kit/"
 FIXED_DATE = (2020, 1, 1, 0, 0, 0)
@@ -207,7 +209,7 @@ def _download_link(name: str, page_href: str, title: str) -> str | None:
         return None
     file_href = page_href[:-5] + "." + ext[0]
     return (f"<a href=\"{escape(file_href)}\">{escape(title)} ({ext[1]})</a> "
-            f"(<a href=\"{escape(page_href)}\">view</a>)")
+            f"(<a href=\"{escape(page_href)}\">view the page for {escape(title)}</a>)")
 
 
 def inline_html(text: str, resolve, files=lambda name: None, download: bool = False) -> str:
@@ -247,15 +249,14 @@ def _list_html(block: dict, resolve, files) -> str:
     def items(its):
         parts = []
         for it in its:
-            box = ""
-            if it["checked"] is not None:
-                box = "<input type=\"checkbox\" disabled" + (" checked" if it["checked"] else "") + "> "
             kids = ""
             if it["children"]:
-                kids = f"<{tag}>{items(it['children'])}</{tag}>"
-            parts.append(f"<li>{box}{inline_html(it['text'], resolve, files)}{kids}</li>")
+                kid_cls = " class=\"task-list\"" if any(c["checked"] is not None for c in it["children"]) else ""
+                kids = f"<{tag}{kid_cls}>{items(it['children'])}</{tag}>"
+            done = " class=\"task-done\"" if it["checked"] else ""
+            parts.append(f"<li{done}>{inline_html(it['text'], resolve, files)}{kids}</li>")
         return "".join(parts)
-    cls = " class=\"checklist-items\"" if any(i["checked"] is not None for i in block["items"]) else ""
+    cls = " class=\"task-list\"" if any(i["checked"] is not None for i in block["items"]) else ""
     if block.get("class"):
         cls = f" class=\"{block['class']}\""
     return f"<{tag}{cls}>{items(block['items'])}</{tag}>"
@@ -272,7 +273,7 @@ def _field_html(name: str, label: str, header: str, readonly_js: bool) -> str:
         return (f"<td class=\"checklist-write\"><textarea name=\"{name}\" rows=\"2\" "
                 f"aria-label=\"{escape(label, quote=True)}\"></textarea></td>")
     return (f"<td class=\"checklist-write\"><input type=\"text\" name=\"{name}\" "
-            f"aria-label=\"{escape(label, quote=True)}\"></td>")
+            f"autocomplete=\"off\" enterkeyhint=\"next\" aria-label=\"{escape(label, quote=True)}\"></td>")
 
 
 def _table_html(rows: list[list[str]], resolve, files, caption: str = "", index: int = 0,
@@ -298,13 +299,18 @@ def _table_html(rows: list[list[str]], resolve, files, caption: str = "", index:
         for i in range(len(header)):
             cell = row[i] if i < len(row) else ""
             if i == choice:
+                ids = " ".join(f"q{index}-{key}-c{j}" for j in range(i) if j < len(row) and row[j])
                 boxes = "".join(
                     f"<label class=\"checklist-choice\"><input type=\"radio\" name=\"q{index}-{key}\" "
                     f"value=\"{c}\"> {c}</label>" for c in CHOICES)
-                cells.append(f"<td class=\"checklist-choices\">{boxes}</td>")
+                cells.append(f"<td class=\"checklist-choices\"><div class=\"checklist-choice-group\" "
+                             f"role=\"radiogroup\" aria-labelledby=\"{ids}\">{boxes}</div></td>")
+            elif cell and i == 0:
+                cells.append(f"<th scope=\"row\" id=\"q{index}-{key}-c0\">{inline_html(cell, resolve, files)}</th>")
             elif cell:
                 cls = " class=\"long-text\"" if i in long_cols else ""
-                cells.append(f"<td{cls}>{inline_html(cell, resolve, files)}</td>")
+                cid = f" id=\"q{index}-{key}-c{i}\"" if choice is not None and i < choice else ""
+                cells.append(f"<td{cls}{cid}>{inline_html(cell, resolve, files)}</td>")
             elif fillable:
                 label = f"{header[i]} for {row[0]}" if row and row[0] else header[i]
                 js_filled = caption == GAP_CAPTION and header[i].strip().lower() == "your answer"
@@ -312,8 +318,10 @@ def _table_html(rows: list[list[str]], resolve, files, caption: str = "", index:
             else:
                 cells.append("<td class=\"checklist-write\"></td>")
         body.append("<tr>" + "".join(cells) + "</tr>")
-    wide = " wide" if len(header) >= 6 else ""
-    return (f"<div class=\"table-scroll\"><table class=\"checklist{wide}\"{attrs}>{cap}<thead><tr>{head}</tr></thead>"
+    wide = (" wide" if len(header) >= 6 else "") + (" sticky-first" if len(header) >= 3 else "")
+    name = escape(f"{caption} table" if caption else f"Table {index}", quote=True)
+    return (f"<div class=\"table-scroll\" tabindex=\"0\" role=\"region\" aria-label=\"{name}\">"
+            f"<table class=\"checklist{wide}\"{attrs}>{cap}<thead><tr>{head}</tr></thead>"
             f"<tbody>{''.join(body)}</tbody></table></div>")
 
 
@@ -329,11 +337,11 @@ def _form_field(col: str, row_key: str, row_index: int, value: str = "") -> str:
             f"<option value=\"{o}\"{' selected' if o == value else ''}>{o}</option>" for o in SELECT_COLS[col])
         control = f"<select id=\"{ident}\" name=\"{name}\" data-col=\"{col}\">{options}</select>"
     elif "date" in col:
-        control = f"<input id=\"{ident}\" type=\"date\" name=\"{name}\" data-col=\"{col}\">"
+        control = f"<input id=\"{ident}\" type=\"date\" name=\"{name}\" autocomplete=\"off\" enterkeyhint=\"next\" data-col=\"{col}\">"
     elif LONG_FIELD_RE.search(col):
         control = f"<textarea id=\"{ident}\" name=\"{name}\" rows=\"3\" data-col=\"{col}\"></textarea>"
     else:
-        control = f"<input id=\"{ident}\" type=\"text\" name=\"{name}\" data-col=\"{col}\">"
+        control = f"<input id=\"{ident}\" type=\"text\" name=\"{name}\" autocomplete=\"off\" enterkeyhint=\"next\" data-col=\"{col}\">"
     wide = " record-wide" if LONG_FIELD_RE.search(col) else ""
     return f"<div class=\"record-field{wide}\"><label for=\"{ident}\">{escape(label)}</label>{control}</div>"
 
@@ -368,22 +376,50 @@ ATTACH_MARK = "**Attach"
 PLACEHOLDER_RE = re.compile(r"\[[^\[\]<>]+\]")
 
 
-def _prompt_html(text: str, n: int, heading: str, resolve, files) -> str:
+PRIVACY_MARK = "**Privacy rule for every prompt:**"
+
+
+def prompt_steps(blocks: list[dict]) -> dict[str, list[str]]:
+    """Which playbook steps each prompt serves, read from the "Playbook step | Prompts" table, in step order."""
+    out: dict[str, list[str]] = {}
+    for b in blocks:
+        if b["type"] == "table" and b["rows"][0][:2] == ["Playbook step", "Prompts"]:
+            for step_cell, prompt_cell in (r[:2] for r in b["rows"][1:]):
+                m = re.match(r"\d+", step_cell.strip())
+                if m:
+                    for label in re.findall(r"\d+", prompt_cell):
+                        out.setdefault(label, []).append(m.group(0))
+    return out
+
+
+def _prompt_html(text: str, n: int, heading: str, resolve, files, rule: str = "", steps: list | None = None) -> str:
     """A copy-and-paste prompt: its own bordered block, with placeholders marked and a copy button.
     The button starts hidden and the page script shows it, so a reader without scripts sees plain text."""
     body = PLACEHOLDER_RE.sub(lambda m: f"<mark class=\"prompt-ph\">{m.group(0)}</mark>",
                               inline_html(text, resolve, files))
     number = re.match(r"Prompt (\d+)", heading)
     label = number.group(1) if number else str(n)
-    return (f"<div class=\"prompt-block\">\n"
+    rule_html = f"<p class=\"prompt-rule\"><strong>Privacy rule:</strong> {escape(rule)}</p>\n" if rule else ""
+    step_html = ""
+    if steps:
+        first, rest = steps[0], steps[1:]
+        step_html = (f"<p class=\"prompt-step\"><a href=\"{escape(first[2], quote=True)}\">Which step is this?</a> "
+                     f"Playbook step {escape(first[0])}, {escape(first[1])}."
+                     + "".join(f" Also <a href=\"{escape(s[2], quote=True)}\">step {escape(s[0])}</a>." for s in rest)
+                     + "</p>\n")
+    return (f"<div class=\"prompt-block\">\n{rule_html}"
             f"<div class=\"prompt-head\"><p class=\"prompt-label\">Prompt {label}: copy and paste</p>"
             f"<button type=\"button\" class=\"visual-actions__link prompt-copy\" hidden "
             f"data-target=\"prompt-{label}-text\" data-n=\"{label}\" aria-describedby=\"{slug(heading)}\">"
             f"Copy prompt {label}</button></div>\n"
+            f"{step_html}"
             f"<div class=\"prompt-text\" id=\"prompt-{label}-text\">{body}</div>\n</div>")
 
 
-def body_html(blocks: list[dict], resolve, files=lambda name: None, fillable: bool = False) -> str:
+def body_html(blocks: list[dict], resolve, files=lambda name: None, fillable: bool = False,
+              prompt_steps_by_label: dict | None = None) -> str:
+    rule = next((b["text"][len(PRIVACY_MARK):].strip() for b in blocks
+                 if b["type"] == "p" and b["text"].startswith(PRIVACY_MARK)), "")
     parts = []
     last_heading = ""
     tables = 0
@@ -400,7 +436,9 @@ def body_html(blocks: list[dict], resolve, files=lambda name: None, fillable: bo
             parts.append(form_html(b["header"], b["rows"], b["blank_cols"], resolve, files))
         elif t == "p" and b["text"].startswith(PROMPT_MARK):
             prompts += 1
-            parts.append(_prompt_html(b["text"][len(PROMPT_MARK):].strip(), prompts, last_heading, resolve, files))
+            number = re.match(r"Prompt (\d+)", last_heading)
+            parts.append(_prompt_html(b["text"][len(PROMPT_MARK):].strip(), prompts, last_heading, resolve, files,
+                                      rule, (prompt_steps_by_label or {}).get(number.group(1) if number else "")))
         elif t == "p":
             parts.append(f"<p>{inline_html(b['text'], resolve, files, b['text'].startswith(ATTACH_MARK))}</p>")
         elif t == "list":
@@ -850,18 +888,18 @@ PAGE = """<!DOCTYPE html>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{title} | Eve McGivern</title>
+<title>{title} | App Governance Kit</title>
 <meta name="description" content="{description}">
 <meta name="author" content="Eve McGivern">
 <link rel="canonical" href="{canonical}">
 <meta property="og:type" content="article">
-<meta property="og:site_name" content="Eve McGivern | Application Governance">
-<meta property="og:title" content="{title}">
+<meta property="og:site_name" content="App Governance Kit">
+<meta property="og:title" content="{title} | App Governance Kit">
 <meta property="og:description" content="{description}">
 <meta property="og:url" content="{canonical}">
 <meta property="og:image" content="{base}og-image.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="{title}">
+<meta name="twitter:title" content="{title} | App Governance Kit">
 <meta name="twitter:description" content="{description}">
 <meta name="twitter:image" content="{base}og-image.png">
 <script type="application/ld+json">
@@ -871,11 +909,19 @@ PAGE = """<!DOCTYPE html>
 <link rel="apple-touch-icon" href="{up}apple-touch-icon.png">
 <link rel="stylesheet" href="{up}style.css">
 <script src="{up}nav.js" defer></script>
+<script src="{up}scroll-hint.js" defer></script>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
 {header}
 <main id="main" class="doc-page">
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <ol>
+      <li><a href="{up}index.html">Home</a></li>
+      <li><a href="{back_href}">{back_label}</a></li>
+      <li><span aria-current="page">{title}</span></li>
+    </ol>
+  </nav>
   <div class="doc-top">
     <p class="doc-back"><a href="{back_href}">&larr; {back_label}</a></p>
     {print_button}
@@ -885,10 +931,10 @@ PAGE = """<!DOCTYPE html>
 {actions}
   </div>
 {extra}
-  <div class="doc-body prose prose-wide">
+{jump}  <div class="doc-body prose prose-wide">
 {body}
   </div>
-  <div class="doc-bottom">{print_button}</div>
+  <div class="doc-bottom">{to_top}{print_button}</div>
 </main>
 {footer}
 </body>
@@ -983,7 +1029,7 @@ document.addEventListener("DOMContentLoaded", function () {
       st.push(s); answered += c.Yes + c.Partly + c.No; total += c.total;
       var row = tally && tally.querySelectorAll("tbody tr")[i];
       if (row) {
-        var cells = row.querySelectorAll("td");
+        var cells = row.cells;
         cells[1].textContent = c.Yes; cells[2].textContent = c.Partly; cells[3].textContent = c.No; cells[4].textContent = s;
       }
     });
@@ -1146,6 +1192,21 @@ document.addEventListener('DOMContentLoaded', function () {
     btn.addEventListener('click', function () {
       var el = document.getElementById(btn.dataset.target);
       var n = btn.dataset.n;
+      function showFail() {
+        var block = el.closest('.prompt-block'), note = block.querySelector('.prompt-fail');
+        if (!note) {
+          note = document.createElement('p');
+          note.className = 'prompt-fail meta';
+          var pickBtn = document.createElement('button');
+          pickBtn.type = 'button';
+          pickBtn.className = 'visual-actions__link prompt-select';
+          pickBtn.textContent = 'Select all of prompt ' + n;
+          pickBtn.addEventListener('click', function () { pick(el); });
+          block.insertBefore(note, el);
+          block.insertBefore(pickBtn, el);
+        }
+        note.textContent = 'Copy did not work here. The prompt text is selected: press Control C or Command C to copy it.';
+      }
       function done(ok) {
         if (ok) {
           btn.textContent = 'Copied prompt ' + n;
@@ -1154,6 +1215,7 @@ document.addEventListener('DOMContentLoaded', function () {
         } else {
           pick(el);
           say('Copy failed. Prompt ' + n + ' is selected; press Control C or Command C to copy it.');
+          showFail();
         }
       }
       var text = el.textContent.trim();
@@ -1280,7 +1342,7 @@ def collect(root: Path) -> list[Doc]:
             docs.append(Doc(f, "md", "practicum", name, back))
     lq = root / "dist" / "lifecycle-questions.md"
     if lq.is_file():
-        docs.append(Doc(lq, "md", "lifecycle", "questions", ("lifecycle.html", "Lifecycle")))
+        docs.append(Doc(lq, "md", "lifecycle", "questions", ("lifecycle.html", "Application lifecycle")))
     return docs
 
 
@@ -1329,7 +1391,7 @@ def playbook_steps(blocks: list[dict]) -> list[dict]:
 
 
 def wayfinding_html(steps: list[dict], stem: str, page: str, playbook_page: str) -> str:
-    """The "Used in playbook step N of M" line for a page, or an empty string."""
+    """The "Step N of M" chip, step title and Previous and Next links for a page, or an empty string."""
     hits = [i for i, st in enumerate(steps) if stem in st["stems"]]
     if not hits or stem == PLAYBOOK_STEM:
         return ""
@@ -1338,19 +1400,133 @@ def wayfinding_html(steps: list[dict], stem: str, page: str, playbook_page: str)
     def link(st: dict, label: str | None = None) -> str:
         return f"<a href=\"{escape(base)}#{escape(st['id'], quote=True)}\">{escape(label or st['title'])}</a>"
     i = hits[0]
-    parts = [f"Used in playbook step {steps[i]['n']} of {len(steps)}: {link(steps[i])}."]
+    n = len(steps)
+    lines = [f"    <p class=\"doc-step__where\"><span class=\"step-chip\">Step {steps[i]['n']} of {n}</span> "
+             f"{link(steps[i])}</p>"]
+    nav = []
     if i > 0:
-        parts.append(f"Previous step: {link(steps[i - 1])}.")
-    if i + 1 < len(steps):
-        parts.append(f"Next step: {link(steps[i + 1])}.")
+        nav.append(f"<a class=\"step-nav\" rel=\"prev\" href=\"{escape(base)}#{escape(steps[i - 1]['id'], quote=True)}\" "
+                   f"aria-label=\"Previous step: {escape(steps[i - 1]['title'], quote=True)}\">Previous</a>")
+    if i + 1 < n:
+        nav.append(f"<a class=\"step-nav\" rel=\"next\" href=\"{escape(base)}#{escape(steps[i + 1]['id'], quote=True)}\" "
+                   f"aria-label=\"Next step: {escape(steps[i + 1]['title'], quote=True)}\">Next</a>")
+    if nav:
+        lines.append(f"    <p class=\"doc-step__nav\">{' '.join(nav)}</p>")
     if len(hits) > 1:
         others = ", ".join(link(steps[j], f"step {steps[j]['n']}") for j in hits[1:])
-        parts.append(f"Also used in {others}.")
-    return f"  <p class=\"meta doc-step\">{' '.join(parts)}</p>\n"
+        lines.append(f"    <p class=\"meta doc-step__also\">Also used in {others}.</p>")
+    return "  <nav class=\"doc-step\" aria-label=\"Playbook step\">\n" + "\n".join(lines) + "\n  </nav>\n"
+
+
+LONG_PAGE_WORDS = 1500
+
+
+def word_count(blocks: list[dict]) -> int:
+    """Words in a page's headings, paragraphs, lists and table cells."""
+    total = 0
+    for b in blocks:
+        if b["type"] == "heading":
+            total += len(b["text"].split())
+        elif b["type"] == "table":
+            total += sum(len(c.split()) for row in b["rows"] for c in row)
+        else:
+            total += len(_block_text(b).split())
+    return total
+
+
+def jump_html(blocks: list[dict], files=lambda name: None) -> str:
+    """A "Jump to" list of the h2 headings on a long page, or an empty string for a short one."""
+    heads = [unmark(b["text"], files) for b in blocks if b["type"] == "heading" and b["level"] == 2]
+    if len(heads) < 3 or word_count(blocks) <= LONG_PAGE_WORDS:
+        return ""
+    items = "".join(f"<li><a href=\"#{slug(h)}\">{escape(h)}</a></li>" for h in heads)
+    return f"  <details class=\"doc-jump\"><summary>Jump to</summary><ul>{items}</ul></details>\n"
+
+
+TO_TOP = "<a class=\"doc-to-top\" href=\"#main\">Back to top</a>"
 
 
 def _relpath(from_page: str, to: str) -> str:
     return os.path.relpath(to, os.path.dirname(from_page)).replace(os.sep, "/")
+
+
+def feeds_html(d, rows: list[dict]) -> str:
+    """The "Feeds step N" line for a toolkit page, from the step map, as its own paragraph."""
+    if d.group != "sam-toolkit" or d.src.parent.name != "sam-toolkit" or d.name == PLAYBOOK_STEM:
+        return ""
+    row = stepmap.find(rows, "file", d.src.name)
+    return f"  <p class=\"meta doc-feeds\">{escape(stepmap.feeds_line(row))}</p>\n" if row else ""
+
+
+def practice_html(d, rows: list[dict]) -> str:
+    """The "Practice for playbook step N" line on a practicum exercise page, from the step map."""
+    row = stepmap.find(rows, "practicum", d.name) if d.group == "practicum" else None
+    return f"  <p class=\"meta doc-practice\">{escape(stepmap.practice_line(row))}</p>\n" if row else ""
+
+
+def stepmap_notes_html(d) -> str:
+    """Notes under the title: reading time on long documents, and the first-row help on blank CSV templates."""
+    out = []
+    if d.kind == "md":
+        line = stepmap.reading_line(stepmap.text_words(d.blocks))
+        if line:
+            out.append(f"  <p class=\"meta doc-reading\">{escape(line)}</p>\n")
+    if d.kind == "csv" and d.group == "sam-toolkit" and d.src.parent.name == "sam-toolkit":
+        out.append(f"  <p class=\"meta doc-csv-note\">{escape(stepmap.CSV_NOTE)}</p>\n")
+        required = stepmap.required_line(d.name)
+        if required:
+            out.append(f"  <p class=\"meta doc-required\">{escape(required)}</p>\n")
+    return "".join(out)
+
+
+def example_link(d) -> str | None:
+    """A "See a filled example" link, only for a toolkit file that has an example in sam-toolkit/examples/."""
+    if d.group != "sam-toolkit" or d.src.parent.name != "sam-toolkit":
+        return None
+    if not (d.src.parent / "examples" / f"{d.name}-example.csv").is_file():
+        return None
+    return f"    <a class=\"visual-actions__link\" href=\"{d.name}-example.html\">See a filled example</a>"
+
+
+STEPS_RE = re.compile(r"<!--STEPS-->.*?<!--/STEPS-->", re.S)
+
+
+def toolkit_steps_html(rows: list[dict], steps: list[dict], titles: dict[str, str]) -> str:
+    """The "By playbook step" section of the toolkit page: each file once, under its main step, with a tag."""
+    playbook_href = f"docs/sam-toolkit/{PLAYBOOK_STEM}.html"
+    groups = [(str(st["n"]), f"<a href=\"{playbook_href}#{escape(st['id'], quote=True)}\">"
+               f"Step {st['n']}: {escape(st['title'])}</a>") for st in steps] + [("beyond", "Not part of a step")]
+    files = [r for r in rows if r["kind"] == "file"]
+    out = ["<!--STEPS-->", "<section class=\"prose prose-wide\" id=\"by-step\">", "  <h2>By playbook step</h2>",
+           "  <p>Each file is listed once, under the step it mainly serves. A file that also serves another step "
+           "says so in its tag. The step for each file comes from <code>steps/step-map.csv</code>.</p>"]
+    for n, label in groups:
+        mine = [r for r in files if r["main_step"] == n]
+        if not mine:
+            continue
+        out.append(f"  <h3 id=\"by-step-{n}\">{label}</h3>")
+        out.append("  <ul class=\"link-list\">")
+        for r in mine:
+            stem = r["key"].rsplit(".", 1)[0]
+            if n == "beyond":
+                tag = "Not part of a step"
+            else:
+                tag = f"Step {n}" + (f", also {stepmap.step_words(r['also_steps'])}" if r["also_steps"] else "")
+            out.append(f"    <li data-stem=\"{escape(stem, quote=True)}\"><a href=\"docs/sam-toolkit/{stem}.html\">"
+                       f"{escape(titles.get(r['key'], stem))}</a> <span class=\"step-tag\">{escape(tag)}</span></li>")
+        out.append("  </ul>")
+    out += ["</section>", "<!--/STEPS-->"]
+    return "\n".join(out)
+
+
+def prompt_links(d, steps: list[dict], playbook) -> dict:
+    """For the setup prompts page: each prompt's playbook steps as (number, title, link) tuples."""
+    if playbook is None or d.name != "setup-prompts" or d.group != "sam-toolkit" or d.kind != "md":
+        return {}
+    by_n = {str(st["n"]): st for st in steps}
+    base = _relpath(d.page, playbook.page)
+    return {label: [(n, by_n[n]["title"], f"{base}#{by_n[n]['id']}") for n in ns if n in by_n]
+            for label, ns in prompt_steps(d.blocks).items()}
 
 
 def write_docs(root: Path) -> list[str]:
@@ -1362,6 +1538,7 @@ def write_docs(root: Path) -> list[str]:
     docs = collect(root)
     if not docs:
         return []
+    step_rows = stepmap.load_map(root) if (root / "steps" / "step-map.csv").is_file() else []
     warnings: list[str] = []
     out_root = site / "docs"
     import shutil
@@ -1396,10 +1573,10 @@ def write_docs(root: Path) -> list[str]:
     if any(d.group == "sam-toolkit" for d in docs):
         if playbook is None:
             warnings.append(f"docs: sam-toolkit/{PLAYBOOK_STEM}.md not found; "
-                            "wayfinding (the \"Used in playbook step\" line) skipped on every toolkit page")
+                            "wayfinding (the \"Step N of M\" chip) skipped on every toolkit page")
         elif not steps:
             warnings.append(f"docs: sam-toolkit/{PLAYBOOK_STEM}.md has no \"Step N: title\" headings; "
-                            "wayfinding (the \"Used in playbook step\" line) skipped on every toolkit page")
+                            "wayfinding (the \"Step N of M\" chip) skipped on every toolkit page")
     plain_text_links: set[tuple[str, str]] = set()
     field_guide = (root / "field-guide").resolve()
 
@@ -1459,17 +1636,20 @@ def write_docs(root: Path) -> list[str]:
         if has_table:
             (out_dir / f"{stem}.xlsx").write_bytes(
                 xlsx_bytes(sheet_blocks, tier_summary=(d.group, d.name) == ("sam-toolkit", "tier-self-assessment")))
-            actions.append(f"    <a class=\"visual-actions__link\" href=\"{stem}.xlsx\">Download Excel (.xlsx)</a>")
+            actions.append(f"    <a class=\"visual-actions__link doc-secondary\" href=\"{stem}.xlsx\">Download Excel (.xlsx)</a>")
         if d.kind == "csv":
             (out_dir / f"{stem}.csv").write_text(d.src.read_text(encoding="utf-8"), encoding="utf-8")
             actions.append(f"    <a class=\"visual-actions__link\" href=\"{stem}.csv\">Download CSV</a>")
-        actions.append("    <button type=\"button\" class=\"visual-actions__link doc-print\" "
+        if example_link(d):
+            actions.append(example_link(d))
+        actions.append("    <button type=\"button\" class=\"visual-actions__link doc-print doc-secondary\" "
                        "onclick=\"window.print()\">Print or save as PDF</button>")
         fillable = d.kind == "md" and d.group == "sam-toolkit"
-        body = body_html(d.blocks, resolve, files, fillable)
+        by_label = prompt_links(d, steps, playbook)
+        body = body_html(d.blocks, resolve, files, fillable, by_label)
         if fillable and not re.search(r"<input|<textarea|checklist-write", body):
             fillable = False  # nothing to fill in: no answers button, no note
-            body = body_html(d.blocks, resolve, files, False)
+            body = body_html(d.blocks, resolve, files, False, by_label)
         extra = TIER_EXTRA if (d.group, d.name) == ("sam-toolkit", "tier-self-assessment") else ""
         if fillable or d.form:
             note = ("What you tick or type stays in this browser. The Excel and CSV downloads are blank templates. "
@@ -1488,6 +1668,8 @@ def write_docs(root: Path) -> list[str]:
                               f"data-file=\"{stem}-filled.csv\">Download my answers (CSV)</button>")
         if "prompt-copy" in body:
             extra += "\n" + PROMPT_STATUS + "\n" + PROMPT_SCRIPT
+        extra = stepmap_notes_html(d) + extra
+        jump = jump_html(d.blocks, files)
         description = summary_of(d.blocks) or d.title
         canonical = BASE + d.page
         jsonld = json.dumps({
@@ -1506,10 +1688,18 @@ def write_docs(root: Path) -> list[str]:
             canonical=canonical, base=BASE, jsonld=jsonld.replace("</", "<\\/"),
             header=header, footer=footer, back_href=up + d.back[0], back_label=escape(d.back[1]),
             actions="\n".join(actions), extra=extra, body=body,
-            print_button=PRINT_BUTTON,
+            print_button=PRINT_BUTTON, jump=jump, to_top=TO_TOP if jump else "",
             wayfinding=(wayfinding_html(steps, d.name, d.page, playbook.page)
-                        if playbook and d.group == "sam-toolkit" and d.src.parent == playbook.src.parent else "")),
+                        if playbook and d.group == "sam-toolkit" and d.src.parent == playbook.src.parent else "")
+                       + feeds_html(d, step_rows) + practice_html(d, step_rows)),
             encoding="utf-8")
+    toolkit_page = site / "sam-toolkit.html"
+    if step_rows and steps and toolkit_page.is_file():
+        page_text = toolkit_page.read_text(encoding="utf-8")
+        if STEPS_RE.search(page_text):
+            titles = {d.src.name: d.title for d in docs if d.group == "sam-toolkit" and d.src.parent.name == "sam-toolkit"}
+            toolkit_page.write_text(STEPS_RE.sub(lambda _: toolkit_steps_html(step_rows, steps, titles), page_text),
+                                    encoding="utf-8")
     write_sitemap(site)
     warnings += [f"docs: {src}: link {href} matches no site page; shown as plain text"
                  for src, href in sorted(plain_text_links)]
