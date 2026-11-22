@@ -370,22 +370,50 @@ ATTACH_MARK = "**Attach"
 PLACEHOLDER_RE = re.compile(r"\[[^\[\]<>]+\]")
 
 
-def _prompt_html(text: str, n: int, heading: str, resolve, files) -> str:
+PRIVACY_MARK = "**Privacy rule for every prompt:**"
+
+
+def prompt_steps(blocks: list[dict]) -> dict[str, list[str]]:
+    """Which playbook steps each prompt serves, read from the "Playbook step | Prompts" table, in step order."""
+    out: dict[str, list[str]] = {}
+    for b in blocks:
+        if b["type"] == "table" and b["rows"][0][:2] == ["Playbook step", "Prompts"]:
+            for step_cell, prompt_cell in (r[:2] for r in b["rows"][1:]):
+                m = re.match(r"\d+", step_cell.strip())
+                if m:
+                    for label in re.findall(r"\d+", prompt_cell):
+                        out.setdefault(label, []).append(m.group(0))
+    return out
+
+
+def _prompt_html(text: str, n: int, heading: str, resolve, files, rule: str = "", steps: list | None = None) -> str:
     """A copy-and-paste prompt: its own bordered block, with placeholders marked and a copy button.
     The button starts hidden and the page script shows it, so a reader without scripts sees plain text."""
     body = PLACEHOLDER_RE.sub(lambda m: f"<mark class=\"prompt-ph\">{m.group(0)}</mark>",
                               inline_html(text, resolve, files))
     number = re.match(r"Prompt (\d+)", heading)
     label = number.group(1) if number else str(n)
-    return (f"<div class=\"prompt-block\">\n"
+    rule_html = f"<p class=\"prompt-rule\"><strong>Privacy rule:</strong> {escape(rule)}</p>\n" if rule else ""
+    step_html = ""
+    if steps:
+        first, rest = steps[0], steps[1:]
+        step_html = (f"<p class=\"prompt-step\"><a href=\"{escape(first[2], quote=True)}\">Which step is this?</a> "
+                     f"Playbook step {escape(first[0])}, {escape(first[1])}."
+                     + "".join(f" Also <a href=\"{escape(s[2], quote=True)}\">step {escape(s[0])}</a>." for s in rest)
+                     + "</p>\n")
+    return (f"<div class=\"prompt-block\">\n{rule_html}"
             f"<div class=\"prompt-head\"><p class=\"prompt-label\">Prompt {label}: copy and paste</p>"
             f"<button type=\"button\" class=\"visual-actions__link prompt-copy\" hidden "
             f"data-target=\"prompt-{label}-text\" data-n=\"{label}\" aria-describedby=\"{slug(heading)}\">"
             f"Copy prompt {label}</button></div>\n"
+            f"{step_html}"
             f"<div class=\"prompt-text\" id=\"prompt-{label}-text\">{body}</div>\n</div>")
 
 
-def body_html(blocks: list[dict], resolve, files=lambda name: None, fillable: bool = False) -> str:
+def body_html(blocks: list[dict], resolve, files=lambda name: None, fillable: bool = False,
+              prompt_steps_by_label: dict | None = None) -> str:
+    rule = next((b["text"][len(PRIVACY_MARK):].strip() for b in blocks
+                 if b["type"] == "p" and b["text"].startswith(PRIVACY_MARK)), "")
     parts = []
     last_heading = ""
     tables = 0
@@ -402,7 +430,9 @@ def body_html(blocks: list[dict], resolve, files=lambda name: None, fillable: bo
             parts.append(form_html(b["header"], b["rows"], b["blank_cols"], resolve, files))
         elif t == "p" and b["text"].startswith(PROMPT_MARK):
             prompts += 1
-            parts.append(_prompt_html(b["text"][len(PROMPT_MARK):].strip(), prompts, last_heading, resolve, files))
+            number = re.match(r"Prompt (\d+)", last_heading)
+            parts.append(_prompt_html(b["text"][len(PROMPT_MARK):].strip(), prompts, last_heading, resolve, files,
+                                      rule, (prompt_steps_by_label or {}).get(number.group(1) if number else "")))
         elif t == "p":
             parts.append(f"<p>{inline_html(b['text'], resolve, files, b['text'].startswith(ATTACH_MARK))}</p>")
         elif t == "list":
@@ -1393,6 +1423,16 @@ def example_link(d) -> str | None:
     return f"    <a class=\"visual-actions__link\" href=\"{d.name}-example.html\">See a filled example</a>"
 
 
+def prompt_links(d, steps: list[dict], playbook) -> dict:
+    """For the setup prompts page: each prompt's playbook steps as (number, title, link) tuples."""
+    if playbook is None or d.name != "setup-prompts" or d.group != "sam-toolkit" or d.kind != "md":
+        return {}
+    by_n = {str(st["n"]): st for st in steps}
+    base = _relpath(d.page, playbook.page)
+    return {label: [(n, by_n[n]["title"], f"{base}#{by_n[n]['id']}") for n in ns if n in by_n]
+            for label, ns in prompt_steps(d.blocks).items()}
+
+
 def write_docs(root: Path) -> list[str]:
     """Write site/docs/** from the Markdown and CSV sources. Returns warnings."""
     site = root / "site"
@@ -1509,10 +1549,11 @@ def write_docs(root: Path) -> list[str]:
         actions.append("    <button type=\"button\" class=\"visual-actions__link doc-print\" "
                        "onclick=\"window.print()\">Print or save as PDF</button>")
         fillable = d.kind == "md" and d.group == "sam-toolkit"
-        body = body_html(d.blocks, resolve, files, fillable)
+        by_label = prompt_links(d, steps, playbook)
+        body = body_html(d.blocks, resolve, files, fillable, by_label)
         if fillable and not re.search(r"<input|<textarea|checklist-write", body):
             fillable = False  # nothing to fill in: no answers button, no note
-            body = body_html(d.blocks, resolve, files, False)
+            body = body_html(d.blocks, resolve, files, False, by_label)
         extra = TIER_EXTRA if (d.group, d.name) == ("sam-toolkit", "tier-self-assessment") else ""
         if fillable or d.form:
             note = ("What you tick or type stays in this browser. The Excel and CSV downloads are blank templates. "

@@ -232,6 +232,45 @@ class PromptBlockTests(unittest.TestCase):
         self.assertIn("<p>Plain text.</p>", html)
 
 
+RULE = ("Use only an assistant your organization has approved for confidential data; otherwise use the Halden "
+        "data, column headings only, or redacted rows; never paste passwords, license keys, or employee names "
+        "and emails; and once an audit letter exists, nothing about it goes to any assistant unless Legal agrees.")
+PROMPT_MD = ("| Playbook step | Prompts |\n| --- | --- |\n| 2 Sponsor | 8 (charter), 11 |\n| 4 Scope | No prompt. |\n"
+             "| 6 Policy | 8 (policy) |\n\n"
+             f"**Privacy rule for every prompt:** {RULE}\n\n"
+             "## Prompt 8: Set up governance\n\n**Paste this:** Review [DRAFT].\n\n"
+             "## Prompt 11: Map customers\n\n**Paste this:** Map [CUSTOMERS].\n")
+
+
+class PromptPrivacyTests(unittest.TestCase):
+    def test_prompt_step_table_gives_each_prompts_steps_in_order(self):
+        from agk.docs import prompt_steps
+        self.assertEqual(prompt_steps(parse_markdown(PROMPT_MD)), {"8": ["2", "6"], "11": ["2"]})
+
+    def test_rule_and_step_link_render_above_each_copy_button_from_one_source_line(self):
+        steps = {"8": [("2", "Get a sponsor", "pb.html#step-2"), ("6", "The policy set", "pb.html#step-6")]}
+        html = _prompt_html("Text.", 1, "Prompt 8: Set up", lambda h: h, lambda n: None, rule=RULE, steps=steps["8"])
+        self.assertLess(html.index('class="prompt-rule"'), html.index("prompt-copy"))
+        self.assertIn(RULE, html)
+        self.assertIn('<a href="pb.html#step-2">Which step is this?</a> Playbook step 2, Get a sponsor.', html)
+        self.assertIn('Also <a href="pb.html#step-6">step 6</a>.', html)
+
+    def test_body_uses_the_marked_line_for_every_prompt(self):
+        html = body_html(parse_markdown(PROMPT_MD), lambda h: h,
+                         prompt_steps_by_label={"8": [("2", "S", "p.html#a")]})
+        self.assertEqual(html.count('class="prompt-rule"'), 2)
+        self.assertEqual(html.count("Which step is this?"), 1)
+
+    def test_real_prompts_each_have_a_rule_and_a_step_and_the_table_explains_step_four(self):
+        text = (ROOT / "sam-toolkit" / "setup-prompts.md").read_text(encoding="utf-8")
+        self.assertEqual(text.count("Use only an assistant your organization has approved"), 1)
+        from agk.docs import prompt_steps
+        got = prompt_steps(parse_markdown(text))
+        self.assertEqual(sorted(got, key=int), [str(n) for n in range(1, 14)])
+        self.assertRegex(text, r"\| 4 Set the scope \| No prompt")
+        self.assertNotIn("Step 4 has no prompt of its own.", text)
+
+
 class DownloadLinkTests(unittest.TestCase):
     def test_csv_links_to_the_csv_and_the_page(self):
         html = _download_link("renewal-calendar.csv", "renewal-calendar.html", "Renewal calendar")
