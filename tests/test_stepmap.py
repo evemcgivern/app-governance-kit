@@ -147,5 +147,38 @@ class SourceTextTests(unittest.TestCase):
         self.assertEqual(found, [e for e in expected if e])
 
 
+class PlaybookAndCalendarTests(unittest.TestCase):
+    def setUp(self):
+        self.play = (TOOLKIT / "itam-program-playbook.md").read_text(encoding="utf-8")
+        self.cal = (TOOLKIT / "operating-calendar.md").read_text(encoding="utf-8")
+
+    def test_summary_box_sits_at_the_top_with_exactly_two_rules(self):
+        self.assertLess(self.play.index("**Two standing rules**"), self.play.index("Three terms come up"))
+        box = self.play.split("**Two standing rules**", 1)[1].split("\n\n")[1]
+        rules = [l for l in box.splitlines() if l.startswith("- ")]
+        self.assertEqual(len(rules), 2)
+        self.assertIn("stop after step 5", rules[0].lower())
+        self.assertIn("Steps 1 to 5 are a complete small program", rules[0])
+        self.assertIn("give it to Legal and do not reply", rules[1])
+
+    def test_practice_sentence(self):
+        self.assertIn("do the matching practicum exercise on the Halden data before you do a step on real "
+                      "records, and do exercise 08 before any real audit letter arrives", self.play)
+
+    def test_calendar_weeks_show_order_not_duration(self):
+        self.assertNotIn("| Weeks |", self.cal)
+        self.assertIn("| Start in week |", self.cal)
+        self.assertIn("30 to 60 hours", self.play)
+        self.assertIn("2 to 3 months", self.play)
+        self.assertIn("2 to 3 months", self.cal)
+
+    def test_two_hours_a_week_row_uses_the_arithmetic(self):
+        row = next(l for l in self.cal.splitlines() if "If you only have 2 hours a week" in l)
+        self.assertIn("30 to 60 hours at 2 hours a week is 15 to 30 weeks, about 4 to 7 months", row)
+        self.assertIn("steps 1 to 3 first", row.lower())
+        self.assertEqual(30 / 2, 15)
+        self.assertEqual(60 / 2, 30)
+
+
 if __name__ == "__main__":
     unittest.main()

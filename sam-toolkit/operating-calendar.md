@@ -4,7 +4,7 @@ A schedule for the toolkit files: what to do monthly, quarterly, and yearly, wha
 
 Clause references are to the shared crosswalk (`XW-` rows). Frequencies are practical suggestions, not requirements of any standard. Adjust them to your size and risk.
 
-**Stop point.** A small program that stops after playbook step 5 (the first four rows of the table below, which the playbook puts at about 2 to 3 months) is still worth having: it has a sponsor, a scope, a baseline, a renewal calendar, and an audit roster. If time runs out, stop there and keep the routines below running.
+**Stop point.** A small program that stops after playbook step 5 (the first five rows of the table below, which the playbook puts at about 2 to 3 months) is still worth having: it has a sponsor, a scope, a baseline, a renewal calendar, and an audit roster. If time runs out, stop there and keep the routines below running.
 
 ## Routines
 
@@ -45,19 +45,20 @@ Clause references are to the shared crosswalk (`XW-` rows). Frequencies are prac
 
 ## First 90 days
 
-This follows the playbook's steps. Each row names the step, so use the playbook for the why and the done-when boxes. The week numbers show the order of the work, not how long it takes. The playbook gives the time for each step as expert judgment, not measured: steps 1 to 5 are about 2 to 3 months, and the whole program runs 9 to 18 months part-time. Steps 6 to 9 run well past week 13; the table shows where to start them.
+This follows the playbook's steps. Each row names the step, so use the playbook for the why and the done-when boxes. The first column is the week in which you start a step, in order. It is not how long the step takes, and a step is not finished by the next row's week. The playbook gives the time for each step as expert judgment, not measured: steps 1 to 5 are about 30 to 60 hours of effort over 2 to 3 months, and the whole program runs 9 to 18 months part-time. Steps overlap, and steps 6 to 9 run well past week 13; the table shows where to start them.
 
-| Weeks | Playbook step | Goal | Files | Done when |
+| Start in week | Playbook step | Goal | Files | Done when |
 | --- | --- | --- | --- | --- |
 | 1 | 1 Read the map | Know the terms and your biggest worry | `itam-program-playbook.md`, `guide.md` | You can say your biggest worry in two sentences |
-| 1 to 2 | 2 Sponsor, problem statement, light charter | Name a sponsor and a small group | `customer-expectations.csv`, the `program-setup` method | A sponsor with budget has agreed one line on the problem |
-| 1 to 3 | 3 Stop the bleeding | Catch renewals and name an audit contact | `renewal-calendar.csv`, `audit-response-roles.csv` | Every renewal in 180 days has an owner and a notice date, and each audit task has a holder |
+| 1 | 2 Sponsor, problem statement, light charter | Name a sponsor and a small group | `customer-expectations.csv`, the `program-setup` method | A sponsor with budget has agreed one line on the problem |
+| 1 | 3 Stop the bleeding | Catch renewals and name an audit contact | `renewal-calendar.csv`, `audit-response-roles.csv` | Every renewal in 180 days has an owner and a notice date, and each audit task has a holder |
 | 3 | 4 Set the scope | Bound assets and processes | `statement-of-applicability.csv`, `policy-template.md` section 2 | A written scope with exclusions, seen by the sponsor |
-| 4 to 5 | 5 Baseline and targets | Know where you stand and where you need to be | `what-good-looks-like.md`, `application-management-self-assessment.md`, `application-management-gap-plan.csv` | Every dimension has an As-Is score with evidence and a To-Be target; stop here if you must |
-| 6 to 8 | 6 The policy set | Draft the umbrella policy and the acquisition policy first | `policy-template.md`, `policy-checklist.md`, `policy-lifecycle-sop.md` | Two policies passed the checklist and have sponsor approval |
-| 7 to 10 | 7 Build one inventory | Start one trusted inventory | `source-of-truth-map.csv`, `asset-record.csv`, `process-map-worksheet.md` | Each application in scope has an owner and one authoritative record |
-| 9 to 12 | 8 Proof, then the position | Back entitlements with proof for your largest publishers | `proof-of-purchase-check.csv`, `license-position.csv`, `documentation-gaps-log.csv`, `contract-terms-check.csv` | Every shortfall has proof or a logged gap with an owner |
-| 12 to 13 | 9 Put controls in place, and 10 Measure and review | Start the gate; show leaders the result | `acquisition-gate-checklist.md`, `invoice-verification.csv`, `benefits-tracker.csv`, `leadership-report.md` | The sponsor has the first report and has chosen the next three gaps |
+| 4 | 5 Baseline and targets | Know where you stand and where you need to be | `what-good-looks-like.md`, `application-management-self-assessment.md`, `application-management-gap-plan.csv` | Every dimension has an As-Is score with evidence and a To-Be target; stop here if you must |
+| 6 | 6 The policy set | Draft the umbrella policy and the acquisition policy first | `policy-template.md`, `policy-checklist.md`, `policy-lifecycle-sop.md` | Two policies passed the checklist and have sponsor approval |
+| 7 | 7 Build one inventory | Start one trusted inventory | `source-of-truth-map.csv`, `asset-record.csv`, `process-map-worksheet.md` | Each application in scope has an owner and one authoritative record |
+| 9 | 8 Proof, then the position | Back entitlements with proof for your largest publishers | `proof-of-purchase-check.csv`, `license-position.csv`, `documentation-gaps-log.csv`, `contract-terms-check.csv` | Every shortfall has proof or a logged gap with an owner |
+| 12 | 9 Put controls in place, and 10 Measure and review | Start the gate; show leaders the result | `acquisition-gate-checklist.md`, `invoice-verification.csv`, `benefits-tracker.csv`, `leadership-report.md` | The sponsor has the first report and has chosen the next three gaps |
+| If you only have 2 hours a week | Steps 1 to 3 first | Do steps 1 to 3 first. Steps 1 to 5 take 30 to 60 hours of effort (expert judgment), and 30 to 60 hours at 2 hours a week is 15 to 30 weeks, about 4 to 7 months | The files for steps 1 to 3 in the rows above | A sponsor, a renewal calendar, and an audit roster are in place |
 
 ## Decision
 

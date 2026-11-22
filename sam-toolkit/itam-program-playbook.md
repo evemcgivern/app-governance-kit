@@ -2,9 +2,16 @@
 
 This is the one order to follow. It is for an asset manager who has to stand up, or take over, an IT asset management (ITAM) program and keep it running. Every other file in the kit is a tool you pick up at the step where this playbook names it. If another page seems to give a different order, follow this one.
 
+**Two standing rules**
+
+- Stop after step 5 if you must. Steps 1 to 5 are a complete small program.
+- If an audit letter arrives, give it to Legal and do not reply.
+
 Three terms come up at once. A sponsor is the executive who holds the budget and backs the program in public. A charter is a short written agreement on why the program exists, who decides what, and who sits on the group that decides. An entitlement is the right to use software that you can show you bought. Plain-language definitions of these and other terms are in the [glossary](../field-guide/glossary.md).
 
 You do not need to do all ten steps. Steps 1 to 5 are a complete small program: a sponsor, a scope, a baseline, a renewal calendar, and an audit roster.
+
+For practice, do the matching practicum exercise on the Halden data before you do a step on real records, and do exercise 08 before any real audit letter arrives. A step with a matching exercise lists it in its Related row.
 
 All ten steps together take about 250 to 450 hours of effort over 9 to 18 months, part-time, and longer if an audit lands. Add a few hours a week for the routines in the run table below. This is expert judgment for one person with other duties at a mid-size organization. It is not measured.
 
