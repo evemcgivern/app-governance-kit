@@ -1,6 +1,6 @@
 # Audit decision tree
 
-A printable outline for the question "what do we do about software audits, and in what order?" Each node asks one question, lists the answers, and says who acts, which kit file to open, and what to watch for. The answers link to the next node, so you can click through it on screen or follow the node ids on paper.
+A printable outline for deciding what to do about software audits, and in what order. Each node asks one question, lists the answers, and says who acts, which kit file to open, and what to watch for. The answers link to the next node, so you can click through it on screen or follow the node ids on paper.
 
 The tree covers the quiet case (nothing has happened), readiness work (someone is asking for a license position), and the live case (a letter has arrived). It follows the roles and records habits in clause 5.3 and clause 7.6.3, the license position work in clause 8.4, and the contract habits in clause 8.7. [[XW-004]] [[XW-007]] [[XW-013]] [[XW-020]]
 
@@ -9,7 +9,7 @@ The tree flags legal and contract points and leaves them with counsel and the co
 ## How to use it
 
 1. Start at [node 1](#node-1).
-2. Answer the question in plain terms. If you are not sure, take the answer that says "not sure".
+2. Answer the question in plain terms. If you are not sure, take the answer that mentions not being sure.
 3. Follow the link for your answer. Each answer names the next node by id, so the path survives a printout.
 4. At each node, check four things: who acts, which kit file to open, the label, and any flag.
 5. Keep a dated note of each node you passed and the answer you gave. In a live case, that note goes in the case file.
@@ -25,7 +25,7 @@ Each node carries one label.
 A node can also carry a flag.
 
 - **DN** means Decision needed. The names after it say who decides.
-- **FREEZE** means nothing in scope is deleted, reconfigured, or bought once a notice is open. Counsel decides any exception.
+- **FREEZE** means nothing in scope is deleted, reconfigured, or bought once a notice is open. Counsel decides any exception. Once a notice is open, keep every record as it stands: proofs, contracts, discovery output, emails and notes. Do not delete, edit or back-date any of them. Fix an error by adding a dated note, never by overwriting. **Decision needed: counsel**, for any exception.
 - **ORIG** means originals stay in house. The team works from copies.
 
 ## Jump to a node
@@ -163,6 +163,8 @@ A node can also carry a flag.
 ### Node C2
 
 **Freeze.** Do not uninstall, reconfigure, reassign, retire, or buy in-scope licenses. Pause cleanup scripts. Counsel decides any exception, including a routine renewal.
+
+Once a notice is open, keep every record as it stands: proofs, contracts, discovery output, emails and notes. Do not delete, edit or back-date any of them. Fix an error by adding a dated note, never by overwriting. **Decision needed: counsel**, for any exception.
 
 - Go to [node C3](#node-c3).
 - Who acts: the asset manager tells every team that touches the in-scope software; Legal sets any exception.
@@ -330,5 +332,9 @@ A node can also carry a flag.
 ## Not in this tree
 
 Penalty amounts, legal conclusions, and how long records must be kept are for counsel and the records owner. The tree does not answer them.
+
+## Questions for counsel
+
+While this notice is open, should routine disposal under our retention schedule pause for records tied to the audit? If so, which records, and who tells the records owner? **Decision needed: counsel.**
 
 Source: ISO/IEC 19770-1:2017 clauses 5.3, 7.6.3, 8.4 and 8.7, and the shared crosswalk. Paraphrased; this is not a substitute for the standard.
