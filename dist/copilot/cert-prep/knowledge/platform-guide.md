@@ -4,7 +4,7 @@ This tool has no platform integration. It runs in a chat with the Halden demo fi
 
 ## Where to run it
 
-- **Claude and Codex:** install the skill from the Tools page, then ask for a study session by certification name.
+- **Claude and Codex:** install the skill from the AI skills page, then ask for a study session by certification name.
 - **Microsoft Copilot:** use the agent instructions and knowledge files from the Copilot download, or paste the chat prompt.
 - Attach only files from `demo-estate/`. Do not attach real company data to a study session.
 

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Application management program self-assessment — Eve McGivern</title>
+<meta name="description" content="A self-assessment for an IT application management program: the work of deciding what applications…">
+<meta name="author" content="Eve McGivern">
+<link rel="canonical" href="https://evemcgivern.github.io/app-governance-kit/docs/sam-toolkit/application-management-self-assessment.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Eve McGivern — Application Governance">
+<meta property="og:title" content="Application management program self-assessment">
+<meta property="og:description" content="A self-assessment for an IT application management program: the work of deciding what applications…">
+<meta property="og:url" content="https://evemcgivern.github.io/app-governance-kit/docs/sam-toolkit/application-management-self-assessment.html">
+<meta property="og:image" content="https://evemcgivern.github.io/app-governance-kit/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Application management program self-assessment">
+<meta name="twitter:description" content="A self-assessment for an IT application management program: the work of deciding what applications…">
+<meta name="twitter:image" content="https://evemcgivern.github.io/app-governance-kit/og-image.png">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Home",
+     "item": "https://evemcgivern.github.io/app-governance-kit/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "SAM toolkit",
+     "item": "https://evemcgivern.github.io/app-governance-kit/sam-toolkit.html"
+    },
+    {
+     "@type": "ListItem",
+     "position": 3,
+     "name": "Application management program self-assessment",
+     "item": "https://evemcgivern.github.io/app-governance-kit/docs/sam-toolkit/application-management-self-assessment.html"
+    }
+   ]
+  },
+  {
+   "@type": "WebPage",
+   "name": "Application management program self-assessment",
+   "description": "A self-assessment for an IT application management program: the work of deciding what applications\u2026",
+   "url": "https://evemcgivern.github.io/app-governance-kit/docs/sam-toolkit/application-management-self-assessment.html",
+   "isPartOf": {
+    "@type": "WebSite",
+    "url": "https://evemcgivern.github.io/app-governance-kit/"
+   },
+   "author": {
+    "@type": "Person",
+    "name": "Eve McGivern",
+    "url": "https://evemcgivern.github.io/"
+   },
+   "license": "https://opensource.org/licenses/MIT",
+   "isAccessibleForFree": true
+  }
+ ]
+}
+</script>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../apple-touch-icon.png">
+<link rel="stylesheet" href="../../style.css">
+<script src="../../nav.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="support-bar"><a class="coffee-link" href="https://buymeacoffee.com/a8w5iiqszp" rel="noopener"><svg class="coffee-icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M5 9h11v5a5 5 0 0 1-5 5h-1a5 5 0 0 1-5-5V9z" fill="#2f9e6e"/><path d="M16 10.5h1.2a2.4 2.4 0 0 1 0 4.8H16" fill="none" stroke="#2f9e6e" stroke-width="1.8" stroke-linecap="round"/><path d="M8.5 3.5c0 1.3 1 1.3 1 2.6M12 3.5c0 1.3 1 1.3 1 2.6" fill="none" stroke="#2f9e6e" stroke-width="1.6" stroke-linecap="round"/></svg><span>Buy me a coffee</span></a></div>
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="https://evemcgivern.github.io/">Eve McGivern</a>
+    <nav class="site-nav" aria-label="Main">
+      <ul>
+        <li><a href="../../tools.html" aria-describedby="tip-tools">AI skills</a><span class="nav-tip" role="tooltip" id="tip-tools">The nine governance methods, packaged as skills for Claude, Codex, and Copilot.</span></li>
+        <li><a href="../../sam-toolkit.html" aria-describedby="tip-sam-toolkit">SAM toolkit</a><span class="nav-tip" role="tooltip" id="tip-sam-toolkit">Templates and checklists for running software asset management by hand.</span></li>
+        <li><a href="../../practicum.html" aria-describedby="tip-practicum">Practicum</a><span class="nav-tip" role="tooltip" id="tip-practicum">Hands-on exercises on a fictional company, with answers you can check.</span></li>
+        <li><a href="../../lifecycle.html" aria-describedby="tip-lifecycle">Lifecycle</a><span class="nav-tip" role="tooltip" id="tip-lifecycle">Six stages from request to retirement, with the questions to ask at each.</span></li>
+        <li><a href="../../crosswalk.html" aria-describedby="tip-crosswalk">Crosswalk explorer</a><span class="nav-tip" role="tooltip" id="tip-crosswalk">See how each control maps to ISO/IEC 19770, COBIT, 27001, and 42001.</span></li>
+        <li><a href="../../impact-map.html" aria-describedby="tip-impact-map">Impact map</a><span class="nav-tip" role="tooltip" id="tip-impact-map">One grid showing every control theme against every lifecycle stage.</span></li>
+        <li><a href="../../field-guide.html" aria-describedby="tip-field-guide">Field guide</a><span class="nav-tip" role="tooltip" id="tip-field-guide">Plain-language guides to the standards, certifications, and key terms.</span></li>
+        <li><a href="../../case-studies.html" aria-describedby="tip-case-studies">Case studies</a><span class="nav-tip" role="tooltip" id="tip-case-studies">Worked examples of the kit in use, on a fictional company.</span></li>
+        <li><a href="../../about.html" aria-describedby="tip-about">About</a><span class="nav-tip" role="tooltip" id="tip-about">Who built the kit, and how to get in touch.</span></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<main id="main" class="doc-page">
+  <div class="doc-top">
+    <p class="doc-back"><a href="../../sam-toolkit.html">&larr; SAM toolkit</a></p>
+    <button type="button" class="print-icon" onclick="window.print()" aria-label="Print this page" title="Print"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="M7 9V3.5h10V9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M7 17H4.5A1.5 1.5 0 0 1 3 15.5v-5A1.5 1.5 0 0 1 4.5 9h15a1.5 1.5 0 0 1 1.5 1.5v5a1.5 1.5 0 0 1-1.5 1.5H17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><rect x="7" y="14" width="10" height="6.5" rx="0.8" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17.5" cy="12" r="0.9" fill="currentColor"/></svg></button>
+  </div>
+  <p class="meta doc-step">Used in playbook step 5 of 10: <a href="itam-program-playbook.html#step-5-baseline-and-targets">Baseline and targets</a>. Previous step: <a href="itam-program-playbook.html#step-4-set-the-scope">Set the scope</a>. Next step: <a href="itam-program-playbook.html#step-6-the-policy-set">The policy set</a>.</p>
+  <h1>Application management program self-assessment</h1>
+  <div class="visual-actions doc-actions">
+    <button type="button" class="visual-actions__link" id="answers-doc" data-file="application-management-self-assessment-my-answers.doc">Download my answers (Word)</button>
+    <a class="visual-actions__link" href="application-management-self-assessment.docx">Download Word (.docx)</a>
+    <a class="visual-actions__link" href="application-management-self-assessment.xlsx">Download Excel (.xlsx)</a>
+    <button type="button" class="visual-actions__link doc-print" onclick="window.print()">Print or save as PDF</button>
+  </div>
+  <p class="meta doc-note">What you tick or type stays in this browser. The Word and Excel downloads are blank copies. To keep your answers, use Download my answers (Word), or print this page or save it as PDF.</p>
+
+  <script>
+document.addEventListener("DOMContentLoaded", function () {
+  "use strict";
+  // Keep what the reader types or ticks in this browser, so a reload does not lose it.
+  var key = "agk:" + location.pathname, fields = [].slice.call(document.querySelectorAll(
+    ".doc-body input[name], .doc-body textarea[name], .doc-body select[name]"));
+  if (!fields.length) { return; }
+  var saved = {};
+  try { saved = JSON.parse(localStorage.getItem(key) || "{}"); } catch (e) { saved = {}; }
+  fields.forEach(function (f) {
+    var v = saved[f.type === "radio" ? f.name : f.name];
+    if (f.type === "radio") { f.checked = v === f.value; }
+    else if (f.type === "checkbox") { f.checked = v === true; }
+    else if (typeof v === "string") { f.value = v; }
+  });
+  function save() {
+    var data = {};
+    fields.forEach(function (f) {
+      if (f.type === "radio") { if (f.checked) { data[f.name] = f.value; } }
+      else if (f.type === "checkbox") { if (f.checked) { data[f.name] = true; } }
+      else if (f.value) { data[f.name] = f.value; }
+    });
+    try { localStorage.setItem(key, JSON.stringify(data)); } catch (e) { /* storage unavailable */ }
+  }
+  document.addEventListener("change", save);
+  document.addEventListener("input", save);
+  document.dispatchEvent(new Event("change"));
+});
+  </script>
+  <script>
+document.addEventListener('DOMContentLoaded', function () {
+  'use strict';
+  var button = document.getElementById('answers-doc');
+  if (!button) { return; }
+  function fieldsOf(root) {
+    return [].slice.call(root.querySelectorAll('input[name], textarea[name], select[name]'));
+  }
+  function esc(t) { return String(t).replace(/&/g, '&amp;').replace(/</g, '&lt;'); }
+  // Builds a Word-readable copy of the page with the reader's answers written into it.
+  button.addEventListener('click', function () {
+    var body = document.querySelector('.doc-body');
+    var copy = body.cloneNode(true);
+    var live = fieldsOf(body), flat = fieldsOf(copy);
+    live.forEach(function (f, i) {
+      var c = flat[i], out = document.createElement('span');
+      if (f.type === 'radio') {
+        var label = c.closest('label');
+        if (f.checked) { out.textContent = '\u2612 ' + f.value; label.replaceWith(out); } else { label.remove(); }
+        return;
+      }
+      if (f.type === 'checkbox') {
+        out.textContent = f.checked ? '\u2612' : '\u2610';
+        (c.closest('label') || c).replaceWith(out);
+        return;
+      }
+      out.textContent = f.tagName === 'SELECT' ? ((f.options[f.selectedIndex] || {}).text || '') : f.value;
+      c.replaceWith(out);
+    });
+    copy.querySelectorAll('[hidden], script').forEach(function (n) { n.remove(); });
+    var tier = document.getElementById('tier-result');
+    var head = tier ? '<p><strong>Your assumed tier:</strong> ' + esc(tier.textContent) + '</p>' : '';
+    var style = 'body{font-family:Calibri,Arial,sans-serif}table{border-collapse:collapse}' +
+      'td,th{border:1px solid #777;padding:4px;vertical-align:top}';
+    var html = '<html><head><meta charset=utf-8><title>' + esc(document.title) + '</title><style>' + style +
+      '</style></head><body><h1>' + esc(document.querySelector('h1').textContent) + '</h1>' + head +
+      copy.innerHTML + '</body></html>';
+    var blob = new Blob(['\ufeff', html], {type: 'application/msword'});
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = button.getAttribute('data-file');
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(function () { URL.revokeObjectURL(a.href); }, 1000);
+  });
+});
+  </script>
+  <div class="doc-body prose prose-wide">
+<p>A self-assessment for an IT application management program: the work of deciding what applications the organization has, who is accountable for each, what to buy, renew, change, or retire, and how to prove it. It records two states for each part of the program: where you are now (the As-Is state) and where you need to be (the To-Be state). The gap between them is your plan.</p>
+<p>Use it before the full <code>itam-maturity</code> check, or alongside <a href="tier-self-assessment.html">Tier self-assessment</a>. The tier check asks whether your asset data meets a standard&#x27;s tiers; the maturity check scores nine asset management areas with evidence; this one looks at the application management program as a whole and asks where you want it to go. Record your answers in <a href="application-management-gap-plan.html">Application management gap plan template</a>.</p>
+<p>Clause references are to the shared crosswalk (<code>XW-</code> rows). Nothing here comes from a standard&#x27;s text, and the scale is this kit&#x27;s own.</p>
+<h2 id="the-scale">The scale</h2>
+<p>Score each dimension from 0 to 3. Use the evidence rule: if you cannot show the evidence for a level, score one level lower.</p>
+<div class="table-scroll"><table class="checklist"><caption>The scale</caption><thead><tr><th scope="col">Level</th><th scope="col">Meaning</th><th scope="col">What you can show</th></tr></thead><tbody><tr><td>0</td><td>Not done</td><td class="long-text">Nothing: nobody does this.</td></tr><tr><td>1</td><td>Ad hoc</td><td class="long-text">It happens sometimes, depends on who is asked, and is not written down.</td></tr><tr><td>2</td><td>Defined</td><td class="long-text">It is written down, has a named owner, and is followed. You can show a recent example.</td></tr><tr><td>3</td><td>Measured</td><td class="long-text">It is defined and followed, a number tells you how well it works, and the number has led to a change.</td></tr></tbody></table></div>
+<p>Not every dimension needs to reach 3. Level 2 is a strong result for a small organization. Choose each To-Be level for a reason: a risk you must reduce, a cost you want to save, or a requirement you must meet.</p>
+<h2 id="the-dimensions">The dimensions</h2>
+<div class="table-scroll"><table class="checklist wide"><caption>The dimensions</caption><thead><tr><th scope="col">#</th><th scope="col">Dimension</th><th scope="col">Level 1 looks like</th><th scope="col">Level 2 looks like</th><th scope="col">Level 3 looks like</th><th scope="col">Kit file that helps</th></tr></thead><tbody><tr><td>1</td><td>Policy, scope, and decision rights</td><td class="long-text">People follow habits. No written rule says what counts as a managed application.</td><td class="long-text">A written, approved policy names scope, an accountable role, defined terms, enforcement, and a review cycle. <a class="xw-tag" href="../../crosswalk.html">XW-003</a></td><td class="long-text">Acknowledgment is tracked, the policy is reviewed on schedule, and review changes are recorded.</td><td class="long-text"><a href="policy-template.html">Policy template</a>, <a href="policy-checklist.html">Policy checklist</a>, <a href="process-map-worksheet.html">Is and Should process-map worksheet</a></td></tr><tr><td>2</td><td>Roles and ownership</td><td class="long-text">Some applications have an owner by habit; others do not.</td><td class="long-text">Every application has a named accountable owner, set by role, with a backup. <a class="xw-tag" href="../../crosswalk.html">XW-002</a> <a class="xw-tag" href="../../crosswalk.html">XW-004</a></td><td class="long-text">Owner changes trigger a reassignment and a review, and the share of applications with a valid owner is tracked.</td><td class="long-text"><a href="asset-record.html">Asset record template</a></td></tr><tr><td>3</td><td>Inventory and data quality</td><td class="long-text">A list exists but is out of date and kept in several places.</td><td class="long-text">One inventory is the record of authority, with an owner per application and a stated refresh schedule. <a class="xw-tag" href="../../crosswalk.html">XW-001</a> <a class="xw-tag" href="../../crosswalk.html">XW-026</a></td><td class="long-text">Records are verified against discovery data on schedule, mismatches are logged and fixed, and accuracy is measured.</td><td class="long-text"><a href="source-of-truth-map.html">Source of truth map template</a></td></tr><tr><td>4</td><td>Intake and acquisition</td><td class="long-text">Teams buy what they need and tell IT afterward, if at all.</td><td class="long-text">One request path runs before every purchase: already owned, redeployable, duplicate, approved. The record is created before the purchase. <a class="xw-tag" href="../../crosswalk.html">XW-009</a> <a class="xw-tag" href="../../crosswalk.html">XW-011</a></td><td class="long-text">Purchases outside the path are found on a schedule, counted, and traced to why the path was skipped.</td><td class="long-text"><a href="acquisition-gate-checklist.html">Acquisition gate checklist</a></td></tr><tr><td>5</td><td>Lifecycle and periodic review</td><td class="long-text">Applications stay in use until something breaks.</td><td class="long-text">Each application has a lifecycle state and a review date, and the owner confirms it still meets a business need. <a class="xw-tag" href="../../crosswalk.html">XW-009</a></td><td class="long-text">Reviews also run on events (owner change, contract change, major upgrade), and overdue reviews are tracked.</td><td class="long-text"><a href="renewal-calendar.html">Renewal calendar template</a></td></tr><tr><td>6</td><td>Licenses, contracts, and renewals</td><td class="long-text">Licenses and contracts live in mailboxes and in people&#x27;s heads.</td><td class="long-text">Entitlements, proofs of purchase, and renewal dates are recorded; notice deadlines are known; positions are compared with use in the contract&#x27;s metric. <a class="xw-tag" href="../../crosswalk.html">XW-006</a> <a class="xw-tag" href="../../crosswalk.html">XW-007</a> <a class="xw-tag" href="../../crosswalk.html">XW-008</a> <a class="xw-tag" href="../../crosswalk.html">XW-013</a></td><td class="long-text">Every renewal has a decision before its notice deadline, and documentation gaps are logged, owned, and closed.</td><td class="long-text"><a href="license-position.html">License position template</a>, <a href="documentation-gaps-log.html">Documentation gaps log template</a></td></tr><tr><td>7</td><td>Cost, value, and rationalization</td><td class="long-text">Cost is known only from invoices. Duplicates are found by chance.</td><td class="long-text">Cost and users are recorded per application; duplicates are reviewed; each application gets a keep, change, or retire call with a reason. <a class="xw-tag" href="../../crosswalk.html">XW-011</a> <a class="xw-tag" href="../../crosswalk.html">XW-012</a></td><td class="long-text">Savings are recorded with evidence, adverse trends are reported beside them, and renewal decisions use total cost and measured return.</td><td class="long-text"><a href="savings-report.html">Savings report template</a></td></tr><tr><td>8</td><td>Risk, security, and AI use</td><td class="long-text">Risk is considered when someone raises it.</td><td class="long-text">Each application has a data-sensitivity rating; new tools that use AI or hold organizational data go through a review before approval. <a class="xw-tag" href="../../crosswalk.html">XW-021</a> <a class="xw-tag" href="../../crosswalk.html">XW-024</a> <a class="xw-tag" href="../../crosswalk.html">XW-028</a></td><td class="long-text">Risks are tiered, treatments are tracked to completion, and support-end dates and known-exploited flags are checked on schedule.</td><td class="long-text"><a href="acquisition-gate-checklist.html">Acquisition gate checklist</a></td></tr><tr><td>9</td><td>Retirement and data disposition</td><td class="long-text">Retired applications are switched off; data and licenses are forgotten.</td><td class="long-text">A retirement procedure covers sign-offs, license release, data archive or deletion, and closing the record. <a class="xw-tag" href="../../crosswalk.html">XW-010</a></td><td class="long-text">Retirements are checked against the procedure, wipe or destruction evidence is kept, and the final cost is recorded.</td><td class="long-text"><a href="retirement-signoff-checklist.html">Retirement sign-off checklist</a></td></tr><tr><td>10</td><td>Measures and leadership reporting</td><td class="long-text">Reports are produced when asked, from whatever data is at hand.</td><td class="long-text">A short set of measures, each with a definition, an owner, and a data source, is reported to leaders on a schedule. <a class="xw-tag" href="../../crosswalk.html">XW-025</a></td><td class="long-text">Each measure has a target and a set response when it is missed, and reports tie results to money saved or risk reduced.</td><td class="long-text"><a href="leadership-report.html">Leadership report</a></td></tr><tr><td>11</td><td>Communication and education</td><td class="long-text">Owners hear about the rules when something goes wrong.</td><td class="long-text">Owners are told what is expected, and the message is repeated at onboarding and when roles change.</td><td class="long-text">Owners show they understand it (a check or sign-off), and feedback changes how the program communicates.</td><td class="long-text"><a href="process-map-worksheet.html">Is and Should process-map worksheet</a></td></tr></tbody></table></div>
+<h2 id="how-to-run-it">How to run it</h2>
+<ol><li>Agree scope: which applications, business units, and teams the program covers. Write it down.</li><li>Score As-Is for each dimension with the people who do the work. For each score, write the evidence you could show an auditor or a leader. Apply the evidence rule.</li><li>Choose To-Be for each dimension. Write why you chose it and by when. Leave a dimension where it is if it is not worth the effort.</li><li>Work out the gap: To-Be minus As-Is. Rank the gaps by the risk or cost of leaving them. A gap of two or more is a candidate for a first-quarter project; a gap of one may fit into routine work.</li><li>Name an owner and a first action for each gap you will close. Limit yourself to three at a time. <strong>Decision needed:</strong> the sponsor chooses which gaps to fund first.</li><li>Record everything in <a href="application-management-gap-plan.html">Application management gap plan template</a>. Repeat the assessment at least yearly, and after a merger, a platform change, or a change of sponsor. Keep each year&#x27;s copy so you can show movement.</li></ol>
+<h2 id="common-mistakes">Common mistakes</h2>
+<ul><li>Scoring by intent. A written policy nobody follows is level 1, not level 2.</li><li>Setting every To-Be to 3. A target you cannot afford to reach is a wish, not a plan.</li><li>Scoring without the people who do the work. A sponsor&#x27;s view of the program often differs from the practitioner&#x27;s.</li><li>Skipping the evidence column. Without evidence the score cannot be challenged later.</li><li>Treating the assessment as the end. Its output is a short plan with owners and dates.</li></ul>
+<h2 id="decision">Decision</h2>
+<div class="table-scroll"><table class="checklist"><caption>Decision</caption><thead><tr><th scope="col">Decision</th><th scope="col">Owner</th><th scope="col">Approver</th><th scope="col">Date</th></tr></thead><tbody><tr><td class="long-text">Gaps funded this quarter / deferred / accepted as risk</td><td class="checklist-write"><input type="text" name="t3-gaps-funded-this-quarter-deferred-accepted-as-risk-owner" aria-label="Owner for Gaps funded this quarter / deferred / accepted as risk"></td><td class="checklist-write"><input type="text" name="t3-gaps-funded-this-quarter-deferred-accepted-as-risk-approver" aria-label="Approver for Gaps funded this quarter / deferred / accepted as risk"></td><td class="checklist-write"><input type="text" name="t3-gaps-funded-this-quarter-deferred-accepted-as-risk-date" aria-label="Date for Gaps funded this quarter / deferred / accepted as risk"></td></tr></tbody></table></div>
+  </div>
+  <div class="doc-bottom"><button type="button" class="print-icon" onclick="window.print()" aria-label="Print this page" title="Print"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="M7 9V3.5h10V9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M7 17H4.5A1.5 1.5 0 0 1 3 15.5v-5A1.5 1.5 0 0 1 4.5 9h15a1.5 1.5 0 0 1 1.5 1.5v5a1.5 1.5 0 0 1-1.5 1.5H17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><rect x="7" y="14" width="10" height="6.5" rx="0.8" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17.5" cy="12" r="0.9" fill="currentColor"/></svg></button></div>
+</main>
+<footer class="site-footer">
+  <p>Eve McGivern · <a href="https://evemcgivern.github.io/">evemcgivern.github.io</a></p>
+  <p>Questions? Comments? <a href="https://github.com/evemcgivern/app-governance-kit/issues" id="contact-email" data-r="moc.liamg|nrevigcmeve">email me</a>.</p>
+  <p><a href="https://buymeacoffee.com/a8w5iiqszp" rel="noopener">Buy me a coffee</a> if these tools help.</p>
+  <p class="site-version"><a href="https://github.com/evemcgivern/app-governance-kit/releases" rel="noopener" id="site-version">Version</a></p>
+</footer>
+<script>
+(function () {
+  "use strict";
+  var el = document.getElementById("contact-email");
+  if (!el || !el.getAttribute("data-r")) { return; }
+  function arm() {
+    el.href = "mailto:" + el.getAttribute("data-r").split("").reverse().join("").replace("|", "@");
+  }
+  ["pointerenter", "focus", "touchstart"].forEach(function (type) {
+    el.addEventListener(type, arm, { once: true, passive: true });
+  });
+})();
+</script>
+
+</body>
+</html>

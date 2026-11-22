@@ -1,0 +1,3 @@
+check_id,quarter,area,test,sample_size,records_failed,finding,severity,owner,due_on,retested_on,result,evidence_ref
+IC-001,2026-Q3,Retirement,Check that each sampled retired device has a wipe or destruction record,10,2,DEV-011 and DEV-042 have no wipe confirmation.,high,Hardware asset manager,2026-12-31,,open,
+IC-002,2026-Q3,Renewals,Check that every license past expiry has a recorded decision,60,2,LIC-017 and LIC-044 expired with no recorded decision.,high,Procurement lead,2026-12-31,,open,

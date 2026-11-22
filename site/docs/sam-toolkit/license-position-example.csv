@@ -1,4 +1,4 @@
-app_id,product,vendor,license_metric,entitlements_owned,in_use_count,position,status,evidence_source,checked_on,reviewer,notes
+asset_id,product,vendor,license_metric,entitlements_owned,in_use_count,position,status,evidence_source,checked_on,reviewer,notes
 APP-001,Northbeam ERP,Northbeam,named user,38,57,-19,shortfall,demo-estate licenses.csv and apps.csv,2026-09-01,,User count stands in for licensed seats; confirm against the vendor's metric.
 APP-002,Paylane Payroll,Paylane,named user,51,94,-43,shortfall,demo-estate licenses.csv and apps.csv,2026-09-01,,User count stands in for licensed seats; confirm against the vendor's metric.
 APP-003,Staffhub HR information system,Staffhub,named user,64,131,-67,shortfall,demo-estate licenses.csv and apps.csv,2026-09-01,,User count stands in for licensed seats; confirm against the vendor's metric.

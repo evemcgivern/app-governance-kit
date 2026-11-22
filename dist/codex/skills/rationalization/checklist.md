@@ -14,3 +14,4 @@
 12. Verify each invoice against the contract and purchase order before it is paid, and log every mismatch in `sam-toolkit/invoice-verification.csv` [[XW-012]] [[XW-013]]
 13. Report savings with the evidence behind each figure, and include adverse trends such as rising invoice errors or reclaimed licenses requested again, in `sam-toolkit/savings-report.csv` [[XW-012]]
 14. Decisions and approvers recorded [[XW-020]]
+15. Renewals due in the next 180 days listed with owner and notice deadline, each decision recorded before the notice deadline [[XW-008]] [[XW-013]]

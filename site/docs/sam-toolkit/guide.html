@@ -4,18 +4,18 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>SAM toolkit guide — Eve McGivern</title>
-<meta name="description" content="Thirteen working files to support a software and IT asset management (SAM/ITAM) practice. They…">
+<meta name="description" content="Forty working files, including this guide, to support a software and IT asset management…">
 <meta name="author" content="Eve McGivern">
 <link rel="canonical" href="https://evemcgivern.github.io/app-governance-kit/docs/sam-toolkit/guide.html">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Eve McGivern — Application Governance">
 <meta property="og:title" content="SAM toolkit guide">
-<meta property="og:description" content="Thirteen working files to support a software and IT asset management (SAM/ITAM) practice. They…">
+<meta property="og:description" content="Forty working files, including this guide, to support a software and IT asset management…">
 <meta property="og:url" content="https://evemcgivern.github.io/app-governance-kit/docs/sam-toolkit/guide.html">
 <meta property="og:image" content="https://evemcgivern.github.io/app-governance-kit/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="SAM toolkit guide">
-<meta name="twitter:description" content="Thirteen working files to support a software and IT asset management (SAM/ITAM) practice. They…">
+<meta name="twitter:description" content="Forty working files, including this guide, to support a software and IT asset management…">
 <meta name="twitter:image" content="https://evemcgivern.github.io/app-governance-kit/og-image.png">
 <script type="application/ld+json">
 {
@@ -47,7 +47,7 @@
   {
    "@type": "WebPage",
    "name": "SAM toolkit guide",
-   "description": "Thirteen working files to support a software and IT asset management (SAM/ITAM) practice. They\u2026",
+   "description": "Forty working files, including this guide, to support a software and IT asset management\u2026",
    "url": "https://evemcgivern.github.io/app-governance-kit/docs/sam-toolkit/guide.html",
    "isPartOf": {
     "@type": "WebSite",
@@ -77,7 +77,7 @@
     <a class="brand" href="https://evemcgivern.github.io/">Eve McGivern</a>
     <nav class="site-nav" aria-label="Main">
       <ul>
-        <li><a href="../../tools.html" aria-describedby="tip-tools">Tools</a><span class="nav-tip" role="tooltip" id="tip-tools">The nine governance methods, packaged as skills for Claude, Codex, and Copilot.</span></li>
+        <li><a href="../../tools.html" aria-describedby="tip-tools">AI skills</a><span class="nav-tip" role="tooltip" id="tip-tools">The nine governance methods, packaged as skills for Claude, Codex, and Copilot.</span></li>
         <li><a href="../../sam-toolkit.html" aria-describedby="tip-sam-toolkit">SAM toolkit</a><span class="nav-tip" role="tooltip" id="tip-sam-toolkit">Templates and checklists for running software asset management by hand.</span></li>
         <li><a href="../../practicum.html" aria-describedby="tip-practicum">Practicum</a><span class="nav-tip" role="tooltip" id="tip-practicum">Hands-on exercises on a fictional company, with answers you can check.</span></li>
         <li><a href="../../lifecycle.html" aria-describedby="tip-lifecycle">Lifecycle</a><span class="nav-tip" role="tooltip" id="tip-lifecycle">Six stages from request to retirement, with the questions to ask at each.</span></li>
@@ -95,106 +95,32 @@
     <p class="doc-back"><a href="../../sam-toolkit.html">&larr; SAM toolkit</a></p>
     <button type="button" class="print-icon" onclick="window.print()" aria-label="Print this page" title="Print"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="M7 9V3.5h10V9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M7 17H4.5A1.5 1.5 0 0 1 3 15.5v-5A1.5 1.5 0 0 1 4.5 9h15a1.5 1.5 0 0 1 1.5 1.5v5a1.5 1.5 0 0 1-1.5 1.5H17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><rect x="7" y="14" width="10" height="6.5" rx="0.8" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17.5" cy="12" r="0.9" fill="currentColor"/></svg></button>
   </div>
+  <p class="meta doc-step">Used in playbook step 1 of 10: <a href="itam-program-playbook.html#step-1-read-the-map">Read the map</a>. Next step: <a href="itam-program-playbook.html#step-2-get-a-sponsor-a-problem-statement-and-a-light-charter">Get a sponsor, a problem statement, and a light charter</a>.</p>
   <h1>SAM toolkit guide</h1>
   <div class="visual-actions doc-actions">
-    <button type="button" class="visual-actions__link" id="answers-doc" data-file="guide-my-answers.doc">Download my answers (Word)</button>
     <a class="visual-actions__link" href="guide.docx">Download Word (.docx)</a>
     <button type="button" class="visual-actions__link doc-print" onclick="window.print()">Print or save as PDF</button>
   </div>
-  <p class="meta doc-note">What you tick or type stays in this browser. The Word and Excel downloads are blank copies. To keep your answers, use Download my answers (Word), or print this page or save it as PDF.</p>
 
-  <script>
-document.addEventListener("DOMContentLoaded", function () {
-  "use strict";
-  // Keep what the reader types or ticks in this browser, so a reload does not lose it.
-  var key = "agk:" + location.pathname, fields = [].slice.call(document.querySelectorAll(
-    ".doc-body input[name], .doc-body textarea[name], .doc-body select[name]"));
-  if (!fields.length) { return; }
-  var saved = {};
-  try { saved = JSON.parse(localStorage.getItem(key) || "{}"); } catch (e) { saved = {}; }
-  fields.forEach(function (f) {
-    var v = saved[f.type === "radio" ? f.name : f.name];
-    if (f.type === "radio") { f.checked = v === f.value; }
-    else if (f.type === "checkbox") { f.checked = v === true; }
-    else if (typeof v === "string") { f.value = v; }
-  });
-  function save() {
-    var data = {};
-    fields.forEach(function (f) {
-      if (f.type === "radio") { if (f.checked) { data[f.name] = f.value; } }
-      else if (f.type === "checkbox") { if (f.checked) { data[f.name] = true; } }
-      else if (f.value) { data[f.name] = f.value; }
-    });
-    try { localStorage.setItem(key, JSON.stringify(data)); } catch (e) { /* storage unavailable */ }
-  }
-  document.addEventListener("change", save);
-  document.addEventListener("input", save);
-  document.dispatchEvent(new Event("change"));
-});
-  </script>
-  <script>
-document.addEventListener('DOMContentLoaded', function () {
-  'use strict';
-  var button = document.getElementById('answers-doc');
-  if (!button) { return; }
-  function fieldsOf(root) {
-    return [].slice.call(root.querySelectorAll('input[name], textarea[name], select[name]'));
-  }
-  function esc(t) { return String(t).replace(/&/g, '&amp;').replace(/</g, '&lt;'); }
-  // Builds a Word-readable copy of the page with the reader's answers written into it.
-  button.addEventListener('click', function () {
-    var body = document.querySelector('.doc-body');
-    var copy = body.cloneNode(true);
-    var live = fieldsOf(body), flat = fieldsOf(copy);
-    live.forEach(function (f, i) {
-      var c = flat[i], out = document.createElement('span');
-      if (f.type === 'radio') {
-        var label = c.closest('label');
-        if (f.checked) { out.textContent = '\u2612 ' + f.value; label.replaceWith(out); } else { label.remove(); }
-        return;
-      }
-      if (f.type === 'checkbox') {
-        out.textContent = f.checked ? '\u2612' : '\u2610';
-        (c.closest('label') || c).replaceWith(out);
-        return;
-      }
-      out.textContent = f.tagName === 'SELECT' ? ((f.options[f.selectedIndex] || {}).text || '') : f.value;
-      c.replaceWith(out);
-    });
-    copy.querySelectorAll('[hidden], script').forEach(function (n) { n.remove(); });
-    var tier = document.getElementById('tier-result');
-    var head = tier ? '<p><strong>Your assumed tier:</strong> ' + esc(tier.textContent) + '</p>' : '';
-    var style = 'body{font-family:Calibri,Arial,sans-serif}table{border-collapse:collapse}' +
-      'td,th{border:1px solid #777;padding:4px;vertical-align:top}';
-    var html = '<html><head><meta charset=utf-8><title>' + esc(document.title) + '</title><style>' + style +
-      '</style></head><body><h1>' + esc(document.querySelector('h1').textContent) + '</h1>' + head +
-      copy.innerHTML + '</body></html>';
-    var blob = new Blob(['\ufeff', html], {type: 'application/msword'});
-    var a = document.createElement('a');
-    a.href = URL.createObjectURL(blob);
-    a.download = button.getAttribute('data-file');
-    document.body.appendChild(a); a.click(); a.remove();
-    setTimeout(function () { URL.revokeObjectURL(a.href); }, 1000);
-  });
-});
-  </script>
   <div class="doc-body prose prose-wide">
-<p>Thirteen working files to support a software and IT asset management (SAM/ITAM) practice. They are blank templates and checklists. Open the CSV files in Excel, Google Sheets, or any spreadsheet; they are plain text, so nothing is locked. All data in the examples is fictional (the Halden Logistics demo estate).</p>
-<p>The files follow ISO/IEC 19770-1:2017. Most files trace to a clause of the standard; the purchasing and savings files (<a href="invoice-verification.html">Invoice verification template</a>, <a href="savings-report.html">Savings report template</a>) trace to crosswalk rows instead. The text is paraphrased and does not replace the standard. No affiliation with or endorsement by ISO or IEC.</p>
+<p>Forty working files, including this guide, to support a software and IT asset management (SAM/ITAM) practice. They are blank templates and checklists. Open the CSV files in Excel, Google Sheets, or any spreadsheet; they are plain text, so nothing is locked. The documents are Markdown in the repository and download as Word files from the site. All data in the examples is fictional (the Halden Logistics demo estate).</p>
+<p>The files are informed by ISO/IEC 19770-1:2017. Most files trace to a clause of the standard; the purchasing, savings, and practice files trace to crosswalk rows instead. The text is paraphrased and does not replace the standard. No affiliation with or endorsement by ISO or IEC.</p>
 <h2 id="where-to-start">Where to start</h2>
-<ol><li><a href="tier-self-assessment.html">Tier self-assessment</a>: find out which tier you are at.</li><li><a href="statement-of-applicability.html">Statement of applicability template</a>: decide which processes are in scope.</li><li><a href="asset-record.html">Asset record template</a> and <a href="license-position.html">License position template</a>: get the data right first (tier 1).</li><li><a href="proof-of-purchase-check.html">Proof of purchase check template</a>: back each entitlement with acceptable proof.</li><li><a href="renewal-calendar.html">Renewal calendar template</a>, <a href="authorization-log.html">Authorization log template</a>, <a href="vendor-contract-register.html">Vendor contract register template</a>: add the records that keep it right.</li><li><a href="contract-terms-check.html">Contract terms check template</a>: list the contract terms to confirm with counsel or the vendor.</li><li><a href="acquisition-gate-checklist.html">Acquisition gate checklist</a>: stop unplanned purchases at the door.</li><li><a href="invoice-verification.html">Invoice verification template</a> and <a href="savings-report.html">Savings report template</a>: check invoices before payment, then report what the practice saved.</li><li><a href="audit-and-review-checklist.html">Internal audit and management review checklist</a>: check the system on a schedule.</li></ol>
+<p>Start with <a href="itam-program-playbook.html">Playbook: set up and run an ITAM program</a>. It is the one order to follow: ten steps, each with the files to use, the matching setup prompt, and what done looks like. This guide is the reference for what each file is and how to fill it in; it does not set an order. Read the plain-language <a href="../../field-guide.html#glossary-heading">glossary</a> for the terms, and the <code>program-setup</code> method (<a href="../program-setup/method.html">Stand up a governance program</a>) for the charter in step 2.</p>
+<p>Two files support the playbook rather than sit in it: <a href="operating-calendar.html">Operating calendar and first 90 days</a> lists the routines and maps its weeks to the playbook&#x27;s steps, and <a href="setup-prompts.html">Setup prompts</a> holds the thirteen prompts for an AI assistant. For one place to assess, plan, and measure, use <code>application-management-workbook.xlsx</code>.</p>
 <h2 id="the-files">The files</h2>
+<p><strong>One key.</strong> Every file that refers to an application, device, or service uses <code>asset_id</code>, the same value as in <a href="asset-record.html">Asset record template</a>. <a href="license-position.html">License position template</a>, <a href="proof-of-purchase-check.html">Proof of purchase check template</a>, and <a href="renewal-calendar.html">Renewal calendar template</a> use <code>asset_id</code> for the item they cover. <code>contract_ref</code> is the key for a contract: it is the same value as <code>contract_ref</code> in <a href="vendor-contract-register.html">Vendor contract register template</a>, <code>contract_id</code> in <a href="contract-terms-check.html">Contract terms check template</a>, and <code>governing_agreement</code> in <a href="invoice-verification.html">Invoice verification template</a>. The Halden demo estate files <code>licenses.csv</code> and <code>accounts.csv</code> call the same value <code>app_id</code>, and <code>apps.csv</code> calls it <code>id</code> (for example APP-001). They are source data for the practicum, so they keep their own column names; map them to <code>asset_id</code> when you copy a row into a toolkit file.</p>
 <h3 id="license-position-csv-clause-8-4">license-position.csv (clause 8.4)</h3>
 <p>One row per product. Reconcile what you own against what is in use.</p>
-<ul><li><code>entitlements_owned</code>: the count of licenses you hold, in the vendor&#x27;s license metric (<code>license_metric</code>: user, device, core, and so on).</li><li><code>in_use_count</code>: installs, users or cores in use, in the same metric. Do not mix metrics in one row.</li><li><code>position</code>: <code>entitlements_owned</code> minus <code>in_use_count</code>. Negative is a shortfall.</li><li><code>status</code>: shortfall, surplus or balanced.</li><li><code>evidence_source</code>, <code>checked_on</code>, <code>reviewer</code>: where the numbers came from, when, and who checked.</li></ul>
+<ul><li><code>asset_id</code>: the asset this row covers, as in <a href="asset-record.html">Asset record template</a>.</li><li><code>entitlements_owned</code>: the count of licenses you hold, in the vendor&#x27;s license metric (<code>license_metric</code>: user, device, core, and so on).</li><li><code>in_use_count</code>: installs, users or cores in use, in the same metric. Do not mix metrics in one row.</li><li><code>position</code>: <code>entitlements_owned</code> minus <code>in_use_count</code>. Negative is a shortfall.</li><li><code>status</code>: shortfall, surplus or balanced.</li><li><code>evidence_source</code>, <code>checked_on</code>, <code>reviewer</code>: where the numbers came from, when, and who checked.</li></ul>
 <p>A user count is not always the licensed quantity. Confirm the vendor&#x27;s metric before acting on a shortfall. See <a href="license-position-example.html">License position example</a>.</p>
 <h3 id="proof-of-purchase-check-csv-clause-8-4-crosswalk-xw-006-xw-007-xw-020">proof-of-purchase-check.csv (clause 8.4, crosswalk XW-006, XW-007, XW-020)</h3>
 <p>One row per product (per publisher, product and version). This is the evidence behind <code>entitlements_owned</code> in <a href="license-position.html">License position template</a>.</p>
 <p>A count of installs is not a position. A license counts only when acceptable proof of purchase backs it. Keep proofs for as long as the license and any upgrade rights depend on them, and as long as your records schedule requires. <strong>Decision needed: records owner or counsel</strong> for the period. A later upgrade is only as good as the original purchase behind it. A certificate of authenticity or a license key alone shows a copy exists, not that you have the right to use it.</p>
-<ul><li><code>installs_found</code>, <code>count_in_metric</code>, <code>proofs_located</code>, <code>quantity_proven</code>: what discovery found, the count in the license metric (assigned users for named-user licenses, devices for device licenses), how many proofs you located, and the quantity those proofs add up to. <code>term_start</code>, <code>term_end</code>: the current subscription or support term the proof shows.</li><li><code>proof_ref</code>: invoice or purchase order numbers. Separate several with a semicolon.</li><li><code>result</code>: short if <code>quantity_proven</code> is below <code>count_in_metric</code>, even if equal, over if above.</li><li><code>shows_purchase_date</code>, <code>shows_full_product_description</code>, <code>shows_version</code>, <code>shows_quantity</code>, <code>shows_vendor</code>, <code>shows_buyer_entity</code>, <code>shows_price</code>, <code>payment_proof_on_file</code>: yes or no. Answer yes only if every proof you counted shows that item. A &quot;no&quot; means the proof may not count; ask the vendor for a reissue.</li><li><code>license_metric</code>: the unit the contract counts (named users, devices, cores). Reconcile in that metric, not in a raw install count.</li><li><code>license_type</code>: full, upgrade or competitive upgrade. For an upgrade or a competitive upgrade, <code>upgrade_chain_complete</code> is yes only when the original qualifying purchase is also on file. Use &quot;not applicable&quot; for a full license.</li><li><code>evidence_location</code>, <code>checked_on</code>, <code>reviewer</code>: where an auditor can find the proofs, when you checked, and who checked.</li></ul>
+<ul><li><code>asset_id</code>: the asset the proofs cover, as in <a href="asset-record.html">Asset record template</a>.</li><li><code>installs_found</code>, <code>count_in_metric</code>, <code>proofs_located</code>, <code>quantity_proven</code>: what discovery found, the count in the license metric (assigned users for named-user licenses, devices for device licenses), how many proofs you located, and the quantity those proofs add up to. <code>term_start</code>, <code>term_end</code>: the current subscription or support term the proof shows.</li><li><code>proof_ref</code>: invoice or purchase order numbers. Separate several with a semicolon.</li><li><code>result</code>: short if <code>quantity_proven</code> is below <code>count_in_metric</code>, even if equal, over if above.</li><li><code>shows_purchase_date</code>, <code>shows_full_product_description</code>, <code>shows_version</code>, <code>shows_quantity</code>, <code>shows_vendor</code>, <code>shows_buyer_entity</code>, <code>shows_price</code>, <code>payment_proof_on_file</code>: yes or no. Answer yes only if every proof you counted shows that item. A &quot;no&quot; means the proof may not count; ask the vendor for a reissue.</li><li><code>license_metric</code>: the unit the contract counts (named users, devices, cores). Reconcile in that metric, not in a raw install count.</li><li><code>license_type</code>: full, upgrade or competitive upgrade. For an upgrade or a competitive upgrade, <code>upgrade_chain_complete</code> is yes only when the original qualifying purchase is also on file. Use &quot;not applicable&quot; for a full license.</li><li><code>evidence_location</code>, <code>checked_on</code>, <code>reviewer</code>: where an auditor can find the proofs, when you checked, and who checked.</li></ul>
 <p>Downgrade rights may let a newer license cover older installs; confirm with counsel. For a subscription, the proof must show the current term. The agreement defines what counts as acceptable proof; licensing-portal and reseller records can count. If <code>quantity_proven</code> differs from <code>entitlements_owned</code>, use the proven number until the gap is explained. See <a href="proof-of-purchase-check-example.html">Proof of purchase check example</a>.</p>
 <h3 id="contract-terms-check-csv-clause-8-4-crosswalk-xw-013">contract-terms-check.csv (clause 8.4, crosswalk XW-013)</h3>
-<p>One row per contract term or definition you checked. Link each row to its contract through <code>contract_id</code>, which matches <code>contract_ref</code> in <a href="vendor-contract-register.html">Vendor contract register template</a>, and copy <code>notice_deadline</code> from <a href="renewal-calendar.html">Renewal calendar template</a> into <code>renewal_notice_deadline</code> so a term that changes the renewal is not missed.</p>
+<p>One row per contract term or definition you checked. Link each row to its contract through <code>contract_id</code>, which matches <code>contract_ref</code> in <a href="vendor-contract-register.html">Vendor contract register template</a> and in <a href="renewal-calendar.html">Renewal calendar template</a>, and copy <code>notice_deadline</code> from <a href="renewal-calendar.html">Renewal calendar template</a> into <code>renewal_notice_deadline</code> so a term that changes the renewal is not missed.</p>
 <p>Read license terms as permissions: anything not clearly granted is treated as not permitted until counsel or the vendor confirms. This file does not interpret contracts or give legal advice. It finds what to ask counsel.</p>
 <ul><li><code>term_or_definition</code>, <code>clause_ref</code>: what you read and where, for example the definition of &quot;device&quot; or the transfer clause.</li><li><code>clear</code>: yes, no or maybe. Put what is unclear in <code>what_is_unclear</code>.</li><li><code>which_document_governs</code>: record which document claims precedence and where it says so. Send any conflict between documents to counsel. <strong>Decision needed: counsel</strong>.</li><li><code>counsel_needed</code>: yes or no. <code>owner</code> and <code>checked_on</code> say who is following it up and when.</li></ul>
 <h3 id="acquisition-gate-checklist-crosswalk-xw-009-xw-011-xw-013-xw-021">Acquisition gate checklist (crosswalk XW-009, XW-011, XW-013, XW-021)</h3>
@@ -208,10 +134,11 @@ document.addEventListener('DOMContentLoaded', function () {
 <ul><li><code>baseline_cost</code>, <code>amount_saved</code>, <code>percent_saved</code>: the cost before and what you saved. Leave <code>percent_saved</code> blank if there is no baseline.</li><li><code>evidence_ref</code>: the record that supports the number, such as a row in <a href="invoice-verification.html">Invoice verification template</a>.</li><li><code>adverse_trend_note</code>: report bad news too, such as rising error rates or reclaimed licenses being requested again. A report with only wins is not trusted.</li><li><code>reported_to</code>, <code>reported_on</code>: who saw it and when.</li></ul>
 <h3 id="renewal-calendar-csv-clause-8-4-crosswalk-xw-008">renewal-calendar.csv (clause 8.4, crosswalk XW-008)</h3>
 <p>One row per license or contract.</p>
-<ul><li><code>notice_deadline</code>: <code>contract_end</code> minus <code>notice_days</code>. This is the date that matters, not the end date.</li><li><code>auto_renews</code>: yes or no.</li><li><code>in_use_last_90_days</code>: usage before you decide, so you do not renew shelfware.</li><li><code>decision</code>: renew, reduce or cancel. Record <code>reason</code>, <code>decision_owner</code>, <code>approver</code> and <code>decided_on</code>.</li></ul>
+<ul><li><code>asset_id</code> and <code>contract_ref</code>: the asset the contract covers, and the contract. <code>contract_ref</code> matches <code>contract_id</code> in <a href="contract-terms-check.html">Contract terms check template</a>, so you can look up the clauses that change the renewal.</li><li><code>notice_deadline</code>: <code>contract_end</code> minus <code>notice_days</code>. This is the date that matters, not the end date.</li><li><code>auto_renews</code>: yes or no.</li><li><code>in_use_last_90_days</code>: usage before you decide, so you do not renew shelfware.</li><li><code>decision</code>: renew, reduce or cancel. Record <code>reason</code>, <code>decision_owner</code>, <code>approver</code> and <code>decided_on</code>.</li></ul>
+<p>See <a href="renewal-calendar-example.html">Renewal calendar example</a> for three Halden rows. Each <code>contract_ref</code> has a matching row in <code>contract-terms-check-example.csv</code>.</p>
 <h3 id="asset-record-csv-clause-8-3-7-6-2">asset-record.csv (clause 8.3, 7.6.2)</h3>
 <p>The core data record. One row per asset (software, hardware, or an IT service).</p>
-<ul><li><code>owner</code>: the named person accountable. <code>custodian</code>: who looks after it day to day.</li><li><code>authorized</code>: yes or no, with <code>authorization_ref</code> pointing to the entry in the authorization log.</li><li><code>status</code>: for example requested, in use, retiring, retired. Add <code>retired_on</code> when it leaves use.</li><li><code>source_system</code> and <code>last_verified_on</code>: where the data came from and when it was last checked.</li></ul>
+<ul><li><code>asset_id</code>: the one key for the asset. Other files copy it.</li><li><code>owner</code>: the named person accountable. <code>custodian</code>: who looks after it day to day.</li><li><code>authorized</code>: yes or no, with <code>authorization_ref</code> pointing to the entry in the authorization log.</li><li><code>status</code>: for example requested, in use, retiring, retired. Add <code>retired_on</code> when it leaves use.</li><li><code>source_system</code> and <code>last_verified_on</code>: where the data came from and when it was last checked.</li></ul>
 <p>The standard requires accurate data for every core asset through its life and a record of whether each asset is authorized.</p>
 <h3 id="authorization-log-csv-clause-7-6-3">authorization-log.csv (clause 7.6.3)</h3>
 <p>Record who made each authorization, when, and why. Record who carried it out, when, and against which authorization.</p>
@@ -226,6 +153,74 @@ document.addEventListener('DOMContentLoaded', function () {
 <p>A yes/partly/no check across three tiers, with a place for evidence.</p>
 <h3 id="internal-audit-and-management-review-checklist-clauses-9-2-9-3-10-1">Internal audit and management review checklist (clauses 9.2, 9.3, 10.1)</h3>
 <p>A plan-and-record checklist for the internal audit, and a pack list for the management review.</p>
+<h3 id="benefits-tracker-csv-crosswalk-xw-012-xw-025">benefits-tracker.csv (crosswalk XW-012, XW-025)</h3>
+<p>One row per benefit you expect from a practice. It is how you prove the practice paid off, instead of asserting it.</p>
+<ul><li><code>metric</code>, <code>unit</code>, <code>baseline_value</code>, <code>baseline_date</code>: what you measure, and its value before the practice. Measure the baseline from your own records on a named date.</li><li><code>target_value</code> and <code>target_date</code>: where you want it to be, and when.</li><li><code>current_value</code>, <code>measured_on</code>, <code>evidence_ref</code>: the value when you measured again, the date, and where the proof is filed. Leave <code>current_value</code> blank until you have re-measured.</li><li><code>status</code>: baseline only, forecast, achieved, or not achieved. A forecast is an estimate, not a benefit. Mark a row achieved only when the evidence is filed.</li><li><code>effect_type</code> and <code>effect_amount</code>: cost saved, cost avoided, risk reduced, or time saved, and the amount if you can back it. Write Not found where you cannot. Net out any cost the change added.</li></ul>
+<p>See <a href="benefits-tracker-example.html">Benefits tracker example</a> for six rows on the Halden demo estate. Their baselines come from the demo files; the current values stay blank because no change has been made. Feed the achieved rows into <a href="savings-report.html">Savings report template</a> and <a href="leadership-report.html">Leadership report</a>.</p>
+<h3 id="application-management-workbook-xlsx-crosswalk-xw-003-xw-025">application-management-workbook.xlsx (crosswalk XW-003, XW-025)</h3>
+<p>One workbook that carries a program from the As-Is assessment to measurement. It replaces filling in the self-assessment, the gap plan, and the benefits tracker as separate files, and adds a scorecard and a history. Open it in Excel, Google Sheets, or LibreOffice; it uses formulas only, with no macros, and nothing is locked.</p>
+<ul><li><strong>Start:</strong> your program name, scope and sponsor, the six steps, the scale, the status words, and four settings you can change.</li><li><strong>Assess:</strong> score each dimension 0 to 3 with evidence, then set the To-Be level. The gap and a check are calculated. Level and date cells reject anything invalid.</li><li><strong>Plan:</strong> choose the gaps to fund (three at a time works best), with an owner, a first action, and a date.</li><li><strong>Measures:</strong> the benefits tracker. Row one is the program&#x27;s own gap-points measure, tied to Assess. A measure counts as achieved only with a latest value, a date, and evidence; forecasts are never added to achieved results.</li><li><strong>Scorecard:</strong> headlines, a table by dimension, the six leadership questions, and checks. It is all calculated. Blank means not entered, never zero, and every status is a word.</li><li><strong>Re-score:</strong> one column per later assessment, so history is kept and nothing is overwritten.</li><li><strong>Ideas:</strong> credible measures that are hard to fake, and how people game each.</li></ul>
+<p>There is a blank copy and a Halden example, <code>application-management-workbook-example.xlsx</code>. The example&#x27;s current values are blank because no change has been made. Previewers that do not calculate formulas, such as some phone and email previews, may show blanks; open it in a spreadsheet program.</p>
+<h3 id="policy-template-clause-5-2-crosswalk-xw-003-xw-004-xw-027">Policy template (clause 5.2, crosswalk XW-003, XW-004, XW-027)</h3>
+<p>A fill-in template for one ITAM policy: control block, purpose, scope and exclusions, definitions, policy statements, roles, related standards, exceptions, enforcement, communication, measures, consistency with other policies, review history, and approval. Use it for each policy in a small set: the umbrella policy, software acquisition and exceptions, vendor management, and records and evidence. The examples are fictional (Halden). Retirement follows <a href="retirement-signoff-checklist.html">Retirement sign-off checklist</a> and, for devices, the <code>hardware-lifecycle</code> method; AI tool intake follows the <code>ai-intake</code> method.</p>
+<p>Exceptions are logged in <a href="authorization-log.html">Authorization log template</a>, with the end date in <code>valid_until</code>. Penalty wording is a <strong>Decision needed: counsel</strong>, and so are retention periods in the records policy. The template sets neither.</p>
+<h3 id="standard-template-clause-7-6-5-crosswalk-xw-009-xw-020">Standard template (clause 7.6.5, crosswalk XW-009, XW-020)</h3>
+<p>A fill-in template for one software standard: a catalog of approved titles by role or device class, including software delivered as a service. It adds acceptance and rejection criteria with reason codes, security requirements, the non-standard path, a pilot-first rollout, a feedback channel, and where it is published. The standard says what is on the list; the policy says people must use it.</p>
+<h3 id="policy-checklist-clauses-5-2-7-3-7-4-7-6-5-crosswalk-xw-003-xw-004-xw-020-xw-025-xw-027-xw-030">Policy checklist (clauses 5.2, 7.3, 7.4, 7.6.5, crosswalk XW-003, XW-004, XW-020, XW-025, XW-027, XW-030)</h3>
+<p>Sixteen questions to test a draft policy before approval and at each review: owner and approver, sponsor approval, bounded scope, defined terms, commitments, license compliance and acceptable use, rules that can be met and tested, roles, exceptions, penalties, consistency, controlled publication, communication, awareness with acknowledgment, review triggers, and change history.</p>
+<h3 id="policy-lifecycle-sop-clauses-5-2-7-3-7-4-7-6-5-crosswalk-xw-003-xw-020-xw-025-xw-030">Policy lifecycle SOP (clauses 5.2, 7.3, 7.4, 7.6.5, crosswalk XW-003, XW-020, XW-025, XW-030)</h3>
+<p>A short procedure for the life of a policy: draft, consult, counsel review, sponsor approval, publish with a version, communicate and record acknowledgment, log and expire exceptions, review yearly or on a trigger, and withdraw superseded versions. It ends with questions to take to counsel and the contract owner on penalty wording, retention periods, and license reassignment. The questions have no answers; those come from counsel and the contract owner.</p>
+<h3 id="playbook-set-up-and-run-an-itam-program-crosswalk-xw-003-xw-025-xw-027">Playbook: set up and run an ITAM program (crosswalk XW-003, XW-025, XW-027)</h3>
+<p>The one order to follow. Ten steps from reading the map to measuring and reviewing, each with a one-line reason, the files to use, the matching setup prompt, tickable done-when boxes, and a rough planning time. A marker after step 5 says where a small program can stop. It also has a box for people with no sponsor, no inventory, or an audit letter already in hand, what must exist first, why programs stall in the first year, the routines that keep a program alive, and how to tell a healthy program from a busy one.</p>
+<h3 id="data-sources-guide-clauses-8-3-8-4-crosswalk-xw-005-xw-006-xw-012-xw-026">Data sources guide (clauses 8.3, 8.4, crosswalk XW-005, XW-006, XW-012, XW-026)</h3>
+<p>How to get the data that playbook steps 7 and 8 need. Five sources: discovery or inventory output, sign-in logs for cloud apps, expense and accounts-payable data, purchasing and contract records, and HR joiner and leaver lists. For each it gives how to get it, what it can and cannot tell you, and who to ask. It then shows how to clean product and publisher names so counts match, and ends with a good-enough-to-start test.</p>
+<h3 id="risk-assessment-guide-and-risk-register-csv-clause-6-1-crosswalk-xw-024-xw-025">Risk assessment guide and risk-register.csv (clause 6.1, crosswalk XW-024, XW-025)</h3>
+<p>A five-step method (identify, assess, treat, record, review) and the register it fills. The guide defines a plain low, medium, and high scale for likelihood and impact, and four treatments: accept, reduce, transfer, avoid. The CSV has six fictional Halden rows to replace with your own.</p>
+<ul><li><code>id</code>, <code>risk</code>, <code>asset_or_process</code>, <code>cause</code>, <code>consequence</code>: what could go wrong, where, why, and what it would cost.</li><li><code>likelihood</code>, <code>impact</code>: low, medium, or high, by the guide&#x27;s scale. Rate on evidence.</li><li><code>owner</code>: the person who answers for the risk, and who accepts what remains after treatment.</li><li><code>treatment</code>: accept, reduce, transfer, or avoid. Have counsel review any transfer that rests on contract wording.</li><li><code>action</code>, <code>due</code>, <code>status</code>: what will be done, by when, and whether it is open, in progress, closed, or accepted.</li><li><code>review_date</code>: when you re-rate it. Keep closed rows so the history shows.</li></ul>
+<h3 id="resources-and-training-plan-clauses-7-1-7-2-7-3-crosswalk-xw-004-xw-025-xw-027-xw-030">Resources and training plan (clauses 7.1, 7.2, 7.3, crosswalk XW-004, XW-025, XW-027, XW-030)</h3>
+<p>What to budget in people, data sources, training, and tools, a table to size it with your own figures (write Not found where you have none), who needs which training, and what evidence shows competence. It sets no price and no head count.</p>
+<h3 id="joiner-mover-and-leaver-procedure-clauses-7-6-3-8-3-8-4-crosswalk-xw-008-xw-009-xw-012-xw-015-xw-017">Joiner, mover, and leaver procedure (clauses 7.6.3, 8.3, 8.4, crosswalk XW-008, XW-009, XW-012, XW-015, XW-017)</h3>
+<p>What HR tells ITAM, what happens to software and licenses when a person joins, changes role, or leaves, and the steps to reclaim a license. Check the contract&#x27;s reassignment rights first: device-tied or named-user terms may not allow reuse, so have the contract owner confirm. It lines up with items R6, R9, and R10 of <a href="retirement-signoff-checklist.html">Retirement sign-off checklist</a>.</p>
+<h3 id="customer-expectations-csv-crosswalk-xw-004-xw-027">customer-expectations.csv (crosswalk XW-004, XW-027)</h3>
+<p>One row per customer of asset management information: the people and teams whose decisions depend on your data. Pre-filled with eleven common customers and a typical starting point for each; confirm or change it with them.</p>
+<ul><li><code>what_they_need_from_itam</code>, <code>level_of_detail</code>, <code>how_often</code>: what they need, in how much detail, and how often. Ask them; do not guess.</li><li><code>what_we_need_from_them</code>: what you need back, such as leaver triggers from HR or contract terms from Legal.</li><li><code>how_we_deliver</code> and <code>measure_of_success</code>: how they get it, and how you would know you served them well.</li><li><code>owner</code> and <code>last_confirmed_on</code>: who looks after this customer, and when you last checked the need is still right.</li></ul>
+<p>Use it in the first month, and again when a new team starts to rely on your data. It tells you what to collect and what you can stop collecting.</p>
+<h3 id="what-good-looks-like-crosswalk-xw-025-xw-027">What good looks like (crosswalk XW-025, XW-027)</h3>
+<p>A worksheet for deciding how far your program needs to go. Eight yes-or-no questions about regulation, audit exposure, spend, subscriptions, change, data, capacity, and sponsorship suggest which dimensions need a higher target. Then write a one-line good-enough statement, pick up to five measures, and list what you will not do yet. Full conformance to a standard is optional and the standard&#x27;s tiers are informative, so this is how you aim for what is right for you. Use it before you set the To-Be levels.</p>
+<h3 id="rolling-internal-check-and-internal-check-log-csv-crosswalk-xw-020-xw-025">Rolling internal check and internal-check-log.csv (crosswalk XW-020, XW-025)</h3>
+<p>A small, regular test of how the program really works, so an external audit holds no surprises. Test two or three areas each quarter: take a sample, test each record against a rule, log each failure, fix it, and retest. The document lists seven areas with a simple test, a suggested sample size, and a pass rule, and a four-quarter rotation. The CSV is the findings log.</p>
+<ul><li><code>quarter</code>, <code>area</code>, <code>test</code>, <code>sample_size</code>, <code>records_failed</code>: what you tested and what failed.</li><li><code>finding</code> and <code>severity</code>: what was wrong, and your own rating of how serious it is. Define the scale the first time you use it.</li><li><code>owner</code>, <code>due_on</code>, <code>retested_on</code>, <code>result</code>, <code>evidence_ref</code>: who fixes it, by when, and the retest that closes it. A finding is closed only when a retest passes.</li></ul>
+<p>See <a href="internal-check-log-example.html">Internal check log example</a> for two Halden findings.</p>
+<h3 id="setup-prompts-crosswalk-xw-025">Setup prompts (crosswalk XW-025)</h3>
+<p>Thirteen copy-and-paste prompts that walk you through setting up with an AI assistant: set the scene, baseline the program, map a process, choose where data lives, back licenses with proof, control renewals, prepare for an audit, draft governance and policy, turn the plan into reminders, report to leaders, map your customers, decide what good looks like, and plan rolling internal checks. Each prompt names the file to attach, the decision you keep, and what a good result looks like. They work in plain chat, and use the kit&#x27;s skills where those are installed. Practice on the Halden demo estate first, and keep real inventories off public tools.</p>
+<h3 id="operating-calendar-and-first-90-days-crosswalk-xw-002-xw-004-xw-008-xw-025">Operating calendar and first 90 days (crosswalk XW-002, XW-004, XW-008, XW-025)</h3>
+<p>A schedule and a starter plan. It lists the monthly, quarterly, and yearly routines for the other files, the events that start an extra task (a purchase request, an invoice, a retirement, an audit letter), and a 90-day order for starting from nothing. Give each routine a named owner and a calendar date. The frequencies are suggestions; adjust them to your size and risk.</p>
+<h3 id="application-management-program-self-assessment-and-application-management-gap-plan-csv-crosswalk-xw-003-xw-025">Application management program self-assessment and application-management-gap-plan.csv (crosswalk XW-003, XW-025)</h3>
+<p>A self-assessment for the application management program as a whole, with an As-Is state and a To-Be state for each of eleven dimensions: policy, roles and ownership, inventory, intake, lifecycle review, licenses and renewals, cost and rationalization, risk, retirement, measures, and communication. The document defines a four-level scale (0 to 3) and what levels 1, 2, and 3 look like for each dimension. The CSV is where you record the result.</p>
+<ul><li><code>as_is_level_0_to_3</code> and <code>as_is_evidence</code>: where you are now, and the evidence you could show. If you cannot show it, score one level lower.</li><li><code>to_be_level_0_to_3</code> and <code>to_be_reason_and_date</code>: where you need to be, why, and by when. Not every dimension needs level 3.</li><li><code>gap</code>: To-Be minus As-Is. Rank by the risk or cost of leaving it.</li><li><code>priority</code>, <code>owner</code>, <code>first_action</code>, <code>due_on</code>: the plan. Close no more than three gaps at a time.</li><li><code>reviewed_on</code>: the date you last re-scored the row. Repeat the assessment at least yearly.</li></ul>
+<p>See <a href="application-management-gap-plan-example.html">Application management gap plan example</a> for a worked example on the Halden demo estate. It complements the tier self-assessment (a standard&#x27;s tiers) and the <code>itam-maturity</code> method (nine areas scored with evidence). Neither records a target state, so this is the one that produces a plan.</p>
+<h3 id="source-of-truth-map-csv-crosswalk-xw-001-xw-005-xw-026">source-of-truth-map.csv (crosswalk XW-001, XW-005, XW-026)</h3>
+<p>One row per kind of data. Pre-filled with ten common kinds; add your own.</p>
+<ul><li><code>authoritative_system</code>: the one system that wins when two disagree. Name it once; &quot;both&quot; is not an answer.</li><li><code>data_owner</code>: the role accountable for that data being right.</li><li><code>other_systems_holding_copies</code> and <code>how_copies_are_kept_in_step</code>: where the same data also lives, and whether it is synced automatically, by import, or by hand.</li><li><code>reconcile_every</code>, <code>last_reconciled_on</code>, <code>mismatches_found</code>, <code>mismatch_owner</code>: how often you compare the copies, when you last did, what differed, and who fixes it.</li></ul>
+<p>Keep the register of record where the decisions are made, and link to specialist systems rather than copying everything into one place. A record that connects the systems is worth more than one that tries to replace them.</p>
+<h3 id="documentation-gaps-log-csv-crosswalk-xw-006-xw-007-xw-020-xw-026">documentation-gaps-log.csv (crosswalk XW-006, XW-007, XW-020, XW-026)</h3>
+<p>One row per missing or weak record. Compliance depends on what you can show, not on intent; missing proof of purchase is a common reason an audit goes badly.</p>
+<ul><li><code>record_type</code>: proof of purchase, contract, certificate, license agreement, retirement record, and so on.</li><li><code>related_asset_or_contract</code>: the application, license id, or contract the record belongs to.</li><li><code>what_is_missing</code> and <code>why_it_matters</code>: say what you cannot show, and what that stops you doing.</li><li><code>blocks</code>: audit, renewal, retirement, or true-up. This sets the priority.</li><li><code>owner</code>, <code>found_on</code>, <code>due_on</code>, <code>status</code>, <code>closed_on</code>, <code>evidence_ref</code>: who closes it, when it was found, the target date, its state, and where the closing evidence is filed.</li></ul>
+<p>Review the log with the audit-readiness check. A gap with no owner and no date is a finding in itself.</p>
+<h3 id="vendor-scorecard-csv-crosswalk-xw-013">vendor-scorecard.csv (crosswalk XW-013)</h3>
+<p>One row per strategic supplier per review period. It sits beside <a href="vendor-contract-register.html">Vendor contract register template</a>: the register says what the contract is; the scorecard says how the supplier is performing.</p>
+<ul><li><code>vendor_id</code>: matches the same id in the contract register.</li><li><code>issue_meetings_to_resolve</code>: how many meetings it took to settle problems this period.</li><li><code>response_within_agreed_time</code>: yes or no, against the response time the contract sets.</li><li><code>contact_list_current_on</code>: the date you last checked the supplier&#x27;s contact details were right.</li><li><code>contract_obligations_met</code>: yes, no, or partly, and say which obligation in <code>notes</code>.</li><li><code>rating_1_to_5</code>: your own scale, defined in <code>notes</code> the first time you use it. It is not taken from a standard.</li></ul>
+<p>Hold supplier reviews on a schedule, and keep a library of significant interactions so the next negotiator has the history.</p>
+<h3 id="retirement-sign-off-checklist-crosswalk-xw-010-xw-012-xw-020">Retirement sign-off checklist (crosswalk XW-010, XW-012, XW-020)</h3>
+<p>A checklist completed before an application or device is closed out as retired. It asks IT, Finance, HR, Procurement, and Legal to confirm their own part, then checks the evidence: license released or reclaimed, data wiped or archived, asset record updated, final cost recorded.</p>
+<h3 id="is-and-should-process-map-worksheet-crosswalk-xw-004-xw-025">Is and Should process-map worksheet (crosswalk XW-004, XW-025)</h3>
+<p>A worksheet for one process at a time. Describe the Is map first, then the Should map, then list the gaps. The gaps are your scope of work. It also asks you to put scope-expanding requests through a change log, so a small fix does not quietly grow.</p>
+<h3 id="leadership-report-crosswalk-xw-012-xw-025-xw-027">Leadership report (crosswalk XW-012, XW-025, XW-027)</h3>
+<p>A one-page report that links each control to a KPI, the KPI to a decision, and the decision to an outcome in money or risk. It also answers six questions leaders ask. Keep the KPI set to five or fewer, each with a target and an action when it is missed.</p>
+<h3 id="audit-response-roles-csv-crosswalk-xw-004-xw-020">audit-response-roles.csv (crosswalk XW-004, XW-020)</h3>
+<p>Pre-filled with twelve audit-response tasks that match the <code>audit-response</code> method. For each, name the role, the primary holder, and a backup.</p>
+<ul><li><code>backup_holder</code> and <code>backup_ready</code>: a backup who has not been briefed does not count. Fill <code>backup_ready</code> with yes, no, or the date they were last walked through the task.</li><li><code>single_person_risk</code>: yes where there is no backup, or the backup is the same person. Aim for no.</li><li><code>decision_authority</code> and <code>escalates_to</code>: who decides, and where a dispute goes.</li></ul>
+<p>Keep two versions of the roster: one with roles only, which survives staff changes, and one with names and phone numbers, which is the one you use in a hurry.</p>
 <h2 id="limits">Limits</h2>
 <p>These are templates, not a platform. They do not discover installs, read vendor license terms, or tell you what a license permits. They do not interpret contracts or give legal advice; verify license terms against the contract and ask counsel where a term is unclear. A proof-of-purchase check shows what you can document, not what a vendor will accept in an audit. A governance decision still needs a person to make it.</p>
   </div>

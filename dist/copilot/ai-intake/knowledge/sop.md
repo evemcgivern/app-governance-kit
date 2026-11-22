@@ -36,6 +36,7 @@ Every new system at proposal; every material change of use; a full re-review eve
 12. Confirm any AI tool subscription or purchase came through the acquisition gate (`sam-toolkit/acquisition-gate-checklist.md`), and send it to intake if it did not [[XW-009]] [[XW-021]]
 13. Check spend outside procurement, such as expense cards and department purchases, for AI-enabled tools, and run intake on each one found [[XW-012]] [[XW-022]]
 14. Keep an approved-AI-tools register of tools that passed intake, so staff can check it before buying [[XW-022]]
+15. For a generative AI tool, check the use against the twelve risks the NIST Generative AI Profile (NIST AI 600-1) names: confabulation, data privacy, information security, intellectual property, value chain and component integration, human-AI configuration, information integrity, harmful bias, and the rest. Record each one that applies in the risk register with an owner [[XW-024]]
 
 ## Evidence to retain
 

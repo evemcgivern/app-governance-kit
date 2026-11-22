@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What good looks like — Eve McGivern</title>
+<meta name="description" content="A worksheet for deciding how far your program needs to go, so you aim…">
+<meta name="author" content="Eve McGivern">
+<link rel="canonical" href="https://evemcgivern.github.io/app-governance-kit/docs/sam-toolkit/what-good-looks-like.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Eve McGivern — Application Governance">
+<meta property="og:title" content="What good looks like">
+<meta property="og:description" content="A worksheet for deciding how far your program needs to go, so you aim…">
+<meta property="og:url" content="https://evemcgivern.github.io/app-governance-kit/docs/sam-toolkit/what-good-looks-like.html">
+<meta property="og:image" content="https://evemcgivern.github.io/app-governance-kit/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="What good looks like">
+<meta name="twitter:description" content="A worksheet for deciding how far your program needs to go, so you aim…">
+<meta name="twitter:image" content="https://evemcgivern.github.io/app-governance-kit/og-image.png">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Home",
+     "item": "https://evemcgivern.github.io/app-governance-kit/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "SAM toolkit",
+     "item": "https://evemcgivern.github.io/app-governance-kit/sam-toolkit.html"
+    },
+    {
+     "@type": "ListItem",
+     "position": 3,
+     "name": "What good looks like",
+     "item": "https://evemcgivern.github.io/app-governance-kit/docs/sam-toolkit/what-good-looks-like.html"
+    }
+   ]
+  },
+  {
+   "@type": "WebPage",
+   "name": "What good looks like",
+   "description": "A worksheet for deciding how far your program needs to go, so you aim\u2026",
+   "url": "https://evemcgivern.github.io/app-governance-kit/docs/sam-toolkit/what-good-looks-like.html",
+   "isPartOf": {
+    "@type": "WebSite",
+    "url": "https://evemcgivern.github.io/app-governance-kit/"
+   },
+   "author": {
+    "@type": "Person",
+    "name": "Eve McGivern",
+    "url": "https://evemcgivern.github.io/"
+   },
+   "license": "https://opensource.org/licenses/MIT",
+   "isAccessibleForFree": true
+  }
+ ]
+}
+</script>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../apple-touch-icon.png">
+<link rel="stylesheet" href="../../style.css">
+<script src="../../nav.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="support-bar"><a class="coffee-link" href="https://buymeacoffee.com/a8w5iiqszp" rel="noopener"><svg class="coffee-icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M5 9h11v5a5 5 0 0 1-5 5h-1a5 5 0 0 1-5-5V9z" fill="#2f9e6e"/><path d="M16 10.5h1.2a2.4 2.4 0 0 1 0 4.8H16" fill="none" stroke="#2f9e6e" stroke-width="1.8" stroke-linecap="round"/><path d="M8.5 3.5c0 1.3 1 1.3 1 2.6M12 3.5c0 1.3 1 1.3 1 2.6" fill="none" stroke="#2f9e6e" stroke-width="1.6" stroke-linecap="round"/></svg><span>Buy me a coffee</span></a></div>
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="https://evemcgivern.github.io/">Eve McGivern</a>
+    <nav class="site-nav" aria-label="Main">
+      <ul>
+        <li><a href="../../tools.html" aria-describedby="tip-tools">AI skills</a><span class="nav-tip" role="tooltip" id="tip-tools">The nine governance methods, packaged as skills for Claude, Codex, and Copilot.</span></li>
+        <li><a href="../../sam-toolkit.html" aria-describedby="tip-sam-toolkit">SAM toolkit</a><span class="nav-tip" role="tooltip" id="tip-sam-toolkit">Templates and checklists for running software asset management by hand.</span></li>
+        <li><a href="../../practicum.html" aria-describedby="tip-practicum">Practicum</a><span class="nav-tip" role="tooltip" id="tip-practicum">Hands-on exercises on a fictional company, with answers you can check.</span></li>
+        <li><a href="../../lifecycle.html" aria-describedby="tip-lifecycle">Lifecycle</a><span class="nav-tip" role="tooltip" id="tip-lifecycle">Six stages from request to retirement, with the questions to ask at each.</span></li>
+        <li><a href="../../crosswalk.html" aria-describedby="tip-crosswalk">Crosswalk explorer</a><span class="nav-tip" role="tooltip" id="tip-crosswalk">See how each control maps to ISO/IEC 19770, COBIT, 27001, and 42001.</span></li>
+        <li><a href="../../impact-map.html" aria-describedby="tip-impact-map">Impact map</a><span class="nav-tip" role="tooltip" id="tip-impact-map">One grid showing every control theme against every lifecycle stage.</span></li>
+        <li><a href="../../field-guide.html" aria-describedby="tip-field-guide">Field guide</a><span class="nav-tip" role="tooltip" id="tip-field-guide">Plain-language guides to the standards, certifications, and key terms.</span></li>
+        <li><a href="../../case-studies.html" aria-describedby="tip-case-studies">Case studies</a><span class="nav-tip" role="tooltip" id="tip-case-studies">Worked examples of the kit in use, on a fictional company.</span></li>
+        <li><a href="../../about.html" aria-describedby="tip-about">About</a><span class="nav-tip" role="tooltip" id="tip-about">Who built the kit, and how to get in touch.</span></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<main id="main" class="doc-page">
+  <div class="doc-top">
+    <p class="doc-back"><a href="../../sam-toolkit.html">&larr; SAM toolkit</a></p>
+    <button type="button" class="print-icon" onclick="window.print()" aria-label="Print this page" title="Print"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="M7 9V3.5h10V9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M7 17H4.5A1.5 1.5 0 0 1 3 15.5v-5A1.5 1.5 0 0 1 4.5 9h15a1.5 1.5 0 0 1 1.5 1.5v5a1.5 1.5 0 0 1-1.5 1.5H17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><rect x="7" y="14" width="10" height="6.5" rx="0.8" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17.5" cy="12" r="0.9" fill="currentColor"/></svg></button>
+  </div>
+  <p class="meta doc-step">Used in playbook step 5 of 10: <a href="itam-program-playbook.html#step-5-baseline-and-targets">Baseline and targets</a>. Previous step: <a href="itam-program-playbook.html#step-4-set-the-scope">Set the scope</a>. Next step: <a href="itam-program-playbook.html#step-6-the-policy-set">The policy set</a>.</p>
+  <h1>What good looks like</h1>
+  <div class="visual-actions doc-actions">
+    <button type="button" class="visual-actions__link" id="answers-doc" data-file="what-good-looks-like-my-answers.doc">Download my answers (Word)</button>
+    <a class="visual-actions__link" href="what-good-looks-like.docx">Download Word (.docx)</a>
+    <a class="visual-actions__link" href="what-good-looks-like.xlsx">Download Excel (.xlsx)</a>
+    <button type="button" class="visual-actions__link doc-print" onclick="window.print()">Print or save as PDF</button>
+  </div>
+  <p class="meta doc-note">What you tick or type stays in this browser. The Word and Excel downloads are blank copies. To keep your answers, use Download my answers (Word), or print this page or save it as PDF.</p>
+
+  <script>
+document.addEventListener("DOMContentLoaded", function () {
+  "use strict";
+  // Keep what the reader types or ticks in this browser, so a reload does not lose it.
+  var key = "agk:" + location.pathname, fields = [].slice.call(document.querySelectorAll(
+    ".doc-body input[name], .doc-body textarea[name], .doc-body select[name]"));
+  if (!fields.length) { return; }
+  var saved = {};
+  try { saved = JSON.parse(localStorage.getItem(key) || "{}"); } catch (e) { saved = {}; }
+  fields.forEach(function (f) {
+    var v = saved[f.type === "radio" ? f.name : f.name];
+    if (f.type === "radio") { f.checked = v === f.value; }
+    else if (f.type === "checkbox") { f.checked = v === true; }
+    else if (typeof v === "string") { f.value = v; }
+  });
+  function save() {
+    var data = {};
+    fields.forEach(function (f) {
+      if (f.type === "radio") { if (f.checked) { data[f.name] = f.value; } }
+      else if (f.type === "checkbox") { if (f.checked) { data[f.name] = true; } }
+      else if (f.value) { data[f.name] = f.value; }
+    });
+    try { localStorage.setItem(key, JSON.stringify(data)); } catch (e) { /* storage unavailable */ }
+  }
+  document.addEventListener("change", save);
+  document.addEventListener("input", save);
+  document.dispatchEvent(new Event("change"));
+});
+  </script>
+  <script>
+document.addEventListener('DOMContentLoaded', function () {
+  'use strict';
+  var button = document.getElementById('answers-doc');
+  if (!button) { return; }
+  function fieldsOf(root) {
+    return [].slice.call(root.querySelectorAll('input[name], textarea[name], select[name]'));
+  }
+  function esc(t) { return String(t).replace(/&/g, '&amp;').replace(/</g, '&lt;'); }
+  // Builds a Word-readable copy of the page with the reader's answers written into it.
+  button.addEventListener('click', function () {
+    var body = document.querySelector('.doc-body');
+    var copy = body.cloneNode(true);
+    var live = fieldsOf(body), flat = fieldsOf(copy);
+    live.forEach(function (f, i) {
+      var c = flat[i], out = document.createElement('span');
+      if (f.type === 'radio') {
+        var label = c.closest('label');
+        if (f.checked) { out.textContent = '\u2612 ' + f.value; label.replaceWith(out); } else { label.remove(); }
+        return;
+      }
+      if (f.type === 'checkbox') {
+        out.textContent = f.checked ? '\u2612' : '\u2610';
+        (c.closest('label') || c).replaceWith(out);
+        return;
+      }
+      out.textContent = f.tagName === 'SELECT' ? ((f.options[f.selectedIndex] || {}).text || '') : f.value;
+      c.replaceWith(out);
+    });
+    copy.querySelectorAll('[hidden], script').forEach(function (n) { n.remove(); });
+    var tier = document.getElementById('tier-result');
+    var head = tier ? '<p><strong>Your assumed tier:</strong> ' + esc(tier.textContent) + '</p>' : '';
+    var style = 'body{font-family:Calibri,Arial,sans-serif}table{border-collapse:collapse}' +
+      'td,th{border:1px solid #777;padding:4px;vertical-align:top}';
+    var html = '<html><head><meta charset=utf-8><title>' + esc(document.title) + '</title><style>' + style +
+      '</style></head><body><h1>' + esc(document.querySelector('h1').textContent) + '</h1>' + head +
+      copy.innerHTML + '</body></html>';
+    var blob = new Blob(['\ufeff', html], {type: 'application/msword'});
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = button.getAttribute('data-file');
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(function () { URL.revokeObjectURL(a.href); }, 1000);
+  });
+});
+  </script>
+  <div class="doc-body prose prose-wide">
+<p>A worksheet for deciding how far your program needs to go, so you aim for what is right for your organization and not for every standard at once. Full conformance to a standard is optional. Choose it only when a customer, a regulator, or a contract asks for it. The standard&#x27;s tiers are informative, not required.</p>
+<p>Use it before you set the To-Be levels in the assessment. It takes about 20 minutes. Clause references are to the shared crosswalk (<code>XW-</code> rows).</p>
+<h2 id="step-1-answer-eight-questions">Step 1: Answer eight questions</h2>
+<p>Answer yes or no for your organization today. The last two columns tell you what the answer suggests.</p>
+<div class="table-scroll"><table class="checklist"><caption>Step 1: Answer eight questions</caption><thead><tr><th scope="col">Factor</th><th scope="col">Question</th><th scope="col">If yes, aim higher on</th><th scope="col">If no</th><th scope="col">Your answer (yes or no)</th></tr></thead><tbody><tr><td>Regulation</td><td class="long-text">Do laws or contracts require you to prove control of software or data?</td><td>Policy, inventory, retirement</td><td>Level 2 is enough for now</td><td class="checklist-write"><input type="text" name="t1-regulation-your-answer-yes-or-no" aria-label="Your answer (yes or no) for Regulation"></td></tr><tr><td>Audit exposure</td><td class="long-text">Have publishers audited you in the last three years, or do your contracts allow audits?</td><td>Licenses and renewals, proof</td><td>Keep proof for the largest publishers</td><td class="checklist-write"><input type="text" name="t1-audit-exposure-your-answer-yes-or-no" aria-label="Your answer (yes or no) for Audit exposure"></td></tr><tr><td>Spend</td><td class="long-text">Is software spend large enough that finding savings matters to the budget?</td><td>Cost and rationalization, renewals</td><td>Do the basics and revisit yearly</td><td class="checklist-write"><input type="text" name="t1-spend-your-answer-yes-or-no" aria-label="Your answer (yes or no) for Spend"></td></tr><tr><td>Subscriptions</td><td class="long-text">Do teams buy subscriptions without IT?</td><td>Intake, lifecycle review</td><td>Keep the gate light</td><td class="checklist-write"><input type="text" name="t1-subscriptions-your-answer-yes-or-no" aria-label="Your answer (yes or no) for Subscriptions"></td></tr><tr><td>Change</td><td class="long-text">Do mergers, sales of units, or fast growth keep changing the estate?</td><td>Inventory, retirement, roles</td><td>Review once a year</td><td class="checklist-write"><input type="text" name="t1-change-your-answer-yes-or-no" aria-label="Your answer (yes or no) for Change"></td></tr><tr><td>Data</td><td class="long-text">Do your applications hold sensitive or regulated data?</td><td>Risk, retirement, inventory</td><td>Level 2 on risk is enough for now</td><td class="checklist-write"><input type="text" name="t1-data-your-answer-yes-or-no" aria-label="Your answer (yes or no) for Data"></td></tr><tr><td>Capacity</td><td class="long-text">Can people give at least five hours a week to this?</td><td>Raise targets on up to five dimensions</td><td>Hold level 2 on five dimensions only</td><td class="checklist-write"><input type="text" name="t1-capacity-your-answer-yes-or-no" aria-label="Your answer (yes or no) for Capacity"></td></tr><tr><td>Sponsor</td><td class="long-text">Does a sponsor with budget back the program? <a class="xw-tag" href="../../crosswalk.html">XW-027</a></td><td>Raise targets as planned</td><td>Fix this first; do not set targets yet</td><td class="checklist-write"><input type="text" name="t1-sponsor-your-answer-yes-or-no" aria-label="Your answer (yes or no) for Sponsor"></td></tr></tbody></table></div>
+<h2 id="step-2-read-the-answers">Step 2: Read the answers</h2>
+<ul><li>Start with a target of level 2 for every dimension you will work on this year. Level 2 means written down, owned, followed, with a recent example. It is a strong result.</li><li>For each yes above, consider level 3 only on the dimensions it names, and only where a number could prove it works.</li><li>If the sponsor answer is no, stop. Get a sponsor first. Targets without one do not get funded.</li><li>This is a rule of thumb, not a standard. Write down why you chose each target.</li></ul>
+<h2 id="step-3-write-your-good-enough-statement">Step 3: Write your good-enough statement</h2>
+<p>Finish this sentence in one line. For the next 12 months, good enough means: ______________________________</p>
+<h2 id="step-4-choose-a-few-measures">Step 4: Choose a few measures</h2>
+<p>Pick up to five measures. Prefer ones that cannot be met by paperwork alone. The Ideas sheet in <code>application-management-workbook.xlsx</code> lists credible ones. Record each in the Measures sheet or <a href="benefits-tracker.html">Benefits tracker template</a>, with a baseline and a date. <a class="xw-tag" href="../../crosswalk.html">XW-025</a></p>
+<h2 id="step-5-say-what-you-will-not-do-yet">Step 5: Say what you will not do yet</h2>
+<p>Naming what is out of scope protects the program from drifting. List up to three things you are deliberately leaving for later, and when you will look again.</p>
+<div class="table-scroll"><table class="checklist"><caption>Step 5: Say what you will not do yet</caption><thead><tr><th scope="col">What I will not do yet</th><th scope="col">Why</th><th scope="col">Look again on</th></tr></thead><tbody><tr><td class="checklist-write"><input type="text" name="t2--what-i-will-not-do-yet" aria-label="What I will not do yet"></td><td class="checklist-write"><input type="text" name="t2--why" aria-label="Why"></td><td class="checklist-write"><input type="text" name="t2--look-again-on" aria-label="Look again on"></td></tr><tr><td class="checklist-write"><input type="text" name="t2--what-i-will-not-do-yet" aria-label="What I will not do yet"></td><td class="checklist-write"><input type="text" name="t2--why" aria-label="Why"></td><td class="checklist-write"><input type="text" name="t2--look-again-on" aria-label="Look again on"></td></tr><tr><td class="checklist-write"><input type="text" name="t2--what-i-will-not-do-yet" aria-label="What I will not do yet"></td><td class="checklist-write"><input type="text" name="t2--why" aria-label="Why"></td><td class="checklist-write"><input type="text" name="t2--look-again-on" aria-label="Look again on"></td></tr></tbody></table></div>
+<h2 id="decision">Decision</h2>
+<div class="table-scroll"><table class="checklist"><caption>Decision</caption><thead><tr><th scope="col">Decision</th><th scope="col">Owner</th><th scope="col">Approver</th><th scope="col">Date</th></tr></thead><tbody><tr><td class="long-text">Targets and measures agreed for the next 12 months</td><td class="checklist-write"><input type="text" name="t3-targets-and-measures-agreed-for-the-next-12-months-owner" aria-label="Owner for Targets and measures agreed for the next 12 months"></td><td class="checklist-write"><input type="text" name="t3-targets-and-measures-agreed-for-the-next-12-months-approver" aria-label="Approver for Targets and measures agreed for the next 12 months"></td><td class="checklist-write"><input type="text" name="t3-targets-and-measures-agreed-for-the-next-12-months-date" aria-label="Date for Targets and measures agreed for the next 12 months"></td></tr></tbody></table></div>
+  </div>
+  <div class="doc-bottom"><button type="button" class="print-icon" onclick="window.print()" aria-label="Print this page" title="Print"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="M7 9V3.5h10V9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M7 17H4.5A1.5 1.5 0 0 1 3 15.5v-5A1.5 1.5 0 0 1 4.5 9h15a1.5 1.5 0 0 1 1.5 1.5v5a1.5 1.5 0 0 1-1.5 1.5H17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><rect x="7" y="14" width="10" height="6.5" rx="0.8" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17.5" cy="12" r="0.9" fill="currentColor"/></svg></button></div>
+</main>
+<footer class="site-footer">
+  <p>Eve McGivern · <a href="https://evemcgivern.github.io/">evemcgivern.github.io</a></p>
+  <p>Questions? Comments? <a href="https://github.com/evemcgivern/app-governance-kit/issues" id="contact-email" data-r="moc.liamg|nrevigcmeve">email me</a>.</p>
+  <p><a href="https://buymeacoffee.com/a8w5iiqszp" rel="noopener">Buy me a coffee</a> if these tools help.</p>
+  <p class="site-version"><a href="https://github.com/evemcgivern/app-governance-kit/releases" rel="noopener" id="site-version">Version</a></p>
+</footer>
+<script>
+(function () {
+  "use strict";
+  var el = document.getElementById("contact-email");
+  if (!el || !el.getAttribute("data-r")) { return; }
+  function arm() {
+    el.href = "mailto:" + el.getAttribute("data-r").split("").reverse().join("").replace("|", "@");
+  }
+  ["pointerenter", "focus", "touchstart"].forEach(function (type) {
+    el.addEventListener(type, arm, { once: true, passive: true });
+  });
+})();
+</script>
+
+</body>
+</html>

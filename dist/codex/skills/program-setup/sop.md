@@ -53,3 +53,4 @@ Design the intake log, decision log, and metrics review so each is a direct by-p
 - [**Application rationalization**](../rationalization/) (`rationalization`) — brings its consolidate/retain/retire recommendations to this body for decisions above threshold.
 - [**AI system intake and risk tiering**](../ai-intake/) (`ai-intake`) — routes high-risk and prohibited-practice findings to this body for the sponsor and legal decision it flags.
 - [**Access review pack**](../access-review/) (`access-review`) — reports its exceptions to the sponsor and owner roles this program names.
+- Policy drafting kit (`sam-toolkit/policy-template.md`, `policy-standard-template.md`, `policy-checklist.md`, `policy-lifecycle-sop.md`) — writes and tests the policy set that the body approves.

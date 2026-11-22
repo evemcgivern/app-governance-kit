@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Joiner, mover, and leaver procedure — Eve McGivern</title>
+<meta name="description" content="A short procedure for what happens to software and licenses when a person joins…">
+<meta name="author" content="Eve McGivern">
+<link rel="canonical" href="https://evemcgivern.github.io/app-governance-kit/docs/sam-toolkit/joiner-mover-leaver-procedure.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Eve McGivern — Application Governance">
+<meta property="og:title" content="Joiner, mover, and leaver procedure">
+<meta property="og:description" content="A short procedure for what happens to software and licenses when a person joins…">
+<meta property="og:url" content="https://evemcgivern.github.io/app-governance-kit/docs/sam-toolkit/joiner-mover-leaver-procedure.html">
+<meta property="og:image" content="https://evemcgivern.github.io/app-governance-kit/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Joiner, mover, and leaver procedure">
+<meta name="twitter:description" content="A short procedure for what happens to software and licenses when a person joins…">
+<meta name="twitter:image" content="https://evemcgivern.github.io/app-governance-kit/og-image.png">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Home",
+     "item": "https://evemcgivern.github.io/app-governance-kit/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "SAM toolkit",
+     "item": "https://evemcgivern.github.io/app-governance-kit/sam-toolkit.html"
+    },
+    {
+     "@type": "ListItem",
+     "position": 3,
+     "name": "Joiner, mover, and leaver procedure",
+     "item": "https://evemcgivern.github.io/app-governance-kit/docs/sam-toolkit/joiner-mover-leaver-procedure.html"
+    }
+   ]
+  },
+  {
+   "@type": "WebPage",
+   "name": "Joiner, mover, and leaver procedure",
+   "description": "A short procedure for what happens to software and licenses when a person joins\u2026",
+   "url": "https://evemcgivern.github.io/app-governance-kit/docs/sam-toolkit/joiner-mover-leaver-procedure.html",
+   "isPartOf": {
+    "@type": "WebSite",
+    "url": "https://evemcgivern.github.io/app-governance-kit/"
+   },
+   "author": {
+    "@type": "Person",
+    "name": "Eve McGivern",
+    "url": "https://evemcgivern.github.io/"
+   },
+   "license": "https://opensource.org/licenses/MIT",
+   "isAccessibleForFree": true
+  }
+ ]
+}
+</script>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../apple-touch-icon.png">
+<link rel="stylesheet" href="../../style.css">
+<script src="../../nav.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="support-bar"><a class="coffee-link" href="https://buymeacoffee.com/a8w5iiqszp" rel="noopener"><svg class="coffee-icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M5 9h11v5a5 5 0 0 1-5 5h-1a5 5 0 0 1-5-5V9z" fill="#2f9e6e"/><path d="M16 10.5h1.2a2.4 2.4 0 0 1 0 4.8H16" fill="none" stroke="#2f9e6e" stroke-width="1.8" stroke-linecap="round"/><path d="M8.5 3.5c0 1.3 1 1.3 1 2.6M12 3.5c0 1.3 1 1.3 1 2.6" fill="none" stroke="#2f9e6e" stroke-width="1.6" stroke-linecap="round"/></svg><span>Buy me a coffee</span></a></div>
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="https://evemcgivern.github.io/">Eve McGivern</a>
+    <nav class="site-nav" aria-label="Main">
+      <ul>
+        <li><a href="../../tools.html" aria-describedby="tip-tools">AI skills</a><span class="nav-tip" role="tooltip" id="tip-tools">The nine governance methods, packaged as skills for Claude, Codex, and Copilot.</span></li>
+        <li><a href="../../sam-toolkit.html" aria-describedby="tip-sam-toolkit">SAM toolkit</a><span class="nav-tip" role="tooltip" id="tip-sam-toolkit">Templates and checklists for running software asset management by hand.</span></li>
+        <li><a href="../../practicum.html" aria-describedby="tip-practicum">Practicum</a><span class="nav-tip" role="tooltip" id="tip-practicum">Hands-on exercises on a fictional company, with answers you can check.</span></li>
+        <li><a href="../../lifecycle.html" aria-describedby="tip-lifecycle">Lifecycle</a><span class="nav-tip" role="tooltip" id="tip-lifecycle">Six stages from request to retirement, with the questions to ask at each.</span></li>
+        <li><a href="../../crosswalk.html" aria-describedby="tip-crosswalk">Crosswalk explorer</a><span class="nav-tip" role="tooltip" id="tip-crosswalk">See how each control maps to ISO/IEC 19770, COBIT, 27001, and 42001.</span></li>
+        <li><a href="../../impact-map.html" aria-describedby="tip-impact-map">Impact map</a><span class="nav-tip" role="tooltip" id="tip-impact-map">One grid showing every control theme against every lifecycle stage.</span></li>
+        <li><a href="../../field-guide.html" aria-describedby="tip-field-guide">Field guide</a><span class="nav-tip" role="tooltip" id="tip-field-guide">Plain-language guides to the standards, certifications, and key terms.</span></li>
+        <li><a href="../../case-studies.html" aria-describedby="tip-case-studies">Case studies</a><span class="nav-tip" role="tooltip" id="tip-case-studies">Worked examples of the kit in use, on a fictional company.</span></li>
+        <li><a href="../../about.html" aria-describedby="tip-about">About</a><span class="nav-tip" role="tooltip" id="tip-about">Who built the kit, and how to get in touch.</span></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<main id="main" class="doc-page">
+  <div class="doc-top">
+    <p class="doc-back"><a href="../../sam-toolkit.html">&larr; SAM toolkit</a></p>
+    <button type="button" class="print-icon" onclick="window.print()" aria-label="Print this page" title="Print"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="M7 9V3.5h10V9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M7 17H4.5A1.5 1.5 0 0 1 3 15.5v-5A1.5 1.5 0 0 1 4.5 9h15a1.5 1.5 0 0 1 1.5 1.5v5a1.5 1.5 0 0 1-1.5 1.5H17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><rect x="7" y="14" width="10" height="6.5" rx="0.8" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17.5" cy="12" r="0.9" fill="currentColor"/></svg></button>
+  </div>
+  <p class="meta doc-step">Used in playbook step 9 of 10: <a href="itam-program-playbook.html#step-9-put-controls-in-place">Put controls in place</a>. Previous step: <a href="itam-program-playbook.html#step-8-proof-first-then-the-position">Proof first, then the position</a>. Next step: <a href="itam-program-playbook.html#step-10-measure-and-review">Measure and review</a>.</p>
+  <h1>Joiner, mover, and leaver procedure</h1>
+  <div class="visual-actions doc-actions">
+    <button type="button" class="visual-actions__link" id="answers-doc" data-file="joiner-mover-leaver-procedure-my-answers.doc">Download my answers (Word)</button>
+    <a class="visual-actions__link" href="joiner-mover-leaver-procedure.docx">Download Word (.docx)</a>
+    <a class="visual-actions__link" href="joiner-mover-leaver-procedure.xlsx">Download Excel (.xlsx)</a>
+    <button type="button" class="visual-actions__link doc-print" onclick="window.print()">Print or save as PDF</button>
+  </div>
+  <p class="meta doc-note">What you tick or type stays in this browser. The Word and Excel downloads are blank copies. To keep your answers, use Download my answers (Word), or print this page or save it as PDF.</p>
+
+  <script>
+document.addEventListener("DOMContentLoaded", function () {
+  "use strict";
+  // Keep what the reader types or ticks in this browser, so a reload does not lose it.
+  var key = "agk:" + location.pathname, fields = [].slice.call(document.querySelectorAll(
+    ".doc-body input[name], .doc-body textarea[name], .doc-body select[name]"));
+  if (!fields.length) { return; }
+  var saved = {};
+  try { saved = JSON.parse(localStorage.getItem(key) || "{}"); } catch (e) { saved = {}; }
+  fields.forEach(function (f) {
+    var v = saved[f.type === "radio" ? f.name : f.name];
+    if (f.type === "radio") { f.checked = v === f.value; }
+    else if (f.type === "checkbox") { f.checked = v === true; }
+    else if (typeof v === "string") { f.value = v; }
+  });
+  function save() {
+    var data = {};
+    fields.forEach(function (f) {
+      if (f.type === "radio") { if (f.checked) { data[f.name] = f.value; } }
+      else if (f.type === "checkbox") { if (f.checked) { data[f.name] = true; } }
+      else if (f.value) { data[f.name] = f.value; }
+    });
+    try { localStorage.setItem(key, JSON.stringify(data)); } catch (e) { /* storage unavailable */ }
+  }
+  document.addEventListener("change", save);
+  document.addEventListener("input", save);
+  document.dispatchEvent(new Event("change"));
+});
+  </script>
+  <script>
+document.addEventListener('DOMContentLoaded', function () {
+  'use strict';
+  var button = document.getElementById('answers-doc');
+  if (!button) { return; }
+  function fieldsOf(root) {
+    return [].slice.call(root.querySelectorAll('input[name], textarea[name], select[name]'));
+  }
+  function esc(t) { return String(t).replace(/&/g, '&amp;').replace(/</g, '&lt;'); }
+  // Builds a Word-readable copy of the page with the reader's answers written into it.
+  button.addEventListener('click', function () {
+    var body = document.querySelector('.doc-body');
+    var copy = body.cloneNode(true);
+    var live = fieldsOf(body), flat = fieldsOf(copy);
+    live.forEach(function (f, i) {
+      var c = flat[i], out = document.createElement('span');
+      if (f.type === 'radio') {
+        var label = c.closest('label');
+        if (f.checked) { out.textContent = '\u2612 ' + f.value; label.replaceWith(out); } else { label.remove(); }
+        return;
+      }
+      if (f.type === 'checkbox') {
+        out.textContent = f.checked ? '\u2612' : '\u2610';
+        (c.closest('label') || c).replaceWith(out);
+        return;
+      }
+      out.textContent = f.tagName === 'SELECT' ? ((f.options[f.selectedIndex] || {}).text || '') : f.value;
+      c.replaceWith(out);
+    });
+    copy.querySelectorAll('[hidden], script').forEach(function (n) { n.remove(); });
+    var tier = document.getElementById('tier-result');
+    var head = tier ? '<p><strong>Your assumed tier:</strong> ' + esc(tier.textContent) + '</p>' : '';
+    var style = 'body{font-family:Calibri,Arial,sans-serif}table{border-collapse:collapse}' +
+      'td,th{border:1px solid #777;padding:4px;vertical-align:top}';
+    var html = '<html><head><meta charset=utf-8><title>' + esc(document.title) + '</title><style>' + style +
+      '</style></head><body><h1>' + esc(document.querySelector('h1').textContent) + '</h1>' + head +
+      copy.innerHTML + '</body></html>';
+    var blob = new Blob(['\ufeff', html], {type: 'application/msword'});
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = button.getAttribute('data-file');
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(function () { URL.revokeObjectURL(a.href); }, 1000);
+  });
+});
+  </script>
+  <div class="doc-body prose prose-wide">
+<p>A short procedure for what happens to software and licenses when a person joins, changes role, or leaves. It keeps access matched to the job, returns licenses to the pool where the contract allows, and leaves a record an auditor can follow.</p>
+<p>Clause references are to ISO/IEC 19770-1:2017 (paraphrased) and to the shared crosswalk (<code>XW-</code> rows). This procedure does not interpret contracts or give legal advice. Where it says have the contract owner confirm, a person who owns the contract decides, not this document.</p>
+<p><strong>Owner:</strong> ______________________  <strong>Approver:</strong> ______________________  <strong>Date:</strong> ___________</p>
+<h2 id="roles">Roles</h2>
+<ul><li><strong>HR:</strong> tells ITAM about each joiner, mover, and leaver, with the date it takes effect. HR sends the notice; ITAM does not look for it. <a class="xw-tag" href="../../crosswalk.html">XW-004</a></li><li><strong>Manager:</strong> states what the person needs, and confirms each access a mover keeps.</li><li><strong>ITAM:</strong> acts on the notice, records the result, and returns reclaimed licenses to the pool.</li><li><strong>Application owner:</strong> removes or changes access in their application.</li><li><strong>Contract owner:</strong> confirms whether a license may be reused. Have the contract owner confirm before you reassign anything.</li></ul>
+<h2 id="triggers-from-hr">Triggers from HR</h2>
+<p>Agree with HR, in writing, that each of these starts a notice to ITAM. Agree the lead time and the form (a ticket or a list). <a class="xw-tag" href="../../crosswalk.html">XW-017</a></p>
+<div class="table-scroll"><table class="checklist"><caption>Triggers from HR</caption><thead><tr><th scope="col">Event</th><th scope="col">HR sends</th><th scope="col">When</th></tr></thead><tbody><tr><td>Joiner</td><td class="long-text">Name, role, department, manager, start date</td><td class="long-text">Before the start date</td></tr><tr><td>Mover</td><td class="long-text">Name, old and new role and department, new manager, effective date</td><td class="long-text">Before the effective date</td></tr><tr><td>Leaver</td><td class="long-text">Name, last day, whether the person is a contractor or an employee</td><td class="long-text">As soon as the date is known, and again on the last day</td></tr></tbody></table></div>
+<p>A mass hire or a layoff sends many notices at once. Treat it as an event that starts extra work, as the playbook says.</p>
+<h2 id="what-happens-on-each-event">What happens on each event</h2>
+<h3 id="joiner">Joiner</h3>
+<ol><li>Compare the role with the approved software standard. Give the person what the standard lists for the role. <a class="xw-tag" href="../../crosswalk.html">XW-015</a></li><li>Anything outside the standard follows the acquisition path, with an entry in <a href="authorization-log.html">Authorization log template</a>. <a class="xw-tag" href="../../crosswalk.html">XW-009</a></li><li>Record each assigned license against the person or device in the asset record.</li><li>Check whether an unused license can be reassigned before you buy a new one. Check the contract first (see the caution below).</li></ol>
+<h3 id="mover">Mover</h3>
+<ol><li>Compare the new role with the standard. List what the person gets and what the person no longer needs.</li><li>Ask the manager to confirm each access the person keeps. Access the old role needed and the new role does not should be removed, not left to expire.</li><li>Reclaim licenses the person no longer needs, using the steps below.</li><li>Record the change and the date in the asset record.</li></ol>
+<h3 id="leaver">Leaver</h3>
+<ol><li>On the last day, disable access in every application the person used. Use the sign-in logs and the account list in <a href="data-sources-guide.html">Data sources guide</a> to find them all, not only the ones IT knows about. <a class="xw-tag" href="../../crosswalk.html">XW-017</a></li><li>List every license assigned to the person and every device the person returned.</li><li>Reclaim licenses using the steps below.</li><li>Check shared accounts and any account the person owned for other users. Reassign the owner.</li><li>Record the leaver and the date, and keep the notice with the case file.</li><li>Once a month, compare the HR leaver list with the sign-in logs. Any leaver with an active account is a finding to fix and to log in <a href="internal-check-log.html">Internal check log template</a>.</li></ol>
+<h2 id="reclaim-steps">Reclaim steps</h2>
+<p>Do these in order for each license a person held.</p>
+<ol><li><strong>Read the contract term.</strong> Find how the license is assigned: to a named user, to a device, or to a pool. Look for any limit on reassigning it, and for any waiting period.</li><li><strong>Have the contract owner confirm</strong> whether the license may be moved to another person or device. Do not reuse a license on a guess. A device-tied license may stay with the device. A named-user license may not be reassignable within a set period, or at all. <strong>Decision needed:</strong> contract owner, and counsel where the wording is unclear.</li><li><strong>If it may be reused,</strong> remove it from the old holder, return it to the pool, and record the date in <a href="license-position.html">License position template</a>.</li><li><strong>If it may not be reused,</strong> record it as ended or as tied to the device or the contract term. It still counts against what you own until the term ends.</li><li><strong>Check the renewal.</strong> If the pool now holds more than the team needs, use the date in <a href="renewal-calendar.html">Renewal calendar template</a> to reduce at the next notice deadline. <a class="xw-tag" href="../../crosswalk.html">XW-008</a></li><li><strong>Record the reclaim</strong> in <a href="savings-report.html">Savings report template</a> only after finance confirms the spend stopped. A license returned to the pool and then reissued saves nothing; it avoids a purchase. <a class="xw-tag" href="../../crosswalk.html">XW-012</a></li></ol>
+<h2 id="caution-check-reassignment-rights-first">Caution: check reassignment rights first</h2>
+<p>Some contracts tie a license to a device or to one named user, and some set conditions on moving it. Moving a license without that right can put you out of compliance. Before you reclaim and reassign any license, read the clause, and have the contract owner confirm. Record the answer in <a href="contract-terms-check.html">Contract terms check template</a> so the next person does not have to ask again.</p>
+<h2 id="link-to-retirement">Link to retirement</h2>
+<p>A leaver&#x27;s device and the software on it go through <a href="retirement-signoff-checklist.html">Retirement sign-off checklist</a> when the device is retired. The checklist asks HR to confirm that no one still depends on the asset (R6), and asks whether licenses were released or recorded as ended (R9 and R10). This procedure produces the evidence for those items: the notice, the reclaim record, and the contract-owner confirmation.</p>
+<h2 id="evidence-to-retain">Evidence to retain</h2>
+<ul><li>The HR notice for each event, with its date.</li><li>The entry showing access changed or removed, with the date.</li><li>The reclaim record in <a href="license-position.html">License position template</a>, and the contract-owner confirmation where a license was reassigned.</li><li>The monthly comparison of leavers with sign-in logs, and the findings from it.</li></ul>
+<h2 id="decision">Decision</h2>
+<div class="table-scroll"><table class="checklist"><caption>Decision</caption><thead><tr><th scope="col">Decision</th><th scope="col">Owner</th><th scope="col">Approver</th><th scope="col">Date</th></tr></thead><tbody><tr><td class="long-text">Procedure adopted, with HR agreeing to send each notice</td><td class="checklist-write"><input type="text" name="t2-procedure-adopted-with-hr-agreeing-to-send-each-notice-owner" aria-label="Owner for Procedure adopted, with HR agreeing to send each notice"></td><td class="checklist-write"><input type="text" name="t2-procedure-adopted-with-hr-agreeing-to-send-each-notice-approver" aria-label="Approver for Procedure adopted, with HR agreeing to send each notice"></td><td class="checklist-write"><input type="text" name="t2-procedure-adopted-with-hr-agreeing-to-send-each-notice-date" aria-label="Date for Procedure adopted, with HR agreeing to send each notice"></td></tr></tbody></table></div>
+<p>Source: ISO/IEC 19770-1:2017 clauses 7.6.3, 8.3 and 8.4, and the shared crosswalk. Paraphrased; this is not a substitute for the standard.</p>
+  </div>
+  <div class="doc-bottom"><button type="button" class="print-icon" onclick="window.print()" aria-label="Print this page" title="Print"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="M7 9V3.5h10V9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M7 17H4.5A1.5 1.5 0 0 1 3 15.5v-5A1.5 1.5 0 0 1 4.5 9h15a1.5 1.5 0 0 1 1.5 1.5v5a1.5 1.5 0 0 1-1.5 1.5H17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><rect x="7" y="14" width="10" height="6.5" rx="0.8" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17.5" cy="12" r="0.9" fill="currentColor"/></svg></button></div>
+</main>
+<footer class="site-footer">
+  <p>Eve McGivern · <a href="https://evemcgivern.github.io/">evemcgivern.github.io</a></p>
+  <p>Questions? Comments? <a href="https://github.com/evemcgivern/app-governance-kit/issues" id="contact-email" data-r="moc.liamg|nrevigcmeve">email me</a>.</p>
+  <p><a href="https://buymeacoffee.com/a8w5iiqszp" rel="noopener">Buy me a coffee</a> if these tools help.</p>
+  <p class="site-version"><a href="https://github.com/evemcgivern/app-governance-kit/releases" rel="noopener" id="site-version">Version</a></p>
+</footer>
+<script>
+(function () {
+  "use strict";
+  var el = document.getElementById("contact-email");
+  if (!el || !el.getAttribute("data-r")) { return; }
+  function arm() {
+    el.href = "mailto:" + el.getAttribute("data-r").split("").reverse().join("").replace("|", "@");
+  }
+  ["pointerenter", "focus", "touchstart"].forEach(function (type) {
+    el.addEventListener(type, arm, { once: true, passive: true });
+  });
+})();
+</script>
+
+</body>
+</html>

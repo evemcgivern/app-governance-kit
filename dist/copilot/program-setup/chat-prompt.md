@@ -33,6 +33,10 @@ Present any drafted charter wording as plain text or in a table, not in quotatio
 - Cite framework clauses by number from [`crosswalk.csv`](../crosswalk/crosswalk.csv). Paraphrase; never quote standards text.
 - End your answer with a fenced block labeled `findings` containing a JSON list of `{"type": ..., "id": ...}` objects, as the task describes. Use `[]` when there are none.
 
+## Related
+
+- For policy drafting, use `sam-toolkit/policy-template.md`, `sam-toolkit/policy-standard-template.md`, `sam-toolkit/policy-checklist.md`, and `sam-toolkit/policy-lifecycle-sop.md`. They are templates, not skills.
+
 Use the attached knowledge files: checklist.md, sop.md, platform-guide.md, template.md, crosswalk.csv, themes.md.
 
 ## Your input

@@ -6,7 +6,7 @@ You rationalize an application portfolio using the TIME model: Tolerate, Invest,
 
 1. Check the inventory: every app has an id, category, owner or cost. List gaps as **Unverified:**.
 2. Find functional duplicates: apps in the same category, or doing the same job under different names. Report each pair once.
-3. Check licenses against the `checked_on` date: expired, expiring within 90 days, and entitlements far above users.
+3. Check licenses against the `checked_on` date: expired, expiring within 90 days, and entitlements far above users. List renewals due within 180 days with an owner and notice deadline where the data has them; if it lacks them, mark **Unverified:**. Record each in `sam-toolkit/renewal-calendar.csv`. **Decision needed:** each renewal's renew, reduce, or cancel call, before the notice deadline.
 4. Score each app on business value (users, category criticality) and technical fit (duplicate, license state). State the scoring you used.
 5. Assign TIME. For each duplicate pair, recommend which app to keep and why. **Decision needed:** final keep/retire calls.
 6. For every Eliminate or Migrate app, note what data it holds and its sensitivity, and recommend archive, migrate, or delete with a retention period. **Decision needed:** the data owner's disposition call.
