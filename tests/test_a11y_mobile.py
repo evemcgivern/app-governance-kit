@@ -2,7 +2,7 @@ import re
 import unittest
 from pathlib import Path
 
-from agk.docs import TIER_EXTRA, body_html, parse_markdown, write_docs
+from agk.docs import LONG_PAGE_WORDS, TIER_EXTRA, word_count, body_html, parse_markdown, write_docs
 from test_docs import tmp_repo, built
 
 CSS = Path(__file__).resolve().parent.parent / "site" / "style.css"
@@ -128,6 +128,37 @@ class StepChipTests(unittest.TestCase):
         css = CSS.read_text(encoding="utf-8")
         self.assertRegex(css, r"\.step-nav\s*\{[^}]*min-height: 44px")
         self.assertRegex(css, r"\.step-nav\s*\{[^}]*min-width: 44px")
+
+
+LONG_MD = "# Long\n\n" + "".join(
+    f"## Part {n}\n\n" + ("word " * 200).strip() + ".\n\n" for n in range(1, 9))
+
+
+class JumpListTests(unittest.TestCase):
+    def test_long_page_gets_a_jump_list_and_back_to_top(self):
+        root = tmp_repo(extra={"long.md": LONG_MD})
+        write_docs(root)
+        html = built(root, "long.html")
+        self.assertIn('<details class="doc-jump"><summary>Jump to</summary>', html)
+        self.assertIn('<li><a href="#part-1">Part 1</a></li>', html)
+        self.assertEqual(html.count('<li><a href="#part-'), 8)
+        self.assertLess(html.index('class="doc-jump"'), html.index('class="doc-body'))
+        self.assertIn('<a class="doc-to-top" href="#main">Back to top</a>', html)
+
+    def test_short_page_gets_neither(self):
+        root = tmp_repo(extra={"short.md": "# Short\n\n## A\n\nx\n\n## B\n\nx\n\n## C\n\nx\n"})
+        write_docs(root)
+        html = built(root, "short.html")
+        self.assertNotIn("doc-jump", html)
+        self.assertNotIn("doc-to-top", html)
+
+    def test_threshold_is_in_words(self):
+        self.assertEqual(LONG_PAGE_WORDS, 1500)
+        self.assertEqual(word_count(parse_markdown("# T\n\none two\n\n- three four\n")), 5)
+
+    def test_tier_bar_height_is_capped(self):
+        css = CSS.read_text(encoding="utf-8")
+        self.assertRegex(css, r"\.tier-bar\s*\{[^}]*max-height: 30vh[^}]*overflow-y: auto")
 
 
 if __name__ == "__main__":

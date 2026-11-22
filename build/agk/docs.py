@@ -889,10 +889,10 @@ PAGE = """<!DOCTYPE html>
 {actions}
   </div>
 {extra}
-  <div class="doc-body prose prose-wide">
+{jump}  <div class="doc-body prose prose-wide">
 {body}
   </div>
-  <div class="doc-bottom">{print_button}</div>
+  <div class="doc-bottom">{to_top}{print_button}</div>
 </main>
 {footer}
 </body>
@@ -1360,6 +1360,34 @@ def wayfinding_html(steps: list[dict], stem: str, page: str, playbook_page: str)
     return "  <nav class=\"doc-step\" aria-label=\"Playbook step\">\n" + "\n".join(lines) + "\n  </nav>\n"
 
 
+LONG_PAGE_WORDS = 1500
+
+
+def word_count(blocks: list[dict]) -> int:
+    """Words in a page's headings, paragraphs, lists and table cells."""
+    total = 0
+    for b in blocks:
+        if b["type"] == "heading":
+            total += len(b["text"].split())
+        elif b["type"] == "table":
+            total += sum(len(c.split()) for row in b["rows"] for c in row)
+        else:
+            total += len(_block_text(b).split())
+    return total
+
+
+def jump_html(blocks: list[dict], files=lambda name: None) -> str:
+    """A "Jump to" list of the h2 headings on a long page, or an empty string for a short one."""
+    heads = [unmark(b["text"], files) for b in blocks if b["type"] == "heading" and b["level"] == 2]
+    if len(heads) < 3 or word_count(blocks) <= LONG_PAGE_WORDS:
+        return ""
+    items = "".join(f"<li><a href=\"#{slug(h)}\">{escape(h)}</a></li>" for h in heads)
+    return f"  <details class=\"doc-jump\"><summary>Jump to</summary><ul>{items}</ul></details>\n"
+
+
+TO_TOP = "<a class=\"doc-to-top\" href=\"#main\">Back to top</a>"
+
+
 def _relpath(from_page: str, to: str) -> str:
     return os.path.relpath(to, os.path.dirname(from_page)).replace(os.sep, "/")
 
@@ -1499,6 +1527,7 @@ def write_docs(root: Path) -> list[str]:
                               f"data-file=\"{stem}-filled.csv\">Download my answers (CSV)</button>")
         if "prompt-copy" in body:
             extra += "\n" + PROMPT_STATUS + "\n" + PROMPT_SCRIPT
+        jump = jump_html(d.blocks, files)
         description = summary_of(d.blocks) or d.title
         canonical = BASE + d.page
         jsonld = json.dumps({
@@ -1517,7 +1546,7 @@ def write_docs(root: Path) -> list[str]:
             canonical=canonical, base=BASE, jsonld=jsonld.replace("</", "<\\/"),
             header=header, footer=footer, back_href=up + d.back[0], back_label=escape(d.back[1]),
             actions="\n".join(actions), extra=extra, body=body,
-            print_button=PRINT_BUTTON,
+            print_button=PRINT_BUTTON, jump=jump, to_top=TO_TOP if jump else "",
             wayfinding=(wayfinding_html(steps, d.name, d.page, playbook.page)
                         if playbook and d.group == "sam-toolkit" and d.src.parent == playbook.src.parent else "")),
             encoding="utf-8")

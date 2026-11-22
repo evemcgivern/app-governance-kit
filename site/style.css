@@ -1612,6 +1612,8 @@ button.visual-actions__link {
   border-radius: 12px;
   background: var(--chip-bg);
   box-shadow: var(--shadow-hover);
+  max-height: 30vh;
+  overflow-y: auto;
 }
 
 .tier-bar p {
@@ -2040,6 +2042,48 @@ button.visual-actions__link {
 
 @media print {
   .doc-step__nav {
+    display: none;
+  }
+}
+
+/* Long pages: a collapsed list of sections near the top and a link back up at the end */
+
+.doc-jump {
+  max-width: 46rem;
+  margin: 0 0 1rem;
+  padding: 0.25rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+.doc-jump summary {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.doc-jump ul {
+  margin: 0 0 0.5rem;
+  padding-left: 1.1rem;
+}
+
+.doc-jump a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+
+.doc-to-top {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  margin-right: auto;
+}
+
+@media print {
+  .doc-jump {
     display: none;
   }
 }
