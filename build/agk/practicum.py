@@ -6,10 +6,10 @@ from pathlib import Path
 from agk.grade import MAX_EXTRA
 
 ORDER = ("program-setup", "itam-maturity", "crosswalk", "rationalization", "access-review",
-         "ai-intake", "hardware-lifecycle", "audit-response")
+         "ai-intake", "hardware-lifecycle", "audit-response", "as-is-assessment")
 NO_PAGE_TOOLS = ("cert-prep",)
 TABLES = ("apps", "licenses", "employees", "accounts", "ai-systems", "maturity-answers", "devices",
-          "proofs-of-purchase", "audit-installs")
+          "proofs-of-purchase", "audit-installs", "as-is-evidence")
 TEXTS = ("controls", "council-draft", "audit-letter")
 GITHUB_BLOB_BASE = "https://github.com/evemcgivern/app-governance-kit/blob/main/"
 

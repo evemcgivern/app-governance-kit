@@ -37,6 +37,8 @@ class StepMapTests(unittest.TestCase):
         self.assertEqual(by["practicum", "08-audit-response"]["main_step"], "3")
         self.assertEqual(by["practicum", "08-audit-response"]["also_steps"], ["8"])
         self.assertEqual(by["practicum", "03-crosswalk"]["main_step"], "beyond")
+        self.assertEqual(by["practicum", "09-as-is-assessment"]["main_step"], "1")
+        self.assertEqual(by["practicum", "09-as-is-assessment"]["also_steps"], ["5"])
         self.assertEqual(by["case", "rationalization"]["main_step"], "beyond")
 
     def test_every_practicum_and_case_is_mapped(self):

@@ -33,7 +33,7 @@ Each step gives the reason in one line, the files to use, the matching prompt in
   - [ ] You can say in two sentences what your biggest worry is: audit, renewals, duplicate spend, or ownership.
   - [ ] You have done a five-minute gut check: a rough 0 to 3 score for each dimension in `application-management-self-assessment.md`, from memory and with no evidence. It is a guess, and step 5 redoes it with evidence.
 - Time (expert judgment, not measured): 2 to 4 hours of effort, within 1 week.
-- Related: [glossary](../field-guide/glossary.md): ITAM.
+- Related: [exercise 09: As-is assessment](../practicum/09-as-is-assessment.md); [glossary](../field-guide/glossary.md): ITAM.
 
 ### Step 2: Get a sponsor, a problem statement, and a light charter
 
@@ -92,7 +92,7 @@ Read this before step 4 if any of these is true.
   - [ ] No more than three gaps are chosen to close first, each with an owner and a date. [[XW-027]]
   - [ ] `resources-and-training-plan.md` is filled in with your own figures, and the sponsor has seen it. Training for each group that needs it is planned. [[XW-004]]
 - Time (expert judgment, not measured): 10 to 20 hours of effort over 2 to 4 weeks. Other people hold the evidence.
-- Related: [exercise 02: ITAM maturity](../practicum/02-itam-maturity.md); case study [As-Is and To-Be](../site/case-studies.html#case-gap-plan); [glossary](../field-guide/glossary.md): Tier.
+- Related: [exercise 02: ITAM maturity](../practicum/02-itam-maturity.md), [exercise 09: As-is assessment](../practicum/09-as-is-assessment.md); case study [As-Is and To-Be](../site/case-studies.html#case-gap-plan); [glossary](../field-guide/glossary.md): Tier.
 
 **Stop here for now.** A small program that stops after step 5 is still worth having: it has a sponsor, a scope, a baseline, a renewal calendar, and an audit roster. Steps 1 to 5 are about 30 to 60 hours of effort over 2 to 3 months. Stop here if time or budget runs out, keep the routines in the run table running, and return to step 6 when you can.
 

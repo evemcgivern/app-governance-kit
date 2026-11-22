@@ -1,6 +1,6 @@
 # Halden practicum
 
-Eight hands-on exercises built around one fictional company, Halden Logistics, and the same demo data this kit's tools already use. Each exercise asks you to work a real governance problem by hand, using only a checklist (no AI, no shortcuts) and then check your own answer against this kit's grader.
+Nine hands-on exercises built around one fictional company, Halden Logistics, and the same demo data this kit's tools already use. Each exercise asks you to work a real governance problem by hand, using only a checklist (no AI, no shortcuts) and then check your own answer against this kit's grader.
 
 ## Who it's for
 
@@ -10,7 +10,7 @@ Anyone studying toward CAMP, CSAM, or AIGP (see the [field guide](../site/field-
 
 30 to 60 minutes, done by hand with the checklist open and nothing else. The rationalization and access-review exercises run toward the long end because their data files are larger; the rest are shorter.
 
-## The eight exercises, in order
+## The nine exercises, in order
 
 | # | Exercise | Level |
 |---|---|---|
@@ -22,6 +22,7 @@ Anyone studying toward CAMP, CSAM, or AIGP (see the [field guide](../site/field-
 | 6 | [06-ai-intake.md](06-ai-intake.md) | AIGP |
 | 7 | [07-hardware-lifecycle.md](07-hardware-lifecycle.md) | CHAMP |
 | 8 | [08-audit-response.md](08-audit-response.md) | CSAM |
+| 9 | [09-as-is-assessment.md](09-as-is-assessment.md) | CAMP |
 
 Work them in order if you're new to all three certifications; each one builds on ideas (crosswalk rows, the checklist habit) the earlier ones introduce. If you already hold one of the three, jump straight to its section.
 
