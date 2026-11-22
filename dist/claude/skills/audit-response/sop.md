@@ -4,7 +4,7 @@ This SOP describes a practice. It gives no legal advice. **Decision needed: coun
 
 ## Purpose
 
-Let the organization answer a software publisher's audit or compliance letter calmly, with one voice and prepared evidence, instead of ignoring the letter or accepting every claim in it.
+Let the organization answer a software publisher's audit or compliance letter with one voice, prepared evidence, and every decision made by counsel.
 
 ## Scope
 
@@ -23,10 +23,18 @@ Each row ties a role to the tree nodes where it acts. The names behind each role
 | C6, C9 | Asset manager | Build the first position, then the full reconciliation, and brief Legal and the sponsor | The asset manager reports |
 | C7 | IT security, Legal | Review any request to run the auditor's own tool | Legal |
 | C8 | Procurement, finance contact, technical lead, hardware asset manager | Find proofs, payment records, and discovery output; compare hardware data where it explains counts | The asset manager |
-| C10, C11 | Legal, IT security | Decide what is released; attend every meeting; IT security advises on exposure | Legal |
-| D1 to D5 | Legal, executive sponsor, contract owner, Finance | Test the findings, then settle and close | Sponsor with counsel |
+| C10, C11 | Legal, IT security | Legal decides what is released and attends meetings and site visits; IT security advises on data requests | Legal |
+| D1 | Legal | Receives the findings and keeps all contact | Legal |
+| D2 | Asset manager, Legal | The asset manager tests each claim; Legal decides what is sent | Legal |
+| D3 | Executive sponsor, Legal, contract owner, Finance | Decide true-up, purchase, or settlement | Sponsor with counsel, the contract owner, and Finance |
+| D4 | Legal, asset manager | Legal names the duties after settlement; the asset manager puts them on the calendar | Legal |
+| D5 | Legal | Closes the audit and lifts the freeze in writing | Legal |
 | E1 | Asset manager, executive sponsor | Review, fix, and update the records | The asset manager |
-| B1 to B5, F1 | Asset manager, Legal, Finance | Readiness work and requests from internal or financial auditors | Counsel; Finance for financial auditors |
+| A2, B1 | Legal, contract owner, asset manager | Legal decides what to ask for at renewal and whether readiness work goes ahead | Legal |
+| B2 | Asset manager, contract owner | Name the metric the contract counts; send unclear terms to counsel | The contract owner confirms; counsel for unclear terms |
+| B3, B4 | Asset manager, Procurement | Check proofs and build the position | The asset manager reports |
+| B5 | Asset manager, contract owner, Finance | Propose how to close a gap; approve buying, reclaiming, or retiring | Finance and the contract owner |
+| F1 | Asset manager, Legal, Finance | Handle a request from internal or financial auditors; nothing is shared until both agree | Counsel and Finance |
 
 Department managers answer questions about the software their teams use, as needed.
 
@@ -37,7 +45,7 @@ Prepare once, review the plan and roster every year and after any leadership cha
 ## Prepare ahead
 
 - **Audit response plan.** Who receives letters (mail room, support desk, and executives know to pass them to Legal at once), the communication rule, and the roster in `audit-response-roles.csv`.
-- **Two copies of the roster.** One lists roles only and survives staff changes. One adds names and phone numbers and is the one used in a hurry.
+- **One roster.** Keep one roster in `audit-response-roles.csv`. Update names when people join or leave, and put a dated printout with phone numbers in the case file.
 - **Records brief for counsel.** One page on where proofs, contracts, discovery data, and inventory records live, who keeps each, and how current each is.
 
 ## Steps
@@ -73,7 +81,6 @@ Group what a proof must show by the question it answers. The agreement and licen
 - Once a notice is open, keep every record as it stands: proofs, contracts, discovery output, emails and notes. Do not delete, edit or back-date any of them. Fix an error by adding a dated note, never by overwriting. **Decision needed: counsel**, for any exception.
 - Whether to reply, ask for more time, or narrow the scope is for counsel to decide. **Decision needed: counsel.**
 - Never hand over device-level detail beyond what counsel releases.
-- A prepared reply built from evidence is the aim. Ignoring the letter and accepting every claim are the two outcomes the tree is built to avoid.
 
 ## Questions to ask
 
