@@ -198,6 +198,31 @@ Use on a page that compares several tools or items on the same fields. Each card
 
 `tests/test_tools_overview.py` checks one card per method, the five fields, and that each title link reaches a real card.
 
+### Step stepper and step card (card variants)
+
+Use on a page that lists items under an ordered path, such as the toolkit page's "By playbook step". The stepper is a `nav` with one `ol` of links, one per step. Each link is a `--accent` number badge (`.step-badge`) plus the step title, with visually hidden "Step N: " so the link reads out of context. It is the visual of the path and the jump list. The grid wraps: two columns at 390 px, up to five on wide screens. Do not use the nav group colors for steps.
+
+Each step is a `section.card.step-card` named by its `h3` (plain text, never a link). The card holds the badge and title, a file count, a one-line goal taken from the source text, a file list, and a quiet link to the full text. In a file row the name is the link. A small type label (`.file-type`, on `--chip-bg`) says what kind of file it is, read from the file's own title or intro. A `.file-also` note in `--muted` appears only when the file also serves other steps; its numbers link to those step cards. A group that belongs to no step uses the same card with `step-card--loose`, no badge and no stepper entry. Rows wrap and stack at 390 px. Targets are at least 24 px.
+
+```html
+<nav class="stepper-nav" aria-label="The ten playbook steps">
+  <ol class="stepper">
+    <li><a href="#by-step-3"><span class="step-badge" aria-hidden="true">3</span><span><span class="visually-hidden">Step 3: </span>Week 1, stop the bleeding</span></a></li>
+  </ol>
+</nav>
+<section class="card step-card" id="by-step-3" aria-labelledby="by-step-3-heading">
+  <div class="step-card__head"><h3 id="by-step-3-heading"><span class="step-badge" aria-hidden="true">3</span><span class="visually-hidden">Step 3: </span>Week 1, stop the bleeding</h3><span class="meta step-card__count">3 files</span></div>
+  <p class="step-card__goal">Missed renewal deadlines cost money before any program exists.</p>
+  <ul class="step-files">
+    <li data-stem="audit-decision-tree"><a href="docs/sam-toolkit/audit-decision-tree.html">Audit decision tree</a>
+      <span class="file-type">Decision tree</span>
+      <span class="file-also">Also step <a href="#by-step-8"><span class="visually-hidden">Step </span>8</a></span></li>
+  </ul>
+</section>
+```
+
+`tests/test_toolkit_steps.py` checks the ten cards and ids, that headings are not links, that the stepper links resolve, that each file appears once, and that "also" links reach real cards.
+
 ### Stage wheel (selectable diagram)
 
 Use for a diagram whose segments each pick a panel. Put one instruction line above it, name it from the wheel with `aria-describedby`, and unhide it only when the script runs. Each segment is a `role="button"` with `tabindex="0"`, handles Enter and Space, and carries `aria-current="true"` when selected.
@@ -341,6 +366,7 @@ Tests pin these rules. A change that breaks one fails `make test`.
 | Nav, breadcrumb, titles, descriptions and `aria-current` are consistent on every page | `tests/test_site_pages.py` |
 | Hub card lists are labelled, summaries are present, links resolve | `tests/test_case_studies_page.py`, `tests/test_lifecycle_page.py` |
 | The tools overview has one card per method, five fields each, and links to real cards | `tests/test_tools_overview.py` |
+| The toolkit step cards and stepper: ten ids, heading not a link, files once, also links resolve | `tests/test_toolkit_steps.py` |
 
 Rules that live in CSS and no test pins. Check them by eye:
 

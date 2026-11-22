@@ -175,7 +175,8 @@ class HandKeptPageTests(unittest.TestCase):
         html = (ROOT / "site" / "sam-toolkit.html").read_text(encoding="utf-8")
         block = html.split("<!--STEPS-->", 1)[1].split("<!--/STEPS-->", 1)[0]
         groups = {}
-        for m in re.finditer(r'<h3 id="by-step-([\w-]+)">.*?</h3>(.*?)(?=<h3 id="by-step-|\Z)', block, re.S):
+        for m in re.finditer(r'<section class="card step-card[^"]*" id="by-step-([\w-]+)"[^>]*>(.*?)</section>',
+                             block, re.S):
             groups[m.group(1)] = re.findall(r'data-stem="([^"]+)"', m.group(2))
         for r in (r for r in self.rows if r["kind"] == "file"):
             stem = r["key"].rsplit(".", 1)[0]
