@@ -221,6 +221,10 @@ either a Primary source or two independent secondary sources.
 | XW-029 | cobit2019 | BAI06 | Managed IT Changes | https://open-exam-prep.com/study-guides/cobit-2019/bai-dss-mea/bai-objectives ; https://doi.org/10.33022/ijcs.v12i4.3353 (names BAI06 as "Managed IT Changes") | Secondary (2 sources) | added 2026-10-15 — objective level only; no practice-level clause cited |
 | XW-029 | iso27001 | 6.3, A.8.32 | Planning of changes; Change management | ISO/IEC 27001:2022 full text (main body and Annex A) | Primary | added 2026-10-15 |
 | XW-029 | iso42001 | 6.3 | Planning of changes | ISO/IEC 42001:2023 full text | Primary | added 2026-10-15 |
+| XW-030 | iso19770_1 | 7.3, 7.4, 7.6.5 | Awareness; Communication; Control of documented information | Clause 7.6.5 is already confirmed under XW-020. Clauses 7.3 and 7.4 are cited by number in this kit's `policy-checklist.md` and `policy-lifecycle-sop.md`. | ISO/IEC 19770-1:2017 full text, printed pp. 19 and 21 | added 2026-11-21; rechecked 2026-11-21: the 7.3 (Awareness) and 7.4 (Communication) titles match the standard, and 7.4 asks what, when, with whom, and how to communicate |
+| XW-030 | cobit2019 | Unverified | | Not checked against a source in this repo | None | left as Unverified on 2026-11-21 |
+| XW-030 | iso27001 | Unverified | | Not checked against a source in this repo | None | left as Unverified on 2026-11-21 |
+| XW-030 | iso42001 | Unverified | | Not checked against a source in this repo | None | left as Unverified on 2026-11-21 |
 
 ## Full-text pass on 2026-10-14
 
@@ -300,3 +304,7 @@ cells cite. Only clause numbers and titles are recorded here.
 - The 19770-5 overview, 19770-8 mapping guidelines, 19770-11 certification
   body requirements, and TS 19770-13 sustainability guidance gave context
   only. No new cells came from them beyond the existing XW-011 citation.
+
+## IAITAM mapping
+
+`iaitam-map.csv` maps each crosswalk theme to the CAMP process area and the CSAM topic it supports. The names come from the public topic lists on iaitam.org/camp and iaitam.org/csam, fetched 2026-11-21. IAITAM publishes no clause numbers, so each row is the kit's own practitioner mapping and says so. Match is direct (the theme is that process area's core work), partial (it supports it), or none (outside CAMP's 12 areas). XW-030 covers communication and education in part. Two CAMP process areas have no crosswalk theme: legislation and project management. They are listed as gap rows.
