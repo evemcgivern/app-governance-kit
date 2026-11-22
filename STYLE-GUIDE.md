@@ -198,6 +198,20 @@ Use on a page that compares several tools or items on the same fields. Each card
 
 `tests/test_tools_overview.py` checks one card per method, the five fields, and that each title link reaches a real card.
 
+### Stage wheel (selectable diagram)
+
+Use for a diagram whose segments each pick a panel. Put one instruction line above it, name it from the wheel with `aria-describedby`, and unhide it only when the script runs. Each segment is a `role="button"` with `tabindex="0"`, handles Enter and Space, and carries `aria-current="true"` when selected.
+
+- Resting: `--chip-bg` fill with a 1.5 px `--control-border` outline (3:1 or better on the page and on the fill) and a pointer cursor.
+- Hover: `--border` fill and a 3 px `--accent` outline.
+- Selected: `--accent` fill plus a check mark (`.lc-segment-mark`) above the label, so state is not color alone.
+- Focus: the `--focus` stroke and glow. Fill and stroke changes take 0.15s; they stop under `prefers-reduced-motion: reduce`.
+
+```html
+<p class="lc-instruction" id="lc-instruction" hidden>Select a stage to see its questions. ...</p>
+<svg class="lc-wheel" role="group" aria-label="Application lifecycle stages" aria-describedby="lc-instruction">...</svg>
+```
+
 ### Link list
 
 Use for a short run of links, often under a card.

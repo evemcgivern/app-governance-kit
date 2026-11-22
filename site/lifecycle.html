@@ -156,9 +156,11 @@
     </ul>
   </noscript>
 
+  <p class="lc-instruction" id="lc-instruction" hidden>Select a stage to see its questions. The panel updates when you choose one.</p>
+
   <div class="lc-layout">
     <div class="lc-wheel-wrap">
-      <svg class="lc-wheel" viewBox="0 0 400 400" role="group" aria-label="Application lifecycle stages">
+      <svg class="lc-wheel" viewBox="0 0 400 400" role="group" aria-label="Application lifecycle stages" aria-describedby="lc-instruction">
         <circle cx="200" cy="200" r="150" class="lc-wheel-ring" fill="none"></circle>
         <g id="lc-segments"></g>
         <g id="lc-arrow" aria-hidden="true"></g>
@@ -750,6 +752,18 @@
       text.appendChild(tspan);
     });
     segmentsGroup.appendChild(text);
+
+    // Visible "selected" cue so state is not color alone; shown by CSS only
+    // on the current segment. aria-current on the segment carries it for
+    // assistive tech, so this copy is hidden from them.
+    var mark = document.createElementNS(SVG_NS, "text");
+    mark.setAttribute("x", pos[0]);
+    mark.setAttribute("y", pos[1] - ((words.length - 1) * 0.55 * 11.5) - 15);
+    mark.setAttribute("class", "lc-segment-mark");
+    mark.setAttribute("text-anchor", "middle");
+    mark.setAttribute("aria-hidden", "true");
+    mark.textContent = "\u2713";
+    segmentsGroup.appendChild(mark);
   }
 
   function drawHandoffArrow(tailDeg, tipDeg, radius, labelText, labelRadius) {
@@ -838,6 +852,9 @@
   }
 
   buildWheel();
+
+  var instruction = document.getElementById("lc-instruction");
+  if (instruction) { instruction.hidden = false; }
 
   if (panelInfo) { panelInfo.addEventListener("click", onPanelLinkClick); }
   if (panelList) { panelList.addEventListener("click", onPanelLinkClick); }

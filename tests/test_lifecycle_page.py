@@ -66,3 +66,46 @@ class LifecyclePageTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+CSS = (SITE / "style.css").read_text(encoding="utf-8")
+
+
+def css_rules(selector: str) -> str:
+    """Return the joined bodies of every rule whose selector list contains `selector`."""
+    bodies = []
+    for sel, body in re.findall(r"([^{}]+)\{([^{}]*)\}", CSS):
+        if selector in [s.strip() for s in sel.split(",")]:
+            bodies.append(body)
+    return "\n".join(bodies)
+
+
+class WheelAffordanceTests(unittest.TestCase):
+    def test_instruction_sits_above_the_wheel(self):
+        m = re.search(r'<p class="lc-instruction" id="lc-instruction"[^>]*>([^<]+)</p>', PAGE)
+        self.assertIsNotNone(m, "instruction line missing")
+        self.assertRegex(m.group(1), r"^Select a stage")
+        self.assertLess(m.start(), PAGE.index('class="lc-layout"'))
+        self.assertGreater(m.start(), PAGE.index('id="stages-heading"'))
+
+    def test_wheel_is_described_by_the_instruction(self):
+        self.assertRegex(PAGE, r'<svg class="lc-wheel"[^>]*aria-describedby="lc-instruction"')
+
+    def test_segments_are_buttons_with_selected_state_and_mark(self):
+        for needle in ('setAttribute("role", "button")', 'setAttribute("tabindex", "0")',
+                       'setAttribute("aria-current", "true")', "lc-segment-mark"):
+            self.assertIn(needle, PAGE)
+
+    def test_css_has_resting_outline_hover_focus_and_selected_mark(self):
+        rest = css_rules(".lc-segment")
+        self.assertIn("cursor: pointer", rest)
+        self.assertIn("var(--control-border)", rest)
+        self.assertIn("var(--accent)", css_rules(".lc-segment:hover"))
+        self.assertIn("var(--focus)", css_rules(".lc-segment:focus-visible"))
+        self.assertIn("display: none", css_rules(".lc-segment-mark"))
+        self.assertIn("display: inline", css_rules('.lc-segment[aria-current="true"] + .lc-segment-label + .lc-segment-mark'))
+
+    def test_segment_motion_respects_reduced_motion(self):
+        m = re.search(r"@media \(prefers-reduced-motion: reduce\)\s*\{\s*\.lc-segment\s*\{([^}]*)\}", CSS)
+        self.assertIsNotNone(m)
+        self.assertIn("transition: none", m.group(1))

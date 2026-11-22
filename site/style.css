@@ -799,17 +799,21 @@ code {
 
 .lc-segment {
   fill: var(--chip-bg);
-  stroke: var(--bg);
-  stroke-width: 2;
+  stroke: var(--control-border);
+  stroke-width: 1.5;
   cursor: pointer;
+  transition: fill 0.15s var(--ease), stroke 0.15s var(--ease);
 }
 
 .lc-segment:hover {
   fill: var(--border);
+  stroke: var(--accent);
+  stroke-width: 3;
 }
 
 .lc-segment[aria-current="true"] {
   fill: var(--accent);
+  stroke: var(--accent);
 }
 
 .lc-segment:focus-visible {
@@ -822,6 +826,18 @@ code {
 .lc-segment[aria-current="true"]:focus-visible {
   stroke: var(--accent-fg);
   filter: drop-shadow(0 0 3px var(--accent-fg));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lc-segment {
+    transition: none;
+  }
+}
+
+.lc-instruction {
+  margin: 1rem 0 0;
+  color: var(--fg);
+  font-weight: 600;
 }
 
 .lc-segment-label {
@@ -837,6 +853,18 @@ code {
 
 .lc-segment--linked + .lc-segment-label {
   fill: var(--accent-fg);
+}
+
+.lc-segment-mark {
+  display: none;
+  fill: var(--accent-fg);
+  font-size: 0.95rem;
+  font-weight: 700;
+  pointer-events: none;
+}
+
+.lc-segment[aria-current="true"] + .lc-segment-label + .lc-segment-mark {
+  display: inline;
 }
 
 .lc-hub-label {
