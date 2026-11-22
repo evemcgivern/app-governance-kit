@@ -16,6 +16,18 @@
   --shadow: 0 0 0 1px rgba(26, 33, 43, 0.07), 0 1px 2px rgba(26, 33, 43, 0.05), 0 4px 12px rgba(26, 33, 43, 0.05);
   --shadow-hover: 0 0 0 1px rgba(26, 33, 43, 0.09), 0 2px 4px rgba(26, 33, 43, 0.06), 0 10px 24px rgba(26, 33, 43, 0.09);
   --ease: cubic-bezier(0.2, 0, 0, 1);
+  --nav-start: #14596f;
+  --nav-start-wash: #dcedf3;
+  --nav-start-hover: #c4e0ea;
+  --nav-do: #8a4b00;
+  --nav-do-wash: #fbeccf;
+  --nav-do-hover: #f6dca8;
+  --nav-learn: #4a3fa8;
+  --nav-learn-wash: #e6e3f8;
+  --nav-learn-hover: #d3cef2;
+  --nav-explore: #a3224f;
+  --nav-explore-wash: #f9e1e8;
+  --nav-explore-hover: #f2cbd7;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -34,6 +46,18 @@
     --glow: rgba(127, 194, 221, 0.10);
     --shadow: 0 0 0 1px rgba(255, 255, 255, 0.08), 0 1px 2px rgba(0, 0, 0, 0.3), 0 4px 12px rgba(0, 0, 0, 0.25);
     --shadow-hover: 0 0 0 1px rgba(255, 255, 255, 0.13), 0 2px 4px rgba(0, 0, 0, 0.35), 0 10px 24px rgba(0, 0, 0, 0.4);
+    --nav-start: #7fc2dd;
+    --nav-start-wash: #17323d;
+    --nav-start-hover: #1f4453;
+    --nav-do: #f0b765;
+    --nav-do-wash: #35280f;
+    --nav-do-hover: #46351a;
+    --nav-learn: #b8aef5;
+    --nav-learn-wash: #272347;
+    --nav-learn-hover: #342f5c;
+    --nav-explore: #f19ab6;
+    --nav-explore-wash: #3b1f2a;
+    --nav-explore-hover: #4d2837;
   }
 }
 
@@ -52,6 +76,18 @@
   --glow: rgba(127, 194, 221, 0.10);
   --shadow: 0 0 0 1px rgba(255, 255, 255, 0.08), 0 1px 2px rgba(0, 0, 0, 0.3), 0 4px 12px rgba(0, 0, 0, 0.25);
   --shadow-hover: 0 0 0 1px rgba(255, 255, 255, 0.13), 0 2px 4px rgba(0, 0, 0, 0.35), 0 10px 24px rgba(0, 0, 0, 0.4);
+  --nav-start: #7fc2dd;
+  --nav-start-wash: #17323d;
+  --nav-start-hover: #1f4453;
+  --nav-do: #f0b765;
+  --nav-do-wash: #35280f;
+  --nav-do-hover: #46351a;
+  --nav-learn: #b8aef5;
+  --nav-learn-wash: #272347;
+  --nav-learn-hover: #342f5c;
+  --nav-explore: #f19ab6;
+  --nav-explore-wash: #3b1f2a;
+  --nav-explore-hover: #4d2837;
 }
 
 * {
@@ -1575,6 +1611,52 @@ code {
 .site-nav .nav-group:last-child li:not(:first-child) .nav-tip {
   left: auto;
   right: 0;
+}
+
+/* Group color: each group sets --group, --group-wash and --group-hover from its tokens */
+
+.nav-group {
+  --group-rail: 3px;
+  padding: 0.3rem 0.4rem 0.4rem;
+  border-radius: 10px;
+  background: var(--group-wash);
+  box-shadow: inset 0 var(--group-rail) 0 var(--group);
+}
+
+.nav-group:has(> #nav-group-start) {
+  --group: var(--nav-start);
+  --group-wash: var(--nav-start-wash);
+  --group-hover: var(--nav-start-hover);
+  --group-rail: 4px;
+}
+
+.nav-group:has(> #nav-group-do) {
+  --group: var(--nav-do);
+  --group-wash: var(--nav-do-wash);
+  --group-hover: var(--nav-do-hover);
+}
+
+.nav-group:has(> #nav-group-learn) {
+  --group: var(--nav-learn);
+  --group-wash: var(--nav-learn-wash);
+  --group-hover: var(--nav-learn-hover);
+}
+
+.nav-group:has(> #nav-group-explore) {
+  --group: var(--nav-explore);
+  --group-wash: var(--nav-explore-wash);
+  --group-hover: var(--nav-explore-hover);
+}
+
+.nav-group .nav-group__label {
+  margin-top: 0.15rem;
+  color: var(--group);
+}
+
+.nav-group a:not([aria-current]):hover,
+.nav-group a:not([aria-current]):focus-visible {
+  color: var(--group);
+  background: var(--group-hover);
 }
 
 @media (min-width: 46rem) {
