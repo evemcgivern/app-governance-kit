@@ -820,7 +820,7 @@ code {
   font-size: 1.05rem;
   color: var(--muted);
   max-width: 46rem;
-  margin: 0 0 1.5rem;
+  margin: 0.75rem 0 0;
 }
 
 .lc-panel {
@@ -831,7 +831,7 @@ code {
   min-height: 12rem;
 }
 
-.lc-panel h2 {
+.lc-panel h3 {
   margin-top: 0;
 }
 
