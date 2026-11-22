@@ -366,7 +366,7 @@ main section + section {
   text-decoration: none;
   font-size: 0.85rem;
   font-weight: 600;
-  white-space: nowrap;
+  max-width: 100%;
   display: inline-flex;
   align-items: center;
   min-height: 40px;
@@ -406,6 +406,7 @@ table {
 }
 
 .table-scroll {
+  position: relative;
   overflow-x: auto;
 }
 
@@ -1367,6 +1368,12 @@ code {
   margin: 0.25rem 0 1rem;
 }
 
+.pr-result:empty {
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
+
 .pr-result--pass {
   border-color: #2f7d4f;
 }
@@ -1821,6 +1828,20 @@ code {
   white-space: nowrap;
 }
 
+.table-scroll:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.doc-body tbody th[scope="row"],
+.pr-controls tbody th[scope="row"] {
+  color: inherit;
+  font-size: inherit;
+  font-weight: 400;
+  letter-spacing: normal;
+  text-transform: none;
+}
+
 .checklist-choice {
   display: flex;
   align-items: center;
@@ -1829,15 +1850,26 @@ code {
   cursor: pointer;
 }
 
-.checklist-choice input,
-.checklist-items input {
+.checklist-choice input {
   width: 1.05rem;
   height: 1.05rem;
 }
 
-.checklist-items {
-  list-style: none;
-  padding-left: 0.5rem;
+/* Task lists show as plain bullets on screen; a tick on screen would be saved nowhere, so print draws a square to tick on paper */
+
+@media print {
+  .task-list {
+    list-style: none;
+    padding-left: 0.25rem;
+  }
+
+  .task-list li::before {
+    content: "\2610\00a0";
+  }
+
+  .task-list li.task-done::before {
+    content: "\2611\00a0";
+  }
 }
 
 button.visual-actions__link {
@@ -1861,6 +1893,8 @@ button.visual-actions__link {
   border-radius: 12px;
   background: var(--chip-bg);
   box-shadow: var(--shadow-hover);
+  max-height: 30vh;
+  overflow-y: auto;
 }
 
 .tier-bar p {
@@ -2223,5 +2257,221 @@ button.visual-actions__link {
 @media print {
   .prompt-copy {
     display: none !important;
+  }
+}
+
+/* Phone widths: 1rem text in fields stops iOS from zooming the page on focus */
+
+@media (max-width: 46rem) {
+  .doc-body input[type="text"],
+  .doc-body input[type="date"],
+  .doc-body textarea,
+  .doc-body select,
+  .checklist td.checklist-write input[type="text"],
+  .checklist td.checklist-write textarea,
+  .record-field input,
+  .record-field select,
+  .record-field textarea,
+  .pr-select,
+  .pr-copy-fallback {
+    font-size: 1rem;
+  }
+}
+
+/* Playbook position: a compact chip with 44 px Previous and Next links */
+
+.doc-step {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.25rem 0.75rem;
+  margin: 0 0 0.5rem;
+}
+
+.doc-step p {
+  margin: 0;
+}
+
+.step-chip {
+  display: inline-block;
+  padding: 0.15rem 0.7rem;
+  border-radius: 999px;
+  background: var(--chip-bg);
+  color: var(--fg);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.doc-step__nav {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.step-nav {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0 0.9rem;
+  border: 1px solid var(--accent);
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+@media print {
+  .doc-step__nav {
+    display: none;
+  }
+}
+
+/* Long pages: a collapsed list of sections near the top and a link back up at the end */
+
+.doc-jump {
+  max-width: 46rem;
+  margin: 0 0 1rem;
+  padding: 0.25rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+.doc-jump summary {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.doc-jump ul {
+  margin: 0 0 0.5rem;
+  padding-left: 1.1rem;
+}
+
+.doc-jump a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+
+.doc-to-top {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  margin-right: auto;
+}
+
+@media print {
+  .doc-jump {
+    display: none;
+  }
+}
+
+/* Phones: keep the main download prominent; Print and Excel become text links */
+
+@media (max-width: 46rem) {
+  .doc-secondary {
+    border: 0;
+    background: transparent;
+    padding-left: 0.25rem;
+    padding-right: 0.25rem;
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+}
+
+.prompt-fail {
+  margin: 0.5rem 0;
+}
+
+/* Wide tables: edge shadows show there is more to scroll to, and the first column stays in view */
+
+.table-scroll,
+.im-table-wrap {
+  background:
+    linear-gradient(to right, var(--bg) 30%, rgba(0, 0, 0, 0)) left center / 2rem 100% no-repeat local,
+    linear-gradient(to left, var(--bg) 30%, rgba(0, 0, 0, 0)) right center / 2rem 100% no-repeat local,
+    radial-gradient(farthest-side at 0 50%, rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0)) left center / 0.7rem 100% no-repeat scroll,
+    radial-gradient(farthest-side at 100% 50%, rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0)) right center / 0.7rem 100% no-repeat scroll;
+}
+
+.scroll-hint {
+  display: none;
+  margin: 0.5rem 0 0;
+  font-size: 0.85rem;
+}
+
+table.sticky-first thead th:first-child,
+table.sticky-first tbody th[scope="row"] {
+  position: sticky;
+  left: 0;
+  z-index: 1;
+  background: var(--bg);
+}
+
+table.sticky-first tbody tr:nth-child(even) th[scope="row"] {
+  background: var(--chip-bg);
+}
+
+@media print {
+  .scroll-hint,
+  .prompt-fail,
+  .prompt-select {
+    display: none !important;
+  }
+
+  table.sticky-first thead th:first-child,
+  table.sticky-first tbody th[scope="row"] {
+    position: static;
+  }
+}
+
+/* Phone widths */
+
+@media (max-width: 46rem) {
+  /* touch targets */
+  .lc-handoff-btn,
+  .lc-rule-xw,
+  .lc-link-anchor,
+  .lc-overlay-toggle,
+  .lc-back-link-anchor,
+  .visual-actions__link,
+  .site-nav a,
+  .fg-jumpnav a,
+  .checklist-choice,
+  .pr-inline-label,
+  .pr-pair-remove,
+  .step-nav {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .checklist-choice {
+    display: flex;
+  }
+
+  .pr-pair-remove {
+    padding: 0 0.9rem;
+  }
+
+  .checklist td.checklist-tick label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  .scroll-hint:not([hidden]) {
+    display: block;
+  }
+
+  table.sticky-first tbody th[scope="row"] {
+    max-width: 8rem;
+    white-space: normal;
+    overflow-wrap: anywhere;
   }
 }

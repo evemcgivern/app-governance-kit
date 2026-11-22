@@ -68,6 +68,7 @@
 <link rel="apple-touch-icon" href="../../apple-touch-icon.png">
 <link rel="stylesheet" href="../../style.css">
 <script src="../../nav.js" defer></script>
+<script src="../../scroll-hint.js" defer></script>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -127,8 +128,8 @@
   <h1>Certification study coach: sample CHAMP session (illustrative)</h1>
   <div class="visual-actions doc-actions">
     <a class="visual-actions__link" href="example-halden-cert-prep.docx">Download Word (.docx)</a>
-    <a class="visual-actions__link" href="example-halden-cert-prep.xlsx">Download Excel (.xlsx)</a>
-    <button type="button" class="visual-actions__link doc-print" onclick="window.print()">Print or save as PDF</button>
+    <a class="visual-actions__link doc-secondary" href="example-halden-cert-prep.xlsx">Download Excel (.xlsx)</a>
+    <button type="button" class="visual-actions__link doc-print doc-secondary" onclick="window.print()">Print or save as PDF</button>
   </div>
 
   <div class="doc-body prose prose-wide">
@@ -139,10 +140,10 @@
 <p><strong>Scenario:</strong> Halden&#x27;s device fleet is due its quarterly lifecycle check. Which devices need action, and why?</p>
 <p><strong>Learner&#x27;s answer (invented):</strong> &quot;DEV-008 is overdue for refresh. The retired devices are fine because they&#x27;re retired.&quot;</p>
 <p><strong>Comparison with the data:</strong></p>
-<div class="table-scroll"><table class="checklist"><caption>Drill 1: refresh and disposal</caption><thead><tr><th scope="col">Point</th><th scope="col">Result</th><th scope="col">Why it matters</th></tr></thead><tbody><tr><td class="long-text">DEV-008 overdue (due 2026-03-05)</td><td>Right</td><td class="long-text">An old server past its refresh date is a failure risk <a class="xw-tag" href="../../crosswalk.html">XW-010</a></td></tr><tr><td class="long-text">DEV-027 overdue (due 2026-03-05)</td><td>Missed</td><td class="long-text">Mobile devices lose support quickly <a class="xw-tag" href="../../crosswalk.html">XW-010</a></td></tr><tr><td class="long-text">DEV-045 overdue (due 2026-03-05)</td><td>Missed</td><td class="long-text">About three years in service; budget needs the full list <a class="xw-tag" href="../../crosswalk.html">XW-012</a></td></tr><tr><td class="long-text">DEV-011 retired 2023-02-19, no confirmed wipe</td><td>Missed</td><td class="long-text">Disposal cannot close without wipe or destruction evidence <a class="xw-tag" href="../../crosswalk.html">XW-010</a></td></tr><tr><td class="long-text">DEV-042 retired 2025-01-09, no confirmed wipe</td><td>Missed</td><td class="long-text">Same, and the data is still on the device <a class="xw-tag" href="../../crosswalk.html">XW-010</a></td></tr></tbody></table></div>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Drill 1: refresh and disposal table"><table class="checklist sticky-first"><caption>Drill 1: refresh and disposal</caption><thead><tr><th scope="col">Point</th><th scope="col">Result</th><th scope="col">Why it matters</th></tr></thead><tbody><tr><th scope="row" id="q1-dev-008-overdue-due-2026-03-05-c0">DEV-008 overdue (due 2026-03-05)</th><td>Right</td><td class="long-text">An old server past its refresh date is a failure risk <a class="xw-tag" href="../../crosswalk.html">XW-010</a></td></tr><tr><th scope="row" id="q1-dev-027-overdue-due-2026-03-05-c0">DEV-027 overdue (due 2026-03-05)</th><td>Missed</td><td class="long-text">Mobile devices lose support quickly <a class="xw-tag" href="../../crosswalk.html">XW-010</a></td></tr><tr><th scope="row" id="q1-dev-045-overdue-due-2026-03-05-c0">DEV-045 overdue (due 2026-03-05)</th><td>Missed</td><td class="long-text">About three years in service; budget needs the full list <a class="xw-tag" href="../../crosswalk.html">XW-012</a></td></tr><tr><th scope="row" id="q1-dev-011-retired-2023-02-19-no-confirmed-wipe-c0">DEV-011 retired 2023-02-19, no confirmed wipe</th><td>Missed</td><td class="long-text">Disposal cannot close without wipe or destruction evidence <a class="xw-tag" href="../../crosswalk.html">XW-010</a></td></tr><tr><th scope="row" id="q1-dev-042-retired-2025-01-09-no-confirmed-wipe-c0">DEV-042 retired 2025-01-09, no confirmed wipe</th><td>Missed</td><td class="long-text">Same, and the data is still on the device <a class="xw-tag" href="../../crosswalk.html">XW-010</a></td></tr></tbody></table></div>
 <p><strong>Rating: gap.</strong> The learner checked refresh dates for one device and did not check retired devices at all. Retirement is a risk step, not an end state.</p>
 <h2 id="summary">Summary</h2>
-<div class="table-scroll"><table class="checklist"><caption>Summary</caption><thead><tr><th scope="col">Drill</th><th scope="col">Task</th><th scope="col">Rating</th><th scope="col">Gap</th></tr></thead><tbody><tr><td>1</td><td>Retire hardware with wipe evidence</td><td>gap</td><td class="long-text">Retired devices not checked for wipe confirmation</td></tr></tbody></table></div>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Summary table"><table class="checklist sticky-first"><caption>Summary</caption><thead><tr><th scope="col">Drill</th><th scope="col">Task</th><th scope="col">Rating</th><th scope="col">Gap</th></tr></thead><tbody><tr><th scope="row" id="q2-1-c0">1</th><td>Retire hardware with wipe evidence</td><td>gap</td><td class="long-text">Retired devices not checked for wipe confirmation</td></tr></tbody></table></div>
 <p><strong>Next drills:</strong> repeat the retirement drill with a different device, then track refresh against budget (cost as a range, not a quote). Practicum exercise 07 works the same data by hand.</p>
 <p>For exam content, use IAITAM&#x27;s own CHAMP outline and training. This is practice only and does not predict the result.</p>
 <p><strong>Decision needed:</strong> which gap to work first, and whether to book the exam.</p>

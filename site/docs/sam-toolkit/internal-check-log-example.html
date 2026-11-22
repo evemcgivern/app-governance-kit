@@ -68,6 +68,7 @@
 <link rel="apple-touch-icon" href="../../apple-touch-icon.png">
 <link rel="stylesheet" href="../../style.css">
 <script src="../../nav.js" defer></script>
+<script src="../../scroll-hint.js" defer></script>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -126,13 +127,13 @@
   </div>
   <h1>Internal check log example</h1>
   <div class="visual-actions doc-actions">
-    <a class="visual-actions__link" href="internal-check-log-example.xlsx">Download Excel (.xlsx)</a>
+    <a class="visual-actions__link doc-secondary" href="internal-check-log-example.xlsx">Download Excel (.xlsx)</a>
     <a class="visual-actions__link" href="internal-check-log-example.csv">Download CSV</a>
-    <button type="button" class="visual-actions__link doc-print" onclick="window.print()">Print or save as PDF</button>
+    <button type="button" class="visual-actions__link doc-print doc-secondary" onclick="window.print()">Print or save as PDF</button>
   </div>
 
   <div class="doc-body prose prose-wide">
-<div class="table-scroll"><table class="checklist wide"><thead><tr><th scope="col">check_id</th><th scope="col">quarter</th><th scope="col">area</th><th scope="col">test</th><th scope="col">sample_size</th><th scope="col">records_failed</th><th scope="col">finding</th><th scope="col">severity</th><th scope="col">owner</th><th scope="col">due_on</th><th scope="col">retested_on</th><th scope="col">result</th><th scope="col">evidence_ref</th></tr></thead><tbody><tr><td>IC-001</td><td>2026-Q3</td><td>Retirement</td><td class="long-text">Check that each sampled retired device has a wipe or destruction record</td><td>10</td><td>2</td><td class="long-text">DEV-011 and DEV-042 have no wipe confirmation.</td><td>high</td><td>Hardware asset manager</td><td>2026-12-31</td><td class="checklist-write"></td><td>open</td><td class="checklist-write"></td></tr><tr><td>IC-002</td><td>2026-Q3</td><td>Renewals</td><td class="long-text">Check that every license past expiry has a recorded decision</td><td>60</td><td>2</td><td class="long-text">LIC-017 and LIC-044 expired with no recorded decision.</td><td>high</td><td>Procurement lead</td><td>2026-12-31</td><td class="checklist-write"></td><td>open</td><td class="checklist-write"></td></tr></tbody></table></div>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Table 1"><table class="checklist wide sticky-first"><thead><tr><th scope="col">check_id</th><th scope="col">quarter</th><th scope="col">area</th><th scope="col">test</th><th scope="col">sample_size</th><th scope="col">records_failed</th><th scope="col">finding</th><th scope="col">severity</th><th scope="col">owner</th><th scope="col">due_on</th><th scope="col">retested_on</th><th scope="col">result</th><th scope="col">evidence_ref</th></tr></thead><tbody><tr><th scope="row" id="q1-ic-001-c0">IC-001</th><td>2026-Q3</td><td>Retirement</td><td class="long-text">Check that each sampled retired device has a wipe or destruction record</td><td>10</td><td>2</td><td class="long-text">DEV-011 and DEV-042 have no wipe confirmation.</td><td>high</td><td>Hardware asset manager</td><td>2026-12-31</td><td class="checklist-write"></td><td>open</td><td class="checklist-write"></td></tr><tr><th scope="row" id="q1-ic-002-c0">IC-002</th><td>2026-Q3</td><td>Renewals</td><td class="long-text">Check that every license past expiry has a recorded decision</td><td>60</td><td>2</td><td class="long-text">LIC-017 and LIC-044 expired with no recorded decision.</td><td>high</td><td>Procurement lead</td><td>2026-12-31</td><td class="checklist-write"></td><td>open</td><td class="checklist-write"></td></tr></tbody></table></div>
   </div>
   <div class="doc-bottom"><button type="button" class="print-icon" onclick="window.print()" aria-label="Print this page" title="Print"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="M7 9V3.5h10V9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M7 17H4.5A1.5 1.5 0 0 1 3 15.5v-5A1.5 1.5 0 0 1 4.5 9h15a1.5 1.5 0 0 1 1.5 1.5v5a1.5 1.5 0 0 1-1.5 1.5H17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><rect x="7" y="14" width="10" height="6.5" rx="0.8" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17.5" cy="12" r="0.9" fill="currentColor"/></svg></button></div>
 </main>

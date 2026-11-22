@@ -68,6 +68,7 @@
 <link rel="apple-touch-icon" href="../../apple-touch-icon.png">
 <link rel="stylesheet" href="../../style.css">
 <script src="../../nav.js" defer></script>
+<script src="../../scroll-hint.js" defer></script>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -127,8 +128,8 @@
   <h1>Software Lifecycle Check: synthetic demo (checked_on 2026-10-24)</h1>
   <div class="visual-actions doc-actions">
     <a class="visual-actions__link" href="example-synthetic-demo-run.docx">Download Word (.docx)</a>
-    <a class="visual-actions__link" href="example-synthetic-demo-run.xlsx">Download Excel (.xlsx)</a>
-    <button type="button" class="visual-actions__link doc-print" onclick="window.print()">Print or save as PDF</button>
+    <a class="visual-actions__link doc-secondary" href="example-synthetic-demo-run.xlsx">Download Excel (.xlsx)</a>
+    <button type="button" class="visual-actions__link doc-print doc-secondary" onclick="window.print()">Print or save as PDF</button>
   </div>
 
   <div class="doc-body prose prose-wide">
@@ -136,7 +137,7 @@
 <h2 id="data-currency">Data currency</h2>
 <p>Checked on 2026-10-24. KEV data current: yes (synthetic demo data). <strong>Unverified:</strong> the counts come from an earlier release of the tool and were not re-run on v0.7.0.</p>
 <h2 id="summary-counts">Summary counts</h2>
-<div class="table-scroll"><table class="checklist"><caption>Summary counts</caption><thead><tr><th scope="col">measure</th><th scope="col">count</th></tr></thead><tbody><tr><td>items from rows</td><td>50 items from 60 rows</td></tr><tr><td>past end of life</td><td>8</td></tr><tr><td>ends within 12 months</td><td>5</td></tr><tr><td>mainstream support ended</td><td>1</td></tr><tr><td>supported</td><td>25</td></tr><tr><td>unmatched</td><td>11</td></tr><tr><td>names to review</td><td>1 (unmatched on purpose, not a finding)</td></tr></tbody></table></div>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Summary counts table"><table class="checklist"><caption>Summary counts</caption><thead><tr><th scope="col">measure</th><th scope="col">count</th></tr></thead><tbody><tr><th scope="row" id="q1-items-from-rows-c0">items from rows</th><td>50 items from 60 rows</td></tr><tr><th scope="row" id="q1-past-end-of-life-c0">past end of life</th><td>8</td></tr><tr><th scope="row" id="q1-ends-within-12-months-c0">ends within 12 months</th><td>5</td></tr><tr><th scope="row" id="q1-mainstream-support-ended-c0">mainstream support ended</th><td>1</td></tr><tr><th scope="row" id="q1-supported-c0">supported</th><td>25</td></tr><tr><th scope="row" id="q1-unmatched-c0">unmatched</th><td>11</td></tr><tr><th scope="row" id="q1-names-to-review-c0">names to review</th><td>1 (unmatched on purpose, not a finding)</td></tr></tbody></table></div>
 <p>Classification: governable 40, component 0, bundle member 3, unknown 7 <a class="xw-tag" href="../../crosswalk.html">XW-001</a> <a class="xw-tag" href="../../crosswalk.html">XW-009</a>.</p>
 <p>Unmatched does not mean safe. No date is claimed for those items. Item IDs are not relayed; the person reads each list in Report themselves <a class="xw-tag" href="../../crosswalk.html">XW-026</a>.</p>
 <p>The vendor and product appear in CISA KEV. This does not mean your version is affected <a class="xw-tag" href="../../crosswalk.html">XW-024</a>.</p>

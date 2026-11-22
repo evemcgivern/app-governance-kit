@@ -49,6 +49,7 @@
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="stylesheet" href="style.css">
 <script src="nav.js" defer></script>
+<script src="scroll-hint.js" defer></script>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -144,7 +145,7 @@
         <p class="meta"><a href="#cert-nav"><span aria-hidden="true">&uarr; </span>Back to certification list</a> · <a href="#main">Back to top</a></p>
         <p class="prose">Before the certifications' own attributes below, start from the job: which certification(s) actually teach the skill a task needs, independent of which kit tool applies (the per-certification sections below already name those). Three tasks are taught by more than one certification; the rest are each one certification's specialty. Certification names in the header link to that certification's own section; a shared checkmark here doesn't mean equal depth (see the CAMP/CSAM/CHAMP/IAM Certificate maturity row for one example).</p>
 
-        <div class="table-scroll">
+        <div class="table-scroll" tabindex="0" role="region" aria-label="Cross-certification task matrix, scroll sideways to see more">
           <table>
             <caption class="visually-hidden">Cross-certification task matrix</caption>
             <thead><tr><th>On-the-job task</th><th><a href="#cert-camp">CAMP</a></th><th><a href="#cert-csam">CSAM</a></th><th><a href="#cert-champ">CHAMP</a></th><th><a href="#cert-aigp">AIGP</a></th><th><a href="#cert-itil4">ITIL 4 Foundation</a></th><th><a href="#cert-iam">IAM Certificate</a></th></tr></thead>
@@ -170,7 +171,7 @@
 
         <h3 id="cert-compare-heading">Certification comparison</h3>
         <p class="prose">The task matrix above says which certification(s) cover a task; this table compares the certifications themselves; useful once you've narrowed to two or three candidates and need a tie-breaker.</p>
-        <div class="table-scroll" id="cert-compare">
+        <div class="table-scroll" id="cert-compare" tabindex="0" role="region" aria-label="Certification comparison, scroll sideways to see more">
       <p class="meta"><a href="#cert-nav"><span aria-hidden="true">&uarr; </span>Back to certification list</a> · <a href="#main">Back to top</a></p>
       <table>
         <caption class="visually-hidden">Certification comparison at a glance</caption>

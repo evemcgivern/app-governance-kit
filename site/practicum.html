@@ -49,6 +49,7 @@
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="stylesheet" href="style.css">
 <script src="nav.js" defer></script>
+<script src="scroll-hint.js" defer></script>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -161,7 +162,7 @@
           <button type="button" class="button button--ghost" data-action="reset">Reset</button>
         </p>
         <p class="pr-message" id="pr-message-program-setup" role="status" aria-live="polite"></p>
-        <div class="pr-result" id="pr-result-program-setup" role="status" aria-live="polite" hidden></div>
+        <div class="pr-result" id="pr-result-program-setup" role="status" aria-live="polite"></div>
         <textarea class="pr-copy-fallback" id="pr-copy-fallback-program-setup" readonly hidden aria-label="Findings block for program setup"></textarea>
 
         <details class="pr-more">
@@ -205,7 +206,7 @@
           <button type="button" class="button button--ghost" data-action="reset">Reset</button>
         </p>
         <p class="pr-message" id="pr-message-itam-maturity" role="status" aria-live="polite"></p>
-        <div class="pr-result" id="pr-result-itam-maturity" role="status" aria-live="polite" hidden></div>
+        <div class="pr-result" id="pr-result-itam-maturity" role="status" aria-live="polite"></div>
         <textarea class="pr-copy-fallback" id="pr-copy-fallback-itam-maturity" readonly hidden aria-label="Findings block for ITAM maturity"></textarea>
 
         <details class="pr-more">
@@ -249,7 +250,7 @@
           <button type="button" class="button button--ghost" data-action="reset">Reset</button>
         </p>
         <p class="pr-message" id="pr-message-crosswalk" role="status" aria-live="polite"></p>
-        <div class="pr-result" id="pr-result-crosswalk" role="status" aria-live="polite" hidden></div>
+        <div class="pr-result" id="pr-result-crosswalk" role="status" aria-live="polite"></div>
         <textarea class="pr-copy-fallback" id="pr-copy-fallback-crosswalk" readonly hidden aria-label="Findings block for crosswalk"></textarea>
 
         <details class="pr-more">
@@ -293,7 +294,7 @@
           <button type="button" class="button button--ghost" data-action="reset">Reset</button>
         </p>
         <p class="pr-message" id="pr-message-rationalization" role="status" aria-live="polite"></p>
-        <div class="pr-result" id="pr-result-rationalization" role="status" aria-live="polite" hidden></div>
+        <div class="pr-result" id="pr-result-rationalization" role="status" aria-live="polite"></div>
         <textarea class="pr-copy-fallback" id="pr-copy-fallback-rationalization" readonly hidden aria-label="Findings block for rationalization"></textarea>
 
         <details class="pr-more">
@@ -337,7 +338,7 @@
           <button type="button" class="button button--ghost" data-action="reset">Reset</button>
         </p>
         <p class="pr-message" id="pr-message-access-review" role="status" aria-live="polite"></p>
-        <div class="pr-result" id="pr-result-access-review" role="status" aria-live="polite" hidden></div>
+        <div class="pr-result" id="pr-result-access-review" role="status" aria-live="polite"></div>
         <textarea class="pr-copy-fallback" id="pr-copy-fallback-access-review" readonly hidden aria-label="Findings block for access review"></textarea>
 
         <details class="pr-more">
@@ -381,7 +382,7 @@
           <button type="button" class="button button--ghost" data-action="reset">Reset</button>
         </p>
         <p class="pr-message" id="pr-message-ai-intake" role="status" aria-live="polite"></p>
-        <div class="pr-result" id="pr-result-ai-intake" role="status" aria-live="polite" hidden></div>
+        <div class="pr-result" id="pr-result-ai-intake" role="status" aria-live="polite"></div>
         <textarea class="pr-copy-fallback" id="pr-copy-fallback-ai-intake" readonly hidden aria-label="Findings block for AI intake"></textarea>
 
         <details class="pr-more">
@@ -425,7 +426,7 @@
           <button type="button" class="button button--ghost" data-action="reset">Reset</button>
         </p>
         <p class="pr-message" id="pr-message-hardware-lifecycle" role="status" aria-live="polite"></p>
-        <div class="pr-result" id="pr-result-hardware-lifecycle" role="status" aria-live="polite" hidden></div>
+        <div class="pr-result" id="pr-result-hardware-lifecycle" role="status" aria-live="polite"></div>
         <textarea class="pr-copy-fallback" id="pr-copy-fallback-hardware-lifecycle" readonly hidden aria-label="Findings block for hardware lifecycle"></textarea>
 
         <details class="pr-more">
@@ -469,7 +470,7 @@
           <button type="button" class="button button--ghost" data-action="reset">Reset</button>
         </p>
         <p class="pr-message" id="pr-message-audit-response" role="status" aria-live="polite"></p>
-        <div class="pr-result" id="pr-result-audit-response" role="status" aria-live="polite" hidden></div>
+        <div class="pr-result" id="pr-result-audit-response" role="status" aria-live="polite"></div>
         <textarea class="pr-copy-fallback" id="pr-copy-fallback-audit-response" readonly hidden aria-label="Findings block for audit response"></textarea>
 
         <details class="pr-more">
@@ -630,7 +631,12 @@
   function buildTable(columns, rows, extraHeaders, rowExtraBuilder) {
     var wrap = document.createElement("div");
     wrap.className = "table-scroll";
+    wrap.setAttribute("tabindex", "0");
+    wrap.setAttribute("role", "region");
+    wrap.setAttribute("aria-label", columns.map(function (c) { return c.label; }).join(", ") +
+      " table, scroll sideways to see more");
     var table = document.createElement("table");
+    if (columns.length >= 3) { table.className = "sticky-first"; }
     var thead = document.createElement("thead");
     var htr = document.createElement("tr");
     columns.forEach(function (c) {
@@ -651,10 +657,11 @@
     var tbody = document.createElement("tbody");
     rows.forEach(function (row) {
       var tr = document.createElement("tr");
-      columns.forEach(function (c) {
-        var td = document.createElement("td");
-        td.textContent = row[c.key] || "";
-        tr.appendChild(td);
+      columns.forEach(function (c, i) {
+        var cell = document.createElement(i === 0 ? "th" : "td");
+        if (i === 0) { cell.setAttribute("scope", "row"); }
+        cell.textContent = row[c.key] || "";
+        tr.appendChild(cell);
       });
       if (rowExtraBuilder) { rowExtraBuilder(tr, row); }
       tbody.appendChild(tr);
@@ -724,12 +731,12 @@
   function renderResult(tool, result) {
     var el = document.getElementById("pr-result-" + tool);
     if (!el) { return; }
-    el.hidden = false;
     el.textContent = "";
     el.className = "pr-result " + (result.passed ? "pr-result--pass" : "pr-result--fail");
 
     var heading = document.createElement("h4");
     heading.textContent = result.passed ? "Passed" : "Not passed yet";
+    heading.setAttribute("tabindex", "-1");
     el.appendChild(heading);
 
     var missedP = document.createElement("p");
@@ -757,6 +764,7 @@
       });
       el.appendChild(eul);
     }
+    heading.focus();
   }
 
   function wireActions(tool) {
@@ -790,7 +798,7 @@
     var controls = section.querySelector(".pr-controls");
     if (controls && BUILDERS[tool]) { BUILDERS[tool](controls); }
     var result = document.getElementById("pr-result-" + tool);
-    if (result) { result.hidden = true; result.textContent = ""; result.className = "pr-result"; }
+    if (result) { result.textContent = ""; result.className = "pr-result"; }
     var fallback = document.getElementById("pr-copy-fallback-" + tool);
     if (fallback) { fallback.hidden = true; fallback.value = ""; }
     setMessage(tool, "");
@@ -927,6 +935,7 @@
     };
   };
 
+  // visibleLabel is the text shown; pass [text, rowName] so each row's box has its own accessible name.
   function addCheckboxCellLike(parent, id, visibleLabel, checked, onChange) {
     var label = document.createElement("label");
     label.className = "pr-inline-label";
@@ -934,6 +943,10 @@
     var input = document.createElement("input");
     input.type = "checkbox";
     input.id = id;
+    if (Array.isArray(visibleLabel)) {
+      input.setAttribute("aria-label", visibleLabel[0] + ": " + visibleLabel[1]);
+      visibleLabel = visibleLabel[0];
+    }
     input.checked = !!checked;
     input.addEventListener("change", function () { onChange(input.checked); });
     label.appendChild(input);
@@ -964,7 +977,7 @@
       function (tr, row) {
         var td = document.createElement("td");
         var id = "pr-itam-maturity-" + row.area;
-        addCheckboxCellLike(td, id, "Weakest", !!state.checked[row.area], function (checked) {
+        addCheckboxCellLike(td, id, ["Weakest", row.area], !!state.checked[row.area], function (checked) {
           if (checked && checkedCount() >= 3) {
             var input = document.getElementById(id);
             if (input) { input.checked = false; }
@@ -1062,7 +1075,7 @@
       ["Duplicate?"],
       function (tr, row) {
         var td = document.createElement("td");
-        addCheckboxCellLike(td, "pr-rat-dup-" + row.id, "Select", !!state.dupChecked[row.id], function (checked) {
+        addCheckboxCellLike(td, "pr-rat-dup-" + row.id, ["Select", row.id + " " + row.name], !!state.dupChecked[row.id], function (checked) {
           state.dupChecked[row.id] = checked;
           saveState("rationalization", state);
         });
@@ -1094,6 +1107,7 @@
     container.appendChild(dupControls);
 
     var pairsHeading = document.createElement("h4");
+    pairsHeading.setAttribute("tabindex", "-1");
     pairsHeading.textContent = "Recorded duplicate pairs";
     container.appendChild(pairsHeading);
 
@@ -1114,10 +1128,18 @@
       removeBtn.type = "button";
       removeBtn.className = "pr-pair-remove";
       removeBtn.textContent = "Remove";
+      removeBtn.setAttribute("aria-label", "Remove duplicate pair " + pair[0] + " and " + pair[1]);
       removeBtn.addEventListener("click", function () {
         state.pairs.splice(idx, 1);
         saveState("rationalization", state);
         BUILDERS["rationalization"](container);
+        // The list was rebuilt, so put focus on the next Remove button, or the list heading when none is left.
+        var buttons = container.querySelectorAll(".pr-pair-remove");
+        var next = buttons[Math.min(idx, buttons.length - 1)];
+        var heading = Array.prototype.filter.call(container.querySelectorAll("h4"), function (h) {
+          return h.textContent === "Recorded duplicate pairs";
+        })[0];
+        (next || heading).focus();
       });
       li.appendChild(removeBtn);
       pairsList.appendChild(li);
@@ -1137,7 +1159,7 @@
       ["Expired?"],
       function (tr, row) {
         var td = document.createElement("td");
-        addCheckboxCellLike(td, "pr-rat-exp-" + row.id, "Expired", !!state.expired[row.id], function (checked) {
+        addCheckboxCellLike(td, "pr-rat-exp-" + row.id, ["Expired", row.id], !!state.expired[row.id], function (checked) {
           state.expired[row.id] = checked;
           saveState("rationalization", state);
         });
@@ -1176,7 +1198,7 @@
       ["Orphaned?"],
       function (tr, row) {
         var td = document.createElement("td");
-        addCheckboxCellLike(td, "pr-access-orphan-" + row.id, "Orphaned", !!state.orphaned[row.id], function (checked) {
+        addCheckboxCellLike(td, "pr-access-orphan-" + row.id, ["Orphaned", row.id], !!state.orphaned[row.id], function (checked) {
           state.orphaned[row.id] = checked;
           saveState("access-review", state);
         });
@@ -1253,14 +1275,14 @@
       ["Overdue refresh?", "Unwiped if retired?"],
       function (tr, row) {
         var td1 = document.createElement("td");
-        addCheckboxCellLike(td1, "pr-hw-overdue-" + row.device_id, "Overdue", !!state.overdue[row.device_id], function (checked) {
+        addCheckboxCellLike(td1, "pr-hw-overdue-" + row.device_id, ["Overdue", row.device_id], !!state.overdue[row.device_id], function (checked) {
           state.overdue[row.device_id] = checked;
           saveState("hardware-lifecycle", state);
         });
         tr.appendChild(td1);
 
         var td2 = document.createElement("td");
-        addCheckboxCellLike(td2, "pr-hw-unwiped-" + row.device_id, "Unwiped", !!state.unwiped[row.device_id], function (checked) {
+        addCheckboxCellLike(td2, "pr-hw-unwiped-" + row.device_id, ["Unwiped", row.device_id], !!state.unwiped[row.device_id], function (checked) {
           state.unwiped[row.device_id] = checked;
           saveState("hardware-lifecycle", state);
         });
@@ -1307,7 +1329,7 @@
       function (tr, row) {
         var td = document.createElement("td");
         var id = "pr-ar-short-" + row.license_id + "-" + row.version;
-        addCheckboxCellLike(td, id, "Short", !!state.short[row.license_id + "|" + row.version], function (checked) {
+        addCheckboxCellLike(td, id, ["Short", row.license_id + " version " + row.version], !!state.short[row.license_id + "|" + row.version], function (checked) {
           state.short[row.license_id + "|" + row.version] = checked;
           saveState("audit-response", state);
         });
