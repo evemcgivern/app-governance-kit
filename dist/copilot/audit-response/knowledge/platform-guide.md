@@ -1,6 +1,6 @@
 # Platform guide: Software audit response check
 
-Where the records this tool uses live in ServiceNow Software Asset Management Professional (SAM Pro) and in Flexera One. Every table or field named below was confirmed on a source in the Sources list as of 2026-09-25 and has not been checked since; where no source names one, that is stated as a gap rather than guessed. Neither platform documents an audit-response workflow of its own, so what follows maps this method's inputs onto the records each platform holds.
+Where the records this tool uses live in ServiceNow Software Asset Management Professional (SAM Pro) and in Flexera One. Every table or field named below was confirmed on a source in the Sources list as of 2026-09-25 and has not been checked since. Where no source names one, the guide says so. Neither platform documents an audit-response workflow of its own, so what follows maps this method's inputs onto the records each platform holds.
 
 ## ServiceNow SAM Pro: entitlements, installs, and reconciliation
 
@@ -14,11 +14,11 @@ SAM Pro's reconciliation works on installs the platform has discovered. Install 
 
 As of 2026-09-25: Flexera One's hybrid IT discovery feeds the install side of the reconciliation, and each discovered title is normalized against **Technopedia**, which matters when a publisher has renamed or acquired product lines. Its license position work compares what was found with what was bought, and reports unused and unassigned licenses.
 
-Flexera's published pages reviewed do not name a field or record for proof of purchase, upgrade chains, or an audit case. That gap is stated here rather than guessed. Keep the proof register in the governance record and link each row to the entitlement it supports.
+Flexera's published pages reviewed do not name a field or record for proof of purchase, upgrade chains, or an audit case. Keep the proof register in the governance record and link each row to the entitlement it supports.
 
 ## What the platforms do not replace
 
-Neither platform decides who speaks to a publisher, what is released, or whether a claim is valid. Those are counsel's calls. The platform supplies counts; the response team and Legal supply judgment.
+Neither platform decides who speaks to a publisher, what is released, or whether a claim is valid. Those are counsel's calls.
 
 ## Sources checked
 
@@ -30,4 +30,4 @@ The platform facts above were fetched for the rationalization platform guide on 
 - [Application Rationalization & Management, Flexera](https://www.flexera.com/flexera-one/it-visibility/application-rationalization): hybrid IT discovery and Technopedia normalization.
 - [Streamline Your SaaS Portfolio with Application Rationalization, Flexera](https://www.flexera.com/solutions/saas-spend/application-rationalization): unused and unassigned license reporting.
 
-Pages that do not return readable content to an automated fetch: Flexera's documentation site (`docs.flexera.com/...`, 403). Nothing above cites it.
+Pages that did not load: Flexera's documentation site (`docs.flexera.com/...`, 403). Nothing above cites it.

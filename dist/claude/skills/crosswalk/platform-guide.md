@@ -14,7 +14,7 @@ This guide names the module, object, and workspace as ServiceNow documents them.
 
 ## Flexera
 
-Flexera One has no feature for mapping an arbitrary governance control to a custom framework like COBIT 2019, ISO/IEC 27001, ISO/IEC 42001, or ISO/IEC 19770-1. Its compliance capability, Compliance Standards Intelligence, runs automated technical checks against inventory for a fixed set of named regulatory standards (for example DORA, NYDFS, APRA, and FFIEC); it is not a place to record this crosswalk's rows or clause references.
+Flexera One has no feature for mapping an arbitrary governance control to a custom framework like COBIT 2019, ISO/IEC 27001, ISO/IEC 42001, or ISO/IEC 19770-1. Its compliance capability, Compliance Standards Intelligence, runs automated technical checks against inventory for a fixed set of named regulatory standards (for example DORA, NYDFS, APRA, and FFIEC). Record this crosswalk's rows and clause references elsewhere.
 
 ## Sources checked
 

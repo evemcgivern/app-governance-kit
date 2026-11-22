@@ -1,6 +1,6 @@
 # Platform guide: Application governance router
 
-This skill has no platform integration. It routes between the kit's other skills and keeps a routing log in a spreadsheet you control. Nothing here names a vendor module or field, so there is nothing to confirm against a vendor source.
+This skill has no platform integration. It routes between the kit's other skills and keeps a routing log in a spreadsheet you control. No vendor modules or fields are named.
 
 ## Where to run it
 

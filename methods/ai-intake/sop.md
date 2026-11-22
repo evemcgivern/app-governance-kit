@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Give every AI system a documented risk tier and a recorded set of controls before it goes into use, so risk is identified and owned at intake rather than discovered after the fact. Legal content last reviewed: 2026-09.
+Give every AI system a documented risk tier and a recorded set of controls before it goes into use. Legal content last reviewed: 2026-09.
 
 ## Scope
 

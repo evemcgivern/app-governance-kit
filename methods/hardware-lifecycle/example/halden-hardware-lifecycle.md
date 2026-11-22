@@ -29,7 +29,7 @@ Reasoning: refresh-due dates were compared against `checked_on` (2026-09-01) for
 | mobile | 1 (DEV-027) | $1,071 | **Unverified:** ~$950–$1,200 |
 | **Total** | **3** | **$10,240** | **Unverified: roughly $9,650–$12,300** |
 
-This is a range, not a commitment [[XW-012]]. Actual quotes need procurement's current vendor pricing and any warranty/trade-in terms before a purchase order is placed [[XW-013]]. **Decision needed:** budget owner to confirm this range against available budget before any order.
+Actual quotes need procurement's current vendor pricing and any warranty/trade-in terms before a purchase order is placed [[XW-012]] [[XW-013]]. **Decision needed:** budget owner to confirm this range against available budget before any order.
 
 ## Disposal-blocking list
 
@@ -40,12 +40,7 @@ Two retired devices cannot be marked disposed until wipe or destruction evidence
 
 The other 8 retired devices (DEV-005, DEV-018, DEV-024, DEV-029, DEV-035, DEV-048, DEV-053, DEV-059) show a confirmed "yes" wipe and are not blocking disposal.
 
-## Summary
-
-- **60 devices reviewed**: 50 active, 10 retired.
-- **3 overdue-refresh devices** (1 server, 1 laptop, 1 mobile), estimated replacement cost range **~$9,650–$12,300** (unverified against current vendor pricing).
-- **2 retired devices blocking disposal** for lack of confirmed data wipe (DEV-011, DEV-042).
-- **Decision needed** from the asset owner on replace/upgrade/extend for each overdue device, and from whoever is accountable for disposal on wipe/destruction method for each unwiped device; see table above.
+**Decision needed** from the asset owner on replace, upgrade, or extend for each overdue device, and from whoever is accountable for disposal on wipe or destruction method for each unwiped device; see the table above.
 
 ```findings
 [

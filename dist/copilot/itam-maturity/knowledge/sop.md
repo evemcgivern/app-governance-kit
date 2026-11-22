@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Give the organization an honest, evidence-backed picture of how mature its IT asset management practice is across nine process areas, so gaps get named and funded rather than assumed away.
+Give the organization an evidence-backed picture of how mature its IT asset management practice is across nine process areas: a score for each area and three named, funded gaps.
 
 ## Scope
 
@@ -38,19 +38,19 @@ A baseline assessment when the practice starts, then a full re-check every year.
 Match the evidence to the score it can support:
 
 - A document supports a 3: it shows the practice is defined.
-- A dated review of that document, or of the practice, supports a 4: it shows the practice is checked.
-- A change made after that review supports a 5: it shows the practice improves.
+- A dated review of that document, or of the practice, supports a 4, because it shows the practice is checked.
+- A change made after that review supports a 5, the proof that the practice improves.
 
 Apply these tests where they fit the area:
 
 - **Governance, policy.** Accountability is set by role; each role has a current named holder. The policy also states its scope, defines its terms, says what happens when someone does not follow it, and has a review cycle. Missing parts cap the score.
-- **Governance, communication plan.** The plan names the audience, the channel, how often people are told, and how the team checks that they understood. A plan with no check of understanding is a broadcast, so score it lower.
+- **Governance, communication plan.** The plan names the audience, the channel, how often people are told, and how the team checks that they understood. Score a plan with no check of understanding lower.
 - **Lifecycle, disposal.** For software and applications, the evidence shows data removed or kept as the records schedule says, and access removed. For devices, add a wipe or destruction certificate. An item is not closed without this.
-- **Reporting, measures.** Each measure is tracked against a stated purpose. A number nobody uses for a decision does not count.
+- **Reporting, measures.** Each measure is tracked against a stated purpose. Don't count a number nobody uses for a decision.
 
 ## Common scoring mistakes
 
-- Scoring a form as a process. A blank template or an approval form shows the practice is planned, not that anyone uses it.
+- Scoring a form as a process. A blank template or an approval form shows only that the practice is planned.
 - Scoring from self-report with no evidence. Lower the score and mark it **Unverified:**.
 - Scoring a policy nobody was told about. A policy that has not reached the people it governs supports a lower score.
 
@@ -70,7 +70,7 @@ Some readers think in IAITAM's 12 Key Process Areas (KPAs): Acquisition Manageme
 | cost | Financial |
 | reporting | Program, Project |
 
-The security pairing is a weak fit: no KPA covers access control, so score security on its own question. The KPA names belong to IAITAM, and this kit has no affiliation with IAITAM. They are not ISO/IEC 19770-1 or COBIT BAI09 clauses, and this table is not a crosswalk. Use the crosswalk for clause citations.
+The security pairing is a weak fit: no KPA covers access control, so score security on its own question. The KPA names belong to IAITAM, and this kit has no affiliation with IAITAM. Use the crosswalk for clause citations; these names are not ISO/IEC 19770-1 or COBIT BAI09 clauses.
 
 ## Evidence to retain
 
@@ -82,8 +82,8 @@ The security pairing is a weak fit: no KPA covers access control, so score secur
 
 ## Related
 
-- [**Governance framework crosswalk**](../crosswalk/) (`crosswalk`): supplies the framework rows each maturity area maps to.
-- [**Application rationalization**](../rationalization/) (`rationalization`): takes over an application flagged by a low lifecycle or entitlement score to decide keep, consolidate, or retire.
-- [**AI system intake and risk tiering**](../ai-intake/) (`ai-intake`): extends this assessment's inventory and lifecycle questions to AI systems entering the estate.
-- [**Access review pack**](../access-review/) (`access-review`): runs the access checks that back up the security area's score.
-- [**Stand up a governance program**](../program-setup/) (`program-setup`): stands up the policy and sponsor role this assessment's governance area checks for.
+- [Governance framework crosswalk](../crosswalk/) (`crosswalk`): supplies the framework rows each maturity area maps to.
+- [Application rationalization](../rationalization/) (`rationalization`): takes over an application flagged by a low lifecycle or entitlement score to decide keep, consolidate, or retire.
+- [AI system intake and risk tiering](../ai-intake/) (`ai-intake`): extends this assessment's inventory and lifecycle questions to AI systems entering the estate.
+- [Access review pack](../access-review/) (`access-review`): runs the access checks that back up the security area's score.
+- [Stand up a governance program](../program-setup/) (`program-setup`): stands up the policy and sponsor role this assessment's governance area checks for.

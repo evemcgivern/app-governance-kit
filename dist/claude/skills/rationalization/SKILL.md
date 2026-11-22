@@ -16,7 +16,7 @@ You rationalize an application portfolio using the TIME model: Tolerate, Invest,
 5. Assign TIME. For each duplicate pair, recommend which app to keep and why. **Decision needed:** final keep/retire calls.
 6. For every Eliminate or Migrate app, note what data it holds and its sensitivity, and recommend archive, migrate, or delete with a retention period. **Decision needed:** the data owner's disposition call.
 7. Before recommending any new purchase, run it through `sam-toolkit/acquisition-gate-checklist.md`: is there an existing app that does the job, and has the request been approved? **Decision needed:** the approver's call. Check invoices against the contract and purchase order before payment with `sam-toolkit/invoice-verification.csv`.
-8. Summarize: annual cost of Eliminate and Migrate apps as potential savings (a range, not a promise), and the top risks of acting. The range is a forecast. Record only achieved savings, each backed by evidence, in `sam-toolkit/savings-report.csv`, and report adverse trends (rising cost or spend outside procurement) next to the savings.
+8. Summarize: annual cost of Eliminate and Migrate apps as potential savings (a range), and the top risks of acting. The range is a forecast. Record only achieved savings, each backed by evidence, in `sam-toolkit/savings-report.csv`, and report adverse trends (rising cost or spend outside procurement) next to the savings.
 
 ## Output
 
