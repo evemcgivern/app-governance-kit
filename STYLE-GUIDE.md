@@ -180,6 +180,24 @@ Use on hub pages that list items: a title link, a one-sentence summary, then up 
 
 When a meta line has a link, add visually hidden text so the link still makes sense out of context: `playbook step 3<span class="visually-hidden">: Week 1, stop the bleeding</span>`.
 
+### Tool facts card (card variant)
+
+Use on a page that compares several tools or items on the same fields. Each card has a title link to the item's detail card, an optional `Limit:` meta line, and a definition list with the same labels in the same order on every card. At 46rem and wider each row is a label column and a text column; below that, the label sits above its text, so the cards stack at 390 px. The fields on `tools.html` are What it does, You give it, You get, Use it when and Decision stays with. Write "Not found." where the source does not say.
+
+```html
+<ul class="tool-overview case-list card-grid">
+  <li class="card tool-card">
+    <h3><a href="#access-review">Access review pack</a></h3>
+    <dl class="tool-facts">
+      <div><dt>What it does</dt><dd>Matches every account to a person ...</dd></div>
+      <div><dt>Decision stays with</dt><dd>The application owner decides each removal.</dd></div>
+    </dl>
+  </li>
+</ul>
+```
+
+`tests/test_tools_overview.py` checks one card per method, the five fields, and that each title link reaches a real card.
+
 ### Link list
 
 Use for a short run of links, often under a card.
@@ -308,6 +326,7 @@ Tests pin these rules. A change that breaks one fails `make test`.
 | View links name their page; a failed copy shows a visible note | `tests/test_a11y_mobile.py` |
 | Nav, breadcrumb, titles, descriptions and `aria-current` are consistent on every page | `tests/test_site_pages.py` |
 | Hub card lists are labelled, summaries are present, links resolve | `tests/test_case_studies_page.py`, `tests/test_lifecycle_page.py` |
+| The tools overview has one card per method, five fields each, and links to real cards | `tests/test_tools_overview.py` |
 
 Rules that live in CSS and no test pins. Check them by eye:
 
