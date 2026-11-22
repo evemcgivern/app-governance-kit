@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Lifecycle | Eve McGivern</title>
-<meta name="description" content="Six lifecycle stages, each with the governance questions to ask along the way.">
+<title>Application lifecycle | App Governance Kit</title>
+<meta name="description" content="Six lifecycle stages from request to retirement, for governance owners who need to know what to ask at each stage and which kit tool answers it.">
 <meta name="author" content="Eve McGivern">
 <link rel="canonical" href="https://evemcgivern.github.io/app-governance-kit/lifecycle.html">
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="Eve McGivern | Application Governance">
-<meta property="og:title" content="Lifecycle | Eve McGivern">
-<meta property="og:description" content="Six lifecycle stages, each with the governance questions to ask along the way.">
+<meta property="og:site_name" content="App Governance Kit">
+<meta property="og:title" content="Application lifecycle | App Governance Kit">
+<meta property="og:description" content="Six lifecycle stages from request to retirement, for governance owners who need to know what to ask at each stage and which kit tool answers it.">
 <meta property="og:url" content="https://evemcgivern.github.io/app-governance-kit/lifecycle.html">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://evemcgivern.github.io/app-governance-kit/og-image.png">
@@ -18,8 +18,8 @@
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Application governance kit: nine governance methods for portfolio, AI, and access.">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Lifecycle | Eve McGivern">
-<meta name="twitter:description" content="Six lifecycle stages, each with the governance questions to ask along the way.">
+<meta name="twitter:title" content="Application lifecycle | App Governance Kit">
+<meta name="twitter:description" content="Six lifecycle stages from request to retirement, for governance owners who need to know what to ask at each stage and which kit tool answers it.">
 <meta name="twitter:image" content="https://evemcgivern.github.io/app-governance-kit/og-image.png">
 <script type="application/ld+json">
 {
@@ -37,7 +37,7 @@
     {
      "@type": "ListItem",
      "position": 2,
-     "name": "Lifecycle",
+     "name": "Application lifecycle",
      "item": "https://evemcgivern.github.io/app-governance-kit/lifecycle.html"
     }
    ]
@@ -57,25 +57,63 @@
   <div class="site-header__inner">
     <a class="brand" href="https://evemcgivern.github.io/">Eve McGivern</a>
     <nav class="site-nav" aria-label="Main">
-      <ul>
-        <li><a href="tools.html" aria-describedby="tip-tools">AI skills</a><span class="nav-tip" role="tooltip" id="tip-tools">The nine governance methods, packaged as skills for Claude, Codex, and Copilot.</span></li>
-        <li><a href="sam-toolkit.html" aria-describedby="tip-sam-toolkit">SAM toolkit</a><span class="nav-tip" role="tooltip" id="tip-sam-toolkit">Templates and checklists for running software asset management by hand.</span></li>
-        <li><a href="practicum.html" aria-describedby="tip-practicum">Practicum</a><span class="nav-tip" role="tooltip" id="tip-practicum">Hands-on exercises on a fictional company, with answers you can check.</span></li>
-        <li><a href="lifecycle.html" aria-current="page" aria-describedby="tip-lifecycle">Lifecycle</a><span class="nav-tip" role="tooltip" id="tip-lifecycle">Six stages from request to retirement, with the questions to ask at each.</span></li>
-        <li><a href="crosswalk.html" aria-describedby="tip-crosswalk">Crosswalk explorer</a><span class="nav-tip" role="tooltip" id="tip-crosswalk">See how each control maps to ISO/IEC 19770, COBIT, 27001, and 42001.</span></li>
-        <li><a href="impact-map.html" aria-describedby="tip-impact-map">Impact map</a><span class="nav-tip" role="tooltip" id="tip-impact-map">One grid showing every control theme against every lifecycle stage.</span></li>
-        <li><a href="field-guide.html" aria-describedby="tip-field-guide">Field guide</a><span class="nav-tip" role="tooltip" id="tip-field-guide">Plain-language guides to the standards, certifications, and key terms.</span></li>
-        <li><a href="case-studies.html" aria-describedby="tip-case-studies">Case studies</a><span class="nav-tip" role="tooltip" id="tip-case-studies">Worked examples of the kit in use, on a fictional company.</span></li>
-        <li><a href="about.html" aria-describedby="tip-about">About</a><span class="nav-tip" role="tooltip" id="tip-about">Who built the kit, and how to get in touch.</span></li>
-      </ul>
+      <details class="nav-menu">
+        <summary class="nav-menu__toggle">Menu</summary>
+        <div class="nav-groups">
+          <div class="nav-group">
+            <p class="nav-group__label" id="nav-group-start">Start</p>
+            <ul aria-labelledby="nav-group-start">
+              <li><a href="sam-toolkit.html#start" aria-describedby="tip-sam-toolkit">SAM toolkit <span class="nav-badge">Start here</span></a><span class="nav-tip" role="tooltip" id="tip-sam-toolkit">Start with the playbook, then the templates and checklists for running software asset management by hand.</span></li>
+            </ul>
+          </div>
+          <div class="nav-group">
+            <p class="nav-group__label" id="nav-group-do">Do</p>
+            <ul aria-labelledby="nav-group-do">
+              <li><a href="tools.html" aria-describedby="tip-tools">AI skills</a><span class="nav-tip" role="tooltip" id="tip-tools">The nine governance methods, packaged as skills for Claude, Codex, and Copilot.</span></li>
+            </ul>
+          </div>
+          <div class="nav-group">
+            <p class="nav-group__label" id="nav-group-learn">Learn</p>
+            <ul aria-labelledby="nav-group-learn">
+              <li><a href="practicum.html" aria-describedby="tip-practicum">Practicum</a><span class="nav-tip" role="tooltip" id="tip-practicum">Exercises on a fictional company, with answers you can check.</span></li>
+              <li><a href="case-studies.html" aria-describedby="tip-case-studies">Case studies</a><span class="nav-tip" role="tooltip" id="tip-case-studies">Worked examples of the kit in use, on a fictional company.</span></li>
+              <li><a href="field-guide.html" aria-describedby="tip-field-guide">Field guide</a><span class="nav-tip" role="tooltip" id="tip-field-guide">Plain-language guides to the standards, certifications, and key terms.</span></li>
+            </ul>
+          </div>
+          <div class="nav-group">
+            <p class="nav-group__label" id="nav-group-explore">Explore</p>
+            <ul aria-labelledby="nav-group-explore">
+              <li><a href="lifecycle.html" aria-current="page" aria-describedby="tip-lifecycle">Application lifecycle</a><span class="nav-tip" role="tooltip" id="tip-lifecycle">Six stages from request to retirement, with the questions to ask at each.</span></li>
+              <li><a href="crosswalk.html" aria-describedby="tip-crosswalk">Crosswalk explorer</a><span class="nav-tip" role="tooltip" id="tip-crosswalk">See how each control maps to ISO/IEC 19770, COBIT, 27001, and 42001.</span></li>
+              <li><a href="impact-map.html" aria-describedby="tip-impact-map">Themes by stage</a><span class="nav-tip" role="tooltip" id="tip-impact-map">One grid showing every control theme against every lifecycle stage.</span></li>
+            </ul>
+          </div>
+        </div>
+      </details>
     </nav>
   </div>
 </header>
 
 <main id="main">
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <ol>
+      <li><a href="index.html">Home</a></li>
+      <li><span aria-current="page">Application lifecycle</span></li>
+    </ol>
+  </nav>
   <section class="hero">
     <h1>Ask the right question at every stage</h1>
     <p class="positioning">An application moves through six stages from request to retirement. Pick a stage on the wheel to see the questions to ask there, each tied to the crosswalk row it satisfies and the kit tool that handles it.</p>
+  </section>
+
+  <section class="prose prose-wide" id="lifecycle-family" aria-labelledby="lifecycle-family-heading">
+    <h2 id="lifecycle-family-heading">Four lifecycle items in this kit</h2>
+    <ul class="link-list">
+      <li><a href="docs/lifecycle/questions.html">Application lifecycle questions</a>: the six stages below as a printable list of questions.</li>
+      <li><a href="impact-map.html">Themes by stage</a>: every crosswalk theme against the six stages.</li>
+      <li><a href="tools.html#software-lifecycle">software-lifecycle (software end of life)</a>: find installed software past or near end of life.</li>
+      <li><a href="tools.html#hardware-lifecycle">hardware-lifecycle (devices, from purchase to wipe)</a>: check a device fleet for overdue refreshes and missing data wipes.</li>
+    </ul>
   </section>
 
   <!--LC-TOGETHER--><p class="lc-together">The lifecycle is the spine every application travels, from a first request to retirement. The governance council owns the gate between each pair of stages, and delegates routine calls below its threshold. Each stage&#x27;s questions and rules are handled by a specific kit tool. Every rule below names the crosswalk row it satisfies, so each decision traces back to a control. Review and optimize is where the loop branches: most applications feed back into Plan to be reinvested in or replaced, while the rest move forward into Retire, which closes the loop by freeing licenses, data, and budget for the next Plan.</p><!--/LC-TOGETHER-->
@@ -166,6 +204,7 @@
 
 <footer class="site-footer">
   <p>Eve McGivern · <a href="https://evemcgivern.github.io/">evemcgivern.github.io</a></p>
+  <p><a href="about.html">About</a></p>
   <p>Questions? Comments? <a href="https://github.com/evemcgivern/app-governance-kit/issues" id="contact-email" data-r="moc.liamg|nrevigcmeve">email me</a>.</p>
   <p><a href="https://buymeacoffee.com/a8w5iiqszp" rel="noopener">Buy me a coffee</a> if these tools help.</p>
   <p class="site-version"><a href="https://github.com/evemcgivern/app-governance-kit/releases" rel="noopener" id="site-version">Version</a></p>

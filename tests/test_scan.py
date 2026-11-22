@@ -104,6 +104,21 @@ class ScanTests(unittest.TestCase):
         hits = long_quotes(text, "f")
         self.assertEqual(len(hits), 1)
 
+    def test_meta_description_not_flagged_as_long_quote(self):
+        # Our own page descriptions say who a page is for and what they get,
+        # which runs past 15 words inside a content="..." attribute. That is
+        # original prose, not a copied quotation.
+        text = '<meta name="description" content="' + " ".join(["word"] * 20) + '">\n'
+        self.assertEqual(long_quotes(text, "f"), [])
+
+    def test_long_quote_still_flagged_beside_a_meta_tag(self):
+        text = (
+            '<meta name="description" content="short">\n'
+            "\n"
+            '<p>"' + " ".join(["word"] * 16) + '"</p>\n'
+        )
+        self.assertEqual(len(long_quotes(text, "f")), 1)
+
     def test_svg_path_data_not_flagged_as_long_quote(self):
         # A generated SVG's d="M 200 50 A 150 150 0 0 1 ..." attribute is a
         # long run of space-separated numeric tokens inside one quoted

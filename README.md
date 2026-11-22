@@ -13,7 +13,15 @@ a clause, not just a rule of thumb.
 
 ## New to ITAM? Start here
 
-Read the [ITAM program playbook](sam-toolkit/itam-program-playbook.md). It is the one order to follow, in ten steps, with the file, the setup prompt, and a done-when check for each. New terms are in the [glossary](field-guide/glossary.md). Everything below is reference for the tools and files the playbook points to.
+Read the [ITAM program playbook](https://evemcgivern.github.io/app-governance-kit/docs/sam-toolkit/itam-program-playbook.html) on the site, or as a [file in this repo](sam-toolkit/itam-program-playbook.md). It is the one order to follow, in ten steps, with the file, the setup prompt, and a done-when check for each. New terms are in the [glossary](field-guide/glossary.md). Everything below is reference for the tools and files the playbook points to.
+
+The site lists the rest in this order:
+
+1. [ITAM program playbook](https://evemcgivern.github.io/app-governance-kit/docs/sam-toolkit/itam-program-playbook.html): the ten steps.
+2. [SAM toolkit](https://evemcgivern.github.io/app-governance-kit/sam-toolkit.html): forty templates and checklists the playbook points to.
+3. [AI skills](https://evemcgivern.github.io/app-governance-kit/tools.html): the nine tools below, as skills for Claude, Codex, and Copilot.
+4. [Practicum](https://evemcgivern.github.io/app-governance-kit/practicum.html): eight exercises to work by hand on fictional data.
+5. Then the [Field guide](https://evemcgivern.github.io/app-governance-kit/field-guide.html), the [case studies](https://evemcgivern.github.io/app-governance-kit/case-studies.html), the [application lifecycle](https://evemcgivern.github.io/app-governance-kit/lifecycle.html), the [crosswalk explorer](https://evemcgivern.github.io/app-governance-kit/crosswalk.html), and [themes by stage](https://evemcgivern.github.io/app-governance-kit/impact-map.html).
 
 ## The nine tools
 
@@ -25,9 +33,9 @@ Read the [ITAM program playbook](sam-toolkit/itam-program-playbook.md). It is th
 | `rationalization` | Recommend tolerate/invest/migrate/eliminate per application; find duplicates and license risk. |
 | `access-review` | Review user access against HR records; find orphaned, excessive, and privileged accounts. |
 | `ai-intake` | Tier a new AI use case for risk (EU AI Act, NIST AI RMF, ISO/IEC 42001) and produce an inventory record. |
-| `hardware-lifecycle` | Check a device fleet for overdue refreshes and retired devices missing a confirmed data wipe. |
+| `hardware-lifecycle` (devices, from purchase to wipe) | Check a device fleet for overdue refreshes and retired devices missing a confirmed data wipe. |
 | `audit-response` | Answer a publisher audit letter: reconcile installs against proofs of purchase, find weak proofs, and brief counsel. |
-| `software-lifecycle` | Find installed software past or near end of life, with a CISA KEV needs-review flag, by running an offline tool on your own machine; counts only. |
+| `software-lifecycle` (software end of life) | Find installed software past or near end of life, with a CISA KEV needs-review flag, by running an offline tool on your own machine; counts only. |
 
 Each ships to `dist/claude/skills/`, `dist/codex/skills/`, and
 `dist/copilot/` in the platform-native shape those tools expect, built from

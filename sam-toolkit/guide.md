@@ -168,7 +168,7 @@ There is a blank copy and a Halden example, `application-management-workbook-exa
 
 A fill-in template for one ITAM policy: control block, purpose, scope and exclusions, definitions, policy statements, roles, related standards, exceptions, enforcement, communication, measures, consistency with other policies, review history, and approval. Use it for each policy in a small set: the umbrella policy, software acquisition and exceptions, vendor management, and records and evidence. The examples are fictional (Halden). Retirement follows `retirement-signoff-checklist.md` and, for devices, the `hardware-lifecycle` method; AI tool intake follows the `ai-intake` method.
 
-Exceptions are logged in `authorization-log.csv`, with the end date in `valid_until`. Penalty wording is a **Decision needed: counsel**, and so are retention periods in the records policy. The template sets neither.
+Exceptions are logged in `authorization-log.csv`, with the end date in `valid_until`. Penalty wording is a **Decision needed: counsel**, and so are retention rules in the records policy (**Decision needed: records owner or counsel**). The template sets neither.
 
 ### policy-standard-template.md (clause 7.6.5, crosswalk XW-009, XW-020)
 
@@ -176,7 +176,7 @@ A fill-in template for one software standard: a catalog of approved titles by ro
 
 ### policy-checklist.md (clauses 5.2, 7.3, 7.4, 7.6.5, crosswalk XW-003, XW-004, XW-020, XW-025, XW-027, XW-030)
 
-Sixteen questions to test a draft policy before approval and at each review: owner and approver, sponsor approval, bounded scope, defined terms, commitments, license compliance and acceptable use, rules that can be met and tested, roles, exceptions, penalties, consistency, controlled publication, communication, awareness with acknowledgment, review triggers, and change history.
+Seventeen questions to test a draft policy before approval and at each review: owner and approver, sponsor approval, bounded scope, defined terms, commitments, license compliance and acceptable use, rules that can be met and tested, roles, exceptions, penalties, consistency, controlled publication, communication, awareness with acknowledgment, review triggers, change history, and the company's own retention rule with its source and owner.
 
 ### policy-lifecycle-sop.md (clauses 5.2, 7.3, 7.4, 7.6.5, crosswalk XW-003, XW-020, XW-025, XW-030)
 

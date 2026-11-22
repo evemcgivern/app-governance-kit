@@ -3,18 +3,18 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Audit response SOP | Eve McGivern</title>
+<title>Audit response SOP | App Governance Kit</title>
 <meta name="description" content="This SOP describes a practice. It gives no legal advice. Decision needed: counsel marks…">
 <meta name="author" content="Eve McGivern">
 <link rel="canonical" href="https://evemcgivern.github.io/app-governance-kit/docs/audit-response/sop.html">
 <meta property="og:type" content="article">
-<meta property="og:site_name" content="Eve McGivern | Application Governance">
-<meta property="og:title" content="Audit response SOP">
+<meta property="og:site_name" content="App Governance Kit">
+<meta property="og:title" content="Audit response SOP | App Governance Kit">
 <meta property="og:description" content="This SOP describes a practice. It gives no legal advice. Decision needed: counsel marks…">
 <meta property="og:url" content="https://evemcgivern.github.io/app-governance-kit/docs/audit-response/sop.html">
 <meta property="og:image" content="https://evemcgivern.github.io/app-governance-kit/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Audit response SOP">
+<meta name="twitter:title" content="Audit response SOP | App Governance Kit">
 <meta name="twitter:description" content="This SOP describes a practice. It gives no legal advice. Decision needed: counsel marks…">
 <meta name="twitter:image" content="https://evemcgivern.github.io/app-governance-kit/og-image.png">
 <script type="application/ld+json">
@@ -68,6 +68,7 @@
 <link rel="apple-touch-icon" href="../../apple-touch-icon.png">
 <link rel="stylesheet" href="../../style.css">
 <script src="../../nav.js" defer></script>
+<script src="../../scroll-hint.js" defer></script>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -76,21 +77,50 @@
   <div class="site-header__inner">
     <a class="brand" href="https://evemcgivern.github.io/">Eve McGivern</a>
     <nav class="site-nav" aria-label="Main">
-      <ul>
-        <li><a href="../../tools.html" aria-describedby="tip-tools">AI skills</a><span class="nav-tip" role="tooltip" id="tip-tools">The nine governance methods, packaged as skills for Claude, Codex, and Copilot.</span></li>
-        <li><a href="../../sam-toolkit.html" aria-describedby="tip-sam-toolkit">SAM toolkit</a><span class="nav-tip" role="tooltip" id="tip-sam-toolkit">Templates and checklists for running software asset management by hand.</span></li>
-        <li><a href="../../practicum.html" aria-describedby="tip-practicum">Practicum</a><span class="nav-tip" role="tooltip" id="tip-practicum">Hands-on exercises on a fictional company, with answers you can check.</span></li>
-        <li><a href="../../lifecycle.html" aria-describedby="tip-lifecycle">Lifecycle</a><span class="nav-tip" role="tooltip" id="tip-lifecycle">Six stages from request to retirement, with the questions to ask at each.</span></li>
-        <li><a href="../../crosswalk.html" aria-describedby="tip-crosswalk">Crosswalk explorer</a><span class="nav-tip" role="tooltip" id="tip-crosswalk">See how each control maps to ISO/IEC 19770, COBIT, 27001, and 42001.</span></li>
-        <li><a href="../../impact-map.html" aria-describedby="tip-impact-map">Impact map</a><span class="nav-tip" role="tooltip" id="tip-impact-map">One grid showing every control theme against every lifecycle stage.</span></li>
-        <li><a href="../../field-guide.html" aria-describedby="tip-field-guide">Field guide</a><span class="nav-tip" role="tooltip" id="tip-field-guide">Plain-language guides to the standards, certifications, and key terms.</span></li>
-        <li><a href="../../case-studies.html" aria-describedby="tip-case-studies">Case studies</a><span class="nav-tip" role="tooltip" id="tip-case-studies">Worked examples of the kit in use, on a fictional company.</span></li>
-        <li><a href="../../about.html" aria-describedby="tip-about">About</a><span class="nav-tip" role="tooltip" id="tip-about">Who built the kit, and how to get in touch.</span></li>
-      </ul>
+      <details class="nav-menu">
+        <summary class="nav-menu__toggle">Menu</summary>
+        <div class="nav-groups">
+          <div class="nav-group">
+            <p class="nav-group__label" id="nav-group-start">Start</p>
+            <ul aria-labelledby="nav-group-start">
+              <li><a href="../../sam-toolkit.html#start" aria-describedby="tip-sam-toolkit">SAM toolkit <span class="nav-badge">Start here</span></a><span class="nav-tip" role="tooltip" id="tip-sam-toolkit">Start with the playbook, then the templates and checklists for running software asset management by hand.</span></li>
+            </ul>
+          </div>
+          <div class="nav-group">
+            <p class="nav-group__label" id="nav-group-do">Do</p>
+            <ul aria-labelledby="nav-group-do">
+              <li><a href="../../tools.html" aria-describedby="tip-tools">AI skills</a><span class="nav-tip" role="tooltip" id="tip-tools">The nine governance methods, packaged as skills for Claude, Codex, and Copilot.</span></li>
+            </ul>
+          </div>
+          <div class="nav-group">
+            <p class="nav-group__label" id="nav-group-learn">Learn</p>
+            <ul aria-labelledby="nav-group-learn">
+              <li><a href="../../practicum.html" aria-describedby="tip-practicum">Practicum</a><span class="nav-tip" role="tooltip" id="tip-practicum">Exercises on a fictional company, with answers you can check.</span></li>
+              <li><a href="../../case-studies.html" aria-describedby="tip-case-studies">Case studies</a><span class="nav-tip" role="tooltip" id="tip-case-studies">Worked examples of the kit in use, on a fictional company.</span></li>
+              <li><a href="../../field-guide.html" aria-describedby="tip-field-guide">Field guide</a><span class="nav-tip" role="tooltip" id="tip-field-guide">Plain-language guides to the standards, certifications, and key terms.</span></li>
+            </ul>
+          </div>
+          <div class="nav-group">
+            <p class="nav-group__label" id="nav-group-explore">Explore</p>
+            <ul aria-labelledby="nav-group-explore">
+              <li><a href="../../lifecycle.html" aria-describedby="tip-lifecycle">Application lifecycle</a><span class="nav-tip" role="tooltip" id="tip-lifecycle">Six stages from request to retirement, with the questions to ask at each.</span></li>
+              <li><a href="../../crosswalk.html" aria-describedby="tip-crosswalk">Crosswalk explorer</a><span class="nav-tip" role="tooltip" id="tip-crosswalk">See how each control maps to ISO/IEC 19770, COBIT, 27001, and 42001.</span></li>
+              <li><a href="../../impact-map.html" aria-describedby="tip-impact-map">Themes by stage</a><span class="nav-tip" role="tooltip" id="tip-impact-map">One grid showing every control theme against every lifecycle stage.</span></li>
+            </ul>
+          </div>
+        </div>
+      </details>
     </nav>
   </div>
 </header>
 <main id="main" class="doc-page">
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <ol>
+      <li><a href="../../index.html">Home</a></li>
+      <li><a href="../../tools.html">AI skills</a></li>
+      <li><span aria-current="page">Audit response SOP</span></li>
+    </ol>
+  </nav>
   <div class="doc-top">
     <p class="doc-back"><a href="../../tools.html">&larr; AI skills</a></p>
     <button type="button" class="print-icon" onclick="window.print()" aria-label="Print this page" title="Print"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="M7 9V3.5h10V9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M7 17H4.5A1.5 1.5 0 0 1 3 15.5v-5A1.5 1.5 0 0 1 4.5 9h15a1.5 1.5 0 0 1 1.5 1.5v5a1.5 1.5 0 0 1-1.5 1.5H17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><rect x="7" y="14" width="10" height="6.5" rx="0.8" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17.5" cy="12" r="0.9" fill="currentColor"/></svg></button>
@@ -98,10 +128,12 @@
   <h1>Audit response SOP</h1>
   <div class="visual-actions doc-actions">
     <a class="visual-actions__link" href="sop.docx">Download Word (.docx)</a>
-    <a class="visual-actions__link" href="sop.xlsx">Download Excel (.xlsx)</a>
-    <button type="button" class="visual-actions__link doc-print" onclick="window.print()">Print or save as PDF</button>
+    <a class="visual-actions__link doc-secondary" href="sop.xlsx">Download Excel (.xlsx)</a>
+    <button type="button" class="visual-actions__link doc-print doc-secondary" onclick="window.print()">Print or save as PDF</button>
   </div>
+  <p class="meta doc-reading">About 10 minutes to read (an estimate at 200 words per minute).</p>
 
+  <details class="doc-jump"><summary>Jump to</summary><ul><li><a href="#purpose">Purpose</a></li><li><a href="#scope">Scope</a></li><li><a href="#roles">Roles</a></li><li><a href="#frequency">Frequency</a></li><li><a href="#prepare-ahead">Prepare ahead</a></li><li><a href="#steps">Steps</a></li><li><a href="#proof-details-to-check">Proof details to check</a></li><li><a href="#rules">Rules</a></li><li><a href="#questions-to-ask">Questions to ask</a></li><li><a href="#mistakes-to-avoid">Mistakes to avoid</a></li><li><a href="#who-decides">Who decides</a></li><li><a href="#evidence-to-retain">Evidence to retain</a></li><li><a href="#related">Related</a></li></ul></details>
   <div class="doc-body prose prose-wide">
 <p>This SOP describes a practice. It gives no legal advice. <strong>Decision needed: counsel</strong> marks every point where Legal decides. The order follows the kit&#x27;s audit decision tree, <a href="../sam-toolkit/audit-decision-tree.html">Audit decision tree</a>; node ids such as C1 point into it.</p>
 <h2 id="purpose">Purpose</h2>
@@ -110,7 +142,7 @@
 <p>Applies to any audit, compliance review, or license verification request from a software publisher or its agent, whether or not the contract gives the publisher an audit right. It covers software only. Hardware is reviewed here only to the extent it helps explain the install counts.</p>
 <h2 id="roles">Roles</h2>
 <p>Each row ties a role to the tree nodes where it acts. The names behind each role go in <a href="../sam-toolkit/audit-response-roles.html">Audit response roles template</a>.</p>
-<div class="table-scroll"><table class="checklist"><caption>Roles</caption><thead><tr><th scope="col">Nodes</th><th scope="col">Role</th><th scope="col">What it does</th><th scope="col">Who decides</th></tr></thead><tbody><tr><td>1, C1</td><td class="long-text">Anyone who receives the letter</td><td class="long-text">Pass it to Legal the same day and reply to no one</td><td class="long-text">No one: forward only</td></tr><tr><td>C2</td><td class="long-text">Asset manager, Legal</td><td class="long-text">The asset manager tells every team touching in-scope software to stop changes; Legal sets any exception</td><td class="long-text">Legal</td></tr><tr><td>C3</td><td class="long-text">Legal, asset manager, executive sponsor</td><td class="long-text">Legal speaks for the organization; the asset manager keeps the dated case file; the sponsor is told</td><td class="long-text">Legal</td></tr><tr><td>C4, C5</td><td class="long-text">Legal, contract owner</td><td class="long-text">Test the audit right and scope; choose to reply, ask for more time, or narrow the scope</td><td class="long-text">Legal</td></tr><tr><td>C6, C9</td><td class="long-text">Asset manager</td><td class="long-text">Build the first position, then the full reconciliation, and brief Legal and the sponsor</td><td class="long-text">The asset manager reports</td></tr><tr><td>C7</td><td class="long-text">IT security, Legal</td><td class="long-text">Review any request to run the auditor&#x27;s own tool</td><td class="long-text">Legal</td></tr><tr><td>C8</td><td class="long-text">Procurement, finance contact, technical lead, hardware asset manager</td><td class="long-text">Find proofs, payment records, and discovery output; compare hardware data where it explains counts</td><td class="long-text">The asset manager</td></tr><tr><td>C10, C11</td><td class="long-text">Legal, IT security</td><td class="long-text">Legal decides what is released and attends meetings and site visits; IT security advises on data requests</td><td class="long-text">Legal</td></tr><tr><td>D1</td><td class="long-text">Legal</td><td class="long-text">Receives the findings and keeps all contact</td><td class="long-text">Legal</td></tr><tr><td>D2</td><td class="long-text">Asset manager, Legal</td><td class="long-text">The asset manager tests each claim; Legal decides what is sent</td><td class="long-text">Legal</td></tr><tr><td>D3</td><td class="long-text">Executive sponsor, Legal, contract owner, Finance</td><td class="long-text">Decide true-up, purchase, or settlement</td><td class="long-text">Sponsor with counsel, the contract owner, and Finance</td></tr><tr><td>D4</td><td class="long-text">Legal, asset manager</td><td class="long-text">Legal names the duties after settlement; the asset manager puts them on the calendar</td><td class="long-text">Legal</td></tr><tr><td>D5</td><td class="long-text">Legal</td><td class="long-text">Closes the audit and lifts the freeze in writing</td><td class="long-text">Legal</td></tr><tr><td>E1</td><td class="long-text">Asset manager, executive sponsor</td><td class="long-text">Review, fix, and update the records</td><td class="long-text">The asset manager</td></tr><tr><td>A2, B1</td><td class="long-text">Legal, contract owner, asset manager</td><td class="long-text">Legal decides what to ask for at renewal and whether readiness work goes ahead</td><td class="long-text">Legal</td></tr><tr><td>B2</td><td class="long-text">Asset manager, contract owner</td><td class="long-text">Name the metric the contract counts; send unclear terms to counsel</td><td class="long-text">The contract owner confirms; counsel for unclear terms</td></tr><tr><td>B3, B4</td><td class="long-text">Asset manager, Procurement</td><td class="long-text">Check proofs and build the position</td><td class="long-text">The asset manager reports</td></tr><tr><td>B5</td><td class="long-text">Asset manager, contract owner, Finance</td><td class="long-text">Propose how to close a gap; approve buying, reclaiming, or retiring</td><td class="long-text">Finance and the contract owner</td></tr><tr><td>F1</td><td class="long-text">Asset manager, Legal, Finance</td><td class="long-text">Handle a request from internal or financial auditors; nothing is shared until both agree</td><td class="long-text">Counsel and Finance</td></tr></tbody></table></div>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Roles table"><table class="checklist sticky-first"><caption>Roles</caption><thead><tr><th scope="col">Nodes</th><th scope="col">Role</th><th scope="col">What it does</th><th scope="col">Who decides</th></tr></thead><tbody><tr><th scope="row" id="q1-1-c1-c0">1, C1</th><td class="long-text">Anyone who receives the letter</td><td class="long-text">Pass it to Legal the same day and reply to no one</td><td class="long-text">No one: forward only</td></tr><tr><th scope="row" id="q1-c2-c0">C2</th><td class="long-text">Asset manager, Legal</td><td class="long-text">The asset manager tells every team touching in-scope software to stop changes; Legal sets any exception</td><td class="long-text">Legal</td></tr><tr><th scope="row" id="q1-c3-c0">C3</th><td class="long-text">Legal, asset manager, executive sponsor</td><td class="long-text">Legal speaks for the organization; the asset manager keeps the dated case file; the sponsor is told</td><td class="long-text">Legal</td></tr><tr><th scope="row" id="q1-c4-c5-c0">C4, C5</th><td class="long-text">Legal, contract owner</td><td class="long-text">Test the audit right and scope; choose to reply, ask for more time, or narrow the scope</td><td class="long-text">Legal</td></tr><tr><th scope="row" id="q1-c6-c9-c0">C6, C9</th><td class="long-text">Asset manager</td><td class="long-text">Build the first position, then the full reconciliation, and brief Legal and the sponsor</td><td class="long-text">The asset manager reports</td></tr><tr><th scope="row" id="q1-c7-c0">C7</th><td class="long-text">IT security, Legal</td><td class="long-text">Review any request to run the auditor&#x27;s own tool</td><td class="long-text">Legal</td></tr><tr><th scope="row" id="q1-c8-c0">C8</th><td class="long-text">Procurement, finance contact, technical lead, hardware asset manager</td><td class="long-text">Find proofs, payment records, and discovery output; compare hardware data where it explains counts</td><td class="long-text">The asset manager</td></tr><tr><th scope="row" id="q1-c10-c11-c0">C10, C11</th><td class="long-text">Legal, IT security</td><td class="long-text">Legal decides what is released and attends meetings and site visits; IT security advises on data requests</td><td class="long-text">Legal</td></tr><tr><th scope="row" id="q1-d1-c0">D1</th><td class="long-text">Legal</td><td class="long-text">Receives the findings and keeps all contact</td><td class="long-text">Legal</td></tr><tr><th scope="row" id="q1-d2-c0">D2</th><td class="long-text">Asset manager, Legal</td><td class="long-text">The asset manager tests each claim; Legal decides what is sent</td><td class="long-text">Legal</td></tr><tr><th scope="row" id="q1-d3-c0">D3</th><td class="long-text">Executive sponsor, Legal, contract owner, Finance</td><td class="long-text">Decide true-up, purchase, or settlement</td><td class="long-text">Sponsor with counsel, the contract owner, and Finance</td></tr><tr><th scope="row" id="q1-d4-c0">D4</th><td class="long-text">Legal, asset manager</td><td class="long-text">Legal names the duties after settlement; the asset manager puts them on the calendar</td><td class="long-text">Legal</td></tr><tr><th scope="row" id="q1-d5-c0">D5</th><td class="long-text">Legal</td><td class="long-text">Closes the audit and lifts the freeze in writing</td><td class="long-text">Legal</td></tr><tr><th scope="row" id="q1-e1-c0">E1</th><td class="long-text">Asset manager, executive sponsor</td><td class="long-text">Review, fix, and update the records</td><td class="long-text">The asset manager</td></tr><tr><th scope="row" id="q1-a2-b1-c0">A2, B1</th><td class="long-text">Legal, contract owner, asset manager</td><td class="long-text">Legal decides what to ask for at renewal and whether readiness work goes ahead</td><td class="long-text">Legal</td></tr><tr><th scope="row" id="q1-b2-c0">B2</th><td class="long-text">Asset manager, contract owner</td><td class="long-text">Name the metric the contract counts; send unclear terms to counsel</td><td class="long-text">The contract owner confirms; counsel for unclear terms</td></tr><tr><th scope="row" id="q1-b3-b4-c0">B3, B4</th><td class="long-text">Asset manager, Procurement</td><td class="long-text">Check proofs and build the position</td><td class="long-text">The asset manager reports</td></tr><tr><th scope="row" id="q1-b5-c0">B5</th><td class="long-text">Asset manager, contract owner, Finance</td><td class="long-text">Propose how to close a gap; approve buying, reclaiming, or retiring</td><td class="long-text">Finance and the contract owner</td></tr><tr><th scope="row" id="q1-f1-c0">F1</th><td class="long-text">Asset manager, Legal, Finance</td><td class="long-text">Handle a request from internal or financial auditors; nothing is shared until both agree</td><td class="long-text">Counsel and Finance</td></tr></tbody></table></div>
 <p>Department managers answer questions about the software their teams use, as needed.</p>
 <h2 id="frequency">Frequency</h2>
 <p>Prepare once, review the plan and roster every year and after any leadership change. Run the response sequence each time a letter arrives. Run a readiness check against the proofs and use counts every year.</p>
@@ -134,10 +166,11 @@
 <h2 id="related">Related</h2>
 <ul><li>The audit decision tree, <a href="../sam-toolkit/audit-decision-tree.html">Audit decision tree</a></li><li><a href="../../tools.html#crosswalk">Governance framework crosswalk</a> (<code>crosswalk</code>)</li><li><a href="../../tools.html#itam-maturity">ITAM maturity check</a> (<code>itam-maturity</code>)</li><li><a href="../../tools.html#rationalization">Application rationalization</a> (<code>rationalization</code>)</li><li><a href="../../tools.html#hardware-lifecycle">Hardware lifecycle check</a> (<code>hardware-lifecycle</code>)</li><li><a href="../../tools.html#program-setup">Stand up a governance program</a> (<code>program-setup</code>)</li></ul>
   </div>
-  <div class="doc-bottom"><button type="button" class="print-icon" onclick="window.print()" aria-label="Print this page" title="Print"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="M7 9V3.5h10V9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M7 17H4.5A1.5 1.5 0 0 1 3 15.5v-5A1.5 1.5 0 0 1 4.5 9h15a1.5 1.5 0 0 1 1.5 1.5v5a1.5 1.5 0 0 1-1.5 1.5H17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><rect x="7" y="14" width="10" height="6.5" rx="0.8" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17.5" cy="12" r="0.9" fill="currentColor"/></svg></button></div>
+  <div class="doc-bottom"><a class="doc-to-top" href="#main">Back to top</a><button type="button" class="print-icon" onclick="window.print()" aria-label="Print this page" title="Print"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="M7 9V3.5h10V9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M7 17H4.5A1.5 1.5 0 0 1 3 15.5v-5A1.5 1.5 0 0 1 4.5 9h15a1.5 1.5 0 0 1 1.5 1.5v5a1.5 1.5 0 0 1-1.5 1.5H17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><rect x="7" y="14" width="10" height="6.5" rx="0.8" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17.5" cy="12" r="0.9" fill="currentColor"/></svg></button></div>
 </main>
 <footer class="site-footer">
   <p>Eve McGivern · <a href="https://evemcgivern.github.io/">evemcgivern.github.io</a></p>
+  <p><a href="../../about.html">About</a></p>
   <p>Questions? Comments? <a href="https://github.com/evemcgivern/app-governance-kit/issues" id="contact-email" data-r="moc.liamg|nrevigcmeve">email me</a>.</p>
   <p><a href="https://buymeacoffee.com/a8w5iiqszp" rel="noopener">Buy me a coffee</a> if these tools help.</p>
   <p class="site-version"><a href="https://github.com/evemcgivern/app-governance-kit/releases" rel="noopener" id="site-version">Version</a></p>

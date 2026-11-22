@@ -21,6 +21,7 @@ From `Makefile` (Python 3, run from the repo root; CI uses 3.12):
 - `methods/crosswalk/`: `crosswalk.csv` is the shared source for every skill's `crosswalk.csv` copy. `sources.md` records the evidence for each cell.
 - `demo-estate/`: fictional company data used by the practicum. `practicum/`: the eight exercises. `field-guide/`: reference material (Markdown only; `site/field-guide.html` is hand-kept).
 - `build/agk/`: Python build system. `tests/`: its tests.
+- `steps/step-map.csv`: the one map from playbook steps to toolkit files, practicum exercises, case studies and glossary terms. The build and tests read it; it is not a toolkit file, so it does not count toward the forty.
 - `lifecycle/`: input data for the lifecycle checklist; the build reads it. `evals/`: skill grading.
 - `agents/`: Claude agent files, copied to `dist/claude/agents` by the build. Currently `app-governance-agent.md`, a thin wrapper that loads the `app-governance` skill (`methods/app-governance/`), which holds the routing table. `case-studies/` is empty; the scan still covers it, and the case studies page is hand-kept in `site/`.
 - `dist/`, `site/`: generated output (plus some hand-kept pages in `site/`). Published via `.github/workflows/pages.yml` on pushes to `main`.
