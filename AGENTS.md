@@ -4,7 +4,7 @@ Workspace-wide rules (commits, security, plan-before-code, approval gates) live 
 
 ## Project Overview
 
-Nine application-governance methods packaged as skills for Claude, Codex, and Microsoft Copilot: program setup, ITAM maturity, crosswalk, rationalization, access review, AI intake, hardware lifecycle, audit response, and software lifecycle. Also a public reference site and hands-on practicum exercises. MIT licensed. Third-party standards names are used for reference only, with no affiliation.
+Nine application-governance methods packaged as skills for Claude, Codex, and Microsoft Copilot: program setup, ITAM maturity, crosswalk, rationalization, access review, AI intake, hardware lifecycle, audit response, and software lifecycle. The `app-governance` router and the `cert-prep` study coach come with them, and are not counted among the nine. Also a public reference site and hands-on practicum exercises. MIT licensed. Third-party standards names are used for reference only, with no affiliation.
 
 ## Development Commands
 

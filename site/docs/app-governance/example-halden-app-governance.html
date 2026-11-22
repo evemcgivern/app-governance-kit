@@ -134,15 +134,15 @@
   <div class="doc-body prose prose-wide">
 <p><strong>Request:</strong> &quot;Our auditors want to know where we stand on software licenses next quarter.&quot;</p>
 <h2 id="routing-note">Routing note</h2>
-<p>The decision is an audit-readiness position by next quarter, so the closest skill is <code>rationalization</code> (it checks license state and duplicates). The ITAM maturity check is the second candidate, because an auditor will also ask how the process is run <a class="xw-tag" href="../../crosswalk.html">XW-025</a>. I&#x27;ll run the first and offer the second.</p>
-<p><strong>Data needed:</strong> <code>licenses.csv</code> and <code>apps.csv</code>. Both are Halden demo files.</p>
-<h2 id="result-from-rationalization-summary">Result from `rationalization` (summary)</h2>
-<ul><li>Two licenses have expired while the apps are still in use: LIC-044 (Payflow, expired 2025-12-31) and LIC-017 (Meetrix, expired 2026-03-31) <a class="xw-tag" href="../../crosswalk.html">XW-008</a>.</li><li><strong>Unverified:</strong> a user count is not the same as licensed seats or installs, so recorded users above entitlements point to a problem without proving a shortfall <a class="xw-tag" href="../../crosswalk.html">XW-007</a>.</li></ul>
-<p><strong>Decision needed:</strong> whether to renew or shut down LIC-017 and LIC-044, and who owns that call.</p>
+<p>A license position goes to <code>audit-response</code>, so I will not start with <code>rationalization</code>. First I need two answers: which auditors (a software publisher or its agent, or your internal or financial auditors), and whether a letter has arrived.</p>
+<p><strong>Answer given:</strong> a publisher&#x27;s agent has asked for a review next quarter. No letter has arrived.</p>
+<p>With no letter, I run <code>audit-response</code> in readiness mode. Legal hears about this first, because a publisher is involved. Count in the contract&#x27;s license metric, not raw installs <a class="xw-tag" href="../../crosswalk.html">XW-025</a>. I&#x27;ll offer <code>rationalization</code> afterward for unused licenses and <code>itam-maturity</code> for the process <a class="xw-tag" href="../../crosswalk.html">XW-027</a>.</p>
+<p><strong>Data needed:</strong> <code>proofs-of-purchase.csv</code> and <code>audit-installs.csv</code>. Both are Halden demo files.</p>
+<p><strong>Decision needed: counsel</strong> on whether counsel commissions the readiness work. If the answer had been internal or financial auditors, <strong>Decision needed: counsel and Finance</strong>, since a shortfall shown to financial auditors may raise a disclosure question.</p>
 <h2 id="follow-up-offered">Follow-up offered</h2>
-<p>Run <code>itam-maturity</code> next to score the license and renewal process. Not run without your agreement.</p>
+<p>Run <code>rationalization</code> for unused licenses and <code>itam-maturity</code> for the process. Neither is run without your agreement.</p>
 <p>This kit gives methods and reasoning support. It is not a governance platform, a certification, or legal advice.</p>
-<p>``<code>findings [ {&quot;type&quot;: &quot;routing&quot;, &quot;id&quot;: &quot;rationalization&quot;} ] </code>``</p>
+<p>``<code>findings [ {&quot;type&quot;: &quot;routing&quot;, &quot;id&quot;: &quot;audit-response&quot;} ] </code>``</p>
   </div>
   <div class="doc-bottom"><button type="button" class="print-icon" onclick="window.print()" aria-label="Print this page" title="Print"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="M7 9V3.5h10V9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M7 17H4.5A1.5 1.5 0 0 1 3 15.5v-5A1.5 1.5 0 0 1 4.5 9h15a1.5 1.5 0 0 1 1.5 1.5v5a1.5 1.5 0 0 1-1.5 1.5H17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><rect x="7" y="14" width="10" height="6.5" rx="0.8" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17.5" cy="12" r="0.9" fill="currentColor"/></svg></button></div>
 </main>

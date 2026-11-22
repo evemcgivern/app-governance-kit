@@ -4,25 +4,24 @@
 
 ## Routing note
 
-The decision is an audit-readiness position by next quarter, so the closest skill is `rationalization` (it checks license state and duplicates). The ITAM maturity check is the second candidate, because an auditor will also ask how the process is run [[XW-025]]. I'll run the first and offer the second.
+A license position goes to `audit-response`, so I will not start with `rationalization`. First I need two answers: which auditors (a software publisher or its agent, or your internal or financial auditors), and whether a letter has arrived.
 
-**Data needed:** `licenses.csv` and `apps.csv`. Both are Halden demo files.
+**Answer given:** a publisher's agent has asked for a review next quarter. No letter has arrived.
 
-## Result from `rationalization` (summary)
+With no letter, I run `audit-response` in readiness mode. Legal hears about this first, because a publisher is involved. Count in the contract's license metric, not raw installs [[XW-025]]. I'll offer `rationalization` afterward for unused licenses and `itam-maturity` for the process [[XW-027]].
 
-- Two licenses have expired while the apps are still in use: LIC-044 (Payflow, expired 2025-12-31) and LIC-017 (Meetrix, expired 2026-03-31) [[XW-008]].
-- **Unverified:** a user count is not the same as licensed seats or installs, so recorded users above entitlements point to a problem without proving a shortfall [[XW-007]].
+**Data needed:** `proofs-of-purchase.csv` and `audit-installs.csv`. Both are Halden demo files.
 
-**Decision needed:** whether to renew or shut down LIC-017 and LIC-044, and who owns that call.
+**Decision needed: counsel** on whether counsel commissions the readiness work. If the answer had been internal or financial auditors, **Decision needed: counsel and Finance**, since a shortfall shown to financial auditors may raise a disclosure question.
 
 ## Follow-up offered
 
-Run `itam-maturity` next to score the license and renewal process. Not run without your agreement.
+Run `rationalization` for unused licenses and `itam-maturity` for the process. Neither is run without your agreement.
 
 This kit gives methods and reasoning support. It is not a governance platform, a certification, or legal advice.
 
 ```findings
 [
-  {"type": "routing", "id": "rationalization"}
+  {"type": "routing", "id": "audit-response"}
 ]
 ```
