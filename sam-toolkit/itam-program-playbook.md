@@ -9,7 +9,7 @@ This is the one order to follow. It is for an asset manager who has to stand up,
 
 Three terms come up at once. A sponsor is the executive who holds the budget and backs the program in public. A charter is a short written agreement on why the program exists, who decides what, and who sits on the group that decides. An entitlement is the right to use software that you can show you bought. Plain-language definitions of these and other terms are in the [glossary](../field-guide/glossary.md).
 
-You do not need to do all ten steps. Steps 1 to 5 are a complete small program: a sponsor, a scope, a baseline, a renewal calendar, and an audit roster.
+You do not need to do all ten steps.
 
 For practice, do the matching practicum exercise on the Halden data before you do a step on real records, and do exercise 08 before any real audit letter arrives. A step with a matching exercise lists it in its Related row.
 
@@ -82,7 +82,7 @@ Read this before step 4 if any of these is true.
 
 ### Step 5: Baseline and targets
 
-**Why:** You cannot show progress or a saving against a number you never took. [[XW-025]]
+**Why:** You need a baseline before you can claim progress or a saving. [[XW-025]]
 
 - Files: `what-good-looks-like.md` first, then `application-management-self-assessment.md` and `application-management-gap-plan.csv`, or the `application-management-workbook.xlsx` that holds both. Use `tier-self-assessment.md` if you want to know which tier of the standard you meet. Prompt 12 decides what good looks like, then Prompt 2 scores the program. When you know the gaps, use `resources-and-training-plan.md` to size the people, data, training, and tools you need to close them.
 - Done when:
@@ -164,10 +164,10 @@ Read this before step 4 if any of these is true.
 
 ## What must exist first
 
-- A sponsor before the policy. A policy nobody with budget backs is ignored.
-- Scope before the self-assessment and the inventory. Without it you try to count everything and finish nothing.
+- A sponsor before the policy.
+- Scope before the self-assessment and the inventory.
 - The contract's license metric before a license position. A user count is not always the licensed quantity.
-- Proof before the position. Reconcile against what you can prove, not what you believe you own.
+- Proof before the position. Reconcile against what you can prove.
 - Procurement enforcing the gate before the gate counts.
 - A baseline before any savings claim.
 
@@ -205,17 +205,13 @@ Events that should start work even when nothing is due:
 
 ## Is it working?
 
-A healthy program shows these signs:
+Signs it is working:
 - Measures move, and each leads to a decision someone logged.
-- Findings close, and the same ones do not come back.
+- Findings close and stay closed.
 - Savings reconcile to what finance confirms.
 - Reviews sometimes change a decision.
 
-A busy but ineffective program shows these:
-- Reports grow longer and nobody decides anything from them.
-- The documentation gaps log only gets longer.
-- Forecast savings never become real savings.
-- Every review is confirmed without change.
+Signs of a busy program that is not working: reports grow longer and nobody decides anything from them, the documentation gaps log only gets longer, forecast savings never become real savings, and every review is confirmed without change.
 
 Pick measures that cannot be met by paperwork alone. The Ideas sheet in `application-management-workbook.xlsx` lists credible ones, with how people tend to game each.
 

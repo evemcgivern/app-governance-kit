@@ -1,10 +1,10 @@
 # Operating calendar and first 90 days
 
-A schedule for the toolkit files: what to do monthly, quarterly, and yearly, what sets off an extra task, and how the first 90 days (about 13 weeks) line up with the steps of `itam-program-playbook.md`. The playbook sets the order; this calendar follows it and adds dates. The files are templates, so none of this happens unless someone owns it. Put each routine in a named person's calendar.
+A schedule for the toolkit files: what to do monthly, quarterly, and yearly, what sets off an extra task, and how the first 90 days (about 13 weeks) line up with the steps of `itam-program-playbook.md`. This calendar follows the playbook's order and adds dates. The files are templates, so none of this happens unless someone owns it. Put each routine in a named person's calendar.
 
 Clause references are to the shared crosswalk (`XW-` rows). Frequencies are practical suggestions, not requirements of any standard. Adjust them to your size and risk.
 
-**Stop point.** A small program that stops after playbook step 5 (the first five rows of the table below, which the playbook puts at about 2 to 3 months) is still worth having: it has a sponsor, a scope, a baseline, a renewal calendar, and an audit roster. If time runs out, stop there and keep the routines below running.
+**Stop point.** A small program that stops after playbook step 5 (the first five rows of the table below, which the playbook puts at about 2 to 3 months) is still worth having; the playbook's stop box lists what you have by then. If time runs out, stop there and keep the routines below running.
 
 ## Routines
 
@@ -48,7 +48,7 @@ Clause references are to the shared crosswalk (`XW-` rows). Frequencies are prac
 
 ## First 90 days
 
-This follows the playbook's steps. Each row names the step, so use the playbook for the why and the done-when boxes. The first column is the week in which you start a step, in order. It is not how long the step takes, and a step is not finished by the next row's week. The playbook gives the time for each step as expert judgment, not measured: steps 1 to 5 are about 30 to 60 hours of effort over 2 to 3 months, and the whole program runs 9 to 18 months part-time. Steps overlap, and steps 6 to 9 run well past week 13; the table shows where to start them.
+This follows the playbook's steps. Each row names the step, so use the playbook for the why and the done-when boxes. The first column is the week in which you start a step, in order. A step keeps running past the next row's week. The playbook gives the time for each step as expert judgment, not measured: steps 1 to 5 are about 30 to 60 hours of effort over 2 to 3 months, and the whole program runs 9 to 18 months part-time. Steps overlap, and steps 6 to 9 run well past week 13; the table shows where to start them.
 
 | Start in week | Playbook step | Goal | Files | Done when |
 | --- | --- | --- | --- | --- |
