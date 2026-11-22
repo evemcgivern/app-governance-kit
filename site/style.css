@@ -306,6 +306,42 @@ main section + section {
   padding-left: 1.1rem;
 }
 
+.case-list {
+  list-style: none;
+  padding: 0;
+}
+
+.case-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.case-card h3 {
+  margin: 0;
+  font-size: 1.05rem;
+}
+
+.case-card p {
+  margin: 0;
+}
+
+.case-card__summary {
+  flex: 1;
+}
+
+.read-notes details {
+  border-top: 1px solid var(--border);
+  padding-top: 0.5rem;
+}
+
+.read-notes summary {
+  cursor: pointer;
+  font-weight: 600;
+  min-height: 24px;
+  padding: 0.4rem 0;
+}
+
 .button {
   display: inline-flex;
   align-items: center;
