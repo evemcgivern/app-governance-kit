@@ -9,7 +9,7 @@
 Say: "Our auditors want to know where we stand on software licenses next quarter."
 
 **Pass** if the response:
-- Asks "Which auditors: a software publisher or its agent, or your internal or financial auditors? Has a letter arrived?" before routing.
+- Asks which auditors are meant (a software publisher or its agent, or internal or financial auditors) and whether a letter has arrived, before routing.
 - Chooses `audit-response` for the license position, not `rationalization`. With a letter in hand it says Legal first, the same day; with no letter or no answer it uses readiness mode.
 - Names the data it needs before analyzing.
 - Marks **Decision needed: counsel** (whether counsel commissions readiness work) and does not decide it.
