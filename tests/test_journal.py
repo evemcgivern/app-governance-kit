@@ -3,9 +3,12 @@ import unittest
 from pathlib import Path
 
 import re
+import shutil
 
+from agk.build import build
 from agk.journal import (JournalError, Post, STATUS_LABELS, load_posts, parse_front_matter, parse_post,
-                        render_index, render_post)
+                        render_index, render_post, write_journal)
+from tests.helpers import make_method, make_repo
 
 ROOT = Path(__file__).resolve().parent.parent
 INDEX_HTML = (ROOT / "site" / "index.html").read_text(encoding="utf-8")
@@ -189,6 +192,84 @@ class RenderTests(unittest.TestCase):
                 normal = render(*args, INDEX_HTML)
                 self.assertNotIn("Draft, not published", normal)
                 self.assertNotIn('name="robots"', normal)
+
+
+class WriteTests(unittest.TestCase):
+    def setUp(self):
+        self._tmp = tempfile.TemporaryDirectory()
+        self.root = make_repo(Path(self._tmp.name))
+        make_method(self.root, "rationalization")
+        (self.root / "site").mkdir()
+        shutil.copyfile(ROOT / "site" / "index.html", self.root / "site" / "index.html")
+        self.posts = self.root / "posts"
+        self.drafts = self.root / "docs" / "journal-drafts"
+
+    def tearDown(self):
+        self._tmp.cleanup()
+
+    def snapshot(self, folder: Path) -> dict[str, bytes]:
+        return {p.relative_to(folder).as_posix(): p.read_bytes() for p in sorted(folder.rglob("*")) if p.is_file()}
+
+    def test_no_posts_writes_nothing_and_removes_stale_output(self):
+        self.assertEqual(write_journal(self.root), [])
+        self.assertFalse((self.root / "site" / "journal").exists())
+        self.assertFalse((self.root / "site" / "journal.html").exists())
+        (self.root / "site" / "journal").mkdir()
+        (self.root / "site" / "journal" / "old.html").write_text("stale", encoding="utf-8")
+        (self.root / "site" / "journal.html").write_text("stale", encoding="utf-8")
+        write_journal(self.root)
+        self.assertFalse((self.root / "site" / "journal").exists())
+        self.assertFalse((self.root / "site" / "journal.html").exists())
+
+    def test_one_post_writes_page_and_index(self):
+        write_post(self.posts, "2026-12-01-first-post.md", title="First post")
+        write_journal(self.root)
+        page = self.root / "site" / "journal" / "first-post.html"
+        self.assertIn("<h1>First post</h1>", page.read_text(encoding="utf-8"))
+        index = (self.root / "site" / "journal.html").read_text(encoding="utf-8")
+        self.assertIn('href="journal/first-post.html"', index)
+
+    def test_output_is_byte_identical_across_runs(self):
+        write_post(self.posts, "2026-12-01-b-post.md", title="B post")
+        write_post(self.posts, "2026-12-01-a-post.md", title="A post")
+        write_journal(self.root)
+        first = self.snapshot(self.root / "site")
+        write_journal(self.root)
+        self.assertEqual(first, self.snapshot(self.root / "site"))
+        self.assertIn("journal/a-post.html", first)
+        index = first["journal.html"].decode("utf-8")
+        self.assertLess(index.index("A post"), index.index("B post"))
+
+    def test_drafts_never_reach_site(self):
+        write_post(self.posts, "2026-12-01-published.md", title="Published")
+        write_post(self.drafts, "2026-12-02-rough.md", title="Rough", date="2026-12-02")
+        write_journal(self.root)
+        self.assertTrue((self.root / "site" / "journal" / "published.html").exists())
+        self.assertFalse((self.root / "site" / "journal" / "rough.html").exists())
+        self.assertNotIn("Rough", (self.root / "site" / "journal.html").read_text(encoding="utf-8"))
+        write_journal(self.root, preview=True)
+        preview = self.root / "docs" / "journal-preview"
+        self.assertTrue((preview / "journal" / "rough.html").exists())
+        self.assertTrue((preview / "journal" / "published.html").exists())
+        self.assertIn("Draft, not published", (preview / "journal" / "rough.html").read_text(encoding="utf-8"))
+        self.assertFalse((self.root / "site" / "journal" / "rough.html").exists())
+
+    def test_preview_rejects_a_draft_that_reuses_a_published_slug(self):
+        write_post(self.posts, "2026-12-01-same.md")
+        write_post(self.drafts, "2026-12-02-same.md", date="2026-12-02")
+        with self.assertRaisesRegex(JournalError, "same"):
+            write_journal(self.root, preview=True)
+
+    def test_build_reports_journal_errors(self):
+        write_post(self.posts, "2026-12-01-broken.md", title=None)
+        errors, _ = build(self.root)
+        self.assertTrue(any(e.startswith("journal:") and "title" in e for e in errors), errors)
+
+    def test_build_writes_the_journal_when_posts_are_valid(self):
+        write_post(self.posts, "2026-12-01-fine.md", title="Fine")
+        errors, _ = build(self.root)
+        self.assertFalse([e for e in errors if e.startswith("journal:")], errors)
+        self.assertTrue((self.root / "site" / "journal" / "fine.html").exists())
 
 
 if __name__ == "__main__":

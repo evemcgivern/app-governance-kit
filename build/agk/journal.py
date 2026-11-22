@@ -8,6 +8,7 @@ from __future__ import annotations
 import datetime as dt
 import json
 import re
+import shutil
 from dataclasses import dataclass
 from html import escape
 from pathlib import Path
@@ -90,22 +91,30 @@ def parse_post(path: Path) -> Post:
                 status=keys["status"], summary=keys["summary"], spine=spine == "true", body=body, path=path)
 
 
-def load_posts(directory: Path) -> list[Post]:
-    """All posts in a folder, newest date first and then by slug. A missing folder holds no posts."""
-    if not directory.is_dir():
-        return []
-    posts = [parse_post(p) for p in sorted(directory.glob("*.md"))]
+def check_posts(posts: list[Post]) -> None:
+    """Raise if two posts share a slug, or more than one is the spine."""
     seen: dict[str, Path] = {}
     for post in posts:
         if post.slug in seen:
             raise JournalError(f"{post.path.name}: the slug {post.slug!r} is already used by {seen[post.slug].name}")
         seen[post.slug] = post.path
-    if sum(1 for p in posts if p.spine) > 1:
-        names = ", ".join(p.path.name for p in posts if p.spine)
-        raise JournalError(f"only one post may have spine: true, found {names}")
-    posts.sort(key=lambda p: p.slug)
-    posts.sort(key=lambda p: p.date, reverse=True)
-    return posts
+    spines = [p for p in posts if p.spine]
+    if len(spines) > 1:
+        raise JournalError(f"only one post may have spine: true, found {', '.join(p.path.name for p in spines)}")
+
+
+def sort_posts(posts: list[Post]) -> list[Post]:
+    """Newest date first; posts on the same date by slug, so output never depends on file order."""
+    return sorted(sorted(posts, key=lambda p: p.slug), key=lambda p: p.date, reverse=True)
+
+
+def load_posts(directory: Path) -> list[Post]:
+    """All posts in a folder, newest date first and then by slug. A missing folder holds no posts."""
+    if not directory.is_dir():
+        return []
+    posts = [parse_post(p) for p in sorted(directory.glob("*.md"))]
+    check_posts(posts)
+    return sort_posts(posts)
 
 
 # ---------- pages ----------
@@ -185,3 +194,35 @@ def render_index(posts: list[Post], index_html: str, *, preview: bool = False) -
     return _page(title="Journal", description=INTRO, up="", canonical=canonical, jsonld=_json_ld(graph),
                  index_html=index_html, back_href="index.html", back_label="Home", extra=extra,
                  body="\n".join(parts), print_button="", preview=preview)
+
+
+def write_journal(root: Path, *, preview: bool = False) -> list[str]:
+    """Write the journal pages. Returns warnings (none today).
+
+    Normal run: reads posts/ and writes site/journal/<slug>.html and site/journal.html, deleting any older
+    output first; with no posts it writes nothing. Preview: reads posts/ and docs/journal-drafts/ together
+    and writes the same layout under docs/journal-preview/, which git ignores."""
+    index_path = root / "site" / "index.html"
+    if not index_path.is_file():
+        return []
+    index_html = index_path.read_text(encoding="utf-8")
+    posts = load_posts(root / "posts")
+    if preview:
+        posts = sort_posts(posts + load_posts(root / "docs" / "journal-drafts"))
+        check_posts(posts)
+        out_root = root / "docs" / "journal-preview"
+        if out_root.exists():
+            shutil.rmtree(out_root)
+        folder, index_file = out_root / "journal", out_root / "journal.html"
+    else:
+        folder, index_file = root / "site" / "journal", root / "site" / "journal.html"
+        if folder.exists():
+            shutil.rmtree(folder)
+        index_file.unlink(missing_ok=True)
+    if not posts:
+        return []
+    folder.mkdir(parents=True)
+    for post in posts:
+        (folder / f"{post.slug}.html").write_text(render_post(post, index_html, preview=preview), encoding="utf-8")
+    index_file.write_text(render_index(posts, index_html, preview=preview), encoding="utf-8")
+    return []

@@ -8,6 +8,7 @@ from pathlib import Path
 from agk.crosswalk import CrosswalkError, load_crosswalk
 from agk.doclinks import broken_doc_links
 from agk.docs import write_docs
+from agk.journal import JournalError, write_journal
 from agk.downloads import write_downloads
 from agk.lifecycle import LifecycleError, load_questions, load_stages, render_checklist
 from agk.lifecycle_impact import LifecycleImpactError, load_lifecycle_impact
@@ -122,6 +123,10 @@ def build(root: Path) -> tuple[list[str], list[str]]:
                 inject_data(practicum_page.read_text(encoding="utf-8"), "PR", [payload]), encoding="utf-8")
     if (root / "site").is_dir():
         warnings += write_downloads(root)
+        try:
+            warnings += write_journal(root)
+        except JournalError as e:
+            errors.append(f"journal: {e}")
         warnings += write_docs(root)
         errors += [f"site: broken link {b}" for b in broken_links(root / "site")]
     return errors, warnings
