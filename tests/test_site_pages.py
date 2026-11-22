@@ -213,5 +213,31 @@ class LlmsAndSitemapTests(unittest.TestCase):
         self.assertNotIn("lastmod", (SITE / "sitemap.xml").read_text(encoding="utf-8"))
 
 
+class LifecycleNamesTests(unittest.TestCase):
+    SW = "software-lifecycle (software end of life)"
+    HW = "hardware-lifecycle (devices, from purchase to wipe)"
+
+    def test_readme_tags_both_checks(self):
+        readme = (ROOT / "README.md").read_text(encoding="utf-8")
+        readme = readme.replace("`", "")
+        self.assertIn(self.SW, readme)
+        self.assertIn(self.HW, readme)
+
+    def test_tools_page_tags_both_checks(self):
+        html = read("tools.html")
+        self.assertIn(self.SW, html)
+        self.assertIn(self.HW, html)
+
+    def test_lifecycle_page_links_all_four_lifecycle_items(self):
+        html = read("lifecycle.html")
+        m = re.search(r'<section[^>]*id="lifecycle-family".*?</section>', html, re.S)
+        self.assertTrue(m)
+        for href in ("docs/lifecycle/questions.html", "impact-map.html", "tools.html#software-lifecycle",
+                     "tools.html#hardware-lifecycle"):
+            self.assertIn(f'href="{href}"', m.group(0))
+        self.assertIn(self.SW, m.group(0))
+        self.assertIn(self.HW, m.group(0))
+
+
 if __name__ == "__main__":
     unittest.main()

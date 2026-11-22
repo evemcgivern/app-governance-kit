@@ -25,9 +25,9 @@ Read the [ITAM program playbook](sam-toolkit/itam-program-playbook.md). It is th
 | `rationalization` | Recommend tolerate/invest/migrate/eliminate per application; find duplicates and license risk. |
 | `access-review` | Review user access against HR records; find orphaned, excessive, and privileged accounts. |
 | `ai-intake` | Tier a new AI use case for risk (EU AI Act, NIST AI RMF, ISO/IEC 42001) and produce an inventory record. |
-| `hardware-lifecycle` | Check a device fleet for overdue refreshes and retired devices missing a confirmed data wipe. |
+| `hardware-lifecycle` (devices, from purchase to wipe) | Check a device fleet for overdue refreshes and retired devices missing a confirmed data wipe. |
 | `audit-response` | Answer a publisher audit letter: reconcile installs against proofs of purchase, find weak proofs, and brief counsel. |
-| `software-lifecycle` | Find installed software past or near end of life, with a CISA KEV needs-review flag, by running an offline tool on your own machine; counts only. |
+| `software-lifecycle` (software end of life) | Find installed software past or near end of life, with a CISA KEV needs-review flag, by running an offline tool on your own machine; counts only. |
 
 Each ships to `dist/claude/skills/`, `dist/codex/skills/`, and
 `dist/copilot/` in the platform-native shape those tools expect, built from
