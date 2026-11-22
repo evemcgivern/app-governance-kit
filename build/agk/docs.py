@@ -1067,12 +1067,12 @@ document.addEventListener("DOMContentLoaded", function () {
     button.addEventListener("click", function () {
       var lines = [columns.map(quote).join(",")];
       cards.forEach(function (c) { lines.push(columns.map(function (col) { return quote(value(c, col)); }).join(",")); });
-      var blob = new Blob(["\\ufeff" + lines.join("\\r\\n") + "\\r\\n"], {type: "text/csv;charset=utf-8"});
+      var blob = new File(["\\ufeff" + lines.join("\\r\\n") + "\\r\\n"], button.getAttribute("data-file"), {type: "text/csv;charset=utf-8"});
       var a = document.createElement("a");
       a.href = URL.createObjectURL(blob);
       a.download = button.getAttribute("data-file");
       document.body.appendChild(a); a.click(); a.remove();
-      setTimeout(function () { URL.revokeObjectURL(a.href); }, 1000);
+      setTimeout(function () { URL.revokeObjectURL(a.href); }, 60000);
     });
   }
   update();
@@ -1117,12 +1117,12 @@ document.addEventListener('DOMContentLoaded', function () {
     var html = '<html><head><meta charset=utf-8><title>' + esc(document.title) + '</title><style>' + style +
       '</style></head><body><h1>' + esc(document.querySelector('h1').textContent) + '</h1>' + head +
       copy.innerHTML + '</body></html>';
-    var blob = new Blob(['\\ufeff', html], {type: 'application/msword'});
+    var blob = new File(['\\ufeff', html], button.getAttribute('data-file'), {type: 'application/msword'});
     var a = document.createElement('a');
     a.href = URL.createObjectURL(blob);
     a.download = button.getAttribute('data-file');
     document.body.appendChild(a); a.click(); a.remove();
-    setTimeout(function () { URL.revokeObjectURL(a.href); }, 1000);
+    setTimeout(function () { URL.revokeObjectURL(a.href); }, 60000);
   });
 });
   </script>"""
