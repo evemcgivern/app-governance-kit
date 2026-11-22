@@ -35,6 +35,12 @@ class AgentFileTests(unittest.TestCase):
         self.assertNotIn("has not picked a tool", self.text)
         self.assertIn("has not picked one of the kit's skills", self.text)
 
+    def test_local_router_fallback(self):
+        self.assertIn("methods/app-governance/method.md", self.text)
+        self.assertRegex(self.text, r"(?i)read and follow it exactly")
+        self.assertRegex(self.text, r"(?i)do not improvise a routing table")
+        self.assertLessEqual(len(_body(self.text).split()), 240)
+
     def test_no_em_dash(self):
         self.assertNotIn("—", self.text)
 
@@ -52,6 +58,23 @@ class RouterTests(unittest.TestCase):
 
     def test_audit_letter_question(self):
         self.assertRegex(self.method, r"(?i)audit or vendor letter")
+
+    def test_license_position_has_one_home(self):
+        rule = "A license position goes to `audit-response`."
+        self.assertIn(rule, self.method)
+        rows = [l for l in self.method.splitlines() if l.startswith("|") and "license position" in l.lower()]
+        self.assertEqual(len(rows), 1, rows)
+        self.assertIn("`audit-response`", rows[0])
+        self.assertNotIn("rationalization", rows[0])
+        self.assertIn("Which auditors", self.method)
+        self.assertIn("readiness mode", self.method)
+        self.assertRegex(self.method, r"Decision needed: counsel and Finance")
+
+    def test_audit_response_has_readiness_mode(self):
+        m = (ROOT / "methods" / "audit-response" / "method.md").read_text(encoding="utf-8")
+        self.assertIn("## Readiness mode", m)
+        t = (ROOT / "methods" / "audit-response" / "copilot-test.md").read_text(encoding="utf-8")
+        self.assertRegex(t, r"(?i)readiness")
 
     def test_cert_prep_and_shell_note(self):
         self.assertIn("cert-prep", self.method)
@@ -76,7 +99,8 @@ class RouterTests(unittest.TestCase):
 
     def test_copilot_test_has_eight_checks(self):
         t = (ROUTER / "copilot-test.md").read_text(encoding="utf-8")
-        self.assertEqual(len(re.findall(r"(?m)^### Check \d+", t)), 8)
+        self.assertEqual(len(re.findall(r"(?m)^### Check \d+", t)), 10)
+        self.assertNotRegex(t.split("## Behavior checks")[0], r"chooses `rationalization`")
 
 
 if __name__ == "__main__":
