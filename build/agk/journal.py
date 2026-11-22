@@ -131,7 +131,7 @@ def load_posts(directory: Path, *, ignore_notes: bool = False) -> list[Post]:
 
 # ---------- pages ----------
 
-INTRO = "Field notes on setting up asset management, as I learn it."
+INTRO = "Working notes from setting up asset management: what I try, what holds, and what doesn't."
 LICENSE_URL = "https://opensource.org/licenses/MIT"
 LICENSE_LINE = "MIT licensed, like the kit."
 AUTHOR = {"@type": "Person", "name": "Eve McGivern", "url": "https://evemcgivern.github.io/"}
