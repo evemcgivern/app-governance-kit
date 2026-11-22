@@ -10,7 +10,7 @@ Applies to the smallest useful ITAM policy set and the standards beneath it:
 
 - The IT asset management umbrella policy, owned by the ITAM manager and approved by the sponsor. It covers license compliance, acceptable use, and penalties.
 - The software acquisition and exceptions policy, with a standard path, a non-standard path, and approval that escalates with cost and risk.
-- The software standards, which are a catalog of approved titles by role, versions, and SaaS. A selection committee owns them.
+- The software standards, which are a catalog of approved titles by role, versions, and SaaS, and not a policy. A selection committee owns them.
 - The vendor management policy, one policy with a section for each topic.
 - The records and evidence policy: proofs, authorizations, and retention. The company's own records schedule sets the retention rules. **Decision needed:** records owner or counsel.
 

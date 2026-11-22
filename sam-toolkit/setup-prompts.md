@@ -103,7 +103,7 @@ Pick the one that matches what's in front of you:
 
 **When to use it:** When the same fact, such as an owner, a count, or a date, differs between systems, or before you consolidate data or buy a tool.
 
-**Why:** When two systems disagree, nobody knows which to trust. One authoritative system per kind of data.
+**Why:** When two systems disagree, nobody knows which to trust, so name one authoritative system per kind of data.
 
 **Paste this:** Rules: read-only coach, one question at a time, never decide for me, mark Decision needed and Unverified, write Not found for missing figures, no web. I will name the systems we use and give you no data. For each of these kinds of data, help me choose one authoritative system, a data owner role, how the copies are kept in step, and how often to compare them: application inventory, hardware inventory, entitlements and license position, proofs of purchase, contracts and renewal dates, invoices and spend, discovery and usage data, configuration and service relationships, application owners, retirement records. Point out any row where I name two systems as the source or none. List the options and the cost of each; do not choose for me. Give the result as CSV with columns data_domain, authoritative_system, data_owner, other_systems_holding_copies, how_copies_are_kept_in_step, reconcile_every.
 
@@ -145,7 +145,7 @@ Pick the one that matches what's in front of you:
 
 **Attach (optional):** `audit-response-roles.csv`.
 
-**Good looks like:** every task has a role and a holder, and each has a ready backup or a clear flag where it doesn't.
+**Good looks like:** every task has a role and a holder, and each holder has a ready backup, or the task carries a clear flag saying there isn't one.
 
 ## Prompt 8: Set up governance and a policy
 

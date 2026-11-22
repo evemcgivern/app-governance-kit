@@ -164,7 +164,7 @@ Read this before step 4 if any of these is true.
 
 ## What must exist first
 
-- A sponsor before the policy.
+- A sponsor before the policy, because a policy that no one with budget backs gets ignored.
 - Scope before the self-assessment and the inventory.
 - The contract's license metric before a license position. A user count isn't always the licensed quantity.
 - Proof before the position. Reconcile against what you can prove.
@@ -185,7 +185,7 @@ This is judgment from practice, not a measured rate.
 
 ## Run: keep it alive
 
-`operating-calendar.md` has the full schedule, mapped to these steps. In short:
+`operating-calendar.md` has the full schedule, mapped to these steps.
 
 | When | Routine | Use |
 | --- | --- | --- |
@@ -205,13 +205,13 @@ Events that should start work even when nothing is due:
 
 ## Is it working?
 
-Signs it's working:
+A working program shows these signs:
 - Measures move, and each leads to a decision someone logged.
 - Findings close and stay closed.
 - Savings reconcile to what finance confirms.
 - Reviews sometimes change a decision.
 
-Signs of a busy program that's not working: reports grow longer and nobody decides anything from them, the documentation gaps log only gets longer, forecast savings never become real savings, and every review is confirmed without change.
+A busy program that isn't working has reports that grow longer while nobody decides anything from them, a documentation gaps log that only gets longer, forecast savings that never become real savings, and reviews that are all confirmed without change.
 
 Pick measures that can't be met by paperwork alone. The Ideas sheet in `application-management-workbook.xlsx` lists credible ones, with how people tend to game each.
 
