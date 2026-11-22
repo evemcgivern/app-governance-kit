@@ -31,6 +31,7 @@ Each step gives the reason in one line, the files to use, the matching prompt in
 - Done when:
   - [ ] You have read this playbook and the glossary.
   - [ ] You can say in two sentences what your biggest worry is: audit, renewals, duplicate spend, or ownership.
+  - [ ] You have done a five-minute gut check: a rough 0 to 3 score for each dimension in `application-management-self-assessment.md`, from memory and with no evidence. It is a guess, and step 5 redoes it with evidence.
 - Time (expert judgment, not measured): 2 to 4 hours of effort, within 1 week.
 - Related: [glossary](../field-guide/glossary.md): ITAM.
 
@@ -100,6 +101,7 @@ Read this before step 4 if any of these is true.
 **Why:** Written rules let procurement and managers say no, and let you show an auditor what the organization required. [[XW-003]]
 
 - Files: draft with `policy-template.md` (its section 5 holds the roles table) and `policy-standard-template.md`. Test each draft with `policy-checklist.md` before anyone reviews it. Then follow `policy-lifecycle-sop.md` for consultation, counsel review, approval, publication, and review. The smallest useful set is an umbrella policy, an acquisition and exceptions policy, a software standard, a vendor management policy, and a records and evidence policy. Retirement follows `retirement-signoff-checklist.md` and, for devices, the `hardware-lifecycle` method. AI tool intake follows the `ai-intake` method. Prompt 8 reviews a draft policy.
+- Form a selection committee when you have a standards catalog to own, or when a purchase request needs a decision above the asset manager. Until then the small group from step 2 is enough. The `program-setup` method covers the full version.
 - Done when:
   - [ ] Each policy in your set has an owner and an approver named by role. [[XW-004]]
   - [ ] Each draft passed `policy-checklist.md`, and counsel reviewed the penalty wording and any retention period.
