@@ -7,6 +7,11 @@ This is the one order to follow. It's for an asset manager who has to stand up, 
 - Do the ten steps in order. If time or budget runs out, stop after step 5.
 - If an audit letter arrives, give it to Legal and do not reply.
 
+**Two standing rules**
+
+- Do the ten steps in order. If time or budget runs out, stop after step 5.
+- If an audit letter arrives, give it to Legal and do not reply.
+
 Three terms come up at once. A sponsor is the executive who holds the budget and backs the program in public. A charter is a short written agreement on why the program exists, who decides what, and who sits on the group that decides. An entitlement is the right to use software that you can show you bought. Plain-language definitions of these and other terms are in the [glossary](../field-guide/glossary.md).
 
 Do all ten steps, in order. If time or budget runs out, stop after step 5 and keep the routines running. Steps 1 to 5 are a complete small program: a sponsor, a scope, a baseline, a renewal calendar, and an audit roster.
