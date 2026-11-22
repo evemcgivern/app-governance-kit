@@ -229,8 +229,9 @@ class PlaybookAndCalendarTests(unittest.TestCase):
         box = self.play.split("**Two standing rules**", 1)[1].split("\n\n")[1]
         rules = [l for l in box.splitlines() if l.startswith("- ")]
         self.assertEqual(len(rules), 2)
+        self.assertIn("do the ten steps in order", rules[0].lower())
         self.assertIn("stop after step 5", rules[0].lower())
-        self.assertIn("Steps 1 to 5 are a complete small program", rules[0])
+        self.assertIn("Steps 1 to 5 are a complete small program", self.play)
         self.assertIn("give it to Legal and do not reply", rules[1])
 
     def test_practice_sentence(self):
