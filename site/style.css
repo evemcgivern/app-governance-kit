@@ -1548,6 +1548,19 @@ code {
   white-space: nowrap;
 }
 
+.table-scroll:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.doc-body tbody th[scope="row"] {
+  color: inherit;
+  font-size: inherit;
+  font-weight: 400;
+  letter-spacing: normal;
+  text-transform: none;
+}
+
 .checklist-choice {
   display: flex;
   align-items: center;

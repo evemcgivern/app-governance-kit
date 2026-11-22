@@ -298,10 +298,14 @@ def _table_html(rows: list[list[str]], resolve, files, caption: str = "", index:
         for i in range(len(header)):
             cell = row[i] if i < len(row) else ""
             if i == choice:
+                question = " ".join(re.sub(r"[`*]", "", unmark(c, files)) for c in row[:i] if c)
                 boxes = "".join(
                     f"<label class=\"checklist-choice\"><input type=\"radio\" name=\"q{index}-{key}\" "
                     f"value=\"{c}\"> {c}</label>" for c in CHOICES)
-                cells.append(f"<td class=\"checklist-choices\">{boxes}</td>")
+                cells.append(f"<td class=\"checklist-choices\"><div class=\"checklist-choice-group\" "
+                             f"role=\"radiogroup\" aria-label=\"{escape(question, quote=True)}\">{boxes}</div></td>")
+            elif cell and i == 0:
+                cells.append(f"<th scope=\"row\">{inline_html(cell, resolve, files)}</th>")
             elif cell:
                 cls = " class=\"long-text\"" if i in long_cols else ""
                 cells.append(f"<td{cls}>{inline_html(cell, resolve, files)}</td>")
@@ -313,7 +317,9 @@ def _table_html(rows: list[list[str]], resolve, files, caption: str = "", index:
                 cells.append("<td class=\"checklist-write\"></td>")
         body.append("<tr>" + "".join(cells) + "</tr>")
     wide = " wide" if len(header) >= 6 else ""
-    return (f"<div class=\"table-scroll\"><table class=\"checklist{wide}\"{attrs}>{cap}<thead><tr>{head}</tr></thead>"
+    name = escape(f"{caption or f'Table {index}'}{' table' if caption else ''}, scroll sideways to see more", quote=True)
+    return (f"<div class=\"table-scroll\" tabindex=\"0\" role=\"region\" aria-label=\"{name}\">"
+            f"<table class=\"checklist{wide}\"{attrs}>{cap}<thead><tr>{head}</tr></thead>"
             f"<tbody>{''.join(body)}</tbody></table></div>")
 
 
@@ -983,7 +989,7 @@ document.addEventListener("DOMContentLoaded", function () {
       st.push(s); answered += c.Yes + c.Partly + c.No; total += c.total;
       var row = tally && tally.querySelectorAll("tbody tr")[i];
       if (row) {
-        var cells = row.querySelectorAll("td");
+        var cells = row.cells;
         cells[1].textContent = c.Yes; cells[2].textContent = c.Partly; cells[3].textContent = c.No; cells[4].textContent = s;
       }
     });
