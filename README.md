@@ -18,7 +18,7 @@ Read the [ITAM program playbook](https://evemcgivern.github.io/app-governance-ki
 The site lists the rest in this order:
 
 1. [ITAM program playbook](https://evemcgivern.github.io/app-governance-kit/docs/sam-toolkit/itam-program-playbook.html): the ten steps.
-2. [SAM toolkit](https://evemcgivern.github.io/app-governance-kit/sam-toolkit.html): forty templates and checklists the playbook points to.
+2. [SAM toolkit](https://evemcgivern.github.io/app-governance-kit/sam-toolkit.html): forty-one templates and checklists the playbook points to.
 3. [AI skills](https://evemcgivern.github.io/app-governance-kit/tools.html): the nine tools below, as skills for Claude, Codex, and Copilot.
 4. [Practicum](https://evemcgivern.github.io/app-governance-kit/practicum.html): eight exercises to work by hand on fictional data.
 5. Then the [Field guide](https://evemcgivern.github.io/app-governance-kit/field-guide.html), the [case studies](https://evemcgivern.github.io/app-governance-kit/case-studies.html), the [application lifecycle](https://evemcgivern.github.io/app-governance-kit/lifecycle.html), the [crosswalk explorer](https://evemcgivern.github.io/app-governance-kit/crosswalk.html), and [themes by stage](https://evemcgivern.github.io/app-governance-kit/impact-map.html).
@@ -217,7 +217,7 @@ Create an agent in [Agent Builder](https://learn.microsoft.com/en-us/microsoft-3
 - **Read a method directly**: `methods/<tool>/method.md` for the full workflow, `checklist.md` for the a la carte version, `platform-guide.md` for where each field lives in ServiceNow/Flexera/etc.
 - **Let an agent pick the tool**: the `app-governance` skill routes a plain request ("review our software estate") to the right skill and hands every decision back to you. In Claude Code, `app-governance-agent` loads it for you.
 - **Practice for a certification**: ask the `cert-prep` study coach for scenario drills on the demo estate (CAMP, CSAM, CHAMP, AIGP, ITIL 4 Foundation, IAM Certificate). Practice only, not exam content.
-- **Run a SAM practice by hand**: start with `sam-toolkit/itam-program-playbook.md`, then use the templates and checklists in `sam-toolkit/` as it names them (policy set, license position, proof of purchase, renewals, asset record, authorizations, scope, tiers, audit, vendors, contract terms, acquisition gate, invoice verification, savings report), with a guide in `sam-toolkit/guide.md`.
+- **Run a SAM practice by hand**: start with `sam-toolkit/itam-program-playbook.md`, then use the templates and checklists in `sam-toolkit/` as it names them (policy set, license position, proof of purchase, renewals, asset record, authorizations, scope, tiers, audit, audit decision tree, vendors, contract terms, acquisition gate, invoice verification, savings report), with a guide in `sam-toolkit/guide.md`.
 - **Work an exercise by hand**: `practicum/01-program-setup.md` through `practicum/08-audit-response.md`, then self-check on the site's interactive practicum page. No installs, no AI shortcuts.
 - **Use it with an agent**: point Claude, Codex, or Copilot at the relevant `dist/<platform>/...` skill and a real dataset (or the demo one under `demo-estate/`).
 
@@ -225,7 +225,7 @@ Create an agent in [Agent Builder](https://learn.microsoft.com/en-us/microsoft-3
 
 ```
 methods/       One folder per tool: method.md, checklist.md, sop.md, template.csv, platform-guide.md, example/
-sam-toolkit/   Forty templates, checklists, and prompts for a software asset management practice, downloadable from the site; start with itam-program-playbook.md
+sam-toolkit/   Forty-one templates, checklists, and prompts for a software asset management practice, downloadable from the site; start with itam-program-playbook.md
 demo-estate/   A fictional company (Halden Logistics) with planted, findable problems, used by every practicum exercise
 practicum/     Eight hands-on exercises, worked by hand against demo-estate before checking the answer key
 field-guide/   Certifications, standards, glossary: the reference material behind the tools

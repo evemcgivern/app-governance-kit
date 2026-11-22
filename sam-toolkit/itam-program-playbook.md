@@ -52,7 +52,7 @@ Each step gives the reason in one line, the files to use, the matching prompt in
 
 **Why:** Missed renewal deadlines and a missing audit contact cost money before any program exists.
 
-- Files: `renewal-calendar.csv` and `audit-response-roles.csv`. Prompt 6 finds renewals and notice deadlines. Prompt 7 builds the audit roster.
+- Files: `renewal-calendar.csv` and `audit-response-roles.csv`. Prompt 6 finds renewals and notice deadlines. Prompt 7 builds the audit roster. `audit-decision-tree.md` shows what to do when anyone asks about licenses; print it and keep it with the roster.
 - Done when:
   - [ ] Every renewal in the next 180 days is in `renewal-calendar.csv` with its notice deadline, an owner, and a decision date. [[XW-008]]
   - [ ] `audit-response-roles.csv` names a stop-gap holder and a backup for each task, with Legal named as the only contact for a publisher. [[XW-004]]
@@ -65,7 +65,7 @@ Read this before step 4 if any of these is true.
 
 - **No sponsor yet.** Write one sentence on the cost or risk, and use one figure from your own records, or write Not found. Take it to whoever signs your largest software invoices or carries the audit risk, and ask for 30 minutes. If you are refused, note who declined and when, and keep working on steps 3 and 4, which sit within your own authority. Prompt 8 reviews a draft charter once you have one; it does not write the request.
 - **No inventory yet.** Do not try to count everything. List your five largest software publishers by spend from finance records, and do step 3 for them. The inventory comes in step 7.
-- **An audit or vendor letter has already arrived.** Do not reply and do not send data. Hand the letter to Legal the same day and note the deadline it states. Do not run new discovery or remove software without Legal's say. Open a dated case file, then use the `audit-response` method and `audit-response-roles.csv`. Use Prompt 7 once Legal is involved.
+- **An audit or vendor letter has already arrived.** Do not reply and do not send data. Hand the letter to Legal the same day and note the deadline it states. Do not run new discovery or remove software without Legal's say. Open a dated case file, then follow the [audit decision tree](audit-decision-tree.md) from [node C1](audit-decision-tree.md#node-c1), with the `audit-response` method and `audit-response-roles.csv`. Use Prompt 7 once Legal is involved.
 
 ### Step 4: Set the scope
 

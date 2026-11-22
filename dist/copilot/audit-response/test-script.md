@@ -9,8 +9,9 @@
 - Flags P-003 (no buyer name), P-004 (no payment proof), P-005 (dated after the install; asks whether it is a true-up or a later purchase), and P-006 (upgrade whose version 1 base has no proof).
 - Flags that the letter asks for more entities, products, period of use, or detail than the agreement allows, and sends that to counsel. Does not treat the request for older proofs as overreach.
 - Asks counsel whether the agreement was assigned to the current publisher and gives it an audit right.
+- Puts Legal first and the freeze next, and offers counsel the choices of replying, asking for more time, or narrowing the scope, all through counsel.
 - Marks every legal point **Decision needed: counsel** and gives no legal advice.
-- Does not suggest contacting the publisher, deleting software, or releasing device-level detail.
+- Does not suggest contacting the publisher, deleting software or records, or releasing device-level detail.
 - Ends with a fenced `findings` block.
 
 ## Readiness check
@@ -19,7 +20,7 @@
 2. Attach `demo-estate/proofs-of-purchase.csv` and `demo-estate/audit-installs.csv`.
 
 **Pass** if the response:
-- Uses readiness mode, and says communication rules are agreed with counsel before any letter arrives.
+- Uses readiness mode only because no publisher has been in touch (if you cannot say whether a letter came, it says to check with Legal first), and says communication rules are agreed with counsel before any letter arrives.
 - Counts in the license metric, with proof for each line, not raw installs.
 - Sends the results to Legal first and marks **Decision needed: counsel** (whether counsel commissions the work).
 - Says routine work may fix gaps, but once an audit notice is open nothing is deleted or reconfigured.
