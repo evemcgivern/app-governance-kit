@@ -550,5 +550,93 @@ class WayfindingTests(unittest.TestCase):
         self.assertEqual(write_docs(root), [])
 
 
+MAP = ("kind,key,main_step,also_steps,frequency,note\n"
+       "file,renewal-calendar.csv,3,8,Monthly,\n"
+       "file,audit-response-roles.csv,3,,Quarterly,\n"
+       "file,policy-template.md,4,6;9,Yearly,\n"
+       "file,guide.md,1,,Not on the calendar,\n"
+       "file,savings-report.csv,beyond,,Not on the calendar,\n"
+       "practicum,01-program-setup,2,,,Program setup\n"
+       "practicum,03-crosswalk,beyond,,,Crosswalk\n")
+
+
+def mapped_repo(extra: dict | None = None) -> Path:
+    root = tmp_repo(extra=extra)
+    (root / "steps").mkdir()
+    (root / "steps" / "step-map.csv").write_text(MAP, encoding="utf-8")
+    (root / "sam-toolkit" / "savings-report.csv").write_text("period,amount\n", encoding="utf-8")
+    (root / "sam-toolkit" / "examples").mkdir()
+    (root / "sam-toolkit" / "examples" / "renewal-calendar-example.csv").write_text("app,date\nA,1\n",
+                                                                                  encoding="utf-8")
+    (root / "practicum").mkdir()
+    (root / "practicum" / "01-program-setup.md").write_text("# Exercise 01\n\nBody.\n", encoding="utf-8")
+    (root / "practicum" / "03-crosswalk.md").write_text("# Exercise 03\n\nBody.\n", encoding="utf-8")
+    return root
+
+
+class StepMapPageTests(unittest.TestCase):
+    def test_feeds_line_is_its_own_paragraph_with_frequency(self):
+        root = mapped_repo()
+        write_docs(root)
+        html = built(root, "renewal-calendar.html")
+        self.assertRegex(html, r'<p class="meta doc-feeds">Feeds step 3\. Also step 8\. Review: Monthly\. '
+                               r'Keep it in the versioned place your records policy names, with access limited\.</p>')
+        self.assertIn("Also steps 6 and 9.", built(root, "policy-template.html"))
+        self.assertIn("Not part of a step.", built(root, "savings-report.html"))
+
+    def test_no_feeds_line_on_playbook_unmapped_files_or_without_a_map(self):
+        root = mapped_repo()
+        write_docs(root)
+        self.assertNotIn("doc-feeds", built(root, "itam-program-playbook.html"))
+        self.assertNotIn("doc-feeds", built(root, "loose-file.html"))
+        plain = tmp_repo()
+        write_docs(plain)
+        self.assertNotIn("doc-feeds", built(plain, "guide.html"))
+
+    def test_feeds_line_has_no_retention_or_shared_place_wording(self):
+        root = mapped_repo()
+        write_docs(root)
+        html = built(root, "renewal-calendar.html")
+        line = html[html.index('class="meta doc-feeds"'):].split("</p>")[0].lower()
+        self.assertNotIn("retention", line)
+        self.assertNotIn("shared place", line)
+
+    def test_csv_pages_get_the_not_found_note_and_renewal_required_columns(self):
+        root = mapped_repo()
+        write_docs(root)
+        html = built(root, "renewal-calendar.html")
+        self.assertIn("Not found means no source record was located; never put an estimate there.", html)
+        self.assertIn("contract_end, notice_days, notice_deadline, decision_owner, and decided_on", html)
+        other = built(root, "audit-response-roles.html")
+        self.assertIn("Not found means", other)
+        self.assertNotIn("Required columns", other)
+        self.assertNotIn("Not found means", built(root, "guide.html"))
+        self.assertNotIn("Not found means", built(root, "renewal-calendar-example.html"))
+
+    def test_filled_example_link_only_where_an_example_exists(self):
+        root = mapped_repo()
+        write_docs(root)
+        self.assertIn('href="renewal-calendar-example.html">See a filled example</a>',
+                      built(root, "renewal-calendar.html"))
+        self.assertNotIn("See a filled example", built(root, "audit-response-roles.html"))
+        self.assertNotIn("See a filled example", built(root, "guide.html"))
+
+    def test_practice_line_on_practicum_pages(self):
+        root = mapped_repo()
+        write_docs(root)
+        html = (root / "site" / "docs" / "practicum" / "01-program-setup.html").read_text(encoding="utf-8")
+        self.assertIn('<p class="meta doc-practice">Practice for playbook step 2.</p>', html)
+        beyond = (root / "site" / "docs" / "practicum" / "03-crosswalk.html").read_text(encoding="utf-8")
+        self.assertIn("Practice for work beyond the ten steps.", beyond)
+
+    def test_long_pages_show_a_labeled_reading_time_and_short_pages_do_not(self):
+        long_text = "# Long\n\n" + ("word " * 2000) + "\n"
+        root = mapped_repo(extra={"loose-file.md": long_text})
+        write_docs(root)
+        self.assertIn('<p class="meta doc-reading">About 10 minutes to read (an estimate at 200 words per '
+                      'minute).</p>', built(root, "loose-file.html"))
+        self.assertNotIn("doc-reading", built(root, "guide.html"))
+
+
 if __name__ == "__main__":
     unittest.main()

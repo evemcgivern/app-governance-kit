@@ -13,6 +13,8 @@ import zipfile
 from html import escape
 from pathlib import Path
 
+from agk import stepmap
+
 GITHUB = "https://github.com/evemcgivern/app-governance-kit/blob/main/"
 BASE = "https://evemcgivern.github.io/app-governance-kit/"
 FIXED_DATE = (2020, 1, 1, 0, 0, 0)
@@ -1353,6 +1355,44 @@ def _relpath(from_page: str, to: str) -> str:
     return os.path.relpath(to, os.path.dirname(from_page)).replace(os.sep, "/")
 
 
+def feeds_html(d, rows: list[dict]) -> str:
+    """The "Feeds step N" line for a toolkit page, from the step map, as its own paragraph."""
+    if d.group != "sam-toolkit" or d.src.parent.name != "sam-toolkit" or d.name == PLAYBOOK_STEM:
+        return ""
+    row = stepmap.find(rows, "file", d.src.name)
+    return f"  <p class=\"meta doc-feeds\">{escape(stepmap.feeds_line(row))}</p>\n" if row else ""
+
+
+def practice_html(d, rows: list[dict]) -> str:
+    """The "Practice for playbook step N" line on a practicum exercise page, from the step map."""
+    row = stepmap.find(rows, "practicum", d.name) if d.group == "practicum" else None
+    return f"  <p class=\"meta doc-practice\">{escape(stepmap.practice_line(row))}</p>\n" if row else ""
+
+
+def stepmap_notes_html(d) -> str:
+    """Notes under the title: reading time on long documents, and the first-row help on blank CSV templates."""
+    out = []
+    if d.kind == "md":
+        line = stepmap.reading_line(stepmap.text_words(d.blocks))
+        if line:
+            out.append(f"  <p class=\"meta doc-reading\">{escape(line)}</p>\n")
+    if d.kind == "csv" and d.group == "sam-toolkit" and d.src.parent.name == "sam-toolkit":
+        out.append(f"  <p class=\"meta doc-csv-note\">{escape(stepmap.CSV_NOTE)}</p>\n")
+        required = stepmap.required_line(d.name)
+        if required:
+            out.append(f"  <p class=\"meta doc-required\">{escape(required)}</p>\n")
+    return "".join(out)
+
+
+def example_link(d) -> str | None:
+    """A "See a filled example" link, only for a toolkit file that has an example in sam-toolkit/examples/."""
+    if d.group != "sam-toolkit" or d.src.parent.name != "sam-toolkit":
+        return None
+    if not (d.src.parent / "examples" / f"{d.name}-example.csv").is_file():
+        return None
+    return f"    <a class=\"visual-actions__link\" href=\"{d.name}-example.html\">See a filled example</a>"
+
+
 def write_docs(root: Path) -> list[str]:
     """Write site/docs/** from the Markdown and CSV sources. Returns warnings."""
     site = root / "site"
@@ -1362,6 +1402,7 @@ def write_docs(root: Path) -> list[str]:
     docs = collect(root)
     if not docs:
         return []
+    step_rows = stepmap.load_map(root) if (root / "steps" / "step-map.csv").is_file() else []
     warnings: list[str] = []
     out_root = site / "docs"
     import shutil
@@ -1463,6 +1504,8 @@ def write_docs(root: Path) -> list[str]:
         if d.kind == "csv":
             (out_dir / f"{stem}.csv").write_text(d.src.read_text(encoding="utf-8"), encoding="utf-8")
             actions.append(f"    <a class=\"visual-actions__link\" href=\"{stem}.csv\">Download CSV</a>")
+        if example_link(d):
+            actions.append(example_link(d))
         actions.append("    <button type=\"button\" class=\"visual-actions__link doc-print\" "
                        "onclick=\"window.print()\">Print or save as PDF</button>")
         fillable = d.kind == "md" and d.group == "sam-toolkit"
@@ -1488,6 +1531,7 @@ def write_docs(root: Path) -> list[str]:
                               f"data-file=\"{stem}-filled.csv\">Download my answers (CSV)</button>")
         if "prompt-copy" in body:
             extra += "\n" + PROMPT_STATUS + "\n" + PROMPT_SCRIPT
+        extra = stepmap_notes_html(d) + extra
         description = summary_of(d.blocks) or d.title
         canonical = BASE + d.page
         jsonld = json.dumps({
@@ -1508,7 +1552,8 @@ def write_docs(root: Path) -> list[str]:
             actions="\n".join(actions), extra=extra, body=body,
             print_button=PRINT_BUTTON,
             wayfinding=(wayfinding_html(steps, d.name, d.page, playbook.page)
-                        if playbook and d.group == "sam-toolkit" and d.src.parent == playbook.src.parent else "")),
+                        if playbook and d.group == "sam-toolkit" and d.src.parent == playbook.src.parent else "")
+                       + feeds_html(d, step_rows) + practice_html(d, step_rows)),
             encoding="utf-8")
     write_sitemap(site)
     warnings += [f"docs: {src}: link {href} matches no site page; shown as plain text"
