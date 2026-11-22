@@ -29,7 +29,7 @@ Clause references are to the shared crosswalk (`XW-` rows). Frequencies are prac
 | Yearly | Check the tier you meet [[XW-025]] | `tier-self-assessment.md` | Asset manager |
 | Yearly | Run an internal audit and management review [[XW-025]] | `audit-and-review-checklist.md` | Sponsor |
 | Yearly | Review the policy and the scope [[XW-003]] | `statement-of-applicability.csv` | Governance lead |
-| Yearly, and when a new rule is announced | What changed outside the company (laws, regulations, vendor terms)? Record what applies and who acts on it [[XW-003]] | `policy-lifecycle-sop.md` | Program owner and Legal |
+| Yearly, and when a new rule is announced | What changed outside the company (laws, regulations, vendor terms)? Record what applies and who acts on it [[XW-003]] | `policy-lifecycle-sop.md` | Governance lead and Legal |
 | Yearly | Update the one-page road map of outside factors named in the charter | `program-setup` method (`template.md`) | Governance lead |
 
 ## Events that start a task
