@@ -2,8 +2,12 @@ import tempfile
 import unittest
 from pathlib import Path
 
+import contextlib
+import io
+import os
 import re
 import shutil
+from unittest import mock
 
 from agk.build import build
 from agk.docs import write_docs
@@ -11,6 +15,7 @@ from agk.scan import scan
 from agk.site import broken_links
 from agk.journal import (JournalError, Post, STATUS_LABELS, load_posts, parse_front_matter, parse_post,
                         render_index, render_post, write_journal)
+from agk.journal import main as journal_main
 from tests.helpers import make_method, make_repo
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -121,6 +126,17 @@ class PostTests(unittest.TestCase):
         write_post(self.dir, "2026-11-01-one.md", spine="true")
         write_post(self.dir, "2026-11-02-two.md", date="2026-11-02", spine="true")
         with self.assertRaisesRegex(JournalError, "spine"):
+            load_posts(self.dir)
+
+    def test_notes_files_that_do_not_start_with_a_digit_are_ignored(self):
+        (self.dir / "IDEAS.md").write_text("Rough thoughts, no front matter.\n", encoding="utf-8")
+        (self.dir / "README.md").write_text("Not a post.\n", encoding="utf-8")
+        write_post(self.dir, "2026-12-01-real.md")
+        self.assertEqual([p.slug for p in load_posts(self.dir)], ["real"])
+
+    def test_a_misnamed_file_that_starts_with_a_digit_is_still_an_error(self):
+        write_post(self.dir, "2026-12-01 bad name.md")
+        with self.assertRaisesRegex(JournalError, "bad name.md"):
             load_posts(self.dir)
 
     def test_missing_directory_gives_no_posts(self):
@@ -324,6 +340,77 @@ class SiteChecksTests(unittest.TestCase):
         hits = scan(self.root, ["acme"])
         self.assertTrue(any("posts/2026-12-01-x.md" in h and "private term" in h for h in hits), hits)
         self.assertTrue(any("posts/2026-12-01-x.md" in h and "quoted run" in h for h in hits), hits)
+
+
+class PreviewTests(unittest.TestCase):
+    def setUp(self):
+        self._tmp = tempfile.TemporaryDirectory()
+        self.root = make_repo(Path(self._tmp.name))
+        (self.root / "site").mkdir()
+        shutil.copyfile(ROOT / "site" / "index.html", self.root / "site" / "index.html")
+        self.drafts = self.root / "docs" / "journal-drafts"
+
+    def tearDown(self):
+        self._tmp.cleanup()
+
+    def run_main(self, env: dict | None = None) -> tuple[int, str]:
+        err = io.StringIO()
+        clean = {k: v for k, v in os.environ.items() if k != "AGK_PRIVATE_WORDS"}
+        clean.update(env or {})
+        with mock.patch.dict(os.environ, clean, clear=True), contextlib.redirect_stderr(err), \
+                contextlib.redirect_stdout(io.StringIO()):
+            code = journal_main(["--root", str(self.root), "--preview"])
+        return code, err.getvalue()
+
+    def test_preview_with_nothing_to_show_says_so(self):
+        out = io.StringIO()
+        with contextlib.redirect_stdout(out), contextlib.redirect_stderr(io.StringIO()):
+            code = journal_main(["--root", str(self.root), "--preview"])
+        self.assertEqual(code, 0)
+        self.assertIn("no posts or drafts to preview", out.getvalue())
+        self.assertFalse((self.root / "docs" / "journal-preview").exists())
+
+    def test_drafts_folder_is_gitignored(self):
+        lines = (ROOT / ".gitignore").read_text(encoding="utf-8").splitlines()
+        self.assertIn("/docs/", [line.strip() for line in lines])
+
+    def test_preview_pages_have_a_base_tag(self):
+        write_post(self.drafts, "2026-12-02-rough.md", date="2026-12-02")
+        write_journal(self.root, preview=True)
+        out = self.root / "docs" / "journal-preview"
+        post_base = (self.root / "site" / "journal").resolve().as_uri() + "/"
+        index_base = (self.root / "site").resolve().as_uri() + "/"
+        self.assertIn(f'<base href="{post_base}">', (out / "journal" / "rough.html").read_text(encoding="utf-8"))
+        self.assertIn(f'<base href="{index_base}">', (out / "journal.html").read_text(encoding="utf-8"))
+
+    def test_normal_pages_have_no_base_tag(self):
+        write_post(self.root / "posts", "2026-12-01-live.md")
+        write_journal(self.root)
+        self.assertNotIn("<base", (self.root / "site" / "journal" / "live.html").read_text(encoding="utf-8"))
+
+    def test_preview_main_flags_private_terms_in_drafts(self):
+        words = self.root / "words.txt"
+        words.write_text("# private\nacme\n", encoding="utf-8")
+        draft = write_post(self.drafts, "2026-12-02-rough.md", date="2026-12-02")
+        code, err = self.run_main({"AGK_PRIVATE_WORDS": str(words)})
+        self.assertEqual(code, 0, err)
+        draft.write_text(draft.read_text(encoding="utf-8") + "\nAcme did it.\n", encoding="utf-8")
+        code, err = self.run_main({"AGK_PRIVATE_WORDS": str(words)})
+        self.assertEqual(code, 1)
+        self.assertIn("2026-12-02-rough.md", err)
+        self.assertIn("private term", err)
+
+    def test_preview_main_without_a_word_list_warns_but_still_builds_and_checks_quotes(self):
+        draft = write_post(self.drafts, "2026-12-02-rough.md", date="2026-12-02")
+        code, err = self.run_main()
+        self.assertEqual(code, 0, err)
+        self.assertIn("private-term scan skipped", err)
+        self.assertTrue((self.root / "docs" / "journal-preview" / "journal" / "rough.html").exists())
+        quote = "one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen"
+        draft.write_text(draft.read_text(encoding="utf-8") + f'\nShe said "{quote}".\n', encoding="utf-8")
+        code, err = self.run_main()
+        self.assertEqual(code, 1)
+        self.assertIn("quoted run", err)
 
 
 if __name__ == "__main__":

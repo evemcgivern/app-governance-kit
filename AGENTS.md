@@ -13,6 +13,7 @@ From `Makefile` (Python 3, run from the repo root; CI uses 3.12):
 - `make test`: run the unittest suite in `tests/`.
 - `make build`: delete and regenerate `dist/`, and regenerate the data-driven parts of `site/`.
 - `make scan`: fail on quoted runs longer than 15 words and on private terms leaking into public output.
+- `make journal-preview`: build the Journal posts and the drafts in `docs/journal-drafts/` into `docs/journal-preview/` (ignored by git) with a draft banner, and scan the drafts. Set `AGK_PRIVATE_WORDS` to include the private-term check.
 - `evals/run.sh <tool> <claude|codex>`: run a built skill against the demo estate and grade the answer. Needs `make build` first; results land in `evals/results/` (ignored by git).
 
 ## Architecture
@@ -23,6 +24,7 @@ From `Makefile` (Python 3, run from the repo root; CI uses 3.12):
 - `build/agk/`: Python build system. `tests/`: its tests.
 - `lifecycle/`: input data for the lifecycle checklist; the build reads it. `evals/`: skill grading.
 - `agents/`: Claude agent files, copied to `dist/claude/agents` by the build. Currently `app-governance-agent.md`, a thin wrapper that loads the `app-governance` skill (`methods/app-governance/`), which holds the routing table. `case-studies/` is empty; the scan still covers it, and the case studies page is hand-kept in `site/`.
+- `posts/`: Journal posts, `YYYY-MM-DD-slug.md` with front matter. `build/agk/journal.py` builds them into `site/journal/` and `site/journal.html`; with no posts it writes nothing. Drafts and rough ideas live in `docs/journal-drafts/` (git-ignored) and are never built into `site/`. The repo-root `notes/` folder is personal and git-ignored: nothing for the Journal goes there.
 - `dist/`, `site/`: generated output (plus some hand-kept pages in `site/`). Published via `.github/workflows/pages.yml` on pushes to `main`.
 
 ## Releases

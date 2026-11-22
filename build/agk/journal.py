@@ -5,15 +5,19 @@ are only built by the preview command. Standard library only; output is determin
 """
 from __future__ import annotations
 
+import argparse
 import datetime as dt
 import json
+import os
 import re
 import shutil
+import sys
 from dataclasses import dataclass
 from html import escape
 from pathlib import Path
 
 from agk.docs import BASE, PAGE, PRINT_BUTTON, body_html, chrome, parse_markdown
+from agk.scan import load_words, long_quotes, private_hits
 
 STATUS_LABELS = {"field-note": "Field note", "essay": "Essay", "study-path": "Study path"}
 REQUIRED_KEYS = ("title", "date", "status", "summary")
@@ -109,10 +113,13 @@ def sort_posts(posts: list[Post]) -> list[Post]:
 
 
 def load_posts(directory: Path) -> list[Post]:
-    """All posts in a folder, newest date first and then by slug. A missing folder holds no posts."""
+    """All posts in a folder, newest date first and then by slug. A missing folder holds no posts.
+
+    Only files whose names start with a digit are posts. Others, such as IDEAS.md or README.md, are notes
+    and are ignored; a digit-led name that is not YYYY-MM-DD-slug.md is an error, so typos are not skipped."""
     if not directory.is_dir():
         return []
-    posts = [parse_post(p) for p in sorted(directory.glob("*.md"))]
+    posts = [parse_post(p) for p in sorted(directory.glob("*.md")) if p.name[:1].isdigit()]
     check_posts(posts)
     return sort_posts(posts)
 
@@ -138,17 +145,19 @@ def _crumbs(*items: tuple[str, str]) -> dict:
 
 
 def _page(*, title: str, description: str, up: str, canonical: str, jsonld: str, index_html: str, back_href: str,
-          back_label: str, extra: str, body: str, print_button: str, preview: bool) -> str:
+          back_label: str, extra: str, body: str, print_button: str, preview: bool,
+          base_href: str | None = None) -> str:
     header, footer = chrome(index_html, up)
     html = PAGE.format(title=escape(title), description=escape(description, quote=True), up=up, canonical=canonical,
                        base=BASE, jsonld=jsonld, header=header, footer=footer, back_href=back_href,
                        back_label=escape(back_label), actions="", extra=extra, body=body, print_button=print_button)
     if preview:
-        html = html.replace("<head>", "<head>\n" + NOINDEX, 1)
+        head = NOINDEX + (f'\n<base href="{escape(base_href)}">' if base_href else "")
+        html = html.replace("<head>", "<head>\n" + head, 1)
     return html
 
 
-def render_post(post: Post, index_html: str, *, preview: bool = False) -> str:
+def render_post(post: Post, index_html: str, *, preview: bool = False, base_href: str | None = None) -> str:
     """The full page for one post, as it is written to site/journal/<slug>.html."""
     canonical = f"{BASE}journal/{post.slug}.html"
     graph = [
@@ -167,7 +176,7 @@ def render_post(post: Post, index_html: str, *, preview: bool = False) -> str:
     body += f'\n<p class="meta journal-license">{LICENSE_LINE}</p>'
     return _page(title=post.title, description=post.summary, up="../", canonical=canonical, jsonld=_json_ld(graph),
                  index_html=index_html, back_href="../journal.html", back_label="Journal", extra=extra, body=body,
-                 print_button=PRINT_BUTTON, preview=preview)
+                 print_button=PRINT_BUTTON, preview=preview, base_href=base_href)
 
 
 def _entry(post: Post) -> str:
@@ -176,7 +185,7 @@ def _entry(post: Post) -> str:
             f'{escape(post.summary)}</li>')
 
 
-def render_index(posts: list[Post], index_html: str, *, preview: bool = False) -> str:
+def render_index(posts: list[Post], index_html: str, *, preview: bool = False, base_href: str | None = None) -> str:
     """The full page for site/journal.html: the spine post first, then the rest newest first."""
     canonical = f"{BASE}journal.html"
     graph = [_crumbs(("Home", BASE), ("Journal", canonical)),
@@ -193,7 +202,7 @@ def render_index(posts: list[Post], index_html: str, *, preview: bool = False) -
     extra = f"  {DRAFT_BANNER}\n" if preview else ""
     return _page(title="Journal", description=INTRO, up="", canonical=canonical, jsonld=_json_ld(graph),
                  index_html=index_html, back_href="index.html", back_label="Home", extra=extra,
-                 body="\n".join(parts), print_button="", preview=preview)
+                 body="\n".join(parts), print_button="", preview=preview, base_href=base_href)
 
 
 def write_journal(root: Path, *, preview: bool = False) -> list[str]:
@@ -222,7 +231,52 @@ def write_journal(root: Path, *, preview: bool = False) -> list[str]:
     if not posts:
         return []
     folder.mkdir(parents=True)
+    # In a preview the pages sit under docs/, so a base tag makes links and styles resolve as on the real site.
+    post_base = (root / "site" / "journal").resolve().as_uri() + "/" if preview else None
+    index_base = (root / "site").resolve().as_uri() + "/" if preview else None
     for post in posts:
-        (folder / f"{post.slug}.html").write_text(render_post(post, index_html, preview=preview), encoding="utf-8")
-    index_file.write_text(render_index(posts, index_html, preview=preview), encoding="utf-8")
+        (folder / f"{post.slug}.html").write_text(
+            render_post(post, index_html, preview=preview, base_href=post_base), encoding="utf-8")
+    index_file.write_text(render_index(posts, index_html, preview=preview, base_href=index_base), encoding="utf-8")
     return []
+
+
+def main(argv: list[str] | None = None) -> int:
+    parser = argparse.ArgumentParser(description="Build the journal pages, or preview them with drafts.")
+    parser.add_argument("--root", type=Path, default=Path.cwd())
+    parser.add_argument("--preview", action="store_true",
+                        help="include drafts from docs/journal-drafts/ and write to docs/journal-preview/")
+    args = parser.parse_args(argv)
+    root = args.root
+    try:
+        write_journal(root, preview=args.preview)
+    except JournalError as e:
+        print(f"error: journal: {e}", file=sys.stderr)
+        return 1
+    if not args.preview:
+        print("journal ok")
+        return 0
+    words = None
+    words_path = os.environ.get("AGK_PRIVATE_WORDS")
+    if words_path and Path(words_path).is_file():
+        words = load_words(Path(words_path))
+    else:
+        print("private-term scan skipped: set AGK_PRIVATE_WORDS to your private word list", file=sys.stderr)
+    hits: list[str] = []
+    for draft in sorted((root / "docs" / "journal-drafts").glob("*.md")):
+        text = draft.read_text(encoding="utf-8")
+        label = draft.relative_to(root).as_posix()
+        if words is not None:
+            hits += private_hits(text, words, label)
+        hits += long_quotes(text, label)
+    for hit in hits:
+        print(hit, file=sys.stderr)
+    if (root / "docs" / "journal-preview" / "journal.html").exists():
+        print("preview written to docs/journal-preview/" + (f"; {len(hits)} hit(s)" if hits else ""))
+    else:
+        print("no posts or drafts to preview")
+    return 1 if hits else 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())
