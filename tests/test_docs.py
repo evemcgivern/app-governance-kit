@@ -689,13 +689,13 @@ class ToolkitByStepTests(unittest.TestCase):
                 {"kind": "term", "key": "Sponsor", "main_step": "3", "also_steps": [], "frequency": "",
                  "note": ""}]
         html = toolkit_steps_html(rows, steps, {"renewal-calendar.csv": "Renewal calendar"})
-        self.assertEqual(html.count('data-file="renewal-calendar.csv"'), 1)
+        self.assertEqual(html.count('data-stem="renewal-calendar"'), 1)
         self.assertIn('<h3 id="by-step-3"><a href="docs/sam-toolkit/itam-program-playbook.html#step-3-stop">'
                       'Step 3: Stop the bleeding</a></h3>', html)
         self.assertIn('<a href="docs/sam-toolkit/renewal-calendar.html">Renewal calendar</a> '
                       '<span class="step-tag">Step 3, also step 8</span>', html)
         self.assertIn('<h3 id="by-step-beyond">Not part of a step</h3>', html)
-        self.assertIn('data-file="savings-report.csv"', html.split("by-step-beyond")[1])
+        self.assertIn('data-stem="savings-report"', html.split("by-step-beyond")[1])
         self.assertNotIn("Sponsor", html)
         self.assertNotIn("by-step-8", html)
 
@@ -706,7 +706,7 @@ class ToolkitByStepTests(unittest.TestCase):
         write_docs(root)
         html = page.read_text(encoding="utf-8")
         self.assertNotIn("old", html)
-        self.assertIn('data-file="renewal-calendar.csv"', html)
+        self.assertIn('data-stem="renewal-calendar"', html)
         self.assertIn("<p>keep</p>", html)
         first = html
         write_docs(root)

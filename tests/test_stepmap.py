@@ -174,14 +174,15 @@ class HandKeptPageTests(unittest.TestCase):
         block = html.split("<!--STEPS-->", 1)[1].split("<!--/STEPS-->", 1)[0]
         groups = {}
         for m in re.finditer(r'<h3 id="by-step-([\w-]+)">.*?</h3>(.*?)(?=<h3 id="by-step-|\Z)', block, re.S):
-            groups[m.group(1)] = re.findall(r'data-file="([^"]+)"', m.group(2))
+            groups[m.group(1)] = re.findall(r'data-stem="([^"]+)"', m.group(2))
         for r in (r for r in self.rows if r["kind"] == "file"):
+            stem = r["key"].rsplit(".", 1)[0]
             home = "beyond" if r["main_step"] == "beyond" else r["main_step"]
             for step, files in groups.items():
                 if step == home:
-                    self.assertEqual(files.count(r["key"]), 1, r["key"])
+                    self.assertEqual(files.count(stem), 1, r["key"])
                 else:
-                    self.assertNotIn(r["key"], files, r["key"])
+                    self.assertNotIn(stem, files, r["key"])
 
 
 class PlaybookAndCalendarTests(unittest.TestCase):

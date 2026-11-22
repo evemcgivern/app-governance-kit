@@ -1447,7 +1447,7 @@ def toolkit_steps_html(rows: list[dict], steps: list[dict], titles: dict[str, st
                 tag = "Not part of a step"
             else:
                 tag = f"Step {n}" + (f", also {stepmap.step_words(r['also_steps'])}" if r["also_steps"] else "")
-            out.append(f"    <li data-file=\"{escape(r['key'], quote=True)}\"><a href=\"docs/sam-toolkit/{stem}.html\">"
+            out.append(f"    <li data-stem=\"{escape(stem, quote=True)}\"><a href=\"docs/sam-toolkit/{stem}.html\">"
                        f"{escape(titles.get(r['key'], stem))}</a> <span class=\"step-tag\">{escape(tag)}</span></li>")
         out.append("  </ul>")
     out += ["</section>", "<!--/STEPS-->"]

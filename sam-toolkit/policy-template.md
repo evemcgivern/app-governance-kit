@@ -108,15 +108,17 @@ List what sits under this policy. Each item has a name, an owner, and a place it
 
 Find your company's records retention schedule, or ask the records owner or legal where it is written, and copy each rule with its source. [[XW-020]] (7.6.5)
 
-| Record type | Retention rule (from the company's schedule) | Source | Rule owner | Confirmed by | Date |
+| Record type | Retention rule (from the company’s schedule) | Source | Rule owner | Confirmed by | Date |
 | --- | --- | --- | --- | --- | --- |
-| Proofs of entitlement, with the contracts and terms that grant them | | | | | |
+| Proofs of entitlement and contracts | | | | | |
 | Orders and invoices | | | | | |
-| Audit correspondence and records gathered for an audit | | | | | |
-| Discovery and usage reports, kept as they stood on the day they ran | | | | | |
+| Audit correspondence and audit records | | | | | |
+| Discovery and usage reports as run | | | | | |
 | Disposal and wipe certificates | | | | | |
 | Approval records | | | | | |
 | Renewal notices | | | | | |
+
+Contracts here mean the contracts and terms that grant each entitlement. Audit records are those gathered for an audit. Discovery and usage reports are recorded as they stood on the day they ran.
 
 **Decision needed: records owner or counsel.** Have counsel review. This template sets no period.
 
