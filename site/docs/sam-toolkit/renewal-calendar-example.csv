@@ -1,4 +1,4 @@
 license_id,asset_id,contract_ref,product,vendor,contract_end,notice_days,notice_deadline,auto_renews,annual_cost_usd,in_use_last_90_days,decision,reason,decision_owner,approver,decided_on
 LIC-022,APP-022,FD-EA-2025,Fleetdesk Endpoint management,Fleetdesk,2027-06-30,91,2027-03-31,yes,89200,yes,,,IT director,,
 LIC-001,APP-001,NB-MSA-2024,Northbeam ERP,Northbeam,2027-06-30,61,2027-04-30,yes,12900,yes,,,Finance director,,
-LIC-059,APP-059,CP-SUB-2025,Clickpath Web analytics,Clickpath,2027-03-15,90,2026-12-15,yes,22200,Not found,,,Marketing lead,,
+LIC-059,APP-059,CP-SUB-2025,Clickpath Web analytics,Clickpath,2027-06-30,90,2027-04-01,yes,22200,Not found,,,Marketing lead,,
