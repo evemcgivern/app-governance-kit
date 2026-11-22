@@ -20,7 +20,7 @@ Checked on 2026-10-24. KEV data current: yes (synthetic demo data). **Unverified
 
 Classification: governable 40, component 0, bundle member 3, unknown 7 [[XW-001]] [[XW-009]].
 
-Unmatched does not mean safe. No date is claimed for those items. Item IDs are not relayed; the person reads each list in `report.md` themselves [[XW-026]].
+Unmatched does not mean safe, and no date is claimed for those items. Item IDs are not relayed; the person reads each list in `report.md` themselves [[XW-026]].
 
 The vendor and product appear in CISA KEV. This does not mean your version is affected [[XW-024]].
 

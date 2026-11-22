@@ -1,6 +1,6 @@
 # Software Audit Response Check: Halden Logistics (checked_on 2026-09-01)
 
-Inputs: `audit-letter.md`, `proofs-of-purchase.csv`, `audit-installs.csv`, and the expiry dates in `licenses.csv`. This is a readiness briefing for counsel. It is not legal advice, and nothing here has been sent to the publisher.
+Inputs: `audit-letter.md`, `proofs-of-purchase.csv`, `audit-installs.csv`, and the expiry dates in `licenses.csv`. This is a readiness briefing for counsel. It gives no legal advice, and nothing here has been sent to the publisher.
 
 ## Inputs confirmed
 
@@ -42,7 +42,7 @@ P-003 (2023) and P-005 (2022) predate the 36 months the audit clause covers. On 
 
 ## Scope questions for counsel
 
-The letter asks for every Halden group company worldwide, every Brightvale product, installation records back to 2019, and a device-level list with user names. Halden's notes limit the review to Halden Logistics Inc, three products, use in the 36 months before the notice, and counts per product and version. The entities, products, period of use, and level of detail all look wider than the agreement. The request for proof of purchase is not a scope problem; proofs of any age help Halden. **Decision needed: counsel.** Whether to push back, what to release, and when [[XW-013]] [[XW-007]].
+The letter asks for every Halden group company worldwide, every Brightvale product, installation records back to 2019, and a device-level list with user names. Halden's notes limit the review to Halden Logistics Inc, three products, use in the 36 months before the notice, and counts per product and version. The entities, products, period of use, and level of detail all look wider than the agreement. The request for proof of purchase raises no scope question, and proofs of any age help Halden. **Decision needed: counsel.** Whether to push back, what to release, and when [[XW-013]] [[XW-007]].
 
 ## Do not
 
@@ -50,7 +50,7 @@ Do not contact the publisher. Do not remove Taskmoor installs or change configur
 
 ## Briefing for Legal and the executive sponsor
 
-One product short by 17 named users, three proofs that need repair, one proof dated after its install that needs an explanation, a letter wider than the agreement, and an open question on whether Brightvale holds the audit right at all. The prepared response is within reach if the missing records turn up. **Decision needed:** the executive sponsor, with counsel, on any purchase to close the Taskmoor gap [[XW-027]].
+One product short by 17 named users, three proofs that need repair, one proof dated after its install that needs an explanation, a letter wider than the agreement, and an open question on whether Brightvale holds the audit right at all. **Decision needed:** the executive sponsor, with counsel, on any purchase to close the Taskmoor gap [[XW-027]].
 
 ```findings
 [

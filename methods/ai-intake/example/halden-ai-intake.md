@@ -8,7 +8,7 @@
 
 I've run intake for all six systems in `ai-systems.csv`. The legal content behind this skill was last reviewed in 2026-09, so treat the EU AI Act points below as a starting point. **Legal review is required for AI-004**, which is tiered high-risk.
 
-**Summary**
+**Tiers by system**
 
 | id | Owner | Tier | Main driver |
 |---|---|---|---|
@@ -84,7 +84,7 @@ In NIST AI RMF terms: **Govern** covers ownership and approval, **Map** covers t
 **Tier: Minimal-risk.**
 - It pulls fields out of documents and a person checks them before anything happens.
 - It's not in any listed high-risk area, and it doesn't talk to people.
-- The risk is financial: a wrong figure or a duplicate payment. That belongs under finance controls, not AI Act controls.
+- The risk is financial: a wrong figure or a duplicate payment. That belongs under finance controls.
 
 **Controls beyond the baseline:**
 - **XW-028:** decide how financial data is classified and handled.
@@ -289,7 +289,7 @@ In NIST AI RMF terms: **Govern** covers ownership and approval, **Map** covers t
 
 ---
 
-**Decisions needed, in summary:**
+**Decisions needed:**
 1. **Legal review for AI-004** before anything else: confirm the tier, confirm whether Halden is a deployer or provider, confirm there's no emotion-recognition or biometric feature, and confirm when the obligations apply.
 2. **AI-003:** Operations to confirm routes aren't used to manage drivers.
 3. **All systems:** approve each one and name the approver.
