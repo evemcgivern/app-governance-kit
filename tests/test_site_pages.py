@@ -239,5 +239,25 @@ class LifecycleNamesTests(unittest.TestCase):
         self.assertIn(self.HW, m.group(0))
 
 
+class DoVersusReadTests(unittest.TestCase):
+    def test_practicum_names_case_studies_and_has_the_demo_company_anchor(self):
+        html = read("practicum.html")
+        self.assertIn("Do it yourself on fictional data", html)
+        self.assertRegex(html, r'Do it yourself on fictional data.{0,300}href="case-studies.html"', )
+        m = re.search(r'id="about-the-demo-company".*?</(?:section|div)>', html, re.S)
+        self.assertTrue(m)
+        for word in ("Halden", "fictional", "planted"):
+            self.assertIn(word, m.group(0))
+
+    def test_case_studies_name_the_practicum_and_link_to_the_anchor(self):
+        html = read("case-studies.html")
+        self.assertIn("See it done", html)
+        self.assertRegex(html, r'See it done.{0,300}href="practicum.html"')
+        self.assertIn('href="practicum.html#about-the-demo-company"', html)
+
+    def test_sam_toolkit_links_to_the_anchor(self):
+        self.assertIn('href="practicum.html#about-the-demo-company"', read("sam-toolkit.html"))
+
+
 if __name__ == "__main__":
     unittest.main()
