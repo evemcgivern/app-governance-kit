@@ -337,6 +337,11 @@ def write_downloads(root: Path) -> list[str]:
     iaitam_map_path = root / "methods" / "crosswalk" / "iaitam-map.csv"
     if iaitam_map_path.is_file():
         (out / "iaitam-map.csv").write_text(iaitam_map_path.read_text(encoding="utf-8"), encoding="utf-8")
+    elif any("downloads/iaitam-map.csv" in p.read_text(encoding="utf-8") for p in sorted(site.glob("*.html"))):
+        # A page links this file. Drop any stale copy so the build's link check fails instead of passing.
+        (out / "iaitam-map.csv").unlink(missing_ok=True)
+        warnings.append("downloads: methods/crosswalk/iaitam-map.csv not found, but a site page links "
+                        "downloads/iaitam-map.csv")
 
     if crosswalk_csv_text is not None:
         (out / "crosswalk-print.html").write_text(crosswalk_print_html(crosswalk_csv_text), encoding="utf-8")

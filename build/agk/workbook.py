@@ -240,7 +240,7 @@ def build_start(example: bool, settings_row: int) -> Sheet:
     s.tab = "1"
     s.text("A1", "Application management program workbook", S_TITLE)
     s.text("A2", "Assess where your program is, decide where it needs to be, plan the gaps, and measure progress. "
-                 "Yellow cells are for typing. Grey cells are calculated, so do not type in them.", S_HINT)
+                 "Yellow cells are for typing. Gray cells are calculated, so do not type in them.", S_HINT)
     s.text("A4", "Program name (input)", S_LABEL); s.blank("B4", S_IN_TEXT)
     s.text("A5", "Scope: which applications and teams (input)", S_LABEL); s.blank("B5", S_IN_TEXT)
     s.text("A6", "Sponsor (input)", S_LABEL); s.blank("B6", S_IN_TEXT)
@@ -254,7 +254,7 @@ def build_start(example: bool, settings_row: int) -> Sheet:
                      "score one level lower. Score with someone who does the work.", "Assess", "30 minutes"),
         ("2 Set the To-Be", "Choose a target level for each dimension you care about, with a reason and a date. Level 2 "
                             "is a strong result; not everything needs 3.", "Assess", "15 minutes"),
-        ("3 Choose three gaps", "Decide which gaps to fund now. Three at a time works best. Name an owner, a first "
+        ("3 Choose three gaps", "Decide which gaps to fund now, no more than three at a time. Name an owner, a first "
                                 "action, and a date for each.", "Plan", "15 minutes"),
         ("4 Define measures", "For each gap you fund, record one starting number with its date, a target, and where "
                               "the proof will be filed. Measure first, then set the target.", "Measures", "15 minutes"),
@@ -648,7 +648,7 @@ def build_scorecard(settings_row: int) -> Sheet:
          f"COUNTIF(Plan!$J${FIRST}:$J${LAST},\"Add owner*\")",
          "B42>0", "Name an owner, a first action, and a date for each gap you fund.", "None."),
         ("Gaps marked Fund now", f"COUNTIF(Plan!$E${FIRST}:$E${LAST},\"Fund now\")", "B43>3",
-         "More than three at once. Three at a time works best.", "Within three."),
+         "More than three at once.", "Within three."),
         ("Targets set at level 3", f"COUNTIF(Assess!$E${FIRST}:$E${LAST},3)", "B44>=6",
          "Most targets are 3. Pick the few that matter. Level 2 is a strong result.", "No concern."),
         ("Scores of 1 or more with no evidence",

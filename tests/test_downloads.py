@@ -250,6 +250,43 @@ class WriteDownloadsTests(unittest.TestCase):
         self.assertTrue((self.root / "site" / "downloads" / "lifecycle-wheel.svg").is_file())
 
 
+class IaitamMapDownloadTests(unittest.TestCase):
+    LINK_PAGE = '<html><body><a href="downloads/iaitam-map.csv">map</a></body></html>'
+
+    def setUp(self):
+        self.root = make_repo(Path(tempfile.mkdtemp()))
+        (self.root / "site").mkdir()
+        self.source = self.root / "methods" / "crosswalk" / "iaitam-map.csv"
+        self.copy = self.root / "site" / "downloads" / "iaitam-map.csv"
+
+    def test_map_is_copied_byte_for_byte(self):
+        self.source.write_text("xw_id,camp_area,csam_topic\nXW-001,Inventory,Topic\n", encoding="utf-8")
+        self.assertEqual(write_downloads(self.root), [])
+        self.assertEqual(self.copy.read_bytes(), self.source.read_bytes())
+
+    def test_missing_map_with_no_page_linking_it_is_quiet(self):
+        self.assertEqual(write_downloads(self.root), [])
+        self.assertFalse(self.copy.exists())
+
+    def test_missing_map_warns_removes_the_stale_copy_and_breaks_the_build(self):
+        (self.root / "site" / "field-guide.html").write_text(self.LINK_PAGE, encoding="utf-8")
+        self.copy.parent.mkdir(parents=True)
+        self.copy.write_text("stale\n", encoding="utf-8")
+        warnings = write_downloads(self.root)
+        self.assertEqual(len(warnings), 1, warnings)
+        self.assertIn("iaitam-map.csv", warnings[0])
+        self.assertFalse(self.copy.exists())
+        errors, _ = build(self.root)
+        self.assertTrue(any("field-guide.html: downloads/iaitam-map.csv" in e for e in errors), errors)
+
+    def test_real_field_guide_link_resolves_to_a_shipped_download(self):
+        page = (ROOT / "site" / "field-guide.html").read_text(encoding="utf-8")
+        self.assertIn('href="downloads/iaitam-map.csv"', page)
+        self.assertTrue((ROOT / "site" / "downloads" / "iaitam-map.csv").is_file())
+        self.assertEqual((ROOT / "site" / "downloads" / "iaitam-map.csv").read_bytes(),
+                         (ROOT / "methods" / "crosswalk" / "iaitam-map.csv").read_bytes())
+
+
 class BuildIntegrationTests(unittest.TestCase):
     def test_build_generates_downloads_and_keeps_existing_tests_green(self):
         root = make_repo(Path(tempfile.mkdtemp()))

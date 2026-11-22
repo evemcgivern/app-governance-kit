@@ -117,6 +117,26 @@ class PayloadTests(unittest.TestCase):
         self.assertEqual(payload["exercises"][0]["reflect"],
                          ["First reflect question?", "Second reflect question?"])
 
+    def _demo_with_key(self, name: str, extra: list) -> Path:
+        import json, shutil
+        demo = self.tmp / name
+        shutil.copytree(self.tmp / "demo", demo)
+        key = json.loads((demo / "answer-key.json").read_text(encoding="utf-8")) + extra
+        (demo / "answer-key.json").write_text(json.dumps(key), encoding="utf-8")
+        return demo
+
+    def test_answer_key_entry_with_an_unknown_tool_is_an_error_naming_the_entry(self):
+        demo = self._demo_with_key("demo-unknown", [{"tool": "rationalisation", "type": "retire", "id": "APP-999"}])
+        with self.assertRaises(PracticumError) as caught:
+            practicum_payload(demo, write_exercises(self.tmp / "ex10"), XW)
+        message = str(caught.exception)
+        self.assertIn("rationalisation", message)
+        self.assertIn("APP-999", message)
+
+    def test_cert_prep_entries_are_dropped_without_error(self):
+        payload = practicum_payload(self.tmp / "demo", write_exercises(self.tmp / "ex11"), XW)
+        self.assertNotIn("cert-prep", {k["tool"] for k in payload["key"]})
+
     def test_certification_link_carried_as_plain_text(self):
         payload = practicum_payload(self.tmp / "demo", write_exercises(self.tmp / "ex9"), XW)
         self.assertEqual(payload["exercises"][0]["cert_link"],

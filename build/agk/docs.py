@@ -1284,6 +1284,9 @@ def collect(root: Path) -> list[Doc]:
     return docs
 
 
+# Sections of the hand-kept site/field-guide.html, by the field-guide/*.md file each one comes from.
+FIELD_GUIDE_SECTIONS = {"certifications": "cert-heading", "standards": "standards-heading",
+                        "glossary": "glossary-heading", "data-governance": "data-gov-heading"}
 PLAYBOOK_STEM = "itam-program-playbook"
 STEP_RE = re.compile(r"^Step (\d+): (.+)$")
 BACKTICK_FILE_RE = re.compile(r"`([\w.-]+)\.(?:md|csv)`")
@@ -1390,6 +1393,15 @@ def write_docs(root: Path) -> list[str]:
 
     playbook = next((d for d in docs if (d.group, d.name) == ("sam-toolkit", PLAYBOOK_STEM) and d.kind == "md"), None)
     steps = playbook_steps(playbook.blocks) if playbook else []
+    if any(d.group == "sam-toolkit" for d in docs):
+        if playbook is None:
+            warnings.append(f"docs: sam-toolkit/{PLAYBOOK_STEM}.md not found; "
+                            "wayfinding (the \"Used in playbook step\" line) skipped on every toolkit page")
+        elif not steps:
+            warnings.append(f"docs: sam-toolkit/{PLAYBOOK_STEM}.md has no \"Step N: title\" headings; "
+                            "wayfinding (the \"Used in playbook step\" line) skipped on every toolkit page")
+    plain_text_links: set[tuple[str, str]] = set()
+    field_guide = (root / "field-guide").resolve()
 
     header_cache: dict[str, tuple[str, str]] = {}
     index_html = index.read_text(encoding="utf-8")
@@ -1407,13 +1419,20 @@ def write_docs(root: Path) -> list[str]:
             target = (page_dir / target_name).resolve()
             if target in by_path:
                 return _relpath(d.page, by_path[target].page) + frag
+            if (target.suffix == ".md" and target.parent == field_guide and target.stem in FIELD_GUIDE_SECTIONS
+                    and target.is_file() and (site / "field-guide.html").is_file()):
+                return up + "field-guide.html" + (frag or "#" + FIELD_GUIDE_SECTIONS[target.stem])
             if target.name == "crosswalk.csv":
                 return up + "downloads/crosswalk.csv"
             if target.is_dir() and methods_dir.resolve() in target.parents:
                 return up + f"tools.html#{target.name}"
+            if target_name.endswith(".html") and target.parent == site.resolve() and target.is_file():
+                return up + target.name + frag
             built = (site / os.path.dirname(d.page) / target_name).resolve()
             if target_name.endswith(".html") and built.parent == site.resolve() and built.is_file():
                 return up + built.name + frag
+            if target_name.endswith(".html"):
+                plain_text_links.add((d.src.relative_to(root).as_posix(), href))
             return None
 
         def files(name: str, d=d, page_dir=page_dir):
@@ -1492,6 +1511,8 @@ def write_docs(root: Path) -> list[str]:
                         if playbook and d.group == "sam-toolkit" and d.src.parent == playbook.src.parent else "")),
             encoding="utf-8")
     write_sitemap(site)
+    warnings += [f"docs: {src}: link {href} matches no site page; shown as plain text"
+                 for src, href in sorted(plain_text_links)]
     return warnings
 
 

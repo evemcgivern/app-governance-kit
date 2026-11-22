@@ -7,6 +7,7 @@ from agk.grade import MAX_EXTRA
 
 ORDER = ("program-setup", "itam-maturity", "crosswalk", "rationalization", "access-review",
          "ai-intake", "hardware-lifecycle", "audit-response")
+NO_PAGE_TOOLS = ("cert-prep",)
 TABLES = ("apps", "licenses", "employees", "accounts", "ai-systems", "maturity-answers", "devices",
           "proofs-of-purchase", "audit-installs")
 TEXTS = ("controls", "council-draft", "audit-letter")
@@ -68,6 +69,10 @@ def practicum_payload(demo_dir: Path, exercises_dir: Path, crosswalk: dict) -> d
             tables[name] = list(csv.DictReader(f))
     texts = {name: (demo_dir / f"{name}.md").read_text(encoding="utf-8") for name in TEXTS}
     key = json.loads((demo_dir / "answer-key.json").read_text(encoding="utf-8"))
+    unknown = [k for k in key if k["tool"] not in ORDER and k["tool"] not in NO_PAGE_TOOLS]
+    if unknown:
+        raise PracticumError("answer-key.json has entries for tools with no practicum exercise: "
+                             + ", ".join(f"{k['tool']} {k['type']} {k['id']}" for k in unknown))
     # cert-prep drills have no practicum page of their own; keep their key entries out of the grader.
     key = [k for k in key if k["tool"] in ORDER]
     exercises = []
