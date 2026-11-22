@@ -1994,3 +1994,52 @@ button.visual-actions__link {
     font-size: 1rem;
   }
 }
+
+/* Playbook position: a compact chip with 44 px Previous and Next links */
+
+.doc-step {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.25rem 0.75rem;
+  margin: 0 0 0.5rem;
+}
+
+.doc-step p {
+  margin: 0;
+}
+
+.step-chip {
+  display: inline-block;
+  padding: 0.15rem 0.7rem;
+  border-radius: 999px;
+  background: var(--chip-bg);
+  color: var(--fg);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.doc-step__nav {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.step-nav {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0 0.9rem;
+  border: 1px solid var(--accent);
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+@media print {
+  .doc-step__nav {
+    display: none;
+  }
+}

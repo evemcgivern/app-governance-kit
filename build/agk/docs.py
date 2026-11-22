@@ -1333,7 +1333,7 @@ def playbook_steps(blocks: list[dict]) -> list[dict]:
 
 
 def wayfinding_html(steps: list[dict], stem: str, page: str, playbook_page: str) -> str:
-    """The "Used in playbook step N of M" line for a page, or an empty string."""
+    """The "Step N of M" chip, step title and Previous and Next links for a page, or an empty string."""
     hits = [i for i, st in enumerate(steps) if stem in st["stems"]]
     if not hits or stem == PLAYBOOK_STEM:
         return ""
@@ -1342,15 +1342,22 @@ def wayfinding_html(steps: list[dict], stem: str, page: str, playbook_page: str)
     def link(st: dict, label: str | None = None) -> str:
         return f"<a href=\"{escape(base)}#{escape(st['id'], quote=True)}\">{escape(label or st['title'])}</a>"
     i = hits[0]
-    parts = [f"Used in playbook step {steps[i]['n']} of {len(steps)}: {link(steps[i])}."]
+    n = len(steps)
+    lines = [f"    <p class=\"doc-step__where\"><span class=\"step-chip\">Step {steps[i]['n']} of {n}</span> "
+             f"{link(steps[i])}</p>"]
+    nav = []
     if i > 0:
-        parts.append(f"Previous step: {link(steps[i - 1])}.")
-    if i + 1 < len(steps):
-        parts.append(f"Next step: {link(steps[i + 1])}.")
+        nav.append(f"<a class=\"step-nav\" rel=\"prev\" href=\"{escape(base)}#{escape(steps[i - 1]['id'], quote=True)}\" "
+                   f"aria-label=\"Previous step: {escape(steps[i - 1]['title'], quote=True)}\">Previous</a>")
+    if i + 1 < n:
+        nav.append(f"<a class=\"step-nav\" rel=\"next\" href=\"{escape(base)}#{escape(steps[i + 1]['id'], quote=True)}\" "
+                   f"aria-label=\"Next step: {escape(steps[i + 1]['title'], quote=True)}\">Next</a>")
+    if nav:
+        lines.append(f"    <p class=\"doc-step__nav\">{' '.join(nav)}</p>")
     if len(hits) > 1:
         others = ", ".join(link(steps[j], f"step {steps[j]['n']}") for j in hits[1:])
-        parts.append(f"Also used in {others}.")
-    return f"  <p class=\"meta doc-step\">{' '.join(parts)}</p>\n"
+        lines.append(f"    <p class=\"meta doc-step__also\">Also used in {others}.</p>")
+    return "  <nav class=\"doc-step\" aria-label=\"Playbook step\">\n" + "\n".join(lines) + "\n  </nav>\n"
 
 
 def _relpath(from_page: str, to: str) -> str:
@@ -1400,10 +1407,10 @@ def write_docs(root: Path) -> list[str]:
     if any(d.group == "sam-toolkit" for d in docs):
         if playbook is None:
             warnings.append(f"docs: sam-toolkit/{PLAYBOOK_STEM}.md not found; "
-                            "wayfinding (the \"Used in playbook step\" line) skipped on every toolkit page")
+                            "wayfinding (the \"Step N of M\" chip) skipped on every toolkit page")
         elif not steps:
             warnings.append(f"docs: sam-toolkit/{PLAYBOOK_STEM}.md has no \"Step N: title\" headings; "
-                            "wayfinding (the \"Used in playbook step\" line) skipped on every toolkit page")
+                            "wayfinding (the \"Step N of M\" chip) skipped on every toolkit page")
     plain_text_links: set[tuple[str, str]] = set()
     field_guide = (root / "field-guide").resolve()
 

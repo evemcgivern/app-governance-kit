@@ -105,5 +105,30 @@ class ViewLinkTests(unittest.TestCase):
         self.assertNotIn(">view</a>", html)
 
 
+class StepChipTests(unittest.TestCase):
+    def setUp(self):
+        self.root = tmp_repo()
+        write_docs(self.root)
+        self.html = built(self.root, "operating-calendar.html")
+
+    def test_chip_keeps_the_title_and_the_neighbors(self):
+        h = self.html
+        self.assertIn('<nav class="doc-step" aria-label="Playbook step">', h)
+        self.assertRegex(h, r'<span class="step-chip">Step 2 of 4</span> <a href="[^"]*#step-2-get-a-sponsor">Get a sponsor</a>')
+        self.assertRegex(h, r'<a class="step-nav" rel="prev" href="[^"]*#step-1-read-the-map" '
+                            r'aria-label="Previous step: Read the map">Previous</a>')
+        self.assertRegex(h, r'<a class="step-nav" rel="next" href="[^"]*#step-3-stop-the-bleeding" '
+                            r'aria-label="Next step: Stop &lt;the&gt; bleeding">Next</a>')
+
+    def test_also_used_in_list_remains(self):
+        h = built(self.root, "renewal-calendar.html")
+        self.assertRegex(h, r'Also used in <a href="[^"]*#step-3-stop-the-bleeding">step 3</a>')
+
+    def test_nav_links_are_44_px_tall(self):
+        css = CSS.read_text(encoding="utf-8")
+        self.assertRegex(css, r"\.step-nav\s*\{[^}]*min-height: 44px")
+        self.assertRegex(css, r"\.step-nav\s*\{[^}]*min-width: 44px")
+
+
 if __name__ == "__main__":
     unittest.main()
