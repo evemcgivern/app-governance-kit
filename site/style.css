@@ -1331,6 +1331,12 @@ code {
   margin: 0.25rem 0 1rem;
 }
 
+.pr-result:empty {
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
+
 .pr-result--pass {
   border-color: #2f7d4f;
 }
@@ -1553,7 +1559,8 @@ code {
   outline-offset: 2px;
 }
 
-.doc-body tbody th[scope="row"] {
+.doc-body tbody th[scope="row"],
+.pr-controls tbody th[scope="row"] {
   color: inherit;
   font-size: inherit;
   font-weight: 400;

@@ -248,5 +248,52 @@ class ScrollCueTests(unittest.TestCase):
         self.assertNotIn("sticky-first", narrow)
 
 
+PRACTICUM = CSS.parent / "practicum.html"
+
+
+class PracticumTests(unittest.TestCase):
+    def setUp(self):
+        self.src = PRACTICUM.read_text(encoding="utf-8")
+
+    def test_scroll_wrapper_is_a_named_focusable_region(self):
+        for line in ('wrap.setAttribute("tabindex", "0");', 'wrap.setAttribute("role", "region");',
+                     'wrap.setAttribute("aria-label",'):
+            self.assertIn(line, self.src)
+
+    def test_first_column_is_a_row_header(self):
+        self.assertIn('var cell = document.createElement(i === 0 ? "th" : "td");', self.src)
+        self.assertIn('cell.setAttribute("scope", "row");', self.src)
+
+    def test_data_tables_keep_the_first_column_in_view_and_unshouted(self):
+        self.assertIn('table.className = "sticky-first"', self.src)
+        self.assertIn('.pr-controls tbody th[scope="row"]', CSS.read_text(encoding="utf-8"))
+
+    def test_row_checkboxes_name_their_row(self):
+        self.assertIn("visibleLabel[0] + \": \" + visibleLabel[1]", self.src)
+        for call in ('["Weakest", row.area]', '["Select", row.id + " " + row.name]', '["Expired", row.id]',
+                     '["Orphaned", row.id]', '["Overdue", row.device_id]', '["Unwiped", row.device_id]',
+                     '["Short", row.license_id + " version " + row.version]'):
+            self.assertIn(call, self.src)
+
+    def test_remove_buttons_name_their_pair_and_focus_moves_on(self):
+        self.assertIn('"Remove duplicate pair " + pair[0] + " and " + pair[1]', self.src)
+        self.assertIn('querySelectorAll(".pr-pair-remove")', self.src)
+        self.assertIn("tabindex", self.src[self.src.index("pairsHeading"):self.src.index("pairsHeading") + 400])
+
+    def test_result_regions_stay_in_the_page_and_empty(self):
+        regions = re.findall(r'<div class="pr-result"[^>]*>', self.src)
+        self.assertEqual(len(regions), 8)
+        for tag in regions:
+            self.assertIn('role="status"', tag)
+            self.assertNotIn("hidden", tag)
+        self.assertNotIn("el.hidden = false", self.src)
+        self.assertNotIn("result.hidden = true", self.src)
+        self.assertRegex(CSS.read_text(encoding="utf-8"), r"\.pr-result:empty\s*\{")
+
+    def test_check_moves_focus_to_the_result_heading(self):
+        self.assertIn('heading.setAttribute("tabindex", "-1");', self.src)
+        self.assertIn("heading.focus();", self.src)
+
+
 if __name__ == "__main__":
     unittest.main()
