@@ -1,0 +1,11 @@
+data_domain,authoritative_system,data_owner,other_systems_holding_copies,how_copies_are_kept_in_step,reconcile_every,last_reconciled_on,mismatches_found,mismatch_owner,notes
+Application and software inventory,,,,,,,,,
+Hardware inventory,,,,,,,,,
+Entitlements and license position,,,,,,,,,
+Proofs of purchase,,,,,,,,,
+Contracts and renewal dates,,,,,,,,,
+Invoices and spend,,,,,,,,,
+Discovery and usage data,,,,,,,,,
+Configuration and service relationships,,,,,,,,,
+Application owners and roles,,,,,,,,,
+Retirement and disposal records,,,,,,,,,
