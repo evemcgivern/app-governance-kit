@@ -2,7 +2,7 @@ import re
 import unittest
 from pathlib import Path
 
-from agk.docs import LONG_PAGE_WORDS, TIER_EXTRA, word_count, body_html, parse_markdown, write_docs
+from agk.docs import LONG_PAGE_WORDS, PROMPT_SCRIPT, TIER_EXTRA, word_count, body_html, parse_markdown, write_docs
 from test_docs import tmp_repo, built
 
 CSS = Path(__file__).resolve().parent.parent / "site" / "style.css"
@@ -159,6 +159,34 @@ class JumpListTests(unittest.TestCase):
     def test_tier_bar_height_is_capped(self):
         css = CSS.read_text(encoding="utf-8")
         self.assertRegex(css, r"\.tier-bar\s*\{[^}]*max-height: 30vh[^}]*overflow-y: auto")
+
+
+class CopyFallbackTests(unittest.TestCase):
+    def test_failed_copy_shows_a_visible_note_and_a_select_button(self):
+        self.assertIn("prompt-fail", PROMPT_SCRIPT)
+        self.assertIn("Copy did not work", PROMPT_SCRIPT)
+        self.assertIn("prompt-select", PROMPT_SCRIPT)
+        self.assertIn("pick(el)", PROMPT_SCRIPT)
+
+    def test_copy_failure_covers_a_rejected_promise_and_a_missing_clipboard(self):
+        self.assertIn("function () { done(false); }", PROMPT_SCRIPT)
+        self.assertIn("document.execCommand('copy')", PROMPT_SCRIPT)
+
+
+class PhoneActionTests(unittest.TestCase):
+    def test_print_and_excel_are_marked_secondary_and_csv_is_not(self):
+        root = tmp_repo(extra={"calendar2.csv": "app,date\nA,B\nC,D\n", "t.md": "# T\n\n| A | B |\n| --- | --- |\n| 1 | 2 |\n"})
+        write_docs(root)
+        html = built(root, "t.html")
+        self.assertRegex(html, r'<a class="visual-actions__link doc-secondary" href="t.xlsx">Download Excel')
+        self.assertRegex(html, r'class="visual-actions__link doc-print doc-secondary"')
+        self.assertNotRegex(html, r'class="[^"]*doc-secondary[^"]*" href="t.docx"')
+        csv = built(root, "calendar2.html")
+        self.assertNotRegex(csv, r'class="[^"]*doc-secondary[^"]*" href="calendar2.csv"')
+
+    def test_secondary_actions_are_text_links_at_phone_widths(self):
+        css = CSS.read_text(encoding="utf-8")
+        self.assertRegex(css, r"@media \(max-width: 46rem\)\s*\{[^@]*\.doc-secondary\s*\{[^}]*border: 0")
 
 
 if __name__ == "__main__":

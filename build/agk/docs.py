@@ -1150,6 +1150,21 @@ document.addEventListener('DOMContentLoaded', function () {
     btn.addEventListener('click', function () {
       var el = document.getElementById(btn.dataset.target);
       var n = btn.dataset.n;
+      function showFail() {
+        var block = el.closest('.prompt-block'), note = block.querySelector('.prompt-fail');
+        if (!note) {
+          note = document.createElement('p');
+          note.className = 'prompt-fail meta';
+          var pickBtn = document.createElement('button');
+          pickBtn.type = 'button';
+          pickBtn.className = 'visual-actions__link prompt-select';
+          pickBtn.textContent = 'Select all of prompt ' + n;
+          pickBtn.addEventListener('click', function () { pick(el); });
+          block.insertBefore(note, el);
+          block.insertBefore(pickBtn, el);
+        }
+        note.textContent = 'Copy did not work here. The prompt text is selected: press Control C or Command C to copy it.';
+      }
       function done(ok) {
         if (ok) {
           btn.textContent = 'Copied prompt ' + n;
@@ -1158,6 +1173,7 @@ document.addEventListener('DOMContentLoaded', function () {
         } else {
           pick(el);
           say('Copy failed. Prompt ' + n + ' is selected; press Control C or Command C to copy it.');
+          showFail();
         }
       }
       var text = el.textContent.trim();
@@ -1498,11 +1514,11 @@ def write_docs(root: Path) -> list[str]:
         if has_table:
             (out_dir / f"{stem}.xlsx").write_bytes(
                 xlsx_bytes(sheet_blocks, tier_summary=(d.group, d.name) == ("sam-toolkit", "tier-self-assessment")))
-            actions.append(f"    <a class=\"visual-actions__link\" href=\"{stem}.xlsx\">Download Excel (.xlsx)</a>")
+            actions.append(f"    <a class=\"visual-actions__link doc-secondary\" href=\"{stem}.xlsx\">Download Excel (.xlsx)</a>")
         if d.kind == "csv":
             (out_dir / f"{stem}.csv").write_text(d.src.read_text(encoding="utf-8"), encoding="utf-8")
             actions.append(f"    <a class=\"visual-actions__link\" href=\"{stem}.csv\">Download CSV</a>")
-        actions.append("    <button type=\"button\" class=\"visual-actions__link doc-print\" "
+        actions.append("    <button type=\"button\" class=\"visual-actions__link doc-print doc-secondary\" "
                        "onclick=\"window.print()\">Print or save as PDF</button>")
         fillable = d.kind == "md" and d.group == "sam-toolkit"
         body = body_html(d.blocks, resolve, files, fillable)

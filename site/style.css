@@ -2087,3 +2087,20 @@ button.visual-actions__link {
     display: none;
   }
 }
+
+/* Phones: keep the main download prominent; Print and Excel become text links */
+
+@media (max-width: 46rem) {
+  .doc-secondary {
+    border: 0;
+    background: transparent;
+    padding-left: 0.25rem;
+    padding-right: 0.25rem;
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+}
+
+.prompt-fail {
+  margin: 0.5rem 0;
+}
