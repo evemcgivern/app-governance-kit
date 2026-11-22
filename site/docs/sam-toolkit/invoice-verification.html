@@ -68,6 +68,7 @@
 <link rel="apple-touch-icon" href="../../apple-touch-icon.png">
 <link rel="stylesheet" href="../../style.css">
 <script src="../../nav.js" defer></script>
+<script src="../../scroll-hint.js" defer></script>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -95,12 +96,15 @@
     <p class="doc-back"><a href="../../sam-toolkit.html">&larr; SAM toolkit</a></p>
     <button type="button" class="print-icon" onclick="window.print()" aria-label="Print this page" title="Print"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="M7 9V3.5h10V9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M7 17H4.5A1.5 1.5 0 0 1 3 15.5v-5A1.5 1.5 0 0 1 4.5 9h15a1.5 1.5 0 0 1 1.5 1.5v5a1.5 1.5 0 0 1-1.5 1.5H17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><rect x="7" y="14" width="10" height="6.5" rx="0.8" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17.5" cy="12" r="0.9" fill="currentColor"/></svg></button>
   </div>
-  <p class="meta doc-step">Used in playbook step 9 of 10: <a href="itam-program-playbook.html#step-9-put-controls-in-place">Put controls in place</a>. Previous step: <a href="itam-program-playbook.html#step-8-proof-first-then-the-position">Proof first, then the position</a>. Next step: <a href="itam-program-playbook.html#step-10-measure-and-review">Measure and review</a>.</p>
+  <nav class="doc-step" aria-label="Playbook step">
+    <p class="doc-step__where"><span class="step-chip">Step 9 of 10</span> <a href="itam-program-playbook.html#step-9-put-controls-in-place">Put controls in place</a></p>
+    <p class="doc-step__nav"><a class="step-nav" rel="prev" href="itam-program-playbook.html#step-8-proof-first-then-the-position" aria-label="Previous step: Proof first, then the position">Previous</a> <a class="step-nav" rel="next" href="itam-program-playbook.html#step-10-measure-and-review" aria-label="Next step: Measure and review">Next</a></p>
+  </nav>
   <h1>Invoice verification template</h1>
   <div class="visual-actions doc-actions">
-    <a class="visual-actions__link" href="invoice-verification.xlsx">Download Excel (.xlsx)</a>
+    <a class="visual-actions__link doc-secondary" href="invoice-verification.xlsx">Download Excel (.xlsx)</a>
     <a class="visual-actions__link" href="invoice-verification.csv">Download CSV</a>
-    <button type="button" class="visual-actions__link doc-print" onclick="window.print()">Print or save as PDF</button>
+    <button type="button" class="visual-actions__link doc-print doc-secondary" onclick="window.print()">Print or save as PDF</button>
   </div>
 
   <div class="doc-body prose prose-wide">

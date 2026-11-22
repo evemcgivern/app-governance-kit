@@ -68,6 +68,7 @@
 <link rel="apple-touch-icon" href="../../apple-touch-icon.png">
 <link rel="stylesheet" href="../../style.css">
 <script src="../../nav.js" defer></script>
+<script src="../../scroll-hint.js" defer></script>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -98,8 +99,8 @@
   <h1>Governance charter template</h1>
   <div class="visual-actions doc-actions">
     <a class="visual-actions__link" href="template.docx">Download Word (.docx)</a>
-    <a class="visual-actions__link" href="template.xlsx">Download Excel (.xlsx)</a>
-    <button type="button" class="visual-actions__link doc-print" onclick="window.print()">Print or save as PDF</button>
+    <a class="visual-actions__link doc-secondary" href="template.xlsx">Download Excel (.xlsx)</a>
+    <button type="button" class="visual-actions__link doc-print doc-secondary" onclick="window.print()">Print or save as PDF</button>
   </div>
 
   <div class="doc-body prose prose-wide">
@@ -108,24 +109,24 @@
 <h2 id="sponsor">Sponsor</h2>
 <p>Name, title, and the budget this person controls. A charter with no sponsor has no enforcement.</p>
 <h2 id="decision-rights">Decision rights</h2>
-<div class="table-scroll"><table class="checklist"><caption>Decision rights</caption><thead><tr><th scope="col">Decision</th><th scope="col">Council decides</th><th scope="col">Council advises</th><th scope="col">Delegated to</th><th scope="col">Threshold</th></tr></thead><tbody><tr><td class="checklist-write"></td><td class="checklist-write"></td><td class="checklist-write"></td><td class="checklist-write"></td><td class="checklist-write"></td></tr><tr><td class="checklist-write"></td><td class="checklist-write"></td><td class="checklist-write"></td><td class="checklist-write"></td><td class="checklist-write"></td></tr><tr><td class="checklist-write"></td><td class="checklist-write"></td><td class="checklist-write"></td><td class="checklist-write"></td><td class="checklist-write"></td></tr></tbody></table></div>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Decision rights table"><table class="checklist sticky-first"><caption>Decision rights</caption><thead><tr><th scope="col">Decision</th><th scope="col">Council decides</th><th scope="col">Council advises</th><th scope="col">Delegated to</th><th scope="col">Threshold</th></tr></thead><tbody><tr><td class="checklist-write"></td><td class="checklist-write"></td><td class="checklist-write"></td><td class="checklist-write"></td><td class="checklist-write"></td></tr><tr><td class="checklist-write"></td><td class="checklist-write"></td><td class="checklist-write"></td><td class="checklist-write"></td><td class="checklist-write"></td></tr><tr><td class="checklist-write"></td><td class="checklist-write"></td><td class="checklist-write"></td><td class="checklist-write"></td><td class="checklist-write"></td></tr></tbody></table></div>
 <p>Give each decision exactly one accountable party. Anything below its threshold is decided by the named delegated role, not brought to the council.</p>
 <h2 id="membership">Membership</h2>
 <p><strong>Voting (5–9):</strong></p>
-<div class="table-scroll"><table class="checklist"><caption>Membership</caption><thead><tr><th scope="col">Role</th><th scope="col">Name</th><th scope="col">Function</th></tr></thead><tbody><tr><td class="checklist-write"></td><td class="checklist-write"></td><td class="checklist-write"></td></tr></tbody></table></div>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Membership table"><table class="checklist sticky-first"><caption>Membership</caption><thead><tr><th scope="col">Role</th><th scope="col">Name</th><th scope="col">Function</th></tr></thead><tbody><tr><td class="checklist-write"></td><td class="checklist-write"></td><td class="checklist-write"></td></tr></tbody></table></div>
 <p><strong>Non-voting / consulted:</strong></p>
-<div class="table-scroll"><table class="checklist"><caption>Membership</caption><thead><tr><th scope="col">Role</th><th scope="col">Name</th><th scope="col">Function</th></tr></thead><tbody></tbody></table></div>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Membership table"><table class="checklist sticky-first"><caption>Membership</caption><thead><tr><th scope="col">Role</th><th scope="col">Name</th><th scope="col">Function</th></tr></thead><tbody></tbody></table></div>
 <h2 id="intake-and-triage">Intake and triage</h2>
 <ul><li>Request form: [link or name]</li><li>Triage owner: [named role]</li><li>Only exceptions, above-threshold, and high-risk items reach the meeting; everything else is decided at intake.</li></ul>
 <h2 id="enforcement">Enforcement</h2>
 <ul><li>Procurement will not buy what the council hasn&#x27;t approved above threshold.</li><li>Overlaps with other bodies (architecture review, change advisory, security/risk) settled here, in writing:</li></ul>
-<div class="table-scroll"><table class="checklist"><caption>Enforcement</caption><thead><tr><th scope="col">Adjacent body</th><th scope="col">What it owns</th><th scope="col">How an item is routed there instead</th></tr></thead><tbody></tbody></table></div>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Enforcement table"><table class="checklist sticky-first"><caption>Enforcement</caption><thead><tr><th scope="col">Adjacent body</th><th scope="col">What it owns</th><th scope="col">How an item is routed there instead</th></tr></thead><tbody></tbody></table></div>
 <h2 id="meetings">Meetings</h2>
 <ul><li>Frequency: [for example, monthly]</li><li>Standing agenda: [items, in order]</li><li>Decision log: kept by [named role], published to [location]</li><li>Out-of-cycle path for urgent items: [description]</li><li>The first meeting is seeded with a real, live agenda item (an open exception, a gap report, a pending request), never convened empty.</li></ul>
 <h2 id="escalation">Escalation</h2>
 <p>Where disputes go, and who breaks a tie the chair cannot resolve.</p>
 <h2 id="success-measures">Success measures</h2>
-<div class="table-scroll"><table class="checklist"><caption>Success measures</caption><thead><tr><th scope="col">Measure</th><th scope="col">Baseline</th><th scope="col">Target</th></tr></thead><tbody><tr><td class="long-text">Time from request to decision</td><td class="checklist-write"></td><td class="checklist-write"></td></tr><tr><td class="long-text">Share of software bought through the intake path</td><td class="checklist-write"></td><td class="checklist-write"></td></tr><tr><td class="long-text">Savings</td><td class="checklist-write"></td><td class="checklist-write"></td></tr><tr><td class="long-text">Exceptions granted</td><td class="checklist-write"></td><td class="checklist-write"></td></tr></tbody></table></div>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Success measures table"><table class="checklist sticky-first"><caption>Success measures</caption><thead><tr><th scope="col">Measure</th><th scope="col">Baseline</th><th scope="col">Target</th></tr></thead><tbody><tr><th scope="row" id="q5-time-from-request-to-decision-c0">Time from request to decision</th><td class="checklist-write"></td><td class="checklist-write"></td></tr><tr><th scope="row" id="q5-share-of-software-bought-through-the-intake-path-c0">Share of software bought through the intake path</th><td class="checklist-write"></td><td class="checklist-write"></td></tr><tr><th scope="row" id="q5-savings-c0">Savings</th><td class="checklist-write"></td><td class="checklist-write"></td></tr><tr><th scope="row" id="q5-exceptions-granted-c0">Exceptions granted</th><td class="checklist-write"></td><td class="checklist-write"></td></tr></tbody></table></div>
 <h2 id="review-date">Review date</h2>
 <p>Charter and membership reviewed by: [date, no later than 12 months from approval]</p>
 <p><strong>Approved by (sponsor):</strong> _______________________ <strong>Date:</strong> _______________</p>
