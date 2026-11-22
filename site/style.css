@@ -1569,15 +1569,26 @@ code {
   cursor: pointer;
 }
 
-.checklist-choice input,
-.checklist-items input {
+.checklist-choice input {
   width: 1.05rem;
   height: 1.05rem;
 }
 
-.checklist-items {
-  list-style: none;
-  padding-left: 0.5rem;
+/* Task lists show as plain bullets on screen; a tick on screen would be saved nowhere, so print draws a square to tick on paper */
+
+@media print {
+  .task-list {
+    list-style: none;
+    padding-left: 0.25rem;
+  }
+
+  .task-list li::before {
+    content: "\2610\00a0";
+  }
+
+  .task-list li.task-done::before {
+    content: "\2611\00a0";
+  }
 }
 
 button.visual-actions__link {
@@ -1963,5 +1974,23 @@ button.visual-actions__link {
 @media print {
   .prompt-copy {
     display: none !important;
+  }
+}
+
+/* Phone widths: 1rem text in fields stops iOS from zooming the page on focus */
+
+@media (max-width: 46rem) {
+  .doc-body input[type="text"],
+  .doc-body input[type="date"],
+  .doc-body textarea,
+  .doc-body select,
+  .checklist td.checklist-write input[type="text"],
+  .checklist td.checklist-write textarea,
+  .record-field input,
+  .record-field select,
+  .record-field textarea,
+  .pr-select,
+  .pr-copy-fallback {
+    font-size: 1rem;
   }
 }

@@ -2,8 +2,10 @@ import re
 import unittest
 from pathlib import Path
 
-from agk.docs import TIER_EXTRA, body_html, parse_markdown
+from agk.docs import TIER_EXTRA, body_html, parse_markdown, write_docs
 from test_docs import tmp_repo, built
+
+CSS = Path(__file__).resolve().parent.parent / "site" / "style.css"
 
 TABLE_MD = """## Questions
 
@@ -65,6 +67,42 @@ class HandKeptPageTests(unittest.TestCase):
             self.assertIn('tabindex="0"', w)
             self.assertIn('role="region"', w)
             self.assertIn("aria-label=", w)
+
+
+class TaskListTests(unittest.TestCase):
+    def test_task_items_are_plain_list_items_with_a_print_hook(self):
+        html = html_of("- [ ] Done when the owner signs\n- [x] Done already\n")
+        self.assertNotIn("<input", html)
+        self.assertIn('<ul class="task-list">', html)
+        self.assertIn("<li>Done when the owner signs</li>", html)
+
+    def test_print_css_draws_an_empty_square_before_task_items(self):
+        css = CSS.read_text(encoding="utf-8")
+        self.assertRegex(css, r'@media print\s*\{[^@]*\.task-list li::before\s*\{[^}]*content: "\\2610')
+
+
+class InputHintTests(unittest.TestCase):
+    def test_generated_text_inputs_turn_off_autofill_and_hint_next(self):
+        root = tmp_repo(extra={"form.md": "# Form\n\n| Task | Owner | Notes |\n| --- | --- | --- |\n| A | | |\n"})
+        write_docs(root)
+        html = built(root, "form.html")
+        inputs = re.findall(r'<input type="text"[^>]*>', html)
+        self.assertTrue(inputs)
+        for tag in inputs:
+            self.assertIn('autocomplete="off"', tag)
+            self.assertIn('enterkeyhint="next"', tag)
+
+    def test_inputs_use_one_rem_text_at_phone_widths(self):
+        css = CSS.read_text(encoding="utf-8")
+        self.assertRegex(css, r"@media \(max-width: 46rem\)\s*\{[^@]*input\[type=\"text\"\][^{]*\{[^}]*font-size: 1rem")
+
+
+class ViewLinkTests(unittest.TestCase):
+    def test_view_links_name_their_page(self):
+        from agk.docs import _download_link
+        html = _download_link("a.csv", "a.html", "Intake form")
+        self.assertIn(">view the page for Intake form</a>", html)
+        self.assertNotIn(">view</a>", html)
 
 
 if __name__ == "__main__":

@@ -72,7 +72,9 @@ class HtmlTests(unittest.TestCase):
         self.assertNotIn(".md", html)
         self.assertEqual(html.count('type="radio"'), 3)
         self.assertIn('class="xw-tag"', html)
-        self.assertIn('type="checkbox" disabled checked', html)
+        self.assertNotIn("disabled", html)
+        self.assertIn("<li>open box</li>", html)
+        self.assertIn('<li class="task-done">done box</li>', html)
 
 
 class WordTests(unittest.TestCase):
@@ -236,12 +238,12 @@ class DownloadLinkTests(unittest.TestCase):
     def test_csv_links_to_the_csv_and_the_page(self):
         html = _download_link("renewal-calendar.csv", "renewal-calendar.html", "Renewal calendar")
         self.assertEqual(html, '<a href="renewal-calendar.csv">Renewal calendar (CSV)</a> '
-                               '(<a href="renewal-calendar.html">view</a>)')
+                               '(<a href="renewal-calendar.html">view the page for Renewal calendar</a>)')
 
     def test_markdown_links_to_the_word_file(self):
         html = _download_link("guide.md", "../sam-toolkit/guide.html", "Guide")
         self.assertIn('<a href="../sam-toolkit/guide.docx">Guide (Word)</a>', html)
-        self.assertIn('<a href="../sam-toolkit/guide.html">view</a>', html)
+        self.assertIn('<a href="../sam-toolkit/guide.html">view the page for Guide</a>', html)
 
     def test_other_file_types_and_non_page_hrefs_have_no_download(self):
         self.assertIsNone(_download_link("book.xlsx", "book.html", "Book"))
@@ -256,7 +258,7 @@ class DownloadLinkTests(unittest.TestCase):
         html = body_html(blocks, lambda h: h, files)
         first, second = html.split("\n")
         self.assertIn('<a href="renewal-calendar.csv">Renewal calendar (CSV)</a>', first)
-        self.assertIn('(<a href="renewal-calendar.html">view</a>)', first)
+        self.assertIn('(<a href="renewal-calendar.html">view the page for Renewal calendar</a>)', first)
         self.assertEqual(second, '<p>See <a href="renewal-calendar.html">Renewal calendar</a>.</p>')
 
 

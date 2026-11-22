@@ -207,7 +207,7 @@ def _download_link(name: str, page_href: str, title: str) -> str | None:
         return None
     file_href = page_href[:-5] + "." + ext[0]
     return (f"<a href=\"{escape(file_href)}\">{escape(title)} ({ext[1]})</a> "
-            f"(<a href=\"{escape(page_href)}\">view</a>)")
+            f"(<a href=\"{escape(page_href)}\">view the page for {escape(title)}</a>)")
 
 
 def inline_html(text: str, resolve, files=lambda name: None, download: bool = False) -> str:
@@ -247,15 +247,13 @@ def _list_html(block: dict, resolve, files) -> str:
     def items(its):
         parts = []
         for it in its:
-            box = ""
-            if it["checked"] is not None:
-                box = "<input type=\"checkbox\" disabled" + (" checked" if it["checked"] else "") + "> "
             kids = ""
             if it["children"]:
                 kids = f"<{tag}>{items(it['children'])}</{tag}>"
-            parts.append(f"<li>{box}{inline_html(it['text'], resolve, files)}{kids}</li>")
+            done = " class=\"task-done\"" if it["checked"] else ""
+            parts.append(f"<li{done}>{inline_html(it['text'], resolve, files)}{kids}</li>")
         return "".join(parts)
-    cls = " class=\"checklist-items\"" if any(i["checked"] is not None for i in block["items"]) else ""
+    cls = " class=\"task-list\"" if any(i["checked"] is not None for i in block["items"]) else ""
     if block.get("class"):
         cls = f" class=\"{block['class']}\""
     return f"<{tag}{cls}>{items(block['items'])}</{tag}>"
@@ -272,7 +270,7 @@ def _field_html(name: str, label: str, header: str, readonly_js: bool) -> str:
         return (f"<td class=\"checklist-write\"><textarea name=\"{name}\" rows=\"2\" "
                 f"aria-label=\"{escape(label, quote=True)}\"></textarea></td>")
     return (f"<td class=\"checklist-write\"><input type=\"text\" name=\"{name}\" "
-            f"aria-label=\"{escape(label, quote=True)}\"></td>")
+            f"autocomplete=\"off\" enterkeyhint=\"next\" aria-label=\"{escape(label, quote=True)}\"></td>")
 
 
 def _table_html(rows: list[list[str]], resolve, files, caption: str = "", index: int = 0,
@@ -335,11 +333,11 @@ def _form_field(col: str, row_key: str, row_index: int, value: str = "") -> str:
             f"<option value=\"{o}\"{' selected' if o == value else ''}>{o}</option>" for o in SELECT_COLS[col])
         control = f"<select id=\"{ident}\" name=\"{name}\" data-col=\"{col}\">{options}</select>"
     elif "date" in col:
-        control = f"<input id=\"{ident}\" type=\"date\" name=\"{name}\" data-col=\"{col}\">"
+        control = f"<input id=\"{ident}\" type=\"date\" name=\"{name}\" autocomplete=\"off\" enterkeyhint=\"next\" data-col=\"{col}\">"
     elif LONG_FIELD_RE.search(col):
         control = f"<textarea id=\"{ident}\" name=\"{name}\" rows=\"3\" data-col=\"{col}\"></textarea>"
     else:
-        control = f"<input id=\"{ident}\" type=\"text\" name=\"{name}\" data-col=\"{col}\">"
+        control = f"<input id=\"{ident}\" type=\"text\" name=\"{name}\" autocomplete=\"off\" enterkeyhint=\"next\" data-col=\"{col}\">"
     wide = " record-wide" if LONG_FIELD_RE.search(col) else ""
     return f"<div class=\"record-field{wide}\"><label for=\"{ident}\">{escape(label)}</label>{control}</div>"
 
