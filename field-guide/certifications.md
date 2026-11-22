@@ -1,6 +1,6 @@
 # Field guide: certifications
 
-Six certifications come up most often around this kit's three areas — portfolio, AI, and access. This page states what each one actually covers, in plain terms, and ties it to a task the kit's tools already do. It isn't a study guide, and it isn't a recommendation to sit any particular exam.
+Six certifications come up most often around this kit's three areas — portfolio, AI, and access. This page states what each one actually covers, in plain terms, and ties it to a task the kit's tools already do. It isn't a study guide, and it isn't a recommendation to sit any particular exam. To see which kit tools and exercises practice each CAMP and CSAM topic, use the [study map](study-map.md), and for terms learners often mix up, the [confusable pairs](confusable-pairs.md).
 
 ## Suggested order for someone new
 
@@ -46,7 +46,7 @@ The task matrix above says which certification(s) cover a task; this table compa
 
 **Who it's for:** People new to IT asset management who need the foundational program and process picture before they specialize.
 
-**What it covers:** CAMP is IAITAM's entry-level credential, organized around the association's 12 Key Process Areas — inventory and asset identification, acquisition, compliance, disposal, financial management, vendor management, policy, and program management, among others — plus how ITAM fits alongside IT service management. No prior ITAM experience is assumed. It's taught as an 8-hour live-online session plus 10-12 hours of self-study, or a 90-day self-paced course, ending in an exam. The credential is renewed yearly; renewing within six months of expiry only requires the exam again, and after that the full course has to be retaken. (Source: [iaitam.org/camp](https://iaitam.org/camp/), fetched 2026-09-25.) Exam length, question count, pass mark and attempts are not restated here; check the certification body's own page before booking.
+**What it covers:** CAMP is IAITAM's entry-level credential, organized around the association's 12 Key Process Areas — inventory and asset identification, acquisition, compliance, disposal, financial management, vendor management, policy, and program management, among others — plus how ITAM fits alongside IT service management. No prior ITAM experience is assumed. It's taught as an 8-hour live-online session plus 10-12 hours of self-study, or a 90-day self-paced course, ending in an exam. The credential is renewed yearly; renewing within six months of expiry only requires the exam again, and after that the full course has to be retaken. (Source: [iaitam.org/camp](https://iaitam.org/camp/), fetched 2026-11-21.) The exam is 3 hours and 100 randomized questions, passed at 85% or higher, with two attempts inside a 14-day window. Check the page for current prices and attempt rules before booking.
 
 **Practical application:**
 
@@ -60,7 +60,7 @@ The task matrix above says which certification(s) cover a task; this table compa
 
 **Who it's for:** People with little or no prior software asset management background who need to run licensing, compliance, and audit response day to day.
 
-**What it covers:** CSAM is offered live or self-paced, with annual renewal and a 6-month grace window, but turns the curriculum toward software specifically: discovery and harvesting tools, license types and negotiation, EULA interpretation, compliance enforcement, and audit procedures. (Source: [iaitam.org/csam](https://iaitam.org/csam/), fetched 2026-09-25.) Exam length, question count, pass mark and attempts are not restated here; check the certification body's own page before booking.
+**What it covers:** CSAM is offered live or self-paced, with annual renewal and a 6-month grace window, but turns the curriculum toward software specifically: discovery and harvesting tools, license types and negotiation, EULA interpretation, compliance enforcement, and audit procedures. (Source: [iaitam.org/csam](https://iaitam.org/csam/), fetched 2026-11-21.) The exam is 3 hours and 100 randomized questions, passed at 85% or higher, with two attempts inside a 14-day window. Check the page for current prices and attempt rules before booking.
 
 **Practical application:**
 

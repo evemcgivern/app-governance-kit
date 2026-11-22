@@ -10,7 +10,7 @@ Plain-English definitions for terms used across this kit's methods, tied to a Ha
 
 **APM (Application Portfolio Management).** Deciding what to keep, replace, consolidate, or retire across an application estate. *Halden example: the `rationalization` tool's tolerate/invest/migrate/eliminate call between Clausebase and Tallysheet.*
 
-**CMDB (Configuration Management Database).** A system of record for IT assets and how they relate to one another. *Halden example: `apps.csv` and `licenses.csv` function as a lightweight CMDB extract for the demo estate.*
+**CMDB (Configuration Management Database).** A system of record for configuration items, meaning the assets and services IT runs, and how they connect and depend on one another. A plain application list or license spreadsheet is not a CMDB, because it does not record those relationships. *Halden example: `apps.csv` and `licenses.csv` are an inventory extract for the demo estate, not a CMDB.*
 
 <a id="entitlement"></a>**Entitlement.** The specific usage right a license grants — not just the fact that software is installed. *Halden example: Payflow's license entitlements don't match its 748 users, an open license-position question the rationalization run flags as unverified.*
 
@@ -69,3 +69,19 @@ Plain-English definitions for terms used across this kit's methods, tied to a Ha
 **Data provenance.** Where a system's data actually came from — necessary to know before its privacy or quality risk can be judged. *Halden example: `ai-intake`'s step 2 records this for each of the six AI systems; several aren't stated by the source CSV alone and are marked unverified.*
 
 **Risk register.** A running, owned log of identified risks and their treatment, rather than a one-time note. *Halden example: AI-004's high-risk tiering gets a risk-register entry with HR as the named owner.*
+
+**License metric.** The unit a contract counts to decide how much you may use, such as named users, devices, or processor cores. A raw install count is not the licensed quantity until you convert it to the contract's metric. *Halden example: a contract that counts named users is not satisfied or breached by counting devices.*
+
+**Proof of purchase.** A record, such as an invoice or purchase order, that shows what was bought, when, how many, from whom, and by which entity. A license counts as held only when proof backs it. *Halden example: `proofs-of-purchase.csv` holds the invoices that back the demo estate's licenses.*
+
+**Statement of applicability.** Your written list of which ITAM processes are in scope, with the reason each one is in or out. *Halden example: `sam-toolkit/statement-of-applicability.csv` is the blank list a program fills in.*
+
+**Tier.** One of the levels of practice that the standard describes, from keeping accurate data to broader management. Tiers are informative and optional; they help you say how far you aim. *Halden example: `sam-toolkit/tier-self-assessment.md` shows which tier a program meets.*
+
+**Notice deadline.** The last date to tell a vendor you will cancel or change a contract before it renews. It is the contract end date minus the notice days, and it matters more than the end date. *Halden example: `sam-toolkit/renewal-calendar.csv` computes it for each contract.*
+
+**Custodian.** The person who looks after an asset day to day. The owner is the person accountable for it; the two can be different people. *Halden example: `sam-toolkit/asset-record.csv` has an owner column and a custodian column.*
+
+**SaaS (software as a service).** Software you use as a subscription that the vendor runs and you reach over the internet, with nothing to install. What you hold is a plan or a number of seats, so it needs an owner and a renewal date like any other license. *Halden example: a browser-based routing subscription is SaaS; it appears in the inventory even though no install exists.*
+
+**XW- tag.** The identifier of a row in the kit's shared crosswalk, from XW-001 to XW-029. A tag on a task shows which theme of governance work the task supports and which standards clauses it traces to. *Halden example: XW-008 is license renewal and expiry tracking, which `renewal-calendar.csv` supports.*
