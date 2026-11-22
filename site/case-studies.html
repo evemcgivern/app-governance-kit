@@ -4,13 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Case studies | Eve McGivern</title>
-<meta name="description" content="Three worked examples on a fictional company: audit response, AI tiering, rationalization.">
+<meta name="description" content="Six worked examples on a fictional company, from audit response to a program plan.">
 <meta name="author" content="Eve McGivern">
 <link rel="canonical" href="https://evemcgivern.github.io/app-governance-kit/case-studies.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Eve McGivern | Application Governance">
 <meta property="og:title" content="Case studies | Eve McGivern">
-<meta property="og:description" content="Three worked examples on a fictional company: audit response, AI tiering, rationalization.">
+<meta property="og:description" content="Six worked examples on a fictional company, from audit response to a program plan.">
 <meta property="og:url" content="https://evemcgivern.github.io/app-governance-kit/case-studies.html">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://evemcgivern.github.io/app-governance-kit/og-image.png">
@@ -19,7 +19,7 @@
 <meta property="og:image:alt" content="Application governance kit: nine governance methods for portfolio, AI, and access.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Case studies | Eve McGivern">
-<meta name="twitter:description" content="Three worked examples on a fictional company: audit response, AI tiering, rationalization.">
+<meta name="twitter:description" content="Six worked examples on a fictional company, from audit response to a program plan.">
 <meta name="twitter:image" content="https://evemcgivern.github.io/app-governance-kit/og-image.png">
 <script type="application/ld+json">
 {
@@ -78,19 +78,53 @@
     <p class="positioning prose-wide">Six worked examples, all on Halden Logistics, a fictional company. Nobody here is a real client, and none of these outcomes happened. Each one runs the kit's own demo data through a tool or template, so you can check every number against the files, and each ends with how you would prove the benefit.</p>
   </section>
 
-  <section aria-labelledby="how-to-read-heading">
-    <h2 id="how-to-read-heading">How to read these</h2>
-    <p class="prose">These are worked examples, not client case studies. Halden is a fictional company, and its data lives in this repo's <a href="https://github.com/evemcgivern/app-governance-kit/tree/main/demo-estate">demo estate</a>, with problems planted on purpose. Each case covers what the records showed, what the kit's tool did with them, which decisions stayed with people, and what a real team would still have to check before trusting the result.</p>
-    <p class="prose">Every point where a person decides is marked <strong>Decision needed:</strong>, the same way the tools mark it. Nothing here is legal advice; contract and audit questions go to counsel. Each case links to its tool card, the full Halden example the tool produced, and the matching practicum exercise. Work the exercise by hand first if you want an honest test of yourself, then compare.</p>
-    <p class="prose">Each case ends with how you would prove the benefit. The rules are the same every time. Measure a baseline from the files on a named date. Count a benefit only after you measure again and keep the evidence. Keep forecasts apart from achieved results, and net out any cost the change adds. Write Not found where the files hold no figure. Halden's outcomes are illustrative, because the company is fictional; the method is what carries over to your own estate.</p>
-    <ul class="link-list">
-      <li><a href="#case-audit-response">Audit response: a publisher letter and what the records could prove</a></li>
-      <li><a href="#case-ai-intake">Tiering an AI use case: the CV ranking tool</a></li>
-      <li><a href="#case-rationalization">Rationalization: two transport systems, one job</a></li>
-      <li><a href="#case-renewals">Renewals: two licenses lapsed and nobody decided</a></li>
-      <li><a href="#case-retirement">Retirement: two devices with no wipe record</a></li>
-      <li><a href="#case-gap-plan">As-Is and To-Be: a program plan from the demo data</a></li>
+  <section aria-labelledby="cases-heading">
+    <h2 id="cases-heading">The six cases</h2>
+    <ul class="case-list card-grid">
+      <li class="card case-card">
+        <h3><a href="#case-audit-response">Audit response: a publisher letter and what the records could prove</a></h3>
+        <p class="case-card__summary">You see even counts on paper for Shapewise and both Cellmate versions, 17 named users short on Taskmoor, and whether the publisher holds an audit right left to counsel.</p>
+        <p class="meta case-card__tool">Tool: <a href="tools.html#audit-response">Software audit response check</a></p>
+        <p class="meta case-card__step">Feeds <a href="docs/sam-toolkit/itam-program-playbook.html#step-3-week-1-stop-the-bleeding">playbook step 3<span class="visually-hidden">: Week 1, stop the bleeding</span></a></p>
+      </li>
+      <li class="card case-card">
+        <h3><a href="#case-ai-intake">Tiering an AI use case: the CV ranking tool</a></h3>
+        <p class="case-card__summary">You see why AI-004, an HR tool that ranks job applicants' CVs, was the only one of Halden's six AI systems tiered high-risk, and that review changed the legal detail around it, not the tier.</p>
+        <p class="meta case-card__tool">Tool: <a href="tools.html#ai-intake">AI system intake and risk tiering</a></p>
+      </li>
+      <li class="card case-card">
+        <h3><a href="#case-rationalization">Rationalization: two transport systems, one job</a></h3>
+        <p class="case-card__summary">You see the tool recommend keeping Routesmith and retiring Routewise, with savings across all five duplicate pairs forecast at $250,000 to $355,400 a year.</p>
+        <p class="meta case-card__tool">Tool: <a href="tools.html#rationalization">Application rationalization</a></p>
+      </li>
+      <li class="card case-card">
+        <h3><a href="#case-renewals">Renewals: two licenses lapsed and nobody decided</a></h3>
+        <p class="case-card__summary">You see two licenses already past expiry on the check date, by 154 and 244 days, and no owner or notice period in the files to say who should have decided.</p>
+        <p class="meta case-card__tool">Tool: <a href="tools.html#rationalization">Application rationalization</a></p>
+        <p class="meta case-card__step">Feeds <a href="docs/sam-toolkit/itam-program-playbook.html#step-3-week-1-stop-the-bleeding">playbook step 3<span class="visually-hidden">: Week 1, stop the bleeding</span></a></p>
+      </li>
+      <li class="card case-card">
+        <h3><a href="#case-retirement">Retirement: two devices with no wipe record</a></h3>
+        <p class="case-card__summary">You see eight of ten retired devices with a wipe confirmation, and two without: an Apple mobile retired in 2023 and a Dell desktop retired in 2025.</p>
+        <p class="meta case-card__tool">Tool: <a href="tools.html#hardware-lifecycle">Hardware lifecycle check</a></p>
+        <p class="meta case-card__step">Feeds <a href="docs/sam-toolkit/itam-program-playbook.html#step-9-put-controls-in-place">playbook step 9<span class="visually-hidden">: Put controls in place</span></a></p>
+      </li>
+      <li class="card case-card">
+        <h3><a href="#case-gap-plan">As-Is and To-Be: a program plan from the demo data</a></h3>
+        <p class="case-card__summary">You see Halden's application management program at level 1 on nine of eleven dimensions and level 0 on two, and 13 points of gap to a target of level 2 everywhere.</p>
+        <p class="meta case-card__tool">Template: <a href="docs/sam-toolkit/application-management-self-assessment.html">Application management self-assessment</a></p>
+        <p class="meta case-card__step">Feeds <a href="docs/sam-toolkit/itam-program-playbook.html#step-5-baseline-and-targets">playbook step 5<span class="visually-hidden">: Baseline and targets</span></a></p>
+      </li>
     </ul>
+  </section>
+
+  <section class="read-notes">
+    <details>
+      <summary>How to read these</summary>
+      <p class="prose">These are worked examples, not client case studies. Halden is a fictional company, and its data lives in this repo's <a href="https://github.com/evemcgivern/app-governance-kit/tree/main/demo-estate">demo estate</a>, with problems planted on purpose. Each case covers what the records showed, what the kit's tool did with them, which decisions stayed with people, and what a real team would still have to check before trusting the result.</p>
+      <p class="prose">Every point where a person decides is marked <strong>Decision needed:</strong>, the same way the tools mark it. Nothing here is legal advice; contract and audit questions go to counsel. Each case links to its tool card, the full Halden example the tool produced, and the matching practicum exercise. Work the exercise by hand first if you want an honest test of yourself, then compare.</p>
+      <p class="prose">Each case ends with how you would prove the benefit. The rules are the same every time. Measure a baseline from the files on a named date. Count a benefit only after you measure again and keep the evidence. Keep forecasts apart from achieved results, and net out any cost the change adds. Write Not found where the files hold no figure. Halden's outcomes are illustrative, because the company is fictional; the method is what carries over to your own estate.</p>
+    </details>
   </section>
 
   <section id="case-audit-response" aria-labelledby="case-audit-response-heading">
