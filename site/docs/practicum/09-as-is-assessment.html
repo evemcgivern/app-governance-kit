@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Exercise 09: As-is assessment, score Halden&#x27;s application management | Eve McGivern</title>
+<meta name="description" content="Level: CAMP · Time: 30–45 minutes">
+<meta name="author" content="Eve McGivern">
+<link rel="canonical" href="https://evemcgivern.github.io/app-governance-kit/docs/practicum/09-as-is-assessment.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Eve McGivern | Application Governance">
+<meta property="og:title" content="Exercise 09: As-is assessment, score Halden&#x27;s application management">
+<meta property="og:description" content="Level: CAMP · Time: 30–45 minutes">
+<meta property="og:url" content="https://evemcgivern.github.io/app-governance-kit/docs/practicum/09-as-is-assessment.html">
+<meta property="og:image" content="https://evemcgivern.github.io/app-governance-kit/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Exercise 09: As-is assessment, score Halden&#x27;s application management">
+<meta name="twitter:description" content="Level: CAMP · Time: 30–45 minutes">
+<meta name="twitter:image" content="https://evemcgivern.github.io/app-governance-kit/og-image.png">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Home",
+     "item": "https://evemcgivern.github.io/app-governance-kit/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "Practicum",
+     "item": "https://evemcgivern.github.io/app-governance-kit/practicum.html"
+    },
+    {
+     "@type": "ListItem",
+     "position": 3,
+     "name": "Exercise 09: As-is assessment, score Halden's application management",
+     "item": "https://evemcgivern.github.io/app-governance-kit/docs/practicum/09-as-is-assessment.html"
+    }
+   ]
+  },
+  {
+   "@type": "WebPage",
+   "name": "Exercise 09: As-is assessment, score Halden's application management",
+   "description": "Level: CAMP \u00b7 Time: 30\u201345 minutes",
+   "url": "https://evemcgivern.github.io/app-governance-kit/docs/practicum/09-as-is-assessment.html",
+   "isPartOf": {
+    "@type": "WebSite",
+    "url": "https://evemcgivern.github.io/app-governance-kit/"
+   },
+   "author": {
+    "@type": "Person",
+    "name": "Eve McGivern",
+    "url": "https://evemcgivern.github.io/"
+   },
+   "license": "https://opensource.org/licenses/MIT",
+   "isAccessibleForFree": true
+  }
+ ]
+}
+</script>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../apple-touch-icon.png">
+<link rel="stylesheet" href="../../style.css">
+<script src="../../nav.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="support-bar"><a class="coffee-link" href="https://buymeacoffee.com/a8w5iiqszp" rel="noopener"><svg class="coffee-icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M5 9h11v5a5 5 0 0 1-5 5h-1a5 5 0 0 1-5-5V9z" fill="#2f9e6e"/><path d="M16 10.5h1.2a2.4 2.4 0 0 1 0 4.8H16" fill="none" stroke="#2f9e6e" stroke-width="1.8" stroke-linecap="round"/><path d="M8.5 3.5c0 1.3 1 1.3 1 2.6M12 3.5c0 1.3 1 1.3 1 2.6" fill="none" stroke="#2f9e6e" stroke-width="1.6" stroke-linecap="round"/></svg><span>Buy me a coffee</span></a></div>
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="https://evemcgivern.github.io/">Eve McGivern</a>
+    <nav class="site-nav" aria-label="Main">
+      <ul>
+        <li><a href="../../tools.html" aria-describedby="tip-tools">AI skills</a><span class="nav-tip" role="tooltip" id="tip-tools">The nine governance methods, packaged as skills for Claude, Codex, and Copilot.</span></li>
+        <li><a href="../../sam-toolkit.html" aria-describedby="tip-sam-toolkit">SAM toolkit</a><span class="nav-tip" role="tooltip" id="tip-sam-toolkit">Templates and checklists for running software asset management by hand.</span></li>
+        <li><a href="../../practicum.html" aria-describedby="tip-practicum">Practicum</a><span class="nav-tip" role="tooltip" id="tip-practicum">Hands-on exercises on a fictional company, with answers you can check.</span></li>
+        <li><a href="../../lifecycle.html" aria-describedby="tip-lifecycle">Lifecycle</a><span class="nav-tip" role="tooltip" id="tip-lifecycle">Six stages from request to retirement, with the questions to ask at each.</span></li>
+        <li><a href="../../crosswalk.html" aria-describedby="tip-crosswalk">Crosswalk explorer</a><span class="nav-tip" role="tooltip" id="tip-crosswalk">See how each control maps to ISO/IEC 19770, COBIT, 27001, and 42001.</span></li>
+        <li><a href="../../impact-map.html" aria-describedby="tip-impact-map">Impact map</a><span class="nav-tip" role="tooltip" id="tip-impact-map">One grid showing every control theme against every lifecycle stage.</span></li>
+        <li><a href="../../field-guide.html" aria-describedby="tip-field-guide">Field guide</a><span class="nav-tip" role="tooltip" id="tip-field-guide">Plain-language guides to the standards, certifications, and key terms.</span></li>
+        <li><a href="../../case-studies.html" aria-describedby="tip-case-studies">Case studies</a><span class="nav-tip" role="tooltip" id="tip-case-studies">Worked examples of the kit in use, on a fictional company.</span></li>
+        <li><a href="../../about.html" aria-describedby="tip-about">About</a><span class="nav-tip" role="tooltip" id="tip-about">Who built the kit, and how to get in touch.</span></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<main id="main" class="doc-page">
+  <div class="doc-top">
+    <p class="doc-back"><a href="../../practicum.html">&larr; Practicum</a></p>
+    <button type="button" class="print-icon" onclick="window.print()" aria-label="Print this page" title="Print"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="M7 9V3.5h10V9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M7 17H4.5A1.5 1.5 0 0 1 3 15.5v-5A1.5 1.5 0 0 1 4.5 9h15a1.5 1.5 0 0 1 1.5 1.5v5a1.5 1.5 0 0 1-1.5 1.5H17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><rect x="7" y="14" width="10" height="6.5" rx="0.8" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17.5" cy="12" r="0.9" fill="currentColor"/></svg></button>
+  </div>
+  <p class="meta doc-practice">Practice for playbook steps 1 and 5.</p>
+  <h1>Exercise 09: As-is assessment, score Halden&#x27;s application management</h1>
+  <div class="visual-actions doc-actions">
+    <a class="visual-actions__link" href="09-as-is-assessment.docx">Download Word (.docx)</a>
+    <button type="button" class="visual-actions__link doc-print" onclick="window.print()">Print or save as PDF</button>
+  </div>
+
+  <div class="doc-body prose prose-wide">
+<p><strong>Level:</strong> CAMP · <strong>Time:</strong> 30–45 minutes</p>
+<h2 id="scenario">Scenario</h2>
+<p>Halden&#x27;s CIO has asked the interim asset manager for a baseline of how application management runs today, and she has one afternoon. She starts the way the playbook says to: a five-minute gut check, a rough 0 to 3 for each of the eleven dimensions in the self-assessment, from memory and with no files open. That&#x27;s playbook step 1, and it&#x27;s a guess. Then she gathers what she can actually show and scores each dimension again from evidence, which is playbook step 5. She found ten pieces of evidence and wrote each one into a table, with a note on its quality. Your job is to do both passes, then name the three dimensions Halden should start with.</p>
+<p>You won&#x27;t find a single right answer to this in a real organization, because two assessors can read the same shelf of documents differently. This version has one, because the Halden evidence table was written so that each score follows from a rule. Apply the rule as written, the way you would apply the kit&#x27;s evidence rule to your own records.</p>
+<h2 id="files">Files</h2>
+<ul><li>demo-estate/as-is-evidence.csv: ten evidence rows, each with a dimension, what was found, and how good the evidence is</li><li><a href="../sam-toolkit/application-management-self-assessment.html">Application management program self-assessment</a>: the eleven dimensions and the 0 to 3 scale</li><li><a href="../sam-toolkit/itam-program-playbook.html">Playbook: set up and run an ITAM program</a>: step 1 (the gut check) and step 5 (the evidence-based baseline)</li></ul>
+<h2 id="work-through">Work through</h2>
+<p>Use the self-assessment by hand, without AI. Do the gut check first and write it down before you open the evidence table.</p>
+<ul><li>Gut check (playbook step 1): give each of the eleven dimensions a 0 to 3 in five minutes, from memory. The practicum page doesn&#x27;t grade this pass. Keep it so you can compare it with your evidence scores afterward.</li><li>Score from evidence (playbook step 5): take each dimension&#x27;s evidence row and turn its quality into a score. None means 0. Spoken means 1: it happens, but nothing is written down. Written but not followed or used means 1, the &quot;one level lower&quot; the evidence rule asks for. Written and followed, with a recent example, means 2. A measure that nobody has acted on means 2. A measure that has led to a change means 3.</li><li>Cite your evidence: for every score, write the evidence ID (for example EV-02) that supports it.</li><li>No evidence is an answer. If a dimension has no row in the table, nobody showed Halden anything for it, so it scores 0 and you write &quot;no evidence.&quot; That&#x27;s different from a row that says someone looked and found nothing, though both score 0.</li><li>Check the dimension names against the self-assessment. The page uses a short id for each one (for example <code>roles</code>), and the page shows both.</li><li>Choose the three weakest dimensions as the starting gaps. Check for ties before you commit: if a fourth dimension shares the third-lowest score, you&#x27;d need a tie-break reason.</li></ul>
+<h2 id="hand-in">Hand in</h2>
+<p>Two score tables. The first is your gut check: dimension and a guess. The second is your evidence-based as-is score: dimension, score, the evidence ID you cite (or &quot;no evidence&quot;), and one line on why that score and not one level higher. Then name the three starting gaps. Enter your scores and tick the three weakest dimensions on the interactive practicum page.</p>
+<h2 id="check-yourself">Check yourself</h2>
+<p>Open the <a href="../../practicum.html#as-is-assessment">interactive practicum page</a> and enter your scores and your three gaps there. No installs, no command line. &quot;Passed&quot; means every score and gap in the key showed up in your findings and you didn&#x27;t overshoot by more than one extra; &quot;missed&quot; lists any score or gap you didn&#x27;t enter correctly; &quot;extra&quot; lists anything you entered that the key doesn&#x27;t recognize. The key sits in <code>demo-estate/answer-key.json</code> in this repo; it&#x27;s public, so check your own answer before you open it.</p>
+<h2 id="reflect">Reflect</h2>
+<ol><li>Where did your gut check and your evidence score differ most? Which one would you show the CIO, and why?</li><li>Roles and ownership had no evidence row at all, while intake and communication had rows that said someone looked and found nothing. Is &quot;nobody showed me anything&quot; the same finding as &quot;I checked and there&#x27;s nothing&quot;? What would you do differently about each?</li><li>A written policy that nobody follows scores 1, not 2. Where would a reader be tempted to give Halden credit for intent, and what would that cost the CIO later?</li><li>The three gaps all score 0. If Halden could fund one of them this quarter, which would you argue for, and what would you tell the sponsor they&#x27;re accepting by leaving the other two?</li></ol>
+<h2 id="certification-link">Certification link</h2>
+<p>This exercise practices the CAMP body of knowledge&#x27;s baseline assessment work: separating what people believe from what they can show, scoring against a stated rule, treating missing evidence as a finding, and choosing a small set of gaps to fund first.</p>
+<p>For a follow-on, repeat the assessment on your own program with <code>application-management-gap-plan.csv</code>, then set a To-Be level for each of your three gaps.</p>
+  </div>
+  <div class="doc-bottom"><button type="button" class="print-icon" onclick="window.print()" aria-label="Print this page" title="Print"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="M7 9V3.5h10V9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M7 17H4.5A1.5 1.5 0 0 1 3 15.5v-5A1.5 1.5 0 0 1 4.5 9h15a1.5 1.5 0 0 1 1.5 1.5v5a1.5 1.5 0 0 1-1.5 1.5H17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><rect x="7" y="14" width="10" height="6.5" rx="0.8" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17.5" cy="12" r="0.9" fill="currentColor"/></svg></button></div>
+</main>
+<footer class="site-footer">
+  <p>Eve McGivern · <a href="https://evemcgivern.github.io/">evemcgivern.github.io</a></p>
+  <p>Questions? Comments? <a href="https://github.com/evemcgivern/app-governance-kit/issues" id="contact-email" data-r="moc.liamg|nrevigcmeve">email me</a>.</p>
+  <p><a href="https://buymeacoffee.com/a8w5iiqszp" rel="noopener">Buy me a coffee</a> if these tools help.</p>
+  <p class="site-version"><a href="https://github.com/evemcgivern/app-governance-kit/releases" rel="noopener" id="site-version">Version</a></p>
+</footer>
+<script>
+(function () {
+  "use strict";
+  var el = document.getElementById("contact-email");
+  if (!el || !el.getAttribute("data-r")) { return; }
+  function arm() {
+    el.href = "mailto:" + el.getAttribute("data-r").split("").reverse().join("").replace("|", "@");
+  }
+  ["pointerenter", "focus", "touchstart"].forEach(function (type) {
+    el.addEventListener(type, arm, { once: true, passive: true });
+  });
+})();
+</script>
+
+</body>
+</html>
