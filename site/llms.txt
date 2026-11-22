@@ -7,7 +7,7 @@ Key facts:
 - Cost and license: free, MIT license. No account, sign-up, or paid tier.
 - Platforms: Claude (skills), Codex (skills), Microsoft Copilot (agents). The same source generates all three.
 - Demo data: every tool except the software lifecycle check is exercised against Halden Logistics, a fictional company with planted, findable problems. It is not real client data.
-- Scope: the kit gives methods and reasoning support. It is not a governance platform, a certification, or legal advice.
+- Scope: the kit gives methods and reasoning support. It isn't a governance platform, a certification, or legal advice.
 - Framework names (ISO, COBIT, NIST, IAITAM, IAPP, PeopleCert) are used for reference only; no affiliation or endorsement.
 - Documents: every checklist, SOP, template, and platform guide has its own HTML page, with Word, Excel, CSV, or print-to-PDF options. No Markdown is published for reading.
 - Tier self-assessment: the web page and the Excel workbook work out an assumed ITAM tier from the answers and list a gap report with the step that closes each gap.
