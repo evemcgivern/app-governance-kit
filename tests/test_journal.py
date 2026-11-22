@@ -100,6 +100,13 @@ class PostTests(unittest.TestCase):
                 with self.assertRaises(JournalError):
                     parse_post(path)
 
+    def test_rejects_compact_and_week_dates(self):
+        for key, value in (("date", "20261201"), ("date", "2026-W49-1"), ("updated", "20261215")):
+            with self.subTest(key=key, value=value):
+                path = write_post(self.dir, "2026-12-01-odd-date.md", **{key: value})
+                with self.assertRaisesRegex(JournalError, key):
+                    parse_post(path)
+
     def test_summary_of_exactly_200_characters_is_allowed(self):
         path = write_post(self.dir, "2026-12-01-edge.md", summary="x" * 200)
         self.assertEqual(len(parse_post(path).summary), 200)
@@ -128,16 +135,23 @@ class PostTests(unittest.TestCase):
         with self.assertRaisesRegex(JournalError, "spine"):
             load_posts(self.dir)
 
-    def test_notes_files_that_do_not_start_with_a_digit_are_ignored(self):
+    def test_load_posts_is_strict_by_default(self):
+        (self.dir / "forgot-date.md").write_text("---\ntitle: T\n---\nBody\n", encoding="utf-8")
+        with self.assertRaisesRegex(JournalError, "forgot-date.md"):
+            load_posts(self.dir)
+
+    def test_notes_files_are_ignored_only_when_asked(self):
         (self.dir / "IDEAS.md").write_text("Rough thoughts, no front matter.\n", encoding="utf-8")
         (self.dir / "README.md").write_text("Not a post.\n", encoding="utf-8")
         write_post(self.dir, "2026-12-01-real.md")
-        self.assertEqual([p.slug for p in load_posts(self.dir)], ["real"])
+        self.assertEqual([p.slug for p in load_posts(self.dir, ignore_notes=True)], ["real"])
+        with self.assertRaisesRegex(JournalError, "IDEAS.md"):
+            load_posts(self.dir)
 
     def test_a_misnamed_file_that_starts_with_a_digit_is_still_an_error(self):
         write_post(self.dir, "2026-12-01 bad name.md")
         with self.assertRaisesRegex(JournalError, "bad name.md"):
-            load_posts(self.dir)
+            load_posts(self.dir, ignore_notes=True)
 
     def test_missing_directory_gives_no_posts(self):
         self.assertEqual(load_posts(self.dir / "nope"), [])
@@ -273,6 +287,18 @@ class WriteTests(unittest.TestCase):
         self.assertIn("Draft, not published", (preview / "journal" / "rough.html").read_text(encoding="utf-8"))
         self.assertFalse((self.root / "site" / "journal" / "rough.html").exists())
 
+    def test_a_misnamed_file_in_posts_is_an_error_not_a_silent_skip(self):
+        write_post(self.posts, "forgot-date.md")
+        with self.assertRaisesRegex(JournalError, "forgot-date.md"):
+            write_journal(self.root)
+
+    def test_preview_ignores_notes_in_the_drafts_folder(self):
+        self.drafts.mkdir(parents=True)
+        (self.drafts / "IDEAS.md").write_text("Rough thoughts.\n", encoding="utf-8")
+        write_post(self.drafts, "2026-12-02-rough.md", date="2026-12-02")
+        write_journal(self.root, preview=True)
+        self.assertTrue((self.root / "docs" / "journal-preview" / "journal" / "rough.html").exists())
+
     def test_preview_rejects_a_draft_that_reuses_a_published_slug(self):
         write_post(self.posts, "2026-12-01-same.md")
         write_post(self.drafts, "2026-12-02-same.md", date="2026-12-02")
@@ -333,6 +359,13 @@ class SiteChecksTests(unittest.TestCase):
         write_journal(self.root)
         self.assertEqual(self.journal_problems(), ["journal/bad-link.html: ../docs/nope.html"])
 
+    def test_a_link_that_climbs_out_of_site_is_reported(self):
+        (self.root / "README.md").write_text("repo readme\n", encoding="utf-8")
+        post = write_post(self.posts, "2026-12-01-climbs.md")
+        post.write_text(post.read_text(encoding="utf-8") + "\n[repo](../../README.md)\n", encoding="utf-8")
+        write_journal(self.root)
+        self.assertEqual(self.journal_problems(), ["journal/climbs.html: ../../README.md"])
+
     def test_posts_folder_is_scanned(self):
         quote = "one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen"
         (self.posts).mkdir()
@@ -374,19 +407,37 @@ class PreviewTests(unittest.TestCase):
         lines = (ROOT / ".gitignore").read_text(encoding="utf-8").splitlines()
         self.assertIn("/docs/", [line.strip() for line in lines])
 
-    def test_preview_pages_have_a_base_tag(self):
+    def test_preview_post_links_work_inside_the_preview(self):
+        draft = write_post(self.drafts, "2026-12-02-rough.md", date="2026-12-02")
+        draft.write_text(draft.read_text(encoding="utf-8") + "\n[kit](../docs/x.html#top) and [here](#main)\n",
+                         encoding="utf-8")
+        write_journal(self.root, preview=True)
+        page = (self.root / "docs" / "journal-preview" / "journal" / "rough.html").read_text(encoding="utf-8")
+        site = (self.root / "site").resolve().as_uri() + "/"
+        self.assertNotIn("<base", page)
+        self.assertIn('href="../journal.html"', page)  # the Journal link stays inside the preview
+        self.assertIn(f'href="{site}tools.html"', page)  # the site menu points at the real site
+        self.assertIn(f'href="{site}style.css"', page)
+        self.assertIn(f'href="{site}docs/x.html#top"', page)  # a kit link keeps its fragment
+        self.assertIn('href="#main"', page)  # a fragment link stays on the page
+
+    def test_preview_index_links_work_inside_the_preview(self):
         write_post(self.drafts, "2026-12-02-rough.md", date="2026-12-02")
         write_journal(self.root, preview=True)
-        out = self.root / "docs" / "journal-preview"
-        post_base = (self.root / "site" / "journal").resolve().as_uri() + "/"
-        index_base = (self.root / "site").resolve().as_uri() + "/"
-        self.assertIn(f'<base href="{post_base}">', (out / "journal" / "rough.html").read_text(encoding="utf-8"))
-        self.assertIn(f'<base href="{index_base}">', (out / "journal.html").read_text(encoding="utf-8"))
+        page = (self.root / "docs" / "journal-preview" / "journal.html").read_text(encoding="utf-8")
+        site = (self.root / "site").resolve().as_uri() + "/"
+        self.assertNotIn("<base", page)
+        self.assertIn('href="journal/rough.html"', page)
+        self.assertIn(f'href="{site}style.css"', page)
+        self.assertIn(f'href="{site}index.html"', page)
 
-    def test_normal_pages_have_no_base_tag(self):
+    def test_normal_pages_are_not_rewritten(self):
         write_post(self.root / "posts", "2026-12-01-live.md")
         write_journal(self.root)
-        self.assertNotIn("<base", (self.root / "site" / "journal" / "live.html").read_text(encoding="utf-8"))
+        page = (self.root / "site" / "journal" / "live.html").read_text(encoding="utf-8")
+        self.assertNotIn("file://", page)
+        self.assertNotIn("<base", page)
+        self.assertIn('href="../style.css"', page)
 
     def test_preview_main_flags_private_terms_in_drafts(self):
         words = self.root / "words.txt"
