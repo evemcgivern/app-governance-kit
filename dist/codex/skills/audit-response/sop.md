@@ -23,9 +23,9 @@ Each row ties a role to the tree nodes where it acts. The names behind each role
 | C6, C9 | Asset manager | Build the first position, then the full reconciliation, and brief Legal and the sponsor | The asset manager reports |
 | C7 | IT security, Legal | Review any request to run the auditor's own tool | Legal |
 | C8 | Procurement, finance contact, technical lead, hardware asset manager | Find proofs, payment records, and discovery output; compare hardware data where it explains counts | The asset manager |
-| C10, C11 | Legal, IT security | Legal decides what is released and attends meetings and site visits; IT security advises on data requests | Legal |
+| C10, C11 | Legal, IT security | Legal decides what's released and attends meetings and site visits; IT security advises on data requests | Legal |
 | D1 | Legal | Receives the findings and keeps all contact | Legal |
-| D2 | Asset manager, Legal | The asset manager tests each claim; Legal decides what is sent | Legal |
+| D2 | Asset manager, Legal | The asset manager tests each claim; Legal decides what's sent | Legal |
 | D3 | Executive sponsor, Legal, contract owner, Finance | Decide true-up, purchase, or settlement | Sponsor with counsel, the contract owner, and Finance |
 | D4 | Legal, asset manager | Legal names the duties after settlement; the asset manager puts them on the calendar | Legal |
 | D5 | Legal | Closes the audit and lifts the freeze in writing | Legal |
@@ -56,11 +56,11 @@ Prepare once, review the plan and roster every year and after any leadership cha
 4. **Audit right and scope (C4, C5).** Legal tests whether this party holds an audit right, including by assignment, and whether the letter asks for more than the agreement allows. Counsel then chooses whether to reply by the date, ask for more time, or narrow the scope. All three go through counsel. **Decision needed: counsel** [[XW-013]] [[XW-007]]
 5. **Quick first position (C6).** Give counsel a rough count in the agreement's metric before anyone discusses details with the publisher. [[XW-007]]
 6. **Auditor tools (C7).** If the auditor wants to run its own tool or script, IT security reviews it and counsel decides. Nothing runs until then. **Decision needed: counsel** [[XW-029]]
-7. **Gather within counsel's scope (C8).** Collect proofs of any age, contracts, and payment records. Use existing discovery reports, and keep each as it stood on the day it ran. Installing a new agent is a system change that needs counsel. Run a hardware comparison only where it explains the counts. Work from copies and keep originals in house. Narrow the use data to the agreed products, entities, and period; do not narrow the proofs, since a proof older than the period still backs today's use. [[XW-005]] [[XW-006]] [[XW-020]] [[XW-026]]
+7. **Gather within counsel's scope (C8).** Collect proofs of any age, contracts, and payment records. Use existing discovery reports, and keep each as it stood on the day it ran. Installing a new agent is a system change that needs counsel. Run a hardware comparison only where it explains the counts. Work from copies and keep originals in house. Narrow the use data to the agreed products, entities, and period; don't narrow the proofs, since a proof older than the period still backs today's use. [[XW-005]] [[XW-006]] [[XW-020]] [[XW-026]]
 8. **Reconcile and brief (C9).** Count use against proofs per product and version in the metric the agreement counts, with `sam-toolkit/proof-of-purchase-check.csv`: assigned users for a named-user product, devices for a device product, not raw installs. Label each short, even, or over. List downgrade rights for counsel to confirm. Check each proof against the details below, then brief Legal and the sponsor on gaps, risks, and open decisions. [[XW-006]] [[XW-007]] [[XW-024]] [[XW-027]]
 9. **Release decisions (C10, C11).** Counsel decides what goes out. By default hold back device lists, raw exports, and internal gap notes. Counsel attends every meeting and site visit. Nobody calls the publisher about license wording while a notice is open. **Decision needed: counsel** [[XW-013]] [[XW-020]]
 10. **Findings (D1, D2).** Until findings arrive, the freeze stays. When they do, ask for each claim itemized and test it: the metric counted, downgrade rights, the proofs, and errors in the auditor's data. Give rebuttal evidence to counsel. [[XW-007]]
-11. **Settlement (D3, D4).** True-up, purchase, or settlement is for counsel, the contract owner, and Finance. Settling does not by itself end every claim, so counsel says what it covers. Put any duties after settlement on the calendar. **Decision needed: counsel** [[XW-013]]
+11. **Settlement (D3, D4).** True-up, purchase, or settlement is for counsel, the contract owner, and Finance. Settling doesn't by itself end every claim, so counsel says what it covers. Put any duties after settlement on the calendar. **Decision needed: counsel** [[XW-013]]
 12. **Close (D5, E1).** The audit is over when counsel closes it and lifts the freeze in writing. Then hold a review, send fixes through change control, and update the roster, renewal calendar, gaps log, and contract terms. Expect the auditor back. [[XW-025]]
 
 ## Proof details to check
@@ -68,9 +68,9 @@ Prepare once, review the plan and roster every year and after any leadership cha
 Group what a proof must show by the question it answers. The agreement and license terms say which details this publisher accepts, and the contract owner confirms them. **Unverified:** until counsel confirms the terms.
 
 - **Who the buyer was.** The buyer's legal name, and the vendor or authorized seller.
-- **What was bought and how many.** The product, the version, and the quantity. For an upgrade, the base license it builds on; an upgrade uses up that base, so the base cannot also count for installs of its own version, and an upgrade whose base has no proof is not a proof on its own.
+- **What was bought and how many.** The product, the version, and the quantity. For an upgrade, the base license it builds on; an upgrade uses up that base, so the base can't also count for installs of its own version, and an upgrade whose base has no proof isn't a proof on its own.
 - **The license terms and metric.** The unit the agreement counts (named user, device, core) and any term of use.
-- **When it applies.** The purchase date, and for a subscription the current term, not only the first order. A proof dated after the install is a question, not a failure. It may be a true-up, since true-up agreements often date purchases after the use they cover, or a later purchase. Confirm which it is.
+- **When it applies.** The purchase date, and for a subscription the current term, not only the first order. A proof dated after the install is a question, not a failure. It may be a true-up, since true-up agreements often date purchases after the use they cover, or a later purchase. Confirm which it's.
 - **Whether it can be shown today.** Price and evidence of payment where the agreement asks for them, and a record you can produce. Licensing-portal and authorized-reseller records can count. A certificate of authenticity or a product key alone shows that a copy exists, not a right to use it.
 
 ## Rules
@@ -103,12 +103,12 @@ Group what a proof must show by the question it answers. The agreement and licen
 - Reconciling raw installs when the agreement counts named users or devices.
 - Treating a subscription's first order as proof without the current term.
 - Leaving out proofs older than the audit period. They still back current use.
-- Relying on a proof dated after the install without confirming whether it is a true-up or a later purchase.
+- Relying on a proof dated after the install without confirming whether it's a true-up or a later purchase.
 - Keeping the readiness material in one person's mailbox.
 
 ## Who decides
 
-People decide: the asset manager reports, and Legal decides every legal point (the claim, the scope, the reply, and what is released). The executive sponsor decides, with counsel, on spend, true-up, and settlement, and IT security decides what may be exposed. No tool or agent makes any of these calls.
+People decide: the asset manager reports, and Legal decides every legal point (the claim, the scope, the reply, and what's released). The executive sponsor decides, with counsel, on spend, true-up, and settlement, and IT security decides what may be exposed. No tool or agent makes any of these calls.
 
 ## Evidence to retain
 
