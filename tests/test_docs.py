@@ -677,5 +677,41 @@ class StepMapPageTests(unittest.TestCase):
         self.assertNotIn("doc-reading", built(root, "guide.html"))
 
 
+class ToolkitByStepTests(unittest.TestCase):
+    def test_section_lists_each_file_once_under_its_main_step_with_a_tag(self):
+        from agk.docs import toolkit_steps_html
+        steps = [{"n": 3, "title": "Stop the bleeding", "id": "step-3-stop"},
+                 {"n": 8, "title": "Proof first", "id": "step-8-proof"}]
+        rows = [{"kind": "file", "key": "renewal-calendar.csv", "main_step": "3", "also_steps": ["8"],
+                 "frequency": "", "note": ""},
+                {"kind": "file", "key": "savings-report.csv", "main_step": "beyond", "also_steps": [],
+                 "frequency": "", "note": ""},
+                {"kind": "term", "key": "Sponsor", "main_step": "3", "also_steps": [], "frequency": "",
+                 "note": ""}]
+        html = toolkit_steps_html(rows, steps, {"renewal-calendar.csv": "Renewal calendar"})
+        self.assertEqual(html.count('data-file="renewal-calendar.csv"'), 1)
+        self.assertIn('<h3 id="by-step-3"><a href="docs/sam-toolkit/itam-program-playbook.html#step-3-stop">'
+                      'Step 3: Stop the bleeding</a></h3>', html)
+        self.assertIn('<a href="docs/sam-toolkit/renewal-calendar.html">Renewal calendar</a> '
+                      '<span class="step-tag">Step 3, also step 8</span>', html)
+        self.assertIn('<h3 id="by-step-beyond">Not part of a step</h3>', html)
+        self.assertIn('data-file="savings-report.csv"', html.split("by-step-beyond")[1])
+        self.assertNotIn("Sponsor", html)
+        self.assertNotIn("by-step-8", html)
+
+    def test_write_docs_fills_the_marked_region_of_the_toolkit_page(self):
+        root = mapped_repo()
+        page = root / "site" / "sam-toolkit.html"
+        page.write_text("<html><body><!--STEPS-->old<!--/STEPS--><p>keep</p></body></html>", encoding="utf-8")
+        write_docs(root)
+        html = page.read_text(encoding="utf-8")
+        self.assertNotIn("old", html)
+        self.assertIn('data-file="renewal-calendar.csv"', html)
+        self.assertIn("<p>keep</p>", html)
+        first = html
+        write_docs(root)
+        self.assertEqual(page.read_text(encoding="utf-8"), first)
+
+
 if __name__ == "__main__":
     unittest.main()

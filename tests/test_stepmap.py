@@ -1,3 +1,4 @@
+import re
 import unittest
 from pathlib import Path
 
@@ -145,6 +146,42 @@ class SourceTextTests(unittest.TestCase):
         expected = [related_line(rows, n) for n in range(1, 11)]
         found = [l for l in play.splitlines() if l.startswith("- Related:")]
         self.assertEqual(found, [e for e in expected if e])
+
+
+class HandKeptPageTests(unittest.TestCase):
+    def setUp(self):
+        self.rows = load_map(ROOT)
+
+    def test_each_practicum_section_has_the_mapped_practice_line(self):
+        html = (ROOT / "site" / "practicum.html").read_text(encoding="utf-8")
+        sections = html.split('<section class="pr-exercise" id="')[1:]
+        keys = [r for r in self.rows if r["kind"] == "practicum"]
+        self.assertEqual(len(sections), len(keys))
+        for sec in sections:
+            sec_id = sec.split('"', 1)[0]
+            r = next(r for r in keys if r["key"][3:] == sec_id)
+            self.assertIn(f'<p class="pr-step">{practice_line(r)}</p>', sec.split("</section>", 1)[0], sec_id)
+
+    def test_each_case_study_has_the_mapped_tag(self):
+        html = (ROOT / "site" / "case-studies.html").read_text(encoding="utf-8")
+        for r in (r for r in self.rows if r["kind"] == "case"):
+            start = html.index(f'<section id="case-{r["key"]}"')
+            sec = html[start:html.index("</section>", start)]
+            self.assertIn(f'<p class="case-step">{case_line(r)}</p>', sec, r["key"])
+
+    def test_the_toolkit_page_lists_each_file_under_its_main_step_only(self):
+        html = (ROOT / "site" / "sam-toolkit.html").read_text(encoding="utf-8")
+        block = html.split("<!--STEPS-->", 1)[1].split("<!--/STEPS-->", 1)[0]
+        groups = {}
+        for m in re.finditer(r'<h3 id="by-step-([\w-]+)">.*?</h3>(.*?)(?=<h3 id="by-step-|\Z)', block, re.S):
+            groups[m.group(1)] = re.findall(r'data-file="([^"]+)"', m.group(2))
+        for r in (r for r in self.rows if r["kind"] == "file"):
+            home = "beyond" if r["main_step"] == "beyond" else r["main_step"]
+            for step, files in groups.items():
+                if step == home:
+                    self.assertEqual(files.count(r["key"]), 1, r["key"])
+                else:
+                    self.assertNotIn(r["key"], files, r["key"])
 
 
 class PlaybookAndCalendarTests(unittest.TestCase):

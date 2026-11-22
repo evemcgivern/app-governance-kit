@@ -1423,6 +1423,37 @@ def example_link(d) -> str | None:
     return f"    <a class=\"visual-actions__link\" href=\"{d.name}-example.html\">See a filled example</a>"
 
 
+STEPS_RE = re.compile(r"<!--STEPS-->.*?<!--/STEPS-->", re.S)
+
+
+def toolkit_steps_html(rows: list[dict], steps: list[dict], titles: dict[str, str]) -> str:
+    """The "By playbook step" section of the toolkit page: each file once, under its main step, with a tag."""
+    playbook_href = f"docs/sam-toolkit/{PLAYBOOK_STEM}.html"
+    groups = [(str(st["n"]), f"<a href=\"{playbook_href}#{escape(st['id'], quote=True)}\">"
+               f"Step {st['n']}: {escape(st['title'])}</a>") for st in steps] + [("beyond", "Not part of a step")]
+    files = [r for r in rows if r["kind"] == "file"]
+    out = ["<!--STEPS-->", "<section class=\"prose prose-wide\" id=\"by-step\">", "  <h2>By playbook step</h2>",
+           "  <p>Each file is listed once, under the step it mainly serves. A file that also serves another step "
+           "says so in its tag. The step for each file comes from <code>steps/step-map.csv</code>.</p>"]
+    for n, label in groups:
+        mine = [r for r in files if r["main_step"] == n]
+        if not mine:
+            continue
+        out.append(f"  <h3 id=\"by-step-{n}\">{label}</h3>")
+        out.append("  <ul class=\"link-list\">")
+        for r in mine:
+            stem = r["key"].rsplit(".", 1)[0]
+            if n == "beyond":
+                tag = "Not part of a step"
+            else:
+                tag = f"Step {n}" + (f", also {stepmap.step_words(r['also_steps'])}" if r["also_steps"] else "")
+            out.append(f"    <li data-file=\"{escape(r['key'], quote=True)}\"><a href=\"docs/sam-toolkit/{stem}.html\">"
+                       f"{escape(titles.get(r['key'], stem))}</a> <span class=\"step-tag\">{escape(tag)}</span></li>")
+        out.append("  </ul>")
+    out += ["</section>", "<!--/STEPS-->"]
+    return "\n".join(out)
+
+
 def prompt_links(d, steps: list[dict], playbook) -> dict:
     """For the setup prompts page: each prompt's playbook steps as (number, title, link) tuples."""
     if playbook is None or d.name != "setup-prompts" or d.group != "sam-toolkit" or d.kind != "md":
@@ -1596,6 +1627,13 @@ def write_docs(root: Path) -> list[str]:
                         if playbook and d.group == "sam-toolkit" and d.src.parent == playbook.src.parent else "")
                        + feeds_html(d, step_rows) + practice_html(d, step_rows)),
             encoding="utf-8")
+    toolkit_page = site / "sam-toolkit.html"
+    if step_rows and steps and toolkit_page.is_file():
+        page_text = toolkit_page.read_text(encoding="utf-8")
+        if STEPS_RE.search(page_text):
+            titles = {d.src.name: d.title for d in docs if d.group == "sam-toolkit" and d.src.parent.name == "sam-toolkit"}
+            toolkit_page.write_text(STEPS_RE.sub(lambda _: toolkit_steps_html(step_rows, steps, titles), page_text),
+                                    encoding="utf-8")
     write_sitemap(site)
     warnings += [f"docs: {src}: link {href} matches no site page; shown as plain text"
                  for src, href in sorted(plain_text_links)]
