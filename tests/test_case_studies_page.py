@@ -58,7 +58,7 @@ class CaseStudiesPageTests(unittest.TestCase):
             self.assertIn(f'id="{step}"', playbook)
 
     def test_title_and_description_rules(self):
-        self.assertRegex(PAGE, r"<title>Case studies \| Eve McGivern</title>")
+        self.assertRegex(PAGE, r"<title>Case studies \| App Governance Kit</title>")
         for pattern in (r'name="description" content="([^"]*)"', r'property="og:description" content="([^"]*)"',
                         r'name="twitter:description" content="([^"]*)"'):
             text = re.search(pattern, PAGE).group(1)
