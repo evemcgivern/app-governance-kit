@@ -1,6 +1,6 @@
 # Playbook: set up and run an ITAM program
 
-This is the one order to follow. It is for an asset manager who has to stand up, or take over, an IT asset management (ITAM) program and keep it running. Every other file in the kit is a tool you pick up at the step where this playbook names it. If another page seems to give a different order, follow this one.
+This is the one order to follow. It's for an asset manager who has to stand up, or take over, an IT asset management (ITAM) program and keep it running. Every other file in the kit is a tool you pick up at the step where this playbook names it. If another page seems to give a different order, follow this one.
 
 **Two standing rules**
 
@@ -9,11 +9,11 @@ This is the one order to follow. It is for an asset manager who has to stand up,
 
 Three terms come up at once. A sponsor is the executive who holds the budget and backs the program in public. A charter is a short written agreement on why the program exists, who decides what, and who sits on the group that decides. An entitlement is the right to use software that you can show you bought. Plain-language definitions of these and other terms are in the [glossary](../field-guide/glossary.md).
 
-You do not need to do all ten steps.
+You don't need to do all ten steps.
 
 For practice, do the matching practicum exercise on the Halden data before you do a step on real records, and do exercise 08 before any real audit letter arrives. A step with a matching exercise lists it in its Related row.
 
-All ten steps together take about 250 to 450 hours of effort over 9 to 18 months, part-time, and longer if an audit lands. Add a few hours a week for the routines in the run table below. This is expert judgment for one person with other duties at a mid-size organization. It is not measured.
+All ten steps together take about 250 to 450 hours of effort over 9 to 18 months, part-time, and longer if an audit lands. Add a few hours a week for the routines in the run table below. This is expert judgment for one person with other duties at a mid-size organization. It's not measured.
 
 Clause references are to ISO/IEC 19770-1:2017 (paraphrased) and to the shared crosswalk (`XW-` rows). The standard's tiers are informative, and following them is optional.
 
@@ -25,11 +25,11 @@ Each step gives the reason in one line, the files to use, the matching prompt in
 
 ### Step 1: Read the map
 
-**Why:** You need the same words as the people you will ask for help.
+**Why:** You need the same words as the people you'll ask for help.
 
 - Files: this playbook, the [glossary](../field-guide/glossary.md), and `guide.md` for what each file is. Prompt 1 in `setup-prompts.md` fits a plan to your hours and your biggest worry.
 - Done when:
-  - [ ] You have read this playbook and the glossary.
+  - [ ] You've read this playbook and the glossary.
   - [ ] You can say in two sentences what your biggest worry is: audit, renewals, duplicate spend, or ownership.
 - Time (expert judgment, not measured): 2 to 4 hours of effort, within 1 week.
 - Related: [glossary](../field-guide/glossary.md): ITAM.
@@ -39,9 +39,9 @@ Each step gives the reason in one line, the files to use, the matching prompt in
 **Why:** A policy or a gate that no one with budget backs gets ignored. [[XW-027]]
 
 - Files: the `program-setup` method (`methods/program-setup/method.md` and `template.md`) and `customer-expectations.csv`. Prompt 8 reviews a draft charter and checks for a named sponsor. Prompt 11 maps who relies on your data.
-- A solo manager does not need a council of five to nine members. Start with a small group of two to four people, such as you, a procurement contact, a finance contact, and a security or legal contact, and one named sponsor. Grow it when the work needs it.
+- A solo manager doesn't need a council of five to nine members. Start with a small group of two to four people, such as you, a procurement contact, a finance contact, and a security or legal contact, and one named sponsor. Grow it when the work needs it.
 - Done when:
-  - [ ] A named sponsor has agreed, in writing, one sentence on the problem you are solving.
+  - [ ] A named sponsor has agreed, in writing, one sentence on the problem you're solving.
   - [ ] A one-page charter names the sponsor, the small group, what the group decides, and where disputes go. [[XW-004]]
   - [ ] The charter names the outside factors that will shape the next year, such as laws, vendor changes, mergers, and new platforms, and you update that one-page road map each year.
   - [ ] Your customers and what they expect from you are listed in `customer-expectations.csv`.
@@ -63,7 +63,7 @@ Each step gives the reason in one line, the files to use, the matching prompt in
 
 Read this before step 4 if any of these is true.
 
-- **No sponsor yet.** Write one sentence on the cost or risk, and use one figure from your own records, or write Not found. Take it to whoever signs your largest software invoices or carries the audit risk, and ask for 30 minutes. If you are refused, note who declined and when, and keep working on steps 3 and 4, which sit within your own authority. Prompt 8 reviews a draft charter once you have one; it does not write the request.
+- **No sponsor yet.** Write one sentence on the cost or risk, and use one figure from your own records, or write Not found. Take it to whoever signs your largest software invoices or carries the audit risk, and ask for 30 minutes. If you're refused, note who declined and when, and keep working on steps 3 and 4, which sit within your own authority. Prompt 8 reviews a draft charter once you've one; it doesn't write the request.
 - **No inventory yet.** Do not try to count everything. List your five largest software publishers by spend from finance records, and do step 3 for them. The inventory comes in step 7.
 - **An audit or vendor letter has already arrived.** Do not reply and do not send data. Hand the letter to Legal the same day and note the deadline it states. Do not run new discovery or remove software without Legal's say. Open a dated case file, then follow the [audit decision tree](audit-decision-tree.md) from [node C1](audit-decision-tree.md#node-c1), with the `audit-response` method and `audit-response-roles.csv`. Use Prompt 7 once Legal is involved.
 
@@ -73,7 +73,7 @@ Read this before step 4 if any of these is true.
 
 - Files: section 2 of `policy-template.md` for which assets and people are covered, and `statement-of-applicability.csv` for which processes are in scope and why. Once the scope is written, use `risk-assessment-guide.md` and `risk-register.csv` to list what could go wrong inside it, rate each risk, and name an owner and a treatment.
 - Done when:
-  - [ ] A written scope names what is covered and what is excluded, with a reason for each exclusion.
+  - [ ] A written scope names what's covered and what's excluded, with a reason for each exclusion.
   - [ ] `statement-of-applicability.csv` has a yes or no and a reason for each process.
   - [ ] The sponsor has seen the scope.
   - [ ] Each risk inside the scope is in `risk-register.csv` with a rating, an owner, a treatment, and a review date. The owner has accepted what remains. [[XW-024]]
@@ -104,7 +104,7 @@ Read this before step 4 if any of these is true.
   - [ ] Each policy in your set has an owner and an approver named by role. [[XW-004]]
   - [ ] Each draft passed `policy-checklist.md`, and counsel reviewed the penalty wording and any retention period.
   - [ ] HR and Legal reviewed each draft before the executive approved it.
-  - [ ] The sponsor approved each policy, dated, and it is published in one versioned place. [[XW-020]]
+  - [ ] The sponsor approved each policy, dated, and it's published in one versioned place. [[XW-020]]
   - [ ] Exceptions go to `authorization-log.csv` with an approver and an end date. [[XW-019]]
 - Time (expert judgment, not measured): 30 to 60 hours of effort over 2 to 4 months. Most of the wait is for counsel, consultation, and approval rounds.
 - Related: [exercise 06: AI intake](../practicum/06-ai-intake.md); case study [AI intake](../site/case-studies.html#case-ai-intake); [glossary](../field-guide/glossary.md): Policy vs. procedure, Role vs. job title.
@@ -123,7 +123,7 @@ Read this before step 4 if any of these is true.
 
 ### Step 8: Proof first, then the position
 
-**Why:** A count of installs is not a position. A license counts only when proof of purchase backs it. [[XW-006]] [[XW-007]]
+**Why:** A count of installs isn't a position. A license counts only when proof of purchase backs it. [[XW-006]] [[XW-007]]
 
 - Files, in this order: `proof-of-purchase-check.csv`, then `license-position.csv`, then `documentation-gaps-log.csv` and `contract-terms-check.csv`. Prompt 5 checks licenses against proof. Start with your largest publishers.
 - Done when:
@@ -131,7 +131,7 @@ Read this before step 4 if any of these is true.
   - [ ] `license-position.csv` compares use with the proven entitlement in the contract's license metric.
   - [ ] Unclear contract terms are listed in `contract-terms-check.csv` and sent to counsel. [[XW-013]]
   - [ ] Your proofs and contracts live in one controlled place with a named owner and a backup copy.
-  - [ ] You know your company's record retention rule for contracts, invoices, proofs of entitlement, and records gathered for an audit, where it is written, and who owns it. [[XW-020]]
+  - [ ] You know your company's record retention rule for contracts, invoices, proofs of entitlement, and records gathered for an audit, where it's written, and who owns it. [[XW-020]]
 - Time (expert judgment, not measured): 15 to 40 hours of effort per publisher, or 60 to 150 hours for the top three to five publishers, over 2 to 6 months. Proofs go missing, reseller records are thin, and core or virtualization licensing terms take time to work out.
 - Related: [exercise 08: Audit response](../practicum/08-audit-response.md); case study [Audit response](../site/case-studies.html#case-audit-response); [glossary](../field-guide/glossary.md): License metric, Proof of purchase, True-up.
 
@@ -166,7 +166,7 @@ Read this before step 4 if any of these is true.
 
 - A sponsor before the policy.
 - Scope before the self-assessment and the inventory.
-- The contract's license metric before a license position. A user count is not always the licensed quantity.
+- The contract's license metric before a license position. A user count isn't always the licensed quantity.
 - Proof before the position. Reconcile against what you can prove.
 - Procurement enforcing the gate before the gate counts.
 - A baseline before any savings claim.
@@ -178,7 +178,7 @@ This is judgment from practice, not a measured rate.
 - No sponsor with budget.
 - Trying to inventory everything at once.
 - Buying a tool before data owners are named.
-- Procurement does not enforce the gate.
+- Procurement doesn't enforce the gate.
 - One person holds all the knowledge.
 - Savings claimed without finance confirming that the spend stopped.
 - A publisher audit lands mid-build and absorbs the team.
@@ -205,15 +205,15 @@ Events that should start work even when nothing is due:
 
 ## Is it working?
 
-Signs it is working:
+Signs it's working:
 - Measures move, and each leads to a decision someone logged.
 - Findings close and stay closed.
 - Savings reconcile to what finance confirms.
 - Reviews sometimes change a decision.
 
-Signs of a busy program that is not working: reports grow longer and nobody decides anything from them, the documentation gaps log only gets longer, forecast savings never become real savings, and every review is confirmed without change.
+Signs of a busy program that's not working: reports grow longer and nobody decides anything from them, the documentation gaps log only gets longer, forecast savings never become real savings, and every review is confirmed without change.
 
-Pick measures that cannot be met by paperwork alone. The Ideas sheet in `application-management-workbook.xlsx` lists credible ones, with how people tend to game each.
+Pick measures that can't be met by paperwork alone. The Ideas sheet in `application-management-workbook.xlsx` lists credible ones, with how people tend to game each.
 
 ## Where the standard fits
 
@@ -226,7 +226,7 @@ Pick measures that cannot be met by paperwork alone. The Ideas sheet in `applica
 | Evaluation | 9.1 Monitoring and measurement; 9.2 Internal audit; 9.3 Management review |
 | Improvement | 10 Improvement, including corrective action |
 
-The kit does not cover every clause. In particular it has no template for a strategic ITAM plan, preventive action, or staff-owned devices. Read the standard itself for those.
+The kit doesn't cover every clause. In particular it has no template for a strategic ITAM plan, preventive action, or staff-owned devices. Read the standard itself for those.
 
 ## Decision
 

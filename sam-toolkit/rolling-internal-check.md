@@ -1,8 +1,8 @@
 # Rolling internal check
 
-A small, regular test of how your program really works, so an external audit finds nothing you have not already fixed. Instead of one large audit a year, test two or three areas each quarter, fix what you find, and test again. The yearly internal audit and management review in `audit-and-review-checklist.md` then becomes a summary of work already done.
+A small, regular test of how your program really works, so an external audit finds nothing you haven't already fixed. Instead of one large audit a year, test two or three areas each quarter, fix what you find, and test again. The yearly internal audit and management review in `audit-and-review-checklist.md` then becomes a summary of work already done.
 
-Findings are for fixing; they are not a rating of anyone. Clause references are to the shared crosswalk (`XW-` rows).
+Findings are for fixing; they're not a rating of anyone. Clause references are to the shared crosswalk (`XW-` rows).
 
 ## The five steps
 

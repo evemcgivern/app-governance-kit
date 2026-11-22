@@ -2,7 +2,7 @@
 
 A short procedure for what happens to software and licenses when a person joins, changes role, or leaves. It matches access to the job, returns licenses to the pool where the contract allows, and leaves a record an auditor can follow.
 
-Clause references are to ISO/IEC 19770-1:2017 (paraphrased) and to the shared crosswalk (`XW-` rows). This procedure does not interpret contracts or give legal advice. Where it says have the contract owner confirm, the contract owner decides.
+Clause references are to ISO/IEC 19770-1:2017 (paraphrased) and to the shared crosswalk (`XW-` rows). This procedure doesn't interpret contracts or give legal advice. Where it says have the contract owner confirm, the contract owner decides.
 
 **Owner:** ______________________  **Approver:** ______________________  **Date:** ___________
 
@@ -38,7 +38,7 @@ A mass hire or a layoff sends many notices at once. Treat it as an event that st
 ### Mover
 
 1. Compare the new role with the standard. List what the person gets and what the person no longer needs.
-2. Ask the manager to confirm each access the person keeps. Access the old role needed and the new role does not should be removed, not left to expire.
+2. Ask the manager to confirm each access the person keeps. Access the old role needed and the new role doesn't should be removed, not left to expire.
 3. Reclaim licenses the person no longer needs, using the steps below.
 4. Record the change and the date in the asset record.
 
@@ -64,7 +64,7 @@ Do these in order for each license a person held.
 
 ## Caution: check reassignment rights first
 
-Some contracts tie a license to a device or to one named user, and some set conditions on moving it. Moving a license without that right can put you out of compliance. Before you reclaim and reassign any license, read the clause, and have the contract owner confirm. Record the answer in `contract-terms-check.csv` so the next person does not have to ask again.
+Some contracts tie a license to a device or to one named user, and some set conditions on moving it. Moving a license without that right can put you out of compliance. Before you reclaim and reassign any license, read the clause, and have the contract owner confirm. Record the answer in `contract-terms-check.csv` so the next person doesn't have to ask again.
 
 ## Link to retirement
 
@@ -83,4 +83,4 @@ A leaver's device and the software on it go through `retirement-signoff-checklis
 | --- | --- | --- | --- |
 | Procedure adopted, with HR agreeing to send each notice | | | |
 
-Source: ISO/IEC 19770-1:2017 clauses 7.6.3, 8.3 and 8.4, and the shared crosswalk. Paraphrased; this is not a substitute for the standard.
+Source: ISO/IEC 19770-1:2017 clauses 7.6.3, 8.3 and 8.4, and the shared crosswalk. Paraphrased; this isn't a substitute for the standard.

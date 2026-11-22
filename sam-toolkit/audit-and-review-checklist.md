@@ -39,7 +39,7 @@ Ask these of each process in your Statement of Applicability. Record what you sa
 
 ## Part 2: Management review (9.3)
 
-Top management reviews the system at planned intervals to confirm it is still suitable, adequate and effective. Put these items in the pack.
+Top management reviews the system at planned intervals to confirm it's still suitable, adequate and effective. Put these items in the pack.
 
 | # | Input to the review | Prepared | Source |
 | --- | --- | --- | --- |
@@ -61,4 +61,4 @@ Top management reviews the system at planned intervals to confirm it is still su
 
 Keep the minutes and the pack as evidence. The standard requires a record of the review results.
 
-Source: ISO/IEC 19770-1:2017 clauses 9.2, 9.3 and 10.1. Paraphrased; this is not a substitute for the standard.
+Source: ISO/IEC 19770-1:2017 clauses 9.2, 9.3 and 10.1. Paraphrased; this isn't a substitute for the standard.

@@ -2,7 +2,7 @@
 
 A short method for finding, rating, treating, and recording ITAM risks, so that each one has an owner and a decision. Use it once when you set the program's scope and baseline (playbook steps 4 and 5), and again at each review. The record is `risk-register.csv`.
 
-Clause references are to ISO/IEC 19770-1:2017 (paraphrased) and to the shared crosswalk (`XW-` rows). The standard's requirements on risk sit in clause 6.1. This guide does not give legal advice; where a risk turns on a contract term, have counsel review it.
+Clause references are to ISO/IEC 19770-1:2017 (paraphrased) and to the shared crosswalk (`XW-` rows). The standard's requirements on risk sit in clause 6.1. This guide doesn't give legal advice; where a risk turns on a contract term, have counsel review it.
 
 **Owner:** ______________________  **Date:** ___________
 
@@ -69,4 +69,4 @@ After treatment, some risk remains. The owner of the risk accepts what remains, 
 | --- | --- | --- | --- |
 | Remaining risks accepted, with an owner for each | | | |
 
-Source: ISO/IEC 19770-1:2017 clause 6.1, and the shared crosswalk. Paraphrased; this is not a substitute for the standard.
+Source: ISO/IEC 19770-1:2017 clause 6.1, and the shared crosswalk. Paraphrased; this isn't a substitute for the standard.

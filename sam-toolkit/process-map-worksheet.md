@@ -22,7 +22,7 @@ Add rows as needed. Mark any step where nobody could say who does it, or where n
 
 ## Step 2: Describe the Should map
 
-The same process as you want it: who decides, what is recorded, and where each record lives. Use roles, not names. [[XW-004]]
+The same process as you want it: who decides, what's recorded, and where each record lives. Use roles, not names. [[XW-004]]
 
 | # | Trigger or input | Role | What they do | Record or evidence produced | Where it is kept |
 | --- | --- | --- | --- | --- | --- |

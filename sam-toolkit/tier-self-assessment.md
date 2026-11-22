@@ -2,7 +2,7 @@
 
 A short check of how far your IT asset management has got, using the three tiers in ISO/IEC 19770-1:2017 Annex B. The tiers are cumulative: tier 2 expects tier 1, and tier 3 expects both. Use this as a starting point before the full ITAM maturity check.
 
-**How to use it:** answer each question yes, partly, or no, and write down the evidence you could show an auditor. A tier counts as met when no question is a "no" and at most one is "partly". Your assumed tier is the highest tier you meet, along with every tier below it. The first tier you do not meet is your next piece of work.
+**How to use it:** answer each question yes, partly, or no, and write down the evidence you could show an auditor. A tier counts as met when no question is a "no" and at most one is "partly". Your assumed tier is the highest tier you meet, along with every tier below it. The first tier you don't meet is your next piece of work.
 
 The Annex B tier names and aims are summarized here. Which Annex A processes sit in which tier is shown in Figure B.2 of the standard. Check that figure in your copy before using this to scope a certification.
 
@@ -14,7 +14,7 @@ Aim: know what you have so you can manage it, with reasonable assurance of licen
 | --- | --- | --- | --- |
 | 1.1 | Is there a record for every software and hardware asset in scope, with an owner? (8.3, 7.6.2) **NOTE:** if owner is missing for any, choose Partly | | |
 | 1.2 | Does each record say whether the asset is authorized? (8.3) | | |
-| 1.3 | Are records verified against what is actually installed or in use, on a schedule? (8.3) | | |
+| 1.3 | Are records verified against what's actually installed or in use, on a schedule? (8.3) | | |
 | 1.4 | Do you hold entitlement records for the licenses you own, each backed by a proof of purchase kept as long as the records schedule requires? (8.4) | | |
 | 1.5 | Do you compare entitlements with usage on a schedule, and act on the gaps? (8.4) | | |
 | 1.6 | Is there a measurable target for data accuracy? (6.2.3) | | |
@@ -56,17 +56,17 @@ Count your answers for each tier, then check the last column. The web page and t
 | 2 | | | | |
 | 3 | | | | |
 
-Your assumed tier: the highest tier you met, where every tier below it is also met. If tier 1 is not met, you are below tier 1.
+Your assumed tier: the highest tier you met, where every tier below it's also met. If tier 1 isn't met, you're below tier 1.
 
 ## Gap report
 
-List every question you answered "no" or "partly", with the step that closes it. The web page builds this from your answers, and the Excel workbook has a Gap report sheet you can filter. In Word, write your answer in the third column and delete the rows you do not need.
+List every question you answered "no" or "partly", with the step that closes it. The web page builds this from your answers, and the Excel workbook has a Gap report sheet you can filter. In Word, write your answer in the third column and delete the rows you don't need.
 
 | # | Question | Your answer | What closes the gap | Owner | Due date |
 | --- | --- | --- | --- | --- | --- |
 | 1.1 | A record for every asset, with an owner | | Build one record per asset in scope and name an owner for each. Start from the asset record template. | | |
 | 1.2 | Each record says whether the asset is authorized | | Add an authorized yes/no field to every record and fill it from purchase and approval evidence. | | |
-| 1.3 | Records verified against what is installed | | Set a schedule (at least quarterly) to compare records with discovery data, and log the differences found. | | |
+| 1.3 | Records verified against what's installed | | Set a schedule (at least quarterly) to compare records with discovery data, and log the differences found. | | |
 | 1.4 | Entitlement records held | | Collect licenses, contracts, and proofs of purchase into one entitlement list per product. | | |
 | 1.5 | Entitlements compared with usage | | Run the license position workbook on a schedule and give each shortfall or surplus an owner. | | |
 | 1.6 | A measurable target for data accuracy | | Pick a measurable accuracy target, such as the share of records verified this quarter, and report against it. | | |
@@ -92,4 +92,4 @@ List every question you answered "no" or "partly", with the step that closes it.
 | 2 | | | | | |
 | 3 | | | | | |
 
-Source: ISO/IEC 19770-1:2017, Annex A (processes) and Annex B (tiers). Paraphrased; this is not a substitute for the standard.
+Source: ISO/IEC 19770-1:2017, Annex A (processes) and Annex B (tiers). Paraphrased; this isn't a substitute for the standard.

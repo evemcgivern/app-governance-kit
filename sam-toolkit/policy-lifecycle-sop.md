@@ -29,7 +29,7 @@ Each policy is reviewed at least yearly, and sooner when a trigger occurs: a ven
 
 ## Steps
 
-1. Before drafting, find the company's records retention schedule. If you cannot find it, ask the records owner or legal where it is written. For each record type below, note the rule, where it is written, who owns it, and how a legal hold is applied. Also name where the backup copy of these records is kept and who can restore it. Do not choose a period yourself. [[XW-020]]
+1. Before drafting, find the company's records retention schedule. If you can't find it, ask the records owner or legal where it's written. For each record type below, note the rule, where it's written, who owns it, and how a legal hold is applied. Also name where the backup copy of these records is kept and who can restore it. Do not choose a period yourself. [[XW-020]]
    - Proofs of entitlement, with the contracts and terms that grant them.
    - Orders and invoices.
    - Audit correspondence and records gathered for an audit.
@@ -91,4 +91,4 @@ License reassignment
 - `acquisition-gate-checklist.md` and `retirement-signoff-checklist.md`, which carry the policies into daily work.
 - The `hardware-lifecycle` and `ai-intake` methods, which hold retirement and AI use rules.
 
-Source: ISO/IEC 19770-1:2017 clauses 5.2, 7.3, 7.4 and 7.6.5, and the shared crosswalk. Paraphrased; this is not a substitute for the standard.
+Source: ISO/IEC 19770-1:2017 clauses 5.2, 7.3, 7.4 and 7.6.5, and the shared crosswalk. Paraphrased; this isn't a substitute for the standard.

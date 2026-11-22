@@ -2,7 +2,7 @@
 
 A plan for what the ITAM program needs in people, data, training, and tools, and for showing that the people doing the work are competent. Complete one copy a year, when you set the budget, and review it when scope changes.
 
-Clause references are to ISO/IEC 19770-1:2017 (paraphrased) and to the shared crosswalk (`XW-` rows). The standard's requirements on resources, competence, and awareness sit in clauses 7.1, 7.2, and 7.3. This plan sets no price and no head count; use your own figures, and write Not found where you do not have one.
+Clause references are to ISO/IEC 19770-1:2017 (paraphrased) and to the shared crosswalk (`XW-` rows). The standard's requirements on resources, competence, and awareness sit in clauses 7.1, 7.2, and 7.3. This plan sets no price and no head count; use your own figures, and write Not found where you don't have one.
 
 **Owner:** ______________________  **Sponsor:** ______________________  **Date:** ___________
 
@@ -31,7 +31,7 @@ Fill in the table from your own records. Do not copy a figure from elsewhere. Wh
 | Tools and record storage | | per year | | | | |
 | **Total** | | | | | | |
 
-Compare the total with the cost and risk you are managing: renewal spend from `renewal-calendar.csv`, open items in `risk-register.csv`, and any saving recorded in `savings-report.csv`. The sponsor decides whether the budget matches the risk. **Decision needed:** sponsor. [[XW-027]]
+Compare the total with the cost and risk you're managing: renewal spend from `renewal-calendar.csv`, open items in `risk-register.csv`, and any saving recorded in `savings-report.csv`. The sponsor decides whether the budget matches the risk. **Decision needed:** sponsor. [[XW-027]]
 
 ## Who needs what training
 
@@ -56,7 +56,7 @@ Keep two kinds of evidence of competence: a certificate, where the person holds 
 - A passed sample in `rolling-internal-check.md` for the records the person owns.
 - A backup who has done the task once with the primary watching, noted in `audit-response-roles.csv`.
 
-If there is no evidence for a person who needs it, plan the training, set a date, and record the gap in `documentation-gaps-log.csv` until it closes.
+If there's no evidence for a person who needs it, plan the training, set a date, and record the gap in `documentation-gaps-log.csv` until it closes.
 
 ## Keep the plan alive
 
@@ -71,4 +71,4 @@ If there is no evidence for a person who needs it, plan the training, set a date
 | --- | --- | --- | --- |
 | Resources and training plan approved, with the figures above | | | |
 
-Source: ISO/IEC 19770-1:2017 clauses 7.1, 7.2 and 7.3, and the shared crosswalk. Paraphrased; this is not a substitute for the standard.
+Source: ISO/IEC 19770-1:2017 clauses 7.1, 7.2 and 7.3, and the shared crosswalk. Paraphrased; this isn't a substitute for the standard.

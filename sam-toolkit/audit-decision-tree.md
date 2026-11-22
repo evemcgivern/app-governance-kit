@@ -9,7 +9,7 @@ The tree flags legal and contract points and leaves them with counsel and the co
 ## How to use it
 
 1. Start at [node 1](#node-1).
-2. Answer the question in plain terms. If you are not sure, take the answer that mentions not being sure.
+2. Answer the question in plain terms. If you're not sure, take the answer that mentions not being sure.
 3. Follow the link for your answer. Each answer names the next node by id, so the path survives a printout.
 4. At each node, check four things: who acts, which kit file to open, the label, and any flag.
 5. Keep a dated note of each node you passed and the answer you gave. In a live case, that note goes in the case file.
@@ -338,10 +338,10 @@ Once a notice is open, keep every record as it stands: proofs, contracts, discov
 
 ## Not in this tree
 
-Penalty amounts, legal conclusions, and how long records must be kept are for counsel and the records owner. The tree does not answer them.
+Penalty amounts, legal conclusions, and how long records must be kept are for counsel and the records owner. The tree doesn't answer them.
 
 ## Questions for counsel
 
 While this notice is open, should routine disposal under our retention schedule pause for records tied to the audit? If so, which records, and who tells the records owner? **Decision needed: counsel.**
 
-Source: ISO/IEC 19770-1:2017 clauses 5.3, 7.6.3, 8.4 and 8.7, and the shared crosswalk. Paraphrased; this is not a substitute for the standard.
+Source: ISO/IEC 19770-1:2017 clauses 5.3, 7.6.3, 8.4 and 8.7, and the shared crosswalk. Paraphrased; this isn't a substitute for the standard.
