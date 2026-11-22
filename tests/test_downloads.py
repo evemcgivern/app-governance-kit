@@ -283,10 +283,10 @@ class RealRepoTests(unittest.TestCase):
         self.assertEqual(len(r), 10)  # header + 9 tasks
         self.assertEqual(r[0][1:], ["CAMP", "CSAM", "CHAMP", "AIGP", "ITIL 4 Foundation", "IAM Certificate"])
 
-    def test_crosswalk_and_impact_copies_have_29_data_rows(self):
+    def test_crosswalk_and_impact_copies_have_30_data_rows(self):
         for name in ("crosswalk.csv", "lifecycle-impact.csv"):
             r = rows((self.out / "site" / "downloads" / name).read_text())
-            self.assertEqual(len(r) - 1, 29, name)
+            self.assertEqual(len(r) - 1, 30, name)
 
     def test_wheel_svg_is_well_formed_with_all_segments(self):
         text = (self.out / "site" / "downloads" / "lifecycle-wheel.svg").read_text()
@@ -329,8 +329,10 @@ if __name__ == "__main__":
 class SamToolkitTests(unittest.TestCase):
     TOOLKIT = ROOT / "sam-toolkit"
     CSV_HEADERS = {
-        "license-position.csv": ["app_id", "entitlements_owned", "in_use_count", "position", "status"],
-        "renewal-calendar.csv": ["license_id", "contract_end", "notice_days", "notice_deadline", "decision"],
+        "license-position.csv": ["asset_id", "entitlements_owned", "in_use_count", "position", "status"],
+        "renewal-calendar.csv": ["license_id", "asset_id", "contract_ref", "contract_end", "notice_days", "notice_deadline", "decision"],
+        "proof-of-purchase-check.csv": ["asset_id", "quantity_proven"],
+        "risk-register.csv": ["id", "risk", "likelihood", "impact", "owner", "treatment", "action", "due", "status", "review_date"],
         "asset-record.csv": ["asset_id", "owner", "authorized", "authorization_ref", "last_verified_on"],
         "authorization-log.csv": ["authorization_id", "authorized_by", "authorized_on", "reason", "executed_by"],
         "statement-of-applicability.csv": ["process", "always_included", "in_scope", "justification"],
@@ -361,8 +363,34 @@ class SamToolkitTests(unittest.TestCase):
         self.assertTrue(rows)
         for r in rows:
             pos = int(r["entitlements_owned"]) - int(r["in_use_count"])
-            self.assertEqual(int(r["position"]), pos, r["app_id"])
+            self.assertEqual(int(r["position"]), pos, r["asset_id"])
             self.assertEqual(r["status"], "shortfall" if pos < 0 else "surplus" if pos > 0 else "balanced")
+
+    def test_no_toolkit_csv_uses_app_id(self):
+        for f in sorted(self.TOOLKIT.rglob("*.csv")):
+            with open(f, encoding="utf-8", newline="") as fh:
+                self.assertNotIn("app_id", next(csv.reader(fh)), f.name)
+
+    def test_renewal_example_joins_to_contract_terms_example(self):
+        def rows(name, col):
+            with open(self.TOOLKIT / "examples" / name, encoding="utf-8", newline="") as f:
+                return list(csv.DictReader(f)), col
+        renewals, _ = rows("renewal-calendar-example.csv", "contract_ref")
+        terms, _ = rows("contract-terms-check-example.csv", "contract_id")
+        ids = {r["contract_id"]: r["renewal_notice_deadline"] for r in terms}
+        self.assertTrue(renewals)
+        for r in renewals:
+            self.assertIn(r["contract_ref"], ids)
+            self.assertEqual(r["notice_deadline"], ids[r["contract_ref"]])
+
+    def test_risk_register_rows_use_the_scales(self):
+        with open(self.TOOLKIT / "risk-register.csv", encoding="utf-8", newline="") as f:
+            rows = list(csv.DictReader(f))
+        self.assertTrue(5 <= len(rows) <= 6)
+        for r in rows:
+            self.assertIn(r["likelihood"], {"low", "medium", "high"}, r["id"])
+            self.assertIn(r["impact"], {"low", "medium", "high"}, r["id"])
+            self.assertIn(r["treatment"], {"accept", "reduce", "transfer", "avoid"}, r["id"])
 
     def test_build_publishes_files_and_zip(self):
         root = make_repo(Path(tempfile.mkdtemp()))

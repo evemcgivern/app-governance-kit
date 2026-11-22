@@ -8,6 +8,7 @@ from html import escape
 from pathlib import Path
 
 from agk.docs import docx_bytes, parse_markdown
+from agk.workbook import workbook_bytes
 
 LINK_RE = re.compile(r"\[([^\]]+)\]\([^)]*\)")
 WHEEL_SVG_RE = re.compile(r'<svg class="lc-wheel".*?</svg>', re.S)
@@ -290,6 +291,12 @@ def write_sam_toolkit(root: Path, out: Path) -> list[str]:
         target.parent.mkdir(parents=True, exist_ok=True)
         shutil.copyfile(f, target)
     entries = [(f"sam-toolkit/{f.relative_to(src).as_posix()}", f.read_bytes()) for f in csvs]
+    dest.mkdir(parents=True, exist_ok=True)
+    for name, example in (("application-management-workbook.xlsx", False),
+                          ("application-management-workbook-example.xlsx", True)):
+        data = workbook_bytes(example)
+        (dest / name).write_bytes(data)
+        entries.append((f"sam-toolkit/{name}", data))
     for f in sorted(src.glob("*.md")):
         blocks = parse_markdown(f.read_text(encoding="utf-8"))
         entries.append((f"sam-toolkit/{f.stem}.docx", docx_bytes(blocks)))
@@ -326,6 +333,10 @@ def write_downloads(root: Path) -> list[str]:
         lifecycle_impact_csv_text = lifecycle_impact_csv_path.read_text(encoding="utf-8")
         (out / "lifecycle-impact.csv").write_text(lifecycle_impact_csv_text, encoding="utf-8")
         written.append("lifecycle-impact.csv")
+
+    iaitam_map_path = root / "methods" / "crosswalk" / "iaitam-map.csv"
+    if iaitam_map_path.is_file():
+        (out / "iaitam-map.csv").write_text(iaitam_map_path.read_text(encoding="utf-8"), encoding="utf-8")
 
     if crosswalk_csv_text is not None:
         (out / "crosswalk-print.html").write_text(crosswalk_print_html(crosswalk_csv_text), encoding="utf-8")
