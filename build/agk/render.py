@@ -46,7 +46,7 @@ def render_codex(m: Method, root: Path, crosswalk_csv: Path) -> None:
 def render_codex_agents(methods: list[Method], root: Path) -> None:
     lines = ["# app-governance-kit", "",
              "Governance skills. Each folder under `skills/` holds a SKILL.md and its reference files.", ""]
-    lines += [f"- `skills/{m.name}/SKILL.md` — {m.title}: {m.description}" for m in methods]
+    lines += [f"- `skills/{m.name}/SKILL.md`: {m.title}: {m.description}" for m in methods]
     root.mkdir(parents=True, exist_ok=True)
     (root / "AGENTS.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
 

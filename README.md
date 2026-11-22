@@ -2,20 +2,24 @@
 
 Version 0.5.0 <!-- x-release-please-version -->
 
-Nine governance methods — portfolio, AI, and access — packaged as skills for
+Nine governance methods (portfolio, AI, and access) packaged as skills for
 Claude, Codex, and Microsoft Copilot, plus a public reference site and a set
 of hands-on practicum exercises for learning the underlying certifications
 (CAMP, CSAM, CHAMP, AIGP) by hand before using the tools.
 
 Each method maps to real standards (ISO/IEC 19770, COBIT 2019, ISO/IEC 27001,
-ISO/IEC 42001) via a 29-row crosswalk, so every recommendation traces back to
+ISO/IEC 42001) via a 30-row crosswalk, so every recommendation traces back to
 a clause, not just a rule of thumb.
+
+## New to ITAM? Start here
+
+Read the [ITAM program playbook](sam-toolkit/itam-program-playbook.md). It is the one order to follow, in ten steps, with the file, the setup prompt, and a done-when check for each. New terms are in the [glossary](field-guide/glossary.md). Everything below is reference for the tools and files the playbook points to.
 
 ## The nine tools
 
 | Tool | Does |
 |---|---|
-| `program-setup` | Stand up or review a software/AI governance council — charter, decision rights, intake path. |
+| `program-setup` | Stand up or review a software/AI governance council: charter, decision rights, intake path. |
 | `itam-maturity` | Score IT asset management maturity across nine process areas, with evidence, not self-ratings. |
 | `crosswalk` | Map a control or policy statement to ISO/IEC 19770, COBIT 2019, ISO/IEC 27001, and ISO/IEC 42001. |
 | `rationalization` | Recommend tolerate/invest/migrate/eliminate per application; find duplicates and license risk. |
@@ -31,7 +35,7 @@ one shared source under `methods/`.
 
 ## Install
 
-Pick your platform, then open its section. Downloads are on the [Tools page](https://evemcgivern.github.io/app-governance-kit/tools.html#install) (one ZIP per platform, or one per tool), or copy from `dist/` after a `git clone`.
+Pick your platform, then open its section. Downloads are on the [AI skills page](https://evemcgivern.github.io/app-governance-kit/tools.html#install) (one ZIP per platform, or one per tool), or copy from `dist/` after a `git clone`.
 
 | Platform | How | Format |
 |---|---|---|
@@ -89,7 +93,7 @@ Pick your platform, then open its section. Downloads are on the [Tools page](htt
 <summary><b>Claude app (claude.ai, Desktop chat, Cowork)</b></summary>
 
 1. Turn on **Code execution and file creation** in Settings, then Capabilities. On Enterprise, an owner first turns on code execution and skills in Organization settings, then Plugins & skills.
-2. Download one tool's Claude ZIP, such as `access-review-claude.zip`, from its card on the [Tools page](https://evemcgivern.github.io/app-governance-kit/tools.html). The app takes one skill per ZIP.
+2. Download one tool's Claude ZIP, such as `access-review-claude.zip`, from its card on the [AI skills page](https://evemcgivern.github.io/app-governance-kit/tools.html). The app takes one skill per ZIP.
 3. Go to **Customize**, then **Skills**. Click **+**, then **Create skill**, then **Upload a skill**, and choose the ZIP.
 4. In a chat, ask for the tool by name: "Use the access review skill on these files."
 
@@ -205,19 +209,19 @@ Create an agent in [Agent Builder](https://learn.microsoft.com/en-us/microsoft-3
 - **Read a method directly**: `methods/<tool>/method.md` for the full workflow, `checklist.md` for the a la carte version, `platform-guide.md` for where each field lives in ServiceNow/Flexera/etc.
 - **Let an agent pick the tool**: the `app-governance` skill routes a plain request ("review our software estate") to the right skill and hands every decision back to you. In Claude Code, `app-governance-agent` loads it for you.
 - **Practice for a certification**: ask the `cert-prep` study coach for scenario drills on the demo estate (CAMP, CSAM, CHAMP, AIGP, ITIL 4 Foundation, IAM Certificate). Practice only, not exam content.
-- **Run a SAM practice by hand**: the templates and checklists in `sam-toolkit/` (license position, proof of purchase, renewals, asset record, authorizations, scope, tiers, audit, vendors, contract terms, acquisition gate, invoice verification, savings report), with a guide in `sam-toolkit/guide.md`.
-- **Work an exercise by hand**: `practicum/01-program-setup.md` through `practicum/08-audit-response.md`, then self-check on the site's interactive practicum page — no installs, no AI shortcuts.
+- **Run a SAM practice by hand**: start with `sam-toolkit/itam-program-playbook.md`, then use the templates and checklists in `sam-toolkit/` as it names them (policy set, license position, proof of purchase, renewals, asset record, authorizations, scope, tiers, audit, vendors, contract terms, acquisition gate, invoice verification, savings report), with a guide in `sam-toolkit/guide.md`.
+- **Work an exercise by hand**: `practicum/01-program-setup.md` through `practicum/08-audit-response.md`, then self-check on the site's interactive practicum page. No installs, no AI shortcuts.
 - **Use it with an agent**: point Claude, Codex, or Copilot at the relevant `dist/<platform>/...` skill and a real dataset (or the demo one under `demo-estate/`).
 
 ## Repo layout
 
 ```
 methods/       One folder per tool: method.md, checklist.md, sop.md, template.csv, platform-guide.md, example/
-sam-toolkit/   Thirteen templates and checklists for a software asset management practice, downloadable from the site
+sam-toolkit/   Forty templates, checklists, and prompts for a software asset management practice, downloadable from the site; start with itam-program-playbook.md
 demo-estate/   A fictional company (Halden Logistics) with planted, findable problems, used by every practicum exercise
 practicum/     Eight hands-on exercises, worked by hand against demo-estate before checking the answer key
-field-guide/   Certifications, standards, glossary — the reference material behind the tools
-site/          The public site (built, not hand-maintained — see below)
+field-guide/   Certifications, standards, glossary: the reference material behind the tools
+site/          The public site (built, not hand-maintained; see below)
 dist/          Generated per-platform skill packages (do not hand-edit; regenerated by `make build`)
 build/         The Python build system that generates dist/ and site/ from the sources above
 tests/         Full test suite for the build system
@@ -237,6 +241,6 @@ Edit the sources under `methods/`, `demo-estate/`, `field-guide/`, and
 
 ## License
 
-MIT — see [LICENSE](LICENSE). Names of third-party frameworks and standards
+MIT. See [LICENSE](LICENSE). Names of third-party frameworks and standards
 (ISO, COBIT, NIST, IAITAM, IAPP, PeopleCert, IAM) are used for reference only;
 no affiliation with or endorsement by any of them.

@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Standard template | Eve McGivern</title>
+<meta name="description" content="A fill-in template for one software standard. A standard is a catalog, not a…">
+<meta name="author" content="Eve McGivern">
+<link rel="canonical" href="https://evemcgivern.github.io/app-governance-kit/docs/sam-toolkit/policy-standard-template.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Eve McGivern | Application Governance">
+<meta property="og:title" content="Standard template">
+<meta property="og:description" content="A fill-in template for one software standard. A standard is a catalog, not a…">
+<meta property="og:url" content="https://evemcgivern.github.io/app-governance-kit/docs/sam-toolkit/policy-standard-template.html">
+<meta property="og:image" content="https://evemcgivern.github.io/app-governance-kit/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Standard template">
+<meta name="twitter:description" content="A fill-in template for one software standard. A standard is a catalog, not a…">
+<meta name="twitter:image" content="https://evemcgivern.github.io/app-governance-kit/og-image.png">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Home",
+     "item": "https://evemcgivern.github.io/app-governance-kit/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "SAM toolkit",
+     "item": "https://evemcgivern.github.io/app-governance-kit/sam-toolkit.html"
+    },
+    {
+     "@type": "ListItem",
+     "position": 3,
+     "name": "Standard template",
+     "item": "https://evemcgivern.github.io/app-governance-kit/docs/sam-toolkit/policy-standard-template.html"
+    }
+   ]
+  },
+  {
+   "@type": "WebPage",
+   "name": "Standard template",
+   "description": "A fill-in template for one software standard. A standard is a catalog, not a\u2026",
+   "url": "https://evemcgivern.github.io/app-governance-kit/docs/sam-toolkit/policy-standard-template.html",
+   "isPartOf": {
+    "@type": "WebSite",
+    "url": "https://evemcgivern.github.io/app-governance-kit/"
+   },
+   "author": {
+    "@type": "Person",
+    "name": "Eve McGivern",
+    "url": "https://evemcgivern.github.io/"
+   },
+   "license": "https://opensource.org/licenses/MIT",
+   "isAccessibleForFree": true
+  }
+ ]
+}
+</script>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../apple-touch-icon.png">
+<link rel="stylesheet" href="../../style.css">
+<script src="../../nav.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="support-bar"><a class="coffee-link" href="https://buymeacoffee.com/a8w5iiqszp" rel="noopener"><svg class="coffee-icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M5 9h11v5a5 5 0 0 1-5 5h-1a5 5 0 0 1-5-5V9z" fill="#2f9e6e"/><path d="M16 10.5h1.2a2.4 2.4 0 0 1 0 4.8H16" fill="none" stroke="#2f9e6e" stroke-width="1.8" stroke-linecap="round"/><path d="M8.5 3.5c0 1.3 1 1.3 1 2.6M12 3.5c0 1.3 1 1.3 1 2.6" fill="none" stroke="#2f9e6e" stroke-width="1.6" stroke-linecap="round"/></svg><span>Buy me a coffee</span></a></div>
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="https://evemcgivern.github.io/">Eve McGivern</a>
+    <nav class="site-nav" aria-label="Main">
+      <ul>
+        <li><a href="../../tools.html" aria-describedby="tip-tools">AI skills</a><span class="nav-tip" role="tooltip" id="tip-tools">The nine governance methods, packaged as skills for Claude, Codex, and Copilot.</span></li>
+        <li><a href="../../sam-toolkit.html" aria-describedby="tip-sam-toolkit">SAM toolkit</a><span class="nav-tip" role="tooltip" id="tip-sam-toolkit">Templates and checklists for running software asset management by hand.</span></li>
+        <li><a href="../../practicum.html" aria-describedby="tip-practicum">Practicum</a><span class="nav-tip" role="tooltip" id="tip-practicum">Hands-on exercises on a fictional company, with answers you can check.</span></li>
+        <li><a href="../../lifecycle.html" aria-describedby="tip-lifecycle">Lifecycle</a><span class="nav-tip" role="tooltip" id="tip-lifecycle">Six stages from request to retirement, with the questions to ask at each.</span></li>
+        <li><a href="../../crosswalk.html" aria-describedby="tip-crosswalk">Crosswalk explorer</a><span class="nav-tip" role="tooltip" id="tip-crosswalk">See how each control maps to ISO/IEC 19770, COBIT, 27001, and 42001.</span></li>
+        <li><a href="../../impact-map.html" aria-describedby="tip-impact-map">Impact map</a><span class="nav-tip" role="tooltip" id="tip-impact-map">One grid showing every control theme against every lifecycle stage.</span></li>
+        <li><a href="../../field-guide.html" aria-describedby="tip-field-guide">Field guide</a><span class="nav-tip" role="tooltip" id="tip-field-guide">Plain-language guides to the standards, certifications, and key terms.</span></li>
+        <li><a href="../../case-studies.html" aria-describedby="tip-case-studies">Case studies</a><span class="nav-tip" role="tooltip" id="tip-case-studies">Worked examples of the kit in use, on a fictional company.</span></li>
+        <li><a href="../../about.html" aria-describedby="tip-about">About</a><span class="nav-tip" role="tooltip" id="tip-about">Who built the kit, and how to get in touch.</span></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<main id="main" class="doc-page">
+  <div class="doc-top">
+    <p class="doc-back"><a href="../../sam-toolkit.html">&larr; SAM toolkit</a></p>
+    <button type="button" class="print-icon" onclick="window.print()" aria-label="Print this page" title="Print"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="M7 9V3.5h10V9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M7 17H4.5A1.5 1.5 0 0 1 3 15.5v-5A1.5 1.5 0 0 1 4.5 9h15a1.5 1.5 0 0 1 1.5 1.5v5a1.5 1.5 0 0 1-1.5 1.5H17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><rect x="7" y="14" width="10" height="6.5" rx="0.8" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17.5" cy="12" r="0.9" fill="currentColor"/></svg></button>
+  </div>
+  <p class="meta doc-step">Used in playbook step 6 of 10: <a href="itam-program-playbook.html#step-6-the-policy-set">The policy set</a>. Previous step: <a href="itam-program-playbook.html#step-5-baseline-and-targets">Baseline and targets</a>. Next step: <a href="itam-program-playbook.html#step-7-build-one-inventory">Build one inventory</a>.</p>
+  <h1>Standard template</h1>
+  <div class="visual-actions doc-actions">
+    <button type="button" class="visual-actions__link" id="answers-doc" data-file="policy-standard-template-my-answers.doc">Download my answers (Word)</button>
+    <a class="visual-actions__link" href="policy-standard-template.docx">Download Word (.docx)</a>
+    <a class="visual-actions__link" href="policy-standard-template.xlsx">Download Excel (.xlsx)</a>
+    <button type="button" class="visual-actions__link doc-print" onclick="window.print()">Print or save as PDF</button>
+  </div>
+  <p class="meta doc-note">What you tick or type stays in this browser. The Word and Excel downloads are blank copies. To keep your answers, use Download my answers (Word), or print this page or save it as PDF.</p>
+
+  <script>
+document.addEventListener("DOMContentLoaded", function () {
+  "use strict";
+  // Keep what the reader types or ticks in this browser, so a reload does not lose it.
+  var key = "agk:" + location.pathname, fields = [].slice.call(document.querySelectorAll(
+    ".doc-body input[name], .doc-body textarea[name], .doc-body select[name]"));
+  if (!fields.length) { return; }
+  var saved = {};
+  try { saved = JSON.parse(localStorage.getItem(key) || "{}"); } catch (e) { saved = {}; }
+  fields.forEach(function (f) {
+    var v = saved[f.type === "radio" ? f.name : f.name];
+    if (f.type === "radio") { f.checked = v === f.value; }
+    else if (f.type === "checkbox") { f.checked = v === true; }
+    else if (typeof v === "string") { f.value = v; }
+  });
+  function save() {
+    var data = {};
+    fields.forEach(function (f) {
+      if (f.type === "radio") { if (f.checked) { data[f.name] = f.value; } }
+      else if (f.type === "checkbox") { if (f.checked) { data[f.name] = true; } }
+      else if (f.value) { data[f.name] = f.value; }
+    });
+    try { localStorage.setItem(key, JSON.stringify(data)); } catch (e) { /* storage unavailable */ }
+  }
+  document.addEventListener("change", save);
+  document.addEventListener("input", save);
+  document.dispatchEvent(new Event("change"));
+});
+  </script>
+  <script>
+document.addEventListener('DOMContentLoaded', function () {
+  'use strict';
+  var button = document.getElementById('answers-doc');
+  if (!button) { return; }
+  function fieldsOf(root) {
+    return [].slice.call(root.querySelectorAll('input[name], textarea[name], select[name]'));
+  }
+  function esc(t) { return String(t).replace(/&/g, '&amp;').replace(/</g, '&lt;'); }
+  // Builds a Word-readable copy of the page with the reader's answers written into it.
+  button.addEventListener('click', function () {
+    var body = document.querySelector('.doc-body');
+    var copy = body.cloneNode(true);
+    var live = fieldsOf(body), flat = fieldsOf(copy);
+    live.forEach(function (f, i) {
+      var c = flat[i], out = document.createElement('span');
+      if (f.type === 'radio') {
+        var label = c.closest('label');
+        if (f.checked) { out.textContent = '\u2612 ' + f.value; label.replaceWith(out); } else { label.remove(); }
+        return;
+      }
+      if (f.type === 'checkbox') {
+        out.textContent = f.checked ? '\u2612' : '\u2610';
+        (c.closest('label') || c).replaceWith(out);
+        return;
+      }
+      out.textContent = f.tagName === 'SELECT' ? ((f.options[f.selectedIndex] || {}).text || '') : f.value;
+      c.replaceWith(out);
+    });
+    copy.querySelectorAll('[hidden], script').forEach(function (n) { n.remove(); });
+    var tier = document.getElementById('tier-result');
+    var head = tier ? '<p><strong>Your assumed tier:</strong> ' + esc(tier.textContent) + '</p>' : '';
+    var style = 'body{font-family:Calibri,Arial,sans-serif}table{border-collapse:collapse}' +
+      'td,th{border:1px solid #777;padding:4px;vertical-align:top}';
+    var html = '<html><head><meta charset=utf-8><title>' + esc(document.title) + '</title><style>' + style +
+      '</style></head><body><h1>' + esc(document.querySelector('h1').textContent) + '</h1>' + head +
+      copy.innerHTML + '</body></html>';
+    var blob = new Blob(['\ufeff', html], {type: 'application/msword'});
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = button.getAttribute('data-file');
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(function () { URL.revokeObjectURL(a.href); }, 1000);
+  });
+});
+  </script>
+  <div class="doc-body prose prose-wide">
+<p>A fill-in template for one software standard. A standard is a catalog, not a policy: it lists what is approved for a role or device class, in what version and setup, and how to ask for something else. The policy says people must use it; the standard says what is on it. Replace each prompt in brackets with your own text. Every example is fictional and comes from Halden Logistics, the demo estate.</p>
+<p>Clause references are to ISO/IEC 19770-1:2017 (paraphrased) and to the shared crosswalk (<code>XW-</code> rows). Verify license terms against the contract; this template does not interpret them.</p>
+<h2 id="control-block">Control block</h2>
+<div class="table-scroll"><table class="checklist"><caption>Control block</caption><thead><tr><th scope="col">Field</th><th scope="col">Entry</th></tr></thead><tbody><tr><td>Standard ID</td><td class="long-text">[Your numbering scheme, for example ITAM-STD-001]</td></tr><tr><td>Title</td><td class="long-text">[Role or device class, for example Warehouse handheld devices]</td></tr><tr><td>Version</td><td class="long-text">[Version number and one line on what changed]</td></tr><tr><td>Owner</td><td class="long-text">[A selection committee, named by role] <a class="xw-tag" href="../../crosswalk.html">XW-004</a></td></tr><tr><td>Approver</td><td class="long-text">[Role with authority over the parent policy] <a class="xw-tag" href="../../crosswalk.html">XW-027</a></td></tr><tr><td>Effective date</td><td class="long-text">[Date]</td></tr><tr><td>Next review</td><td class="long-text">[Date, and the events that bring it forward] <a class="xw-tag" href="../../crosswalk.html">XW-025</a></td></tr></tbody></table></div>
+<h2 id="1-parent-policy">1. Parent policy</h2>
+<p>Name the policy this standard serves, and the section that requires people to follow it. <a class="xw-tag" href="../../crosswalk.html">XW-003</a></p>
+<div class="table-scroll"><table class="checklist"><caption>1. Parent policy</caption><thead><tr><th scope="col">Parent policy</th><th scope="col">Section</th><th scope="col">Version</th></tr></thead><tbody><tr><td class="long-text">[Software acquisition and exceptions policy]</td><td>[Section number]</td><td>[Version]</td></tr></tbody></table></div>
+<h2 id="2-scope">2. Scope</h2>
+<p>State the role or device class this standard covers. Include software delivered as a service, not only installed titles. <a class="xw-tag" href="../../crosswalk.html">XW-001</a></p>
+<div class="table-scroll"><table class="checklist"><caption>2. Scope</caption><thead><tr><th scope="col">Item</th><th scope="col">Entry</th></tr></thead><tbody><tr><td>Role or device class</td><td>[For example, dispatch coordinators]</td></tr><tr><td>Installed software included</td><td>[Yes or no]</td></tr><tr><td>Subscription and SaaS included</td><td>[Yes or no]</td></tr><tr><td>Out of scope</td><td>[What is left out, with the reason]</td></tr></tbody></table></div>
+<p>Example (fictional): Halden dispatch coordinators, on Halden-managed laptops, including the routing subscription they use in a browser.</p>
+<h2 id="3-the-standard">3. The standard</h2>
+<div class="table-scroll"><table class="checklist wide"><caption>3. The standard</caption><thead><tr><th scope="col">Title</th><th scope="col">Version or plan</th><th scope="col">Configuration</th><th scope="col">Approved vendor</th><th scope="col">Linked hardware</th><th scope="col">Owner</th></tr></thead><tbody><tr><td>[Product name]</td><td>[Approved versions]</td><td>[Required settings or image]</td><td>[Vendor]</td><td class="long-text">[Device model or class, if the software depends on it]</td><td>[Role]</td></tr></tbody></table></div>
+<p>Example (fictional): Northbeam ERP client, current supported release only, standard image, Northbeam, any Halden laptop model on the current list, ERP product owner.</p>
+<p>For each row, confirm the license metric, the number of licenses held, and where the proof of purchase is filed (<a href="license-position.html">License position template</a>, <a href="proof-of-purchase-check.html">Proof of purchase check template</a>). <a class="xw-tag" href="../../crosswalk.html">XW-006</a> <a class="xw-tag" href="../../crosswalk.html">XW-007</a></p>
+<h2 id="4-acceptance-and-rejection-criteria">4. Acceptance and rejection criteria</h2>
+<p>A title joins the catalog when it meets the criteria below, and each decision carries a reason code so patterns can be counted later. <a class="xw-tag" href="../../crosswalk.html">XW-009</a></p>
+<div class="table-scroll"><table class="checklist"><caption>4. Acceptance and rejection criteria</caption><thead><tr><th scope="col">Criterion</th><th scope="col">Accept when</th><th scope="col">Reject code</th><th scope="col">Reason in words</th></tr></thead><tbody><tr><td>Business need</td><td class="long-text">[A named need that no catalog title meets]</td><td>[R1]</td><td class="long-text">[No unmet need]</td></tr><tr><td>License fit</td><td class="long-text">[Metric and terms confirmed against the contract]</td><td>[R2]</td><td class="long-text">[License terms cannot be met or confirmed]</td></tr><tr><td>Security</td><td class="long-text">[The security requirements below are met]</td><td>[R3]</td><td class="long-text">[Fails a security requirement]</td></tr><tr><td>Support</td><td class="long-text">[Vendor supports the version in use]</td><td>[R4]</td><td class="long-text">[Out of support or near end of support]</td></tr><tr><td>Overlap</td><td class="long-text">[Does not duplicate a catalog title; see the <code>rationalization</code> method] <a class="xw-tag" href="../../crosswalk.html">XW-011</a></td><td>[R5]</td><td class="long-text">[Duplicates an existing title]</td></tr><tr><td>Data and AI</td><td class="long-text">[AI features and data handling cleared by the <code>ai-intake</code> method] <a class="xw-tag" href="../../crosswalk.html">XW-021</a> <a class="xw-tag" href="../../crosswalk.html">XW-028</a></td><td>[R6]</td><td class="long-text">[Not cleared for data or AI use]</td></tr></tbody></table></div>
+<p>Change the codes and wording to fit your organization. Record each decision, with its code, where the committee keeps its decisions.</p>
+<h2 id="5-security-requirements">5. Security requirements</h2>
+<p>List the requirements a standard title must meet, stated so each can be checked. <a class="xw-tag" href="../../crosswalk.html">XW-028</a></p>
+<div class="table-scroll"><table class="checklist"><caption>5. Security requirements</caption><thead><tr><th scope="col">Requirement</th><th scope="col">How it is checked</th><th scope="col">Owner</th></tr></thead><tbody><tr><td class="long-text">[Supported version that receives security fixes]</td><td>[Vendor support date on file]</td><td>[Role]</td></tr><tr><td class="long-text">[Sign-in through the organization&#x27;s identity system]</td><td>[Configuration review]</td><td>[Role]</td></tr><tr><td class="long-text">[Data handling matches the classification of the data it holds]</td><td>[Review at approval]</td><td>[Role]</td></tr></tbody></table></div>
+<h2 id="6-non-standard-path">6. Non-standard path</h2>
+<p>A request for something not on the catalog is allowed, not ignored. It follows the exception path in the parent policy: a written request with the reason and risk, an approver who is not the requester, escalation by cost and risk, an end date, and an entry in <a href="authorization-log.html">Authorization log template</a>. <a class="xw-tag" href="../../crosswalk.html">XW-009</a> <a class="xw-tag" href="../../crosswalk.html">XW-019</a></p>
+<div class="table-scroll"><table class="checklist"><caption>6. Non-standard path</caption><thead><tr><th scope="col">Question</th><th scope="col">Entry</th></tr></thead><tbody><tr><td class="long-text">Where the request is made</td><td class="long-text">[Form or queue]</td></tr><tr><td class="long-text">Who decides</td><td class="long-text">[Role, and the next role up for higher cost or risk]</td></tr><tr><td class="long-text">Longest time an exception runs before review</td><td class="long-text">[Your limit]</td></tr><tr><td class="long-text">What happens at the end</td><td class="long-text">[Add to the catalog, or stop and remove]</td></tr></tbody></table></div>
+<h2 id="7-rollout-approach">7. Rollout approach</h2>
+<p>Start with a small pilot group before everyone. Say who is in it, how long it runs, and what result moves it to full rollout. Plan for support, training, and rollback.</p>
+<div class="table-scroll"><table class="checklist"><caption>7. Rollout approach</caption><thead><tr><th scope="col">Step</th><th scope="col">Detail</th></tr></thead><tbody><tr><td>Pilot group</td><td>[Who, and how many]</td></tr><tr><td>Pilot length</td><td>[Dates]</td></tr><tr><td>Pass condition</td><td>[What you will check before going wider]</td></tr><tr><td>Full rollout</td><td>[Dates and method]</td></tr><tr><td>Rollback</td><td>[How a title is withdrawn if it fails]</td></tr></tbody></table></div>
+<h2 id="8-feedback-channel">8. Feedback channel</h2>
+<p>Say where users report problems, ask for changes, or propose a title, and who answers within what time. <a class="xw-tag" href="../../crosswalk.html">XW-025</a></p>
+<div class="table-scroll"><table class="checklist"><caption>8. Feedback channel</caption><thead><tr><th scope="col">Item</th><th scope="col">Entry</th></tr></thead><tbody><tr><td>Channel</td><td>[Mailbox, form, or queue]</td></tr><tr><td>Answered by</td><td>[Role]</td></tr><tr><td>Answered within</td><td>[Your target]</td></tr></tbody></table></div>
+<h2 id="9-review-date">9. Review date</h2>
+<p>Review at least yearly, and when a listed title reaches end of support, a vendor changes its license terms, or a security advisory names a listed title. <a class="xw-tag" href="../../crosswalk.html">XW-025</a></p>
+<div class="table-scroll"><table class="checklist"><caption>9. Review date</caption><thead><tr><th scope="col">Last reviewed</th><th scope="col">Next review</th><th scope="col">Reviewed by</th></tr></thead><tbody><tr><td>[Date]</td><td>[Date]</td><td>[Role]</td></tr></tbody></table></div>
+<h2 id="10-where-published">10. Where published</h2>
+<p>Publish the current version where staff and buyers look, and withdraw older versions so they cannot be found by mistake. <a class="xw-tag" href="../../crosswalk.html">XW-020</a> (7.6.5)</p>
+<div class="table-scroll"><table class="checklist"><caption>10. Where published</caption><thead><tr><th scope="col">Item</th><th scope="col">Entry</th></tr></thead><tbody><tr><td>Location</td><td>[Link]</td></tr><tr><td>Versions kept</td><td>[Where older versions are archived]</td></tr><tr><td>Told when it changes</td><td>[Who is notified, and how]</td></tr></tbody></table></div>
+<h2 id="decision">Decision</h2>
+<div class="table-scroll"><table class="checklist"><caption>Decision</caption><thead><tr><th scope="col">Decision</th><th scope="col">Owner</th><th scope="col">Approver</th><th scope="col">Date</th></tr></thead><tbody><tr><td>Approve this standard as written</td><td>[Owner role]</td><td>[Approver role]</td><td class="checklist-write"><input type="text" name="t12-approve-this-standard-as-written-date" aria-label="Date for Approve this standard as written"></td></tr></tbody></table></div>
+<p>Source: ISO/IEC 19770-1:2017 clause 7.6.5, and the shared crosswalk. Paraphrased; this is not a substitute for the standard.</p>
+  </div>
+  <div class="doc-bottom"><button type="button" class="print-icon" onclick="window.print()" aria-label="Print this page" title="Print"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="M7 9V3.5h10V9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M7 17H4.5A1.5 1.5 0 0 1 3 15.5v-5A1.5 1.5 0 0 1 4.5 9h15a1.5 1.5 0 0 1 1.5 1.5v5a1.5 1.5 0 0 1-1.5 1.5H17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><rect x="7" y="14" width="10" height="6.5" rx="0.8" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17.5" cy="12" r="0.9" fill="currentColor"/></svg></button></div>
+</main>
+<footer class="site-footer">
+  <p>Eve McGivern · <a href="https://evemcgivern.github.io/">evemcgivern.github.io</a></p>
+  <p>Questions? Comments? <a href="https://github.com/evemcgivern/app-governance-kit/issues" id="contact-email" data-r="moc.liamg|nrevigcmeve">email me</a>.</p>
+  <p><a href="https://buymeacoffee.com/a8w5iiqszp" rel="noopener">Buy me a coffee</a> if these tools help.</p>
+  <p class="site-version"><a href="https://github.com/evemcgivern/app-governance-kit/releases" rel="noopener" id="site-version">Version</a></p>
+</footer>
+<script>
+(function () {
+  "use strict";
+  var el = document.getElementById("contact-email");
+  if (!el || !el.getAttribute("data-r")) { return; }
+  function arm() {
+    el.href = "mailto:" + el.getAttribute("data-r").split("").reverse().join("").replace("|", "@");
+  }
+  ["pointerenter", "focus", "touchstart"].forEach(function (type) {
+    el.addEventListener(type, arm, { once: true, passive: true });
+  });
+})();
+</script>
+
+</body>
+</html>

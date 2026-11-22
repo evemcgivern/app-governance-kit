@@ -101,9 +101,9 @@ class BuildTests(unittest.TestCase):
                    "operate": "optimize", "optimize": "plan, retire", "retire": "plan"}
         stages_md = "# Lifecycle\n\n## How it works together\n\nThe stages form a loop.\n\n"
         for slug, _ in STAGES:
-            stages_md += (f"## {slug} — Stage\n\n- **What happens:** Work happens.\n"
+            stages_md += (f"## {slug}: Stage\n\n- **What happens:** Work happens.\n"
                           f"- **Gate to move on:** Owner approves.\n"
-                          f"- **Hands off to:** {handoff[slug]} — moves on.\n"
+                          f"- **Hands off to:** {handoff[slug]}: moves on.\n"
                           f"- **Who decides:** The council.\n\n"
                           f"### Rules that apply\n\n- {{#r-{slug}-1}} Do the thing. [[XW-001]]\n\n")
         (self.root / "lifecycle" / "stages.md").write_text(stages_md, encoding="utf-8")
@@ -146,9 +146,9 @@ class BuildTests(unittest.TestCase):
                    "operate": "optimize", "optimize": "plan, retire", "retire": "plan"}
         stages_md = "# Lifecycle\n\n## How it works together\n\nThe stages form a loop.\n\n"
         for slug, _ in STAGES:
-            stages_md += (f"## {slug} — Stage\n\n- **What happens:** Work happens.\n"
+            stages_md += (f"## {slug}: Stage\n\n- **What happens:** Work happens.\n"
                           f"- **Gate to move on:** Owner approves.\n"
-                          f"- **Hands off to:** {handoff[slug]} — moves on.\n"
+                          f"- **Hands off to:** {handoff[slug]}: moves on.\n"
                           f"- **Who decides:** The council.\n\n"
                           f"### Rules that apply\n\n- {{#r-{slug}-1}} Do the thing. [[XW-001]]\n\n")
         (self.root / "lifecycle" / "stages.md").write_text(stages_md, encoding="utf-8")

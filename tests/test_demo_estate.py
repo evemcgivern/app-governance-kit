@@ -76,6 +76,17 @@ class DemoEstateTests(unittest.TestCase):
         self.assertEqual(self.expected("charter_gap"), {"decision-rights", "sponsor", "membership-size"})
         self.assertGreater(members.count(",") + members.count(";") + 1, 9)
 
+    def test_policy_draft_has_planted_gaps(self):
+        text = (self.out / "policy-draft.md").read_text()
+        lower = text.lower()
+        self.assertEqual(self.expected("policy_gap"), {
+            "accountable-role", "scope", "defined-terms", "enforcement", "review-cycle", "unrealistic-requirement"})
+        self.assertTrue(350 <= len(text.split()) <= 500)
+        for word in ("owner", "accountable for", "annual", "disciplin", "definition", "means"):
+            self.assertNotIn(word, lower)
+        self.assertIn("where appropriate", lower)
+        self.assertIn("every moment", lower)
+
     def test_sixty_devices(self):
         self.assertEqual(len(rows(self.out / "devices.csv")), 60)
 

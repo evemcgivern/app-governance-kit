@@ -12,11 +12,11 @@ Applies to any software inventory export that can be saved as a CSV with a name 
 
 ## Roles
 
-- **IT or software asset manager** — runs the check, reads the report, and keeps the dated counts.
-- **Asset owner** — for each past-end-of-life or ends-soon item, chooses replace, upgrade, retire, or request risk acceptance.
-- **ITAM lead** — settles each item where the dates disagree.
-- **A named person** — checks each review-urgently item's version against the KEV entries and sets the priority.
-- **Budget holder** — takes the counts into an upgrade budget request.
+- **IT or software asset manager**: runs the check, reads the report, and keeps the dated counts.
+- **Asset owner**: for each past-end-of-life or ends-soon item, chooses replace, upgrade, retire, or request risk acceptance.
+- **ITAM lead**: settles each item where the dates disagree.
+- **A named person**: checks each review-urgently item's version against the KEV entries and sets the priority.
+- **Budget holder**: takes the counts into an upgrade budget request.
 
 ## Frequency
 

@@ -4,11 +4,11 @@
 
 The lifecycle is the spine every application travels, from a first request to retirement. The governance council owns the gate between each pair of stages, and delegates routine calls below its threshold. Each stage's questions and rules are handled by a specific kit tool. Every rule below names the crosswalk row it satisfies, so each decision traces back to a control. Review and optimize is where the loop branches: most applications feed back into Plan to be reinvested in or replaced, while the rest move forward into Retire, which closes the loop by freeing licenses, data, and budget for the next Plan.
 
-## plan — Plan and request
+## plan: Plan and request
 
 - **What happens:** A request is written up: the problem, the owner, and any AI risk.
 - **Gate to move on:** The council or its delegate approves the request and assigns an owner.
-- **Hands off to:** acquire — the approved request becomes the basis for a purchase.
+- **Hands off to:** acquire: the approved request becomes the basis for a purchase.
 - **Who decides:** The application owner drafts it; the council or its delegate approves it.
 
 ### Rules that apply
@@ -19,11 +19,11 @@ The lifecycle is the spine every application travels, from a first request to re
 - {#r-plan-gate} Every purchase request passes the acquisition gate before anything is bought: already owned, redeployable, or a duplicate of an application already owned (flagged and resolved before purchase). [[XW-009]] [[XW-011]]
 - {#r-plan-data} The data the application will hold, and its sensitivity, is recorded early. [[XW-028]]
 
-## acquire — Acquire
+## acquire: Acquire
 
 - **What happens:** The approved request becomes a purchase: license chosen, contract negotiated, supplier assessed.
 - **Gate to move on:** Contract signed with audit, renewal, and exit terms reviewed; entitlements recorded.
-- **Hands off to:** deploy — the entitlement record and contract travel with the application.
+- **Hands off to:** deploy: the entitlement record and contract travel with the application.
 - **Who decides:** Procurement with the application owner; the council above its cost threshold.
 
 ### Rules that apply
@@ -33,11 +33,11 @@ The lifecycle is the spine every application travels, from a first request to re
 - {#r-acquire-contract-terms} Contracts are checked for audit, renewal, and exit terms before signature. [[XW-013]]
 - {#r-acquire-ai-supplier} Any AI supplier and model provider is assessed before the purchase closes. [[XW-023]]
 
-## deploy — Deploy
+## deploy: Deploy
 
 - **What happens:** The application is installed, added to the inventory, and given access roles.
 - **Gate to move on:** The inventory record and access roles are complete before wider rollout.
-- **Hands off to:** operate — the live system and its access records carry forward.
+- **Hands off to:** operate: the live system and its access records carry forward.
 - **Who decides:** The application owner, with access approved through the named policy.
 
 ### Rules that apply
@@ -47,11 +47,11 @@ The lifecycle is the spine every application travels, from a first request to re
 - {#r-deploy-privileged} Privileged and administrative accounts are limited and named individually. [[XW-018]]
 - {#r-deploy-ai-register} An AI system's inventory record and risk entry are complete before go-live. [[XW-022]]
 
-## operate — Operate
+## operate: Operate
 
 - **What happens:** The application runs day to day: usage tracked, access kept current, records reconciled.
 - **Gate to move on:** Installs stay within entitlements and access reviews happen on schedule.
-- **Hands off to:** optimize — the running history and asset record get reviewed.
+- **Hands off to:** optimize: the running history and asset record get reviewed.
 - **Who decides:** The application owner, checked periodically by whoever runs access reviews.
 
 ### Rules that apply
@@ -63,11 +63,11 @@ The lifecycle is the spine every application travels, from a first request to re
 - {#r-operate-change} Changes are assessed for risk and approved before they are made. [[XW-029]]
 - {#r-operate-ai-change} A changed AI system's use is reassessed, not assumed unchanged. [[XW-021]]
 
-## optimize — Review and optimize
+## optimize: Review and optimize
 
 - **What happens:** The portfolio is reviewed to decide whether each application still earns its cost.
 - **Gate to move on:** The owner or council records a decision: keep, invest, migrate, or retire.
-- **Hands off to:** plan, retire — reinvest or replace starts a new request; otherwise retire begins.
+- **Hands off to:** plan, retire: reinvest or replace starts a new request; otherwise retire begins.
 - **Who decides:** The application owner recommends; the council decides above its threshold.
 
 ### Rules that apply
@@ -78,11 +78,11 @@ The lifecycle is the spine every application travels, from a first request to re
 - {#r-optimize-process-weak} The review checks where the organization's own asset process is weakest. [[XW-025]]
 - {#r-optimize-decision-log} The council's own decision log is checked for bottlenecks or rubber-stamping. [[XW-025]]
 
-## retire — Retire
+## retire: Retire
 
 - **What happens:** The application is decommissioned: data archived, migrated, or deleted; access and licenses unwound.
 - **Gate to move on:** Accounts removed, licenses reclaimed, and the inventory record closed with evidence.
-- **Hands off to:** plan — the freed licenses, data capacity, and budget go to the next request.
+- **Hands off to:** plan: the freed licenses, data capacity, and budget go to the next request.
 - **Who decides:** The application owner executes; the council confirms closure above its threshold.
 
 ### Rules that apply

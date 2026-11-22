@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rolling internal check | Eve McGivern</title>
+<meta name="description" content="A small, regular test of how your program really works, so an external audit…">
+<meta name="author" content="Eve McGivern">
+<link rel="canonical" href="https://evemcgivern.github.io/app-governance-kit/docs/sam-toolkit/rolling-internal-check.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Eve McGivern | Application Governance">
+<meta property="og:title" content="Rolling internal check">
+<meta property="og:description" content="A small, regular test of how your program really works, so an external audit…">
+<meta property="og:url" content="https://evemcgivern.github.io/app-governance-kit/docs/sam-toolkit/rolling-internal-check.html">
+<meta property="og:image" content="https://evemcgivern.github.io/app-governance-kit/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Rolling internal check">
+<meta name="twitter:description" content="A small, regular test of how your program really works, so an external audit…">
+<meta name="twitter:image" content="https://evemcgivern.github.io/app-governance-kit/og-image.png">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Home",
+     "item": "https://evemcgivern.github.io/app-governance-kit/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "SAM toolkit",
+     "item": "https://evemcgivern.github.io/app-governance-kit/sam-toolkit.html"
+    },
+    {
+     "@type": "ListItem",
+     "position": 3,
+     "name": "Rolling internal check",
+     "item": "https://evemcgivern.github.io/app-governance-kit/docs/sam-toolkit/rolling-internal-check.html"
+    }
+   ]
+  },
+  {
+   "@type": "WebPage",
+   "name": "Rolling internal check",
+   "description": "A small, regular test of how your program really works, so an external audit\u2026",
+   "url": "https://evemcgivern.github.io/app-governance-kit/docs/sam-toolkit/rolling-internal-check.html",
+   "isPartOf": {
+    "@type": "WebSite",
+    "url": "https://evemcgivern.github.io/app-governance-kit/"
+   },
+   "author": {
+    "@type": "Person",
+    "name": "Eve McGivern",
+    "url": "https://evemcgivern.github.io/"
+   },
+   "license": "https://opensource.org/licenses/MIT",
+   "isAccessibleForFree": true
+  }
+ ]
+}
+</script>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../apple-touch-icon.png">
+<link rel="stylesheet" href="../../style.css">
+<script src="../../nav.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="support-bar"><a class="coffee-link" href="https://buymeacoffee.com/a8w5iiqszp" rel="noopener"><svg class="coffee-icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M5 9h11v5a5 5 0 0 1-5 5h-1a5 5 0 0 1-5-5V9z" fill="#2f9e6e"/><path d="M16 10.5h1.2a2.4 2.4 0 0 1 0 4.8H16" fill="none" stroke="#2f9e6e" stroke-width="1.8" stroke-linecap="round"/><path d="M8.5 3.5c0 1.3 1 1.3 1 2.6M12 3.5c0 1.3 1 1.3 1 2.6" fill="none" stroke="#2f9e6e" stroke-width="1.6" stroke-linecap="round"/></svg><span>Buy me a coffee</span></a></div>
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="https://evemcgivern.github.io/">Eve McGivern</a>
+    <nav class="site-nav" aria-label="Main">
+      <ul>
+        <li><a href="../../tools.html" aria-describedby="tip-tools">AI skills</a><span class="nav-tip" role="tooltip" id="tip-tools">The nine governance methods, packaged as skills for Claude, Codex, and Copilot.</span></li>
+        <li><a href="../../sam-toolkit.html" aria-describedby="tip-sam-toolkit">SAM toolkit</a><span class="nav-tip" role="tooltip" id="tip-sam-toolkit">Templates and checklists for running software asset management by hand.</span></li>
+        <li><a href="../../practicum.html" aria-describedby="tip-practicum">Practicum</a><span class="nav-tip" role="tooltip" id="tip-practicum">Hands-on exercises on a fictional company, with answers you can check.</span></li>
+        <li><a href="../../lifecycle.html" aria-describedby="tip-lifecycle">Lifecycle</a><span class="nav-tip" role="tooltip" id="tip-lifecycle">Six stages from request to retirement, with the questions to ask at each.</span></li>
+        <li><a href="../../crosswalk.html" aria-describedby="tip-crosswalk">Crosswalk explorer</a><span class="nav-tip" role="tooltip" id="tip-crosswalk">See how each control maps to ISO/IEC 19770, COBIT, 27001, and 42001.</span></li>
+        <li><a href="../../impact-map.html" aria-describedby="tip-impact-map">Impact map</a><span class="nav-tip" role="tooltip" id="tip-impact-map">One grid showing every control theme against every lifecycle stage.</span></li>
+        <li><a href="../../field-guide.html" aria-describedby="tip-field-guide">Field guide</a><span class="nav-tip" role="tooltip" id="tip-field-guide">Plain-language guides to the standards, certifications, and key terms.</span></li>
+        <li><a href="../../case-studies.html" aria-describedby="tip-case-studies">Case studies</a><span class="nav-tip" role="tooltip" id="tip-case-studies">Worked examples of the kit in use, on a fictional company.</span></li>
+        <li><a href="../../about.html" aria-describedby="tip-about">About</a><span class="nav-tip" role="tooltip" id="tip-about">Who built the kit, and how to get in touch.</span></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<main id="main" class="doc-page">
+  <div class="doc-top">
+    <p class="doc-back"><a href="../../sam-toolkit.html">&larr; SAM toolkit</a></p>
+    <button type="button" class="print-icon" onclick="window.print()" aria-label="Print this page" title="Print"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="M7 9V3.5h10V9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M7 17H4.5A1.5 1.5 0 0 1 3 15.5v-5A1.5 1.5 0 0 1 4.5 9h15a1.5 1.5 0 0 1 1.5 1.5v5a1.5 1.5 0 0 1-1.5 1.5H17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><rect x="7" y="14" width="10" height="6.5" rx="0.8" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17.5" cy="12" r="0.9" fill="currentColor"/></svg></button>
+  </div>
+  <p class="meta doc-step">Used in playbook step 10 of 10: <a href="itam-program-playbook.html#step-10-measure-and-review">Measure and review</a>. Previous step: <a href="itam-program-playbook.html#step-9-put-controls-in-place">Put controls in place</a>.</p>
+  <h1>Rolling internal check</h1>
+  <div class="visual-actions doc-actions">
+    <button type="button" class="visual-actions__link" id="answers-doc" data-file="rolling-internal-check-my-answers.doc">Download my answers (Word)</button>
+    <a class="visual-actions__link" href="rolling-internal-check.docx">Download Word (.docx)</a>
+    <a class="visual-actions__link" href="rolling-internal-check.xlsx">Download Excel (.xlsx)</a>
+    <button type="button" class="visual-actions__link doc-print" onclick="window.print()">Print or save as PDF</button>
+  </div>
+  <p class="meta doc-note">What you tick or type stays in this browser. The Word and Excel downloads are blank copies. To keep your answers, use Download my answers (Word), or print this page or save it as PDF.</p>
+
+  <script>
+document.addEventListener("DOMContentLoaded", function () {
+  "use strict";
+  // Keep what the reader types or ticks in this browser, so a reload does not lose it.
+  var key = "agk:" + location.pathname, fields = [].slice.call(document.querySelectorAll(
+    ".doc-body input[name], .doc-body textarea[name], .doc-body select[name]"));
+  if (!fields.length) { return; }
+  var saved = {};
+  try { saved = JSON.parse(localStorage.getItem(key) || "{}"); } catch (e) { saved = {}; }
+  fields.forEach(function (f) {
+    var v = saved[f.type === "radio" ? f.name : f.name];
+    if (f.type === "radio") { f.checked = v === f.value; }
+    else if (f.type === "checkbox") { f.checked = v === true; }
+    else if (typeof v === "string") { f.value = v; }
+  });
+  function save() {
+    var data = {};
+    fields.forEach(function (f) {
+      if (f.type === "radio") { if (f.checked) { data[f.name] = f.value; } }
+      else if (f.type === "checkbox") { if (f.checked) { data[f.name] = true; } }
+      else if (f.value) { data[f.name] = f.value; }
+    });
+    try { localStorage.setItem(key, JSON.stringify(data)); } catch (e) { /* storage unavailable */ }
+  }
+  document.addEventListener("change", save);
+  document.addEventListener("input", save);
+  document.dispatchEvent(new Event("change"));
+});
+  </script>
+  <script>
+document.addEventListener('DOMContentLoaded', function () {
+  'use strict';
+  var button = document.getElementById('answers-doc');
+  if (!button) { return; }
+  function fieldsOf(root) {
+    return [].slice.call(root.querySelectorAll('input[name], textarea[name], select[name]'));
+  }
+  function esc(t) { return String(t).replace(/&/g, '&amp;').replace(/</g, '&lt;'); }
+  // Builds a Word-readable copy of the page with the reader's answers written into it.
+  button.addEventListener('click', function () {
+    var body = document.querySelector('.doc-body');
+    var copy = body.cloneNode(true);
+    var live = fieldsOf(body), flat = fieldsOf(copy);
+    live.forEach(function (f, i) {
+      var c = flat[i], out = document.createElement('span');
+      if (f.type === 'radio') {
+        var label = c.closest('label');
+        if (f.checked) { out.textContent = '\u2612 ' + f.value; label.replaceWith(out); } else { label.remove(); }
+        return;
+      }
+      if (f.type === 'checkbox') {
+        out.textContent = f.checked ? '\u2612' : '\u2610';
+        (c.closest('label') || c).replaceWith(out);
+        return;
+      }
+      out.textContent = f.tagName === 'SELECT' ? ((f.options[f.selectedIndex] || {}).text || '') : f.value;
+      c.replaceWith(out);
+    });
+    copy.querySelectorAll('[hidden], script').forEach(function (n) { n.remove(); });
+    var tier = document.getElementById('tier-result');
+    var head = tier ? '<p><strong>Your assumed tier:</strong> ' + esc(tier.textContent) + '</p>' : '';
+    var style = 'body{font-family:Calibri,Arial,sans-serif}table{border-collapse:collapse}' +
+      'td,th{border:1px solid #777;padding:4px;vertical-align:top}';
+    var html = '<html><head><meta charset=utf-8><title>' + esc(document.title) + '</title><style>' + style +
+      '</style></head><body><h1>' + esc(document.querySelector('h1').textContent) + '</h1>' + head +
+      copy.innerHTML + '</body></html>';
+    var blob = new Blob(['\ufeff', html], {type: 'application/msword'});
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = button.getAttribute('data-file');
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(function () { URL.revokeObjectURL(a.href); }, 1000);
+  });
+});
+  </script>
+  <div class="doc-body prose prose-wide">
+<p>A small, regular test of how your program really works, so an external audit holds no surprises. Instead of one large audit a year, test two or three areas each quarter, fix what you find, and test again. The yearly internal audit and management review in <a href="audit-and-review-checklist.html">Internal audit and management review checklist</a> then becomes a summary of work already done.</p>
+<p>It is a check on the program, not on people. Findings are for fixing. Clause references are to the shared crosswalk (<code>XW-</code> rows).</p>
+<h2 id="the-five-steps">The five steps</h2>
+<ol><li>Choose this quarter&#x27;s areas. Pick two or three from the table below. Start with the one you worry about most. <a class="xw-tag" href="../../crosswalk.html">XW-025</a></li><li>Take a sample. Pull the records the test needs, not the ones you already know are good. Write the sample size down.</li><li>Test each record against the rule. A record either passes or fails. Do not average.</li><li>Log every failure in <a href="internal-check-log.html">Internal check log template</a>, with a severity, an owner, and a date. <a class="xw-tag" href="../../crosswalk.html">XW-020</a></li><li>Fix, then test again next quarter. A finding is closed only when a retest passes.</li></ol>
+<h2 id="areas-to-test-and-how">Areas to test, and how</h2>
+<p>The sample sizes are suggestions. Use a larger sample for a risky area.</p>
+<div class="table-scroll"><table class="checklist"><caption>Areas to test, and how</caption><thead><tr><th scope="col">Area</th><th scope="col">Simple test</th><th scope="col">Suggested sample</th><th scope="col">Passes when</th></tr></thead><tbody><tr><td>Ownership</td><td class="long-text">Is the named owner an active employee who knows they own it?</td><td>20 applications</td><td class="long-text">Every sampled application has a valid owner</td></tr><tr><td>Inventory accuracy</td><td class="long-text">Do sampled discovered items appear in the record, and sampled records appear in discovery?</td><td>20 each way</td><td class="long-text">Every sampled item matches</td></tr><tr><td>Renewals</td><td class="long-text">Does each renewal in the next 180 days have an owner and a decision date?</td><td>All of them</td><td class="long-text">None is missing either</td></tr><tr><td>Proof</td><td class="long-text">Can you show proof for each product of your three largest publishers, in the contract&#x27;s metric?</td><td>3 publishers</td><td class="long-text">Every product has proof, or a logged gap</td></tr><tr><td>Retirement</td><td class="long-text">Does each recently retired asset have a wipe or destruction record and a closed license?</td><td>Last 10 retirements</td><td class="long-text">Every one is complete</td></tr><tr><td>Intake gate</td><td class="long-text">Did each recent purchase pass the gate before it was paid?</td><td>Last 20 purchases</td><td class="long-text">Every one has a gate result on file</td></tr><tr><td>Leavers</td><td class="long-text">Were licenses and access reclaimed for recent leavers?</td><td>Last 10 leavers</td><td class="long-text">Every one is reclaimed</td></tr></tbody></table></div>
+<h2 id="a-four-quarter-rotation">A four-quarter rotation</h2>
+<p>A simple plan so every area is tested at least once a year. Change it to fit your risks.</p>
+<div class="table-scroll"><table class="checklist"><caption>A four-quarter rotation</caption><thead><tr><th scope="col">Quarter</th><th scope="col">Areas</th></tr></thead><tbody><tr><td>First</td><td class="long-text">Retirement, renewals</td></tr><tr><td>Second</td><td class="long-text">Proof, intake gate</td></tr><tr><td>Third</td><td class="long-text">Ownership, leavers</td></tr><tr><td>Fourth</td><td class="long-text">Inventory accuracy, plus the areas that failed earlier</td></tr></tbody></table></div>
+<h2 id="keep-it-useful">Keep it useful</h2>
+<ul><li>Test what you can fix. A finding nobody can act on only adds noise.</li><li>Report the trend, not only the count. Fewer repeat findings is the sign of a healthy program.</li><li>Share the log with your sponsor each quarter. Use it in the leadership report.</li><li>Before an external audit, run the same tests on the products the publisher named.</li></ul>
+<h2 id="decision">Decision</h2>
+<div class="table-scroll"><table class="checklist"><caption>Decision</caption><thead><tr><th scope="col">Decision</th><th scope="col">Owner</th><th scope="col">Approver</th><th scope="col">Date</th></tr></thead><tbody><tr><td class="long-text">This quarter&#x27;s areas and sample sizes agreed</td><td class="checklist-write"><input type="text" name="t3-this-quarter-s-areas-and-sample-sizes-agreed-owner" aria-label="Owner for This quarter&#x27;s areas and sample sizes agreed"></td><td class="checklist-write"><input type="text" name="t3-this-quarter-s-areas-and-sample-sizes-agreed-approver" aria-label="Approver for This quarter&#x27;s areas and sample sizes agreed"></td><td class="checklist-write"><input type="text" name="t3-this-quarter-s-areas-and-sample-sizes-agreed-date" aria-label="Date for This quarter&#x27;s areas and sample sizes agreed"></td></tr></tbody></table></div>
+  </div>
+  <div class="doc-bottom"><button type="button" class="print-icon" onclick="window.print()" aria-label="Print this page" title="Print"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="M7 9V3.5h10V9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M7 17H4.5A1.5 1.5 0 0 1 3 15.5v-5A1.5 1.5 0 0 1 4.5 9h15a1.5 1.5 0 0 1 1.5 1.5v5a1.5 1.5 0 0 1-1.5 1.5H17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><rect x="7" y="14" width="10" height="6.5" rx="0.8" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17.5" cy="12" r="0.9" fill="currentColor"/></svg></button></div>
+</main>
+<footer class="site-footer">
+  <p>Eve McGivern · <a href="https://evemcgivern.github.io/">evemcgivern.github.io</a></p>
+  <p>Questions? Comments? <a href="https://github.com/evemcgivern/app-governance-kit/issues" id="contact-email" data-r="moc.liamg|nrevigcmeve">email me</a>.</p>
+  <p><a href="https://buymeacoffee.com/a8w5iiqszp" rel="noopener">Buy me a coffee</a> if these tools help.</p>
+  <p class="site-version"><a href="https://github.com/evemcgivern/app-governance-kit/releases" rel="noopener" id="site-version">Version</a></p>
+</footer>
+<script>
+(function () {
+  "use strict";
+  var el = document.getElementById("contact-email");
+  if (!el || !el.getAttribute("data-r")) { return; }
+  function arm() {
+    el.href = "mailto:" + el.getAttribute("data-r").split("").reverse().join("").replace("|", "@");
+  }
+  ["pointerenter", "focus", "touchstart"].forEach(function (type) {
+    el.addEventListener(type, arm, { once: true, passive: true });
+  });
+})();
+</script>
+
+</body>
+</html>

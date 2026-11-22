@@ -6,15 +6,15 @@ Give every AI system a documented risk tier and a recorded set of controls befor
 
 ## Scope
 
-Applies to any AI system a team proposes to introduce, build, buy, or extend to a new use — including a new use of a system already on the inventory.
+Applies to any AI system a team proposes to introduce, build, buy, or extend to a new use, including a new use of a system already on the inventory.
 
 ## Roles
 
-- **Requesting team** — describes the use case, the data it uses, and whether a person reviews each output.
-- **AI governance lead** — runs the intake, assigns the tier, and maintains the AI inventory.
-- **Legal** — reviews any prohibited-practice concern and any high-risk tiering before approval.
-- **Security** — reviews the supplier and data-handling controls for the system.
-- **Data protection** — confirms personal-data use and provenance, and any data-subject impact.
+- **Requesting team**: describes the use case, the data it uses, and whether a person reviews each output.
+- **AI governance lead**: runs the intake, assigns the tier, and maintains the AI inventory.
+- **Legal**: reviews any prohibited-practice concern and any high-risk tiering before approval.
+- **Security**: reviews the supplier and data-handling controls for the system.
+- **Data protection**: confirms personal-data use and provenance, and any data-subject impact.
 
 ## Frequency
 
@@ -36,6 +36,7 @@ Every new system at proposal; every material change of use; a full re-review eve
 12. Confirm any AI tool subscription or purchase came through the acquisition gate (`sam-toolkit/acquisition-gate-checklist.md`), and send it to intake if it did not [[XW-009]] [[XW-021]]
 13. Check spend outside procurement, such as expense cards and department purchases, for AI-enabled tools, and run intake on each one found [[XW-012]] [[XW-022]]
 14. Keep an approved-AI-tools register of tools that passed intake, so staff can check it before buying [[XW-022]]
+15. For a generative AI tool, check the use against the twelve risks the NIST Generative AI Profile (NIST AI 600-1) names: confabulation, data privacy, information security, intellectual property, value chain and component integration, human-AI configuration, information integrity, harmful bias, and the rest. Record each one that applies in the risk register with an owner [[XW-024]]
 
 ## Evidence to retain
 
@@ -50,8 +51,8 @@ Every new system at proposal; every material change of use; a full re-review eve
 
 ## Related
 
-- [Governance framework crosswalk](../crosswalk/) (`crosswalk`) — supplies the framework rows this intake's controls and tier map to.
-- [ITAM maturity check](../itam-maturity/) (`itam-maturity`) — its inventory and lifecycle questions extend to AI systems entering the estate through this intake.
-- [Application rationalization](../rationalization/) (`rationalization`) — takes over an AI system once it's on the inventory, to decide whether it's still worth keeping.
-- [Access review pack](../access-review/) (`access-review`) — reviews who can use or administer an AI system once this intake has approved it.
-- [Stand up a governance program](../program-setup/) (`program-setup`) — stands up the sponsor and AI governance lead role this intake reports its decisions to.
+- [Governance framework crosswalk](../crosswalk/) (`crosswalk`): supplies the framework rows this intake's controls and tier map to.
+- [ITAM maturity check](../itam-maturity/) (`itam-maturity`): its inventory and lifecycle questions extend to AI systems entering the estate through this intake.
+- [Application rationalization](../rationalization/) (`rationalization`): takes over an AI system once it's on the inventory, to decide whether it's still worth keeping.
+- [Access review pack](../access-review/) (`access-review`): reviews who can use or administer an AI system once this intake has approved it.
+- [Stand up a governance program](../program-setup/) (`program-setup`): stands up the sponsor and AI governance lead role this intake reports its decisions to.

@@ -21,7 +21,9 @@ You are a study coach. You run short scenario drills from this kit's own demo es
 | Cert | Task | Attach | Practicum |
 |---|---|---|---|
 | CAMP | Stand up program governance and a council | `council-draft.md` | 01 |
+| CAMP, IAM Certificate | Assign real roles, not people, to a small council | `council-draft.md` | 01 |
 | CAMP | Baseline process maturity with evidence | `maturity-answers.csv` | 02 |
+| CAMP | Challenge a self-reported maturity score that has no evidence | `maturity-answers.csv` | 02 |
 | CAMP, IAM Certificate | Assign real ownership across the inventory | `apps.csv` | 04 |
 | CSAM | Establish a license position before an audit | `licenses.csv`, `apps.csv` | 04 |
 | CSAM | Find duplicate or underused applications | `apps.csv` | 04 |
@@ -33,9 +35,11 @@ You are a study coach. You run short scenario drills from this kit's own demo es
 | ITIL 4 Foundation | Feed the inventory into configuration management | `apps.csv` | 02 |
 | ITIL 4 Foundation | Manage suppliers and renewals | `licenses.csv` | 04 |
 | IAM Certificate | Treat the portfolio as a managed asset base | `apps.csv` | 04 |
-| IAM Certificate | Set a policy with real scope | `council-draft.md` | 01 |
+| IAM Certificate | Review a draft policy for scope, accountable role, defined terms, enforcement, and review cycle | `policy-draft.md` | 01 |
 
-Good looks like: a named owner and a stated reason for every decision; entitlements compared with actual use, not just user counts; wipe or destruction evidence before disposal closes; a risk tier tied to what the system decides and who it affects.
+For the drill on a score with no evidence, the file has no evidence column. The learner says what evidence they would ask for and which score it would support.
+
+Good looks like: accountability set by role, each role with a current named holder, and a stated reason for every decision; entitlements compared with actual use, not just user counts; wipe or destruction evidence before disposal closes; a risk tier tied to what the system decides and who it affects.
 
 ## Output
 

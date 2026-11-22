@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Risk assessment guide | Eve McGivern</title>
+<meta name="description" content="A short method for finding, rating, treating, and recording ITAM risks, so that each…">
+<meta name="author" content="Eve McGivern">
+<link rel="canonical" href="https://evemcgivern.github.io/app-governance-kit/docs/sam-toolkit/risk-assessment-guide.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Eve McGivern | Application Governance">
+<meta property="og:title" content="Risk assessment guide">
+<meta property="og:description" content="A short method for finding, rating, treating, and recording ITAM risks, so that each…">
+<meta property="og:url" content="https://evemcgivern.github.io/app-governance-kit/docs/sam-toolkit/risk-assessment-guide.html">
+<meta property="og:image" content="https://evemcgivern.github.io/app-governance-kit/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Risk assessment guide">
+<meta name="twitter:description" content="A short method for finding, rating, treating, and recording ITAM risks, so that each…">
+<meta name="twitter:image" content="https://evemcgivern.github.io/app-governance-kit/og-image.png">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Home",
+     "item": "https://evemcgivern.github.io/app-governance-kit/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "SAM toolkit",
+     "item": "https://evemcgivern.github.io/app-governance-kit/sam-toolkit.html"
+    },
+    {
+     "@type": "ListItem",
+     "position": 3,
+     "name": "Risk assessment guide",
+     "item": "https://evemcgivern.github.io/app-governance-kit/docs/sam-toolkit/risk-assessment-guide.html"
+    }
+   ]
+  },
+  {
+   "@type": "WebPage",
+   "name": "Risk assessment guide",
+   "description": "A short method for finding, rating, treating, and recording ITAM risks, so that each\u2026",
+   "url": "https://evemcgivern.github.io/app-governance-kit/docs/sam-toolkit/risk-assessment-guide.html",
+   "isPartOf": {
+    "@type": "WebSite",
+    "url": "https://evemcgivern.github.io/app-governance-kit/"
+   },
+   "author": {
+    "@type": "Person",
+    "name": "Eve McGivern",
+    "url": "https://evemcgivern.github.io/"
+   },
+   "license": "https://opensource.org/licenses/MIT",
+   "isAccessibleForFree": true
+  }
+ ]
+}
+</script>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../apple-touch-icon.png">
+<link rel="stylesheet" href="../../style.css">
+<script src="../../nav.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="support-bar"><a class="coffee-link" href="https://buymeacoffee.com/a8w5iiqszp" rel="noopener"><svg class="coffee-icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M5 9h11v5a5 5 0 0 1-5 5h-1a5 5 0 0 1-5-5V9z" fill="#2f9e6e"/><path d="M16 10.5h1.2a2.4 2.4 0 0 1 0 4.8H16" fill="none" stroke="#2f9e6e" stroke-width="1.8" stroke-linecap="round"/><path d="M8.5 3.5c0 1.3 1 1.3 1 2.6M12 3.5c0 1.3 1 1.3 1 2.6" fill="none" stroke="#2f9e6e" stroke-width="1.6" stroke-linecap="round"/></svg><span>Buy me a coffee</span></a></div>
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="https://evemcgivern.github.io/">Eve McGivern</a>
+    <nav class="site-nav" aria-label="Main">
+      <ul>
+        <li><a href="../../tools.html" aria-describedby="tip-tools">AI skills</a><span class="nav-tip" role="tooltip" id="tip-tools">The nine governance methods, packaged as skills for Claude, Codex, and Copilot.</span></li>
+        <li><a href="../../sam-toolkit.html" aria-describedby="tip-sam-toolkit">SAM toolkit</a><span class="nav-tip" role="tooltip" id="tip-sam-toolkit">Templates and checklists for running software asset management by hand.</span></li>
+        <li><a href="../../practicum.html" aria-describedby="tip-practicum">Practicum</a><span class="nav-tip" role="tooltip" id="tip-practicum">Hands-on exercises on a fictional company, with answers you can check.</span></li>
+        <li><a href="../../lifecycle.html" aria-describedby="tip-lifecycle">Lifecycle</a><span class="nav-tip" role="tooltip" id="tip-lifecycle">Six stages from request to retirement, with the questions to ask at each.</span></li>
+        <li><a href="../../crosswalk.html" aria-describedby="tip-crosswalk">Crosswalk explorer</a><span class="nav-tip" role="tooltip" id="tip-crosswalk">See how each control maps to ISO/IEC 19770, COBIT, 27001, and 42001.</span></li>
+        <li><a href="../../impact-map.html" aria-describedby="tip-impact-map">Impact map</a><span class="nav-tip" role="tooltip" id="tip-impact-map">One grid showing every control theme against every lifecycle stage.</span></li>
+        <li><a href="../../field-guide.html" aria-describedby="tip-field-guide">Field guide</a><span class="nav-tip" role="tooltip" id="tip-field-guide">Plain-language guides to the standards, certifications, and key terms.</span></li>
+        <li><a href="../../case-studies.html" aria-describedby="tip-case-studies">Case studies</a><span class="nav-tip" role="tooltip" id="tip-case-studies">Worked examples of the kit in use, on a fictional company.</span></li>
+        <li><a href="../../about.html" aria-describedby="tip-about">About</a><span class="nav-tip" role="tooltip" id="tip-about">Who built the kit, and how to get in touch.</span></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<main id="main" class="doc-page">
+  <div class="doc-top">
+    <p class="doc-back"><a href="../../sam-toolkit.html">&larr; SAM toolkit</a></p>
+    <button type="button" class="print-icon" onclick="window.print()" aria-label="Print this page" title="Print"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="M7 9V3.5h10V9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M7 17H4.5A1.5 1.5 0 0 1 3 15.5v-5A1.5 1.5 0 0 1 4.5 9h15a1.5 1.5 0 0 1 1.5 1.5v5a1.5 1.5 0 0 1-1.5 1.5H17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><rect x="7" y="14" width="10" height="6.5" rx="0.8" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17.5" cy="12" r="0.9" fill="currentColor"/></svg></button>
+  </div>
+  <p class="meta doc-step">Used in playbook step 4 of 10: <a href="itam-program-playbook.html#step-4-set-the-scope">Set the scope</a>. Previous step: <a href="itam-program-playbook.html#step-3-week-1-stop-the-bleeding">Week 1, stop the bleeding</a>. Next step: <a href="itam-program-playbook.html#step-5-baseline-and-targets">Baseline and targets</a>.</p>
+  <h1>Risk assessment guide</h1>
+  <div class="visual-actions doc-actions">
+    <button type="button" class="visual-actions__link" id="answers-doc" data-file="risk-assessment-guide-my-answers.doc">Download my answers (Word)</button>
+    <a class="visual-actions__link" href="risk-assessment-guide.docx">Download Word (.docx)</a>
+    <a class="visual-actions__link" href="risk-assessment-guide.xlsx">Download Excel (.xlsx)</a>
+    <button type="button" class="visual-actions__link doc-print" onclick="window.print()">Print or save as PDF</button>
+  </div>
+  <p class="meta doc-note">What you tick or type stays in this browser. The Word and Excel downloads are blank copies. To keep your answers, use Download my answers (Word), or print this page or save it as PDF.</p>
+
+  <script>
+document.addEventListener("DOMContentLoaded", function () {
+  "use strict";
+  // Keep what the reader types or ticks in this browser, so a reload does not lose it.
+  var key = "agk:" + location.pathname, fields = [].slice.call(document.querySelectorAll(
+    ".doc-body input[name], .doc-body textarea[name], .doc-body select[name]"));
+  if (!fields.length) { return; }
+  var saved = {};
+  try { saved = JSON.parse(localStorage.getItem(key) || "{}"); } catch (e) { saved = {}; }
+  fields.forEach(function (f) {
+    var v = saved[f.type === "radio" ? f.name : f.name];
+    if (f.type === "radio") { f.checked = v === f.value; }
+    else if (f.type === "checkbox") { f.checked = v === true; }
+    else if (typeof v === "string") { f.value = v; }
+  });
+  function save() {
+    var data = {};
+    fields.forEach(function (f) {
+      if (f.type === "radio") { if (f.checked) { data[f.name] = f.value; } }
+      else if (f.type === "checkbox") { if (f.checked) { data[f.name] = true; } }
+      else if (f.value) { data[f.name] = f.value; }
+    });
+    try { localStorage.setItem(key, JSON.stringify(data)); } catch (e) { /* storage unavailable */ }
+  }
+  document.addEventListener("change", save);
+  document.addEventListener("input", save);
+  document.dispatchEvent(new Event("change"));
+});
+  </script>
+  <script>
+document.addEventListener('DOMContentLoaded', function () {
+  'use strict';
+  var button = document.getElementById('answers-doc');
+  if (!button) { return; }
+  function fieldsOf(root) {
+    return [].slice.call(root.querySelectorAll('input[name], textarea[name], select[name]'));
+  }
+  function esc(t) { return String(t).replace(/&/g, '&amp;').replace(/</g, '&lt;'); }
+  // Builds a Word-readable copy of the page with the reader's answers written into it.
+  button.addEventListener('click', function () {
+    var body = document.querySelector('.doc-body');
+    var copy = body.cloneNode(true);
+    var live = fieldsOf(body), flat = fieldsOf(copy);
+    live.forEach(function (f, i) {
+      var c = flat[i], out = document.createElement('span');
+      if (f.type === 'radio') {
+        var label = c.closest('label');
+        if (f.checked) { out.textContent = '\u2612 ' + f.value; label.replaceWith(out); } else { label.remove(); }
+        return;
+      }
+      if (f.type === 'checkbox') {
+        out.textContent = f.checked ? '\u2612' : '\u2610';
+        (c.closest('label') || c).replaceWith(out);
+        return;
+      }
+      out.textContent = f.tagName === 'SELECT' ? ((f.options[f.selectedIndex] || {}).text || '') : f.value;
+      c.replaceWith(out);
+    });
+    copy.querySelectorAll('[hidden], script').forEach(function (n) { n.remove(); });
+    var tier = document.getElementById('tier-result');
+    var head = tier ? '<p><strong>Your assumed tier:</strong> ' + esc(tier.textContent) + '</p>' : '';
+    var style = 'body{font-family:Calibri,Arial,sans-serif}table{border-collapse:collapse}' +
+      'td,th{border:1px solid #777;padding:4px;vertical-align:top}';
+    var html = '<html><head><meta charset=utf-8><title>' + esc(document.title) + '</title><style>' + style +
+      '</style></head><body><h1>' + esc(document.querySelector('h1').textContent) + '</h1>' + head +
+      copy.innerHTML + '</body></html>';
+    var blob = new Blob(['\ufeff', html], {type: 'application/msword'});
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = button.getAttribute('data-file');
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(function () { URL.revokeObjectURL(a.href); }, 1000);
+  });
+});
+  </script>
+  <div class="doc-body prose prose-wide">
+<p>A short method for finding, rating, treating, and recording ITAM risks, so that each one has an owner and a decision. Use it once when you set the program&#x27;s scope and baseline (playbook steps 4 and 5), and again at each review. The record is <a href="risk-register.html">Risk register template</a>.</p>
+<p>Clause references are to ISO/IEC 19770-1:2017 (paraphrased) and to the shared crosswalk (<code>XW-</code> rows). The standard&#x27;s requirements on risk sit in clause 6.1. This guide does not give legal advice; where a risk turns on a contract term, have counsel review it.</p>
+<p><strong>Owner:</strong> ______________________  <strong>Date:</strong> ___________</p>
+<h2 id="the-five-steps">The five steps</h2>
+<h3 id="1-identify">1. Identify</h3>
+<p>List what could go wrong with an asset or a process in scope. Look at each source of trouble in turn. <a class="xw-tag" href="../../crosswalk.html">XW-024</a></p>
+<ul><li>Records: missing proof of purchase, out-of-date inventory, no named owner.</li><li>Contracts: renewals that pass unnoticed, terms nobody has read, transfer or reassignment limits.</li><li>People: leavers who keep access, knowledge held by one person.</li><li>Technology: software past its support date, installs no one authorized.</li><li>Suppliers: an audit letter, a change of ownership at a publisher, a price increase.</li></ul>
+<p>For each risk, write one line that says what could happen, one line for the cause, and one for the consequence. Name the asset or process it touches.</p>
+<h3 id="2-assess">2. Assess</h3>
+<p>Rate each risk on two scales, using the three words below. These are your own scales, not taken from a standard, so adjust the wording to what matters at your organization.</p>
+<div class="table-scroll"><table class="checklist"><caption>2. Assess</caption><thead><tr><th scope="col">Rating</th><th scope="col">Likelihood</th><th scope="col">Impact</th></tr></thead><tbody><tr><td>low</td><td>Not expected in the next year</td><td class="long-text">A nuisance that staff can absorb</td></tr><tr><td>medium</td><td>Could happen in the next year</td><td class="long-text">A cost, delay, or finding that needs a decision</td></tr><tr><td>high</td><td>Likely, or has happened before</td><td class="long-text">A serious cost, a legal exposure, or harm to confidential data</td></tr></tbody></table></div>
+<p>Rate on what you can show, not on a feeling. If you have no evidence either way, say so in the action and rate it medium until you do. Work first on the risks that are high on both scales.</p>
+<h3 id="3-treat">3. Treat</h3>
+<p>Pick one treatment for each risk. <a class="xw-tag" href="../../crosswalk.html">XW-024</a></p>
+<div class="table-scroll"><table class="checklist"><caption>3. Treat</caption><thead><tr><th scope="col">Treatment</th><th scope="col">Meaning</th></tr></thead><tbody><tr><td>accept</td><td class="long-text">Do nothing more now, and record why</td></tr><tr><td>reduce</td><td class="long-text">Add a control or take an action that lowers the rating</td></tr><tr><td>transfer</td><td class="long-text">Move part of the cost to another party, for example through a contract term. Have counsel review it.</td></tr><tr><td>avoid</td><td class="long-text">Stop the activity or retire the asset that causes the risk</td></tr></tbody></table></div>
+<p>Write the action in plain words, name who does it, and give a date.</p>
+<h3 id="4-record">4. Record</h3>
+<p>Enter each risk in <a href="risk-register.html">Risk register template</a>, one row per risk. Give each an id, an owner, a status (open, in progress, closed, or accepted), and a review date. The owner is the person who answers for the risk, not necessarily the person who does the work. Keep closed risks in the file so the history shows.</p>
+<h3 id="5-review">5. Review</h3>
+<p>Review the register at each quarterly check and after any event that changes the picture: an audit letter, a merger, a move to cloud, a vendor ending support. Re-rate each open risk. Close a risk only when its action is done and a check shows the rating has dropped. Record reviews that change nothing too. <a class="xw-tag" href="../../crosswalk.html">XW-025</a></p>
+<h2 id="who-accepts-what-is-left">Who accepts what is left</h2>
+<p>After treatment, some risk remains. The owner of the risk accepts what remains, in writing, with a date. If the remaining risk is high on both scales, the sponsor accepts it or sends it back for more treatment. Do not accept a risk on someone else&#x27;s behalf. <strong>Decision needed:</strong> the risk owner, and the sponsor for any risk that stays high.</p>
+<h2 id="what-to-bring-to-a-review">What to bring to a review</h2>
+<ul><li><a href="risk-register.html">Risk register template</a>, with every open row rated and dated.</li><li>The evidence behind each rating: a row from <a href="proof-of-purchase-check.html">Proof of purchase check template</a>, <a href="documentation-gaps-log.html">Documentation gaps log template</a>, or <a href="internal-check-log.html">Internal check log template</a>.</li><li>The risks that came up since the last review, and the ones that closed.</li></ul>
+<h2 id="decision">Decision</h2>
+<div class="table-scroll"><table class="checklist"><caption>Decision</caption><thead><tr><th scope="col">Decision</th><th scope="col">Owner</th><th scope="col">Approver</th><th scope="col">Date</th></tr></thead><tbody><tr><td class="long-text">Remaining risks accepted, with an owner for each</td><td class="checklist-write"><input type="text" name="t3-remaining-risks-accepted-with-an-owner-for-each-owner" aria-label="Owner for Remaining risks accepted, with an owner for each"></td><td class="checklist-write"><input type="text" name="t3-remaining-risks-accepted-with-an-owner-for-each-approver" aria-label="Approver for Remaining risks accepted, with an owner for each"></td><td class="checklist-write"><input type="text" name="t3-remaining-risks-accepted-with-an-owner-for-each-date" aria-label="Date for Remaining risks accepted, with an owner for each"></td></tr></tbody></table></div>
+<p>Source: ISO/IEC 19770-1:2017 clause 6.1, and the shared crosswalk. Paraphrased; this is not a substitute for the standard.</p>
+  </div>
+  <div class="doc-bottom"><button type="button" class="print-icon" onclick="window.print()" aria-label="Print this page" title="Print"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="M7 9V3.5h10V9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M7 17H4.5A1.5 1.5 0 0 1 3 15.5v-5A1.5 1.5 0 0 1 4.5 9h15a1.5 1.5 0 0 1 1.5 1.5v5a1.5 1.5 0 0 1-1.5 1.5H17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><rect x="7" y="14" width="10" height="6.5" rx="0.8" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17.5" cy="12" r="0.9" fill="currentColor"/></svg></button></div>
+</main>
+<footer class="site-footer">
+  <p>Eve McGivern · <a href="https://evemcgivern.github.io/">evemcgivern.github.io</a></p>
+  <p>Questions? Comments? <a href="https://github.com/evemcgivern/app-governance-kit/issues" id="contact-email" data-r="moc.liamg|nrevigcmeve">email me</a>.</p>
+  <p><a href="https://buymeacoffee.com/a8w5iiqszp" rel="noopener">Buy me a coffee</a> if these tools help.</p>
+  <p class="site-version"><a href="https://github.com/evemcgivern/app-governance-kit/releases" rel="noopener" id="site-version">Version</a></p>
+</footer>
+<script>
+(function () {
+  "use strict";
+  var el = document.getElementById("contact-email");
+  if (!el || !el.getAttribute("data-r")) { return; }
+  function arm() {
+    el.href = "mailto:" + el.getAttribute("data-r").split("").reverse().join("").replace("|", "@");
+  }
+  ["pointerenter", "focus", "touchstart"].forEach(function (type) {
+    el.addEventListener(type, arm, { once: true, passive: true });
+  });
+})();
+</script>
+
+</body>
+</html>

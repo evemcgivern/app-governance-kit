@@ -1,4 +1,4 @@
-# Exercise 08: Audit response — Halden's publisher letter
+# Exercise 08: Audit response, Halden's publisher letter
 
 **Level:** CSAM · **Time:** 45–60 minutes
 
@@ -8,10 +8,10 @@ A software publisher, Brightvale Software Group, has written to Halden Logistics
 
 ## Files
 
-- [`demo-estate/audit-letter.md`](../demo-estate/audit-letter.md) — the publisher's letter, with Halden's own notes on its agreement
-- [`demo-estate/proofs-of-purchase.csv`](../demo-estate/proofs-of-purchase.csv) — six proofs of purchase for three products, with license metric, current term, and upgrade base, linked to license records
-- [`demo-estate/licenses.csv`](../demo-estate/licenses.csv) — the license records and expiry dates the proofs link to
-- [`demo-estate/audit-installs.csv`](../demo-estate/audit-installs.csv) — raw installs and the count in the license metric per license and version, with the first install date
+- [`demo-estate/audit-letter.md`](../demo-estate/audit-letter.md): the publisher's letter, with Halden's own notes on its agreement
+- [`demo-estate/proofs-of-purchase.csv`](../demo-estate/proofs-of-purchase.csv): six proofs of purchase for three products, with license metric, current term, and upgrade base, linked to license records
+- [`demo-estate/licenses.csv`](../demo-estate/licenses.csv): the license records and expiry dates the proofs link to
+- [`demo-estate/audit-installs.csv`](../demo-estate/audit-installs.csv): raw installs and the count in the license metric per license and version, with the first install date
 
 ## Work through
 
@@ -30,7 +30,7 @@ A table per product and version (license metric, proof quantity, count in that m
 
 ## Check yourself
 
-Open the [interactive practicum page](../site/practicum.html#audit-response) and enter your findings there — no installs, no command line. "Passed" means every planted problem in the key showed up in your findings, with at most one extra finding the key doesn't recognize; "missed" lists anything real you didn't flag; "extra" lists anything you flagged that isn't in the key. The key is `demo-estate/answer-key.json` in this repo — it's public, so check your own answer before you look at it.
+Open the [interactive practicum page](../site/practicum.html#audit-response) and enter your findings there. No installs, no command line. "Passed" means every planted problem in the key showed up in your findings, with at most one extra finding the key doesn't recognize; "missed" lists anything real you didn't flag; "extra" lists anything you flagged that isn't in the key. The key is `demo-estate/answer-key.json` in this repo; it's public, so check your own answer before you look at it.
 
 ## Reflect
 

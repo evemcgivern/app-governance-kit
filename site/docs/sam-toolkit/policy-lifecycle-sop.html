@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Policy lifecycle SOP | Eve McGivern</title>
+<meta name="description" content="Keep each ITAM policy written, approved, published, understood, and current, so that people can…">
+<meta name="author" content="Eve McGivern">
+<link rel="canonical" href="https://evemcgivern.github.io/app-governance-kit/docs/sam-toolkit/policy-lifecycle-sop.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Eve McGivern | Application Governance">
+<meta property="og:title" content="Policy lifecycle SOP">
+<meta property="og:description" content="Keep each ITAM policy written, approved, published, understood, and current, so that people can…">
+<meta property="og:url" content="https://evemcgivern.github.io/app-governance-kit/docs/sam-toolkit/policy-lifecycle-sop.html">
+<meta property="og:image" content="https://evemcgivern.github.io/app-governance-kit/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Policy lifecycle SOP">
+<meta name="twitter:description" content="Keep each ITAM policy written, approved, published, understood, and current, so that people can…">
+<meta name="twitter:image" content="https://evemcgivern.github.io/app-governance-kit/og-image.png">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Home",
+     "item": "https://evemcgivern.github.io/app-governance-kit/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "SAM toolkit",
+     "item": "https://evemcgivern.github.io/app-governance-kit/sam-toolkit.html"
+    },
+    {
+     "@type": "ListItem",
+     "position": 3,
+     "name": "Policy lifecycle SOP",
+     "item": "https://evemcgivern.github.io/app-governance-kit/docs/sam-toolkit/policy-lifecycle-sop.html"
+    }
+   ]
+  },
+  {
+   "@type": "WebPage",
+   "name": "Policy lifecycle SOP",
+   "description": "Keep each ITAM policy written, approved, published, understood, and current, so that people can\u2026",
+   "url": "https://evemcgivern.github.io/app-governance-kit/docs/sam-toolkit/policy-lifecycle-sop.html",
+   "isPartOf": {
+    "@type": "WebSite",
+    "url": "https://evemcgivern.github.io/app-governance-kit/"
+   },
+   "author": {
+    "@type": "Person",
+    "name": "Eve McGivern",
+    "url": "https://evemcgivern.github.io/"
+   },
+   "license": "https://opensource.org/licenses/MIT",
+   "isAccessibleForFree": true
+  }
+ ]
+}
+</script>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../apple-touch-icon.png">
+<link rel="stylesheet" href="../../style.css">
+<script src="../../nav.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="support-bar"><a class="coffee-link" href="https://buymeacoffee.com/a8w5iiqszp" rel="noopener"><svg class="coffee-icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M5 9h11v5a5 5 0 0 1-5 5h-1a5 5 0 0 1-5-5V9z" fill="#2f9e6e"/><path d="M16 10.5h1.2a2.4 2.4 0 0 1 0 4.8H16" fill="none" stroke="#2f9e6e" stroke-width="1.8" stroke-linecap="round"/><path d="M8.5 3.5c0 1.3 1 1.3 1 2.6M12 3.5c0 1.3 1 1.3 1 2.6" fill="none" stroke="#2f9e6e" stroke-width="1.6" stroke-linecap="round"/></svg><span>Buy me a coffee</span></a></div>
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="https://evemcgivern.github.io/">Eve McGivern</a>
+    <nav class="site-nav" aria-label="Main">
+      <ul>
+        <li><a href="../../tools.html" aria-describedby="tip-tools">AI skills</a><span class="nav-tip" role="tooltip" id="tip-tools">The nine governance methods, packaged as skills for Claude, Codex, and Copilot.</span></li>
+        <li><a href="../../sam-toolkit.html" aria-describedby="tip-sam-toolkit">SAM toolkit</a><span class="nav-tip" role="tooltip" id="tip-sam-toolkit">Templates and checklists for running software asset management by hand.</span></li>
+        <li><a href="../../practicum.html" aria-describedby="tip-practicum">Practicum</a><span class="nav-tip" role="tooltip" id="tip-practicum">Hands-on exercises on a fictional company, with answers you can check.</span></li>
+        <li><a href="../../lifecycle.html" aria-describedby="tip-lifecycle">Lifecycle</a><span class="nav-tip" role="tooltip" id="tip-lifecycle">Six stages from request to retirement, with the questions to ask at each.</span></li>
+        <li><a href="../../crosswalk.html" aria-describedby="tip-crosswalk">Crosswalk explorer</a><span class="nav-tip" role="tooltip" id="tip-crosswalk">See how each control maps to ISO/IEC 19770, COBIT, 27001, and 42001.</span></li>
+        <li><a href="../../impact-map.html" aria-describedby="tip-impact-map">Impact map</a><span class="nav-tip" role="tooltip" id="tip-impact-map">One grid showing every control theme against every lifecycle stage.</span></li>
+        <li><a href="../../field-guide.html" aria-describedby="tip-field-guide">Field guide</a><span class="nav-tip" role="tooltip" id="tip-field-guide">Plain-language guides to the standards, certifications, and key terms.</span></li>
+        <li><a href="../../case-studies.html" aria-describedby="tip-case-studies">Case studies</a><span class="nav-tip" role="tooltip" id="tip-case-studies">Worked examples of the kit in use, on a fictional company.</span></li>
+        <li><a href="../../about.html" aria-describedby="tip-about">About</a><span class="nav-tip" role="tooltip" id="tip-about">Who built the kit, and how to get in touch.</span></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<main id="main" class="doc-page">
+  <div class="doc-top">
+    <p class="doc-back"><a href="../../sam-toolkit.html">&larr; SAM toolkit</a></p>
+    <button type="button" class="print-icon" onclick="window.print()" aria-label="Print this page" title="Print"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="M7 9V3.5h10V9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M7 17H4.5A1.5 1.5 0 0 1 3 15.5v-5A1.5 1.5 0 0 1 4.5 9h15a1.5 1.5 0 0 1 1.5 1.5v5a1.5 1.5 0 0 1-1.5 1.5H17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><rect x="7" y="14" width="10" height="6.5" rx="0.8" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17.5" cy="12" r="0.9" fill="currentColor"/></svg></button>
+  </div>
+  <p class="meta doc-step">Used in playbook step 6 of 10: <a href="itam-program-playbook.html#step-6-the-policy-set">The policy set</a>. Previous step: <a href="itam-program-playbook.html#step-5-baseline-and-targets">Baseline and targets</a>. Next step: <a href="itam-program-playbook.html#step-7-build-one-inventory">Build one inventory</a>.</p>
+  <h1>Policy lifecycle SOP</h1>
+  <div class="visual-actions doc-actions">
+    <a class="visual-actions__link" href="policy-lifecycle-sop.docx">Download Word (.docx)</a>
+    <button type="button" class="visual-actions__link doc-print" onclick="window.print()">Print or save as PDF</button>
+  </div>
+
+  <div class="doc-body prose prose-wide">
+<h2 id="purpose">Purpose</h2>
+<p>Keep each ITAM policy written, approved, published, understood, and current, so that people can follow it and an auditor can see how it was made and changed.</p>
+<h2 id="scope">Scope</h2>
+<p>Applies to the smallest useful ITAM policy set and the standards beneath it:</p>
+<ul><li>The IT asset management umbrella policy, owned by the ITAM manager and approved by the sponsor. It covers license compliance, acceptable use, and penalties.</li><li>The software acquisition and exceptions policy, with a standard path, a non-standard path, and approval that escalates with cost and risk.</li><li>The software standards, which are a catalog and not a policy: approved titles by role, versions, and SaaS. A selection committee owns them.</li><li>The vendor management policy, one policy with a section for each topic.</li><li>The records and evidence policy: proofs, authorizations, and retention. Counsel sets the retention periods. <strong>Decision needed:</strong> counsel.</li></ul>
+<p>Retirement follows <a href="retirement-signoff-checklist.html">Retirement sign-off checklist</a> and, for devices, the <code>hardware-lifecycle</code> method. AI tool intake follows the <code>ai-intake</code> method. Both link to this process for their policy text. Use <a href="policy-template.html">Policy template</a> and <a href="policy-standard-template.html">Standard template</a> to draft, and <a href="policy-checklist.html">Policy checklist</a> to test the draft.</p>
+<h2 id="roles">Roles</h2>
+<ul><li><strong>Policy owner</strong>: drafts the policy, keeps it current, and answers for it. A named role such as the ITAM manager.</li><li><strong>Approver</strong>: the sponsor, who approves the policy and any change to its scope.</li><li><strong>Reviewers</strong>: Legal, Security, Procurement, Finance, HR, and business leads, each consulted on their own part.</li><li><strong>Counsel</strong>: reviews enforcement wording and any retention period before approval.</li></ul>
+<h2 id="frequency">Frequency</h2>
+<p>Each policy is reviewed at least yearly, and sooner when a trigger occurs: a vendor audit, a merger, a move to cloud, a change of sponsor, or a finding from an internal check.</p>
+<h2 id="steps">Steps</h2>
+<ol><li>The owner drafts from <a href="policy-template.html">Policy template</a>, or from <a href="policy-standard-template.html">Standard template</a> for a standard <a class="xw-tag" href="../../crosswalk.html">XW-003</a></li><li>The owner consults Legal, Security, Procurement, Finance, HR, and the business leads, and records what each changed <a class="xw-tag" href="../../crosswalk.html">XW-004</a></li><li>The owner compares the draft with other policies and records any conflict and who resolves it <a class="xw-tag" href="../../crosswalk.html">XW-003</a></li><li>The owner tests the draft with <a href="policy-checklist.html">Policy checklist</a> and fixes each failed item, so counsel sees a draft that already meets the checklist <a class="xw-tag" href="../../crosswalk.html">XW-025</a></li><li>Counsel reviews the enforcement wording and any retention period. <strong>Decision needed:</strong> counsel <a class="xw-tag" href="../../crosswalk.html">XW-020</a></li><li>The sponsor approves, and the approval is dated and filed. <strong>Decision needed:</strong> sponsor <a class="xw-tag" href="../../crosswalk.html">XW-027</a></li><li>The owner publishes the approved version, with its version number, in one controlled location <a class="xw-tag" href="../../crosswalk.html">XW-020</a> <a class="xw-tag" href="../../crosswalk.html">XW-030</a></li><li>The owner communicates it, trains the people it binds, and records each acknowledgment <a class="xw-tag" href="../../crosswalk.html">XW-004</a> <a class="xw-tag" href="../../crosswalk.html">XW-030</a></li><li>Exceptions are logged in <a href="authorization-log.html">Authorization log template</a> with an approver and an end date, and each is reviewed at expiry <a class="xw-tag" href="../../crosswalk.html">XW-009</a> <a class="xw-tag" href="../../crosswalk.html">XW-019</a></li><li>The owner reviews the policy yearly or on a trigger, and records the result even when nothing changes <a class="xw-tag" href="../../crosswalk.html">XW-025</a></li><li>When a version is replaced, the owner withdraws the old one and keeps it in the archive with its dates <a class="xw-tag" href="../../crosswalk.html">XW-020</a></li></ol>
+<h2 id="evidence-to-retain">Evidence to retain</h2>
+<ul><li>Each approved version, with its dated sponsor approval.</li><li>The consultation record and the conflict record.</li><li>Counsel&#x27;s review of the enforcement wording and any retention period.</li><li>The completed policy checklist.</li><li>The communication plan and the acknowledgment records.</li><li>The exceptions in <a href="authorization-log.html">Authorization log template</a>, each with its end date and review.</li><li>The review record and change history, including reviews that changed nothing.</li></ul>
+<p>Design these records as a by-product of the steps, not something rebuilt when an auditor asks.</p>
+<h2 id="questions-to-take-to-counsel-and-the-contract-owner">Questions to take to counsel and the contract owner</h2>
+<p>These are questions only. The answers belong to counsel and the contract owner, and the owner records each answer with a date in the review record.</p>
+<p>Penalties and enforcement</p>
+<ul><li>Which consequences may the policy state for a breach, and for which kinds of breach?</li><li>Does any local law or employment agreement limit how the policy may be enforced?</li><li>Who may apply a consequence, and what must be recorded before they do?</li><li>Does the wording for contractors and temporary staff need to differ from the wording for employees?</li></ul>
+<p>Retention</p>
+<ul><li>What period applies to each record type: proofs of purchase, contracts, authorizations, wipe certificates, acknowledgments, and consultation records?</li><li>Does any legal hold, open audit, or dispute change a period?</li><li>Who may destroy a record when its period ends, and how is the destruction recorded?</li><li>Do personal data in HR lists and sign-in logs have a shorter limit than the other records?</li></ul>
+<p>License reassignment</p>
+<ul><li>For each strategic contract, may a license be moved from a leaver or mover to another person or device?</li><li>If so, is there a waiting period, a notice, or a fee?</li><li>Do device-tied or named-user terms limit reuse, and which clause says so?</li><li>Does a transfer to an acquired company or an affiliate need the supplier&#x27;s consent?</li></ul>
+<h2 id="related">Related</h2>
+<ul><li>The <code>program-setup</code> method, which sets up the body that approves policy.</li><li><a href="policy-template.html">Policy template</a>, <a href="policy-standard-template.html">Standard template</a>, and <a href="policy-checklist.html">Policy checklist</a> in this toolkit.</li><li><a href="acquisition-gate-checklist.html">Acquisition gate checklist</a> and <a href="retirement-signoff-checklist.html">Retirement sign-off checklist</a>, which carry the policies into daily work.</li><li>The <code>hardware-lifecycle</code> and <code>ai-intake</code> methods, which hold retirement and AI use rules.</li></ul>
+<p>Source: ISO/IEC 19770-1:2017 clauses 5.2, 7.3, 7.4 and 7.6.5, and the shared crosswalk. Paraphrased; this is not a substitute for the standard.</p>
+  </div>
+  <div class="doc-bottom"><button type="button" class="print-icon" onclick="window.print()" aria-label="Print this page" title="Print"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="M7 9V3.5h10V9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M7 17H4.5A1.5 1.5 0 0 1 3 15.5v-5A1.5 1.5 0 0 1 4.5 9h15a1.5 1.5 0 0 1 1.5 1.5v5a1.5 1.5 0 0 1-1.5 1.5H17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><rect x="7" y="14" width="10" height="6.5" rx="0.8" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17.5" cy="12" r="0.9" fill="currentColor"/></svg></button></div>
+</main>
+<footer class="site-footer">
+  <p>Eve McGivern · <a href="https://evemcgivern.github.io/">evemcgivern.github.io</a></p>
+  <p>Questions? Comments? <a href="https://github.com/evemcgivern/app-governance-kit/issues" id="contact-email" data-r="moc.liamg|nrevigcmeve">email me</a>.</p>
+  <p><a href="https://buymeacoffee.com/a8w5iiqszp" rel="noopener">Buy me a coffee</a> if these tools help.</p>
+  <p class="site-version"><a href="https://github.com/evemcgivern/app-governance-kit/releases" rel="noopener" id="site-version">Version</a></p>
+</footer>
+<script>
+(function () {
+  "use strict";
+  var el = document.getElementById("contact-email");
+  if (!el || !el.getAttribute("data-r")) { return; }
+  function arm() {
+    el.href = "mailto:" + el.getAttribute("data-r").split("").reverse().join("").replace("|", "@");
+  }
+  ["pointerenter", "focus", "touchstart"].forEach(function (type) {
+    el.addEventListener(type, arm, { once: true, passive: true });
+  });
+})();
+</script>
+
+</body>
+</html>

@@ -28,3 +28,4 @@ XW-026,operate,optimize
 XW-027,plan;optimize,acquire;retire
 XW-028,plan;retire,acquire;deploy;operate;optimize
 XW-029,deploy;operate,plan;optimize
+XW-030,plan;operate,deploy;optimize

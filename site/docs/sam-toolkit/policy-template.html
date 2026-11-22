@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Policy template | Eve McGivern</title>
+<meta name="description" content="A fill-in template for one ITAM policy. Use it for the umbrella policy first…">
+<meta name="author" content="Eve McGivern">
+<link rel="canonical" href="https://evemcgivern.github.io/app-governance-kit/docs/sam-toolkit/policy-template.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Eve McGivern | Application Governance">
+<meta property="og:title" content="Policy template">
+<meta property="og:description" content="A fill-in template for one ITAM policy. Use it for the umbrella policy first…">
+<meta property="og:url" content="https://evemcgivern.github.io/app-governance-kit/docs/sam-toolkit/policy-template.html">
+<meta property="og:image" content="https://evemcgivern.github.io/app-governance-kit/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Policy template">
+<meta name="twitter:description" content="A fill-in template for one ITAM policy. Use it for the umbrella policy first…">
+<meta name="twitter:image" content="https://evemcgivern.github.io/app-governance-kit/og-image.png">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Home",
+     "item": "https://evemcgivern.github.io/app-governance-kit/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "SAM toolkit",
+     "item": "https://evemcgivern.github.io/app-governance-kit/sam-toolkit.html"
+    },
+    {
+     "@type": "ListItem",
+     "position": 3,
+     "name": "Policy template",
+     "item": "https://evemcgivern.github.io/app-governance-kit/docs/sam-toolkit/policy-template.html"
+    }
+   ]
+  },
+  {
+   "@type": "WebPage",
+   "name": "Policy template",
+   "description": "A fill-in template for one ITAM policy. Use it for the umbrella policy first\u2026",
+   "url": "https://evemcgivern.github.io/app-governance-kit/docs/sam-toolkit/policy-template.html",
+   "isPartOf": {
+    "@type": "WebSite",
+    "url": "https://evemcgivern.github.io/app-governance-kit/"
+   },
+   "author": {
+    "@type": "Person",
+    "name": "Eve McGivern",
+    "url": "https://evemcgivern.github.io/"
+   },
+   "license": "https://opensource.org/licenses/MIT",
+   "isAccessibleForFree": true
+  }
+ ]
+}
+</script>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../apple-touch-icon.png">
+<link rel="stylesheet" href="../../style.css">
+<script src="../../nav.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="support-bar"><a class="coffee-link" href="https://buymeacoffee.com/a8w5iiqszp" rel="noopener"><svg class="coffee-icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M5 9h11v5a5 5 0 0 1-5 5h-1a5 5 0 0 1-5-5V9z" fill="#2f9e6e"/><path d="M16 10.5h1.2a2.4 2.4 0 0 1 0 4.8H16" fill="none" stroke="#2f9e6e" stroke-width="1.8" stroke-linecap="round"/><path d="M8.5 3.5c0 1.3 1 1.3 1 2.6M12 3.5c0 1.3 1 1.3 1 2.6" fill="none" stroke="#2f9e6e" stroke-width="1.6" stroke-linecap="round"/></svg><span>Buy me a coffee</span></a></div>
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="https://evemcgivern.github.io/">Eve McGivern</a>
+    <nav class="site-nav" aria-label="Main">
+      <ul>
+        <li><a href="../../tools.html" aria-describedby="tip-tools">AI skills</a><span class="nav-tip" role="tooltip" id="tip-tools">The nine governance methods, packaged as skills for Claude, Codex, and Copilot.</span></li>
+        <li><a href="../../sam-toolkit.html" aria-describedby="tip-sam-toolkit">SAM toolkit</a><span class="nav-tip" role="tooltip" id="tip-sam-toolkit">Templates and checklists for running software asset management by hand.</span></li>
+        <li><a href="../../practicum.html" aria-describedby="tip-practicum">Practicum</a><span class="nav-tip" role="tooltip" id="tip-practicum">Hands-on exercises on a fictional company, with answers you can check.</span></li>
+        <li><a href="../../lifecycle.html" aria-describedby="tip-lifecycle">Lifecycle</a><span class="nav-tip" role="tooltip" id="tip-lifecycle">Six stages from request to retirement, with the questions to ask at each.</span></li>
+        <li><a href="../../crosswalk.html" aria-describedby="tip-crosswalk">Crosswalk explorer</a><span class="nav-tip" role="tooltip" id="tip-crosswalk">See how each control maps to ISO/IEC 19770, COBIT, 27001, and 42001.</span></li>
+        <li><a href="../../impact-map.html" aria-describedby="tip-impact-map">Impact map</a><span class="nav-tip" role="tooltip" id="tip-impact-map">One grid showing every control theme against every lifecycle stage.</span></li>
+        <li><a href="../../field-guide.html" aria-describedby="tip-field-guide">Field guide</a><span class="nav-tip" role="tooltip" id="tip-field-guide">Plain-language guides to the standards, certifications, and key terms.</span></li>
+        <li><a href="../../case-studies.html" aria-describedby="tip-case-studies">Case studies</a><span class="nav-tip" role="tooltip" id="tip-case-studies">Worked examples of the kit in use, on a fictional company.</span></li>
+        <li><a href="../../about.html" aria-describedby="tip-about">About</a><span class="nav-tip" role="tooltip" id="tip-about">Who built the kit, and how to get in touch.</span></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<main id="main" class="doc-page">
+  <div class="doc-top">
+    <p class="doc-back"><a href="../../sam-toolkit.html">&larr; SAM toolkit</a></p>
+    <button type="button" class="print-icon" onclick="window.print()" aria-label="Print this page" title="Print"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="M7 9V3.5h10V9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M7 17H4.5A1.5 1.5 0 0 1 3 15.5v-5A1.5 1.5 0 0 1 4.5 9h15a1.5 1.5 0 0 1 1.5 1.5v5a1.5 1.5 0 0 1-1.5 1.5H17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><rect x="7" y="14" width="10" height="6.5" rx="0.8" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17.5" cy="12" r="0.9" fill="currentColor"/></svg></button>
+  </div>
+  <p class="meta doc-step">Used in playbook step 4 of 10: <a href="itam-program-playbook.html#step-4-set-the-scope">Set the scope</a>. Previous step: <a href="itam-program-playbook.html#step-3-week-1-stop-the-bleeding">Week 1, stop the bleeding</a>. Next step: <a href="itam-program-playbook.html#step-5-baseline-and-targets">Baseline and targets</a>. Also used in <a href="itam-program-playbook.html#step-6-the-policy-set">step 6</a>.</p>
+  <h1>Policy template</h1>
+  <div class="visual-actions doc-actions">
+    <button type="button" class="visual-actions__link" id="answers-doc" data-file="policy-template-my-answers.doc">Download my answers (Word)</button>
+    <a class="visual-actions__link" href="policy-template.docx">Download Word (.docx)</a>
+    <a class="visual-actions__link" href="policy-template.xlsx">Download Excel (.xlsx)</a>
+    <button type="button" class="visual-actions__link doc-print" onclick="window.print()">Print or save as PDF</button>
+  </div>
+  <p class="meta doc-note">What you tick or type stays in this browser. The Word and Excel downloads are blank copies. To keep your answers, use Download my answers (Word), or print this page or save it as PDF.</p>
+
+  <script>
+document.addEventListener("DOMContentLoaded", function () {
+  "use strict";
+  // Keep what the reader types or ticks in this browser, so a reload does not lose it.
+  var key = "agk:" + location.pathname, fields = [].slice.call(document.querySelectorAll(
+    ".doc-body input[name], .doc-body textarea[name], .doc-body select[name]"));
+  if (!fields.length) { return; }
+  var saved = {};
+  try { saved = JSON.parse(localStorage.getItem(key) || "{}"); } catch (e) { saved = {}; }
+  fields.forEach(function (f) {
+    var v = saved[f.type === "radio" ? f.name : f.name];
+    if (f.type === "radio") { f.checked = v === f.value; }
+    else if (f.type === "checkbox") { f.checked = v === true; }
+    else if (typeof v === "string") { f.value = v; }
+  });
+  function save() {
+    var data = {};
+    fields.forEach(function (f) {
+      if (f.type === "radio") { if (f.checked) { data[f.name] = f.value; } }
+      else if (f.type === "checkbox") { if (f.checked) { data[f.name] = true; } }
+      else if (f.value) { data[f.name] = f.value; }
+    });
+    try { localStorage.setItem(key, JSON.stringify(data)); } catch (e) { /* storage unavailable */ }
+  }
+  document.addEventListener("change", save);
+  document.addEventListener("input", save);
+  document.dispatchEvent(new Event("change"));
+});
+  </script>
+  <script>
+document.addEventListener('DOMContentLoaded', function () {
+  'use strict';
+  var button = document.getElementById('answers-doc');
+  if (!button) { return; }
+  function fieldsOf(root) {
+    return [].slice.call(root.querySelectorAll('input[name], textarea[name], select[name]'));
+  }
+  function esc(t) { return String(t).replace(/&/g, '&amp;').replace(/</g, '&lt;'); }
+  // Builds a Word-readable copy of the page with the reader's answers written into it.
+  button.addEventListener('click', function () {
+    var body = document.querySelector('.doc-body');
+    var copy = body.cloneNode(true);
+    var live = fieldsOf(body), flat = fieldsOf(copy);
+    live.forEach(function (f, i) {
+      var c = flat[i], out = document.createElement('span');
+      if (f.type === 'radio') {
+        var label = c.closest('label');
+        if (f.checked) { out.textContent = '\u2612 ' + f.value; label.replaceWith(out); } else { label.remove(); }
+        return;
+      }
+      if (f.type === 'checkbox') {
+        out.textContent = f.checked ? '\u2612' : '\u2610';
+        (c.closest('label') || c).replaceWith(out);
+        return;
+      }
+      out.textContent = f.tagName === 'SELECT' ? ((f.options[f.selectedIndex] || {}).text || '') : f.value;
+      c.replaceWith(out);
+    });
+    copy.querySelectorAll('[hidden], script').forEach(function (n) { n.remove(); });
+    var tier = document.getElementById('tier-result');
+    var head = tier ? '<p><strong>Your assumed tier:</strong> ' + esc(tier.textContent) + '</p>' : '';
+    var style = 'body{font-family:Calibri,Arial,sans-serif}table{border-collapse:collapse}' +
+      'td,th{border:1px solid #777;padding:4px;vertical-align:top}';
+    var html = '<html><head><meta charset=utf-8><title>' + esc(document.title) + '</title><style>' + style +
+      '</style></head><body><h1>' + esc(document.querySelector('h1').textContent) + '</h1>' + head +
+      copy.innerHTML + '</body></html>';
+    var blob = new Blob(['\ufeff', html], {type: 'application/msword'});
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = button.getAttribute('data-file');
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(function () { URL.revokeObjectURL(a.href); }, 1000);
+  });
+});
+  </script>
+  <div class="doc-body prose prose-wide">
+<p>A fill-in template for one ITAM policy. Use it for the umbrella policy first, then again for each policy in the set described in <a href="policy-lifecycle-sop.html">Policy lifecycle SOP</a>. Replace each prompt in brackets with your own text, and delete any prompt that does not apply. Every example is fictional and comes from Halden Logistics, the demo estate; do not copy an example into your own policy as if it were your rule.</p>
+<p>A policy states what the organization requires and who answers for it. Detail that changes often, such as approved titles and versions, belongs in a standard (<a href="policy-standard-template.html">Standard template</a>) that the policy points to. Before you send the draft for approval, test it against <a href="policy-checklist.html">Policy checklist</a>. For a draft with known weaknesses to practice on, see Policy draft.</p>
+<p>Clause references are to ISO/IEC 19770-1:2017 (paraphrased) and to the shared crosswalk (<code>XW-</code> rows). This template does not give legal advice; the parts that touch discipline, retention, or contract duties need review by counsel.</p>
+<h2 id="control-block">Control block</h2>
+<div class="table-scroll"><table class="checklist"><caption>Control block</caption><thead><tr><th scope="col">Field</th><th scope="col">Entry</th></tr></thead><tbody><tr><td>Policy ID</td><td class="long-text">[Your numbering scheme, for example ITAM-POL-001]</td></tr><tr><td>Title</td><td class="long-text">[Short, plain title]</td></tr><tr><td>Version</td><td class="long-text">[Version number and one line on what changed]</td></tr><tr><td>Owner</td><td class="long-text">[A role, not a team name. Example: ITAM manager] <a class="xw-tag" href="../../crosswalk.html">XW-004</a></td></tr><tr><td>Approver</td><td class="long-text">[A role with authority over the whole scope. Example: executive sponsor] <a class="xw-tag" href="../../crosswalk.html">XW-027</a></td></tr><tr><td>Effective date</td><td class="long-text">[Date the policy binds people]</td></tr><tr><td>Next review</td><td class="long-text">[Date, and the events that bring it forward] <a class="xw-tag" href="../../crosswalk.html">XW-025</a></td></tr><tr><td>Status</td><td class="long-text">[Draft, approved, or withdrawn]</td></tr></tbody></table></div>
+<h2 id="1-purpose">1. Purpose</h2>
+<p>[Two or three sentences: the problem this policy addresses and what it requires of people. Say what goes wrong without it.] (5.2)</p>
+<p>Example (fictional): Halden Logistics buys software through many hands. This policy sets one set of rules so that every license is owned, recorded, and used within its terms, and so that staff know what is expected of them.</p>
+<h2 id="2-scope-and-exclusions">2. Scope and exclusions</h2>
+<p>State who and what is covered, and list what is left out, with the reason for each exclusion. A scope that says where appropriate does not bound anything. <a class="xw-tag" href="../../crosswalk.html">XW-003</a></p>
+<div class="table-scroll"><table class="checklist"><caption>2. Scope and exclusions</caption><thead><tr><th scope="col">Item</th><th scope="col">In scope</th><th scope="col">Reason or limit</th></tr></thead><tbody><tr><td class="long-text">[People: employees, contractors, temporary staff]</td><td>[Yes or no]</td><td>[Reason]</td></tr><tr><td class="long-text">[Assets: purchased software, subscriptions, free software, AI features]</td><td>[Yes or no]</td><td>[Reason]</td></tr><tr><td class="long-text">[Locations, business units, subsidiaries]</td><td>[Yes or no]</td><td>[Reason]</td></tr><tr><td class="long-text">[Staff-owned devices]</td><td>[Yes or no]</td><td>[Reason]</td></tr></tbody></table></div>
+<p>Example (fictional): Covers all Halden employees and contractors, and all software and subscriptions used for Halden work, on any device. Excludes software used only in a closed lab with no company data, which the Halden security lead reviews each year.</p>
+<h2 id="3-definitions">3. Definitions</h2>
+<p>Define each term a reader could argue about. Keep the list short and use each term the same way throughout.</p>
+<div class="table-scroll"><table class="checklist"><caption>3. Definitions</caption><thead><tr><th scope="col">Term</th><th scope="col">Meaning in this policy</th></tr></thead><tbody><tr><td>[Software asset]</td><td class="long-text">[What counts]</td></tr><tr><td>[License]</td><td class="long-text">[Right to use, in the vendor&#x27;s metric]</td></tr><tr><td>[Standard software]</td><td class="long-text">[Software on the approved catalog; see the related standard]</td></tr><tr><td>[Exception]</td><td class="long-text">[A recorded, time-limited permission to depart from this policy]</td></tr><tr><td>[Individual user]</td><td class="long-text">[Anyone who uses covered assets]</td></tr></tbody></table></div>
+<h2 id="4-policy-statements">4. Policy statements</h2>
+<p>Write each statement so a person can meet it and a reviewer can test it. If a statement cannot be tested, rewrite it or move it to the purpose.</p>
+<h3 id="4-1-objectives">4.1 Objectives</h3>
+<p>[List the objectives the program works toward, each with a way to tell whether it was met. Say who reviews progress and how often.] (5.2) <a class="xw-tag" href="../../crosswalk.html">XW-025</a></p>
+<p>Example (fictional): Every purchased license has proof of purchase on file, reviewed each quarter by the ITAM manager.</p>
+<h3 id="4-2-commitments">4.2 Commitments</h3>
+<p>[State that the organization will meet the legal, contract, and policy requirements that apply to its software, and that it will keep improving the way it manages assets.] (5.2)</p>
+<h3 id="4-3-license-compliance">4.3 License compliance</h3>
+<p>[State that the organization uses software only within the rights it holds, in the contract&#x27;s metric; that it keeps proof of what it holds; and that it compares use with entitlement on a schedule.] <a class="xw-tag" href="../../crosswalk.html">XW-006</a> <a class="xw-tag" href="../../crosswalk.html">XW-007</a></p>
+<h3 id="4-4-acceptable-use">4.4 Acceptable use</h3>
+<p>[State what people may and may not do with covered software: install, copy, share accounts, move to personal devices, use free or trial versions for company work, and use outside tools with company data.]</p>
+<p>Example (fictional): Halden staff do not install software that is not on the Halden approved catalog. They request it through the acquisition and exceptions policy.</p>
+<h3 id="4-5-individual-and-organizational-responsibility">4.5 Individual and organizational responsibility</h3>
+<p>[Say what each person answers for, such as using only licensed software and reporting misuse, and what the organization answers for, such as providing licensed tools, tracking entitlement, and responding to vendor audits. Make clear that one person&#x27;s breach can also create a liability for the organization.]</p>
+<h2 id="5-roles-and-responsibilities">5. Roles and responsibilities</h2>
+<p>Give each activity one accountable role. Add the other roles that do, advise on, or must be told about it. <a class="xw-tag" href="../../crosswalk.html">XW-004</a> (5.3)</p>
+<p>R is responsible for doing the work, A is accountable for the result (one per row), C is consulted, I is informed.</p>
+<div class="table-scroll"><table class="checklist wide"><caption>5. Roles and responsibilities</caption><thead><tr><th scope="col">Activity</th><th scope="col">Sponsor</th><th scope="col">ITAM manager</th><th scope="col">Legal</th><th scope="col">Security</th><th scope="col">Procurement</th><th scope="col">Finance</th><th scope="col">HR</th><th scope="col">Business lead</th></tr></thead><tbody><tr><td>[Approve this policy]</td><td>A</td><td>R</td><td>C</td><td>C</td><td>I</td><td>I</td><td>I</td><td>I</td></tr><tr><td>[Maintain the license position]</td><td>I</td><td>A and R</td><td>C</td><td class="checklist-write"><input type="text" name="t4-maintain-the-license-position-security" aria-label="Security for [Maintain the license position]"></td><td>C</td><td>C</td><td class="checklist-write"><input type="text" name="t4-maintain-the-license-position-hr" aria-label="HR for [Maintain the license position]"></td><td>I</td></tr><tr><td>[Handle exception requests]</td><td>I</td><td>R</td><td>C</td><td>C</td><td>C</td><td class="checklist-write"><input type="text" name="t4-handle-exception-requests-finance" aria-label="Finance for [Handle exception requests]"></td><td class="checklist-write"><input type="text" name="t4-handle-exception-requests-hr" aria-label="HR for [Handle exception requests]"></td><td>A</td></tr><tr><td>[Apply penalties]</td><td>I</td><td>C</td><td>C</td><td class="checklist-write"><input type="text" name="t4-apply-penalties-security" aria-label="Security for [Apply penalties]"></td><td class="checklist-write"><input type="text" name="t4-apply-penalties-procurement" aria-label="Procurement for [Apply penalties]"></td><td class="checklist-write"><input type="text" name="t4-apply-penalties-finance" aria-label="Finance for [Apply penalties]"></td><td>A</td><td>R</td></tr></tbody></table></div>
+<p>Change the columns and the letters to match your own organization. The rows above are placeholders that show the shape.</p>
+<h2 id="6-related-standards-and-procedures">6. Related standards and procedures</h2>
+<p>List what sits under this policy. Each item has a name, an owner, and a place it is published.</p>
+<div class="table-scroll"><table class="checklist"><caption>6. Related standards and procedures</caption><thead><tr><th scope="col">Document</th><th scope="col">Type</th><th scope="col">Owner</th><th scope="col">Location</th></tr></thead><tbody><tr><td>[Software standards catalog]</td><td class="long-text">Standard (<a href="policy-standard-template.html">Standard template</a>)</td><td>[Role]</td><td>[Link]</td></tr><tr><td>[Acquisition gate]</td><td class="long-text">Procedure (<a href="acquisition-gate-checklist.html">Acquisition gate checklist</a>)</td><td>[Role]</td><td>[Link]</td></tr><tr><td>[Retirement procedure]</td><td class="long-text">Procedure (<a href="retirement-signoff-checklist.html">Retirement sign-off checklist</a>; the <code>hardware-lifecycle</code> method for devices)</td><td>[Role]</td><td>[Link]</td></tr><tr><td>[AI tool intake]</td><td class="long-text">Procedure (the <code>ai-intake</code> method)</td><td>[Role]</td><td>[Link]</td></tr></tbody></table></div>
+<h2 id="7-exceptions">7. Exceptions</h2>
+<p>An exception is a permission to depart from this policy, granted for a reason and for a limited time. Anyone may ask. <a class="xw-tag" href="../../crosswalk.html">XW-009</a></p>
+<ul><li>Request: [Where and how a request is made, and what it must say: what, why, risk, and the end date wanted.]</li><li>Approver: [A named role, different from the requester, with escalation by cost or risk.] <a class="xw-tag" href="../../crosswalk.html">XW-019</a></li><li>Expiry: [Each exception ends on a stated date. Say what happens at the end: renew after a fresh review, or stop.]</li><li>Record: [Every granted exception is entered in <a href="authorization-log.html">Authorization log template</a>, with the approver, the date, the reason, and <code>valid_until</code>.] <a class="xw-tag" href="../../crosswalk.html">XW-019</a></li></ul>
+<h2 id="8-enforcement-and-penalties">8. Enforcement and penalties</h2>
+<p>[State the consequences of breaking this policy, who decides them, and how a person can raise a concern or appeal. Keep the wording consistent with existing discipline rules.]</p>
+<p><strong>Decision needed: counsel.</strong> Have counsel and HR review this section, including any named penalty, before it is approved. This template does not set a penalty.</p>
+<h2 id="9-communication-and-awareness">9. Communication and awareness</h2>
+<p>Say how people learn the policy and how you know they understood it. Awareness continues after onboarding. <a class="xw-tag" href="../../crosswalk.html">XW-003</a> (7.3, 7.4)</p>
+<div class="table-scroll"><table class="checklist"><caption>9. Communication and awareness</caption><thead><tr><th scope="col">Question</th><th scope="col">Answer</th></tr></thead><tbody><tr><td>What is communicated</td><td class="long-text">[The policy, what changed, and what it means for the reader]</td></tr><tr><td>When</td><td class="long-text">[At hire, at each new version, and on a yearly refresher]</td></tr><tr><td>To whom</td><td class="long-text">[All covered people, and extra material for managers and buyers]</td></tr><tr><td>How</td><td class="long-text">[Channel and format]</td></tr><tr><td>Acknowledgment</td><td class="long-text">[How a person confirms they read it, and where the record is kept]</td></tr><tr><td>Who checks</td><td class="long-text">[Role that follows up on missing acknowledgments]</td></tr></tbody></table></div>
+<h2 id="10-measures">10. Measures</h2>
+<p>Pick a few measures that show the policy is followed, not only that it exists. <a class="xw-tag" href="../../crosswalk.html">XW-025</a></p>
+<div class="table-scroll"><table class="checklist"><caption>10. Measures</caption><thead><tr><th scope="col">Measure</th><th scope="col">Target</th><th scope="col">Source</th><th scope="col">Reviewed by</th><th scope="col">How often</th></tr></thead><tbody><tr><td class="long-text">[Share of staff with a current acknowledgment]</td><td>[Your target]</td><td>[System or record]</td><td>[Role]</td><td>[Cycle]</td></tr><tr><td class="long-text">[Purchases with a gate result on file]</td><td>[Your target]</td><td>[Record]</td><td>[Role]</td><td>[Cycle]</td></tr><tr><td class="long-text">[Exceptions open past their end date]</td><td>[Your target]</td><td><a href="authorization-log.html">Authorization log template</a></td><td>[Role]</td><td>[Cycle]</td></tr></tbody></table></div>
+<h2 id="11-consistency-with-other-policies">11. Consistency with other policies</h2>
+<p>List each related policy, such as security, procurement, records, privacy, and acceptable use of company systems. Say whether this policy agrees with it. Record any conflict and who resolves it. <a class="xw-tag" href="../../crosswalk.html">XW-003</a></p>
+<div class="table-scroll"><table class="checklist"><caption>11. Consistency with other policies</caption><thead><tr><th scope="col">Other policy</th><th scope="col">Agrees?</th><th scope="col">Conflict and resolution</th><th scope="col">Resolved by</th></tr></thead><tbody><tr><td>[Policy name]</td><td>[Yes, no, or partly]</td><td>[What conflicts and how it was settled]</td><td>[Role and date]</td></tr></tbody></table></div>
+<h2 id="12-review-and-change-history">12. Review and change history</h2>
+<p>Review at least yearly, and sooner when a trigger occurs: a vendor audit, a merger, a move to cloud, a change of sponsor, or a finding from an internal check. <a class="xw-tag" href="../../crosswalk.html">XW-025</a> Keep every version, and withdraw superseded ones so they cannot be found by mistake. <a class="xw-tag" href="../../crosswalk.html">XW-020</a> (7.6.5)</p>
+<div class="table-scroll"><table class="checklist"><caption>12. Review and change history</caption><thead><tr><th scope="col">Version</th><th scope="col">Date</th><th scope="col">Change</th><th scope="col">Changed by</th><th scope="col">Approved by</th></tr></thead><tbody><tr><td>[1.0]</td><td>[Date]</td><td>[Initial issue]</td><td>[Role]</td><td>[Role]</td></tr></tbody></table></div>
+<h2 id="13-approval">13. Approval</h2>
+<div class="table-scroll"><table class="checklist"><caption>13. Approval</caption><thead><tr><th scope="col">Decision</th><th scope="col">Owner</th><th scope="col">Approver</th><th scope="col">Date</th></tr></thead><tbody><tr><td>Approve this policy as written</td><td>[Owner role]</td><td>[Approver role]</td><td class="checklist-write"><input type="text" name="t10-approve-this-policy-as-written-date" aria-label="Date for Approve this policy as written"></td></tr></tbody></table></div>
+<p>Source: ISO/IEC 19770-1:2017 clauses 5.2, 5.3, 7.3, 7.4 and 7.6.5, and the shared crosswalk. Paraphrased; this is not a substitute for the standard.</p>
+  </div>
+  <div class="doc-bottom"><button type="button" class="print-icon" onclick="window.print()" aria-label="Print this page" title="Print"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="M7 9V3.5h10V9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M7 17H4.5A1.5 1.5 0 0 1 3 15.5v-5A1.5 1.5 0 0 1 4.5 9h15a1.5 1.5 0 0 1 1.5 1.5v5a1.5 1.5 0 0 1-1.5 1.5H17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><rect x="7" y="14" width="10" height="6.5" rx="0.8" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17.5" cy="12" r="0.9" fill="currentColor"/></svg></button></div>
+</main>
+<footer class="site-footer">
+  <p>Eve McGivern · <a href="https://evemcgivern.github.io/">evemcgivern.github.io</a></p>
+  <p>Questions? Comments? <a href="https://github.com/evemcgivern/app-governance-kit/issues" id="contact-email" data-r="moc.liamg|nrevigcmeve">email me</a>.</p>
+  <p><a href="https://buymeacoffee.com/a8w5iiqszp" rel="noopener">Buy me a coffee</a> if these tools help.</p>
+  <p class="site-version"><a href="https://github.com/evemcgivern/app-governance-kit/releases" rel="noopener" id="site-version">Version</a></p>
+</footer>
+<script>
+(function () {
+  "use strict";
+  var el = document.getElementById("contact-email");
+  if (!el || !el.getAttribute("data-r")) { return; }
+  function arm() {
+    el.href = "mailto:" + el.getAttribute("data-r").split("").reverse().join("").replace("|", "@");
+  }
+  ["pointerenter", "focus", "touchstart"].forEach(function (type) {
+    el.addEventListener(type, arm, { once: true, passive: true });
+  });
+})();
+</script>
+
+</body>
+</html>

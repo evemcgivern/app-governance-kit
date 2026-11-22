@@ -9,7 +9,7 @@ PRACTICUM = ROOT / "practicum"
 class PracticumTests(unittest.TestCase):
     def test_every_graded_tool_has_one_exercise(self):
         key = json.loads((ROOT / "demo-estate" / "answer-key.json").read_text())
-        tools = sorted({k["tool"] for k in key})
+        tools = sorted({k["tool"] for k in key} - {"cert-prep"})  # cert-prep drills reuse other exercises
         for tool in tools:
             matches = list(PRACTICUM.glob(f"[0-9][0-9]-{tool}.md"))
             self.assertEqual(len(matches), 1, f"expected one exercise for {tool}")

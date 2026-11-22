@@ -12,13 +12,13 @@ Applies to any audit, compliance review, or license verification request from a 
 
 ## Roles
 
-- **IT or software asset manager** — leads the technical work: proofs, discovery, hardware audit, and reconciliation.
-- **Legal** — owns every contact with the publisher and every legal call: validity of the claim, scope, time frame, limits on system changes, and settlement.
-- **Procurement** — finds purchase records, contracts, and the vendor's contacts of record.
-- **Executive sponsor** — receives the briefings, backs the team, and decides on spend and settlement with counsel.
-- **IT security** — advises on what may be released and on any change to systems during the audit.
-- **Finance contact** — finds payment records to go with each invoice.
-- **Department managers** — answer questions about the software their teams use, as needed.
+- **IT or software asset manager**: leads the technical work: proofs, discovery, hardware audit, and reconciliation.
+- **Legal**: owns every contact with the publisher and every legal call: validity of the claim, scope, time frame, limits on system changes, and settlement.
+- **Procurement**: finds purchase records, contracts, and the vendor's contacts of record.
+- **Executive sponsor**: receives the briefings, backs the team, and decides on spend and settlement with counsel.
+- **IT security**: advises on what may be released and on any change to systems during the audit.
+- **Finance contact**: finds payment records to go with each invoice.
+- **Department managers**: answer questions about the software their teams use, as needed.
 
 ## Frequency
 

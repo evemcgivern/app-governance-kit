@@ -1,6 +1,6 @@
 # Key work by crosswalk theme
 
-Each of the 29 crosswalk themes below sets out what it means in practice, the concrete work it takes to run it, what evidence that work leaves behind, and which role usually carries it.
+Each of the 30 crosswalk themes below sets out what it means in practice, the concrete work it takes to run it, what evidence that work leaves behind, and which role usually carries it.
 
 ## XW-001 Application and software inventory
 
@@ -19,7 +19,7 @@ Each of the 29 crosswalk themes below sets out what it means in practice, the co
 ## XW-003 Asset management policy and scope
 
 - **What it means:** A written policy sets out what counts as a managed asset and the rules for managing it.
-- **Key work:** Draft the policy's scope and rules; circulate it for sign-off; publish it somewhere staff can find it; review it on a fixed schedule and update it when the estate changes; use the `program-setup` tool to draft the policy skeleton and route it through approval.
+- **Key work:** Draft the policy's scope and rules; circulate it for sign-off; publish it somewhere staff can find it; review it on a fixed schedule and update it when the estate changes; use the `program-setup` tool to draft the policy skeleton and route it through approval; the templates `sam-toolkit/policy-template.md` and `sam-toolkit/policy-standard-template.md`, the checklist `sam-toolkit/policy-checklist.md`, and the procedure `sam-toolkit/policy-lifecycle-sop.md` support the draft.
 - **Evidence it produces:** An approved, dated policy document and its review history.
 - **Usually owned by:** The governance sponsor, with the policy owner drafting and maintaining it.
 
@@ -205,3 +205,10 @@ Each of the 29 crosswalk themes below sets out what it means in practice, the co
 - **Evidence it produces:** A change log with risk assessments, approvals, and post-change reviews.
 - **Usually owned by:** The application owner, with a change approver or change board for higher-risk changes.
 
+
+## XW-030 Awareness, communication, and document control
+
+- **What it means:** The people a policy binds know it, hear about changes on a plan, and can find the current version in one controlled place.
+- **Key work:** Name who must be aware of each policy and what they must know; write a communication plan that says what is sent, when, to whom, and how; track acknowledgments beyond onboarding; publish each approved version in one versioned location and withdraw older ones; keep the approval and change history; use `sam-toolkit/policy-lifecycle-sop.md` and `sam-toolkit/policy-checklist.md` to run and test the steps.
+- **Evidence it produces:** A communication plan, acknowledgment records, and a version history of each published policy.
+- **Usually owned by:** The policy owner, with HR or the training lead running acknowledgments.

@@ -5,11 +5,11 @@
 ## Scoring used
 
 - **Business value:** read from `users` (higher usage = higher value) and whether the category is core to a logistics/transportation operation (e.g. Transport management, Customs brokerage, Freight audit) versus a general back-office function.
-- **Technical fit:** Poor if the app is one side of a functional duplicate, or its license has expired; Good otherwise. No installation or dependency data was supplied, so technical fit is scored on those two signals only — **Unverified:** beyond that.
+- **Technical fit:** Poor if the app is one side of a functional duplicate, or its license has expired; Good otherwise. No installation or dependency data was supplied, so technical fit is scored on those two signals only. **Unverified:** beyond that.
 
 ## Duplicates
 
-Five category pairs share a function. Within each pair, technical fit is Poor for both, so the tie-break is cost per user — the cheaper app per user becomes the consolidation target [[XW-011]].
+Five category pairs share a function. Within each pair, technical fit is Poor for both, so the tie-break is cost per user; the cheaper app per user becomes the consolidation target [[XW-011]].
 
 | Pair | Category | Cost/user (higher) | Cost/user (lower) | Keep | Retire |
 |---|---|---|---|---|---|
@@ -25,12 +25,12 @@ Five category pairs share a function. Within each pair, technical fit is Poor fo
 
 Checked against `checked_on` (2026-09-01):
 
-- **LIC-017** (APP-017, Meetrix Video conferencing) expired 2026-03-31 — 5 months lapsed. 649 users.
-- **LIC-044** (APP-044, Payflow Accounts payable automation) expired 2025-12-31 — 8 months lapsed. 748 users, confidential data.
+- **LIC-017** (APP-017, Meetrix Video conferencing) expired 2026-03-31, 5 months lapsed. 649 users.
+- **LIC-044** (APP-044, Payflow Accounts payable automation) expired 2025-12-31, 8 months lapsed. 748 users, confidential data.
 
 No license expires within 90 days of `checked_on` beyond these two. **Unverified:** on paper, entitlements are far below `users` for most apps and far above `users` for a smaller group (e.g. APP-025 Pulseboard: 350 entitlements against 45 users). `users` in this file isn't documented as licensed seats or installs, so I'm treating this pattern as a license-position question to investigate, not as a proven over- or under-buy [[XW-007]].
 
-Both expired licenses sit on high-usage apps, not duplicates, so the fix is renewal, not elimination — see the TIME table.
+Both expired licenses sit on high-usage apps, not duplicates, so the fix is renewal, not elimination; see the TIME table.
 
 ## TIME table
 
@@ -99,14 +99,14 @@ Both expired licenses sit on high-usage apps, not duplicates, so the fix is rene
 
 ## Savings and risk summary
 
-- **Eliminate:** APP-008, APP-022, APP-029, APP-033, APP-052 — combined annual cost **$355,400**.
+- **Eliminate:** APP-008, APP-022, APP-029, APP-033, APP-052, combined annual cost **$355,400**.
 - **Migrate:** none. No app showed a technical-replatform need that stopped short of full elimination; every duplicate resolves by retiring one side outright.
 - **Potential savings:** **$250,000–$355,400 a year**, not a promise. The low end assumes vendor notice periods and a wind-down period eat into year-one savings; the high end assumes clean, immediate termination. **Unverified:** actual contract terms, since none were supplied [[XW-013]] [[XW-012]].
 
 **Top risks of acting:**
 1. Retiring the wrong side of a pair without checking for an undocumented dependency (no CMDB or integration data was supplied) [[XW-011]].
-2. Executing a retirement before ownership is confirmed — every app is currently Unverified for owner, so there's no one accountable to sign off the retirement or the data disposition [[XW-002]] [[XW-010]].
-3. Losing LIC-017 or LIC-044's app entirely by treating an expired license as a retirement trigger instead of a renewal one — both apps are high-usage and neither is a duplicate [[XW-008]].
+2. Executing a retirement before ownership is confirmed: every app is currently Unverified for owner, so there's no one accountable to sign off the retirement or the data disposition [[XW-002]] [[XW-010]].
+3. Losing LIC-017 or LIC-044's app entirely by treating an expired license as a retirement trigger instead of a renewal one: both apps are high-usage and neither is a duplicate [[XW-008]].
 4. Vendor contracts for the five Eliminate apps may carry termination penalties or notice periods that shrink the savings range; none of that data was supplied [[XW-013]].
 
 ## Data held by Eliminate apps

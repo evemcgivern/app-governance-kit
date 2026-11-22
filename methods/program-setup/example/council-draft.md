@@ -1,4 +1,4 @@
-# Halden Software Governance Council — draft charter
+# Halden Software Governance Council: draft charter
 
 ## Purpose
 The council oversees software and applications at Halden Logistics.

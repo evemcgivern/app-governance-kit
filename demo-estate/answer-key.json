@@ -50,6 +50,36 @@
     "id": "P-006"
   },
   {
+    "tool": "cert-prep",
+    "type": "policy_gap",
+    "id": "accountable-role"
+  },
+  {
+    "tool": "cert-prep",
+    "type": "policy_gap",
+    "id": "defined-terms"
+  },
+  {
+    "tool": "cert-prep",
+    "type": "policy_gap",
+    "id": "enforcement"
+  },
+  {
+    "tool": "cert-prep",
+    "type": "policy_gap",
+    "id": "review-cycle"
+  },
+  {
+    "tool": "cert-prep",
+    "type": "policy_gap",
+    "id": "scope"
+  },
+  {
+    "tool": "cert-prep",
+    "type": "policy_gap",
+    "id": "unrealistic-requirement"
+  },
+  {
     "tool": "crosswalk",
     "type": "crosswalk_match",
     "id": "C1:XW-001"

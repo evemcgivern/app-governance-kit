@@ -1,0 +1,13 @@
+task,role,primary_holder,backup_holder,backup_ready,single_person_risk,decision_authority,escalates_to,reviewed_on,notes
+Receive the audit letter and pass it straight to Legal,Anyone who receives it,,,,,None: forward only,Legal,,
+Own every contact with the publisher,Legal,,,,,Legal,Executive sponsor,,
+Open and keep the dated case file,Asset manager,,,,,Asset manager,Legal,,
+Gather proofs of purchase,Procurement and asset manager,,,,,Asset manager,Legal,,
+Run discovery and keep the dated output,Technical lead,,,,,Technical lead,Asset manager,,
+Run the hardware audit and compare it with discovery,Hardware asset manager,,,,,Hardware asset manager,Asset manager,,
+Reconcile use against proofs per product and version,Asset manager,,,,,Asset manager,Legal,,
+Advise on what may be released and on system changes during the audit,IT security,,,,,IT security,Legal,,
+Find payment records to match each invoice,Finance contact,,,,,Finance contact,Asset manager,,
+Brief the executive sponsor on gaps and open decisions,Asset manager and Legal,,,,,None: reports only,Executive sponsor,,
+"Decide spend, true-up, and settlement",Executive sponsor with counsel,,,,,Executive sponsor with counsel,Board or equivalent,,
+Hold the post-audit review and update the habits,Asset manager,,,,,Asset manager,Executive sponsor,,

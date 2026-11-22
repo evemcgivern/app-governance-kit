@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Stand up a governance body — a software governance council, an ITAM steering group, or an AI governance board — that makes real, enforceable decisions from its first meeting, instead of becoming a rubber stamp or a bottleneck nobody trusts.
+Stand up a governance body (a software governance council, an ITAM steering group, or an AI governance board) that makes real, enforceable decisions from its first meeting, instead of becoming a rubber stamp or a bottleneck nobody trusts.
 
 ## Scope
 
@@ -10,11 +10,11 @@ Applies whenever a new governance body is proposed, and whenever an existing one
 
 ## Roles
 
-- **Sponsor** — the executive who controls the relevant budget, is accountable for the program, and signs the charter. No sponsor means no enforcement.
-- **Chair** — runs meetings, owns the standing agenda, and is the tie-break of last resort below the sponsor.
-- **Secretary / triage owner** — screens intake against the thresholds, keeps the decision log, and confirms actions from prior meetings are closed before the next one.
-- **Voting members** — the 5 to 9 people who decide on items that reach the body, drawn from the functions the charter names.
-- **Consulted members** — non-voting roles whose input is sought on relevant items but who do not hold a vote.
+- **Sponsor**: the executive who controls the relevant budget, is accountable for the program, and signs the charter. No sponsor means no enforcement.
+- **Chair**: runs meetings, owns the standing agenda, and is the tie-break of last resort below the sponsor.
+- **Secretary / triage owner**: screens intake against the thresholds, keeps the decision log, and confirms actions from prior meetings are closed before the next one.
+- **Voting members**: the 5 to 9 people who decide on items that reach the body, drawn from the functions the charter names.
+- **Consulted members**: non-voting roles whose input is sought on relevant items but who do not hold a vote.
 
 ## Frequency
 
@@ -25,7 +25,7 @@ Monthly meetings. The charter, membership, and decision rights are reviewed year
 1. Agree the problem statement in one sentence: what goes wrong today without this body [[XW-003]]
 2. Name an executive sponsor with budget authority [[XW-027]]
 3. Write down decision rights and the thresholds that route an item to the body versus a named role [[XW-027]]
-4. Name 5 to 9 voting members, drawn from the functions the charter's scope requires [[XW-004]]
+4. Name 5 to 9 voting members, drawn from the functions the charter's scope requires. A solo manager can start with two to four people and a named sponsor [[XW-004]]
 5. Put an intake form and a named triage owner live, so only exceptions and above-threshold items reach the meeting [[XW-027]]
 6. Agree procurement enforcement, including that every purchase goes through the acquisition gate (`sam-toolkit/acquisition-gate-checklist.md`), and settle any overlap with adjacent bodies (for example an architecture or change board) in writing [[XW-027]]
 7. Set the cadence, standing agenda, and decision log [[XW-025]]
@@ -48,8 +48,9 @@ Design the intake log, decision log, and metrics review so each is a direct by-p
 
 ## Related
 
-- [**Governance framework crosswalk**](../crosswalk/) (`crosswalk`) — supplies the framework rows this program's charter and decision rights map to.
-- [**ITAM maturity check**](../itam-maturity/) (`itam-maturity`) — its governance area score depends on this program's charter, sponsor, and decision rights being in place.
-- [**Application rationalization**](../rationalization/) (`rationalization`) — brings its consolidate/retain/retire recommendations to this body for decisions above threshold.
-- [**AI system intake and risk tiering**](../ai-intake/) (`ai-intake`) — routes high-risk and prohibited-practice findings to this body for the sponsor and legal decision it flags.
-- [**Access review pack**](../access-review/) (`access-review`) — reports its exceptions to the sponsor and owner roles this program names.
+- [**Governance framework crosswalk**](../crosswalk/) (`crosswalk`): supplies the framework rows this program's charter and decision rights map to.
+- [**ITAM maturity check**](../itam-maturity/) (`itam-maturity`): its governance area score depends on this program's charter, sponsor, and decision rights being in place.
+- [**Application rationalization**](../rationalization/) (`rationalization`): brings its consolidate/retain/retire recommendations to this body for decisions above threshold.
+- [**AI system intake and risk tiering**](../ai-intake/) (`ai-intake`): routes high-risk and prohibited-practice findings to this body for the sponsor and legal decision it flags.
+- [**Access review pack**](../access-review/) (`access-review`): reports its exceptions to the sponsor and owner roles this program names.
+- Policy drafting kit (`sam-toolkit/policy-template.md`, `policy-standard-template.md`, `policy-checklist.md`, `policy-lifecycle-sop.md`) writes and tests the policy set that the body approves.

@@ -24,10 +24,10 @@ Neither platform decides who speaks to a publisher, what is released, or whether
 
 The platform facts above were fetched for the rationalization platform guide on 2026-09-25 and carried over here. They were not fetched again.
 
-- [Review Software Entitlements — ServiceNow Community](https://www.servicenow.com/community/sam-blog/review-software-entitlements/ba-p/3304445) — Software Entitlements, Reconciliation, License Compliance Position.
-- [Software Asset Management - Software Entitlement [alm_license] — ServiceNow Community](https://www.servicenow.com/community/sam-forum/software-asset-management-software-entitlement-alm-license-gt-br/m-p/3083406) — confirms the `alm_license` table name.
-- [Guidance on SAM Pro license renewal process — ServiceNow Community](https://www.servicenow.com/community/sam-forum/guidance-on-sam-pro-license-renewal-process/m-p/3510712) — entitlement effective and expiry dates, and the contract end date.
-- [Application Rationalization & Management — Flexera](https://www.flexera.com/flexera-one/it-visibility/application-rationalization) — hybrid IT discovery and Technopedia normalization.
-- [Streamline Your SaaS Portfolio with Application Rationalization — Flexera](https://www.flexera.com/solutions/saas-spend/application-rationalization) — unused and unassigned license reporting.
+- [Review Software Entitlements, ServiceNow Community](https://www.servicenow.com/community/sam-blog/review-software-entitlements/ba-p/3304445): Software Entitlements, Reconciliation, License Compliance Position.
+- [Software Asset Management - Software Entitlement [alm_license], ServiceNow Community](https://www.servicenow.com/community/sam-forum/software-asset-management-software-entitlement-alm-license-gt-br/m-p/3083406): confirms the `alm_license` table name.
+- [Guidance on SAM Pro license renewal process, ServiceNow Community](https://www.servicenow.com/community/sam-forum/guidance-on-sam-pro-license-renewal-process/m-p/3510712): entitlement effective and expiry dates, and the contract end date.
+- [Application Rationalization & Management, Flexera](https://www.flexera.com/flexera-one/it-visibility/application-rationalization): hybrid IT discovery and Technopedia normalization.
+- [Streamline Your SaaS Portfolio with Application Rationalization, Flexera](https://www.flexera.com/solutions/saas-spend/application-rationalization): unused and unassigned license reporting.
 
 Pages that do not return readable content to an automated fetch: Flexera's documentation site (`docs.flexera.com/...`, 403). Nothing above cites it.

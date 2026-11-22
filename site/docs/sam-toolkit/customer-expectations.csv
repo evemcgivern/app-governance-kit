@@ -1,0 +1,12 @@
+customer,typical_starting_point,what_they_need_from_itam,level_of_detail,how_often,what_we_need_from_them,how_we_deliver,measure_of_success,owner,last_confirmed_on,notes
+IT security,"A current list of what is installed and where, so unmanaged or vulnerable items can be found.",,,,,,,,,
+Service desk,"Who has what, and its status, so they can support users and handle requests.",,,,,,,,,
+Procurement,"What is already owned, what renews soon, and which contract terms apply, before they buy.",,,,,,,,,
+Finance,"Cost by application and owner, renewal dates, and savings that have been confirmed.",,,,,,,,,
+Legal and compliance,"License terms, proof of purchase, and readiness for an audit.",,,,,,,,,
+HR,"Triggers for joiners, movers, and leavers, so access and licenses follow people.",,,,,,,,,
+Application owners,"Cost, usage, renewal dates, and the decisions they must make and when.",,,,,,,,,
+IT operations and change,Configuration and ownership data that stays in step with changes.,,,,,,,,,
+Executives and sponsor,"A few measures that link to money saved or risk reduced, and the decisions they must make.",,,,,,,,,
+Internal audit and risk,"Evidence that controls run, and a way to sample records.",,,,,,,,,
+Publishers and external auditors (through counsel),"Only what counsel releases, in the form counsel approves.",,,,,,,,,

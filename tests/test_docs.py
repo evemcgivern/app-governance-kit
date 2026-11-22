@@ -8,7 +8,7 @@ import xml.dom.minidom
 import zipfile
 from pathlib import Path
 
-from agk.docs import (DocsError, form_blocks, gap_rows_of, template_blocks, body_html, csv_blocks, docx_bytes, front_title, inline_tokens, parse_markdown,
+from agk.docs import (DocsError, _download_link, _prompt_html, form_blocks, gap_rows_of, template_blocks, body_html, csv_blocks, docx_bytes, front_title, inline_tokens, parse_markdown,
                       summary_of, tier_rule, title_of, unmark, write_docs, xlsx_bytes)
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -206,6 +206,78 @@ class PageShapeTests(unittest.TestCase):
         self.assertEqual(html.count('class="print-icon"'), 2)
 
 
+class PromptBlockTests(unittest.TestCase):
+    def test_prompt_block_marks_placeholders_and_adds_a_hidden_copy_button(self):
+        html = _prompt_html("Rules: help with [PROCESS] today.", 1, "Prompt 3: Map a process", lambda h: h, lambda n: None)
+        self.assertIn('<div class="prompt-block">', html)
+        self.assertIn('<mark class="prompt-ph">[PROCESS]</mark>', html)
+        self.assertIn('<div class="prompt-text" id="prompt-3-text">', html)
+        self.assertIn('data-target="prompt-3-text"', html)
+        self.assertIn('data-n="3"', html)
+        self.assertIn('aria-describedby="prompt-3-map-a-process"', html)
+        self.assertRegex(html, r'<button type="button"[^>]* hidden [^>]*>Copy prompt 3</button>')
+        self.assertIn("Prompt 3: copy and paste", html)
+
+    def test_prompt_without_a_number_in_its_heading_uses_its_position(self):
+        html = _prompt_html("Text.", 2, "Other heading", lambda h: h, lambda n: None)
+        self.assertIn('id="prompt-2-text"', html)
+        self.assertIn(">Copy prompt 2<", html)
+
+    def test_paste_this_paragraph_becomes_a_prompt_block_in_a_page(self):
+        blocks = parse_markdown("## Prompt 1: Set the scene\n\n**Paste this:** Ask about [YOUR ROLE].\n\nPlain text.\n")
+        html = body_html(blocks, lambda h: h)
+        self.assertEqual(html.count('class="prompt-block"'), 1)
+        self.assertIn('<mark class="prompt-ph">[YOUR ROLE]</mark>', html)
+        self.assertNotIn("Paste this", html)
+        self.assertIn("<p>Plain text.</p>", html)
+
+
+class DownloadLinkTests(unittest.TestCase):
+    def test_csv_links_to_the_csv_and_the_page(self):
+        html = _download_link("renewal-calendar.csv", "renewal-calendar.html", "Renewal calendar")
+        self.assertEqual(html, '<a href="renewal-calendar.csv">Renewal calendar (CSV)</a> '
+                               '(<a href="renewal-calendar.html">view</a>)')
+
+    def test_markdown_links_to_the_word_file(self):
+        html = _download_link("guide.md", "../sam-toolkit/guide.html", "Guide")
+        self.assertIn('<a href="../sam-toolkit/guide.docx">Guide (Word)</a>', html)
+        self.assertIn('<a href="../sam-toolkit/guide.html">view</a>', html)
+
+    def test_other_file_types_and_non_page_hrefs_have_no_download(self):
+        self.assertIsNone(_download_link("book.xlsx", "book.html", "Book"))
+        self.assertIsNone(_download_link("guide.md", "guide.pdf", "Guide"))
+
+    def test_title_is_escaped(self):
+        self.assertIn("A &lt;b&gt; (CSV)", _download_link("a.csv", "a.html", "A <b>"))
+
+    def test_attach_paragraph_links_downloads_and_other_paragraphs_link_pages(self):
+        files = lambda name: ("renewal-calendar.html", "Renewal calendar") if name == "renewal-calendar.csv" else None
+        blocks = parse_markdown("**Attach (optional):** `renewal-calendar.csv`.\n\nSee `renewal-calendar.csv`.\n")
+        html = body_html(blocks, lambda h: h, files)
+        first, second = html.split("\n")
+        self.assertIn('<a href="renewal-calendar.csv">Renewal calendar (CSV)</a>', first)
+        self.assertIn('(<a href="renewal-calendar.html">view</a>)', first)
+        self.assertEqual(second, '<p>See <a href="renewal-calendar.html">Renewal calendar</a>.</p>')
+
+
+class FillableFallbackTests(unittest.TestCase):
+    def _page(self, body: str) -> str:
+        root = tmp_repo(extra={"operating-calendar.md": body})
+        write_docs(root)
+        return built(root, "operating-calendar.html")
+
+    def test_document_with_nothing_to_fill_in_has_no_answers_button_or_note(self):
+        html = self._page("# Calendar\n\nJust text.\n\n- one\n- two\n")
+        self.assertNotIn("answers-doc", html)
+        self.assertNotIn("stays in this browser", html)
+
+    def test_document_with_a_checklist_table_keeps_the_answers_button_and_note(self):
+        html = self._page("# Calendar\n\n| # | Question | Yes / partly / no | Evidence |\n"
+                          "| --- | --- | --- | --- |\n| 1 | Is it done? | | |\n")
+        self.assertIn("answers-doc", html)
+        self.assertIn("stays in this browser", html)
+
+
 class SeoFileTests(unittest.TestCase):
     BASE = "https://evemcgivern.github.io/app-governance-kit/"
 
@@ -279,6 +351,203 @@ class SiteTests(unittest.TestCase):
 
     def test_write_docs_without_site_is_a_noop(self):
         self.assertEqual(write_docs(Path(tempfile.mkdtemp())), [])
+
+
+INDEX = ("<html><body><header><div class=\"support-bar\">s</div></header>"
+         "<footer class=\"site-footer\">f</footer></body></html>")
+
+PLAYBOOK = """# Playbook
+
+Intro.
+
+## The ten steps
+
+### Step 1: Read the map
+
+- Files: `guide.md`.
+
+### Step 2: Get a sponsor
+
+- Files: `renewal-calendar.csv` and [the calendar](operating-calendar.md).
+
+### Step 3: Stop <the> bleeding
+
+- Files: `audit-response-roles.csv`, `renewal-calendar.csv`.
+
+### Stuck, or inherited a mess?
+
+Text with `loose-file.md` that belongs to no step.
+
+### Step 4: Set the scope
+
+- Files: `policy-template.md`.
+"""
+
+
+def tmp_repo(playbook: str | None = PLAYBOOK, extra: dict | None = None) -> Path:
+    root = Path(tempfile.mkdtemp())
+    (root / "site").mkdir()
+    (root / "site" / "index.html").write_text(INDEX, encoding="utf-8")
+    (root / "site" / "field-guide.html").write_text("<html></html>", encoding="utf-8")
+    sam = root / "sam-toolkit"
+    sam.mkdir()
+    if playbook is not None:
+        (sam / "itam-program-playbook.md").write_text(playbook, encoding="utf-8")
+    files = {"guide.md": "# Guide\n\nSee the [glossary](../../field-guide.html#glossary-heading).\n",
+             "operating-calendar.md": "# Calendar\n\nBody.\n",
+             "policy-template.md": "# Policy\n\nBody.\n",
+             "loose-file.md": "# Loose\n\nBody.\n",
+             "audit-response-roles.csv": "task,holder\nA,\n",
+             "renewal-calendar.csv": "app,date\n"}
+    files.update(extra or {})
+    for name, text in files.items():
+        (sam / name).write_text(text, encoding="utf-8")
+    return root
+
+
+def built(root: Path, name: str) -> str:
+    return (root / "site" / "docs" / "sam-toolkit" / name).read_text(encoding="utf-8")
+
+
+class SiteLinkTests(unittest.TestCase):
+    def test_link_to_hand_kept_site_page_becomes_a_working_link(self):
+        root = tmp_repo()
+        write_docs(root)
+        html = built(root, "guide.html")
+        self.assertIn('<a href="../../field-guide.html#glossary-heading">glossary</a>', html)
+
+    def test_link_to_missing_site_page_stays_plain_text(self):
+        root = tmp_repo(extra={"guide.md": "# Guide\n\nSee the [gone](../../nope.html#x).\n"})
+        write_docs(root)
+        html = built(root, "guide.html")
+        self.assertNotIn("nope.html", html)
+        self.assertIn("gone", html)
+
+    def test_link_to_missing_site_page_warns_with_file_and_link(self):
+        root = tmp_repo(extra={"guide.md": "# Guide\n\nSee the [gone](../../nope.html#x).\n"})
+        warnings = write_docs(root)
+        self.assertEqual(len(warnings), 1, warnings)
+        self.assertIn("guide.md", warnings[0])
+        self.assertIn("../../nope.html#x", warnings[0])
+
+    def test_link_into_the_site_folder_becomes_a_working_link(self):
+        root = tmp_repo(extra={"guide.md": "# Guide\n\nSee the [guide](../site/field-guide.html#top).\n"})
+        warnings = write_docs(root)
+        self.assertEqual(warnings, [])
+        self.assertIn('<a href="../../field-guide.html#top">guide</a>', built(root, "guide.html"))
+
+    def test_working_links_give_no_warnings(self):
+        self.assertEqual(write_docs(tmp_repo()), [])
+
+    def test_link_to_field_guide_markdown_becomes_the_generated_page(self):
+        root = tmp_repo(extra={"guide.md": "# Guide\n\nSee the [glossary](../field-guide/glossary.md).\n"})
+        (root / "field-guide").mkdir()
+        (root / "field-guide" / "glossary.md").write_text("# Glossary\n", encoding="utf-8")
+        warnings = write_docs(root)
+        self.assertEqual(warnings, [])
+        html = built(root, "guide.html")
+        self.assertIn('<a href="../../field-guide.html#glossary-heading">glossary</a>', html)
+        self.assertNotIn(".md", html.split("<main")[1].split("</main>")[0])
+
+    def test_word_download_keeps_link_text_only_for_field_guide_markdown(self):
+        root = tmp_repo(extra={"guide.md": "# Guide\n\nSee the [glossary](../field-guide/glossary.md).\n"})
+        (root / "field-guide").mkdir()
+        (root / "field-guide" / "glossary.md").write_text("# Glossary\n", encoding="utf-8")
+        write_docs(root)
+        docx = (root / "site" / "docs" / "sam-toolkit" / "guide.docx").read_bytes()
+        xml = parts(docx)["word/document.xml"]
+        self.assertIn("glossary", xml)
+        self.assertNotIn("field-guide", xml)
+
+
+class BackLabelTests(unittest.TestCase):
+    def test_methods_pages_say_ai_skills(self):
+        root = tmp_repo()
+        m = root / "methods" / "t"
+        m.mkdir(parents=True)
+        (m / "method.md").write_text("# T\n\nBody.\n", encoding="utf-8")
+        write_docs(root)
+        html = (root / "site" / "docs" / "t" / "method.html").read_text(encoding="utf-8")
+        self.assertIn("&larr; AI skills</a>", html)
+        self.assertNotIn("&larr; Tools</a>", html)
+
+
+class WayfindingTests(unittest.TestCase):
+    def test_page_in_step_two_shows_position_and_neighbors(self):
+        root = tmp_repo()
+        write_docs(root)
+        html = built(root, "operating-calendar.html")
+        pb = "itam-program-playbook.html"
+        self.assertIn("Used in playbook step 2 of 4: ", html)
+        self.assertIn(f'href="{pb}#step-2-get-a-sponsor"', html)
+        self.assertIn(f'href="{pb}#step-1-read-the-map"', html)
+        self.assertIn(f'href="{pb}#step-3-stop-the-bleeding"', html)
+        # the ids exist on the playbook page
+        play = built(root, pb)
+        for anchor in ("step-1-read-the-map", "step-2-get-a-sponsor", "step-3-stop-the-bleeding"):
+            self.assertIn(f'id="{anchor}"', play)
+
+    def test_first_step_wins_and_title_is_escaped(self):
+        root = tmp_repo()
+        write_docs(root)
+        html = built(root, "renewal-calendar.html")
+        self.assertIn("Used in playbook step 2 of 4: ", html)
+        self.assertRegex(html, r'Also used in <a href="[^"]*#step-3-stop-the-bleeding">step 3</a>')
+        html3 = built(root, "audit-response-roles.html")
+        self.assertIn("Used in playbook step 3 of 4: ", html3)
+        self.assertIn("Stop &lt;the&gt; bleeding", html3)
+        self.assertNotIn("Stop <the>", html3)
+
+    def test_first_and_last_steps_omit_missing_neighbor(self):
+        root = tmp_repo()
+        write_docs(root)
+        first = built(root, "guide.html")
+        self.assertIn("step 1 of 4", first)
+        self.assertNotIn("Previous step", first)
+        self.assertIn("Next step", first)
+        last = built(root, "policy-template.html")
+        self.assertIn("step 4 of 4", last)
+        self.assertNotIn("Next step", last)
+
+    def test_page_in_no_step_and_the_playbook_show_nothing(self):
+        root = tmp_repo()
+        write_docs(root)
+        self.assertNotIn("Used in playbook", built(root, "loose-file.html"))
+        self.assertNotIn("Used in playbook", built(root, "itam-program-playbook.html"))
+
+    def test_step_count_comes_from_the_playbook(self):
+        root = tmp_repo(playbook=PLAYBOOK + "\n### Step 5: One more\n\n- Files: `loose-file.md`.\n")
+        write_docs(root)
+        self.assertIn("step 1 of 5", built(root, "guide.html"))
+        self.assertIn("step 5 of 5", built(root, "loose-file.html"))
+
+    def test_output_is_deterministic(self):
+        root = tmp_repo()
+        write_docs(root)
+        first = {p: p.read_bytes() for p in (root / "site" / "docs").rglob("*.html")}
+        write_docs(root)
+        second = {p: p.read_bytes() for p in (root / "site" / "docs").rglob("*.html")}
+        self.assertEqual(first, second)
+
+    def test_missing_or_malformed_playbook_builds_without_the_line_and_warns(self):
+        for playbook in (None, "# Playbook\n\n### Step x: nope\n\n- `guide.md`\n", ""):
+            root = tmp_repo(playbook=playbook)
+            warnings = write_docs(root)
+            self.assertNotIn("Used in playbook", built(root, "guide.html"))
+            self.assertEqual(len(warnings), 1, (playbook, warnings))
+            self.assertIn("itam-program-playbook.md", warnings[0])
+            self.assertIn("wayfinding", warnings[0])
+
+    def test_working_playbook_gives_no_wayfinding_warning(self):
+        self.assertEqual(write_docs(tmp_repo()), [])
+
+    def test_no_sam_toolkit_means_no_wayfinding_warning(self):
+        root = tmp_repo()
+        shutil.rmtree(root / "sam-toolkit")
+        m = root / "methods" / "t"
+        m.mkdir(parents=True)
+        (m / "method.md").write_text("# T\n\nBody.\n", encoding="utf-8")
+        self.assertEqual(write_docs(root), [])
 
 
 if __name__ == "__main__":

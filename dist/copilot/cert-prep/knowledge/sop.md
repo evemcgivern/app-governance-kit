@@ -10,9 +10,9 @@ Applies to the six certifications in the kit's field guide: CAMP, CSAM, CHAMP, A
 
 ## Roles
 
-- **Learner** — answers each drill before seeing the data comparison, and chooses what to study next.
-- **Coach** — the agent or a person running the drills, rating answers, and keeping the log.
-- **Manager or sponsor** — agrees study time and funds the exam, if the employer pays.
+- **Learner**: answers each drill before seeing the data comparison, and chooses what to study next.
+- **Coach**: the agent or a person running the drills, rating answers, and keeping the log.
+- **Manager or sponsor**: agrees study time and funds the exam, if the employer pays.
 
 ## Frequency
 

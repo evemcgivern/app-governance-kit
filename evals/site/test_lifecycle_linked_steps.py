@@ -17,7 +17,7 @@ Setup:
     pip install playwright
     playwright install chromium
 
-Run (a static file server must already be serving site/ — this script
+Run (a static file server must already be serving site/; this script
 does not start one for you):
     cd site && python3 -m http.server 8935 &
     python3 evals/site/test_lifecycle_linked_steps.py http://localhost:8935
@@ -88,7 +88,7 @@ def main(base_url):
               page.evaluate("location.hash") == "#deploy/r-deploy-inventory",
               page.evaluate("location.hash"))
         # Fixed 2026-09-25 (found in exploratory QA the same day): the back
-        # link used to ping-pong instead of clearing — clicking it now
+        # link used to ping-pong instead of clearing, so clicking it now
         # returns to the origin item as a true "back" step, with no new
         # back link shown.
         back_hidden_after_return = page.evaluate("document.getElementById('lc-back-link').hidden")
@@ -119,7 +119,7 @@ def main(base_url):
               page.locator("#lc-overlay-toggle").get_attribute("aria-pressed") == "false")
 
         # --- 6. Fixed 2026-09-25 (found in exploratory QA the same day):
-        # 'leads_to' links used to be completely dead — buildLinkList() and
+        # 'leads_to' links used to be completely dead: buildLinkList() and
         # computeAffected() were only ever called with rule/question ids,
         # never a stage id, so the three leads_to loops in links.csv never
         # rendered as anchors and were never counted in the overlay legend.

@@ -1,7 +1,7 @@
 ---
 name: program-setup
 title: Stand up a governance program
-description: Design or review the launch of a governance body such as a software governance council, ITAM steering group, or AI governance board — charter, decision rights, membership, intake path, cadence, 90-day launch plan, and success measures. Use when starting a council or when an existing one has become a bottleneck or a rubber stamp.
+description: Design or review the launch of a governance body such as a software governance council, ITAM steering group, or AI governance board (charter, decision rights, membership, intake path, cadence, 90-day launch plan, and success measures). Use when starting a council or when an existing one has become a bottleneck or a rubber stamp.
 ---
 
 You help stand up a governance body that makes real decisions without becoming a bottleneck.
@@ -15,7 +15,7 @@ If given a draft charter, review it against the steps below and report gaps. Oth
 1. Purpose: one sentence on what goes wrong today that this body fixes.
 2. Sponsor: an executive who controls the relevant budget. No sponsor means no enforcement; flag it.
 3. Decision rights: what the body decides, what it only advises on, and the thresholds (cost, risk, AI use) that send an item to it. Everything below threshold is decided by a named role, not the council.
-4. Membership: 5–9 voting members (typically IT, security, procurement, finance, legal, architecture, one or two business leads). More than 9 voting members slows decisions; move the rest to non-voting or consulted.
+4. Membership: 5–9 voting members (typically IT, security, procurement, finance, legal, architecture, one or two business leads). More than 9 voting members slows decisions; move the rest to non-voting or consulted. A solo manager can start with two to four people and a named sponsor, and grow the group when the work needs it.
 5. Intake path: one request form; triage by a named role; only exceptions, high-cost, and high-risk items reach the meeting.
 6. Enforcement: procurement will not buy what the body hasn't approved above threshold. Overlaps with other boards (for example an architecture review board) are settled in writing. Also confirm the council has the acquisition gate (`sam-toolkit/acquisition-gate-checklist.md`) and a named owner and plan for answering a publisher audit letter (the `audit-response` skill); flag either one missing.
 7. Cadence and agenda: meeting frequency, standing agenda, decision log, and an out-of-cycle path for urgent items.
@@ -36,3 +36,7 @@ Present any drafted charter wording as plain text or in a table, not in quotatio
 - Flag any figure you could not verify from the input with **Unverified:**.
 - Cite framework clauses by number from [`crosswalk.csv`](../crosswalk/crosswalk.csv). Paraphrase; never quote standards text.
 - End your answer with a fenced block labeled `findings` containing a JSON list of `{"type": ..., "id": ...}` objects, as the task describes. Use `[]` when there are none.
+
+## Related
+
+- For policy drafting, use `sam-toolkit/policy-template.md`, `sam-toolkit/policy-standard-template.md`, `sam-toolkit/policy-checklist.md`, and `sam-toolkit/policy-lifecycle-sop.md`. They are templates, not skills.
