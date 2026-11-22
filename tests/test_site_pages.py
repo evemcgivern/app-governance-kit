@@ -259,5 +259,22 @@ class DoVersusReadTests(unittest.TestCase):
         self.assertIn('href="practicum.html#about-the-demo-company"', read("sam-toolkit.html"))
 
 
+class ReadmeTests(unittest.TestCase):
+    readme = (ROOT / "README.md").read_text(encoding="utf-8")
+
+    def test_start_here_links_the_site_playbook_and_the_repo_file(self):
+        start = self.readme.split("## New to ITAM? Start here", 1)[1].split("\n## ", 1)[0]
+        self.assertIn(BASE + "docs/sam-toolkit/itam-program-playbook.html", start)
+        self.assertIn("sam-toolkit/itam-program-playbook.md", start)
+
+    def test_start_here_follows_the_site_order(self):
+        start = self.readme.split("## New to ITAM? Start here", 1)[1].split("\n## ", 1)[0]
+        order = ["[ITAM program playbook]", "[SAM toolkit]", "[AI skills]", "[Practicum]", "[Field guide]"]
+        pos = [start.find(h) for h in order]
+        self.assertTrue(all(p >= 0 for p in pos), pos)
+        self.assertEqual(pos, sorted(pos))
+
+
+
 if __name__ == "__main__":
     unittest.main()
