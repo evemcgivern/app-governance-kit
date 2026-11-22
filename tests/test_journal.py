@@ -6,6 +6,9 @@ import re
 import shutil
 
 from agk.build import build
+from agk.docs import write_docs
+from agk.scan import scan
+from agk.site import broken_links
 from agk.journal import (JournalError, Post, STATUS_LABELS, load_posts, parse_front_matter, parse_post,
                         render_index, render_post, write_journal)
 from tests.helpers import make_method, make_repo
@@ -270,6 +273,57 @@ class WriteTests(unittest.TestCase):
         errors, _ = build(self.root)
         self.assertFalse([e for e in errors if e.startswith("journal:")], errors)
         self.assertTrue((self.root / "site" / "journal" / "fine.html").exists())
+
+
+class SiteChecksTests(unittest.TestCase):
+    """The journal in the sitemap, the link check, and the scan."""
+
+    def setUp(self):
+        self._tmp = tempfile.TemporaryDirectory()
+        self.root = make_repo(Path(self._tmp.name))
+        make_method(self.root, "rationalization")
+        shutil.copytree(ROOT / "site", self.root / "site", ignore=shutil.ignore_patterns("downloads", "docs"))
+        self.posts = self.root / "posts"
+
+    def tearDown(self):
+        self._tmp.cleanup()
+
+    def journal_problems(self) -> list[str]:
+        return [e for e in broken_links(self.root / "site") if e.startswith("journal")]
+
+    def test_sitemap_lists_published_posts_only(self):
+        write_post(self.posts, "2026-12-01-published.md")
+        write_post(self.root / "docs" / "journal-drafts", "2026-12-02-rough.md", date="2026-12-02")
+        write_journal(self.root)
+        write_docs(self.root)
+        sitemap = (self.root / "site" / "sitemap.xml").read_text(encoding="utf-8")
+        base = "https://evemcgivern.github.io/app-governance-kit/"
+        self.assertIn(f"<loc>{base}journal.html</loc>", sitemap)
+        self.assertIn(f"<loc>{base}journal/published.html</loc>", sitemap)
+        self.assertNotIn("rough", sitemap)
+        self.assertLess(sitemap.index("case-studies.html"), sitemap.index("journal.html"))
+        self.assertLess(sitemap.index("journal.html"), sitemap.index("about.html"))
+
+    def test_a_good_post_has_no_link_problems(self):
+        post = write_post(self.posts, "2026-12-01-good-links.md")
+        post.write_text(post.read_text(encoding="utf-8") + "\n[home](../index.html) and [up](#top)\n",
+                        encoding="utf-8")
+        write_journal(self.root)
+        self.assertEqual(self.journal_problems(), [])
+
+    def test_broken_link_in_a_post_is_reported(self):
+        post = write_post(self.posts, "2026-12-01-bad-link.md")
+        post.write_text(post.read_text(encoding="utf-8") + "\n[gone](../docs/nope.html)\n", encoding="utf-8")
+        write_journal(self.root)
+        self.assertEqual(self.journal_problems(), ["journal/bad-link.html: ../docs/nope.html"])
+
+    def test_posts_folder_is_scanned(self):
+        quote = "one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen"
+        (self.posts).mkdir()
+        (self.posts / "2026-12-01-x.md").write_text(f'Acme said "{quote}" today.\n', encoding="utf-8")
+        hits = scan(self.root, ["acme"])
+        self.assertTrue(any("posts/2026-12-01-x.md" in h and "private term" in h for h in hits), hits)
+        self.assertTrue(any("posts/2026-12-01-x.md" in h and "quoted run" in h for h in hits), hits)
 
 
 if __name__ == "__main__":

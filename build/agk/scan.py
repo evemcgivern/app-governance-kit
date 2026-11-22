@@ -6,8 +6,9 @@ import zipfile
 from pathlib import Path
 
 MAX_QUOTE_WORDS = 15
-SCAN_DIRS = ("methods", "agents", "case-studies", "site", "dist", "demo-estate", "field-guide", "practicum", "README.md")
-QUOTE_DIRS = ("methods", "agents", "case-studies", "site", "field-guide", "practicum")
+SCAN_DIRS = ("methods", "agents", "case-studies", "site", "dist", "demo-estate", "field-guide", "practicum", "posts",
+             "README.md")
+QUOTE_DIRS = ("methods", "agents", "case-studies", "site", "field-guide", "practicum", "posts")
 TEXT_SUFFIXES = {".md", ".csv", ".html", ".json", ".txt", ".svg", ".xml", ".py", ".yml", ".yaml", ".toml", ".css", ".js"}
 IMAGE_SUFFIXES = {".png", ".jpg", ".jpeg", ".gif", ".webp", ".ico"}
 QUOTE_RE = re.compile(r"[\"“]([^\"”]*)[\"”]")

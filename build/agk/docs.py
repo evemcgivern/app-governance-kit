@@ -1342,10 +1342,11 @@ def write_sitemap(site: Path) -> None:
     """site/sitemap.xml lists every page that is built or hand-kept, in a fixed order."""
     top = sorted(p.name for p in site.glob("*.html") if not p.name.startswith("google"))
     order = ["index.html", "tools.html", "sam-toolkit.html", "practicum.html", "lifecycle.html", "crosswalk.html",
-             "impact-map.html", "field-guide.html", "case-studies.html", "about.html"]
+             "impact-map.html", "field-guide.html", "case-studies.html", "journal.html", "about.html"]
     top = [n for n in order if n in top] + [n for n in top if n not in order]
+    journal = sorted(p.relative_to(site).as_posix() for p in (site / "journal").glob("*.html"))
     docs = sorted(p.relative_to(site).as_posix() for p in (site / "docs").rglob("*.html"))
-    urls = [BASE if n == "index.html" else BASE + n for n in top] + [BASE + d for d in docs]
+    urls = [BASE if n == "index.html" else BASE + n for n in top] + [BASE + j for j in journal] + [BASE + d for d in docs]
     body = "\n".join(f"  <url><loc>{u}</loc></url>" for u in urls)
     (site / "sitemap.xml").write_text(
         f"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">\n{body}\n</urlset>\n",
