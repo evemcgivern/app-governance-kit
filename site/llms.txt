@@ -96,6 +96,6 @@ Key facts:
 ## Optional
 
 - [Case studies](https://evemcgivern.github.io/app-governance-kit/case-studies.html): six worked examples on Halden Logistics, a fictional company (audit response, AI risk tiering, rationalization); not real client work.
-- [About](https://evemcgivern.github.io/app-governance-kit/about.html): Eve McGivern, application governance manager.
+- [About](https://evemcgivern.github.io/app-governance-kit/about.html): Eve McGivern, who built the kit, and how to reach her.
 - [Source code](https://github.com/evemcgivern/app-governance-kit): the full repository, including methods, practicum, demo estate, and build system.
 - [Releases](https://github.com/evemcgivern/app-governance-kit/releases): version history and release notes.
