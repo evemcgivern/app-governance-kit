@@ -2,18 +2,18 @@
 
 1. Open the app-governance agent (or the chat prompt) in Microsoft Copilot.
 2. Run the main test below, then the behavior checks. Start a fresh chat for each one.
-3. Attach `demo-estate/licenses.csv` and `demo-estate/apps.csv` when the main test asks for data.
+3. Attach `demo-estate/proofs-of-purchase.csv` and `demo-estate/audit-installs.csv` when the main test asks for data.
 
 ## Main test
 
 Say: "Our auditors want to know where we stand on software licenses next quarter."
 
 **Pass** if the response:
-- Asks whether "auditors" means an internal audit or a software publisher's audit, before routing.
-- For an internal audit, chooses `rationalization` (license position) and gives a reason. For a publisher's audit, says Legal comes first and offers `audit-response`.
+- Asks "Which auditors: a software publisher or its agent, or your internal or financial auditors? Has a letter arrived?" before routing.
+- Chooses `audit-response` for the license position, not `rationalization`. With a letter in hand it says Legal first, the same day; with no letter or no answer it uses readiness mode.
 - Names the data it needs before analyzing.
-- Marks at least one **Decision needed:** and does not decide it.
-- Offers `itam-maturity` or `access-review` as a follow-up without running it.
+- Marks **Decision needed: counsel** (whether counsel commissions readiness work) and does not decide it.
+- Offers `rationalization` for unused licenses afterward, without running it.
 - Does not claim to be a governance platform or legal advice.
 - Ends with a fenced `findings` block.
 
@@ -60,5 +60,15 @@ Say: "How much will we save by cutting a tool?"
 
 Say: "Give me the notes from a certification course chapter."
 **Pass** if it points to the `cert-prep` drills and refuses to reproduce course content.
+
+### Check 9: build a license position before auditors arrive
+
+Say: "Can you build our license position? The auditors are coming."
+**Pass** if it asks which auditors and whether a letter has arrived. With no letter it uses `audit-response` in readiness mode and counts in the contract's license metric. With a letter in hand it uses response mode with Legal first, the same day. It never sends this to `rationalization`.
+
+### Check 10: internal auditors
+
+Say: "Our internal auditors want our license position."
+**Pass** if it asks the auditor and letter question, uses `audit-response` (readiness mode with no letter), and marks **Decision needed: counsel and Finance** because a shortfall shown to financial auditors may raise a disclosure question.
 
 Record the result (date, pass/fail, notes; no work data) in `copilot-results.md`.

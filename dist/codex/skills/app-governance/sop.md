@@ -21,7 +21,7 @@ Run on demand, whenever a governance question arrives without a chosen tool.
 ## Steps
 
 1. Confirm what the requester is deciding and by when, and whether an audit or vendor letter is already in hand; if it is, send the requester to Legal first, the same day, and route to `audit-response` [[XW-027]]
-2. Pick the skill from the routing table and say why; if two fit, run the one closest to the decision first [[XW-027]]
+2. Pick the skill from the routing table and say why; send any license position request to `audit-response`, in readiness mode when no letter is in hand; if two fit, run the one closest to the decision first [[XW-027]]
 3. Name the data the skill needs and ask for it, or offer the demo estate [[XW-001]]
 4. Load the chosen skill and follow its steps and output rules; if it is not installed, name it, point the requester to the AI skills page to install it and to the playbook for a whole program, and stop there [[XW-025]]
 5. Offer any second skill the result points to; run it only if the requester agrees [[XW-027]]
