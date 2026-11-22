@@ -41,6 +41,7 @@ Clause references are to ISO/IEC 19770-1:2017 (paraphrased) and to the shared cr
 | --- | --- | --- | --- |
 | P15 | Are the review date and the events that bring it forward named? [[XW-025]] | | |
 | P16 | Are approval and change history kept? [[XW-020]] (7.6.5) | | |
+| P17 | Does the policy name the company's retention rule for each record type, taken from the company's own records schedule, with its source? Have counsel review it. [[XW-020]] (7.6.5) | | |
 
 ## Decision
 

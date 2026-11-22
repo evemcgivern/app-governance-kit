@@ -29,17 +29,18 @@ Each policy is reviewed at least yearly, and sooner when a trigger occurs: a ven
 
 ## Steps
 
-1. The owner drafts from `policy-template.md`, or from `policy-standard-template.md` for a standard [[XW-003]]
-2. The owner consults Legal, Security, Procurement, Finance, HR, and the business leads, and records what each changed [[XW-004]]
-3. The owner compares the draft with other policies and records any conflict and who resolves it [[XW-003]]
-4. The owner tests the draft with `policy-checklist.md` and fixes each failed item, so counsel sees a draft that already meets the checklist [[XW-025]]
-5. Counsel reviews the enforcement wording and any retention period. **Decision needed:** counsel [[XW-020]]
-6. The sponsor approves, and the approval is dated and filed. **Decision needed:** sponsor [[XW-027]]
-7. The owner publishes the approved version, with its version number, in one controlled location [[XW-020]] [[XW-030]]
-8. The owner communicates it, trains the people it binds, and records each acknowledgment [[XW-004]] [[XW-030]]
-9. Exceptions are logged in `authorization-log.csv` with an approver and an end date, and each is reviewed at expiry [[XW-009]] [[XW-019]]
-10. The owner reviews the policy yearly or on a trigger, and records the result even when nothing changes [[XW-025]]
-11. When a version is replaced, the owner withdraws the old one and keeps it in the archive with its dates [[XW-020]]
+1. Before writing, the owner finds the company's records retention schedule, or asks the records owner or legal where it is written, and notes the retention rule for contracts, invoices, license proofs, and audit evidence and its source [[XW-020]]
+2. The owner drafts from `policy-template.md`, or from `policy-standard-template.md` for a standard [[XW-003]]
+3. The owner consults Legal, Security, Procurement, Finance, HR, and the business leads, and records what each changed [[XW-004]]
+4. The owner compares the draft with other policies and records any conflict and who resolves it [[XW-003]]
+5. The owner tests the draft with `policy-checklist.md` and fixes each failed item, so counsel sees a draft that already meets the checklist [[XW-025]]
+6. Counsel reviews the enforcement wording and any retention period. **Decision needed:** counsel [[XW-020]]
+7. The sponsor approves, and the approval is dated and filed. **Decision needed:** sponsor [[XW-027]]
+8. The owner publishes the approved version, with its version number, in one controlled location [[XW-020]] [[XW-030]]
+9. The owner communicates it, trains the people it binds, and records each acknowledgment [[XW-004]] [[XW-030]]
+10. Exceptions are logged in `authorization-log.csv` with an approver and an end date, and each is reviewed at expiry [[XW-009]] [[XW-019]]
+11. The owner reviews the policy yearly or on a trigger, and records the result even when nothing changes [[XW-025]]
+12. When a version is replaced, the owner withdraws the old one and keeps it in the archive with its dates [[XW-020]]
 
 ## Evidence to retain
 

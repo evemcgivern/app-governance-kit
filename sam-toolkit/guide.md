@@ -176,7 +176,7 @@ A fill-in template for one software standard: a catalog of approved titles by ro
 
 ### policy-checklist.md (clauses 5.2, 7.3, 7.4, 7.6.5, crosswalk XW-003, XW-004, XW-020, XW-025, XW-027, XW-030)
 
-Sixteen questions to test a draft policy before approval and at each review: owner and approver, sponsor approval, bounded scope, defined terms, commitments, license compliance and acceptable use, rules that can be met and tested, roles, exceptions, penalties, consistency, controlled publication, communication, awareness with acknowledgment, review triggers, and change history.
+Seventeen questions to test a draft policy before approval and at each review: owner and approver, sponsor approval, bounded scope, defined terms, commitments, license compliance and acceptable use, rules that can be met and tested, roles, exceptions, penalties, consistency, controlled publication, communication, awareness with acknowledgment, review triggers, change history, and the company's own retention rule with its source.
 
 ### policy-lifecycle-sop.md (clauses 5.2, 7.3, 7.4, 7.6.5, crosswalk XW-003, XW-020, XW-025, XW-030)
 

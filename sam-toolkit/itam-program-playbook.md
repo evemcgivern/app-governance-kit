@@ -114,6 +114,7 @@ Read this before step 4 if any of these is true.
   - [ ] Each product of your largest publishers has proof, or a gap in `documentation-gaps-log.csv` with an owner and a date. [[XW-020]]
   - [ ] `license-position.csv` compares use with the proven entitlement in the contract's license metric.
   - [ ] Unclear contract terms are listed in `contract-terms-check.csv` and sent to counsel. [[XW-013]]
+  - [ ] You know your company's record retention rule for contracts, invoices, license proofs, and audit evidence, and where it is written. [[XW-020]]
 - Time (expert judgment, not measured): 15 to 40 hours of effort per publisher, or 60 to 150 hours for the top three to five publishers, over 2 to 6 months. Proofs go missing, reseller records are thin, and core or virtualization licensing terms take time to work out.
 
 ### Step 9: Put controls in place

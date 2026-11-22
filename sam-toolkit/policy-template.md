@@ -78,6 +78,17 @@ Example (fictional): Halden staff do not install software that is not on the Hal
 
 [Say what each person answers for, such as using only licensed software and reporting misuse, and what the organization answers for, such as providing licensed tools, tracking entitlement, and responding to vendor audits. Make clear that one person's breach can also create a liability for the organization.]
 
+### 4.6 Records and evidence
+
+[State which records the organization keeps as evidence of how it manages software, and where each is kept.] [[XW-020]] (7.6.5)
+
+This template sets no retention period. Find your company's records retention schedule, or ask the records owner or legal where it is written, and copy the rule and its source. Have counsel review what you enter.
+
+- Contracts. Retention rule (from the company's own schedule): ____ Source: ____ Confirmed by: ____
+- Invoices. Retention rule (from the company's own schedule): ____ Source: ____ Confirmed by: ____
+- License proofs. Retention rule (from the company's own schedule): ____ Source: ____ Confirmed by: ____
+- Audit evidence. Retention rule (from the company's own schedule): ____ Source: ____ Confirmed by: ____
+
 ## 5. Roles and responsibilities
 
 Give each activity one accountable role. Add the other roles that do, advise on, or must be told about it. [[XW-004]] (5.3)
