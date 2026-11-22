@@ -12,7 +12,7 @@ Applies to the smallest useful ITAM policy set and the standards beneath it:
 - The software acquisition and exceptions policy, with a standard path, a non-standard path, and approval that escalates with cost and risk.
 - The software standards, which are a catalog and not a policy: approved titles by role, versions, and SaaS. A selection committee owns them.
 - The vendor management policy, one policy with a section for each topic.
-- The records and evidence policy: proofs, authorizations, and retention. Counsel sets the retention periods. **Decision needed:** counsel.
+- The records and evidence policy: proofs, authorizations, and retention. The company's own records schedule sets the retention rules. **Decision needed:** records owner or counsel.
 
 Retirement follows `retirement-signoff-checklist.md` and, for devices, the `hardware-lifecycle` method. AI tool intake follows the `ai-intake` method. Both link to this process for their policy text. Use `policy-template.md` and `policy-standard-template.md` to draft, and `policy-checklist.md` to test the draft.
 
@@ -25,21 +25,29 @@ Retirement follows `retirement-signoff-checklist.md` and, for devices, the `hard
 
 ## Frequency
 
-Each policy is reviewed at least yearly, and sooner when a trigger occurs: a vendor audit, a merger, a move to cloud, a change of sponsor, or a finding from an internal check.
+Each policy is reviewed at least yearly, and sooner when a trigger occurs: a vendor audit, a merger, a move to cloud, a change of sponsor, a finding from an internal check, or a new or changed law, regulation, or contract rule that touches how software is bought, used, or kept.
 
 ## Steps
 
-1. The owner drafts from `policy-template.md`, or from `policy-standard-template.md` for a standard [[XW-003]]
-2. The owner consults Legal, Security, Procurement, Finance, HR, and the business leads, and records what each changed [[XW-004]]
-3. The owner compares the draft with other policies and records any conflict and who resolves it [[XW-003]]
-4. The owner tests the draft with `policy-checklist.md` and fixes each failed item, so counsel sees a draft that already meets the checklist [[XW-025]]
-5. Counsel reviews the enforcement wording and any retention period. **Decision needed:** counsel [[XW-020]]
-6. The sponsor approves, and the approval is dated and filed. **Decision needed:** sponsor [[XW-027]]
-7. The owner publishes the approved version, with its version number, in one controlled location [[XW-020]] [[XW-030]]
-8. The owner communicates it, trains the people it binds, and records each acknowledgment [[XW-004]] [[XW-030]]
-9. Exceptions are logged in `authorization-log.csv` with an approver and an end date, and each is reviewed at expiry [[XW-009]] [[XW-019]]
-10. The owner reviews the policy yearly or on a trigger, and records the result even when nothing changes [[XW-025]]
-11. When a version is replaced, the owner withdraws the old one and keeps it in the archive with its dates [[XW-020]]
+1. Before drafting, find the company's records retention schedule. If you cannot find it, ask the records owner or legal where it is written. For each record type below, note the rule, where it is written, who owns it, and how a legal hold is applied. Also name where the backup copy of these records is kept and who can restore it. Do not choose a period yourself. [[XW-020]]
+   - Proofs of entitlement, with the contracts and terms that grant them.
+   - Orders and invoices.
+   - Audit correspondence and records gathered for an audit.
+   - Discovery and usage reports, kept as they stood on the day they ran.
+   - Disposal and wipe certificates.
+   - Approval records.
+   - Renewal notices.
+2. The owner drafts from `policy-template.md`, or from `policy-standard-template.md` for a standard [[XW-003]]
+3. The owner consults Legal, Security, Procurement, Finance, HR, and the business leads, and records what each changed [[XW-004]]
+4. The owner compares the draft with other policies and records any conflict and who resolves it [[XW-003]]
+5. The owner tests the draft with `policy-checklist.md` and fixes each failed item, so counsel sees a draft that already meets the checklist [[XW-025]]
+6. Counsel reviews the enforcement wording and any retention period. **Decision needed:** counsel [[XW-020]]
+7. The sponsor approves, and the approval is dated and filed. **Decision needed:** sponsor [[XW-027]]
+8. The owner publishes the approved version, with its version number, in one controlled location [[XW-020]] [[XW-030]]
+9. The owner communicates it, trains the people it binds, records each acknowledgment, and checks that people understood it, for example with a short quiz, a question in a team meeting, or a spot check of a few people, and records the result [[XW-004]] [[XW-030]]
+10. Exceptions are logged in `authorization-log.csv` with an approver and an end date, and each is reviewed at expiry [[XW-009]] [[XW-019]]
+11. The owner reviews the policy yearly or on a trigger, and records the result even when nothing changes [[XW-025]]
+12. When a version is replaced, the owner withdraws the old one and keeps it in the archive with its dates [[XW-020]]
 
 ## Evidence to retain
 
@@ -64,9 +72,10 @@ Penalties and enforcement
 - Does the wording for contractors and temporary staff need to differ from the wording for employees?
 
 Retention
-- What period applies to each record type: proofs of purchase, contracts, authorizations, wipe certificates, acknowledgments, and consultation records?
-- Does any legal hold, open audit, or dispute change a period?
-- Who may destroy a record when its period ends, and how is the destruction recorded?
+- Who owns the retention rule: the records owner or counsel? **Decision needed:** records owner or counsel.
+- How does a legal hold or an audit notice stop normal disposal, and who lifts it?
+- Is the rule long enough to cover each publisher's audit look-back and the life of each license? Licenses bought long ago still need proof. **Decision needed:** counsel.
+- Who approves disposal of expired records, and where is the approval recorded?
 - Do personal data in HR lists and sign-in logs have a shorter limit than the other records?
 
 License reassignment
