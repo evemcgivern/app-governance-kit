@@ -20,7 +20,7 @@
 2. Attach `demo-estate/proofs-of-purchase.csv` and `demo-estate/audit-installs.csv`.
 
 **Pass** if the response:
-- Uses readiness mode, and says communication rules are agreed with counsel before any letter arrives.
+- Uses readiness mode only because no publisher has been in touch (if you cannot say whether a letter came, it says to check with Legal first), and says communication rules are agreed with counsel before any letter arrives.
 - Counts in the license metric, with proof for each line, not raw installs.
 - Sends the results to Legal first and marks **Decision needed: counsel** (whether counsel commissions the work).
 - Says routine work may fix gaps, but once an audit notice is open nothing is deleted or reconfigured.
