@@ -182,12 +182,12 @@ When a meta line has a link, add visually hidden text so the link still makes se
 
 ### Tool facts card (card variant)
 
-Use on a page that compares several tools or items on the same fields. Each card has a title link to the item's detail card, an optional `Limit:` meta line, and a definition list with the same labels in the same order on every card. At 46rem and wider each row is a label column and a text column; below that, the label sits above its text, so the cards stack at 390 px. The fields on `tools.html` are What it does, You give it, You get, Use it when and Decision stays with. Write "Not found." where the source does not say.
+Use on a page that compares several tools or items on the same fields. Each card has a title link to the item's detail card, an optional `Limit:` meta line, and a definition list with the same labels in the same order on every card. At 46rem and wider each row is a label column and a text column; below that, the label sits above its text, so the cards stack at 390 px. The fields on `tools.html` are What it does, You give it, You get, Use it when and Decision stays with, and Where it runs. Write "Not found." where the source does not say.
 
 ```html
 <ul class="tool-overview case-list card-grid">
   <li class="card tool-card">
-    <h3><a href="#access-review">Access review pack</a></h3>
+    <h4><a href="#access-review">Access review pack</a></h4>
     <dl class="tool-facts">
       <div><dt>What it does</dt><dd>Matches every account to a person ...</dd></div>
       <div><dt>Decision stays with</dt><dd>The application owner decides each removal.</dd></div>
@@ -196,7 +196,17 @@ Use on a page that compares several tools or items on the same fields. Each card
 </ul>
 ```
 
-`tests/test_tools_overview.py` checks one card per method, the five fields, and that each title link reaches a real card.
+`tests/test_tools_overview.py` checks one card per method, the six fields, and that each title link reaches a real card.
+
+### Supervisor band and org chart (pattern)
+
+Use when one item picks and runs the others and a reader must see that. On `tools.html` the overview opens with one sentence saying the tools work on their own, then the org chart, then the band, then the tools the supervisor routes to, then a separate row for anything it does not route to or that sits outside the group.
+
+- **Org chart.** Inline SVG in a `figure.org-figure`, drawn by `build/agk/org_chart.py`, which also writes `downloads/supervisor-chart.svg` and `downloads/supervisor-chart-print.html`. Two layouts sit in the page and CSS shows one: `org-chart--narrow` (two columns, a rail down the left, below 64rem) and `org-chart--wide` (one row of boxes under a horizontal rail, from 64rem). Do not use `role="img"`: it would hide the links. Give the SVG `aria-labelledby` pointing at its `<title>` and `<desc>`, mark lines `aria-hidden="true"`, and wrap each box in an `<a>` with an `aria-label`. The cards below are the text version. A test checks the page against the generator.
+- **Colors.** Only tokens, by class (`.org-box`, `.org-line`, `.org-text`). Lines use `--muted` (6.86:1 against `--bg` in light, 8.43:1 in dark). Box borders use `--control-border` (3.79:1 light, 4.07:1 dark against `--bg`). Text is at least 12 px rendered: the wide chart is not shown below 64rem for that reason.
+- **Connector label.** Real text ("Routes to these tools") sits on the rail and is also an `h3` in the page. A dashed line and a dashed group, labeled "Also in the kit", mean "named by the router, but outside the nine". Do not rely on dash style alone.
+- **Band.** `div.supervisor-band` with `role="region"` and `aria-labelledby`, an `h3`, the line "Start here if you have not picked a tool.", and two `.tool-card.supervisor-card` articles (`h4`) in `.supervisor-grid`. Tool groups follow as `ul`s labeled by their `h3`.
+- **Facts.** Say only what the router method and the agent file say: it picks, runs and reports, and decides nothing. Do not write that it runs tools in parallel or on its own.
 
 ### Link list
 
@@ -326,7 +336,7 @@ Tests pin these rules. A change that breaks one fails `make test`.
 | View links name their page; a failed copy shows a visible note | `tests/test_a11y_mobile.py` |
 | Nav, breadcrumb, titles, descriptions and `aria-current` are consistent on every page | `tests/test_site_pages.py` |
 | Hub card lists are labelled, summaries are present, links resolve | `tests/test_case_studies_page.py`, `tests/test_lifecycle_page.py` |
-| The tools overview has one card per method, five fields each, and links to real cards | `tests/test_tools_overview.py` |
+| The tools overview has one card per method, six fields each, and links to real cards; the supervisor band, the org chart and its downloads are pinned too | `tests/test_tools_overview.py`, `tests/test_downloads.py` |
 
 Rules that live in CSS and no test pins. Check them by eye:
 
